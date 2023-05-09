@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Pocket",
+  "version": "0.0.1",
+
+  "description": "A browser extension to save tabs, sessions, and manage them.",
+
+  "icons": {
+    "512": "./tab-pocket.svg"
+  },
+
+  "action": {
+    "default_icon": "./tab-pocket.svg",
+    "default_title": "Tab Pocket",
+    "default_popup": "./src/popup/index.html"
+  },
+
+  "options_ui": { "page": "./src/options/index.html", "open_in_tab": true },
+
+  "permissions": ["tabs", "unlimitedStorage"],
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "tab-pocket@ahmads.com"
+    }
+  }
+}
