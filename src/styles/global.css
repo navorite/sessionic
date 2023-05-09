@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply dark:bg-neutral-800 dark:text-slate-200 flex justify-center font-sans p-2;
+}
+
+h1 {
+  @apply text-xl font-bold;
+}
