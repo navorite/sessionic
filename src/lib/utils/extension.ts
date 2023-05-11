@@ -1,23 +1,21 @@
 import browser from 'webextension-polyfill';
 import type { Page } from '../types/navigation';
 
-const ROOT_PAGE = './src/';
+// Get runtime URL for a page in the extension - Ex popup becomes moz:ext-identifier/src/popup/index.html
 
-// Get the URL of the extension page(ex. popup becomes /src/popup)
-
-function getExtensionURL(page?: Page) {
-  return `${ROOT_PAGE}${page}/index.html`;
-}
-
-// Get runtime URL for a page in the extension - Ex. /src/popup/ becomes moz:ext-identifier/src/popup/
-
-export function getExtensionRuntimeURL(page?: Page) {
-  return browser?.runtime?.getURL(getExtensionURL(page));
+export function getExtensionURL(page?: Page) {
+  return browser?.runtime?.getURL(`./src/${page}/index.html`);
 }
 
 // Open the extension Options page, under a unique ID to prevent duplicate tabs
 
 export function openOptions() {
-  const optionsURL = getExtensionRuntimeURL('options');
-  window?.open(optionsURL, optionsURL);
+  return browser?.runtime?.openOptionsPage();
+}
+
+// Open the extension Popup page, under a unique ID to prevent duplicate tabs
+
+export function openPopup() {
+  const popupURL = getExtensionURL('popup');
+  window?.open(popupURL, popupURL);
 }

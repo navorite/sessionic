@@ -4,6 +4,7 @@
   "description": "A browser extension to save tabs, sessions, and manage them.",
   "version": "0.0.1",
   "author": "navorite",
+  "homepage_url": "https://github.com/navorite/tab-pocket",
 
   "action": {
     "default_title": "Tab Pocket",
