@@ -1,24 +1,9 @@
 <script lang="ts">
-  import { getCurrentTabName } from '@utils/tab_utils';
-
-  let currentTabs = getCurrentTabName();
+  import Button from '@components/Button.svelte';
 </script>
 
-<h1>Tab Pocket</h1>
+<div class="mt-4 w-[200px] h-[100px] flex flex-col items-center">
+  <h1>Popup</h1>
 
-<div class="flex flex-col justify-center">
-  <p>
-    {#await currentTabs}
-      Loading...
-    {:then result}
-      {result[0].title};
-    {/await}
-  </p>
-
-  <button
-    class="mt-2 bg-sky-500 text-gray-700 p-2 rounded"
-    on:click="{() => {
-      currentTabs = getCurrentTabName();
-    }}">Get Tab Name</button
-  >
+  <Button />
 </div>

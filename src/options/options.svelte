@@ -1,4 +1,4 @@
 <script lang="ts">
 </script>
 
-<h1>Tab Pocket Options</h1>
+<h1>Options</h1>
