@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply dark:bg-neutral-800 dark:text-slate-200 flex justify-center font-sans p-2;
+  @apply flex justify-center font-sans p-2 dark:bg-neutral-800 dark:text-slate-200;
 }
 
 h1 {
