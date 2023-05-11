@@ -14,3 +14,10 @@ function getExtensionURL(page?: Page) {
 export function getExtensionRuntimeURL(page?: Page) {
   return browser?.runtime?.getURL(getExtensionURL(page));
 }
+
+// Open the extension Options page, under a unique ID to prevent duplicate tabs
+
+export function openOptions() {
+  const optionsURL = getExtensionRuntimeURL('options');
+  window?.open(optionsURL, optionsURL);
+}
