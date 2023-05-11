@@ -10,7 +10,6 @@ export default defineConfig({
       '@components': fileURLToPath(
         new URL('./src/lib/components', import.meta.url)
       ),
-      '@types': fileURLToPath(new URL('./src/lib/types', import.meta.url)),
       '@stores': fileURLToPath(new URL('./src/lib/stores', import.meta.url)),
       '@utils': fileURLToPath(new URL('./src/lib/utils', import.meta.url)),
       '@styles': fileURLToPath(new URL('./src/styles', import.meta.url)),

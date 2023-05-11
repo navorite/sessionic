@@ -1,24 +1,17 @@
 <script lang="ts">
-  import { getCurrentTabName } from '@utils/tab_utils';
+  import { getExtensionRuntimeURL } from '@utils/extension';
 
-  let currentTabs = getCurrentTabName();
+  function openOptionsPage() {
+    let optionsURL = getExtensionRuntimeURL('options');
+    window.open(optionsURL, 'svelte-web-extension-template');
+  }
 </script>
 
-<h1>Tab Pocket</h1>
-
-<div class="flex flex-col justify-center">
-  <p>
-    {#await currentTabs}
-      Loading...
-    {:then result}
-      {result[0].title};
-    {/await}
-  </p>
+<div class="mt-4 w-[200px] h-[100px] flex flex-col items-center">
+  <h1>Popup</h1>
 
   <button
-    class="mt-2 bg-sky-500 text-gray-700 p-2 rounded"
-    on:click="{() => {
-      currentTabs = getCurrentTabName();
-    }}">Get Tab Name</button
+    class="mt-5 bg-sky-500 text-black py-2 px-4 rounded font-bold hover:bg-green-700 hover:text-white"
+    on:click="{openOptionsPage}">Open Options</button
   >
 </div>
