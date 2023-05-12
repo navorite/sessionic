@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "watch": "nodemon -w src -w public -e * -x pnpm run build",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
@@ -12,14 +13,17 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.2.0",
     "@tsconfig/svelte": "^4.0.1",
+    "@types/webextension-polyfill": "^0.10.0",
     "autoprefixer": "^10.4.14",
+    "nodemon": "^2.0.22",
     "postcss": "^8.4.23",
     "svelte": "^3.59.1",
     "svelte-check": "^2.10.3",
     "tailwindcss": "^3.3.2",
     "tslib": "^2.5.0",
     "typescript": "^5.0.4",
-    "vite": "^4.3.5"
+    "vite": "^4.3.5",
+    "webextension-polyfill": "^0.10.0"
   },
   "dependencies": {
     "url": "^0.11.0"

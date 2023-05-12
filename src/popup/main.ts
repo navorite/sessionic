@@ -1,4 +1,4 @@
-import '../styles/global.css';
+import '@styles/global.css';
 import Popup from './popup.svelte';
 
 const popup = new Popup({

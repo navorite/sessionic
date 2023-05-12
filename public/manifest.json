@@ -1,27 +1,39 @@
 {
   "manifest_version": 3,
-  "name": "Tab Pocket",
-  "version": "0.0.1",
-
+  "name": "Tabify",
   "description": "A browser extension to save tabs, sessions, and manage them.",
-
-  "icons": {
-    "512": "./tab-pocket.svg"
-  },
+  "version": "0.0.1",
+  "author": "navorite",
+  "homepage_url": "https://github.com/navorite/tabify",
 
   "action": {
-    "default_icon": "./tab-pocket.svg",
-    "default_title": "Tab Pocket",
-    "default_popup": "./src/popup/index.html"
+    "default_title": "Tabify",
+    "default_popup": "./src/popup/index.html",
+    "default_icon": {
+      "16": "./icons/tabify-16.png",
+      "32": "./icons/tabify-32.png",
+      "64": "./icons/tabify-64.png"
+    }
   },
 
-  "options_ui": { "page": "./src/options/index.html", "open_in_tab": true },
+  "options_ui": {
+    "page": "./src/options/index.html",
+    "open_in_tab": true
+  },
 
-  "permissions": ["tabs", "unlimitedStorage"],
+  "permissions": ["tabs", "storage", "unlimitedStorage"],
+
+  "icons": {
+    "16": "./icons/tabify-16.png",
+    "32": "./icons/tabify-32.png",
+    "48": "./icons/tabify-48.png",
+    "64": "./icons/tabify-64.png",
+    "96": "./icons/tabify-96.png"
+  },
 
   "browser_specific_settings": {
     "gecko": {
-      "id": "tab-pocket@ahmads.com"
+      "id": "tabify@ahmads.com"
     }
   }
 }
