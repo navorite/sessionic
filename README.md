@@ -1,5 +1,5 @@
-![Tab Pocket icon](./public/icons/tab-pocket-64.png)
+![Tabify icon](./public/icons/tabify-64.png)
 
-# Tab Pocket
+# Tabify
 
 A browser extension to save tabs, sessions, and manage them.
