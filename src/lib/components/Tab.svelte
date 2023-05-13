@@ -10,6 +10,8 @@
 >
   <a
     href={tabInfo?.url}
+    rel="noreferrer"
+    target="_blank"
     title={tabInfo?.title}
     class="w-[90%] flex items-center gap-2 overflow-hidden hover:underline"
   >

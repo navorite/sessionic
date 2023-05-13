@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 body {
-  @apply flex p-2 dark:bg-neutral-800 dark:text-slate-200 min-w-[600px] min-h-[400px] w-[700px] h-[500px] max-w-[800px] max-h-[600px] mx-auto font-sans;
+  @apply dark:bg-neutral-800 dark:text-slate-200 min-w-[600px] min-h-[400px] w-[700px] h-[500px] max-w-[800px] max-h-[600px] mx-auto font-sans;
 }
 
 #root {
-  @apply w-full h-full;
+  @apply w-full h-full p-2 flex;
 }
 
 h1 {

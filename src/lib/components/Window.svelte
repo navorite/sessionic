@@ -8,7 +8,7 @@
   let showWindow = true;
 </script>
 
-<div class="w-full h-full overflow-y-auto">
+<div class="w-full h-full">
   <div
     class="w-[96%] flex items-center gap-2 cursor-pointer group/w rounded-md hover:bg-gray-700 py-1 px-2"
   >
@@ -33,7 +33,7 @@
   </div>
 
   {#if showWindow}
-    <ul class="pl-6">
+    <ul class="h-full pl-6">
       {#each windowInfo?.tabs as tab}
         <li>
           <Tab tabInfo={tab} />

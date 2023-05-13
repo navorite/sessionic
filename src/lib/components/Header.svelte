@@ -7,9 +7,9 @@
   let saveValue = '';
 </script>
 
-<div class="flex items-center w-full text-slate-200">
+<div class="flex items-center w-full h-8 text-slate-200">
   <h1>Tabify</h1>
-  <div class="w-full h-8 flex justify-end items-center gap-2">
+  <div class="w-full h-full flex justify-end items-center gap-2">
     <InputBar
       icon="search"
       title="Search for session or tab"
