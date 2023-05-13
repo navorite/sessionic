@@ -3,17 +3,11 @@
 @tailwind utilities;
 
 body {
-  @apply flex font-sans p-2 dark:bg-neutral-800 dark:text-slate-200;
-  min-width: 700px;
-  min-height: 500px;
-  width: 100%;
-  height: 100%;
+  @apply flex p-2 dark:bg-neutral-800 dark:text-slate-200 min-w-[600px] min-h-[400px] w-[700px] h-[500px] max-w-[800px] max-h-[600px] mx-auto font-sans;
 }
 
 #root {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  @apply w-full h-full;
 }
 
 h1 {

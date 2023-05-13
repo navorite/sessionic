@@ -1,13 +1,13 @@
 <script lang="ts">
   import type { Icon } from '../types/navigation';
 
-  export let icon: Icon = 'default';
+  export let icon: Icon | string = 'default';
   export let title: string;
+
+  $: src = `../../icons/${icon}.svg`;
 
   let className = '';
   export { className as class };
-
-  $: src = `../../icons/${icon}.svg`;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
