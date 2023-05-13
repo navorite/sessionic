@@ -6,11 +6,10 @@
   let windowItems = getAllWindows();
 </script>
 
-<div class="w-full h-full pb-2 overflow-hidden">
+<div class="w-full h-full flex flex-col">
   <Header />
-
-  <div class="w-full h-full mt-1 flex">
-    <div class="w-6/12 h-full">Sessions</div>
+  <div class="w-full mt-1 flex overflow-y-auto flex-1">
+    <div class="w-6/12 h-full overflow-y-auto">Sessions</div>
     <ul class="w-6/12 h-full overflow-y-auto">
       {#await windowItems}
         Loading windows...
@@ -24,3 +23,9 @@
     </ul>
   </div>
 </div>
+
+<style>
+  :global(body) {
+    @apply overflow-hidden;
+  }
+</style>
