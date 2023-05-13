@@ -16,9 +16,9 @@
         Loading windows...
       {:then resultItems}
         {#each resultItems as windowItem}
-          <!-- <li> -->
-          <Window windowInfo={windowItem} />
-          <!-- </li> -->
+          <li>
+            <Window windowInfo={windowItem} />
+          </li>
         {/each}
       {/await}
     </ul>
