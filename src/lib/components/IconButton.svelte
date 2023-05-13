@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { fade } from 'svelte/transition';
   import type { Icon } from '../types/navigation';
 
   export let icon: Icon = 'default';
@@ -15,13 +14,16 @@
 <div
   {title}
   class="cursor-pointer {className}"
-  style:mask="url({src}) no-repeat center"
-  style:-webkit-mask="url({src}) no-repeat center"
+  style:mask-image="url({src})"
+  style:mask-repeat="no-repeat"
+  style:mask-position="center"
   style:mask-size="cover"
+  style:-webkit-mask-image="url({src})"
+  style:-webkit-mask-repeat="no-repeat"
+  style:-webkit-mask-position="center"
   style:-webkit-mask-size="cover"
   style:background-color="currentColor"
   style:width="1em"
   style:height="1em"
   on:click
 />
-<!-- transition:fade -->
