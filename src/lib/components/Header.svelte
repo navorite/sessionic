@@ -1,10 +1,22 @@
 <script lang="ts">
   import IconButton from '@components/IconButton.svelte';
   import InputBar from '@components/InputBar.svelte';
+  import { currentSession, sessionList } from '@stores/session';
+  import { saveSession } from '@utils/actions';
+  import { getAllWindows } from '@utils/browser';
   import { openOptions, openPopup } from '@utils/extension';
 
   let searchValue = '';
   let saveValue = '';
+
+  async function handleSave() {
+    if (saveValue === '') return;
+    $currentSession.windowsObj = await getAllWindows();
+    $currentSession.title = saveValue;
+    $sessionList.push($currentSession);
+    $sessionList = $sessionList;
+    return await saveSession($currentSession);
+  }
 </script>
 
 <div class="flex items-center w-full h-8 text-slate-200">
@@ -14,13 +26,14 @@
       icon="search"
       title="Search for session or tab"
       placeholder="Session or Tab name..."
-      value={searchValue}
+      bind:value={searchValue}
     />
     <InputBar
       icon="save"
       title="Save current session"
-      value={saveValue}
+      bind:value={saveValue}
       placeholder="Session name"
+      on:click={handleSave}
     />
     <IconButton
       icon="open"

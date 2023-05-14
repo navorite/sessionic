@@ -1,9 +1,6 @@
 import browser from 'webextension-polyfill';
-
-type Window = browser.Windows.Window;
-type Tab = browser.Tabs.Tab;
-type QueryInfo = browser.Tabs.QueryQueryInfoType;
-type WindowInfo = browser.Windows.GetAllGetInfoType;
+import type { QueryInfo, Tab, WindowInfo } from '../types/browser';
+import type { Session } from '../types/extension';
 
 // Get current active tab
 
@@ -31,4 +28,8 @@ export async function getAllWindows(
   getInfo: WindowInfo = { populate: true, windowTypes: ['normal'] }
 ) {
   return browser?.windows?.getAll?.(getInfo);
+}
+
+export async function openWindow(tabsURL: string[]) {
+  return browser?.windows?.create({ url: tabsURL });
 }

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { Tabs } from 'webextension-polyfill';
   import IconButton from './IconButton.svelte';
+  import type { Tab } from '../types/browser';
 
-  export let tabInfo: Tabs.Tab;
+  export let tabInfo: Tab;
 </script>
 
 <div

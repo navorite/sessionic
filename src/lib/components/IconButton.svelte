@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { Icon } from '../types/navigation';
+  import type { Icon } from '../types/extension';
 
-  export let icon: Icon | string = 'default';
+  export let icon: Icon = 'default';
   export let title: string;
 
   $: src = `../../icons/${icon}.svg`;

@@ -1,11 +1,13 @@
 <script lang="ts">
-  import type { Windows } from 'webextension-polyfill';
-  import Tab from './Tab.svelte';
+  import TabItem from './TabItem.svelte';
   import IconButton from './IconButton.svelte';
+  import { openWindow } from '@utils/browser';
+  import type { Window } from '../types/browser';
 
-  export let windowInfo: Windows.Window;
+  export let windowInfo: Window;
 
   let showWindow = true;
+  // let tabsURL = [];
 </script>
 
 <div class="w-full h-full">
@@ -21,7 +23,15 @@
       }}
     />
 
-    <span class="w-[90%] overflow-hidden whitespace-nowrap text-ellipsis">
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <span
+      title="Open this Window in a New Window"
+      class="w-[90%] overflow-hidden whitespace-nowrap text-ellipsis hover:underline"
+      on:click={() => {
+        //   if (tabsURL.length) openWindow(tabsURL);
+        //   console.log(tabsURL);
+      }}
+    >
       {windowInfo?.title}
     </span>
 
@@ -35,8 +45,9 @@
   {#if showWindow}
     <ul class="h-full pl-6">
       {#each windowInfo?.tabs as tab}
+        <!-- {@const tabItem = tabsURL.push(tab.url)} -->
         <li>
-          <Tab tabInfo={tab} />
+          <TabItem tabInfo={tab} />
         </li>
       {/each}
     </ul>

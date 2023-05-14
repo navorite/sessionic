@@ -1,4 +1,4 @@
-import type { Page } from '../types/navigation';
+import type { Page } from '../types/extension';
 import browser from 'webextension-polyfill';
 
 // Get runtime URL for a page in the extension
