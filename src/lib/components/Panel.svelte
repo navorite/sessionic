@@ -2,6 +2,11 @@
   import { sessionList } from '@stores/session';
   import SessionItem from './SessionItem.svelte';
   import WindowItem from './WindowItem.svelte';
+  import { initDB, loadDB } from '@utils/storage';
+
+  initDB('sessions', (r) => {
+    $sessionList = r;
+  });
 
   $: current = $sessionList?.length - 1;
 
