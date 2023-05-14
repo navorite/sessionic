@@ -1,6 +1,6 @@
 <script lang="ts">
   import { tick } from 'svelte';
-  import type { Icon } from '../types/navigation';
+  import type { Icon } from '../types/extension';
   import IconButton from './IconButton.svelte';
 
   export let icon: Icon = 'default';
@@ -22,23 +22,24 @@
       !(event?.currentTarget as Node).contains(event?.relatedTarget as Node)
     ) {
       showInputBar = false;
+      value = '';
     }
   }
 
-  function expandWidth(node: HTMLElement, duration: number) {
-    if (!node?.offsetWidth) return;
-    const width = node.offsetWidth;
+  // function expandWidth(node: HTMLElement, duration: number) {
+  //   if (!node?.offsetWidth) return;
+  //   const width = node.offsetWidth;
 
-    const speed = width / duration;
+  //   const speed = width / duration;
 
-    // return {duration, tick: (t) => {node.style.width = }}
-  }
+  //   // return {duration, tick: (t) => {node.style.width = }}
+  // }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <div
-  class="flex justify-center items-center font-semibold rounded-md cursor-text focus-within:bg-gray-700 focus-within:px-2 focus-within:py-0.5 animate"
+  class="flex justify-center items-center font-semibold rounded-md cursor-text focus-within:bg-gray-700 focus-within:px-2 focus-within:py-0.5 motion-safe:fade"
   on:focusin={handleInputBar}
   on:focusout={handleInputBar}
   tabindex="0"
@@ -57,7 +58,7 @@
       title="Clear input"
       class="text-2xl hover:text-sky-400"
       on:click={() => {
-        if (value === '') showInputBar = false;
+        showInputBar = false;
         value = '';
       }}
     />
@@ -65,9 +66,3 @@
 
   <IconButton {icon} {title} on:click class="text-2xl hover:text-sky-400" />
 </div>
-
-<style>
-  .animate {
-    transition: background-color 300ms ease-in-out;
-  }
-</style>
