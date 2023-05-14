@@ -25,6 +25,7 @@
     "webextension-polyfill": "^0.10.0"
   },
   "dependencies": {
+    "pino": "^8.14.1",
     "url": "^0.11.0"
   }
 }

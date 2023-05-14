@@ -11,11 +11,21 @@
 
   async function handleSave() {
     if (saveValue === '') return;
+
+    $currentSession = {
+      title: '',
+      windowsObj: undefined,
+      tabsNumber: 0,
+      dateOfSave: new Date(),
+    };
+
     $currentSession.windowsObj = await getAllWindows();
     $currentSession.title = saveValue;
+
+    await saveSession($currentSession);
+
     $sessionList.push($currentSession);
     $sessionList = $sessionList;
-    return await saveSession($currentSession);
   }
 </script>
 

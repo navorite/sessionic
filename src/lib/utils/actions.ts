@@ -1,6 +1,14 @@
-import browser from 'webextension-polyfill';
 import type { Session } from '../types/extension';
+import { loadDB, removeDB, saveDB } from './storage';
 
-export async function saveSession(session: Session) {
-  return browser?.storage?.local?.set(session);
+export function saveSession(session: Session) {
+  return saveDB('sessions', session);
+}
+
+export function loadSessions(callback) {
+  loadDB('sessions', callback);
+}
+
+export function removeSession(data) {
+  removeDB('sessions', data);
 }

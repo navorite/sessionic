@@ -3,6 +3,8 @@ import type { Window } from './browser';
 export interface Session {
   title: string;
   windowsObj: Window[];
+  tabsNumber: number;
+  dateOfSave: Date;
 }
 
 export type Page = 'popup' | 'options';
