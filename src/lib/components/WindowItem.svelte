@@ -32,7 +32,7 @@
         //   console.log(tabsURL);
       }}
     >
-      {windowInfo?.title}
+      {windowInfo?.title ?? 'Window'}
     </span>
 
     <IconButton
