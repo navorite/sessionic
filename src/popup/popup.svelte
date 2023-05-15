@@ -6,8 +6,7 @@
   $: document?.body?.classList.toggle('dark', dark);
 </script>
 
-<div class="w-full h-full flex flex-col" class:dark>
-  <div class="bg-gray-2 text-gray-12">Hehehe</div>
+<div class="w-full h-full flex flex-col">
   <Header />
   <Panel />
   <input type="checkbox" name="dark" id="dark" bind:checked={dark} />
