@@ -9,6 +9,9 @@ dependencies:
     version: 0.11.0
 
 devDependencies:
+  '@radix-ui/colors':
+    specifier: ^0.1.8
+    version: 0.1.8
   '@sveltejs/vite-plugin-svelte':
     specifier: ^2.2.0
     version: 2.2.0(svelte@3.59.1)(vite@4.3.5)
@@ -48,6 +51,9 @@ devDependencies:
   webextension-polyfill:
     specifier: ^0.10.0
     version: 0.10.0
+  windy-radix-palette:
+    specifier: ^0.6.1
+    version: 0.6.1(@radix-ui/colors@0.1.8)(tailwindcss@3.3.2)
 
 packages:
 
@@ -307,6 +313,10 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+    dev: true
+
+  /@radix-ui/colors@0.1.8:
+    resolution: {integrity: sha512-jwRMXYwC0hUo0mv6wGpuw254Pd9p/R6Td5xsRpOmaWkUHlooNWqVcadgyzlRumMq3xfOTXwJReU0Jv+EIy4Jbw==}
     dev: true
 
   /@sveltejs/vite-plugin-svelte@2.2.0(svelte@3.59.1)(vite@4.3.5):
@@ -1485,6 +1495,16 @@ packages:
 
   /webextension-polyfill@0.10.0:
     resolution: {integrity: sha512-c5s35LgVa5tFaHhrZDnr3FpQpjj1BB+RXhLTYUxGqBVN460HkbM8TBtEqdXWbpTKfzwCcjAZVF7zXCYSKtcp9g==}
+    dev: true
+
+  /windy-radix-palette@0.6.1(@radix-ui/colors@0.1.8)(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-n8hy1IWNuieGpQ5NS9gCGoUbtzdQ/j4zPk63ok84NgaCWkyP6kBsno/iHpb4ukt3LCQPqNPo+iok2wUgxw8PBQ==}
+    peerDependencies:
+      '@radix-ui/colors': '>=0.1.0'
+      tailwindcss: '>=3.0.0'
+    dependencies:
+      '@radix-ui/colors': 0.1.8
+      tailwindcss: 3.3.2
     dev: true
 
   /wrappy@1.0.2:

@@ -10,6 +10,7 @@
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
+    "@radix-ui/colors": "^0.1.8",
     "@sveltejs/vite-plugin-svelte": "^2.2.0",
     "@tsconfig/svelte": "^4.0.1",
     "@types/webextension-polyfill": "^0.10.0",
@@ -22,7 +23,8 @@
     "tslib": "^2.5.0",
     "typescript": "^5.0.4",
     "vite": "^4.3.5",
-    "webextension-polyfill": "^0.10.0"
+    "webextension-polyfill": "^0.10.0",
+    "windy-radix-palette": "^0.6.1"
   },
   "dependencies": {
     "pino": "^8.14.1",

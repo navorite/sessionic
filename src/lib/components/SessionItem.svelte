@@ -1,7 +1,7 @@
 <script lang="ts">
   import IconButton from './IconButton.svelte';
   import type { Session } from '../types/extension';
-  import { removeSession } from '@utils/actions';
+  //import { removeSession } from '@utils/actions';
 
   export let session: Session;
 </script>
@@ -27,14 +27,18 @@
       icon="delete"
       title="Remove this window from session"
       class="invisible ml-auto text-2xl hover:text-red-600 group-hover/w:visible"
+<<<<<<< Updated upstream
       on:click={() => removeSession(session?.title)}
+=======
+      on:click
+>>>>>>> Stashed changes
     />
   </div>
   <span
     title="Number of Windows"
     class="bg-zinc-700 py-0.5 px-2 rounded text-xs font-bold"
   >
-    {session?.windowsObj?.length} Window{session?.windowsObj?.length > 1
+    <!-- {session?.windowsObj?.length} Window{session?.windowsObj?.length > 1
       ? 's'
       : ''}
   </span>
@@ -55,5 +59,6 @@
     class="bg-zinc-700 py-0.5 px-2 rounded text-xs font-bold"
   >
     {session?.dateOfSave?.toLocaleTimeString('en-US', { timeStyle: 'short' })}
+  </span> -->
   </span>
 </div>

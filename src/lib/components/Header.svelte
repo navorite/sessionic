@@ -2,7 +2,7 @@
   import IconButton from '@components/IconButton.svelte';
   import InputBar from '@components/InputBar.svelte';
   import { currentSession, sessionList } from '@stores/session';
-  import { saveSession } from '@utils/actions';
+  //import { saveSession } from '@utils/actions';
   import { getAllWindows } from '@utils/browser';
   import { openOptions, openPopup } from '@utils/extension';
 
@@ -12,7 +12,7 @@
   async function handleSave() {
     if (saveValue === '') return;
 
-    $currentSession = {
+    /*$currentSession = {
       title: '',
       windowsObj: undefined,
       tabsNumber: 0,
@@ -25,7 +25,7 @@
     await saveSession($currentSession);
 
     $sessionList.push($currentSession);
-    $sessionList = $sessionList;
+    $sessionList = $sessionList;*/
   }
 </script>
 
