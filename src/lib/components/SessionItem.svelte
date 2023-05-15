@@ -6,8 +6,8 @@
   export let session: Session;
 </script>
 
-<div class="w-full py-1 px-2 my-1 rounded-md group/w hover:bg-zinc-600">
-  <div class="w-full mb-1 flex items-center gap-2">
+<div class="w-full px-2 py-1 my-1 rounded-md group/w hover:bg-zinc-600">
+  <div class="flex items-center w-full gap-2 mb-1">
     <IconButton
       icon="session"
       title="Session: {session?.title}"

@@ -39,7 +39,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <div
-  class="flex justify-center items-center font-semibold rounded-md cursor-text focus-within:bg-gray-700 focus-within:px-2 focus-within:py-0.5 motion-safe:fade"
+  class="flex justify-center items-center font-semibold rounded-md cursor-text focus-within:bg-active focus-within:px-2 focus-within:py-0.5 motion-safe:fade"
   on:focusin={handleInputBar}
   on:focusout={handleInputBar}
   tabindex="0"
@@ -51,12 +51,12 @@
       {placeholder}
       bind:value
       {title}
-      class="bg-transparent outline-none font-semibold"
+      class="font-semibold bg-transparent outline-none"
     />
     <IconButton
       icon="clear"
       title="Clear input"
-      class="text-2xl hover:text-sky-400"
+      class="text-2xl hover:text-icon-warning"
       on:click={() => {
         showInputBar = false;
         value = '';
@@ -64,5 +64,5 @@
     />
   {/if}
 
-  <IconButton {icon} {title} on:click class="text-2xl hover:text-sky-400" />
+  <IconButton {icon} {title} on:click class="text-2xl hover:text-icon" />
 </div>

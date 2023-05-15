@@ -13,7 +13,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
   {title}
-  class="cursor-pointer {className}"
+  class="cursor-pointer {className} bg-current w-[1em] h-[1em]"
   style:mask-image="url({src})"
   style:mask-repeat="no-repeat"
   style:mask-position="center"
@@ -22,8 +22,5 @@
   style:-webkit-mask-repeat="no-repeat"
   style:-webkit-mask-position="center"
   style:-webkit-mask-size="cover"
-  style:background-color="currentColor"
-  style:width="1em"
-  style:height="1em"
   on:click
 />

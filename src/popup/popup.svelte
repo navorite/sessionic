@@ -1,13 +1,12 @@
 <script lang="ts">
   import Header from '@components/Header.svelte';
   import Panel from '@components/Panel.svelte';
+  import { dark } from '@stores/settings';
 
-  let dark = true;
-  $: document?.body?.classList.toggle('dark', dark);
+  $: document?.body?.classList.toggle('dark', $dark);
 </script>
 
-<div class="w-full h-full flex flex-col">
+<div class="flex flex-col w-full h-full">
   <Header />
   <Panel />
-  <input type="checkbox" name="dark" id="dark" bind:checked={dark} />
 </div>
