@@ -2,12 +2,8 @@
   import { sessionList } from '@stores/session';
   import SessionItem from './SessionItem.svelte';
   import WindowItem from './WindowItem.svelte';
-<<<<<<< Updated upstream
-  import { initDB, loadDB } from '@utils/storage';
-=======
   //import { initDB } from '@utils/storage';
   import log from '@utils/log';
->>>>>>> Stashed changes
 
   /* initDB('sessions', (r) => {
     $sessionList = r;

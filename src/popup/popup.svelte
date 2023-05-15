@@ -2,11 +2,11 @@
   import Header from '@components/Header.svelte';
   import Panel from '@components/Panel.svelte';
 
-  let dark = false;
+  let dark = true;
+  $: document?.body?.classList.toggle('dark', dark);
 </script>
 
-<div class="w-full h-full flex flex-col" class:dark>
-  <div class="bg-gray-2 text-gray-12">Hehehe</div>
+<div class="w-full h-full flex flex-col">
   <Header />
   <Panel />
   <input type="checkbox" name="dark" id="dark" bind:checked={dark} />
