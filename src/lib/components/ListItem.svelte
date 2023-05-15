@@ -1,6 +1,6 @@
 <script lang="ts">
   import IconButton from './IconButton.svelte';
-  import type { Icon } from '../types/navigation';
+  import type { Icon } from '../types/extension';
 
   export let icon: Icon;
   export let value: string;

@@ -9,11 +9,11 @@
 }
 
 body {
-  @apply w-full h-full mx-auto font-sans bg-gray-2 text-gray-12 dark;
+  @apply mx-auto h-full w-full font-sans text-primary bg-primary;
 }
 
 #root {
-  @apply w-full h-full flex p-2;
+  @apply flex h-full w-full p-2;
 }
 
 h1 {
