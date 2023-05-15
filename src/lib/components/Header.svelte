@@ -29,7 +29,7 @@
   }
 </script>
 
-<div class="flex items-center w-full h-8 text-slate-200">
+<div class="flex items-center w-full h-8">
   <h1>Tabify</h1>
   <div class="w-full h-full flex justify-end items-center gap-2">
     <InputBar
@@ -47,13 +47,13 @@
     />
     <IconButton
       icon="open"
-      class="text-2xl hover:text-sky-400"
+      class="text-2xl hover:text-blue-8"
       title="View extension in a new tab"
       on:click={openPopup}
     />
     <IconButton
       icon="options"
-      class="text-2xl hover:text-sky-400"
+      class="text-2xl hover:text-blue-8"
       title="Open extension Options in a new tab"
       on:click={openOptions}
     />

@@ -2,7 +2,8 @@
   import Header from '@components/Header.svelte';
   import Panel from '@components/Panel.svelte';
 
-  let dark = false;
+  let dark = true;
+  $: document?.body?.classList.toggle('dark', dark);
 </script>
 
 <div class="w-full h-full flex flex-col" class:dark>
