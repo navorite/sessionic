@@ -2,18 +2,23 @@
   import { sessionList } from '@stores/session';
   import SessionItem from './SessionItem.svelte';
   import WindowItem from './WindowItem.svelte';
+<<<<<<< Updated upstream
   import { initDB, loadDB } from '@utils/storage';
+=======
+  //import { initDB } from '@utils/storage';
+  import log from '@utils/log';
+>>>>>>> Stashed changes
 
-  initDB('sessions', (r) => {
+  /* initDB('sessions', (r) => {
     $sessionList = r;
   });
 
   $: current = $sessionList?.length - 1;
 
-  $: selection = $sessionList?.[current]?.windowsObj;
+  $: selection = $sessionList?.[current]?.windowsObj;*/
 </script>
 
-<div class="w-full mt-1 flex overflow-y-auto flex-1">
+<!-- <div class="w-full mt-1 flex overflow-y-auto flex-1">
   {#if $sessionList?.length}
     <ul class="w-[50%] h-full">
       {#each $sessionList as sessionItem, idx (idx)}
@@ -40,4 +45,4 @@
   {:else}
     Start saving a new session!
   {/if}
-</div>
+</div> -->
