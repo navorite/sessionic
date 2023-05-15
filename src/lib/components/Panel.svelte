@@ -2,26 +2,26 @@
   import { sessionList } from '@stores/session';
   import SessionItem from './SessionItem.svelte';
   import WindowItem from './WindowItem.svelte';
-  //import { initDB } from '@utils/storage';
+  import { initDB } from '@utils/storage';
   import log from '@utils/log';
+  import { windows } from 'webextension-polyfill';
 
-  /* initDB('sessions', (r) => {
+  initDB('sessions', (r) => {
     $sessionList = r;
+    selection = $sessionList?.[0]?.windowsObj;
   });
 
-  $: current = $sessionList?.length - 1;
-
-  $: selection = $sessionList?.[current]?.windowsObj;*/
+  let selection;
 </script>
 
-<!-- <div class="w-full mt-1 flex overflow-y-auto flex-1">
+<div class="w-full mt-1 flex overflow-y-auto flex-1 gap-2">
   {#if $sessionList?.length}
     <ul class="w-[50%] h-full">
       {#each $sessionList as sessionItem, idx (idx)}
         <SessionItem
           session={sessionItem}
           on:click={() => {
-            current = idx;
+            selection = sessionItem?.windowsObj;
           }}
         />
       {/each}
@@ -41,4 +41,4 @@
   {:else}
     Start saving a new session!
   {/if}
-</div> -->
+</div>

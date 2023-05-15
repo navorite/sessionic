@@ -6,7 +6,14 @@
   export let session: Session;
 </script>
 
-<div class="w-full px-2 py-1 my-1 rounded-md group/w hover:bg-zinc-600">
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+<div
+  class="w-full px-2 py-1 my-1 rounded-md group/w bg-neutral-4 hover:bg-primary-5"
+  tabindex="0"
+  on:select={() => console.log('haha')}
+  on:click
+>
   <div class="flex items-center w-full gap-2 mb-1">
     <IconButton
       icon="session"
@@ -26,35 +33,33 @@
     <IconButton
       icon="delete"
       title="Remove this window from session"
-      class="invisible ml-auto text-2xl hover:text-red-600 group-hover/w:visible"
-      on:click
+      class="invisible ml-auto text-2xl hover:text-warning-pure-1 group-hover/w:visible"
     />
   </div>
   <span
     title="Number of Windows"
-    class="bg-zinc-700 py-0.5 px-2 rounded text-xs font-bold"
+    class="bg-hover py-0.5 px-2 rounded text-xs font-bold"
   >
-    <!-- {session?.windowsObj?.length} Window{session?.windowsObj?.length > 1
+    {session?.windowsObj?.length} Window{session?.windowsObj?.length > 1
       ? 's'
       : ''}
   </span>
   <span
     title="Number of Tabs"
-    class="bg-zinc-700 py-0.5 px-2 rounded text-xs font-bold"
+    class="bg-hover py-0.5 px-2 rounded text-xs font-bold"
   >
     {session?.tabsNumber} Tab{session?.tabsNumber > 1 ? 's' : ''}
   </span>
   <span
     title="Date of Session"
-    class="bg-zinc-700 py-0.5 px-2 rounded text-xs font-bold"
+    class="bg-hover py-0.5 px-2 rounded text-xs font-bold"
   >
     {session?.dateOfSave?.toLocaleDateString('en-US')}
   </span>
   <span
     title="Time of Session"
-    class="bg-zinc-700 py-0.5 px-2 rounded text-xs font-bold"
+    class="bg-hover py-0.5 px-2 rounded text-xs font-bold"
   >
     {session?.dateOfSave?.toLocaleTimeString('en-US', { timeStyle: 'short' })}
-  </span> -->
   </span>
 </div>

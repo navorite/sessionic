@@ -3,7 +3,7 @@
   import InputBar from '@components/InputBar.svelte';
   import { currentSession, sessionList } from '@stores/session';
   import { dark } from '@stores/settings';
-  //import { saveSession } from '@utils/actions';
+  import { saveSession } from '@utils/actions';
   import { getAllWindows } from '@utils/browser';
   import { openOptions, openPopup } from '@utils/extension';
 
@@ -13,7 +13,7 @@
   async function handleSave() {
     if (saveValue === '') return;
 
-    /*$currentSession = {
+    $currentSession = {
       title: '',
       windowsObj: undefined,
       tabsNumber: 0,
@@ -26,7 +26,7 @@
     await saveSession($currentSession);
 
     $sessionList.push($currentSession);
-    $sessionList = $sessionList;*/
+    $sessionList = $sessionList;
   }
 </script>
 
@@ -50,14 +50,14 @@
 
     <IconButton
       icon="open"
-      class="text-2xl hover:text-icon"
+      class="text-2xl hover:text-primary-pure-1"
       title="View extension in a new tab"
       on:click={openPopup}
     />
 
     <IconButton
       icon={$dark ? 'light' : 'dark'}
-      class="text-2xl hover:text-icon"
+      class="text-2xl hover:text-primary-pure-1"
       title="Switch to {dark ? 'light' : 'dark'} mode"
       on:click={() => {
         $dark = !$dark;
@@ -66,7 +66,7 @@
 
     <IconButton
       icon="options"
-      class="text-2xl hover:text-icon"
+      class="text-2xl hover:text-primary-pure-1"
       title="Open extension Options in a new tab"
       on:click={openOptions}
     />

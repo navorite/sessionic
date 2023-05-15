@@ -26,6 +26,7 @@
     "webextension-polyfill": "^0.10.0"
   },
   "dependencies": {
+    "idb": "^7.1.1",
     "pino": "^8.14.1",
     "radix-colors-for-tailwind": "^2.0.0",
     "url": "^0.11.0"

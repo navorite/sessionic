@@ -9,7 +9,7 @@
 }
 
 body {
-  @apply mx-auto h-full w-full font-sans text-primary bg-primary;
+  @apply mx-auto h-full w-full font-sans text-neutral-2 bg-neutral-1 min-w-[600px] min-h-[400px];
 }
 
 #root {

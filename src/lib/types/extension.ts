@@ -1,12 +1,20 @@
 import type { Window } from './browser';
 
+// export interface Session {
+//   title: string;
+//   windowsObj: Window[];
+//   windowsNumber: number;
+//   tabsNumber: number;
+//   dateSaved: Date;
+//   dateModified: Date;
+//   id: string;
+// }
+
 export interface Session {
   title: string;
   windowsObj: Window[];
-  windowsNumber: number;
   tabsNumber: number;
   dateOfSave: Date;
-  id: string;
 }
 
 export type Page = 'popup' | 'options';
