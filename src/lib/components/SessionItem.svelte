@@ -27,11 +27,7 @@
       icon="delete"
       title="Remove this window from session"
       class="invisible ml-auto text-2xl hover:text-red-600 group-hover/w:visible"
-<<<<<<< Updated upstream
-      on:click={() => removeSession(session?.title)}
-=======
       on:click
->>>>>>> Stashed changes
     />
   </div>
   <span
