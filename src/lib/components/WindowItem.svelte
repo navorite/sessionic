@@ -12,7 +12,7 @@
 
 <div class="w-full h-full">
   <div
-    class="w-[96%] flex items-center gap-2 cursor-pointer group/w rounded-md hover:bg-gray-700 py-1 px-2"
+    class="w-[96%] flex items-center gap-2 cursor-pointer group/w rounded-md bg-neutral-4 hover:bg-primary-5 py-1 px-2 mb-1"
   >
     <IconButton
       icon={showWindow ? 'windowon' : 'windowoff'}
@@ -38,12 +38,12 @@
     <IconButton
       icon="delete"
       title="Remove this window from session"
-      class="invisible ml-auto text-2xl hover:text-red-600 group-hover/w:visible"
+      class="invisible ml-auto text-2xl hover:text-warning-pure-1 group-hover/w:visible"
     />
   </div>
 
   {#if showWindow}
-    <ul class="h-full pl-6">
+    <ul class="h-full pl-2">
       {#each windowInfo?.tabs as tab}
         <!-- {@const tabItem = tabsURL.push(tab.url)} -->
         <li>

@@ -1,4 +1,3 @@
-import type { Session } from '../types/extension';
 import log from './log';
 
 let db: IDBDatabase;

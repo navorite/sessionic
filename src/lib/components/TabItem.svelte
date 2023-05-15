@@ -6,7 +6,7 @@
 </script>
 
 <div
-  class="w-[96%] py-1 px-2 flex items-center group/t rounded-md hover:bg-gray-700"
+  class="w-[96%] py-1 px-2 flex items-center group/t rounded-md bg-neutral-4 mb-1 hover:bg-primary-5"
 >
   <a
     href={tabInfo?.url}
@@ -28,6 +28,6 @@
   <IconButton
     icon="delete"
     title="Remove tab from session"
-    class="invisible ml-auto text-2xl hover:text-red-600 group-hover/t:visible"
+    class="invisible ml-auto text-2xl hover:text-warning-pure-1 group-hover/t:visible"
   />
 </div>
