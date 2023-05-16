@@ -1,6 +1,8 @@
 import browser from 'webextension-polyfill';
-import type { QueryInfo, Tab, WindowInfo } from '../types/browser';
+import type { QueryInfo, Tab, WindowInfo, Window } from '../types/browser';
 import type { Session } from '../types/extension';
+
+export async function getCurrentSession() {}
 
 // Get current active tab
 
@@ -20,6 +22,17 @@ export async function getCurrentWindowTabs(
 
 export async function getTabs(queryInfo: QueryInfo = {}): Promise<Tab[]> {
   return browser?.tabs?.query?.(queryInfo);
+}
+
+// Get Tabs number using array of Window
+
+export function getTabsNumber(windows: Window[]) {
+  let number = 0;
+  for (const window of windows) {
+    number += window?.tabs?.length;
+  }
+
+  return number;
 }
 
 // Get windows object that match that obj values

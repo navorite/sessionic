@@ -2,27 +2,27 @@
   import IconButton from './IconButton.svelte';
   import type { Tab } from '../types/browser';
 
-  export let tabInfo: Tab;
+  export let tab: Tab;
 </script>
 
 <div
   class="py-1 px-2 flex items-center group/t rounded-md bg-neutral-3 mb-1 hover:bg-primary-4"
 >
   <a
-    href={tabInfo?.url}
+    href={tab?.url}
     rel="noreferrer"
     target="_blank"
-    title={tabInfo?.title}
-    class="w-max flex items-center gap-2 overflow-hidden hover:underline"
+    title={tab?.title}
+    class="w-max max-w-[90%] flex items-center gap-2 overflow-hidden hover:underline"
   >
     <img
-      src={tabInfo?.favIconUrl}
-      alt={tabInfo?.title}
+      src={tab?.favIconUrl}
+      alt={tab?.title}
       style:width="1em"
       style:height="1em"
     />
     <span class="overflow-hidden whitespace-nowrap text-ellipsis">
-      {tabInfo?.title}
+      {tab?.title}
     </span>
   </a>
   <IconButton
