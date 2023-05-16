@@ -18,7 +18,7 @@ body {
 }
 
 #root {
-  @apply min-h-[500px] max-h-[90vh] h-full;
+  @apply min-w-[600px] max-h-[90vh] h-full;
 }
 
 h1 {
