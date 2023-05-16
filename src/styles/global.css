@@ -10,7 +10,7 @@
 
 html,
 body {
-  @apply min-h-[500px] h-full overflow-hidden;
+  @apply min-h-[500px] h-full w-full overflow-hidden;
 }
 
 body {
