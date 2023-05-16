@@ -8,9 +8,9 @@
   let selection = $sessionList?.[0]?.windows;
 </script>
 
-<div class="w-full mt-1 flex overflow-y-auto flex-1 gap-2">
+<div class="w-full mt-1 flex gap-2 max-h-full">
   {#if $sessionList?.length}
-    <ul class="w-[50%] h-full">
+    <ul class="w-[50%] overflow-y-auto">
       {#each $sessionList as sessionItem (sessionItem.id)}
         <li>
           <SessionItem
@@ -25,7 +25,7 @@
     </ul>
 
     {#if selection}
-      <ul class="w-[50%] h-full overflow-y-auto">
+      <ul class="w-[50%] overflow-y-auto">
         {#each selection as windowInfo}
           <li>
             <WindowItem {windowInfo} />

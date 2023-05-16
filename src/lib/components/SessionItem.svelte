@@ -38,25 +38,25 @@
   </div>
   <span
     title="Number of Windows"
-    class="bg-hover py-0.5 px-2 rounded text-xs font-bold"
+    class="bg-neutral-pure-1 py-0.5 px-2 rounded text-xs font-bold group-hover/w:bg-primary-pure-1"
   >
     {session?.windowsNumber} Window{session?.windowsNumber > 1 ? 's' : ''}
   </span>
   <span
     title="Number of Tabs"
-    class="bg-hover py-0.5 px-2 rounded text-xs font-bold"
+    class="bg-neutral-pure-1 py-0.5 px-2 rounded text-xs font-bold group-hover/w:bg-primary-pure-1"
   >
     {session?.tabsNumber} Tab{session?.tabsNumber > 1 ? 's' : ''}
   </span>
   <span
     title="Date of Session"
-    class="bg-hover py-0.5 px-2 rounded text-xs font-bold"
+    class="bg-neutral-pure-1 py-0.5 px-2 rounded text-xs font-bold group-hover/w:bg-primary-pure-1"
   >
     {session?.dateSaved?.toLocaleDateString('en-US')}
   </span>
   <span
     title="Time of Session"
-    class="bg-hover py-0.5 px-2 rounded text-xs font-bold"
+    class="bg-neutral-pure-1 py-0.5 px-2 rounded text-xs font-bold group-hover/w:bg-primary-pure-1"
   >
     {session?.dateSaved?.toLocaleTimeString('en-US', { timeStyle: 'short' })}
   </span>

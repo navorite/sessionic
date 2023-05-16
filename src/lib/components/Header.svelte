@@ -1,13 +1,12 @@
 <script lang="ts">
   import IconButton from '@components/IconButton.svelte';
   import InputBar from '@components/InputBar.svelte';
-  import { currentSession, sessionList } from '@stores/session';
+  import { currentSession } from '@stores/session';
   import { dark } from '@stores/settings';
   import { saveSession } from '@utils/actions';
   import { getAllWindows } from '@utils/browser';
   import { openOptions, openPopup } from '@utils/extension';
   import log from '@utils/log';
-  import { tabs } from 'webextension-polyfill';
 
   let searchValue = '';
   let saveValue = '';

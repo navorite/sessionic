@@ -12,7 +12,5 @@
   }
 </script>
 
-<div class="flex flex-col w-full h-full">
-  <Header />
-  <Panel />
-</div>
+<Header />
+<Panel />
