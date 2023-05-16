@@ -6,6 +6,8 @@
   import { saveSession } from '@utils/actions';
   import { getAllWindows } from '@utils/browser';
   import { openOptions, openPopup } from '@utils/extension';
+  import log from '@utils/log';
+  import { tabs } from 'webextension-polyfill';
 
   let searchValue = '';
   let saveValue = '';
@@ -13,20 +15,32 @@
   async function handleSave() {
     if (saveValue === '') return;
 
+    log.info('handleSave(): inside');
+
+    const date = new Date();
+
+    const windows = await getAllWindows();
+    let tabsNumber = 0;
+
+    for (const window of windows) {
+      tabsNumber += window?.tabs?.length;
+    }
+
     $currentSession = {
-      title: '',
-      windowsObj: undefined,
-      tabsNumber: 0,
-      dateOfSave: new Date(),
+      title: saveValue,
+      windowsNumber: windows?.length,
+      windows: windows,
+      tabsNumber: tabsNumber,
+      dateSaved: date,
+      dateModified: date,
+      id: crypto.randomUUID(),
     };
 
-    $currentSession.windowsObj = await getAllWindows();
-    $currentSession.title = saveValue;
+    log.info('handleSave(): assigned session');
 
     await saveSession($currentSession);
 
-    $sessionList.push($currentSession);
-    $sessionList = $sessionList;
+    log.info('handleSave(): saved to DB');
   }
 </script>
 
