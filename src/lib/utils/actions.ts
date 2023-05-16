@@ -2,7 +2,6 @@ import { sessionList } from '@stores/session';
 import type { Session } from '../types/extension';
 import { initDB, loadDB, removeDB, saveDB } from './storage';
 import log from './log';
-import { sessions } from 'webextension-polyfill';
 
 export function initSessions() {
   initDB('sessions', (sessions) => {

@@ -1,12 +1,12 @@
 <script lang="ts">
   import { tick } from 'svelte';
-  import type { Icon } from '../types/extension';
   import IconButton from './IconButton.svelte';
 
-  export let icon: Icon = 'default';
-  export let title = '';
-  export let placeholder = title;
   export let value = '';
+
+  let className = '';
+
+  export { className as class };
 
   let showInputBar = false;
 
@@ -39,7 +39,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <div
-  class="flex justify-center items-center font-semibold rounded-md cursor-text focus-within:bg-neutral-5 focus-within:px-2 focus-within:py-0.5 motion-safe:fade"
+  class="flex justify-center items-center font-semibold rounded-md cursor-text focus-within:bg-neutral-5 focus-within:px-2 focus-within:py-0.5 motion-safe:fade {className}"
   on:focusin={handleInputBar}
   on:focusout={handleInputBar}
   tabindex="0"
@@ -48,9 +48,9 @@
     <input
       bind:this={inputEl}
       type="text"
-      {placeholder}
+      title="Search for Session or Tab name..."
+      placeholder="Search for Session or Tab name..."
       bind:value
-      {title}
       class="font-semibold bg-transparent outline-none"
     />
     <IconButton
@@ -65,8 +65,8 @@
   {/if}
 
   <IconButton
-    {icon}
-    {title}
+    icon="search"
+    title="Search for Session or Tab name.."
     on:click
     class="text-2xl hover:text-primary-pure-1"
   />
