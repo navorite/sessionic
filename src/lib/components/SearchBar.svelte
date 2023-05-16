@@ -49,7 +49,7 @@
       bind:this={inputEl}
       type="text"
       title="Search for Session or Tab name..."
-      placeholder="Search for Session or Tab name..."
+      placeholder="Session or Tab name..."
       bind:value
       class="font-semibold bg-transparent outline-none"
     />

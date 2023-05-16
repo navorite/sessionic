@@ -1,11 +1,14 @@
 <script lang="ts">
-  import { currentSession, sessionList } from '@stores/session';
+  import {
+    currentSession,
+    selectedSession,
+    sessionList,
+  } from '@stores/session';
   import SessionItem from './SessionItem.svelte';
   import WindowItem from './WindowItem.svelte';
-  import log from '@utils/log';
   import { getAllWindows } from '@utils/browser';
+  import log from '@utils/log';
 
-  let selection = $currentSession;
   getAllWindows().then((windows) => {
     let tabsNumber = 0;
 
@@ -28,9 +31,9 @@
     <SessionItem
       current
       session={$currentSession}
-      selected={selection?.id === $currentSession?.id}
+      selected={$selectedSession?.id === $currentSession?.id}
       on:click={() => {
-        selection = $currentSession;
+        $selectedSession = $currentSession;
       }}
     />
 
@@ -42,9 +45,9 @@
           <li>
             <SessionItem
               session={sessionItem}
-              selected={selection?.id === sessionItem?.id}
+              selected={$selectedSession?.id === sessionItem?.id}
               on:click={() => {
-                selection = sessionItem;
+                $selectedSession = sessionItem;
               }}
             />
           </li>
@@ -53,15 +56,13 @@
     {/if}
   </div>
 
-  {#if selection}
+  {#if $selectedSession}
     <ul class="w-[50%] overflow-y-auto">
-      {#each selection.windows as windowInfo}
+      {#each $selectedSession.windows as windowInfo}
         <li>
           <WindowItem {windowInfo} />
         </li>
       {/each}
     </ul>
-  {:else}
-    <p class="font-semibold text-xl">Select a session to view!</p>
   {/if}
 </div>
