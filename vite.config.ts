@@ -16,10 +16,6 @@ export default defineConfig({
     },
   },
 
-  server: {
-    open: './src/popup/',
-  },
-
   build: {
     rollupOptions: {
       input: {

@@ -1,20 +1,14 @@
+import type { UUID } from 'crypto';
 import type { Window } from './browser';
-
-// export interface Session {
-//   title: string;
-//   windowsObj: Window[];
-//   windowsNumber: number;
-//   tabsNumber: number;
-//   dateSaved: Date;
-//   dateModified: Date;
-//   id: string;
-// }
 
 export interface Session {
   title: string;
-  windowsObj: Window[];
+  windows: Window[];
+  windowsNumber: number;
   tabsNumber: number;
-  dateOfSave: Date;
+  dateSaved: Date;
+  dateModified: Date;
+  id: UUID;
 }
 
 export type Page = 'popup' | 'options';

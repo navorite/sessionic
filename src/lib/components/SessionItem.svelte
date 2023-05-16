@@ -1,7 +1,7 @@
 <script lang="ts">
   import IconButton from './IconButton.svelte';
   import type { Session } from '../types/extension';
-  //import { removeSession } from '@utils/actions';
+  import { removeSession } from '@utils/actions';
 
   export let session: Session;
 </script>
@@ -11,7 +11,6 @@
 <div
   class="w-full px-2 py-1 my-1 rounded-md group/w bg-neutral-4 hover:bg-primary-5"
   tabindex="0"
-  on:select={() => console.log('haha')}
   on:click
 >
   <div class="flex items-center w-full gap-2 mb-1">
@@ -34,15 +33,14 @@
       icon="delete"
       title="Remove this window from session"
       class="invisible ml-auto text-2xl hover:text-warning-pure-1 group-hover/w:visible"
+      on:click={() => removeSession(session)}
     />
   </div>
   <span
     title="Number of Windows"
     class="bg-hover py-0.5 px-2 rounded text-xs font-bold"
   >
-    {session?.windowsObj?.length} Window{session?.windowsObj?.length > 1
-      ? 's'
-      : ''}
+    {session?.windowsNumber} Window{session?.windowsNumber > 1 ? 's' : ''}
   </span>
   <span
     title="Number of Tabs"
@@ -54,12 +52,12 @@
     title="Date of Session"
     class="bg-hover py-0.5 px-2 rounded text-xs font-bold"
   >
-    {session?.dateOfSave?.toLocaleDateString('en-US')}
+    {session?.dateSaved?.toLocaleDateString('en-US')}
   </span>
   <span
     title="Time of Session"
     class="bg-hover py-0.5 px-2 rounded text-xs font-bold"
   >
-    {session?.dateOfSave?.toLocaleTimeString('en-US', { timeStyle: 'short' })}
+    {session?.dateSaved?.toLocaleTimeString('en-US', { timeStyle: 'short' })}
   </span>
 </div>

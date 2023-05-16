@@ -4,24 +4,19 @@
   import WindowItem from './WindowItem.svelte';
   import { initDB } from '@utils/storage';
   import log from '@utils/log';
-  import { windows } from 'webextension-polyfill';
 
-  initDB('sessions', (r) => {
-    $sessionList = r;
-    selection = $sessionList?.[0]?.windowsObj;
-  });
-
-  let selection;
+  let selection = $sessionList?.[0]?.windows;
 </script>
 
 <div class="w-full mt-1 flex overflow-y-auto flex-1 gap-2">
   {#if $sessionList?.length}
     <ul class="w-[50%] h-full">
-      {#each $sessionList as sessionItem, idx (idx)}
+      {#each $sessionList as sessionItem (sessionItem.id)}
         <SessionItem
           session={sessionItem}
           on:click={() => {
-            selection = sessionItem?.windowsObj;
+            log.info('Selected session');
+            selection = sessionItem?.windows;
           }}
         />
       {/each}
