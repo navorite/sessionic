@@ -1,3 +1,4 @@
+<!-- TODO: Make a component to be usable on all types of items -->
 <script lang="ts">
   import IconButton from './IconButton.svelte';
   import type { Icon } from '../types/extension';
