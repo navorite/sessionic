@@ -4,7 +4,7 @@
 
   export let session: Session;
 
-  let className: string;
+  let className = '';
 
   export { className as class };
 </script>

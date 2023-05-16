@@ -6,7 +6,7 @@
   export let currentSession: Session;
   export let selectedSession: Session;
 
-  let className: string;
+  let className = '';
   export { className as class };
 </script>
 
