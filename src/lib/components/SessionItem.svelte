@@ -38,7 +38,7 @@
 <div
   class="w-full px-2 py-1 mb-2 rounded-md group/w bg-neutral-3 {selected
     ? 'bg-primary-5'
-    : 'hover:bg-primary-4'}"
+    : 'hover:bg-primary-4'} cursor-pointer"
   tabindex="0"
   on:click
 >
@@ -52,7 +52,7 @@
     <!-- svelte-ignore a11y-click-events-h  ave-key-events -->
     <div
       title="Open Session"
-      class="w-max overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline p-1"
+      class="w-max max-w-[80%] overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline p-1"
       on:click={(event) => (event.currentTarget.contentEditable = 'true')}
       on:blur={handleChange}
     >

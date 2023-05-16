@@ -19,3 +19,9 @@ body {
 h1 {
   @apply text-xl font-bold;
 }
+
+p,
+span,
+div {
+  @apply text-base;
+}

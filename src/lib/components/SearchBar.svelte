@@ -4,7 +4,7 @@
 
   export let value = '';
 
-  let className = '';
+  let className: string;
 
   export { className as class };
 

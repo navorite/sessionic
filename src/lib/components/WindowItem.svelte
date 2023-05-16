@@ -1,17 +1,17 @@
 <script lang="ts">
-  import TabItem from './TabItem.svelte';
   import IconButton from './IconButton.svelte';
   import { openWindow } from '@utils/browser';
   import type { Window } from '../types/browser';
+  import Tabs from './Tabs.svelte';
 
-  export let windowInfo: Window;
+  export let window: Window;
 
   let showWindow = true;
   // let tabsURL = [];
 </script>
 
 <div
-  class="flex items-center gap-2 cursor-pointer group/w rounded-md bg-neutral-3 hover:bg-primary-4 p-2 mb-1"
+  class="flex items-center gap-2 group/w rounded-md bg-neutral-3 hover:bg-primary-4 p-2 mb-1"
 >
   <IconButton
     icon={showWindow ? 'windowon' : 'windowoff'}
@@ -25,7 +25,7 @@
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <span
     title="Open this Window in a New Window"
-    class="w-max overflow-hidden whitespace-nowrap text-ellipsis hover:underline"
+    class="w-max max-w-[80%] overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline"
     on:click={() => {
       //   if (tabsURL.length) openWindow(tabsURL);
       //   console.log(tabsURL);
@@ -38,7 +38,7 @@
     title="Number of Tabs"
     class="bg-overlay-black-8 py-0.5 px-2 rounded text-xs font-bold"
   >
-    {windowInfo?.tabs.length} Tab{windowInfo?.tabs.length > 1 ? 's' : ''}
+    {window?.tabs.length} Tab{window?.tabs.length > 1 ? 's' : ''}
   </span>
 
   <IconButton
@@ -49,12 +49,5 @@
 </div>
 
 {#if showWindow}
-  <ul class="pl-2 mb-1">
-    {#each windowInfo?.tabs as tab}
-      <!-- {@const tabItem = tabsURL.push(tab.url)} -->
-      <li>
-        <TabItem tabInfo={tab} />
-      </li>
-    {/each}
-  </ul>
+  <Tabs {window} class="pl-2 mb-1" />
 {/if}
