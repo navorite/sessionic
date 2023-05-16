@@ -9,6 +9,10 @@ export default {
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
+        'overlay-primary': generateScale('indigoA', 1, 12),
+        'overlay-neutral': generateScale('grayA', 1, 12),
+        'overlay-black': generateScale('blackA', 1, 12),
+        'overlay-white': generateScale('whiteA', 1, 12),
         'neutral-pure': generateScale('gray', 9, 10),
         'primary-pure': generateScale('indigo', 9, 10),
         'secondary-pure': generateScale('blue', 9, 10),
@@ -35,7 +39,16 @@ export default {
 
   plugins: [
     require('radix-colors-for-tailwind')({
-      colors: ['gray', 'blue', 'red', 'indigo'],
+      colors: [
+        'gray',
+        'blue',
+        'red',
+        'indigo',
+        'indigoA',
+        'grayA',
+        'blackA',
+        'whiteA',
+      ],
     }),
   ],
 } satisfies Config;

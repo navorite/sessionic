@@ -13,7 +13,7 @@
     rel="noreferrer"
     target="_blank"
     title={tabInfo?.title}
-    class="w-[90%] flex items-center gap-2 overflow-hidden hover:underline"
+    class="w-max flex items-center gap-2 overflow-hidden hover:underline"
   >
     <img
       src={tabInfo?.favIconUrl}

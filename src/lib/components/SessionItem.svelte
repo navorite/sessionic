@@ -9,7 +9,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <div
-  class="w-full px-2 py-1 rounded-md group/w bg-neutral-4 hover:bg-primary-5"
+  class="w-full px-2 py-1 mb-2 rounded-md group/w bg-neutral-4 hover:bg-primary-5"
   tabindex="0"
   on:click
 >
@@ -23,7 +23,7 @@
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <span
       title="Open Session"
-      class="w-[90%] overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline"
+      class="w-max overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline"
       on:click={() => {}}
     >
       {session?.title}
@@ -38,25 +38,25 @@
   </div>
   <span
     title="Number of Windows"
-    class="bg-neutral-pure-1 py-0.5 px-2 rounded text-xs font-bold group-hover/w:bg-primary-pure-1"
+    class="bg-overlay-black-8 py-0.5 px-2 rounded text-xs font-bold"
   >
     {session?.windowsNumber} Window{session?.windowsNumber > 1 ? 's' : ''}
   </span>
   <span
     title="Number of Tabs"
-    class="bg-neutral-pure-1 py-0.5 px-2 rounded text-xs font-bold group-hover/w:bg-primary-pure-1"
+    class="bg-overlay-black-8 py-0.5 px-2 rounded text-xs font-bold"
   >
     {session?.tabsNumber} Tab{session?.tabsNumber > 1 ? 's' : ''}
   </span>
   <span
     title="Date of Session"
-    class="bg-neutral-pure-1 py-0.5 px-2 rounded text-xs font-bold group-hover/w:bg-primary-pure-1"
+    class="bg-overlay-black-8 py-0.5 px-2 rounded text-xs font-bold"
   >
     {session?.dateSaved?.toLocaleDateString('en-US')}
   </span>
   <span
     title="Time of Session"
-    class="bg-neutral-pure-1 py-0.5 px-2 rounded text-xs font-bold group-hover/w:bg-primary-pure-1"
+    class="bg-overlay-black-8 py-0.5 px-2 rounded text-xs font-bold"
   >
     {session?.dateSaved?.toLocaleTimeString('en-US', { timeStyle: 'short' })}
   </span>
