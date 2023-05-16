@@ -1,4 +1,4 @@
-import { sessionList } from '@stores/session';
+import { sessionList, selectedSession, currentSession } from '@stores/session';
 import type { Session } from '../types/extension';
 import { initDB, loadDB, removeDB, saveDB } from './storage';
 import log from './log';
@@ -6,6 +6,7 @@ import log from './log';
 export function initSessions() {
   initDB('sessions', (sessions) => {
     sessionList.set(sessions);
+    currentSession.subscribe((session) => selectedSession.set(session));
     log.info('initSessions(): loaded sessions');
   });
 }
@@ -23,6 +24,8 @@ export function saveSession(session: Session) {
       sessions.push(session);
       return sessions;
     });
+
+    selectedSession.set(session);
   });
 }
 
@@ -32,6 +35,7 @@ export function removeSession(key) {
     sessionList.update((sessions) =>
       sessions.filter((session) => session.id !== key)
     );
+    currentSession.subscribe((session) => selectedSession.set(session));
     log.info('removeSession(): finished');
   });
 }

@@ -9,6 +9,11 @@
   export let selected: boolean = false;
   export let current = false;
 
+  function handleChange(event) {
+    session.title = (event.currentTarget as HTMLInputElement)?.textContent;
+    event.currentTarget.contentEditable = 'false';
+  }
+
   async function handleSave() {
     if (session.title === '') return;
 
@@ -45,13 +50,14 @@
     />
 
     <!-- svelte-ignore a11y-click-events-h  ave-key-events -->
-    <span
+    <div
       title="Open Session"
-      class="w-max overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline"
-      on:click={() => {}}
+      class="w-max overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline p-1"
+      on:click={(event) => (event.currentTarget.contentEditable = 'true')}
+      on:blur={handleChange}
     >
       {session?.title}
-    </span>
+    </div>
 
     {#if current}
       <IconButton

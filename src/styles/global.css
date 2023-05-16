@@ -4,12 +4,12 @@
 
 @layer utilities {
   .fade {
-    transition: background-color 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
   }
 }
 
 body {
-  @apply text-neutral-2 bg-neutral-1 font-sans;
+  @apply text-neutral-2 bg-neutral-1 font-sans fade;
 }
 
 #root {
