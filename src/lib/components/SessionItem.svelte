@@ -52,7 +52,7 @@
     <!-- svelte-ignore a11y-click-events-h  ave-key-events -->
     <div
       title="Open Session"
-      class="w-max max-w-[80%] overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline p-1"
+      class="w-max max-w-[60%] overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline p-1"
       on:click={(event) => (event.currentTarget.contentEditable = 'true')}
       on:blur={handleChange}
     >

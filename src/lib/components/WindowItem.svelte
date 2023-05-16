@@ -25,7 +25,7 @@
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <span
     title="Open this Window in a New Window"
-    class="w-max max-w-[80%] overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline"
+    class="w-max max-w-[60%] overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline"
     on:click={() => {
       //   if (tabsURL.length) openWindow(tabsURL);
       //   console.log(tabsURL);
