@@ -3,7 +3,7 @@
   import SearchBar from '@components/SearchBar.svelte';
 
   import { dark } from '@stores/settings';
-  import { openOptions, openPopup } from '@utils/extension';
+  import { handleDarkMode, openOptions, openPopup } from '@utils/extension';
 
   let searchValue = '';
 </script>
@@ -21,12 +21,10 @@
     />
 
     <IconButton
-      icon={$dark ? 'light' : 'dark'}
+      icon={$dark ? 'dark' : 'light'}
       class="text-2xl hover:text-primary-pure-1"
-      title="Switch to {dark ? 'light' : 'dark'} mode"
-      on:click={() => {
-        $dark = !$dark;
-      }}
+      title="Switch to {$dark ? 'dark' : 'light'} mode"
+      on:click={handleDarkMode}
     />
 
     <IconButton
