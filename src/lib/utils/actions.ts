@@ -27,11 +27,11 @@ export function saveSession(session: Session) {
   });
 }
 
-export function removeSession(data) {
-  removeDB('sessions', data, () => {
+export function removeSession(key) {
+  removeDB('sessions', key, () => {
     log.info('removeSession(): inside removeDB()');
     sessionList.update((sessions) =>
-      sessions.filter((session) => data.id !== session.id)
+      sessions.filter((session) => session.id !== key)
     );
     log.info('removeSession(): finished');
   });

@@ -29,36 +29,49 @@ export function initDB(store: string, callback: (result: any[]) => any) {
 }
 
 export function saveDB(store: string, data: any, callback) {
+  log.info('saveDB(): inside');
+
   const req = getObjectStore(store, 'readwrite').add(data);
   req.onsuccess = (e) => {
     log.info('saveDB(): Saved data successfully');
     callback(e);
   };
 
+  req.onerror = (e) => {
+    log.error('saveDB(): Error adding data');
+  };
+
   return req;
 }
 
 export function loadDB(store: string, callback: (result: any[]) => any) {
-  log.info('loadDB(): init');
+  log.info('loadDB(): inside');
 
   const req = getObjectStore(store, 'readonly').getAll();
 
   req.transaction.oncomplete = () => {};
+
   req.onsuccess = (event) => {
     callback((event.target as IDBRequest<any>).result);
   };
+
+  req.onerror = (e) => {
+    log.error('loadDB(): Error loading data');
+  };
 }
 
-export function removeDB(store: string, data, callback) {
-  log.info('removeDb(): init');
+export function removeDB(store: string, key, callback) {
+  log.info('removeDb(): inside');
 
-  const req = getObjectStore(store, 'readwrite').delete(data.id);
+  const req = getObjectStore(store, 'readwrite').delete(key);
+
   req.onsuccess = (event) => {
-    log.info('removeDB(): Success');
+    log.info('removeDB(): success');
     callback(event);
   };
+
   req.onerror = (event) => {
-    log.info('removeDB(): Error');
+    log.info('removeDB(): Error removing data');
   };
 }
 

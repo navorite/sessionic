@@ -4,12 +4,15 @@
   import { removeSession } from '@utils/actions';
 
   export let session: Session;
+  export let selected: boolean = false;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <div
-  class="w-full px-2 py-1 mb-2 rounded-md group/w bg-neutral-4 hover:bg-primary-5"
+  class="w-full px-2 py-1 mb-2 rounded-md group/w bg-neutral-3 {selected
+    ? 'bg-primary-5'
+    : 'hover:bg-primary-4'}"
   tabindex="0"
   on:click
 >
@@ -33,7 +36,7 @@
       icon="delete"
       title="Remove this window from session"
       class="invisible ml-auto text-2xl hover:text-warning-pure-1 group-hover/w:visible"
-      on:click={() => removeSession(session)}
+      on:click={() => removeSession(session.id)}
     />
   </div>
   <span
