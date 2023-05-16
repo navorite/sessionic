@@ -12,13 +12,15 @@
   {#if $sessionList?.length}
     <ul class="w-[50%] h-full">
       {#each $sessionList as sessionItem (sessionItem.id)}
-        <SessionItem
-          session={sessionItem}
-          on:click={() => {
-            log.info('Selected session');
-            selection = sessionItem?.windows;
-          }}
-        />
+        <li>
+          <SessionItem
+            session={sessionItem}
+            on:click={() => {
+              log.info('Selected session');
+              selection = sessionItem?.windows;
+            }}
+          />
+        </li>
       {/each}
     </ul>
 
@@ -31,9 +33,9 @@
         {/each}
       </ul>
     {:else}
-      Select a session to view!
+      <p class="font-semibold text-xl">Select a session to view!</p>
     {/if}
   {:else}
-    Start saving a new session!
+    <p class="font-semibold text-xl">Start saving a new session!</p>
   {/if}
 </div>

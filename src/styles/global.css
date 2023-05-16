@@ -9,11 +9,11 @@
 }
 
 body {
-  @apply mx-auto h-full w-full font-sans text-neutral-2 bg-neutral-1 min-w-[600px] min-h-[400px];
+  @apply mx-auto h-full w-full font-sans text-neutral-2 bg-neutral-1 min-w-[700px] min-h-[500px] max-w-[90vw] max-h-[500px];
 }
 
 #root {
-  @apply flex h-full w-full p-2;
+  @apply flex h-full w-full px-4 py-2;
 }
 
 h1 {

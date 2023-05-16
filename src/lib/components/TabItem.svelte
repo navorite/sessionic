@@ -6,7 +6,7 @@
 </script>
 
 <div
-  class="w-[96%] py-1 px-2 flex items-center group/t rounded-md bg-neutral-4 mb-1 hover:bg-primary-5"
+  class="py-1 px-2 flex items-center group/t rounded-md bg-neutral-4 mb-1 hover:bg-primary-5"
 >
   <a
     href={tabInfo?.url}

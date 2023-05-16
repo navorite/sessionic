@@ -9,7 +9,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <div
-  class="w-full px-2 py-1 my-1 rounded-md group/w bg-neutral-4 hover:bg-primary-5"
+  class="w-full px-2 py-1 rounded-md group/w bg-neutral-4 hover:bg-primary-5"
   tabindex="0"
   on:click
 >

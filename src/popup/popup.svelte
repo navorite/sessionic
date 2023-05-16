@@ -6,7 +6,10 @@
 
   initSessions();
 
-  $: document?.body?.classList.toggle('dark', $dark);
+  $: {
+    document?.body?.classList.toggle('dark', $dark);
+    document.documentElement.style.colorScheme = $dark ? 'dark' : 'normal';
+  }
 </script>
 
 <div class="flex flex-col w-full h-full">
