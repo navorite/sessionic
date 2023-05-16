@@ -21,10 +21,10 @@
 
 <div class="w-full mt-1 flex gap-2 max-h-full">
   <Sessions
-    class="w-[50%] overflow-y-auto"
+    class="w-[50%] overflow-y-auto pr-4"
     sessions={$sessionList}
     currentSession={$currentSession}
     bind:selectedSession={$selectedSession}
   />
-  <Windows class="w-[50%] overflow-y-auto" session={$selectedSession} />
+  <Windows class="w-[50%] overflow-y-auto pr-4" session={$selectedSession} />
 </div>

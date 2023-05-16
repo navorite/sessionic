@@ -1,7 +1,6 @@
 import type { Page } from '../types/extension';
 import browser from 'webextension-polyfill';
 import { dark } from '@stores/settings';
-import log from './log';
 
 // Get runtime URL for a page in the extension
 
@@ -51,7 +50,6 @@ export async function getDarkMode() {
     if (value.dark === undefined) {
       dark.subscribe((value) => {
         theme = value;
-        log.info('value', theme);
       });
     } else dark.set(theme);
 
