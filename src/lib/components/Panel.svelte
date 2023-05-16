@@ -2,10 +2,9 @@
   import { sessionList } from '@stores/session';
   import SessionItem from './SessionItem.svelte';
   import WindowItem from './WindowItem.svelte';
-  import { initDB } from '@utils/storage';
   import log from '@utils/log';
 
-  let selection = $sessionList?.[0]?.windows;
+  $: selection = $sessionList?.[0];
 </script>
 
 <div class="w-full mt-1 flex gap-2 max-h-full">
@@ -15,9 +14,10 @@
         <li>
           <SessionItem
             session={sessionItem}
+            selected={selection === sessionItem}
             on:click={() => {
               log.info('Selected session');
-              selection = sessionItem?.windows;
+              selection = sessionItem;
             }}
           />
         </li>
@@ -26,7 +26,7 @@
 
     {#if selection}
       <ul class="w-[50%] overflow-y-auto">
-        {#each selection as windowInfo}
+        {#each selection.windows as windowInfo}
           <li>
             <WindowItem {windowInfo} />
           </li>

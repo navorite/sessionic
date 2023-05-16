@@ -11,7 +11,7 @@
 </script>
 
 <div
-  class="flex items-center gap-2 cursor-pointer group/w rounded-md bg-neutral-4 hover:bg-primary-5 p-2 mb-1"
+  class="flex items-center gap-2 cursor-pointer group/w rounded-md bg-neutral-3 hover:bg-primary-4 p-2 mb-1"
 >
   <IconButton
     icon={showWindow ? 'windowon' : 'windowoff'}
