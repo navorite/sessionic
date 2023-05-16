@@ -12,11 +12,11 @@
 
 <div class="w-full h-full">
   <div
-    class="w-[96%] flex items-center gap-2 cursor-pointer group/w rounded-md bg-neutral-4 hover:bg-primary-5 py-1 px-2 mb-1"
+    class="flex items-center gap-2 cursor-pointer group/w rounded-md bg-neutral-4 hover:bg-primary-5 py-3 px-2 mb-1"
   >
     <IconButton
       icon={showWindow ? 'windowon' : 'windowoff'}
-      title="Window: {windowInfo?.title}"
+      title="Window"
       class="text-2xl"
       on:click={() => {
         showWindow = !showWindow;
@@ -32,7 +32,7 @@
         //   console.log(tabsURL);
       }}
     >
-      {windowInfo?.title ?? 'Window'}
+      Window
     </span>
 
     <IconButton
