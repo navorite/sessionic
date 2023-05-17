@@ -25,17 +25,21 @@
   <h2 class="text-lg font-bold mt-4 mb-1">
     Saved Sessions ({sessions?.length || 0})
   </h2>
-  {#if sessions?.length}
-    {#each sessions as session (session.id)}
-      <li>
-        <SessionItem
-          {session}
-          selected={selectedSession?.id === session?.id}
-          on:click={() => {
-            selectedSession = session;
-          }}
-        />
-      </li>
-    {/each}
+
+  {#if sessions}
+    <ul>
+      {#each { length: sessions.length } as _, i}
+        {@const session = sessions[sessions.length - i - 1]}
+        <li>
+          <SessionItem
+            {session}
+            selected={selectedSession?.id === session?.id}
+            on:click={() => {
+              selectedSession = session;
+            }}
+          />
+        </li>
+      {/each}
+    </ul>
   {/if}
 </ul>

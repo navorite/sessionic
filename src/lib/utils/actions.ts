@@ -1,41 +1,41 @@
 import { sessionList, selectedSession, currentSession } from '@stores/session';
 import type { Session } from '../types/extension';
-import { initDB, loadDB, removeDB, saveDB } from './storage';
+import { addToDB, initDB, loadDB, loadDBCursor, removeDB } from './storage';
 import log from './log';
 
-export function initSessions() {
-  initDB('sessions', (sessions) => {
-    sessionList.set(sessions);
-    currentSession.subscribe((session) => selectedSession.set(session));
-    log.info('initSessions(): loaded sessions');
-  });
+export async function initSessions(version?: number) {
+  return initDB('sessions', version);
 }
 
-export function loadSessions() {
-  loadDB('sessions', (sessions) => {
-    sessionList.set(sessions);
-    log.info('loadSessions(): loaded sessions');
-  });
+export async function loadSessions(
+  query?: IDBValidKey | IDBKeyRange,
+  count?: number
+) {
+  sessionList.set(await loadDB('sessions', 'dateSaved', query, count));
 }
 
-export function saveSession(session: Session) {
-  return saveDB('sessions', session, () => {
-    sessionList.update((sessions) => {
-      sessions.push(session);
-      return sessions;
-    });
+export async function saveSession(session: Session) {
+  const ev = await addToDB('sessions', session);
 
-    selectedSession.set(session);
+  if (ev.type === 'error') return;
+
+  sessionList.update((sessions) => {
+    sessions.push(session);
+    return sessions;
   });
+
+  selectedSession.set(session);
 }
 
-export function removeSession(key) {
-  removeDB('sessions', key, () => {
-    log.info('removeSession(): inside removeDB()');
-    sessionList.update((sessions) =>
-      sessions.filter((session) => session.id !== key)
-    );
-    currentSession.subscribe((session) => selectedSession.set(session));
-    log.info('removeSession(): finished');
-  });
+export async function removeSession(key: IDBValidKey | IDBKeyRange) {
+  const ev = await removeDB('sessions', key);
+
+  if (ev.type === 'error') return;
+
+  sessionList.update((sessions) =>
+    sessions.filter((session) => session.id !== key)
+  );
+
+  currentSession.subscribe((session) => selectedSession.set(session));
+  log.info('removeSession(): finished');
 }

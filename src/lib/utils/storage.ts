@@ -1,80 +1,155 @@
 import log from './log';
 
+let isOpen: boolean = false;
 let db: IDBDatabase;
 
-export function initDB(store: string, callback: (result: any[]) => any) {
-  const DBOpenRequest = indexedDB.open(store, 1.0);
+export async function initDB(store: string, version?: number) {
+  return new Promise(
+    (resolve: (db: IDBDatabase) => any, reject: (ev: Event) => any) => {
+      if (isOpen) return;
+      const DBOpenRequest = indexedDB.open(store, version);
 
-  DBOpenRequest.onsuccess = () => {
-    log.info('initDB(): Database initialised');
-    db = DBOpenRequest.result;
+      DBOpenRequest.onsuccess = (ev) => {
+        isOpen = true;
+        db = (ev.target as IDBOpenDBRequest).result;
 
-    loadDB(store, callback);
-  };
+        log.info('initDB(): success');
 
-  DBOpenRequest.onupgradeneeded = () => {
-    db = DBOpenRequest.result;
+        db.onclose = () => {
+          log.info('initDB(): closing DB');
+          isOpen = false;
+        };
 
-    const objectStore = db.createObjectStore(store, { keyPath: 'id' });
+        resolve(db);
+      };
 
-    objectStore.createIndex('title', 'title', { unique: false });
-    //objectStore.createIndex('windows', 'windowsObj', { unique: false });
+      DBOpenRequest.onupgradeneeded = (ev) => {
+        log.info('initDB(): upgrade');
 
-    log.info('initDB(): Created object store');
-  };
+        db = (ev.target as IDBOpenDBRequest).result;
 
-  DBOpenRequest.onerror = () => {
-    log.error('initDB(): Error:', DBOpenRequest.error);
-  };
+        const objectStore = db.createObjectStore(store, { keyPath: 'id' });
+
+        objectStore.createIndex('title', 'title', { unique: false });
+        objectStore.createIndex('dateSaved', 'dateSaved', { unique: false });
+        //objectStore.createIndex('windows', 'windowsObj', { unique: false });
+
+        log.info('initDB(): created object store');
+      };
+
+      DBOpenRequest.onerror = (ev) => {
+        log.error('initDB(): error:', (ev.target as IDBOpenDBRequest).error);
+        reject(ev);
+      };
+    }
+  );
 }
 
-export function saveDB(store: string, data: any, callback) {
-  log.info('saveDB(): inside');
+export async function addToDB(store: string, data: any, key?: IDBValidKey) {
+  log.info('saveDB(): init');
 
-  const req = getObjectStore(store, 'readwrite').add(data);
-  req.onsuccess = (e) => {
-    log.info('saveDB(): Saved data successfully');
-    callback(e);
-  };
+  const req = (await getObjectStore(store, 'readwrite')).add(data, key);
 
-  req.onerror = (e) => {
-    log.error('saveDB(): Error adding data');
-  };
+  return new Promise(
+    (resolve: (req: Event) => any, reject: (ev: Event) => any) => {
+      req.onsuccess = (ev) => {
+        log.info('addToDB(): saved data successfully');
+        resolve(ev);
+      };
 
-  return req;
+      req.onerror = (ev) => {
+        log.error('addToDB(): error adding data', ev);
+        reject(ev);
+      };
+    }
+  );
 }
 
-export function loadDB(store: string, callback: (result: any[]) => any) {
-  log.info('loadDB(): inside');
+export async function loadDB(
+  store: string,
+  index: string,
+  query?: IDBValidKey | IDBKeyRange,
+  count?: number
+) {
+  log.info('loadSessionsDB(): init');
 
-  const req = getObjectStore(store, 'readonly').getAll();
+  const req = (await getObjectStore(store, 'readonly'))
+    .index(index)
+    .getAll(query, count);
 
-  req.transaction.oncomplete = () => {};
+  return new Promise(
+    (resolve: (values: any) => any, reject: (ev: Event) => any) => {
+      req.onsuccess = (ev) => {
+        resolve((ev.target as IDBRequest<any>).result);
+      };
 
-  req.onsuccess = (event) => {
-    callback((event.target as IDBRequest<any>).result);
-  };
-
-  req.onerror = (e) => {
-    log.error('loadDB(): Error loading data');
-  };
+      req.onerror = (ev) => {
+        log.error('loadDBCursor(): error loading data', ev);
+        reject(ev);
+      };
+    }
+  );
 }
 
-export function removeDB(store: string, key, callback) {
-  log.info('removeDb(): inside');
+export async function loadDBCursor(
+  store: string,
+  index: string,
+  query?: IDBValidKey | IDBKeyRange,
+  direction?: IDBCursorDirection
+) {
+  log.info('loadSessionsDB(): init');
 
-  const req = getObjectStore(store, 'readwrite').delete(key);
+  const req = (await getObjectStore(store, 'readonly'))
+    .index(index)
+    .openCursor(query, direction);
 
-  req.onsuccess = (event) => {
-    log.info('removeDB(): success');
-    callback(event);
-  };
+  return new Promise(
+    (resolve: (values: any) => any, reject: (ev: Event) => any) => {
+      const values: any = [];
+      req.onsuccess = (ev) => {
+        const cursor = (ev.target as IDBRequest<IDBCursorWithValue>).result;
+        if (cursor) {
+          values.push(cursor.value);
+          cursor.continue();
+        } else {
+          resolve(values);
+        }
+      };
 
-  req.onerror = (event) => {
-    log.info('removeDB(): Error removing data');
-  };
+      req.onerror = (ev) => {
+        log.error('loadDBCursor(): error loading data', ev);
+        reject(ev);
+      };
+    }
+  );
 }
 
-function getObjectStore(store: string, mode?: IDBTransactionMode) {
+export async function removeDB(store: string, key: IDBValidKey | IDBKeyRange) {
+  log.info('removeDb(): init');
+
+  const req = (await getObjectStore(store, 'readwrite')).delete(key);
+
+  return new Promise(
+    (resolve: (ev: Event) => any, reject: (ev: Event) => any) => {
+      req.onsuccess = (ev) => {
+        log.info('removeDB(): success');
+        resolve(ev);
+      };
+
+      req.onerror = (ev) => {
+        log.info('removeDB(): error removing data', ev);
+        reject(ev);
+      };
+    }
+  );
+}
+
+async function getObjectStore(store: string, mode?: IDBTransactionMode) {
+  if (!isOpen) {
+    log.info('getObjectStore(): loading DB');
+
+    db = await initDB(store);
+  }
+
   return db.transaction(store, mode).objectStore(store);
 }
