@@ -19,7 +19,7 @@
 
     log.info('handleSave(): inside');
 
-    const date = new Date();
+    const date = new Date().getTime();
 
     await saveSession({
       ...$currentSession,
@@ -91,18 +91,21 @@
   </span>
 
   {#if session?.dateSaved && !current}
+    {@const date = new Date(session?.dateSaved)}
     <span
       title="Date of Session"
       class="bg-overlay-black-8 py-0.5 px-2 rounded text-xs font-bold"
     >
-      {session?.dateSaved?.toLocaleDateString('en-US')}
+      {date.toLocaleDateString('en-US')}
     </span>
 
     <span
       title="Time of Session"
       class="bg-overlay-black-8 py-0.5 px-2 rounded text-xs font-bold"
     >
-      {session?.dateSaved?.toLocaleTimeString('en-US', { timeStyle: 'short' })}
+      {date.toLocaleTimeString('en-US', {
+        timeStyle: 'short',
+      })}
     </span>
   {/if}
 </div>

@@ -6,8 +6,8 @@ export interface Session {
   windows: Window[];
   windowsNumber: number;
   tabsNumber: number;
-  dateSaved: Date;
-  dateModified: Date;
+  dateSaved: number;
+  dateModified: number;
   id: UUID;
 }
 
