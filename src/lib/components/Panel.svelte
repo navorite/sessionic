@@ -19,7 +19,7 @@
   });
 </script>
 
-<div class="w-full mt-1 flex gap-2 max-h-full">
+<div class="w-full h-full max-h-[90vh] mt-1 flex gap-2">
   <Sessions
     class="w-[50%] overflow-y-auto pr-4"
     sessions={$sessionList}

@@ -1,9 +1,8 @@
 <script lang="ts">
+  import { dark, isTabPopup } from '@stores/settings';
+  import { handleDarkMode, openOptions, openPopup } from '@utils/extension';
   import IconButton from '@components/IconButton.svelte';
   import SearchBar from '@components/SearchBar.svelte';
-
-  import { dark } from '@stores/settings';
-  import { handleDarkMode, openOptions, openPopup } from '@utils/extension';
 
   let searchValue = '';
 </script>
@@ -13,12 +12,14 @@
   <div class="flex items-center justify-end w-full h-full gap-2">
     <SearchBar bind:value={searchValue} />
 
-    <IconButton
-      icon="open"
-      class="text-2xl hover:text-primary-pure-1"
-      title="View extension in a new tab"
-      on:click={openPopup}
-    />
+    {#if !$isTabPopup}
+      <IconButton
+        icon="open"
+        class="text-2xl hover:text-primary-pure-1"
+        title="View extension in a new tab"
+        on:click={openPopup}
+      />
+    {/if}
 
     <IconButton
       icon={$dark ? 'dark' : 'light'}
