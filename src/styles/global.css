@@ -3,22 +3,24 @@
 @tailwind utilities;
 
 @layer utilities {
-  .fade {
-    transition: all 300ms ease-in-out;
+  @media (prefers-reduced-motion: no-preference) {
+    .fade {
+      transition: all 300ms ease-in-out;
+    }
   }
 }
 
 html,
 body {
-  @apply min-h-[500px] h-full w-full overflow-hidden;
+  @apply h-full overflow-hidden;
 }
 
 body {
-  @apply mx-auto container px-4 py-2 text-neutral-2 bg-neutral-1 font-sans scroll-smooth fade;
+  @apply mx-auto container min-h-[500px] min-w-[800px] px-4 py-2 text-neutral-2 bg-neutral-1 font-sans scroll-smooth;
 }
 
 #root {
-  @apply min-w-[600px] max-h-[90vh] h-full;
+  @apply w-full h-full flex flex-col;
 }
 
 h1 {
