@@ -1,12 +1,10 @@
 import type { Page } from '../types/extension';
 import browser from 'webextension-polyfill';
 import { dark, isTabPopup } from '@stores/settings';
-import { initSessions } from './actions';
 
 export function initSettings() {
   getDarkMode();
   initPopup();
-  initSessions();
 }
 
 // Get runtime URL for a page in the extension
