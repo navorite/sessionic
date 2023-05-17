@@ -1,11 +1,7 @@
 import { sessionList, selectedSession, currentSession } from '@stores/session';
 import type { Session } from '../types/extension';
-import { addToDB, initDB, loadDB, loadDBCursor, removeDB } from './storage';
+import { addToDB, loadDB, removeDB } from './storage';
 import log from './log';
-
-export async function initSessions(version?: number) {
-  return initDB('sessions', version);
-}
 
 export async function loadSessions(
   query?: IDBValidKey | IDBKeyRange,
