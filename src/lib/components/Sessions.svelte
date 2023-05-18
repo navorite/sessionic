@@ -10,36 +10,30 @@
   export { className as class };
 </script>
 
-<ul class={className}>
-  <li>
-    <SessionItem
-      current
-      session={currentSession}
-      selected={selectedSession?.id === currentSession?.id}
-      on:click={() => {
-        selectedSession = currentSession;
-      }}
-    />
-  </li>
+<div class={className}>
+  <SessionItem
+    current
+    session={currentSession}
+    selected={selectedSession?.id === currentSession?.id}
+    on:click={() => {
+      selectedSession = currentSession;
+    }}
+  />
 
   <h2 class="text-lg font-bold mt-4 mb-1">
-    Saved Sessions ({sessions?.length || 0})
+    Sessions ({sessions?.length || 0})
   </h2>
 
   {#if sessions}
-    <ul>
-      {#each { length: sessions.length } as _, i}
-        {@const session = sessions[sessions.length - i - 1]}
-        <li>
-          <SessionItem
-            {session}
-            selected={selectedSession?.id === session?.id}
-            on:click={() => {
-              selectedSession = session;
-            }}
-          />
-        </li>
-      {/each}
-    </ul>
+    {#each { length: sessions.length } as _, i}
+      {@const session = sessions[sessions.length - i - 1]}
+      <SessionItem
+        {session}
+        selected={selectedSession?.id === session?.id}
+        on:click={() => {
+          selectedSession = session;
+        }}
+      />
+    {/each}
   {/if}
-</ul>
+</div>

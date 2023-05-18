@@ -5,7 +5,7 @@
 @layer utilities {
   @media (prefers-reduced-motion: no-preference) {
     .fade {
-      transition: all 300ms ease-in-out;
+      transition: all 400ms ease-in-out;
     }
   }
 }
