@@ -2,8 +2,8 @@
   import IconButton from './IconButton.svelte';
   import type { Session } from '../types/extension';
   import { currentSession } from '@stores/session';
-  import { saveSession, removeSession } from '@utils/actions';
   import log from '@utils/log';
+  import { removeSession, saveSession } from '@utils/actions';
 
   export let session: Session;
   export let selected: boolean = false;
@@ -49,7 +49,6 @@
       class="text-2xl"
     />
 
-    <!-- svelte-ignore a11y-click-events-h  ave-key-events -->
     <div
       title="Open Session"
       class="w-max max-w-[60%] overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline p-1"
@@ -71,7 +70,7 @@
         icon="delete"
         title="Remove this window from session"
         class="invisible ml-auto text-2xl hover:text-warning-pure-1 group-hover/w:visible"
-        on:click={() => removeSession(session.id)}
+        on:click={() => removeSession(session)}
       />
     {/if}
   </div>

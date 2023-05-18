@@ -1,6 +1,8 @@
 <script lang="ts">
   import { tick } from 'svelte';
   import IconButton from './IconButton.svelte';
+  import { sessionList } from '@stores/session';
+  import log from '@utils/log';
 
   export let value = '';
 
@@ -24,6 +26,15 @@
       showInputBar = false;
       value = '';
     }
+  }
+
+  /*TODO: Handle search correctly*/
+  function handleSearchAction() {
+    if (!showInputBar || inputEl.value === '') return;
+    log.info('Searching...');
+    $sessionList = $sessionList.filter((session) =>
+      session.title.includes(inputEl.value)
+    );
   }
 
   // function expandWidth(node: HTMLElement, duration: number) {
@@ -67,7 +78,7 @@
   <IconButton
     icon="search"
     title="Search for Session or Tab name.."
-    on:click
+    on:click={handleSearchAction}
     class="text-2xl hover:text-primary-pure-1"
   />
 </div>
