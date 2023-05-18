@@ -10,11 +10,9 @@
 </script>
 
 {#if session}
-  <ul class={className}>
+  <div class={className}>
     {#each session.windows as window}
-      <li>
-        <WindowItem {window} />
-      </li>
+      <WindowItem {window} />
     {/each}
-  </ul>
+  </div>
 {/if}

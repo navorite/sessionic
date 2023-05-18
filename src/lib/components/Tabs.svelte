@@ -8,11 +8,9 @@
   export { className as class };
 </script>
 
-<ul class={className}>
+<div class={className}>
   {#each window?.tabs as tab}
     <!-- {@const tabItem = tabsURL.push(tab.url)} -->
-    <li>
-      <TabItem {tab} />
-    </li>
+    <TabItem {tab} />
   {/each}
-</ul>
+</div>

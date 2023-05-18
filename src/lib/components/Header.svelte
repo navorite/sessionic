@@ -3,8 +3,15 @@
   import { handleDarkMode, openOptions, openPopup } from '@utils/extension';
   import IconButton from '@components/IconButton.svelte';
   import SearchBar from '@components/SearchBar.svelte';
+  import { loadSessions, filterSessions } from '@utils/actions';
 
   let searchValue = '';
+
+  $: if (searchValue) {
+    filterSessions(searchValue.trim());
+  } else {
+    loadSessions(50);
+  }
 </script>
 
 <div class="flex items-center w-full h-8">

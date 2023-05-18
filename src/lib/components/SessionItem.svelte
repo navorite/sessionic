@@ -2,12 +2,13 @@
   import IconButton from './IconButton.svelte';
   import type { Session } from '../types/extension';
   import { currentSession } from '@stores/session';
-  import log from '@utils/log';
   import { removeSession, saveSession } from '@utils/actions';
 
   export let session: Session;
-  export let selected: boolean = false;
+  export let selected = false;
   export let current = false;
+
+  let hover = false;
 
   function handleChange(event) {
     session.title = (event.currentTarget as HTMLInputElement)?.textContent;
@@ -16,8 +17,6 @@
 
   async function handleSave() {
     if (session.title === '') return;
-
-    log.info('handleSave(): inside');
 
     const date = new Date().getTime();
 
@@ -28,30 +27,27 @@
       dateModified: date,
       id: crypto.randomUUID(),
     });
-
-    log.info('handleSave(): saved to DB');
   }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <div
-  class="w-full px-2 py-1 mb-2 rounded-md group/w bg-neutral-3 {selected
-    ? 'bg-primary-5'
-    : 'hover:bg-primary-4'} cursor-pointer"
+  class="session__container {selected ? '!bg-primary-5' : ''}"
   tabindex="0"
   on:click
+  on:mouseover={() => {
+    hover = true;
+  }}
+  on:mouseleave={() => {
+    hover = false;
+  }}
 >
-  <div class="flex items-center w-full gap-2 mb-1">
-    <IconButton
-      icon="session"
-      title="Session: {session?.title}"
-      class="text-2xl"
-    />
-
+  <div class="session__info">
     <div
       title="Open Session"
-      class="w-max max-w-[60%] overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline p-1"
+      class="session__input"
       on:click={(event) => (event.currentTarget.contentEditable = 'true')}
       on:blur={handleChange}
     >
@@ -65,46 +61,52 @@
         class="ml-auto text-2xl hover:text-primary-pure-1"
         on:click={handleSave}
       />
-    {:else}
+    {:else if !current && hover}
       <IconButton
         icon="delete"
         title="Remove this window from session"
-        class="invisible ml-auto text-2xl hover:text-warning-pure-1 group-hover/w:visible"
+        class="ml-auto text-2xl hover:text-warning-pure-1"
         on:click={() => removeSession(session)}
       />
     {/if}
   </div>
 
-  <span
-    title="Number of Windows"
-    class="bg-overlay-black-8 py-0.5 px-2 rounded text-xs font-bold"
+  <p
+    title="Session Info: {session?.windowsNumber} Window - {session?.tabsNumber} Tab"
+    class="session__card"
   >
-    {session?.windowsNumber} Window{session?.windowsNumber > 1 ? 's' : ''}
-  </span>
-
-  <span
-    title="Number of Tabs"
-    class="bg-overlay-black-8 py-0.5 px-2 rounded text-xs font-bold"
-  >
-    {session?.tabsNumber} Tab{session?.tabsNumber > 1 ? 's' : ''}
-  </span>
-
-  {#if session?.dateSaved && !current}
-    {@const date = new Date(session?.dateSaved)}
-    <span
-      title="Date of Session"
-      class="bg-overlay-black-8 py-0.5 px-2 rounded text-xs font-bold"
-    >
-      {date.toLocaleDateString('en-US')}
-    </span>
-
-    <span
-      title="Time of Session"
-      class="bg-overlay-black-8 py-0.5 px-2 rounded text-xs font-bold"
-    >
-      {date.toLocaleTimeString('en-US', {
+    🗔 {session?.windowsNumber} - 📑{session?.tabsNumber}
+    {#if session?.dateSaved && !current}
+      {@const date = new Date(session?.dateSaved)}
+      - 📅 {date.toLocaleDateString([])} - 🕒 {date.toLocaleTimeString([], {
         timeStyle: 'short',
       })}
-    </span>
-  {/if}
+    {/if}
+  </p>
 </div>
+
+<style>
+  .session__container {
+    @apply w-full px-2 py-1 mb-2 rounded-md bg-neutral-3 cursor-pointer;
+  }
+
+  .session__container:hover {
+    @apply bg-primary-4;
+  }
+
+  .session__info {
+    @apply flex items-center w-full gap-2 mb-1;
+  }
+
+  .session__input {
+    @apply w-max max-w-[60%] p-1 overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer;
+  }
+
+  .session__input:hover {
+    @apply underline;
+  }
+
+  .session__card {
+    @apply max-w-max bg-overlay-black-8 p-2 rounded text-xs font-bold m-0.5;
+  }
+</style>

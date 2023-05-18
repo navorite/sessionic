@@ -1,6 +1,5 @@
 <script lang="ts">
   import { getAllWindows, getTabsNumber } from '@utils/browser';
-  import { loadSessions } from '@utils/actions';
   import Sessions from './Sessions.svelte';
   import Windows from './Windows.svelte';
   import {
@@ -8,8 +7,6 @@
     selectedSession,
     sessionList,
   } from '@stores/session';
-
-  loadSessions().then(() => ($selectedSession = $currentSession));
 
   getAllWindows().then((windows) => {
     $currentSession = {
@@ -19,6 +16,8 @@
       windowsNumber: windows.length,
       tabsNumber: getTabsNumber(windows),
     };
+
+    $selectedSession = $currentSession;
   });
 </script>
 
