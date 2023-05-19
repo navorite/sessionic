@@ -1,6 +1,7 @@
 import { currentSession, selectedSession, sessionList } from '@stores/session';
 import { sessionsDB } from './database';
 import type { Session } from '../types/extension';
+import { get } from 'svelte/store';
 
 export async function loadSessions(count?: number) {
   sessionList?.set({
@@ -42,5 +43,5 @@ export async function removeSession(target: Session) {
     return sessions;
   });
 
-  currentSession?.subscribe((session) => selectedSession?.set(session));
+  selectedSession?.set(get(currentSession));
 }
