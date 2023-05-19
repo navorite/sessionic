@@ -8,7 +8,6 @@ import {
 import type { Session } from '../types/extension';
 import type { UUID } from 'crypto';
 import log from './log';
-import { sessionList } from '@stores/session';
 
 interface DB extends DBSchema {
   sessions: {
@@ -54,20 +53,7 @@ class SessionsDB {
 
     if (!this.open) await this.initDB();
 
-    return this.db.getAllFromIndex('sessions', 'dateSaved', query, count);
-  }
-
-  async filterSessions(query?: string) {
-    if (!this.open) await this.initDB();
-
-    const tx = this.db.transaction('sessions', 'readonly');
-    const results: Session[] = [];
-
-    for await (const cursor of tx.store.index('dateSaved').iterate()) {
-      if (cursor.value.title.includes(query)) results.push(cursor.value);
-    }
-
-    return results;
+    return await this.db.getAllFromIndex('sessions', 'dateSaved', query, count);
   }
 
   upgradeSessions(

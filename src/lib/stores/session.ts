@@ -1,6 +1,7 @@
 import { writable, type Writable } from 'svelte/store';
-import type { Session } from '../types/extension';
+import type { Session, Sessions } from '../types/extension';
 
-export const sessionList: Writable<Session[]> = writable();
+export const sessionList: Writable<Sessions> = writable();
+
 export const currentSession: Writable<Session> = writable();
 export const selectedSession: Writable<Session> = writable();

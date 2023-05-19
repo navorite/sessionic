@@ -11,6 +11,11 @@ export interface Session {
   id: UUID;
 }
 
+export interface Sessions {
+  unfilteredSessions: Session[];
+  filteredSessions?: Session[];
+}
+
 export type Page = 'popup' | 'options';
 
 export type Icon =

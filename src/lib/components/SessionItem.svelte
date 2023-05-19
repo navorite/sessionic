@@ -11,7 +11,7 @@
   let hover = false;
 
   function handleChange(event) {
-    session.title = (event.currentTarget as HTMLInputElement)?.textContent;
+    session.title = (event?.currentTarget as HTMLInputElement)?.textContent;
     event.currentTarget.contentEditable = 'false';
   }
 
@@ -65,22 +65,19 @@
       <IconButton
         icon="delete"
         title="Remove this window from session"
-        class="ml-auto text-2xl hover:text-warning-pure-1"
+        class="ml-auto text-2xl text-red-500 hover:text-red-800"
         on:click={() => removeSession(session)}
       />
     {/if}
   </div>
 
-  <p
-    title="Session Info: {session?.windowsNumber} Window - {session?.tabsNumber} Tab"
-    class="session__card"
-  >
-    🗔 {session?.windowsNumber} - 📑{session?.tabsNumber}
+  <p title="Session Details" class="session__card">
+    {session?.windowsNumber} Window {session?.windowsNumber > 1 ? 's' : ''} - {session?.tabsNumber}
+    Tab{session?.tabsNumber > 1 ? 's' : ''}
     {#if session?.dateSaved && !current}
+      -
       {@const date = new Date(session?.dateSaved)}
-      - 📅 {date.toLocaleDateString([])} - 🕒 {date.toLocaleTimeString([], {
-        timeStyle: 'short',
-      })}
+      {date.toLocaleString([], { timeStyle: 'short', dateStyle: 'short' })}
     {/if}
   </p>
 </div>

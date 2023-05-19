@@ -3,30 +3,44 @@ import { sessionsDB } from './database';
 import type { Session } from '../types/extension';
 
 export async function loadSessions(count?: number) {
-  sessionList.set(await sessionsDB.loadSessions(null, count));
+  sessionList?.set({
+    unfilteredSessions: await sessionsDB.loadSessions(count),
+  });
 }
 
-export async function filterSessions(query: string) {
-  sessionList.set(await sessionsDB.filterSessions(query));
+export function filterSessions(query: string) {
+  sessionList?.update((sessions) => {
+    if (sessions?.unfilteredSessions?.length) {
+      sessions.filteredSessions = sessions?.unfilteredSessions?.filter(
+        (session) => session?.title?.includes(query)
+      );
+    }
+
+    return sessions;
+  });
 }
 
 export async function saveSession(session: Session) {
   await sessionsDB.saveSession(session);
 
-  sessionList.update((sessions) => {
-    sessions.push(session);
+  sessionList?.update((sessions) => {
+    sessions?.unfilteredSessions?.push(session);
     return sessions;
   });
 
-  selectedSession.set(session);
+  selectedSession?.set(session);
 }
 
 export async function removeSession(target: Session) {
   await sessionsDB.removeSession(target);
 
-  sessionList.update((sessions) =>
-    sessions.filter((session) => session.id !== target.id)
-  );
+  sessionList.update((sessions) => {
+    sessions.unfilteredSessions = sessions?.unfilteredSessions?.filter(
+      (session) => session.id !== target.id
+    );
 
-  currentSession.subscribe((session) => selectedSession.set(session));
+    return sessions;
+  });
+
+  currentSession?.subscribe((session) => selectedSession?.set(session));
 }
