@@ -25,7 +25,7 @@
   </h2>
 
   {#if sessions}
-    {#each { length: sessions.length } as _, i}
+    {#each { length: Math.min(sessions.length, 50) } as _, i}
       {@const session = sessions[sessions.length - i - 1]}
       <SessionItem
         {session}
