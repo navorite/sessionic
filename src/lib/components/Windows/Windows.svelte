@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Session } from '../types/extension';
+  import type { Session } from '../../types/extension';
   import WindowItem from './WindowItem.svelte';
 
   export let session: Session;

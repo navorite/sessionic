@@ -2,7 +2,19 @@ import browser from 'webextension-polyfill';
 import type { QueryInfo, Tab, WindowInfo, Window } from '../types/browser';
 import type { Session } from '../types/extension';
 
-export async function getCurrentSession() {}
+export async function getCurrentSession(): Promise<Session> {
+  const windows = await getAllWindows();
+
+  return {
+    title: 'Current Session',
+    windows: windows,
+    windowsNumber: windows?.length,
+    tabsNumber: getTabsNumber(windows),
+    dateModified: null,
+    dateSaved: null,
+    id: null,
+  };
+}
 
 // Get current active tab
 

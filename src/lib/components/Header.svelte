@@ -3,12 +3,11 @@
   import { handleDarkMode, openOptions, openPopup } from '@utils/extension';
   import IconButton from '@components/IconButton.svelte';
   import SearchBar from '@components/SearchBar.svelte';
-  import { filterSessions } from '@utils/actions';
-  import { sessionList } from '@stores/session';
+  import { sessions } from '@stores/sessions';
 
   let searchValue = '';
 
-  $: $sessionList?.unfilteredSessions, filterSessions(searchValue.trim());
+  $: $sessions?.unfiltered, sessions.search(searchValue.trim());
 </script>
 
 <div class="flex items-center w-full h-8">
