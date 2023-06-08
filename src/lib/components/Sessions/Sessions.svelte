@@ -1,26 +1,88 @@
 <script lang="ts">
-  import SessionsList from './SessionList.svelte';
-  import SessionItem, { selected } from './SessionItem.svelte';
+  import Session from './Session.svelte';
   import Windows from '../Windows/Windows.svelte';
+  import type { Session as SessionType } from '../../types/extension';
   import { currentSession, sessions } from '@stores/sessions';
   import { filterOptions } from '@stores/settings';
+  import ListView from '@components/basic/List/ListView.svelte';
+  import CurrentSession from './Current.svelte';
+
+  let selected: SessionType;
+
+  currentSession.load().then(() => {
+    selectSession($currentSession);
+  });
+
+  function selectSession(session: SessionType) {
+    selected = session;
+  }
 
   $: filtered = sessions?.filter($filterOptions?.query.trim()) || $sessions;
 </script>
 
 <div class="w-full h-full max-h-[90vh] mt-1 flex gap-2">
-  <div class="w-[50%] overflow-y-auto pr-4">
-    <SessionItem current session={$currentSession} />
-    {#await sessions?.load()}
-      <h2 class="text-lg font-bold mt-4 mb-1">Loading saved sessions...</h2>
-    {:then}
-      <h2 class="text-lg font-bold mt-4 mb-1">
-        Sessions ({filtered?.length ?? 0})
-      </h2>
+  <div class="w-[50%] h-full flex flex-col">
+    <CurrentSession
+      session={$currentSession}
+      selected={$currentSession === selected}
+      on:click={() => selectSession($currentSession)}
+    />
 
-      <SessionsList sessions={filtered} />
+    <h2 class="text-lg font-bold mb-1">
+      Sessions ({filtered?.length ?? 'Loading saved sessions...'})
+    </h2>
+
+    {#await sessions?.load() then}
+      <ListView class="flex-1 overflow-y-auto pr-4">
+        {#if filtered}
+          {#each filtered as _, i (i)}
+            {@const session = filtered[filtered.length - i - 1]}
+
+            <Session
+              {session}
+              on:click={() => selectSession(session)}
+              selected={session === selected}
+            />
+          {/each}
+        {/if}
+      </ListView>
     {/await}
   </div>
 
-  <Windows class="w-[50%] overflow-y-auto pr-4" session={$selected} />
+  <Windows
+    class="w-[50%] overflow-y-auto pr-4"
+    session={selected}
+    on:delete={async (event) => {
+      const target = event.detail.window;
+      const index = selected.windows.indexOf(target);
+
+      if (index === -1) return;
+
+      selected.windows = selected.windows.slice(0);
+      selected.windows[index] = { ...selected.windows[index] };
+
+      if (event.detail.tab) {
+        const tabIndex = selected.windows[index].tabs.indexOf(event.detail.tab);
+
+        if (tabIndex === -1) return;
+
+        selected.windows[index].tabs = selected.windows[index].tabs.slice(0);
+        selected.windows[index].tabs.splice(tabIndex, 1);
+
+        if (!selected.windows[index].tabs.length)
+          selected.windows.splice(index, 1);
+
+        selected.tabsNumber--;
+      } else {
+        selected.windows.splice(index, 1);
+        selected.tabsNumber -= event.detail.window.tabs.length;
+      }
+
+      if (selected === $currentSession) return;
+
+      selected.dateModified = new Date().getTime();
+
+      await sessions.put(selected);
+    }}
+  />
 </div>

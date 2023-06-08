@@ -1,6 +1,7 @@
 <script lang="ts">
+  import ListView from '@components/basic/List/ListView.svelte';
   import type { Session } from '../../types/extension';
-  import WindowItem from './WindowItem.svelte';
+  import Window from './Window.svelte';
 
   export let session: Session;
 
@@ -10,9 +11,9 @@
 </script>
 
 {#if session}
-  <div class={className}>
+  <ListView class={className}>
     {#each session.windows as window}
-      <WindowItem {window} />
+      <Window {window} on:delete />
     {/each}
-  </div>
+  </ListView>
 {/if}

@@ -1,16 +1,19 @@
 <script lang="ts">
+  import ListView from '@components/basic/List/ListView.svelte';
   import type { Window } from '../../types/browser';
-  import TabItem from './TabItem.svelte';
+  import Tab from './Tab.svelte';
 
   export let window: Window;
 
-  let className = '';
+  export let className = '';
   export { className as class };
 </script>
 
-<div class={className}>
-  {#each window?.tabs as tab}
-    <!-- {@const tabItem = tabsURL.push(tab.url)} -->
-    <TabItem {tab} />
-  {/each}
-</div>
+{#if window}
+  <ListView class={className}>
+    {#each window?.tabs as tab}
+      <!-- {@const tabItem = tabsURL.push(tab.url)} -->
+      <Tab {tab} on:delete />
+    {/each}
+  </ListView>
+{/if}

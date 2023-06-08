@@ -53,7 +53,15 @@ class SessionsDB {
 
     if (!this.open) await this.initDB();
 
-    return await this.db.getAllFromIndex('sessions', 'dateSaved', query, count);
+    return this.db.getAllFromIndex('sessions', 'dateSaved', query, count);
+  }
+
+  async updateSession(session: Session) {
+    log.info('updateSession(): init');
+
+    if (!this.open) await this.initDB();
+
+    return this.db.put('sessions', session);
   }
 
   upgradeSessions(

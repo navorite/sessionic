@@ -1,30 +1,16 @@
 import browser from 'webextension-polyfill';
-import type { QueryInfo, Tab, WindowInfo, Window } from '../types/browser';
+import type { QueryInfo, Tab, Window } from '../types/browser';
 import type { Session } from '../types/extension';
-
-export async function getCurrentSession(): Promise<Session> {
-  const windows = await getAllWindows();
-
-  return {
-    title: 'Current Session',
-    windows: windows,
-    windowsNumber: windows?.length,
-    tabsNumber: getTabsNumber(windows),
-    dateModified: null,
-    dateSaved: null,
-    id: null,
-  };
-}
 
 // Get current active tab
 
 export async function getCurrentTab(): Promise<Tab> {
-  return (await getCurrentWindowTabs({ active: true }))[0];
+  return (await getWindowTabs({ active: true }))[0];
 }
 
 // Get all tabs of current window
 
-export async function getCurrentWindowTabs(
+export async function getWindowTabs(
   optionalQuery: QueryInfo = {}
 ): Promise<Tab[]> {
   return getTabs({ ...optionalQuery, currentWindow: true });
@@ -36,25 +22,41 @@ export async function getTabs(queryInfo: QueryInfo = {}): Promise<Tab[]> {
   return browser?.tabs?.query?.(queryInfo);
 }
 
-// Get Tabs number using array of Window
+// Get current session (Either all windows or current window)
 
-export function getTabsNumber(windows: Window[]) {
-  let number = 0;
+export async function getSession() {
+  let session = { title: 'Current Session', windows: [] } as Session;
+  let tabsNumber = 0;
+
+  const windows = await browser?.windows?.getAll();
+
   for (const window of windows) {
-    number += window?.tabs?.length;
+    window.tabs = await getTabs({ windowId: window.id, url: '*://*/*' });
+    tabsNumber += window.tabs.length;
+    session.windows.push(window);
   }
 
-  return number;
+  session.tabsNumber = tabsNumber;
+
+  return session;
 }
 
-// Get windows object that match that obj values
-
-export async function getAllWindows(
-  getInfo: WindowInfo = { populate: true, windowTypes: ['normal'] }
-) {
-  return browser?.windows?.getAll?.(getInfo);
+export async function openWindow(window: Window) {
+  //WIP
+  const windowId = (await browser?.windows?.create({ focused: window.focused }))
+    .id;
+  for (const tab of window?.tabs) {
+    browser?.tabs?.create({
+      url: tab.url,
+      active: tab.active,
+      windowId: windowId,
+      discarded: tab.active,
+    });
+  }
 }
 
-export async function openWindow(tabsURL: string[]) {
-  return browser?.windows?.create({ url: tabsURL });
+export async function openSession(session: Session) {
+  for (const window of session.windows) {
+    openWindow(window);
+  }
 }
