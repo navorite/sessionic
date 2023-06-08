@@ -4,7 +4,6 @@ import type { Window } from './browser';
 export interface Session {
   title: string;
   windows: Window[];
-  windowsNumber: number;
   tabsNumber: number;
   dateSaved: number;
   dateModified: number;
