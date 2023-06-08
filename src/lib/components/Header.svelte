@@ -1,19 +1,14 @@
 <script lang="ts">
-  import { dark, isTabPopup } from '@stores/settings';
+  import { dark, filterOptions, isTabPopup } from '@stores/settings';
   import { handleDarkMode, openOptions, openPopup } from '@utils/extension';
   import IconButton from '@components/IconButton.svelte';
   import SearchBar from '@components/SearchBar.svelte';
-  import { sessions } from '@stores/sessions';
-
-  let searchValue = '';
-
-  $: $sessions?.unfiltered, sessions.search(searchValue.trim());
 </script>
 
 <div class="flex items-center w-full h-8">
   <h1>Tabify</h1>
   <div class="flex items-center justify-end w-full h-full gap-2">
-    <SearchBar bind:value={searchValue} />
+    <SearchBar bind:value={$filterOptions.query} />
 
     {#if !$isTabPopup}
       <IconButton

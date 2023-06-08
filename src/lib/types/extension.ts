@@ -11,9 +11,9 @@ export interface Session {
   id: UUID;
 }
 
-export interface Sessions {
-  unfiltered: Session[];
-  filtered?: Session[];
+export interface FilterOptions {
+  query?: string;
+  default_tabs?: boolean;
 }
 
 export type Page = 'popup' | 'options';

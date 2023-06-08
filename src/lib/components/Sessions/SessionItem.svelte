@@ -9,8 +9,9 @@
   import type { Session } from '../../types/extension';
   import { sessions, currentSession } from '@stores/sessions';
   import { fade } from 'svelte/transition';
+  // import { beforeUpdate } from 'svelte/internal';
 
-  // TODO: optimize updates
+  // // TODO: optimize updates
   // function flash(element) {
   //   let timeout;
   //   const color = element.style.backgroundColor;

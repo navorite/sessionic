@@ -1,54 +1,50 @@
 import { writable, type Writable } from 'svelte/store';
-import type { Session, Sessions } from '../types/extension';
+import type { Session } from '../types/extension';
 import { sessionsDB } from '@utils/database';
 import { getCurrentSession } from '@utils/browser';
 import { selected } from '@components/Sessions/SessionItem.svelte';
 
 export const sessions = (() => {
-  const { subscribe, update }: Writable<Sessions> = writable();
+  const { subscribe, set, update }: Writable<Session[]> = writable();
 
   return {
     subscribe,
 
     async load(count?: number) {
-      const result = await sessionsDB.loadSessions(count);
-
-      update((sessions) => {
-        return { ...sessions, Sessions: result };
-      });
+      set(await sessionsDB.loadSessions(count));
     },
 
     async add(session: Session) {
       await sessionsDB.saveSession(session);
 
       update((sessions) => {
-        sessions.filtered.push(session);
+        sessions.push(session);
         return sessions;
       });
     },
 
     async remove(target: Session) {
-      await sessionsDB.removeSession(target);
-
       update((sessions) => {
-        sessions.unfiltered = sessions.unfiltered.filter(
-          (session) => session.id !== target.id
-        );
+        sessions = sessions.filter((session) => session.id !== target.id);
 
         return sessions;
       });
+
+      await sessionsDB.removeSession(target);
     },
 
-    search(query: string) {
-      update((sessions) => {
-        if (sessions?.unfiltered) {
-          sessions.filtered = sessions?.unfiltered?.filter((session) =>
-            session?.title?.includes(query)
-          );
+    filter(query: string) {
+      let filtered: Session[];
 
-          return sessions;
-        }
+      const unsubscribe = subscribe((sessions) => {
+        filtered = sessions?.filter?.((session) =>
+          session?.title?.includes(query)
+        );
       });
+
+      unsubscribe();
+
+      return filtered;
     },
   };
 })();
