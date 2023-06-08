@@ -12,8 +12,8 @@ export interface Session {
 }
 
 export interface Sessions {
-  unfilteredSessions: Session[];
-  filteredSessions?: Session[];
+  unfiltered: Session[];
+  filtered?: Session[];
 }
 
 export type Page = 'popup' | 'options';

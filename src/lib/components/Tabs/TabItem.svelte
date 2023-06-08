@@ -1,6 +1,6 @@
 <script lang="ts">
-  import IconButton from './IconButton.svelte';
-  import type { Tab } from '../types/browser';
+  import IconButton from '../IconButton.svelte';
+  import type { Tab } from '../../types/browser';
 
   export let tab: Tab;
 
@@ -38,7 +38,7 @@
     <IconButton
       icon="delete"
       title="Remove tab from session"
-      class="ml-auto text-2xl hover:text-warning-pure-1"
+      class="ml-auto text-2xl text-red-500 hover:text-red-800"
     />
   {/if}
 </div>

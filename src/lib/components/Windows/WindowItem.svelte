@@ -1,8 +1,8 @@
 <script lang="ts">
-  import IconButton from './IconButton.svelte';
+  import IconButton from '../IconButton.svelte';
   import { openWindow } from '@utils/browser';
-  import type { Window } from '../types/browser';
-  import Tabs from './Tabs.svelte';
+  import type { Window } from '../../types/browser';
+  import Tabs from '../Tabs/Tabs.svelte';
 
   export let window: Window;
 
@@ -44,7 +44,7 @@
   <IconButton
     icon="delete"
     title="Remove this window from session"
-    class="invisible ml-auto text-2xl hover:text-warning-pure-1 group-hover/w:visible"
+    class="invisible ml-auto text-2xl text-red-500 hover:text-red-800 group-hover/w:visible"
   />
 </div>
 

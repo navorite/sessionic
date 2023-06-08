@@ -1,11 +1,33 @@
+<script lang="ts" context="module">
+  import { writable, type Writable } from 'svelte/store';
+
+  export const selected: Writable<Session> = writable();
+</script>
+
 <script lang="ts">
-  import IconButton from './IconButton.svelte';
-  import type { Session } from '../types/extension';
-  import { currentSession } from '@stores/session';
-  import { removeSession, saveSession } from '@utils/actions';
+  import IconButton from '../IconButton.svelte';
+  import type { Session } from '../../types/extension';
+  import { sessions, currentSession } from '@stores/sessions';
+  import { fade } from 'svelte/transition';
+
+  // TODO: optimize updates
+  // function flash(element) {
+  //   let timeout;
+  //   const color = element.style.backgroundColor;
+  //   beforeUpdate(() => {
+  //     requestAnimationFrame(() => {
+  //       element.style.backgroundColor = 'red';
+
+  //       if (timeout) clearTimeout(timeout);
+
+  //       timeout = setTimeout(() => {
+  //         element.style.backgroundColor = color;
+  //       }, 600);
+  //     });
+  //   });
+  // }
 
   export let session: Session;
-  export let selected = false;
   export let current = false;
 
   let hover = false;
@@ -20,7 +42,7 @@
 
     const date = new Date().getTime();
 
-    await saveSession({
+    await sessions.add({
       ...$currentSession,
       title: session.title,
       dateSaved: date,
@@ -34,9 +56,14 @@
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <div
-  class="session__container {selected ? '!bg-primary-5' : ''}"
+  transition:fade
+  class="session__container {$selected === session ? '!bg-primary-5' : ''}"
   tabindex="0"
-  on:click
+  on:click={() => {
+    if ($selected !== session) {
+      $selected = session;
+    }
+  }}
   on:mouseover={() => {
     hover = true;
   }}
@@ -49,6 +76,7 @@
       title="Open Session"
       class="session__input"
       on:click={(event) => (event.currentTarget.contentEditable = 'true')}
+      spellcheck={false}
       on:blur={handleChange}
     >
       {session?.title}
@@ -66,17 +94,17 @@
         icon="delete"
         title="Remove this window from session"
         class="ml-auto text-2xl text-red-500 hover:text-red-800"
-        on:click={() => removeSession(session)}
+        on:click={() => sessions.remove(session)}
       />
     {/if}
   </div>
 
   <p title="Session Details" class="session__card">
-    {session?.windowsNumber} Window {session?.windowsNumber > 1 ? 's' : ''} - {session?.tabsNumber}
+    {session?.windowsNumber} Window{session?.windowsNumber > 1 ? 's' : ''} - {session?.tabsNumber}
     Tab{session?.tabsNumber > 1 ? 's' : ''}
     {#if session?.dateSaved && !current}
       -
-      {@const date = new Date(session?.dateSaved)}
+      {@const date = new Date(session.dateSaved)}
       {date.toLocaleString([], { timeStyle: 'short', dateStyle: 'short' })}
     {/if}
   </p>

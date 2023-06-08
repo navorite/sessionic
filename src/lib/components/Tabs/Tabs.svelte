@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Window } from '../types/browser';
+  import type { Window } from '../../types/browser';
   import TabItem from './TabItem.svelte';
 
   export let window: Window;
