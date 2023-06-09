@@ -49,7 +49,7 @@ export const sessions = (() => {
 
     const unsubscribe = subscribe((sessions) => {
       filtered = sessions?.filter?.((session) =>
-        session?.title?.includes(query)
+        session?.title?.toLowerCase().includes(query)
       );
     });
 

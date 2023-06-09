@@ -32,7 +32,6 @@
 
     {#if hover}
       <IconButton
-        slot="actions"
         icon="delete"
         title="Delete tab"
         on:click={() => {

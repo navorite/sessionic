@@ -4,6 +4,9 @@
   import { sessions } from '@stores/sessions';
   import ListItem from '@components/basic/List/ListItem.svelte';
   import { openSession } from '@utils/browser';
+  import { filterOptions } from '@stores/settings';
+  import { markResult } from '@utils/markResult';
+  //import { afterUpdate } from 'svelte';
 
   // import { beforeUpdate } from 'svelte/internal';
 
@@ -28,9 +31,15 @@
   export let selected = false;
 
   function handleChange(event) {
-    session.title = (event?.currentTarget as HTMLInputElement)?.textContent;
+    const name = (event?.currentTarget as HTMLInputElement)?.textContent;
+    if (name.length < 20) session.title = name;
+
     event.currentTarget.contentEditable = 'false';
   }
+
+  $: title = $filterOptions.query.trim()
+    ? markResult(session?.title, $filterOptions.query, false)
+    : session?.title;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -58,7 +67,7 @@
       spellcheck={false}
       on:blur={handleChange}
     >
-      {session?.title}
+      {@html title}
     </div>
 
     {#if hover}

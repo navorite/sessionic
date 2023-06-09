@@ -17,7 +17,8 @@
     selected = session;
   }
 
-  $: filtered = sessions?.filter($filterOptions?.query.trim()) || $sessions;
+  $: filtered =
+    sessions?.filter($filterOptions?.query.trim().toLowerCase()) || $sessions;
 </script>
 
 <div class="w-full h-full max-h-[90vh] mt-1 flex gap-2">
