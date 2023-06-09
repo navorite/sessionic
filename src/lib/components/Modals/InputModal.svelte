@@ -8,6 +8,9 @@
 
   export let open;
 
+  export let minlength = 3;
+  export let maxlength = 40;
+
   const dispatch = createEventDispatcher();
 </script>
 
@@ -21,12 +24,12 @@
     id={type}
     placeholder="Session name..."
     spellcheck={false}
-    minlength="5"
-    maxlength="40"
+    {minlength}
+    {maxlength}
     bind:value
   />
   <button
-    disabled={value.length < 5 || value.length > 40}
+    disabled={value.length < minlength || value.length > maxlength}
     slot="actions"
     type="button"
     class="px-4 py-1 bg-primary-8 rounded-md hover:bg-primary-9 disabled:bg-neutral-3 disabled:text-neutral-7"

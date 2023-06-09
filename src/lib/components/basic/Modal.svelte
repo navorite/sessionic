@@ -17,7 +17,7 @@
     on:click|stopPropagation
   >
     <div class="flex items-center">
-      <h2 class="text-lg font-bold text-neutral-12">
+      <h2 class="text-lg font-semibold text-neutral-12">
         <slot name="header" />
       </h2>
 
