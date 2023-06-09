@@ -9,33 +9,39 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <dialog
   bind:this={dialogEl}
-  on:click|self={() => (open = false)}
-  class="h-1/3 w-1/2 max-h-lg max-w-lg p-0 bg-transparent backdrop-blur rounded-md border-2 border-solid border-neutral-3"
+  on:mousedown|self={() => (open = false)}
+  class="max-h-lg max-w-lg p-0 bg-transparent backdrop-blur rounded-md border-2 border-solid border-neutral-8"
 >
-  <div class="h-full w-full p-2" on:click|stopPropagation>
+  <div
+    class="min-w-[16rem] min-h-[8rem] w-full h-full p-2 flex flex-col gap-4"
+    on:click|stopPropagation
+  >
     <div class="flex items-center">
-      <h2 class="text-lg font-bold text-neutral-2">
+      <h2 class="text-lg font-bold text-neutral-12">
         <slot name="header" />
       </h2>
 
       <button
         type="button"
-        class="px-2 bg-neutral-4 hover:bg-neutral-5 rounded-md ml-auto font-bold"
+        class="px-2 bg-neutral-4 hover:bg-neutral-5 rounded-md ml-auto font-bold hover:text-red-600"
         title="Close modal"
         on:click={() => (open = false)}>X</button
       >
     </div>
+
     <slot name="content" />
-    <div class="actions absolute bottom-2 right-2">
-      <slot name="actions" />
+
+    <div class="mt-auto ml-auto font-semibold">
       <button
-        class="px-4 py-1 bg-neutral-4 rounded-md font-bold hover:bg-neutral-5"
+        class="px-4 py-1 bg-neutral-4 rounded-md hover:bg-neutral-5"
         type="button"
         title="Close modal"
         on:click={() => {
           open = false;
         }}>Cancel</button
       >
+
+      <slot name="actions" />
     </div>
   </div>
 </dialog>

@@ -6,6 +6,8 @@
   import { filterOptions } from '@stores/settings';
   import ListView from '@components/basic/List/ListView.svelte';
   import CurrentSession from './Current.svelte';
+  import InputModal from '@components/Modals/InputModal.svelte';
+  import { generateSession } from '@utils/generateSession';
 
   let selected: SessionType;
 
@@ -17,9 +19,28 @@
     selected = session;
   }
 
+  let modalSession: SessionType;
+  let modalType: 'Save' | 'Rename' = 'Save';
+  let modalShow = false;
+
   $: filtered =
     sessions?.filter($filterOptions?.query.trim().toLowerCase()) || $sessions;
 </script>
+
+<InputModal
+  bind:open={modalShow}
+  type={modalType}
+  value={modalSession?.title}
+  on:inputSubmit={async (event) => {
+    modalSession.title = event.detail.value;
+
+    if (modalSession === $currentSession)
+      sessions.add(await generateSession(modalSession));
+    else await sessions.put(modalSession);
+
+    modalShow = false;
+  }}
+/>
 
 <div class="w-full h-full max-h-[90vh] mt-1 flex gap-2">
   <div class="w-[50%] h-full flex flex-col">
@@ -27,6 +48,11 @@
       session={$currentSession}
       selected={$currentSession === selected}
       on:click={() => selectSession($currentSession)}
+      on:saveModal={() => {
+        modalType = 'Save';
+        modalShow = true;
+        modalSession = $currentSession;
+      }}
     />
 
     <h2 class="text-lg font-bold mb-1">
@@ -43,6 +69,11 @@
               {session}
               on:click={() => selectSession(session)}
               selected={session === selected}
+              on:renameModal={() => {
+                modalShow = true;
+                modalType = 'Rename';
+                modalSession = session;
+              }}
             />
           {/each}
         {/if}

@@ -13,25 +13,9 @@ export default {
         //'overlay-neutral': generateScale('grayA', 1, 12),
         'overlay-black': generateScale('blackA', 1, 12),
         'overlay-white': generateScale('whiteA', 1, 12),
-        'neutral-pure': generateScale('gray', 9, 10),
-        'primary-pure': generateScale('indigo', 9, 10),
-        'secondary-pure': generateScale('blue', 9, 10),
-      },
-
-      textColor: {
-        neutral: generateScale('gray', 11, 12),
-      },
-
-      backgroundColor: {
-        neutral: generateScale('gray', 1, 5),
-        primary: generateScale('indigo', 1, 5),
-        secondary: generateScale('blue', 1, 5),
-      },
-
-      borderColor: {
-        neutral: generateScale('gray', 6, 8),
-        primary: generateScale('indigo', 6, 8),
-        secondary: generateScale('blue', 6, 8),
+        neutral: generateScale('gray', 1, 12),
+        primary: generateScale('indigo', 1, 12),
+        secondary: generateScale('blue', 1, 12),
       },
     },
   },

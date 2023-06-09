@@ -6,6 +6,7 @@
   import { openSession } from '@utils/browser';
   import { filterOptions } from '@stores/settings';
   import { markResult } from '@utils/markResult';
+  import { createEventDispatcher } from 'svelte';
   //import { afterUpdate } from 'svelte';
 
   // import { beforeUpdate } from 'svelte/internal';
@@ -30,12 +31,7 @@
   export let session: Session;
   export let selected = false;
 
-  function handleChange(event) {
-    const name = (event?.currentTarget as HTMLInputElement)?.textContent;
-    if (name.length < 20) session.title = name;
-
-    event.currentTarget.contentEditable = 'false';
-  }
+  const dispatch = createEventDispatcher();
 
   $: title = $filterOptions.query.trim()
     ? markResult(session?.title, $filterOptions.query, false)
@@ -43,38 +39,36 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <ListItem
   let:hover
   class="session-container {selected ? '!bg-primary-5' : ''}"
   on:click
 >
   <div class="item-info">
-    <div
+    <p
       title="Open Session"
       class="item-input"
-      on:click={(event) => {
+      on:click={() => {
         openSession(session);
-        event.currentTarget.contentEditable = 'true';
-
-        //TODO: make it so that it resets after a timeout
-        // setTimeout(() => {
-        //   console.log('hey');
-        //   if (document.activeElement !== event.currentTarget)
-        //     event.currentTarget.contentEditable = 'false';
-        // }, 200);
       }}
-      spellcheck={false}
-      on:blur={handleChange}
     >
       {@html title}
-    </div>
+    </p>
 
     {#if hover}
       <IconButton
+        icon="options"
+        title="Rename session"
+        class="ml-auto text-2xl hover:text-primary-9"
+        on:click={() => {
+          dispatch('renameModal');
+        }}
+      />
+
+      <IconButton
         icon="delete"
         title="Delete session"
-        class="ml-auto text-2xl text-red-500 hover:text-red-800"
+        class="text-2xl text-red-500 hover:text-red-800"
         on:click={() => sessions.remove(session)}
       />
     {/if}
@@ -97,7 +91,7 @@
   }
 
   .item-input {
-    @apply w-max max-w-[60%] p-1 overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer;
+    @apply w-max max-w-[85%] p-1 overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer;
   }
 
   .item-input:hover {

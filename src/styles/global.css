@@ -17,7 +17,7 @@ body {
 }
 
 body {
-  @apply mx-auto container min-h-[500px] min-w-[800px] px-4 py-2 text-neutral-2 bg-neutral-1 font-sans scroll-smooth;
+  @apply mx-auto container min-h-[500px] min-w-[800px] px-4 py-2 text-neutral-12 bg-neutral-1 font-sans scroll-smooth;
 }
 
 #root {
