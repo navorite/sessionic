@@ -1,50 +1,28 @@
 <script lang="ts">
   import IconButton from '../IconButton.svelte';
   import type { Session } from '../../types/extension';
-  import { sessions } from '@stores/sessions';
+  import { createEventDispatcher } from 'svelte';
 
   export let session: Session;
   export let selected = true;
 
-  function handleChange(event) {
-    session.title = (event?.currentTarget as HTMLInputElement)?.textContent;
-    event.currentTarget.contentEditable = 'false';
-  }
-
-  async function handleSave() {
-    if (session.title === '') return;
-
-    const date = new Date().getTime();
-
-    await sessions.add({
-      ...session,
-      title: session.title,
-      dateSaved: date,
-      dateModified: date,
-      id: crypto.randomUUID(),
-    });
-  }
+  const dispatch = createEventDispatcher();
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <div class="session-container {selected ? '!bg-primary-5' : ''}" on:click>
   <div class="item-info">
-    <div
-      title="Current Session"
-      class="item-input"
-      on:click={(event) => (event.currentTarget.contentEditable = 'true')}
-      spellcheck={false}
-      on:blur={handleChange}
-    >
+    <p title="Current Session" class="item-input">
       {session?.title}
-    </div>
+    </p>
 
     <IconButton
       icon="save"
       title="Save session"
       class="ml-auto text-2xl hover:text-primary-pure-1"
-      on:click={handleSave}
+      on:click={() => {
+        dispatch('saveModal');
+      }}
     />
   </div>
 

@@ -24,6 +24,7 @@
     )
       showInputBar = false;
   }
+
   // function expandWidth(node: HTMLElement, duration: number) {
   //   if (!node?.offsetWidth) return;
   //   const width = node.offsetWidth;
@@ -47,6 +48,7 @@
   {#if showInputBar}
     <input
       bind:this={inputEl}
+      spellcheck={false}
       type="text"
       title="Search for Session or Tab name..."
       placeholder="Search Session..."
