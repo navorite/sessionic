@@ -2,7 +2,7 @@
   import IconButton from '../IconButton.svelte';
   import type { Window } from '../../types/browser';
   import Tabs from '../Tabs/Tabs.svelte';
-  import ListItem from '@components/basic/List/ListItem.svelte';
+  import ListItem from '@components/basic/ListItem.svelte';
   import { openWindow } from '@utils/browser';
   import { createEventDispatcher } from 'svelte';
 
@@ -14,11 +14,7 @@
   // let tabsURL = [];
 </script>
 
-{#if !window.tabs.length}
-  <h2 class="text-lg font-bold mb-1 text-center">
-    Start opening some tabs and windows to view them here!
-  </h2>
-{:else}
+{#if window.tabs.length}
   <ListItem class="mb-2 rounded-md bg-neutral-3">
     <div
       class="flex items-center gap-2 group/w rounded-md hover:bg-primary-4 p-2 mb-1"
@@ -35,7 +31,7 @@
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <span
         title="Open this Window in a New Window"
-        class="w-max max-w-[60%] overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline"
+        class="w-max max-w-[60%] font-semibold overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline"
         on:click={() => {
           openWindow(window);
         }}

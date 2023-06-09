@@ -47,6 +47,22 @@ div {
   @apply bg-primary-4;
 }
 
+.session-info {
+  @apply flex items-center w-full gap-2 mb-1;
+}
+
+.session-name {
+  @apply flex-1 max-w-max p-1 overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer font-semibold;
+}
+
+.session-name:hover {
+  @apply underline;
+}
+
+.session-card {
+  @apply max-w-max bg-overlay-black-8 p-2 rounded text-xs font-semibold m-0.5;
+}
+
 mark {
   background-color: var(--indigo9, yellow);
   color: var(--gray1);

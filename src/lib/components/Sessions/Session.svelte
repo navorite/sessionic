@@ -1,8 +1,7 @@
 <script lang="ts">
   import IconButton from '../IconButton.svelte';
   import type { Session } from '../../types/extension';
-  import { sessions } from '@stores/sessions';
-  import ListItem from '@components/basic/List/ListItem.svelte';
+  import ListItem from '@components/basic/ListItem.svelte';
   import { openSession } from '@utils/browser';
   import { filterOptions } from '@stores/settings';
   import { markResult } from '@utils/markResult';
@@ -44,16 +43,16 @@
   class="session-container {selected ? '!bg-primary-5' : ''}"
   on:click
 >
-  <div class="item-info">
-    <p
+  <div class="session-info">
+    <span
       title="Open Session"
-      class="item-input"
+      class="session-name"
       on:click={() => {
         openSession(session);
       }}
     >
       {@html title}
-    </p>
+    </span>
 
     {#if hover}
       <IconButton
@@ -69,12 +68,12 @@
         icon="delete"
         title="Delete session"
         class="text-2xl text-red-500 hover:text-red-800"
-        on:click={() => sessions.remove(session)}
+        on:click={() => dispatch('deleteModal')}
       />
     {/if}
   </div>
 
-  <p title="Session Details" class="item-card backdrop-blur-md">
+  <p title="Session Details" class="session-card">
     {session?.windows?.length} Window{session?.windows.length > 1 ? 's' : ''} - {session?.tabsNumber}
     Tab{session?.tabsNumber > 1 ? 's' : ''}
     {#if session?.dateSaved}
@@ -84,21 +83,3 @@
     {/if}
   </p>
 </ListItem>
-
-<style>
-  .item-info {
-    @apply flex items-center w-full gap-2 mb-1;
-  }
-
-  .item-input {
-    @apply w-max max-w-[85%] p-1 overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer;
-  }
-
-  .item-input:hover {
-    @apply underline;
-  }
-
-  .item-card {
-    @apply max-w-max bg-overlay-black-8 p-2 rounded text-xs font-bold m-0.5;
-  }
-</style>

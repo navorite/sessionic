@@ -1,5 +1,4 @@
 <script lang="ts">
-  import ListView from '@components/basic/List/ListView.svelte';
   import type { Session } from '../../types/extension';
   import Window from './Window.svelte';
 
@@ -11,9 +10,13 @@
 </script>
 
 {#if session}
-  <ListView class={className}>
+  <ul class={className}>
     {#each session.windows as window}
       <Window {window} on:delete />
     {/each}
-  </ListView>
+  </ul>
+{:else}
+  <h2 class="text-lg font-bold mb-1 text-center">
+    Start opening some tabs and windows to view them here!
+  </h2>
 {/if}

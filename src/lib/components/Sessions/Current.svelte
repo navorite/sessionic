@@ -11,8 +11,8 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="session-container {selected ? '!bg-primary-5' : ''}" on:click>
-  <div class="item-info">
-    <p title="Current Session" class="item-input">
+  <div class="session-info">
+    <p title="Current Session" class="session-name">
       {session?.title}
     </p>
 
@@ -26,26 +26,8 @@
     />
   </div>
 
-  <p title="Session Details" class="item-card">
+  <p title="Session Details" class="session-card">
     {session?.windows.length} Window{session?.windows.length > 1 ? 's' : ''} - {session?.tabsNumber}
     Tab{session?.tabsNumber > 1 ? 's' : ''}
   </p>
 </div>
-
-<style>
-  .item-info {
-    @apply flex items-center w-full gap-2 mb-1;
-  }
-
-  .item-input {
-    @apply w-max max-w-[60%] p-1 overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer;
-  }
-
-  .item-input:hover {
-    @apply underline;
-  }
-
-  .item-card {
-    @apply max-w-max bg-overlay-black-8 p-2 rounded text-xs font-bold m-0.5;
-  }
-</style>

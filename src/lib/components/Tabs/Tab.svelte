@@ -1,7 +1,7 @@
 <script lang="ts">
   import IconButton from '@components/IconButton.svelte';
   import type { Tab } from '../../types/browser';
-  import ListItem from '@components/basic/List/ListItem.svelte';
+  import ListItem from '@components/basic/ListItem.svelte';
   import { createEventDispatcher } from 'svelte';
 
   export let tab: Tab;
@@ -44,7 +44,7 @@
 
 <style>
   .link {
-    @apply w-max max-w-[90%] flex items-center gap-2 overflow-hidden;
+    @apply w-max max-w-[90%] flex items-center gap-2 overflow-hidden font-semibold;
   }
 
   .link:hover {
