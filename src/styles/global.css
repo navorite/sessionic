@@ -46,3 +46,11 @@ div {
 .session-container:hover {
   @apply bg-primary-4;
 }
+
+mark {
+  background-color: var(--indigo9, yellow);
+  color: var(--gray1);
+  border-radius: 4px;
+  padding: 2px;
+  margin: auto 1px;
+}
