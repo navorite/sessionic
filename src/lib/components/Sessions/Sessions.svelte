@@ -7,7 +7,7 @@
   import CurrentSession from './Current.svelte';
   import InputModal from '@components/Modals/InputModal.svelte';
   import { generateSession } from '@utils/generateSession';
-  import { getViewportData } from '@utils/viewport';
+  import { getAvailableViewport } from '@utils/viewport';
   import ActionModal from '@components/Modals/ActionModal.svelte';
 
   let divEl: HTMLDivElement;
@@ -27,7 +27,7 @@
   let modalShow = false;
   let actionShow = false;
 
-  $: viewport = getViewportData(divEl, filtered?.length);
+  $: viewport = getAvailableViewport(divEl, filtered?.length);
 
   $: filtered =
     sessions?.filter($filterOptions?.query.trim().toLowerCase()) || $sessions;
@@ -87,7 +87,7 @@
         bind:this={divEl}
         class="flex-1 overflow-y-auto pr-4"
         on:scroll={() => {
-          viewport = getViewportData(divEl, filtered.length);
+          viewport = getAvailableViewport(divEl, filtered.length);
         }}
       >
         {#if filtered && viewport}
@@ -95,7 +95,7 @@
             style:padding-top="{viewport.paddingTop}px"
             style:padding-bottom="{viewport.paddingBottom}px"
           >
-            {#each { length: viewport.last - viewport.first } as _, i (i)}
+            {#each { length: viewport.last - viewport.first } as _, i}
               {@const session =
                 filtered[filtered.length - 1 - i - viewport.first]}
               <Session

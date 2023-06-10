@@ -32,8 +32,10 @@
 
   const dispatch = createEventDispatcher();
 
-  $: title = $filterOptions.query.trim()
-    ? markResult(session?.title, $filterOptions.query, false, false)
+  $: title = $filterOptions?.query.trim()
+    ? markResult(session?.title, $filterOptions?.query, {
+        case_sensitive: false,
+      })
     : session?.title;
 </script>
 
