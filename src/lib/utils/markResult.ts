@@ -1,13 +1,11 @@
 export function markResult(
   string: string,
   match: string,
-  all = false,
-  case_sensitive = true
+  options: { all?: boolean; case_sensitive?: boolean }
 ) {
   const pattern = new RegExp(
     match,
-    `${all ? 'g' : ''}${case_sensitive ? '' : 'i'}`
+    `${options.all ? 'g' : ''}${options.case_sensitive ? '' : 'i'}`
   );
-
-  return string.replace(pattern, '<mark>$&</mark>');
+  return string?.replace(pattern, '<mark>$&</mark>');
 }
