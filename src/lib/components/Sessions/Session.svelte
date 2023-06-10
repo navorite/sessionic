@@ -33,7 +33,7 @@
   const dispatch = createEventDispatcher();
 
   $: title = $filterOptions.query.trim()
-    ? markResult(session?.title, $filterOptions.query, false)
+    ? markResult(session?.title, $filterOptions.query, false, false)
     : session?.title;
 </script>
 

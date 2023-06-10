@@ -27,23 +27,7 @@
   let modalShow = false;
   let actionShow = false;
 
-  $: viewport = getViewportData(divEl, elementHeight, filtered?.length);
-
-  $: elementHeight = (() => {
-    const element = divEl?.childNodes[0]?.childNodes[1] as HTMLElement;
-
-    if (!element) return 0;
-
-    const height = element?.offsetHeight;
-
-    const style = window?.getComputedStyle(element);
-
-    return (
-      ['top', 'bottom']
-        .map((prop) => parseInt(style[`margin-${prop}`]))
-        .reduce((prev, val) => prev + val) + height
-    );
-  })();
+  $: viewport = getViewportData(divEl, filtered?.length);
 
   $: filtered =
     sessions?.filter($filterOptions?.query.trim().toLowerCase()) || $sessions;
@@ -54,13 +38,19 @@
   type={modalType}
   value={modalSession?.title}
   on:inputSubmit={async (event) => {
-    modalSession.title = event.detail.value;
+    if (
+      modalSession.title !== event.detail.value ||
+      modalSession === $currentSession
+    ) {
+      modalSession.title = event.detail.value;
 
-    if (modalSession === $currentSession)
-      await sessions.add(await generateSession(modalSession));
-    else await sessions.put(modalSession);
+      if (modalSession === $currentSession)
+        await sessions.add(await generateSession(modalSession));
+      else await sessions.put(modalSession);
+    }
 
     selectSession(modalSession);
+
     modalShow = false;
   }}
 />
@@ -76,7 +66,7 @@
 />
 
 <div class="w-full h-full max-h-[90vh] mt-1 flex gap-2 overflow-hidden">
-  <div class="w-[50%] h-full flex flex-col">
+  <div class="w-[50%] max-w-md h-full flex flex-col">
     <CurrentSession
       session={$currentSession}
       selected={$currentSession === selected}
@@ -97,14 +87,14 @@
         bind:this={divEl}
         class="flex-1 overflow-y-auto pr-4"
         on:scroll={() => {
-          viewport = getViewportData(divEl, elementHeight, filtered.length);
+          viewport = getViewportData(divEl, filtered.length);
         }}
       >
-        <ul
-          style:padding-top="{viewport.paddingTop}px"
-          style:padding-bottom="{viewport.paddingBottom}px"
-        >
-          {#if filtered && viewport}
+        {#if filtered && viewport}
+          <ul
+            style:padding-top="{viewport.paddingTop}px"
+            style:padding-bottom="{viewport.paddingBottom}px"
+          >
             {#each { length: viewport.last - viewport.first } as _, i (i)}
               {@const session =
                 filtered[filtered.length - 1 - i - viewport.first]}
@@ -123,14 +113,14 @@
                 }}
               />
             {/each}
-          {/if}
-        </ul>
+          </ul>
+        {/if}
       </div>
     {/await}
   </div>
 
   <Windows
-    class="w-[50%] overflow-y-auto pr-4"
+    class="flex-1 overflow-y-auto pr-4"
     session={selected}
     on:delete={async (event) => {
       const target = event.detail.window;
@@ -166,6 +156,3 @@
     }}
   />
 </div>
-
-<style>
-</style>
