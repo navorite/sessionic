@@ -23,7 +23,7 @@
 
       <button
         type="button"
-        class="px-2 bg-neutral-4 hover:bg-neutral-5 rounded-md ml-auto font-bold hover:text-red-600"
+        class="px-2 bg-neutral-7 hover:bg-neutral-8 rounded-md ml-auto font-bold hover:text-red-600"
         title="Close modal"
         on:click={() => (open = false)}>X</button
       >
@@ -33,7 +33,7 @@
 
     <div class="mt-auto ml-auto font-semibold">
       <button
-        class="px-4 py-1 bg-neutral-4 rounded-md hover:bg-neutral-5"
+        class="px-4 py-1 bg-neutral-7 rounded-md hover:bg-neutral-8"
         type="button"
         title="Close modal"
         on:click={() => {

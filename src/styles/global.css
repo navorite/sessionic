@@ -60,12 +60,12 @@ div {
 }
 
 .session-card {
-  @apply max-w-max bg-overlay-black-8 p-2 rounded text-xs font-semibold m-0.5;
+  @apply w-max max-w-[85%] bg-overlay-black-8 p-2 rounded text-xs font-semibold m-0.5;
 }
 
 mark {
-  background-color: var(--indigo9, yellow);
-  color: var(--gray1);
+  background-color: var(--indigo9, currentColor);
+  color: var(--gray1, currentColor);
   border-radius: 4px;
   padding: 2px;
   margin: auto 1px;

@@ -19,7 +19,7 @@
     <IconButton
       icon="save"
       title="Save session"
-      class="ml-auto text-2xl hover:text-primary-pure-1"
+      class="ml-auto text-2xl hover:text-primary-9"
       on:click={() => {
         dispatch('saveModal');
       }}

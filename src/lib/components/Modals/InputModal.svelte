@@ -22,7 +22,8 @@
     type="text"
     name={type}
     id={type}
-    placeholder="Session name..."
+    placeholder="Enter session name..."
+    title="Session name"
     spellcheck={false}
     {minlength}
     {maxlength}
@@ -30,6 +31,7 @@
   />
   <button
     disabled={value.length < minlength || value.length > maxlength}
+    title="{type} session"
     slot="actions"
     type="button"
     class="px-4 py-1 bg-primary-8 rounded-md hover:bg-primary-9 disabled:bg-neutral-3 disabled:text-neutral-7"

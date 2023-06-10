@@ -34,6 +34,7 @@
       <IconButton
         icon="delete"
         title="Delete tab"
+        class="ml-auto text-2xl text-red-500 hover:text-red-800"
         on:click={() => {
           dispatch('delete', { tab });
         }}
