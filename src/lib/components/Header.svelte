@@ -13,7 +13,6 @@
     {#if !$isTabPopup}
       <IconButton
         icon="open"
-        class="text-2xl hover:text-primary-pure-1"
         title="View extension in a new tab"
         on:click={openPopup}
       />
@@ -21,14 +20,12 @@
 
     <IconButton
       icon={$dark ? 'dark' : 'light'}
-      class="text-2xl hover:text-primary-pure-1"
       title="Switch to {$dark ? 'dark' : 'light'} mode"
       on:click={handleDarkMode}
     />
 
     <IconButton
       icon="options"
-      class="text-2xl hover:text-primary-pure-1"
       title="Open extension Options in a new tab"
       on:click={openOptions}
     />

@@ -6,7 +6,7 @@
 
   $: src = `../../icons/${icon}.svg`;
 
-  let className = 'ml-auto text-2xl';
+  let className = 'text-2xl hover:text-primary-9';
   export { className as class };
 </script>
 

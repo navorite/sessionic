@@ -15,9 +15,9 @@
 </script>
 
 {#if window.tabs.length}
-  <ListItem class="mb-2 rounded-md bg-neutral-3">
+  <ListItem let:hover class="mb-2 rounded-md bg-neutral-3">
     <div
-      class="flex items-center gap-2 group/w rounded-md hover:bg-primary-4 p-2 mb-1"
+      class="flex items-center gap-2 rounded-md hover:bg-primary-4 p-2 mb-1 group"
     >
       <IconButton
         icon={show ? 'windowon' : 'windowoff'}
@@ -41,19 +41,21 @@
 
       <span
         title="Number of Tabs"
-        class="bg-overlay-black-8 py-0.5 px-2 rounded text-xs font-bold"
+        class="bg-overlay-black-8 py-0.5 px-2 rounded text-xs font-semibold"
       >
         {window?.tabs.length} Tab{window?.tabs.length > 1 ? 's' : ''}
       </span>
 
-      <IconButton
-        icon="delete"
-        title="Delete window"
-        class="invisible ml-auto text-2xl text-red-500 hover:text-red-800 group-hover/w:visible"
-        on:click={() => {
-          dispatch('delete', { tab: null, window });
-        }}
-      />
+      {#if hover}
+        <IconButton
+          icon="delete"
+          title="Delete window"
+          class="ml-auto text-2xl text-red-500 hover:text-red-800 invisible group-hover:visible"
+          on:click={() => {
+            dispatch('delete', { tab: null, window });
+          }}
+        />
+      {/if}
     </div>
 
     {#if show}

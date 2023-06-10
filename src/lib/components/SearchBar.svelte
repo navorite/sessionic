@@ -2,7 +2,7 @@
   import { tick } from 'svelte';
   import IconButton from './IconButton.svelte';
 
-  export let value;
+  export let value: string;
 
   let className = '';
 
@@ -58,17 +58,13 @@
     <IconButton
       icon="clear"
       title="Clear input"
-      class="text-2xl hover:text-warning-pure-1"
+      class="text-2xl hover:text-red-700"
       on:click={() => {
         if (value === '') showInputBar = false;
         value = '';
       }}
     />
   {:else}
-    <IconButton
-      icon="search"
-      title="Search for Session or Tab name.."
-      class="text-2xl hover:text-primary-pure-1"
-    />
+    <IconButton icon="search" title="Search for Session or Tab name.." />
   {/if}
 </div>
