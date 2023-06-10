@@ -52,10 +52,14 @@ div {
 }
 
 .session-name {
-  @apply flex-1 max-w-max p-1 overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer font-semibold;
+  @apply flex-1 max-w-max p-1 overflow-hidden whitespace-nowrap text-ellipsis font-semibold;
 }
 
-.session-name:hover {
+.session-name:not([data-current]) {
+  @apply cursor-pointer;
+}
+
+.session-name:not([data-current]):hover {
   @apply underline;
 }
 

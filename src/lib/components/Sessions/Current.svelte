@@ -4,7 +4,7 @@
   import { createEventDispatcher } from 'svelte';
 
   export let session: Session;
-  export let selected = true;
+  export let selected = false;
 
   const dispatch = createEventDispatcher();
 </script>
@@ -12,8 +12,8 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="session-container {selected ? '!bg-primary-5' : ''}" on:click>
   <div class="session-info">
-    <p title="Current Session" class="session-name">
-      {session?.title}
+    <p title="Current Session" class="session-name" data-current>
+      Current Session
     </p>
 
     <IconButton
