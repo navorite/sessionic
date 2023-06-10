@@ -25,6 +25,5 @@ export function getAvailableViewport(viewport: HTMLElement, length: number) {
     paddingBottom = (length - last) * elementHeight;
   }
 
-  console.log({ elementHeight, first, last });
   return { first, last, paddingTop, paddingBottom };
 }

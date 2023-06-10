@@ -1,31 +1,11 @@
 <script lang="ts">
-  import IconButton from '../IconButton.svelte';
   import type { Session } from '../../types/extension';
   import ListItem from '@components/basic/ListItem.svelte';
+  import IconButton from '../IconButton.svelte';
   import { openSession } from '@utils/browser';
   import { filterOptions } from '@stores/settings';
   import { markResult } from '@utils/markResult';
   import { createEventDispatcher } from 'svelte';
-  //import { afterUpdate } from 'svelte';
-
-  // import { beforeUpdate } from 'svelte/internal';
-
-  // // TODO: optimize updates
-  // function flash(element) {
-  //   let timeout;
-  //   const color = element.style.backgroundColor;
-  //   beforeUpdate(() => {
-  //     requestAnimationFrame(() => {
-  //       element.style.backgroundColor = 'red';
-
-  //       if (timeout) clearTimeout(timeout);
-
-  //       timeout = setTimeout(() => {
-  //         element.style.backgroundColor = color;
-  //       }, 600);
-  //     });
-  //   });
-  // }
 
   export let session: Session;
   export let selected = false;

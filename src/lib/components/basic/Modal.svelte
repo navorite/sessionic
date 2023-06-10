@@ -13,7 +13,7 @@
   class="max-h-lg max-w-lg p-0 bg-transparent backdrop-blur rounded-md border-2 border-solid border-neutral-8"
 >
   <div
-    class="min-w-[16rem] min-h-[8rem] w-full h-full p-2 flex flex-col gap-4"
+    class="min-w-[16rem] min-h-[8rem] w-full h-full py-2 px-4 flex flex-col gap-4"
     on:click|stopPropagation
   >
     <div class="flex items-center">
@@ -31,7 +31,7 @@
 
     <slot name="content" />
 
-    <div class="mt-auto ml-auto font-semibold">
+    <div class="ml-auto font-semibold flex gap-2">
       <button
         class="px-4 py-1 bg-neutral-7 rounded-md hover:bg-neutral-8"
         type="button"

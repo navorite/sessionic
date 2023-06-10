@@ -42,15 +42,16 @@ export async function getSession() {
 }
 
 export async function openWindow(window: Window) {
-  //WIP
+  //WIP - detect if chromium -> discarded is not supported (add polyfill?)
   const windowId = (await browser?.windows?.create({ focused: window.focused }))
     .id;
+
   for (const tab of window?.tabs) {
     browser?.tabs?.create({
       url: tab.url,
       active: tab.active,
       windowId: windowId,
-      discarded: tab.active,
+      discarded: !tab.active,
     });
   }
 }
