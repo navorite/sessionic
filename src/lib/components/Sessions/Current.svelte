@@ -30,7 +30,6 @@
     if (tab_index === -1) return;
 
     tabs.splice(tab_index, 1);
-    session.tabsNumber--;
 
     if (removeInfo.isWindowClosing) session.windows.splice(window_index, 1);
 
