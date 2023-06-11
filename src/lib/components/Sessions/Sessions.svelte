@@ -44,12 +44,11 @@
     ) {
       modalSession.title = event.detail.value;
 
-      if (modalSession === $currentSession)
+      if (modalSession === $currentSession) {
         await sessions.add(await generateSession(modalSession));
-      else await sessions.put(modalSession);
+        selectSession(filtered[filtered.length - 1]);
+      } else await sessions.put(modalSession);
     }
-
-    selectSession(modalSession);
 
     modalShow = false;
   }}

@@ -7,6 +7,9 @@ export default defineConfig({
   plugins: [svelte()],
   resolve: {
     alias: {
+      '@constants': fileURLToPath(
+        new URL('./src/lib/constants', import.meta.url)
+      ),
       '@components': fileURLToPath(
         new URL('./src/lib/components', import.meta.url)
       ),
