@@ -30,5 +30,6 @@ export type Icon =
   | 'open'
   | 'redo'
   | 'undo'
+  | 'rename'
   | 'dark'
   | 'light';
