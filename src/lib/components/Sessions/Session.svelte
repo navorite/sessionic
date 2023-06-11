@@ -38,7 +38,7 @@
 
     {#if hover}
       <IconButton
-        icon="options"
+        icon="rename"
         title="Rename session"
         class="ml-auto text-2xl hover:text-primary-9"
         on:click={() => {
