@@ -38,7 +38,7 @@ export async function getSession() {
   return session;
 }
 
-//TODO support discarded in chromium
+//TODO support discarded in chromium, fix popup open bug in firefox
 export async function openWindow(window: Window) {
   const windowId = (await browser?.windows?.create({ focused: window.focused }))
     .id;

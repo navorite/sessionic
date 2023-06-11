@@ -1,8 +1,8 @@
 <script lang="ts">
-  import IconButton from '../IconButton.svelte';
-  import type { Window } from '../../types/browser';
-  import Tabs from '../Tabs/Tabs.svelte';
   import ListItem from '@components/basic/ListItem.svelte';
+  import IconButton from '../IconButton.svelte';
+  import Tabs from '../Tabs/Tabs.svelte';
+  import type { Window } from '../../types/browser';
   import { openWindow } from '@utils/browser';
   import { createEventDispatcher } from 'svelte';
 
@@ -11,7 +11,6 @@
   export let window: Window;
 
   let show = true;
-  // let tabsURL = [];
 </script>
 
 {#if window.tabs.length}
