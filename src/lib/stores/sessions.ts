@@ -1,9 +1,8 @@
 import { writable, type Writable } from 'svelte/store';
 import type { Session } from '../types/extension';
 import { sessionsDB } from '@utils/database';
-import { getSession } from '@utils/browser';
 
-export const sessions = (() => {
+export default (() => {
   const { subscribe, set, update }: Writable<Session[]> = writable();
 
   async function load(count?: number) {
@@ -65,16 +64,5 @@ export const sessions = (() => {
     add,
     remove,
     filter,
-  };
-})();
-
-export const currentSession = (() => {
-  const { subscribe, set }: Writable<Session> = writable();
-
-  return {
-    subscribe,
-    async load() {
-      set(await getSession());
-    },
   };
 })();

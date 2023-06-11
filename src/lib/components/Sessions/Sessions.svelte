@@ -1,26 +1,24 @@
 <script lang="ts">
-  import Session from './Session.svelte';
-  import Windows from '../Windows/Windows.svelte';
   import type { Session as SessionType } from '../../types/extension';
-  import { currentSession, sessions } from '@stores/sessions';
-  import { filterOptions } from '@stores/settings';
+  import Session from './Session.svelte';
   import CurrentSession from './Current.svelte';
+  import Windows from '../Windows/Windows.svelte';
   import InputModal from '@components/Modals/InputModal.svelte';
+  import ActionModal from '@components/Modals/ActionModal.svelte';
+  import sessions from '@stores/sessions';
+  import { filterOptions } from '@stores/settings';
   import { generateSession } from '@utils/generateSession';
   import { getAvailableViewport } from '@utils/viewport';
-  import ActionModal from '@components/Modals/ActionModal.svelte';
 
   let divEl: HTMLDivElement;
 
   let selected: SessionType;
 
-  currentSession.load().then(() => {
-    selectSession($currentSession);
-  });
-
   function selectSession(session: SessionType) {
     selected = session;
   }
+
+  let currentSession: SessionType;
 
   let modalSession: SessionType;
   let modalType: 'Save' | 'Rename' = 'Save';
@@ -33,47 +31,19 @@
     sessions?.filter($filterOptions?.query.trim().toLowerCase()) || $sessions;
 </script>
 
-<InputModal
-  bind:open={modalShow}
-  type={modalType}
-  value={modalSession?.title}
-  on:inputSubmit={async (event) => {
-    if (
-      modalSession.title !== event.detail.value ||
-      modalSession === $currentSession
-    ) {
-      modalSession.title = event.detail.value;
-
-      if (modalSession === $currentSession) {
-        await sessions.add(await generateSession(modalSession));
-        selectSession(filtered[filtered.length - 1]);
-      } else await sessions.put(modalSession);
-    }
-
-    modalShow = false;
-  }}
-/>
-
-<ActionModal
-  bind:open={actionShow}
-  on:deleteAction={() => {
-    sessions.remove(modalSession);
-
-    selectSession($currentSession);
-    actionShow = false;
-  }}
-/>
-
 <div class="w-full h-full max-h-[90vh] mt-1 flex gap-2 overflow-hidden">
   <div class="w-[50%] max-w-md h-full flex flex-col">
     <CurrentSession
-      session={$currentSession}
-      selected={$currentSession === selected}
-      on:click={() => selectSession($currentSession)}
+      selected={currentSession === selected}
+      on:click={() => selectSession(currentSession)}
+      on:change={async (event) => {
+        currentSession = await event.detail?.session;
+        selectSession(currentSession);
+      }}
       on:saveModal={() => {
         modalType = 'Save';
         modalShow = true;
-        modalSession = $currentSession;
+        modalSession = currentSession;
       }}
     />
 
@@ -147,7 +117,7 @@
         selected.tabsNumber -= event.detail.window.tabs.length;
       }
 
-      if (selected === $currentSession) return;
+      if (selected === currentSession) return;
 
       selected.dateModified = new Date().getTime();
 
@@ -155,3 +125,34 @@
     }}
   />
 </div>
+
+<InputModal
+  bind:open={modalShow}
+  type={modalType}
+  value={modalSession?.title}
+  on:inputSubmit={async (event) => {
+    if (
+      modalSession.title !== event.detail.value ||
+      modalSession === currentSession
+    ) {
+      modalSession.title = event.detail.value;
+
+      if (modalSession === currentSession) {
+        await sessions.add(await generateSession(modalSession));
+        selectSession(filtered[filtered.length - 1]);
+      } else await sessions.put(modalSession);
+    }
+
+    modalShow = false;
+  }}
+/>
+
+<ActionModal
+  bind:open={actionShow}
+  on:deleteAction={() => {
+    sessions.remove(modalSession);
+
+    selectSession(currentSession);
+    actionShow = false;
+  }}
+/>
