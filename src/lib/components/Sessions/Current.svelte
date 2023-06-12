@@ -66,6 +66,7 @@
 
   async function handleAcivated() {
     if (timeout) clearTimeout(timeout);
+
     timeout = setTimeout(async () => {
       session = await getSession();
       dispatch('change', { session });
@@ -76,14 +77,12 @@
     tabId: number,
     updateInfo: browser.Tabs.OnUpdatedChangeInfoType
   ) {
+    if (timeout) clearTimeout(timeout);
+
     if (updateInfo.status !== 'complete') return;
 
-    if (timeout) clearTimeout(timeout);
-    console.log('updating');
-    timeout = setTimeout(async () => {
-      session = await getSession();
-      dispatch('change', { session });
-    }, 200);
+    session = await getSession();
+    dispatch('change', { session });
   }
 </script>
 
