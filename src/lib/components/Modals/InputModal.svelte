@@ -14,7 +14,10 @@
 
   let inputEl: HTMLInputElement;
 
-  $: if (open) tick().then(() => inputEl?.focus());
+  $: if (open)
+    tick().then(() => {
+      inputEl?.focus();
+    });
 
   const dispatch = createEventDispatcher();
 </script>
