@@ -8,6 +8,7 @@
   import sessions from '@stores/sessions';
   import { filterOptions } from '@stores/settings';
   import { getAvailableViewport } from '@utils/viewport';
+  import { session as currentSession } from '@components/Sessions/Current.svelte';
 
   let divEl: HTMLDivElement;
 
@@ -18,8 +19,6 @@
   function selectSession(session: SessionType) {
     selected = session;
   }
-
-  let currentSession: SessionType;
 
   let modalShow = false;
   let actionShow = false;
@@ -33,13 +32,10 @@
 <div class="w-full h-full max-h-[90vh] mt-1 flex gap-2 overflow-hidden">
   <div class="w-[50%] max-w-md h-full flex flex-col">
     <CurrentSession
-      selected={currentSession === selected}
-      on:click={() => selectSession(currentSession)}
+      selected={$currentSession === selected}
+      on:click={() => selectSession($currentSession)}
       on:change={(event) => {
-        if (currentSession === selected) {
-          currentSession = event.detail?.session;
-          selectSession(currentSession);
-        }
+        event.detail.selected && selectSession($currentSession);
       }}
     />
 
@@ -110,7 +106,10 @@
         selected.tabsNumber -= event.detail.window.tabs.length;
       }
 
-      if (selected === currentSession) return;
+      if (selected === $currentSession) {
+        $currentSession = $currentSession;
+        return;
+      }
 
       selected.dateModified = new Date().getTime();
 
@@ -139,7 +138,7 @@
   on:deleteAction={() => {
     sessions.remove(selected);
 
-    selectSession(currentSession);
+    selectSession($currentSession);
     actionShow = false;
   }}
 />
@@ -151,11 +150,11 @@
   on:inputSubmit={async (event) => {
     if (
       modalSession.title !== event.detail.value ||
-      modalSession === currentSession
+      modalSession === $currentSession
     ) {
       modalSession.title = event.detail.value;
 
-      if (modalSession === currentSession) {
+      if (modalSession === $currentSession) {
         await sessions.add(await generateSession(modalSession));
         selectSession(filtered[filtered.length - 1]);
       } else await sessions.put(modalSession);
