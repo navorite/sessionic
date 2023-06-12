@@ -7,15 +7,14 @@ const isDarkSystem = window.matchMedia('(prefers-color-scheme: dark)').matches;
 export default (() => {
   const { subscribe, set, update } = writable(isDarkSystem);
 
+  getDarkMode().then((dark: boolean) => {
+    if (typeof dark === 'undefined') storage?.set({ dark: isDarkSystem });
+    setDarkMode(dark ?? isDarkSystem);
+    set(dark ?? isDarkSystem);
+  });
+
   return {
     subscribe,
-    init() {
-      getDarkMode().then((dark: boolean) => {
-        if (typeof dark === 'undefined') storage?.set({ dark: isDarkSystem });
-        setDarkMode(dark ?? isDarkSystem);
-        set(dark ?? isDarkSystem);
-      });
-    },
     switch() {
       update((dark: boolean) => {
         dark = !dark;
