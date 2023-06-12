@@ -33,8 +33,8 @@ export function initPopup() {
   isTabPopup.set(url.searchParams.has('tab'));
 }
 
-export async function setDarkMode(dark: boolean) {
-  document.body.classList.add('fade');
+export async function setDarkMode(dark: boolean, fade?: boolean) {
+  if (fade) document.body.classList.add('fade');
   document.body.classList.toggle('dark', dark);
   document.documentElement.style.colorScheme = dark ? 'dark' : 'normal';
 }

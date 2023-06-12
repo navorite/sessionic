@@ -19,7 +19,7 @@ export default (() => {
     switch() {
       update((dark: boolean) => {
         dark = !dark;
-        setDarkMode(dark);
+        setDarkMode(dark, true);
         storage?.set({ dark });
         return dark;
       });
