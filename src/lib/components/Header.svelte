@@ -22,7 +22,7 @@
 
     <IconButton
       icon={$darkMode ? 'dark' : 'light'}
-      title="Switch to {!$darkMode ? 'dark' : 'light'} mode"
+      title="Switch to {$darkMode ? 'light' : 'dark'} mode"
       on:click={darkMode.switch}
     />
 

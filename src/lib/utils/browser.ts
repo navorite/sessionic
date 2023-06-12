@@ -2,6 +2,7 @@ import browser from 'webextension-polyfill';
 import type { QueryInfo, Tab, Window } from '../types/browser';
 import type { Session } from '../types/extension';
 import { isFirefox } from '@constants/env';
+import { compressDataURI } from './compress';
 
 // Get current active tab
 export async function getCurrentTab(): Promise<Tab> {
@@ -17,7 +18,12 @@ export async function getWindowTabs(
 
 // Get all tabs that match a query obj
 export async function getTabs(queryInfo: QueryInfo = {}): Promise<Tab[]> {
-  return browser?.tabs?.query?.(queryInfo);
+  const tabs = await browser?.tabs?.query(queryInfo);
+
+  if (isFirefox)
+    for (const tab of tabs) tab.favIconUrl = compressDataURI(tab.favIconUrl);
+
+  return tabs;
 }
 
 // Get current session (Either all windows or current window)

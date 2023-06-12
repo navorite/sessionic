@@ -57,53 +57,30 @@
 
   //TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
   onMount(() => {
-    browser?.tabs?.onActivated.addListener(handleAcivated);
+    browser?.tabs?.onActivated.addListener(handleUpdate);
     browser?.tabs?.onUpdated.addListener(handleUpdate);
     browser?.tabs?.onRemoved.addListener(handleRemoval);
 
     return () => {
-      browser?.tabs?.onActivated.removeListener(handleAcivated);
+      browser?.tabs?.onActivated.removeListener(handleUpdate);
       browser?.tabs?.onUpdated.removeListener(handleUpdate);
       browser?.tabs?.onRemoved.removeListener(handleRemoval);
     };
   });
 
-  async function handleAcivated() {
+  async function handleUpdate() {
     if (timeout) clearTimeout(timeout);
 
+    //should fix inconsistency in update flags
     timeout = setTimeout(async () => {
       $session = await getSession();
 
       dispatch('change', { selected });
+
+      clearTimeout(timeout);
     }, 200);
   }
-
-  async function handleUpdate(
-    tabId: number,
-    updateInfo: browser.Tabs.OnUpdatedChangeInfoType
-  ) {
-    if (timeout) clearTimeout(timeout);
-
-    if (updateInfo.status !== 'complete') return;
-
-    $session = await getSession();
-
-    dispatch('change', { selected });
-  }
 </script>
-
-<InputModal
-  bind:open
-  type="Save"
-  value={$session?.title}
-  on:inputSubmit={async (event) => {
-    $session.title = event.detail.value;
-
-    await sessions.add(await generateSession($session));
-
-    open = false;
-  }}
-/>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="session-container {selected ? '!bg-primary-5' : ''}" on:click>
@@ -129,3 +106,16 @@
     Tab{$session?.tabsNumber > 1 ? 's' : ''}
   </p>
 </div>
+
+<InputModal
+  bind:open
+  type="Save"
+  value={$session?.title}
+  on:inputSubmit={async (event) => {
+    $session.title = event.detail.value;
+
+    await sessions.add(await generateSession($session));
+
+    open = false;
+  }}
+/>
