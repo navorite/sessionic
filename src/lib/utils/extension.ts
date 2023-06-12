@@ -1,12 +1,7 @@
 import type { Page } from '../types/extension';
 import browser from 'webextension-polyfill';
 import storage from './storage';
-import darkMode from '@stores/darkMode';
 import { EXT_ID } from '@constants/env';
-
-export function initSettings() {
-  darkMode.init();
-}
 
 // Get runtime URL for a page in the extension
 export function getExtensionURL(page?: Page, query: string = '') {
