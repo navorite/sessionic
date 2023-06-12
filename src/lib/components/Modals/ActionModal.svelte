@@ -4,7 +4,7 @@
 
   export let type: 'Delete' = 'Delete';
 
-  export let open;
+  export let open: boolean;
 
   const dispatch = createEventDispatcher();
 </script>
@@ -12,7 +12,7 @@
 <Modal bind:open>
   <svelte:fragment slot="header">{type} session</svelte:fragment>
   <p slot="content" class="font-semibold">
-    Are you sure you wanna delete this session?
+    Are you sure you wanna {type.toLowerCase()} this session?
   </p>
   <button
     slot="actions"
