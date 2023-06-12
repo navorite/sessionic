@@ -7,7 +7,6 @@
   import ActionModal from '@components/Modals/ActionModal.svelte';
   import sessions from '@stores/sessions';
   import { filterOptions } from '@stores/settings';
-  import { generateSession } from '@utils/generateSession';
   import { getAvailableViewport } from '@utils/viewport';
 
   let divEl: HTMLDivElement;
@@ -20,8 +19,6 @@
 
   let currentSession: SessionType;
 
-  let modalSession: SessionType;
-  let modalType: 'Save' | 'Rename' = 'Save';
   let modalShow = false;
   let actionShow = false;
 
@@ -37,13 +34,10 @@
       selected={currentSession === selected}
       on:click={() => selectSession(currentSession)}
       on:change={async (event) => {
-        currentSession = await event.detail?.session;
-        selectSession(currentSession);
-      }}
-      on:saveModal={() => {
-        modalType = 'Save';
-        modalShow = true;
-        modalSession = currentSession;
+        if (currentSession === selected) {
+          currentSession = await event.detail?.session;
+          selectSession(currentSession);
+        }
       }}
     />
 
@@ -73,12 +67,9 @@
                 selected={session === selected}
                 on:renameModal={() => {
                   modalShow = true;
-                  modalType = 'Rename';
-                  modalSession = session;
                 }}
                 on:deleteModal={() => {
                   actionShow = true;
-                  modalSession = session;
                 }}
               />
             {/each}
@@ -128,6 +119,31 @@
 
 <InputModal
   bind:open={modalShow}
+  type="Rename"
+  value={selected?.title}
+  on:inputSubmit={async (event) => {
+    if (selected.title === event.detail.value) return;
+
+    selected.title = event.detail.value;
+
+    await sessions.put(selected);
+
+    modalShow = false;
+  }}
+/>
+
+<ActionModal
+  bind:open={actionShow}
+  on:deleteAction={() => {
+    sessions.remove(selected);
+
+    selectSession(currentSession);
+    actionShow = false;
+  }}
+/>
+
+<!-- <InputModal
+  bind:open={modalShow}
   type={modalType}
   value={modalSession?.title}
   on:inputSubmit={async (event) => {
@@ -145,14 +161,4 @@
 
     modalShow = false;
   }}
-/>
-
-<ActionModal
-  bind:open={actionShow}
-  on:deleteAction={() => {
-    sessions.remove(modalSession);
-
-    selectSession(currentSession);
-    actionShow = false;
-  }}
-/>
+/>  -->
