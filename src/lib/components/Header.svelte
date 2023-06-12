@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { dark, filterOptions, isTabPopup } from '@stores/settings';
-  import { handleDarkMode, openOptions, openPopup } from '@utils/extension';
+  import { filterOptions, isTabPopup } from '@stores/settings';
+  import { openOptions, openPopup } from '@utils/extension';
   import IconButton from '@components/IconButton.svelte';
   import SearchBar from '@components/SearchBar.svelte';
+  import darkMode from '@stores/darkMode';
 </script>
 
 <div class="flex items-center w-full h-8">
@@ -19,9 +20,9 @@
     {/if}
 
     <IconButton
-      icon={$dark ? 'dark' : 'light'}
-      title="Switch to {$dark ? 'dark' : 'light'} mode"
-      on:click={handleDarkMode}
+      icon={$darkMode ? 'dark' : 'light'}
+      title="Switch to {$darkMode ? 'dark' : 'light'} mode"
+      on:click={darkMode.switch}
     />
 
     <IconButton

@@ -13,6 +13,8 @@
 
   let selected: SessionType;
 
+  sessions.load();
+
   function selectSession(session: SessionType) {
     selected = session;
   }
@@ -45,7 +47,7 @@
       Sessions ({filtered?.length ?? 'Loading saved sessions...'})
     </h2>
 
-    {#await sessions?.load() then}
+    {#if filtered}
       <div
         bind:this={divEl}
         class="flex-1 overflow-y-auto pr-4"
@@ -53,7 +55,7 @@
           viewport = getAvailableViewport(divEl, filtered.length);
         }}
       >
-        {#if filtered && viewport}
+        {#if viewport}
           <ul
             style:padding-top="{viewport.paddingTop}px"
             style:padding-bottom="{viewport.paddingBottom}px"
@@ -76,7 +78,7 @@
           </ul>
         {/if}
       </div>
-    {/await}
+    {/if}
   </div>
 
   <Windows
