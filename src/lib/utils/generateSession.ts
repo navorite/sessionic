@@ -1,7 +1,7 @@
 import type { Session } from '../types/extension';
 
 export async function generateSession(session: Session) {
-  const date = new Date().getTime();
+  const date = Date.now();
 
   return {
     title: session.title,

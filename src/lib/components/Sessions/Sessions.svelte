@@ -23,7 +23,7 @@
   let modalShow = false;
   let actionShow = false;
 
-  $: viewport = getAvailableViewport(divEl, filtered?.length);
+  $: viewport = getAvailableViewport(divEl, filtered?.length); //TODO: look up more when adding batch sizes
 
   $: filtered =
     sessions?.filter($filterOptions?.query.trim().toLowerCase()) || $sessions;
