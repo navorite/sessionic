@@ -1,9 +1,11 @@
 import type { Page } from '../types/extension';
 import browser from 'webextension-polyfill';
-import { dark, isTabPopup } from '@stores/settings';
+import { isTabPopup } from '@stores/settings';
+import storage from './storage';
+import darkMode from '@stores/darkMode';
 
 export function initSettings() {
-  getDarkMode();
+  darkMode.init();
   initPopup();
 }
 
@@ -31,42 +33,12 @@ export function initPopup() {
   isTabPopup.set(url.searchParams.has('tab'));
 }
 
-export function handleDarkMode() {
-  const local = browser?.storage?.local;
-
-  local?.get('dark').then((value: { dark: boolean }) => {
-    const theme = !value.dark;
-
-    document.body.classList.add('fade');
-    document.body.classList.toggle('dark', theme);
-    document.documentElement.style.colorScheme = theme ? 'dark' : 'normal';
-
-    local
-      ?.set({
-        dark: theme,
-      })
-      .then(() => {
-        dark.set(theme);
-      });
-  });
+export async function setDarkMode(dark: boolean) {
+  document.body.classList.add('fade');
+  document.body.classList.toggle('dark', dark);
+  document.documentElement.style.colorScheme = dark ? 'dark' : 'normal';
 }
 
-export function getDarkMode() {
-  const local = browser?.storage?.local;
-  let theme = true;
-
-  local?.get('dark').then((value: { dark: boolean }) => {
-    theme = value.dark;
-
-    if (value.dark === undefined) {
-      dark.subscribe((value) => {
-        theme = value;
-      });
-    } else {
-      dark.set(theme);
-    }
-
-    document.body.classList.toggle('dark', theme);
-    document.documentElement.style.colorScheme = theme ? 'dark' : 'normal';
-  });
+export async function getDarkMode() {
+  return (await storage?.get('dark'))?.dark;
 }
