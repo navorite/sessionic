@@ -44,7 +44,7 @@
         }}>Cancel</button
       >
 
-      <slot name="actions" />
+      <slot name="footer" />
     </div>
   </div>
 </dialog>

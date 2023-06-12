@@ -7,7 +7,7 @@
 
   export let value = '';
 
-  export let open;
+  export let open: boolean;
 
   export let minlength = 3;
   export let maxlength = 40;
@@ -39,9 +39,9 @@
     }}
   />
   <button
-    disabled={value.length < minlength || value.length > maxlength}
+    disabled={value?.length < minlength || value?.length > maxlength}
     title="{type} session"
-    slot="actions"
+    slot="footer"
     type="button"
     class="px-4 py-1 bg-primary-8 rounded-md hover:bg-primary-9 disabled:bg-neutral-3 disabled:text-neutral-7"
     on:click={() => {

@@ -15,8 +15,7 @@ export function openOptions() {
 
 // Open the extension Popup page, under a unique ID to prevent duplicate tabs
 export function openPopup() {
-  const popupURL = getExtensionURL('popup', '?tab=true');
-  window?.open(popupURL, EXT_ID);
+  window?.open(getExtensionURL('popup', '?tab=true'), EXT_ID);
 }
 
 export async function setDarkMode(dark: boolean, fade?: boolean) {
