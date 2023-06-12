@@ -14,6 +14,12 @@
 
   let session: Session;
   let open = false;
+  let timeout;
+
+  getSession().then((value) => {
+    session = value;
+    dispatch('change', { session });
+  });
 
   function handleRemoval(
     tabId: number,
@@ -45,25 +51,39 @@
     dispatch('change', { session });
   }
 
+  //TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
   onMount(() => {
-    //browser?.windows?.onCreated.addListener(updateSession);
-    browser?.tabs?.onUpdated.addListener(updateSession);
+    browser?.tabs?.onActivated.addListener(handleAcivated);
+    browser?.tabs?.onUpdated.addListener(handleUpdate);
     browser?.tabs?.onRemoved.addListener(handleRemoval);
 
     return () => {
-      //browser?.windows?.onCreated.removeListener(updateSession)
-      browser?.tabs?.onUpdated.removeListener(updateSession);
+      browser?.tabs?.onActivated.removeListener(handleAcivated);
+      browser?.tabs?.onUpdated.removeListener(handleUpdate);
       browser?.tabs?.onRemoved.removeListener(handleRemoval);
     };
   });
 
-  async function updateSession(
+  async function handleAcivated() {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(async () => {
+      session = await getSession();
+      dispatch('change', { session });
+    }, 200);
+  }
+
+  async function handleUpdate(
     tabId: number,
-    changeInfo: browser.Tabs.OnUpdatedChangeInfoType
+    updateInfo: browser.Tabs.OnUpdatedChangeInfoType
   ) {
-    if (changeInfo?.status !== 'complete') return;
-    session = await getSession();
-    dispatch('change', { session });
+    if (updateInfo.status !== 'complete') return;
+
+    if (timeout) clearTimeout(timeout);
+    console.log('updating');
+    timeout = setTimeout(async () => {
+      session = await getSession();
+      dispatch('change', { session });
+    }, 200);
   }
 </script>
 

@@ -15,7 +15,7 @@
     Are you sure you wanna {type.toLowerCase()} this session?
   </p>
   <button
-    slot="actions"
+    slot="footer"
     type="button"
     title="{type} session"
     class="px-4 py-1 bg-red-700 rounded-md hover:bg-red-800"
