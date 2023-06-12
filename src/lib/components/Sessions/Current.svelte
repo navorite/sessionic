@@ -52,7 +52,7 @@
 
     $session.tabsNumber -= length;
 
-    dispatch('change', { session, selected });
+    dispatch('change', { selected });
   }
 
   //TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
@@ -73,6 +73,7 @@
 
     timeout = setTimeout(async () => {
       $session = await getSession();
+
       dispatch('change', { selected });
     }, 200);
   }
@@ -86,6 +87,7 @@
     if (updateInfo.status !== 'complete') return;
 
     $session = await getSession();
+
     dispatch('change', { selected });
   }
 </script>
@@ -98,6 +100,7 @@
     $session.title = event.detail.value;
 
     await sessions.add(await generateSession($session));
+
     open = false;
   }}
 />
