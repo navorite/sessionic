@@ -1,6 +1,7 @@
 <script lang="ts">
   import Modal from '@components/basic/Modal.svelte';
   import { createEventDispatcher } from 'svelte';
+  import { tick } from 'svelte';
 
   export let type: 'Save' | 'Rename';
 
@@ -11,12 +12,17 @@
   export let minlength = 3;
   export let maxlength = 40;
 
+  let inputEl: HTMLInputElement;
+
+  $: if (open) tick().then(() => inputEl?.focus());
+
   const dispatch = createEventDispatcher();
 </script>
 
 <Modal bind:open>
   <svelte:fragment slot="header">{type} session</svelte:fragment>
   <input
+    bind:this={inputEl}
     class="font-semibold bg-transparent outline-none border-2 border-solid border-neutral-8 rounded-md py-1 px-2 w-[24rem]"
     slot="content"
     type="text"
@@ -28,7 +34,7 @@
     {minlength}
     {maxlength}
     bind:value
-    on:keydown|stopPropagation={(event) => {
+    on:keydown={(event) => {
       if (event.key === 'Enter') dispatch('inputSubmit', { value });
     }}
   />
