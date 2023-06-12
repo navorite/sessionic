@@ -10,6 +10,9 @@
 <dialog
   bind:this={dialogEl}
   on:mousedown|self={() => (open = false)}
+  on:keydown={(event) => {
+    if (event.key === 'Escape') open = false;
+  }}
   class="max-h-lg max-w-lg p-0 bg-transparent backdrop-blur rounded-md border-2 border-solid border-neutral-8"
 >
   <div

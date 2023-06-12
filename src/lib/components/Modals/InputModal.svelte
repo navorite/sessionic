@@ -28,6 +28,9 @@
     {minlength}
     {maxlength}
     bind:value
+    on:keydown|stopPropagation={(event) => {
+      if (event.key === 'Enter') dispatch('inputSubmit', { value });
+    }}
   />
   <button
     disabled={value.length < minlength || value.length > maxlength}
