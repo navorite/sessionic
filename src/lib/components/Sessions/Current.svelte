@@ -1,3 +1,7 @@
+<script lang="ts" context="module">
+  export const session: Writable<Session> = writable();
+</script>
+
 <script lang="ts">
   import type { Session } from 'src/lib/types/extension';
   import IconButton from '../IconButton.svelte';
@@ -7,25 +11,25 @@
   import InputModal from '@components/Modals/InputModal.svelte';
   import sessions from '@stores/sessions';
   import { generateSession } from '@utils/generateSession';
+  import { writable, type Writable } from 'svelte/store';
 
   export let selected = false;
 
   const dispatch = createEventDispatcher();
 
-  let session: Session;
   let open = false;
-  let timeout;
+  let timeout: string | number | NodeJS.Timeout;
 
   getSession().then((value) => {
-    session = value;
-    dispatch('change', { session });
+    $session = value;
+    dispatch('change', { selected });
   });
 
   function handleRemoval(
     tabId: number,
     removeInfo: browser.Tabs.OnRemovedRemoveInfoType
   ) {
-    const window_index = session.windows.findIndex(
+    const window_index = $session.windows.findIndex(
       (window) => window.id === removeInfo.windowId
     );
     let length = 1;
@@ -33,11 +37,11 @@
     if (window_index === -1) return;
 
     if (removeInfo.isWindowClosing) {
-      length = session.windows[window_index].tabs.length;
+      length = $session.windows[window_index].tabs.length;
 
-      session.windows.splice(window_index, 1);
+      $session.windows.splice(window_index, 1);
     } else {
-      const tabs = session.windows[window_index].tabs;
+      const tabs = $session.windows[window_index].tabs;
 
       const tab_index = tabs.findIndex((tab) => tab.id === tabId);
 
@@ -46,9 +50,9 @@
       tabs.splice(tab_index, 1);
     }
 
-    session.tabsNumber -= length;
+    $session.tabsNumber -= length;
 
-    dispatch('change', { session });
+    dispatch('change', { session, selected });
   }
 
   //TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
@@ -68,8 +72,8 @@
     if (timeout) clearTimeout(timeout);
 
     timeout = setTimeout(async () => {
-      session = await getSession();
-      dispatch('change', { session });
+      $session = await getSession();
+      dispatch('change', { selected });
     }, 200);
   }
 
@@ -81,19 +85,19 @@
 
     if (updateInfo.status !== 'complete') return;
 
-    session = await getSession();
-    dispatch('change', { session });
+    $session = await getSession();
+    dispatch('change', { selected });
   }
 </script>
 
 <InputModal
   bind:open
   type="Save"
-  value={session?.title}
+  value={$session?.title}
   on:inputSubmit={async (event) => {
-    session.title = event.detail.value;
+    $session.title = event.detail.value;
 
-    await sessions.add(await generateSession(session));
+    await sessions.add(await generateSession($session));
     open = false;
   }}
 />
@@ -116,8 +120,9 @@
   </div>
 
   <p title="Session Details" class="session-card">
-    {session?.windows?.length} Window{session?.windows?.length > 1 ? 's' : ''} -
-    {session?.tabsNumber}
-    Tab{session?.tabsNumber > 1 ? 's' : ''}
+    {$session?.windows?.length} Window{$session?.windows?.length > 1 ? 's' : ''}
+    -
+    {$session?.tabsNumber}
+    Tab{$session?.tabsNumber > 1 ? 's' : ''}
   </p>
 </div>
