@@ -10,6 +10,8 @@ export default (() => {
   }
 
   async function add(session: Session) {
+    if (!session.windows.length) return;
+
     await sessionsDB.saveSession(session);
 
     update((sessions) => {

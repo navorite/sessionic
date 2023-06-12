@@ -35,9 +35,9 @@
     <CurrentSession
       selected={currentSession === selected}
       on:click={() => selectSession(currentSession)}
-      on:change={async (event) => {
+      on:change={(event) => {
         if (currentSession === selected) {
-          currentSession = await event.detail?.session;
+          currentSession = event.detail?.session;
           selectSession(currentSession);
         }
       }}
