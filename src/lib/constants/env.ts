@@ -14,13 +14,9 @@ export const tabAttr = [
   'url',
   'id',
   'pinned',
-  'incognito',
   'favIconUrl',
+  ...(isFirefox ? ['mutedInfo', 'isInReaderMode', 'cookieStoreId'] : []),
 ];
-
-export const tabAttr_env = isFirefox
-  ? ['muted', 'isInReaderMode', 'cookieStoreId']
-  : ['mutedInfo'];
 
 export const compress_options: compressOptions = {
   type: 'image/webp',
