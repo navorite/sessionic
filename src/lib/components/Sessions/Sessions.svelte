@@ -39,6 +39,9 @@
       on:change={(event) => {
         event.detail.selected && selectSession($currentSession);
       }}
+      on:save={(event) => {
+        selectSession(event.detail.session);
+      }}
     />
 
     <h2 class="text-lg font-semibold mb-1">
