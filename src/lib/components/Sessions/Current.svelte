@@ -108,13 +108,18 @@
   </p>
 </div>
 
+<!-- TODO: fix close 2nd window updates saved session along with current session -->
 <InputModal
   bind:open
   type="Save"
   on:inputSubmit={async (event) => {
     $session.title = event.detail.value;
 
-    await sessions.add(await generateSession($session));
+    const newSession = await generateSession($session);
+
+    await sessions.add(newSession);
+
+    dispatch('save', { session: newSession });
 
     open = false;
   }}
