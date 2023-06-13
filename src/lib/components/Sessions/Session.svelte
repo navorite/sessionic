@@ -56,7 +56,8 @@
   </div>
 
   <p title="Session Details" class="session-card">
-    {session?.windows?.length} Window{session?.windows.length > 1 ? 's' : ''} - {session?.tabsNumber}
+    {session?.windows?.length} Window{session?.windows?.length > 1 ? 's' : ''} -
+    {session?.tabsNumber}
     Tab{session?.tabsNumber > 1 ? 's' : ''}
     {#if session?.dateSaved}
       -
