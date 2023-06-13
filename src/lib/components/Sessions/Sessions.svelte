@@ -33,7 +33,9 @@
   <div class="w-[50%] max-w-md h-full flex flex-col">
     <CurrentSession
       selected={$currentSession === selected}
-      on:click={() => selectSession($currentSession)}
+      on:click={() => {
+        selectSession($currentSession);
+      }}
       on:change={(event) => {
         event.detail.selected && selectSession($currentSession);
       }}
@@ -61,7 +63,9 @@
                 filtered[filtered.length - 1 - i - viewport.first]}
               <Session
                 {session}
-                on:click={() => selectSession(session)}
+                on:click={async () => {
+                  selectSession(session);
+                }}
                 selected={session === selected}
                 on:renameModal={() => {
                   modalShow = true;

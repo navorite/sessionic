@@ -48,6 +48,9 @@
   {#if showInputBar}
     <input
       bind:this={inputEl}
+      on:keydown={(event) => {
+        if (event.key === 'Escape') showInputBar = false;
+      }}
       spellcheck={false}
       type="text"
       title="Search for Session or Tab name..."
