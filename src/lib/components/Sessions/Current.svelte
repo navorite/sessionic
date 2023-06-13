@@ -12,7 +12,6 @@
   import sessions from '@stores/sessions';
   import { generateSession } from '@utils/generateSession';
   import { writable, type Writable } from 'svelte/store';
-  import { compress_options } from '@constants/env';
 
   export let selected = false;
 
@@ -21,8 +20,8 @@
   let open = false;
   let timeout: string | number | NodeJS.Timeout;
 
-  getSession().then((value) => {
-    $session = value;
+  getSession().then((result) => {
+    $session = result;
 
     dispatch('change', { selected });
   });
@@ -112,7 +111,6 @@
 <InputModal
   bind:open
   type="Save"
-  value={$session?.title}
   on:inputSubmit={async (event) => {
     $session.title = event.detail.value;
 

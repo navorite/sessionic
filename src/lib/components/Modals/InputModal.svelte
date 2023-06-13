@@ -49,6 +49,7 @@
     class="px-4 py-1 bg-primary-8 rounded-md hover:bg-primary-9 disabled:bg-neutral-3 disabled:text-neutral-7"
     on:click={() => {
       dispatch('inputSubmit', { value });
+      value = '';
     }}>{type}</button
   >
 </Modal>

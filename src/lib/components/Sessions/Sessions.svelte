@@ -127,11 +127,11 @@
   type="Rename"
   value={selected?.title}
   on:inputSubmit={async (event) => {
-    if (selected.title === event.detail.value) return;
+    if (selected.title !== event.detail.value) {
+      selected.title = event.detail.value;
 
-    selected.title = event.detail.value;
-
-    await sessions.put(selected);
+      await sessions.put(selected);
+    }
 
     modalShow = false;
   }}
