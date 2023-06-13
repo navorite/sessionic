@@ -108,7 +108,6 @@
   </p>
 </div>
 
-<!-- TODO: fix close 2nd window updates saved session along with current session -->
 <InputModal
   bind:open
   type="Save"
