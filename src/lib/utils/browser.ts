@@ -2,7 +2,8 @@ import browser from 'webextension-polyfill';
 import type { QueryInfo, Tab, Window } from '../types/browser';
 import type { Session } from '../types/extension';
 import { isFirefox } from '@constants/env';
-import { compressDataURI } from './compress';
+import compress from './compress';
+import { tabAttr, tabAttr_firefox, tabAttr_chrome } from '@constants/constants';
 
 // Get current active tab
 export async function getCurrentTab(): Promise<Tab> {
@@ -20,8 +21,32 @@ export async function getWindowTabs(
 export async function getTabs(queryInfo: QueryInfo = {}): Promise<Tab[]> {
   const tabs = await browser?.tabs?.query(queryInfo);
 
-  if (isFirefox)
-    for (const tab of tabs) tab.favIconUrl = compressDataURI(tab.favIconUrl);
+  const totalLength = { before: 0, url: 0, after: 0, size: 24, quality: 0.2 }; // measuring purpose
+  for (const tab of tabs) {
+    if (isFirefox && tab.favIconUrl) {
+      totalLength.before += tab.favIconUrl.length;
+      tab.favIconUrl = await compress.icon(tab.favIconUrl, {
+        type: 'image/webp',
+        quality: totalLength.quality,
+        max_size: totalLength.size,
+      });
+      totalLength.after += tab.favIconUrl.length;
+
+      totalLength.url += compress.optimizeFavIcons(tab.url).length;
+    }
+
+    for (const prop in tab) {
+      if (
+        !tabAttr.includes(prop) &&
+        (isFirefox
+          ? !tabAttr_firefox.includes(prop)
+          : !tabAttr_chrome.includes(prop))
+      )
+        delete tab[prop];
+    }
+  }
+
+  console.log(totalLength);
 
   return tabs;
 }
