@@ -27,7 +27,7 @@
         class="rounded-md"
       />
       <span class="title">
-        {tab?.title}
+        {tab?.title ?? 'Loading tab name...'}
       </span>
     </a>
 
