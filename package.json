@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "idb": "^7.1.1",
+    "lz-string": "^1.5.0",
     "pino": "^8.14.1",
     "radix-colors-for-tailwind": "^2.0.0",
     "url": "^0.11.0"

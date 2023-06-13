@@ -4,6 +4,9 @@ dependencies:
   idb:
     specifier: ^7.1.1
     version: 7.1.1
+  lz-string:
+    specifier: ^1.5.0
+    version: 1.5.0
   pino:
     specifier: ^8.14.1
     version: 8.14.1
@@ -978,6 +981,11 @@ packages:
 
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: false
+
+  /lz-string@1.5.0:
+    resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
+    hasBin: true
     dev: false
 
   /magic-string@0.25.9:
