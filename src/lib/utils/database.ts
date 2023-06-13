@@ -64,6 +64,19 @@ class SessionsDB {
     return this.db.put('sessions', session);
   }
 
+  async saveSessions(sessions: Session[]) {
+    if (!this.open) await this.initDB();
+    const tx = this.db.transaction('sessions', 'readwrite');
+
+    for (const session of sessions) {
+      tx.store.add(session);
+    }
+  }
+
+  deleteSessions() {
+    return this.db.clear('sessions');
+  }
+
   upgradeSessions(
     db: IDBPDatabase<DB>,
     oldVersion: number,
