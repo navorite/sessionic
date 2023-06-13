@@ -1,12 +1,7 @@
 import browser from 'webextension-polyfill';
 import type { QueryInfo, Tab, Window, compressOptions } from '../types/browser';
 import type { Session } from '../types/extension';
-import {
-  compress_options,
-  isFirefox,
-  tabAttr,
-  tabAttr_env,
-} from '@constants/env';
+import { compress_options, isFirefox, tabAttr } from '@constants/env';
 import compress from './compress';
 import { compress as compressLZ } from 'lz-string';
 
@@ -31,15 +26,14 @@ export async function getTabs(
 
   for (const tab of tabs) {
     if (tab.favIconUrl) {
-      if (isFirefox) {
-        tab.favIconUrl = await compress.icon(tab.favIconUrl, options);
-      }
+      isFirefox &&
+        (tab.favIconUrl = await compress.icon(tab.favIconUrl, options));
 
       tab.favIconUrl = compressLZ(tab.favIconUrl);
     }
+
     for (const prop in tab) {
-      if (!tabAttr.includes(prop) && !tabAttr_env.includes(prop))
-        delete tab[prop];
+      if (!tabAttr.includes(prop)) delete tab[prop];
     }
   }
 
@@ -81,12 +75,25 @@ export async function openWindow(window: Window) {
     })
   ).id;
 
-  for (const { url, active } of window?.tabs) {
+  for (const {
+    url,
+    active,
+    pinned,
+    cookieStoreId,
+    isInReaderMode,
+    mutedInfo,
+  } of window?.tabs) {
     browser?.tabs?.create({
       url,
       active,
       windowId,
-      ...(isFirefox && { discarded: !active }),
+      pinned,
+      ...(isFirefox && {
+        discarded: !active,
+        cookieStoreId,
+        openInReaderMode: isInReaderMode,
+        muted: mutedInfo.muted,
+      }),
     });
   }
 }
