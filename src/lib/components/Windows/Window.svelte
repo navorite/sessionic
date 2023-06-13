@@ -5,12 +5,20 @@
   import type { Window } from '../../types/browser';
   import { openWindow } from '@utils/browser';
   import { createEventDispatcher } from 'svelte';
+  import type { Icon } from 'src/lib/types/extension';
 
   const dispatch = createEventDispatcher();
 
   export let window: Window;
 
   let show = true;
+
+  let icon: Icon;
+
+  $: {
+    if (!show) icon = window.incognito ? 'incognito_off' : 'window_off';
+    else icon = window.incognito ? 'incognito' : 'window';
+  }
 </script>
 
 {#if window.tabs.length}
@@ -19,7 +27,7 @@
       class="flex items-center gap-2 rounded-md hover:bg-primary-4 p-2 mb-1 group"
     >
       <IconButton
-        icon={show ? 'windowon' : 'windowoff'}
+        {icon}
         title="Collapse Window"
         class="text-2xl hover:text-primary-pure-1"
         on:click={() => {
@@ -35,7 +43,7 @@
           openWindow(window);
         }}
       >
-        Window
+        {window.incognito ? 'Private' : ''} Window
       </span>
 
       <span

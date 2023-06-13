@@ -20,8 +20,10 @@ export type Page = 'popup' | 'options';
 export type Icon =
   | 'default'
   | 'session'
-  | 'windowon'
-  | 'windowoff'
+  | 'window'
+  | 'window_off'
+  | 'incognito'
+  | 'incognito_off'
   | 'options'
   | 'save'
   | 'delete'
