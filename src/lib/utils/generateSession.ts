@@ -5,7 +5,7 @@ export async function generateSession(session: Session) {
 
   return {
     title: session.title,
-    windows: session.windows,
+    windows: session.windows.slice(0),
     tabsNumber: session.tabsNumber,
     dateSaved: date,
     dateModified: date,
