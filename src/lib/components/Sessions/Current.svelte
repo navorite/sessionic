@@ -12,6 +12,7 @@
   import sessions from '@stores/sessions';
   import { generateSession } from '@utils/generateSession';
   import { writable, type Writable } from 'svelte/store';
+  import { compress_options } from '@constants/env';
 
   export let selected = false;
 
@@ -22,6 +23,7 @@
 
   getSession().then((value) => {
     $session = value;
+
     dispatch('change', { selected });
   });
 
