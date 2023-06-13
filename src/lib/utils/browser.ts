@@ -1,9 +1,14 @@
 import browser from 'webextension-polyfill';
-import type { QueryInfo, Tab, Window } from '../types/browser';
+import type { QueryInfo, Tab, Window, compressOptions } from '../types/browser';
 import type { Session } from '../types/extension';
-import { isFirefox } from '@constants/env';
+import {
+  compress_options,
+  isFirefox,
+  tabAttr,
+  tabAttr_env,
+} from '@constants/env';
 import compress from './compress';
-import { tabAttr, tabAttr_firefox, tabAttr_chrome } from '@constants/constants';
+import { compress as compressLZ } from 'lz-string';
 
 // Get current active tab
 export async function getCurrentTab(): Promise<Tab> {
@@ -17,41 +22,31 @@ export async function getWindowTabs(
   return getTabs({ ...optionalQuery, currentWindow: true });
 }
 
-// Get all tabs that match a query obj
-export async function getTabs(queryInfo: QueryInfo = {}): Promise<Tab[]> {
+// Get all tabs that match a query obj - TODO: (Firefox) => compress favicon string even further?
+export async function getTabs(
+  queryInfo: QueryInfo = {},
+  options?: compressOptions
+): Promise<Tab[]> {
   const tabs = await browser?.tabs?.query(queryInfo);
 
-  const totalLength = { before: 0, url: 0, after: 0, size: 24, quality: 0.2 }; // measuring purpose
   for (const tab of tabs) {
-    if (isFirefox && tab.favIconUrl) {
-      totalLength.before += tab.favIconUrl.length;
-      tab.favIconUrl = await compress.icon(tab.favIconUrl, {
-        type: 'image/webp',
-        quality: totalLength.quality,
-        max_size: totalLength.size,
-      });
-      totalLength.after += tab.favIconUrl.length;
+    if (tab.favIconUrl) {
+      if (isFirefox) {
+        tab.favIconUrl = await compress.icon(tab.favIconUrl, options);
+      }
 
-      totalLength.url += compress.optimizeFavIcons(tab.url).length;
+      tab.favIconUrl = compressLZ(tab.favIconUrl);
     }
-
     for (const prop in tab) {
-      if (
-        !tabAttr.includes(prop) &&
-        (isFirefox
-          ? !tabAttr_firefox.includes(prop)
-          : !tabAttr_chrome.includes(prop))
-      )
+      if (!tabAttr.includes(prop) && !tabAttr_env.includes(prop))
         delete tab[prop];
     }
   }
 
-  console.log(totalLength);
-
   return tabs;
 }
 
-// Get current session (Either all windows or current window)
+// Get current session (Either all windows or current window) - TODO: arg: options?: compressOptions goes undefined after 1st call
 export async function getSession() {
   let session = { title: 'Current Session', windows: [] } as Session;
   let tabsNumber = 0;
@@ -59,7 +54,11 @@ export async function getSession() {
   const windows = await browser?.windows?.getAll();
 
   for (const window of windows) {
-    window.tabs = await getTabs({ windowId: window.id, url: '*://*/*' });
+    window.tabs = await getTabs(
+      { windowId: window.id, url: '*://*/*' },
+      compress_options
+    );
+
     tabsNumber += window.tabs.length;
     session.windows.push(window);
   }

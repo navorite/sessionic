@@ -3,6 +3,7 @@
   import type { Tab } from '../../types/browser';
   import ListItem from '@components/basic/ListItem.svelte';
   import { createEventDispatcher } from 'svelte';
+  import { decompress as decompressLZ } from 'lz-string';
 
   export let tab: Tab;
 
@@ -19,7 +20,7 @@
       target="_blank"
     >
       <img
-        src={tab?.favIconUrl}
+        src={decompressLZ(tab?.favIconUrl)}
         alt=""
         style:width="1em"
         style:height="1em"
