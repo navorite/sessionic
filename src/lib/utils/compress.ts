@@ -28,7 +28,11 @@ export default (() => {
 
             ctx.drawImage(event.currentTarget, 0, 0, max_size, max_size);
 
-            resolve(ctx.canvas.toDataURL(options.type, quality));
+            const dataURL = ctx.canvas.toDataURL(options.type, quality);
+
+            if (dataURL.length > src.length) resolve(src);
+
+            resolve(dataURL);
           }
         };
       });

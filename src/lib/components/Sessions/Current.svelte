@@ -70,8 +70,9 @@
   });
 
   async function handleUpdate() {
-    if (timeout) clearTimeout(timeout);
+    if (document.visibilityState === 'hidden') return;
 
+    if (timeout) clearTimeout(timeout);
     //should fix inconsistency in update flags
     timeout = setTimeout(async () => {
       $session = await getSession();

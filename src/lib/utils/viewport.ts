@@ -15,8 +15,8 @@ export function getAvailableViewport(viewport: HTMLElement, length: number) {
 
     if (!clientHeight) clientHeight = viewport.clientHeight;
 
-    first = Math.floor((scrollTop - 300) / elementHeight);
-    last = Math.ceil((clientHeight + scrollTop + 300) / elementHeight);
+    first = Math.floor((scrollTop - 200) / elementHeight);
+    last = Math.ceil((clientHeight + scrollTop + 200) / elementHeight);
 
     if (first < 0) first = 0;
     if (last > length) last = length;
