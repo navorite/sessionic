@@ -12,6 +12,7 @@
   import sessions from '@stores/sessions';
   import { generateSession } from '@utils/generateSession';
   import { writable, type Writable } from 'svelte/store';
+  import { isExtensionReady } from '@utils/extension';
 
   export let selected = false;
 
@@ -30,6 +31,8 @@
     tabId: number,
     removeInfo: browser.Tabs.OnRemovedRemoveInfoType
   ) {
+    if (!isExtensionReady) return;
+
     const window_index = $session.windows.findIndex(
       (window) => window.id === removeInfo.windowId
     );
@@ -70,9 +73,10 @@
   });
 
   async function handleUpdate() {
-    if (document.visibilityState === 'hidden') return;
-
     if (timeout) clearTimeout(timeout);
+
+    if (!isExtensionReady()) return;
+
     //should fix inconsistency in update flags
     timeout = setTimeout(async () => {
       $session = await getSession();
