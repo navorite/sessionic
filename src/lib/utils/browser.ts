@@ -104,7 +104,7 @@ export async function openSession(session: Session, newWindow?: boolean) {
 
 export async function createTab(
   tab: Tab,
-  windowId: number,
+  windowId?: number,
   discarded?: boolean
 ) {
   const {
@@ -120,7 +120,7 @@ export async function createTab(
   return browser?.tabs?.create({
     url,
     active,
-    windowId,
+    windowId: windowId ?? tab.windowId,
     pinned,
     ...(isFirefox && {
       discarded: discarded ?? !active,
