@@ -30,7 +30,7 @@
       title="Open Session"
       class="session-name"
       on:click={() => {
-        openSession(session);
+        openSession(session, true);
       }}
     >
       {@html title}
