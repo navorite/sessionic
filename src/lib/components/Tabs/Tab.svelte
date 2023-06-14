@@ -4,6 +4,7 @@
   import ListItem from '@components/basic/ListItem.svelte';
   import { createEventDispatcher } from 'svelte';
   import { decompress as decompressLZ } from 'lz-string';
+  import { createTab } from '@utils/browser';
 
   export let tab: Tab;
 
@@ -12,12 +13,12 @@
 
 {#if tab}
   <ListItem class="tab-container" let:hover>
-    <a
-      href={tab?.url}
+    <button
       title={tab?.title}
       class="link"
-      rel="noreferrer"
-      target="_blank"
+      on:click={() => {
+        createTab(tab);
+      }}
     >
       <img
         src={decompressLZ(tab?.favIconUrl)}
@@ -29,7 +30,7 @@
       <span class="title">
         {tab?.title ?? 'Loading tab name...'}
       </span>
-    </a>
+    </button>
 
     {#if hover}
       <IconButton
