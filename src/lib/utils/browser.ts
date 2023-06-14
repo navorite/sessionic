@@ -72,7 +72,7 @@ export async function openInCurrentWindow(window: Window) {
 }
 
 export async function openInNewWindow(window: Window) {
-  window.id = (
+  const windowId = (
     await browser?.windows?.create({
       incognito: window.incognito,
       ...(window.state !== 'normal'
@@ -87,7 +87,7 @@ export async function openInNewWindow(window: Window) {
   ).id;
 
   for (const tab of window?.tabs) {
-    createTab(tab, window.id);
+    createTab(tab, windowId);
   }
 }
 
