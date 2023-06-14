@@ -8,13 +8,14 @@ export const isFirefox = !!browser?.runtime?.getBrowserInfo;
 export const isPopup = !new URL(document.location.href).searchParams.has('tab');
 
 export const tabAttr = [
-  'active',
-  'discarded',
+  'id',
   'title',
   'url',
-  'id',
-  'pinned',
   'favIconUrl',
+  'active',
+  'discarded',
+  'pinned',
+  'incognito',
   ...(isFirefox ? ['mutedInfo', 'isInReaderMode', 'cookieStoreId'] : []),
 ];
 

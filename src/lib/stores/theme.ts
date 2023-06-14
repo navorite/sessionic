@@ -9,7 +9,7 @@ export default (() => {
 
   getDarkMode().then((dark: boolean) => {
     if (typeof dark === 'undefined') storage?.set({ dark: isDarkSystem });
-    setDarkMode(dark ?? isDarkSystem);
+    setDarkMode(dark ?? isDarkSystem, true);
     set(dark ?? isDarkSystem);
   });
 

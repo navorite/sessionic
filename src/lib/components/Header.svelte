@@ -3,7 +3,7 @@
   import { openOptions, openPopup } from '@utils/extension';
   import IconButton from '@components/IconButton.svelte';
   import SearchBar from '@components/SearchBar.svelte';
-  import darkMode from '@stores/darkMode';
+  import darkMode from '@stores/theme';
   import { isPopup } from '@constants/env';
 </script>
 
