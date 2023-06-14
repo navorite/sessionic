@@ -1,5 +1,4 @@
 import browser from 'webextension-polyfill';
-import type { compressOptions } from '../types/browser';
 
 export const EXT_ID = 'TABIFYEXT_ID';
 
