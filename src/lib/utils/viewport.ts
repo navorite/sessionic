@@ -11,18 +11,22 @@ export function getAvailableViewport(viewport: HTMLElement, length: number) {
   if (viewport) {
     const { scrollTop, scrollHeight } = viewport;
 
-    if (!elementHeight) elementHeight = scrollHeight / length;
-
     if (!clientHeight) clientHeight = viewport.clientHeight;
 
-    first = Math.floor((scrollTop - 200) / elementHeight);
-    last = Math.ceil((clientHeight + scrollTop + 200) / elementHeight);
+    if (scrollHeight > clientHeight) {
+      if (!elementHeight) elementHeight = scrollHeight / length;
 
-    if (first < 0) first = 0;
-    if (last > length) last = length;
+      first = Math.floor((scrollTop - 500) / elementHeight);
 
-    paddingTop = first * elementHeight;
-    paddingBottom = (length - last) * elementHeight;
+      last = Math.ceil((clientHeight + scrollTop + 500) / elementHeight);
+
+      if (first < 0) first = 0;
+      if (last > length) last = length;
+
+      paddingTop = first * elementHeight;
+
+      paddingBottom = (length - last) * elementHeight;
+    }
   }
 
   return { first, last, paddingTop, paddingBottom };

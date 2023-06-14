@@ -14,7 +14,7 @@
 
   let selected: SessionType;
 
-  let timeout;
+  let timeout: string | number | NodeJS.Timeout;
   sessions.load();
 
   function selectSession(session: SessionType) {
@@ -24,7 +24,7 @@
   let modalShow = false;
   let actionShow = false;
 
-  $: viewport = getAvailableViewport(divEl, filtered?.length); //TODO: look up more when adding batch sizes (viewport doesn't show all after batch adds)
+  $: viewport = getAvailableViewport(divEl, filtered?.length);
 
   $: filtered =
     sessions?.filter($filterOptions?.query.trim().toLowerCase()) || $sessions;
