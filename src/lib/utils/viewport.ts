@@ -1,33 +1,37 @@
 let elementHeight: number, clientHeight: number;
 
-export function getAvailableViewport(viewport: HTMLElement, length: number) {
+export function getAvailableViewport(
+  parent: HTMLElement,
+  length: number,
+  safe: number = 0
+) {
   if (!length) return;
 
-  let first = 0,
-    last = length,
+  let start = 0,
+    end = length,
     paddingTop = 0,
     paddingBottom = 0;
 
-  if (viewport) {
-    const { scrollTop, scrollHeight } = viewport;
+  if (parent) {
+    const { scrollTop, scrollHeight } = parent;
 
-    if (!clientHeight) clientHeight = viewport.clientHeight;
+    if (!clientHeight) clientHeight = parent.clientHeight;
 
     if (scrollHeight > clientHeight) {
       if (!elementHeight) elementHeight = scrollHeight / length;
 
-      first = Math.floor((scrollTop - 500) / elementHeight);
+      start = Math.floor((scrollTop - safe) / elementHeight);
 
-      last = Math.ceil((clientHeight + scrollTop + 500) / elementHeight);
+      end = Math.ceil((clientHeight + scrollTop + safe) / elementHeight);
 
-      if (first < 0) first = 0;
-      if (last > length) last = length;
+      if (start < 0) start = 0;
+      if (end > length) end = length;
 
-      paddingTop = first * elementHeight;
+      paddingTop = start * elementHeight;
 
-      paddingBottom = (length - last) * elementHeight;
+      paddingBottom = (length - end) * elementHeight;
     }
   }
 
-  return { first, last, paddingTop, paddingBottom };
+  return { start, end, paddingTop, paddingBottom };
 }
