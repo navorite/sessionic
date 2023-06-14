@@ -7,14 +7,11 @@
   import ActionModal from '@components/Modals/ActionModal.svelte';
   import sessions from '@stores/sessions';
   import { filterOptions } from '@stores/settings';
-  import { getAvailableViewport } from '@utils/viewport';
   import { session as currentSession } from '@components/Sessions/Current.svelte';
-
-  let divEl: HTMLDivElement;
+  import VirtualList from '@components/basic/VirtualList.svelte';
 
   let selected: SessionType;
 
-  let timeout: string | number | NodeJS.Timeout;
   sessions.load();
 
   function selectSession(session: SessionType) {
@@ -23,8 +20,6 @@
 
   let modalShow = false;
   let actionShow = false;
-
-  $: viewport = getAvailableViewport(divEl, filtered?.length);
 
   $: filtered =
     sessions?.filter($filterOptions?.query.trim().toLowerCase()) || $sessions;
@@ -50,44 +45,26 @@
     </h2>
 
     {#if filtered}
-      <div
-        bind:this={divEl}
-        class="flex-1 overflow-y-auto pr-4"
-        on:scroll={() => {
-          //TODO: enhance scrolling performance and memory usage
-          if (timeout) clearTimeout(timeout);
-
-          timeout = setTimeout(() => {
-            viewport = getAvailableViewport(divEl, filtered.length);
-            clearTimeout(timeout);
-          }, 5);
-        }}
+      <VirtualList
+        reversed={true}
+        items={filtered}
+        let:item
+        class="flex-1 pr-4"
       >
-        {#if viewport}
-          <ul
-            style:padding-top="{viewport.paddingTop}px"
-            style:padding-bottom="{viewport.paddingBottom}px"
-          >
-            {#each { length: viewport.last - viewport.first } as _, i}
-              {@const session =
-                filtered[filtered.length - 1 - i - viewport.first]}
-              <Session
-                {session}
-                on:click={async () => {
-                  selectSession(session);
-                }}
-                selected={session === selected}
-                on:renameModal={() => {
-                  modalShow = true;
-                }}
-                on:deleteModal={() => {
-                  actionShow = true;
-                }}
-              />
-            {/each}
-          </ul>
-        {/if}
-      </div>
+        <Session
+          session={item}
+          on:click={async () => {
+            selectSession(item);
+          }}
+          selected={item === selected}
+          on:renameModal={() => {
+            modalShow = true;
+          }}
+          on:deleteModal={() => {
+            actionShow = true;
+          }}
+        />
+      </VirtualList>
     {/if}
   </div>
 
