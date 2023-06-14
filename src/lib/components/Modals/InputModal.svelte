@@ -12,6 +12,11 @@
   export let minlength = 3;
   export let maxlength = 40;
 
+  $: disabled =
+    /[<>]/.test(value) ||
+    value?.length < minlength ||
+    value?.length > maxlength;
+
   let inputEl: HTMLInputElement;
 
   $: if (open)
@@ -42,7 +47,7 @@
     }}
   />
   <button
-    disabled={value?.length < minlength || value?.length > maxlength}
+    {disabled}
     title="{type} session"
     slot="footer"
     type="button"
