@@ -27,3 +27,9 @@ export async function setDarkMode(dark: boolean, fade?: boolean) {
 export async function getDarkMode() {
   return (await storage?.get('dark'))?.dark;
 }
+
+export function isExtensionReady() {
+  return (
+    document.visibilityState === 'visible' && document.readyState === 'complete'
+  );
+}
