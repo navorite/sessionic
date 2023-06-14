@@ -14,6 +14,7 @@
 
   let selected: SessionType;
 
+  let timeout;
   sessions.load();
 
   function selectSession(session: SessionType) {
@@ -53,7 +54,13 @@
         bind:this={divEl}
         class="flex-1 overflow-y-auto pr-4"
         on:scroll={() => {
-          viewport = getAvailableViewport(divEl, filtered.length);
+          //TODO: enhance scrolling performance and memory usage
+          if (timeout) clearTimeout(timeout);
+
+          timeout = setTimeout(() => {
+            viewport = getAvailableViewport(divEl, filtered.length);
+            clearTimeout(timeout);
+          }, 5);
         }}
       >
         {#if viewport}
