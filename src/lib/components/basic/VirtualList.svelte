@@ -16,7 +16,7 @@
   let divEl: HTMLDivElement;
   let timeout: string | number | NodeJS.Timeout;
 
-  $: viewport = getAvailableViewport(divEl, items?.length);
+  $: viewport = getAvailableViewport(divEl, items?.length, 300);
   $: (start = viewport.start), (end = viewport.end);
 
   function handleScroll() {
@@ -24,7 +24,7 @@
     if (timeout) clearTimeout(timeout);
 
     timeout = setTimeout(() => {
-      viewport = getAvailableViewport(divEl, items?.length);
+      viewport = getAvailableViewport(divEl, items?.length, 300);
       clearTimeout(timeout);
     }, 5);
   }

@@ -5,31 +5,31 @@ export function getAvailableViewport(
   length: number,
   safe: number = 0
 ) {
-  if (!length) return;
-
   let start = 0,
-    end = length,
+    end = length ?? 0,
     paddingTop = 0,
     paddingBottom = 0;
 
-  if (parent) {
-    const { scrollTop, scrollHeight } = parent;
+  if (length) {
+    if (parent) {
+      const { scrollTop, scrollHeight } = parent;
 
-    if (!clientHeight) clientHeight = parent.clientHeight;
+      if (!clientHeight) clientHeight = parent.clientHeight;
 
-    if (scrollHeight > clientHeight) {
-      if (!elementHeight) elementHeight = scrollHeight / length;
+      if (scrollHeight > clientHeight) {
+        if (!elementHeight) elementHeight = scrollHeight / length;
 
-      start = Math.floor((scrollTop - safe) / elementHeight);
+        start = Math.floor((scrollTop - safe) / elementHeight);
 
-      end = Math.ceil((clientHeight + scrollTop + safe) / elementHeight);
+        end = Math.ceil((clientHeight + scrollTop + safe) / elementHeight);
 
-      if (start < 0) start = 0;
-      if (end > length) end = length;
+        if (start < 0) start = 0;
+        if (end > length) end = length;
 
-      paddingTop = start * elementHeight;
+        paddingTop = start * elementHeight;
 
-      paddingBottom = (length - end) * elementHeight;
+        paddingBottom = (length - end) * elementHeight;
+      }
     }
   }
 
