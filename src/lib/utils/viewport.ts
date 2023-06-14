@@ -3,7 +3,7 @@ let elementHeight: number, clientHeight: number;
 export function getAvailableViewport(
   parent: HTMLElement,
   length: number,
-  safe: number = 0
+  buffer: number = 0
 ) {
   let start = 0,
     end = length ?? 0,
@@ -19,9 +19,9 @@ export function getAvailableViewport(
       if (scrollHeight > clientHeight) {
         if (!elementHeight) elementHeight = scrollHeight / length;
 
-        start = Math.floor((scrollTop - safe) / elementHeight);
+        start = Math.floor((scrollTop - buffer) / elementHeight);
 
-        end = Math.ceil((clientHeight + scrollTop + safe) / elementHeight);
+        end = Math.ceil((clientHeight + scrollTop + buffer) / elementHeight);
 
         if (start < 0) start = 0;
         if (end > length) end = length;

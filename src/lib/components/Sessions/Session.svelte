@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { Session } from '../../types/extension';
   import ListItem from '@components/basic/ListItem.svelte';
   import IconButton from '../IconButton.svelte';
   import { openSession } from '@utils/browser';
@@ -7,7 +6,7 @@
   import { markResult } from '@utils/markResult';
   import { createEventDispatcher } from 'svelte';
 
-  export let session: Session;
+  export let session: ESession;
   export let selected = false;
 
   const dispatch = createEventDispatcher();

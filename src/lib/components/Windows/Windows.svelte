@@ -1,9 +1,8 @@
 <script lang="ts">
   import { isExtensionReady } from '@utils/extension';
-  import type { Session } from '../../types/extension';
   import Window from './Window.svelte';
 
-  export let session: Session;
+  export let session: ESession;
 
   let className = '';
 

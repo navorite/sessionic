@@ -1,9 +1,8 @@
 <script lang="ts" context="module">
-  export const session: Writable<Session> = writable();
+  export const session: Writable<ESession> = writable();
 </script>
 
 <script lang="ts">
-  import type { Session } from 'src/lib/types/extension';
   import IconButton from '../IconButton.svelte';
   import { createEventDispatcher, onMount } from 'svelte';
   import { getSession } from '@utils/browser';
