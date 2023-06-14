@@ -40,7 +40,7 @@ export async function getTabs(
   return tabs;
 }
 
-// Get current session (Either all windows or current window) - TODO: arg: options?: compressOptions goes undefined after 1st call
+// Get current session - TODO: arg: options?: compressOptions goes undefined after 1st call
 export async function getSession() {
   let session = { title: 'Current Session', windows: [] } as Session;
   let tabsNumber = 0;
@@ -63,43 +63,70 @@ export async function getSession() {
 }
 
 //TODO support discarded in chromium, fix popup open bug in firefox
-export async function openWindow(window: Window) {
-  const windowId = (
+export async function openInCurrentWindow(window: Window) {
+  window.id = (await browser?.windows?.getCurrent()).id;
+
+  for (const tab of window?.tabs) {
+    createTab(tab, window.id);
+  }
+}
+
+export async function openInNewWindow(window: Window) {
+  window.id = (
     await browser?.windows?.create({
-      focused: window.focused,
-      height: window.height,
-      width: window.width,
       incognito: window.incognito,
-      top: window.top,
-      left: window.left,
+      ...(window.state !== 'normal'
+        ? { state: window.state }
+        : {
+            top: window.top,
+            left: window.left,
+            height: window.height,
+            width: window.width,
+          }),
     })
   ).id;
 
-  for (const {
+  for (const tab of window?.tabs) {
+    createTab(tab, window.id);
+  }
+}
+
+export async function openSession(session: Session, newWindow?: boolean) {
+  for (const window of session.windows) {
+    if (newWindow) {
+      openInNewWindow(window);
+      continue;
+    }
+
+    openInCurrentWindow(window);
+  }
+}
+
+export async function createTab(
+  tab: Tab,
+  windowId: number,
+  discarded?: boolean
+) {
+  const {
     url,
     active,
     pinned,
     cookieStoreId,
     isInReaderMode,
     mutedInfo,
-  } of window?.tabs) {
-    browser?.tabs?.create({
-      url,
-      active,
-      windowId,
-      pinned,
-      ...(isFirefox && {
-        discarded: !active,
-        cookieStoreId,
-        openInReaderMode: isInReaderMode,
-        muted: mutedInfo.muted,
-      }),
-    });
-  }
-}
+    incognito,
+  } = tab;
 
-export async function openSession(session: Session) {
-  for (const window of session.windows) {
-    openWindow(window);
-  }
+  return browser?.tabs?.create({
+    url,
+    active,
+    windowId,
+    pinned,
+    ...(isFirefox && {
+      discarded: discarded ?? !active,
+      openInReaderMode: isInReaderMode,
+      muted: mutedInfo.muted,
+      ...(incognito && { cookieStoreId }),
+    }),
+  });
 }

@@ -3,7 +3,7 @@
   import IconButton from '../IconButton.svelte';
   import Tabs from '../Tabs/Tabs.svelte';
   import type { Window } from '../../types/browser';
-  import { openWindow } from '@utils/browser';
+  import { openInNewWindow } from '@utils/browser';
   import { createEventDispatcher } from 'svelte';
   import type { Icon } from 'src/lib/types/extension';
 
@@ -40,7 +40,7 @@
         title="Open this Window in a New Window"
         class="w-max max-w-[60%] font-semibold overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline"
         on:click={() => {
-          openWindow(window);
+          openInNewWindow(window);
         }}
       >
         {window.incognito ? 'Private' : ''} Window
