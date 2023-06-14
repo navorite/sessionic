@@ -2,14 +2,12 @@
   import ListItem from '@components/basic/ListItem.svelte';
   import IconButton from '../IconButton.svelte';
   import Tabs from '../Tabs/Tabs.svelte';
-  import type { Window } from '../../types/browser';
   import { openInNewWindow } from '@utils/browser';
   import { createEventDispatcher } from 'svelte';
-  import type { Icon } from 'src/lib/types/extension';
 
   const dispatch = createEventDispatcher();
 
-  export let window: Window;
+  export let window: EWindow;
 
   let show = true;
 

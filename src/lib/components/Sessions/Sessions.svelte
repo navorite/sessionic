@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { Session as SessionType } from '../../types/extension';
   import Session from './Session.svelte';
   import CurrentSession from './Current.svelte';
   import Windows from '../Windows/Windows.svelte';
@@ -10,11 +9,11 @@
   import { session as currentSession } from '@components/Sessions/Current.svelte';
   import VirtualList from '@components/basic/VirtualList.svelte';
 
-  let selected: SessionType;
+  let selected: ESession;
 
   sessions.load();
 
-  function selectSession(session: SessionType) {
+  function selectSession(session: ESession) {
     selected = session;
   }
 
