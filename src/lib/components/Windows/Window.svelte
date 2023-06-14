@@ -9,6 +9,8 @@
 
   export let window: EWindow;
 
+  export let current = false;
+
   let show = true;
 
   let icon: Icon;
@@ -51,13 +53,13 @@
         {window?.tabs.length} Tab{window?.tabs.length > 1 ? 's' : ''}
       </span>
 
-      {#if hover}
+      {#if hover && !current}
         <IconButton
           icon="delete"
           title="Delete window"
           class="ml-auto text-2xl text-red-500 hover:text-red-800 invisible group-hover:visible"
           on:click={() => {
-            dispatch('delete', { tab: null, window });
+            dispatch('delete', { window });
           }}
         />
       {/if}
@@ -66,6 +68,7 @@
     {#if show}
       <Tabs
         {window}
+        {current}
         class="pb-1 px-2"
         on:delete={(event) => {
           dispatch('delete', { tab: event.detail.tab, window });

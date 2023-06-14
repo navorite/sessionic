@@ -1,12 +1,12 @@
 <script lang="ts">
   import IconButton from '@components/IconButton.svelte';
-  import type { Tab } from '../../types/browser';
   import ListItem from '@components/basic/ListItem.svelte';
   import { createEventDispatcher } from 'svelte';
   import { decompress as decompressLZ } from 'lz-string';
   import { createTab } from '@utils/browser';
 
   export let tab: Tab;
+  export let current = false;
 
   const dispatch = createEventDispatcher();
 </script>
@@ -32,7 +32,7 @@
       </span>
     </button>
 
-    {#if hover}
+    {#if hover && !current}
       <IconButton
         icon="delete"
         title="Delete tab"

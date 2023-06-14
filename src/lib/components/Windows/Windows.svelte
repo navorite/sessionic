@@ -1,18 +1,47 @@
 <script lang="ts">
   import { isExtensionReady } from '@utils/extension';
   import Window from './Window.svelte';
-
-  export let session: ESession;
-
-  let className = '';
+  import { createEventDispatcher } from 'svelte';
 
   export { className as class };
+  let className = '';
+
+  export let session: ESession;
+  export let current = false;
+
+  const dispatch = createEventDispatcher();
+
+  function deleteTab(window: EWindow, tab: Tab, windowIndex: number) {
+    if (!window) return;
+
+    if (tab) {
+      const tabIndex = window.tabs.indexOf(tab);
+
+      if (tabIndex === -1) return;
+
+      window.tabs.splice(tabIndex, 1);
+
+      if (!window.tabs.length) session.windows.splice(windowIndex, 1);
+
+      session.tabsNumber--;
+    } else {
+      session.windows.splice(windowIndex, 1);
+      session.tabsNumber -= window.tabs.length;
+    }
+  }
 </script>
 
 {#if session && isExtensionReady()}
   <ul class={className}>
-    {#each session.windows as window}
-      <Window {window} on:delete />
+    {#each session.windows as window, i}
+      <Window
+        {window}
+        {current}
+        on:delete={(event) => {
+          deleteTab(window, event.detail?.tab, i);
+          dispatch('delete');
+        }}
+      />
     {/each}
   </ul>
 {:else}

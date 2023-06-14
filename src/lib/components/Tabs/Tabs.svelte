@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { Window } from '../../types/browser';
   import Tab from './Tab.svelte';
 
-  export let window: Window;
+  export let window: EWindow;
+  export let current = false;
 
   export let className = '';
   export { className as class };
@@ -12,7 +12,7 @@
   <ul class={className}>
     {#each window?.tabs as tab}
       <!-- {@const tabItem = tabsURL.push(tab.url)} -->
-      <Tab {tab} on:delete />
+      <Tab {tab} on:delete {current} />
     {/each}
   </ul>
 {/if}

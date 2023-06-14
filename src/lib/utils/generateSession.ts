@@ -1,11 +1,9 @@
-import type { Session } from '../types/extension';
-
-export async function generateSession(session: Session) {
+export async function generateSession(session: ESession) {
   const date = Date.now();
 
   return {
     title: session.title,
-    windows: session.windows.slice(0),
+    windows: structuredClone(session.windows),
     tabsNumber: session.tabsNumber,
     dateSaved: date,
     dateModified: date,

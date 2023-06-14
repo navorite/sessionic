@@ -70,40 +70,14 @@
   <Windows
     class="flex-1 overflow-y-auto pr-4"
     session={selected}
-    on:delete={async (event) => {
-      const target = event.detail.window;
-      const index = selected.windows.indexOf(target);
-
-      if (index === -1) return;
-
-      selected.windows = selected.windows.slice(0);
-      selected.windows[index] = { ...selected.windows[index] };
-
-      if (event.detail.tab) {
-        const tabIndex = selected.windows[index].tabs.indexOf(event.detail.tab);
-
-        if (tabIndex === -1) return;
-
-        selected.windows[index].tabs = selected.windows[index].tabs.slice(0);
-        selected.windows[index].tabs.splice(tabIndex, 1);
-
-        if (!selected.windows[index].tabs.length)
-          selected.windows.splice(index, 1);
-
-        selected.tabsNumber--;
-      } else {
-        selected.windows.splice(index, 1);
-        selected.tabsNumber -= event.detail.window.tabs.length;
-      }
-
-      if (selected === $currentSession) {
-        $currentSession = $currentSession;
-        return;
-      }
-
-      selected.dateModified = new Date().getTime();
+    current={selected === $currentSession}
+    on:delete={async () => {
+      selected.dateModified = Date.now();
 
       await sessions.put(selected);
+
+      if (!(selected.windows.length && selected.tabsNumber))
+        selected = $currentSession;
     }}
   />
 </div>
