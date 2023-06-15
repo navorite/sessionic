@@ -33,7 +33,7 @@
 {#if items && items.length}
   <div
     bind:this={divEl}
-    class="overflow-y-auto {className}"
+    class="overflow-y-auto pr-1 {className} "
     on:scroll={handleScroll}
   >
     <ul

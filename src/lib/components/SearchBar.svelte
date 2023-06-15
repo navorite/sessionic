@@ -24,15 +24,6 @@
     )
       showInputBar = false;
   }
-
-  // function expandWidth(node: HTMLElement, duration: number) {
-  //   if (!node?.offsetWidth) return;
-  //   const width = node.offsetWidth;
-
-  //   const speed = width / duration;
-
-  //   // return {duration, tick: (t) => {node.style.width = }}
-  // }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -71,3 +62,12 @@
     <IconButton icon="search" title="Search for Session or Tab name.." />
   {/if}
 </div>
+
+<!-- // function expandWidth(node: HTMLElement, duration: number) {
+  //   if (!node?.offsetWidth) return;
+  //   const width = node.offsetWidth;
+
+  //   const speed = width / duration;
+
+  //   // return {duration, tick: (t) => {node.style.width = }}
+  // } -->

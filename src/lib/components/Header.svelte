@@ -7,9 +7,9 @@
   import { isPopup } from '@constants/env';
 </script>
 
-<div class="flex items-center w-full h-8">
+<div class="flex items-center w-full h-8 gap-2">
   <h1>Tabify</h1>
-  <div class="flex items-center justify-end w-full h-full gap-2">
+  <div class="ml-auto flex items-center justify-end w-max h-full gap-2">
     <SearchBar bind:value={$filterOptions.query} />
 
     {#if isPopup}
