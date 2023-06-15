@@ -1,14 +1,19 @@
 <script lang="ts">
-  import { filterOptions } from '@stores/settings';
-  import { openOptions, openPopup } from '@utils/extension';
-  import IconButton from '@components/IconButton.svelte';
   import SearchBar from '@components/SearchBar.svelte';
+  import Notification from './basic/Notification.svelte';
+  import IconButton from '@components/IconButton.svelte';
+  import { filterOptions } from '@stores/settings';
   import darkMode from '@stores/theme';
   import { isPopup } from '@constants/env';
+  import { openOptions, openPopup } from '@utils/extension';
+  import { notification } from '@stores/notification';
 </script>
 
-<div class="flex items-center w-full h-8 gap-2">
+<div class="flex items-center w-full h-full max-h-8 gap-2">
   <h1>Tabify</h1>
+
+  <Notification detail={$notification} />
+
   <div class="ml-auto flex items-center justify-end w-max h-full gap-2">
     <SearchBar bind:value={$filterOptions.query} />
 
