@@ -1,5 +1,4 @@
 import { isFirefox } from '@constants/env';
-import type { compressOptions } from '../types/browser';
 
 export default (() => {
   if (!isFirefox) return;

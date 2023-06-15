@@ -5,10 +5,10 @@
   import { decompress as decompressLZ } from 'lz-string';
   import { createTab } from '@utils/browser';
 
-  export let tab: Tab;
+  export let tab: ETab;
   export let current = false;
 
-  const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher<{ delete: ETab }>();
 </script>
 
 {#if tab}
@@ -38,7 +38,7 @@
         title="Delete tab"
         class="ml-auto text-2xl text-red-500 hover:text-red-800"
         on:click={() => {
-          dispatch('delete', { tab });
+          dispatch('delete', tab);
         }}
       />
     {/if}

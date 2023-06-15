@@ -5,14 +5,14 @@ import { compress as compressLZ } from 'lz-string';
 import type { UUID } from 'crypto';
 
 // Get current active tab
-export async function getCurrentTab(): Promise<Tab> {
+export async function getCurrentTab(): Promise<ETab> {
   return (await getWindowTabs({ active: true }))[0];
 }
 
 // Get all tabs of current window
 export async function getWindowTabs(
   optionalQuery: QueryInfo = {}
-): Promise<Tab[]> {
+): Promise<ETab[]> {
   return getTabs({ ...optionalQuery, currentWindow: true });
 }
 
@@ -20,7 +20,7 @@ export async function getWindowTabs(
 export async function getTabs(
   queryInfo: QueryInfo = {},
   options?: compressOptions
-): Promise<Tab[]> {
+): Promise<ETab[]> {
   const tabs = await browser?.tabs?.query(queryInfo);
 
   for (const tab of tabs) {
@@ -105,7 +105,7 @@ export async function openSession(session: ESession, newWindow?: boolean) {
 }
 
 export async function createTab(
-  tab: Tab,
+  tab: ETab,
   windowId?: number,
   discarded?: boolean
 ) {

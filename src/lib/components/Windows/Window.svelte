@@ -5,7 +5,9 @@
   import { openInNewWindow } from '@utils/browser';
   import { createEventDispatcher } from 'svelte';
 
-  const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher<{
+    delete: ETab | undefined;
+  }>();
 
   export let window: EWindow;
 
@@ -59,21 +61,14 @@
           title="Delete window"
           class="ml-auto text-2xl text-red-500 hover:text-red-800 invisible group-hover:visible"
           on:click={() => {
-            dispatch('delete', { window });
+            dispatch('delete');
           }}
         />
       {/if}
     </div>
 
     {#if show}
-      <Tabs
-        {window}
-        {current}
-        class="pb-1 px-2"
-        on:delete={(event) => {
-          dispatch('delete', { tab: event.detail.tab, window });
-        }}
-      />
+      <Tabs {window} {current} class="pb-1 px-2" on:delete />
       <!-- <slot name="tabs" /> -->
     {/if}
   </ListItem>
