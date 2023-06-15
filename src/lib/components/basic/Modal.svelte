@@ -13,39 +13,42 @@
   on:keydown={(event) => {
     if (event.key === 'Escape') open = false;
   }}
-  class="max-h-lg max-w-lg p-0 bg-transparent backdrop-blur rounded-md border-2 border-solid border-neutral-8"
+  class="max-h-lg max-w-lg p-0 bg-transparent backdrop-blur rounded-md border-2 border-solid border-neutral-8 outline-none"
 >
   <div
     class="min-w-[16rem] min-h-[8rem] w-full h-full py-2 px-4 flex flex-col gap-4"
     on:click|stopPropagation
   >
-    <div class="flex items-center">
-      <h2 class="text-lg font-semibold text-neutral-12">
-        <slot name="header" />
-      </h2>
+    {#if $$slots.header}
+      <div class="flex items-center">
+        <h2 class="text-lg font-semibold text-neutral-12">
+          <slot name="header" />
+        </h2>
 
-      <button
-        type="button"
-        class="px-2 bg-neutral-7 hover:bg-neutral-8 rounded-md ml-auto font-bold hover:text-red-600"
-        title="Close modal"
-        on:click={() => (open = false)}>X</button
-      >
-    </div>
+        <button
+          type="button"
+          class="px-2 bg-neutral-7 hover:bg-neutral-8 rounded-md ml-auto font-bold hover:text-red-600"
+          title="Close modal"
+          on:click={() => (open = false)}>X</button
+        >
+      </div>
+    {/if}
 
     <slot name="content" />
 
-    <div class="ml-auto font-semibold flex gap-2">
-      <button
-        class="px-4 py-1 bg-neutral-7 rounded-md hover:bg-neutral-8"
-        type="button"
-        title="Close modal"
-        on:click={() => {
-          open = false;
-        }}>Cancel</button
-      >
-
-      <slot name="footer" />
-    </div>
+    {#if $$slots.footer}
+      <div class="ml-auto font-semibold flex gap-2">
+        <button
+          class="px-4 py-1 bg-neutral-7 rounded-md hover:bg-neutral-8"
+          type="button"
+          title="Close modal"
+          on:click={() => {
+            open = false;
+          }}>Cancel</button
+        >
+        <slot name="footer" />
+      </div>
+    {/if}
   </div>
 </dialog>
 
