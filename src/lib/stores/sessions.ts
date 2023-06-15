@@ -46,12 +46,11 @@ export default (() => {
   }
 
   async function put(target: ESession) {
-    if (!target.windows.length || !target.tabsNumber) {
-      await remove(target);
-      return;
-    }
+    if (!target.windows.length || !target.tabsNumber)
+      return await remove(target);
 
     await sessionsDB.updateSession(target);
+
     update((sessions) => {
       target.dateModified = Date.now();
 
@@ -80,10 +79,7 @@ export default (() => {
     update((sessions) => {
       const index = sessions.indexOf(target);
 
-      if (index > -1) {
-        sessions.splice(index, 1);
-        select(sessions[sessions.length - 1]); //subject to change - TODO: scroll to new location
-      }
+      if (index > -1) sessions.splice(index, 1);
 
       return sessions;
     });

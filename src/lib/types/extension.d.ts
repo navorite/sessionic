@@ -7,7 +7,7 @@ declare global {
     tabsNumber: number;
     dateSaved: number;
     dateModified: number;
-    id: UUID;
+    id: UUID | 'current';
   }
 
   export interface FilterOptions {

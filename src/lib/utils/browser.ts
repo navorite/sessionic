@@ -2,7 +2,6 @@ import browser from 'webextension-polyfill';
 import { compress_options, isFirefox, tabAttr } from '@constants/env';
 import compress from './compress';
 import { compress as compressLZ } from 'lz-string';
-import type { UUID } from 'crypto';
 
 // Get current active tab
 export async function getCurrentTab(): Promise<ETab> {
@@ -44,7 +43,7 @@ export async function getSession() {
   const session: ESession = {
     title: 'Current Session',
     windows: [],
-    id: 'current' as UUID,
+    id: 'current',
     dateSaved: null,
     dateModified: null,
     tabsNumber: 0,
