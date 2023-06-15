@@ -13,7 +13,7 @@
   import { writable, type Writable } from 'svelte/store';
   import { isExtensionReady } from '@utils/extension';
 
-  let timeout: string | number | NodeJS.Timeout;
+  let timeout: number | NodeJS.Timeout;
 
   $: selection = sessions.selection;
 
