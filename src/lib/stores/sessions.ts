@@ -10,15 +10,15 @@ export default (() => {
   load();
 
   async function load(count?: number) {
+    const selectionID = (await storage?.get('selectionID'))?.selectionID;
+
     set(await sessionsDB.loadSessions(count));
 
-    let selection = (await storage?.get('selection'))?.selection;
-
-    if (!selection) return;
+    if (!selectionID || selectionID === 'current') return;
 
     const unsubscribe = subscribe((sessions) => {
       for (const session of sessions) {
-        if (session.id === selection) {
+        if (session.id === selectionID) {
           select(session);
           break;
         }
@@ -93,7 +93,7 @@ export default (() => {
   async function select(session: ESession) {
     selection.set(session);
 
-    storage?.set({ selection: session.id });
+    storage?.set({ selectionID: session.id });
   }
 
   return {

@@ -40,15 +40,19 @@
 
       window.tabs.splice(tabIndex, 1);
 
-      if (!window.tabs.length) $session.windows.splice(windowIndex, 1);
-
       $session.tabsNumber--;
-    } else {
+    }
+
+    if (!tab && (window || !window.tabs.length)) {
       $session.windows.splice(windowIndex, 1);
+
       $session.tabsNumber -= window.tabs.length;
     }
 
-    return sessions.put($session);
+    sessions.put($session);
+
+    if (!$session.windows.length || !$session.tabsNumber)
+      session.select($currentSession);
   }
 </script>
 
