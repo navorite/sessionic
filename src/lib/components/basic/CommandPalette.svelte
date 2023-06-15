@@ -1,24 +1,23 @@
 <script lang="ts">
   import sessions from '@stores/sessions';
   import Modal from './Modal.svelte';
-  import { selectedSession } from '@components/Sessions/Sessions.svelte';
   import { currentSession } from '@components/Sessions/Current.svelte';
-  //export { className as class };
-  //let className = '';
 
   export let open = false;
+
+  $: selected = sessions.selection;
 
   const commands = [
     {
       title: 'Save current session',
-      action: async () =>
-        selectedSession.select(await sessions.add($currentSession)),
+      action: async () => await sessions.add($currentSession),
     },
     {
       title: 'Delete selected session',
       action: () =>
-        $selectedSession !== $currentSession &&
-        sessions.remove($selectedSession),
+        $selected &&
+        $selected !== $currentSession &&
+        sessions.remove($selected),
     },
     { title: 'Delete all sessions', action: sessions.removeAll },
   ];

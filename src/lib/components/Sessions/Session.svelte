@@ -5,9 +5,11 @@
   import { filterOptions } from '@stores/settings';
   import { markResult } from '@utils/markResult';
   import { createEventDispatcher } from 'svelte';
+  import sessions from '@stores/sessions';
 
   export let session: ESession;
-  export let selected = false;
+
+  $: selected = sessions.selection;
 
   const dispatch = createEventDispatcher();
 
@@ -21,8 +23,10 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <ListItem
   let:hover
-  class="session-container {selected ? '!bg-primary-5' : ''}"
-  on:click
+  class="session-container {$selected === session ? '!bg-primary-5' : ''}"
+  on:click={() => {
+    selected.select(session);
+  }}
 >
   <div class="session-info">
     <span

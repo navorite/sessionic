@@ -1,9 +1,8 @@
 import browser from 'webextension-polyfill';
-import type { QueryInfo, Tab, Window, compressOptions } from '../types/browser';
-import type { Session } from '../types/extension';
 import { compress_options, isFirefox, tabAttr } from '@constants/env';
 import compress from './compress';
 import { compress as compressLZ } from 'lz-string';
+import type { UUID } from 'crypto';
 
 // Get current active tab
 export async function getCurrentTab(): Promise<Tab> {
@@ -42,28 +41,31 @@ export async function getTabs(
 
 // Get current session - TODO: arg: options?: compressOptions goes undefined after 1st call
 export async function getSession() {
-  let session = { title: 'Current Session', windows: [] } as Session;
-  let tabsNumber = 0;
+  const session: ESession = {
+    title: 'Current Session',
+    windows: [],
+    id: 'current' as UUID,
+    dateSaved: null,
+    dateModified: null,
+    tabsNumber: 0,
+  };
 
-  const windows = await browser?.windows?.getAll();
+  session.windows = await browser?.windows?.getAll();
 
-  for (const window of windows) {
+  for (const window of session.windows) {
     window.tabs = await getTabs(
       { windowId: window.id, url: '*://*/*' },
       compress_options
     );
 
-    tabsNumber += window.tabs.length;
-    session.windows.push(window);
+    session.tabsNumber += window.tabs.length;
   }
-
-  session.tabsNumber = tabsNumber;
 
   return session;
 }
 
 //TODO support discarded in chromium, fix popup open bug in firefox
-export async function openInCurrentWindow(window: Window) {
+export async function openInCurrentWindow(window: EWindow) {
   window.id = (await browser?.windows?.getCurrent()).id;
 
   for (const tab of window?.tabs) {
@@ -71,7 +73,7 @@ export async function openInCurrentWindow(window: Window) {
   }
 }
 
-export async function openInNewWindow(window: Window) {
+export async function openInNewWindow(window: EWindow) {
   const windowId = (
     await browser?.windows?.create({
       incognito: window.incognito,
@@ -91,7 +93,7 @@ export async function openInNewWindow(window: Window) {
   }
 }
 
-export async function openSession(session: Session, newWindow?: boolean) {
+export async function openSession(session: ESession, newWindow?: boolean) {
   for (const window of session.windows) {
     if (newWindow) {
       openInNewWindow(window);

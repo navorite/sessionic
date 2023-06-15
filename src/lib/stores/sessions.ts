@@ -1,13 +1,31 @@
 import { writable, type Writable } from 'svelte/store';
-
 import { sessionsDB } from '@utils/database';
 import { generateSession } from '@utils/generateSession';
+import storage from '@utils/storage';
 
 export default (() => {
   const { subscribe, set, update }: Writable<ESession[]> = writable();
+  const selection: Writable<ESession> = writable();
+
+  load();
 
   async function load(count?: number) {
     set(await sessionsDB.loadSessions(count));
+
+    let selection = (await storage?.get('selection'))?.selection;
+
+    if (!selection) return;
+
+    const unsubscribe = subscribe((sessions) => {
+      for (const session of sessions) {
+        if (session.id === selection) {
+          select(session);
+          break;
+        }
+      }
+    });
+
+    unsubscribe();
   }
 
   async function add(session: ESession) {
@@ -22,6 +40,8 @@ export default (() => {
       return sessions;
     });
 
+    select(generated);
+
     return generated;
   }
 
@@ -33,6 +53,8 @@ export default (() => {
 
     await sessionsDB.updateSession(target);
     update((sessions) => {
+      target.dateModified = Date.now();
+
       sessions[sessions.indexOf(target)] = target;
       return sessions;
     });
@@ -49,24 +71,33 @@ export default (() => {
 
     unsubscribe();
 
-    return filtered;
+    return filtered; //subject to change
   }
 
   async function remove(target: ESession) {
+    await sessionsDB.deleteSession(target);
+
     update((sessions) => {
       const index = sessions.indexOf(target);
 
-      if (index > -1) sessions.splice(index, 1);
+      if (index > -1) {
+        sessions.splice(index, 1);
+        select(sessions[sessions.length - 1]); //subject to change - TODO: scroll to new location
+      }
 
       return sessions;
     });
-
-    await sessionsDB.deleteSession(target);
   }
 
-  function removeAll() {
+  async function removeAll() {
+    await sessionsDB.deleteSessions();
     set([]);
-    return sessionsDB.deleteSessions();
+  }
+
+  async function select(session: ESession) {
+    selection.set(session);
+
+    storage?.set({ selection: session.id });
   }
 
   return {
@@ -77,5 +108,6 @@ export default (() => {
     filter,
     remove,
     removeAll,
+    selection: { subscribe: selection.subscribe, select, set: selection.set }, //TODO: remove the ability to set
   };
 })();
