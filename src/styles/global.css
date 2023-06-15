@@ -68,9 +68,17 @@ div {
 }
 
 mark {
-  background-color: var(--indigo9, currentColor);
-  color: var(--gray1, currentColor);
-  border-radius: 4px;
-  padding: 2px;
-  margin: auto 1px;
+  @apply bg-primary-9 rounded-md text-neutral-1 p-0.5 my-auto mx-[1px];
+}
+
+::-webkit-scrollbar {
+  @apply w-1 bg-neutral-4 rounded-md;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-md bg-neutral-10;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-11;
 }
