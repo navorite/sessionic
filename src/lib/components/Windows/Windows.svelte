@@ -26,7 +26,7 @@
 
   $: current = $session === $currentSession;
 
-  function deleteTab(window: EWindow, tab: Tab, windowIndex: number) {
+  function deleteTab(window: EWindow, tab: ETab, windowIndex: number) {
     if ($session || !window) return;
 
     if (tab) {
@@ -59,7 +59,7 @@
         {window}
         {current}
         on:delete={(event) => {
-          deleteTab(window, event.detail?.tab, i);
+          deleteTab(window, event.detail, i);
         }}
       />
     {/each}

@@ -1,4 +1,3 @@
-import type { Page } from '../types/extension';
 import browser from 'webextension-polyfill';
 import storage from './storage';
 import { EXT_ID } from '@constants/env';
