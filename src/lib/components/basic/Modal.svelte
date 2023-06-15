@@ -27,7 +27,7 @@
 
         <button
           type="button"
-          class="px-2 bg-neutral-7 hover:bg-neutral-8 rounded-md ml-auto font-bold hover:text-red-600"
+          class="px-2 border-2 border-neutral-8 text-neutral-12 rounded-md ml-auto font-bold hover:text-error"
           title="Close modal"
           on:click={() => (open = false)}>X</button
         >
