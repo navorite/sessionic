@@ -25,6 +25,11 @@
     });
 
   const dispatch = createEventDispatcher();
+
+  function submit() {
+    dispatch('inputSubmit', { value });
+    value = '';
+  }
 </script>
 
 <Modal bind:open>
@@ -43,7 +48,9 @@
     {maxlength}
     bind:value
     on:keydown={(event) => {
-      if (event.key === 'Enter') dispatch('inputSubmit', { value });
+      if (event.key === 'Enter') {
+        submit();
+      }
     }}
   />
   <button
@@ -52,9 +59,6 @@
     slot="footer"
     type="button"
     class="px-4 py-1 bg-primary-8 rounded-md hover:bg-primary-9 disabled:bg-neutral-3 disabled:text-neutral-7"
-    on:click={() => {
-      dispatch('inputSubmit', { value });
-      value = '';
-    }}>{type}</button
+    on:click={submit}>{type}</button
   >
 </Modal>

@@ -1,4 +1,4 @@
-export async function generateSession(session: ESession) {
+export function generateSession(session: ESession): ESession {
   const date = Date.now();
 
   return {

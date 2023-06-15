@@ -5,13 +5,12 @@ import {
   type IDBPTransaction,
   type StoreNames,
 } from 'idb/with-async-ittr';
-import type { Session } from '../types/extension';
 import type { UUID } from 'crypto';
 import log from './log';
 
 interface DB extends DBSchema {
   sessions: {
-    value: Session;
+    value: ESession;
     key: UUID;
     indexes: { title: string; dateSaved: number };
   };
@@ -34,20 +33,6 @@ class SessionsDB {
     this.open = true;
   }
 
-  async saveSession(session: Session) {
-    log.info('saveSession(): init');
-
-    if (!this.open) await this.initDB();
-    return this.db.add('sessions', session);
-  }
-
-  async removeSession(session: Session) {
-    log.info('removeSession(): init');
-
-    if (!this.open) await this.initDB();
-    return this.db.delete('sessions', session.id);
-  }
-
   async loadSessions(query?: number | IDBKeyRange, count?: number) {
     log.info('loadSessions(): init');
 
@@ -56,7 +41,14 @@ class SessionsDB {
     return this.db.getAllFromIndex('sessions', 'dateSaved', query, count);
   }
 
-  async updateSession(session: Session) {
+  async saveSession(session: ESession) {
+    log.info('saveSession(): init');
+
+    if (!this.open) await this.initDB();
+    return this.db.add('sessions', session);
+  }
+
+  async updateSession(session: ESession) {
     log.info('updateSession(): init');
 
     if (!this.open) await this.initDB();
@@ -64,7 +56,7 @@ class SessionsDB {
     return this.db.put('sessions', session);
   }
 
-  async saveSessions(sessions: Session[]) {
+  async saveSessions(sessions: ESession[]) {
     if (!this.open) await this.initDB();
     const tx = this.db.transaction('sessions', 'readwrite');
 
@@ -73,7 +65,17 @@ class SessionsDB {
     }
   }
 
-  deleteSessions() {
+  async deleteSession(session: ESession) {
+    log.info('deleteSession(): init');
+
+    if (!this.open) await this.initDB();
+    return this.db.delete('sessions', session.id);
+  }
+
+  async deleteSessions() {
+    log.info('deleteSessions(): init');
+
+    if (!this.open) await this.initDB();
     return this.db.clear('sessions');
   }
 

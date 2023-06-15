@@ -1,6 +1,7 @@
 import { writable, type Writable } from 'svelte/store';
 
 import { sessionsDB } from '@utils/database';
+import { generateSession } from '@utils/generateSession';
 
 export default (() => {
   const { subscribe, set, update }: Writable<ESession[]> = writable();
@@ -12,24 +13,16 @@ export default (() => {
   async function add(session: ESession) {
     if (!session.windows.length) return;
 
-    await sessionsDB.saveSession(session);
+    const generated = generateSession(session);
+
+    await sessionsDB.saveSession(generated);
 
     update((sessions) => {
-      sessions.push(session);
-      return sessions;
-    });
-  }
-
-  async function remove(target: ESession) {
-    update((sessions) => {
-      const index = sessions.indexOf(target);
-
-      if (index > -1) sessions.splice(index, 1);
-
+      sessions.push(generated);
       return sessions;
     });
 
-    await sessionsDB.removeSession(target);
+    return generated;
   }
 
   async function put(target: ESession) {
@@ -59,12 +52,30 @@ export default (() => {
     return filtered;
   }
 
+  async function remove(target: ESession) {
+    update((sessions) => {
+      const index = sessions.indexOf(target);
+
+      if (index > -1) sessions.splice(index, 1);
+
+      return sessions;
+    });
+
+    await sessionsDB.deleteSession(target);
+  }
+
+  function removeAll() {
+    set([]);
+    return sessionsDB.deleteSessions();
+  }
+
   return {
     subscribe,
     load,
-    put,
     add,
-    remove,
+    put,
     filter,
+    remove,
+    removeAll,
   };
 })();

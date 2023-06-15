@@ -32,7 +32,7 @@
 </script>
 
 {#if session && isExtensionReady()}
-  <ul class={className}>
+  <ul class="overflow-y-auto pr-1 {className} ">
     {#each session.windows as window, i}
       <Window
         {window}

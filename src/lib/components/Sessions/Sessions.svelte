@@ -1,21 +1,30 @@
+<script lang="ts" context="module">
+  import { writable, type Writable } from 'svelte/store';
+
+  export const selectedSession = (() => {
+    const { subscribe, set }: Writable<ESession> = writable();
+
+    return {
+      subscribe,
+      select(session: ESession) {
+        set(session);
+      },
+    };
+  })();
+</script>
+
 <script lang="ts">
   import Session from './Session.svelte';
   import CurrentSession from './Current.svelte';
   import Windows from '../Windows/Windows.svelte';
   import InputModal from '@components/Modals/InputModal.svelte';
   import ActionModal from '@components/Modals/ActionModal.svelte';
-  import sessions from '@stores/sessions';
-  import { filterOptions } from '@stores/settings';
-  import { session as currentSession } from '@components/Sessions/Current.svelte';
   import VirtualList from '@components/basic/VirtualList.svelte';
-
-  let selected: ESession;
+  import sessions from '@stores/sessions';
+  import { currentSession } from '@components/Sessions/Current.svelte';
+  import { filterOptions } from '@stores/settings';
 
   sessions.load();
-
-  function selectSession(session: ESession) {
-    selected = session;
-  }
 
   let modalShow = false;
   let actionShow = false;
@@ -27,15 +36,9 @@
 <div class="w-full h-full max-h-[90vh] mt-1 flex gap-2 overflow-hidden">
   <div class="w-[50%] max-w-md h-full flex flex-col">
     <CurrentSession
-      selected={$currentSession === selected}
+      selected={$currentSession === $selectedSession}
       on:click={() => {
-        selectSession($currentSession);
-      }}
-      on:change={(event) => {
-        event.detail.selected && selectSession($currentSession);
-      }}
-      on:save={(event) => {
-        selectSession(event.detail.session);
+        selectedSession.select($currentSession);
       }}
     />
 
@@ -44,18 +47,13 @@
     </h2>
 
     {#if filtered}
-      <VirtualList
-        reversed={true}
-        items={filtered}
-        let:item
-        class="flex-1 pr-4"
-      >
+      <VirtualList reversed={true} items={filtered} let:item class="flex-1">
         <Session
           session={item}
           on:click={async () => {
-            selectSession(item);
+            selectedSession.select(item);
           }}
-          selected={item === selected}
+          selected={item === $selectedSession}
           on:renameModal={() => {
             modalShow = true;
           }}
@@ -68,16 +66,16 @@
   </div>
 
   <Windows
-    class="flex-1 overflow-y-auto pr-4"
-    session={selected}
-    current={selected === $currentSession}
+    class="flex-1"
+    session={$selectedSession}
+    current={$selectedSession === $currentSession}
     on:delete={async () => {
-      selected.dateModified = Date.now();
+      $selectedSession.dateModified = Date.now();
 
-      await sessions.put(selected);
+      await sessions.put($selectedSession);
 
-      if (!(selected.windows.length && selected.tabsNumber))
-        selected = $currentSession;
+      if (!($selectedSession.windows.length && $selectedSession.tabsNumber))
+        $selectedSession = $currentSession;
     }}
   />
 </div>
@@ -85,12 +83,12 @@
 <InputModal
   bind:open={modalShow}
   type="Rename"
-  value={selected?.title}
+  value={$selectedSession?.title}
   on:inputSubmit={async (event) => {
-    if (selected.title !== event.detail.value) {
-      selected.title = event.detail.value;
+    if ($selectedSession.title !== event.detail.value) {
+      $selectedSession.title = event.detail.value;
 
-      await sessions.put(selected);
+      await sessions.put($selectedSession);
     }
 
     modalShow = false;
@@ -100,9 +98,9 @@
 <ActionModal
   bind:open={actionShow}
   on:deleteAction={() => {
-    sessions.remove(selected);
+    sessions.remove($selectedSession);
 
-    selectSession($currentSession);
+    selectedSession.select($currentSession);
     actionShow = false;
   }}
 />

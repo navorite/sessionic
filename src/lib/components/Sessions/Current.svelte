@@ -1,21 +1,21 @@
 <script lang="ts" context="module">
-  export const session: Writable<ESession> = writable();
+  export { session as currentSession };
+
+  const session: Writable<ESession> = writable();
 </script>
 
 <script lang="ts">
   import IconButton from '../IconButton.svelte';
-  import { createEventDispatcher, onMount } from 'svelte';
+  import { onMount } from 'svelte';
   import { getSession } from '@utils/browser';
   import browser from 'webextension-polyfill';
   import InputModal from '@components/Modals/InputModal.svelte';
   import sessions from '@stores/sessions';
-  import { generateSession } from '@utils/generateSession';
   import { writable, type Writable } from 'svelte/store';
   import { isExtensionReady } from '@utils/extension';
+  import { selectedSession } from './Sessions.svelte';
 
   export let selected = false;
-
-  const dispatch = createEventDispatcher();
 
   let open = false;
   let timeout: string | number | NodeJS.Timeout;
@@ -23,7 +23,7 @@
   getSession().then((result) => {
     $session = result;
 
-    dispatch('change', { selected });
+    selectedSession.select($session);
   });
 
   function handleRemoval(
@@ -55,7 +55,7 @@
 
     $session.tabsNumber -= length;
 
-    dispatch('change', { selected });
+    selectedSession.select($session);
   }
 
   //TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
@@ -80,10 +80,10 @@
     timeout = setTimeout(async () => {
       $session = await getSession();
 
-      dispatch('change', { selected });
+      selectedSession.select($session);
 
       clearTimeout(timeout);
-    }, 200);
+    }, 100);
   }
 </script>
 
@@ -118,11 +118,7 @@
   on:inputSubmit={async (event) => {
     $session.title = event.detail.value;
 
-    const newSession = await generateSession($session);
-
-    await sessions.add(newSession);
-
-    dispatch('save', { session: newSession });
+    selectedSession.select(await sessions.add($session));
 
     open = false;
   }}
