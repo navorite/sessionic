@@ -26,8 +26,12 @@
 
   $: current = $session === $currentSession;
 
-  function deleteTab(window: EWindow, tab: ETab, windowIndex: number) {
-    if ($session || !window) return;
+  function deleteTab(windowIndex: number, tab: ETab) {
+    if (!$session || !$session.windows) return;
+
+    const window = $session.windows[windowIndex];
+
+    if (!window) return;
 
     if (tab) {
       const tabIndex = window.tabs.indexOf(tab);
@@ -54,12 +58,12 @@
     class="overflow-y-auto {className}"
     style:padding-right={scrollBarPadding}
   >
-    {#each $session.windows as window, i}
+    {#each $session.windows as window, windowIndex}
       <Window
         {window}
         {current}
         on:delete={(event) => {
-          deleteTab(window, event.detail, i);
+          deleteTab(windowIndex, event.detail);
         }}
       />
     {/each}
