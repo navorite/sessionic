@@ -69,7 +69,7 @@ class SessionsDB {
     log.info('deleteSession(): init');
 
     if (!this.open) await this.initDB();
-    return this.db.delete('sessions', session.id);
+    return this.db.delete('sessions', session.id as UUID);
   }
 
   async deleteSessions() {
