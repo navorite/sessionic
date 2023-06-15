@@ -1,4 +1,8 @@
 <script lang="ts">
+  import { isFirefox } from '@constants/env';
+
+  import { afterUpdate } from 'svelte';
+
   import { getAvailableViewport } from '@utils/viewport';
 
   export { className as class };
@@ -12,6 +16,19 @@
   export let end: number = 0;
 
   export let reversed = false;
+
+  let scrollBarPadding = '0';
+
+  afterUpdate(() => {
+    if (isFirefox) {
+      scrollBarPadding =
+        divEl?.scrollHeight > divEl?.clientHeight ? '1rem' : '0';
+      return;
+    }
+
+    scrollBarPadding =
+      divEl?.scrollHeight > divEl?.clientHeight ? '0.5rem' : '0';
+  });
 
   let divEl: HTMLDivElement;
   let timeout: string | number | NodeJS.Timeout;
@@ -33,7 +50,8 @@
 {#if items && items.length}
   <div
     bind:this={divEl}
-    class="overflow-y-auto pr-1 {className} "
+    style:padding-right={scrollBarPadding}
+    class="overflow-y-auto {className}"
     on:scroll={handleScroll}
   >
     <ul

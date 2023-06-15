@@ -13,17 +13,16 @@
   import sessions from '@stores/sessions';
   import { writable, type Writable } from 'svelte/store';
   import { isExtensionReady } from '@utils/extension';
-  import { selectedSession } from './Sessions.svelte';
-
-  export let selected = false;
 
   let open = false;
   let timeout: string | number | NodeJS.Timeout;
 
+  $: selection = sessions.selection;
+
   getSession().then((result) => {
     $session = result;
 
-    selectedSession.select($session);
+    if (!$selection) selection.select($session);
   });
 
   function handleRemoval(
@@ -55,7 +54,7 @@
 
     $session.tabsNumber -= length;
 
-    selectedSession.select($session);
+    selection.select($session);
   }
 
   //TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
@@ -78,17 +77,21 @@
 
     //should fix inconsistency in update flags
     timeout = setTimeout(async () => {
-      $session = await getSession();
-
-      selectedSession.select($session);
+      if ($selection === $session) {
+        $session = await getSession();
+        selection.select($session);
+      } else $session = await getSession();
 
       clearTimeout(timeout);
-    }, 100);
+    }, 200);
   }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="session-container {selected ? '!bg-primary-5' : ''}" on:click>
+<div
+  class="session-container {$selection === $session ? '!bg-primary-5' : ''}"
+  on:click={() => selection.select($session)}
+>
   <div class="session-info">
     <p title="Current Session" class="session-name" data-current>
       Current Session
@@ -105,9 +108,11 @@
   </div>
 
   <p title="Session Details" class="session-card">
-    {$session?.windows?.length} Window{$session?.windows?.length > 1 ? 's' : ''}
+    {$session?.windows?.length ?? 0} Window{$session?.windows?.length > 1
+      ? 's'
+      : ''}
     -
-    {$session?.tabsNumber}
+    {$session?.tabsNumber ?? 0}
     Tab{$session?.tabsNumber > 1 ? 's' : ''}
   </p>
 </div>
@@ -118,7 +123,7 @@
   on:inputSubmit={async (event) => {
     $session.title = event.detail.value;
 
-    selectedSession.select(await sessions.add($session));
+    await sessions.add($session);
 
     open = false;
   }}
