@@ -15,8 +15,12 @@
   export let start: number = 0;
   export let end: number = 0;
 
-  export function scrollTo(x: number, y: number) {
-    divEl?.scrollTo(x, y);
+  export function scrollTo(
+    x: number,
+    y: number,
+    behavior: ScrollBehavior = 'smooth'
+  ) {
+    divEl?.scrollTo({ top: y, left: x, behavior: behavior });
   }
 
   export let reversed = false;
