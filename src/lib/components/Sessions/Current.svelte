@@ -79,8 +79,6 @@
       $session = await getSession();
 
       if ($selection.id === 'current') selection.select($session);
-
-      clearTimeout(timeout);
     }, 200);
   }
 </script>

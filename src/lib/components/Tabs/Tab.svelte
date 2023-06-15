@@ -14,6 +14,7 @@
 {#if tab}
   <ListItem class="tab-container" let:hover>
     <button
+      type="button"
       title={tab?.title}
       class="link"
       on:click={() => {
