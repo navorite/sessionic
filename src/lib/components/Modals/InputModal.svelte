@@ -24,10 +24,10 @@
       inputEl?.focus();
     });
 
-  const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher<{ inputSubmit: string }>();
 
   function submit() {
-    dispatch('inputSubmit', { value });
+    dispatch('inputSubmit', value);
     value = '';
   }
 </script>
@@ -47,11 +47,6 @@
     {minlength}
     {maxlength}
     bind:value
-    on:keydown={(event) => {
-      if (event.key === 'Enter') {
-        submit();
-      }
-    }}
   />
   <button
     {disabled}

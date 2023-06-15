@@ -9,12 +9,10 @@
   import { onMount } from 'svelte';
   import { getSession } from '@utils/browser';
   import browser from 'webextension-polyfill';
-  import InputModal from '@components/Modals/InputModal.svelte';
   import sessions from '@stores/sessions';
   import { writable, type Writable } from 'svelte/store';
   import { isExtensionReady } from '@utils/extension';
 
-  let open = false;
   let timeout: string | number | NodeJS.Timeout;
 
   $: selection = sessions.selection;
@@ -34,6 +32,7 @@
     const window_index = $session.windows.findIndex(
       (window) => window.id === removeInfo.windowId
     );
+
     let length = 1;
 
     if (window_index === -1) return;
@@ -54,7 +53,7 @@
 
     $session.tabsNumber -= length;
 
-    selection.select($session);
+    if ($selection.id === 'current') selection.select($session);
   }
 
   //TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
@@ -77,10 +76,9 @@
 
     //should fix inconsistency in update flags
     timeout = setTimeout(async () => {
-      if ($selection === $session) {
-        $session = await getSession();
-        selection.select($session);
-      } else $session = await getSession();
+      $session = await getSession();
+
+      if ($selection.id === 'current') selection.select($session);
 
       clearTimeout(timeout);
     }, 200);
@@ -101,9 +99,7 @@
       icon="save"
       title="Save session"
       class="ml-auto text-2xl hover:text-primary-9"
-      on:click={() => {
-        open = true;
-      }}
+      on:click
     />
   </div>
 
@@ -116,15 +112,3 @@
     Tab{$session?.tabsNumber > 1 ? 's' : ''}
   </p>
 </div>
-
-<InputModal
-  bind:open
-  type="Save"
-  on:inputSubmit={async (event) => {
-    $session.title = event.detail.value;
-
-    await sessions.add($session);
-
-    open = false;
-  }}
-/>

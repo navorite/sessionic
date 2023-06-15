@@ -1,7 +1,7 @@
 <script lang="ts">
   import VirtualList from '@components/basic/VirtualList.svelte';
   import Session from './Session.svelte';
-  import CurrentSession from './Current.svelte';
+  import CurrentSession, { currentSession } from './Current.svelte';
   import Windows from '../Windows/Windows.svelte';
   import InputModal from '@components/Modals/InputModal.svelte';
   import ActionModal from '@components/Modals/ActionModal.svelte';
@@ -9,9 +9,13 @@
   import { filterOptions } from '@stores/settings';
 
   let modalShow = false;
+  let modalType: 'Save' | 'Rename' = 'Rename';
+
   let actionShow = false;
 
-  $: selected = sessions.selection;
+  let scrollTo: (x: number, y: number) => void;
+
+  $: selection = sessions.selection;
 
   $: filtered =
     sessions?.filter($filterOptions?.query.trim().toLowerCase()) || $sessions;
@@ -19,22 +23,32 @@
 
 <div class="w-full h-full max-h-[90vh] mt-2 flex gap-2 overflow-hidden">
   <div class="w-[50%] max-w-md h-full flex flex-col">
-    <CurrentSession />
+    <CurrentSession
+      on:click={() => {
+        modalType = 'Save';
+        modalShow = true;
+      }}
+    />
 
     <h2 class="text-lg font-semibold mb-1">
       Sessions ({filtered?.length ?? 'Loading saved sessions...'})
     </h2>
 
     {#if filtered}
-      <VirtualList reversed={true} items={filtered} let:item class="flex-1">
+      <VirtualList
+        reversed={true}
+        items={filtered}
+        let:item
+        class="flex-1"
+        bind:scrollTo
+      >
         <Session
           session={item}
           on:renameModal={() => {
+            modalType = 'Rename';
             modalShow = true;
           }}
-          on:deleteModal={() => {
-            actionShow = true;
-          }}
+          on:deleteModal={() => (actionShow = true)}
         />
       </VirtualList>
     {/if}
@@ -45,13 +59,17 @@
 
 <InputModal
   bind:open={modalShow}
-  type="Rename"
-  value={$selected?.title}
+  type={modalType}
   on:inputSubmit={async (event) => {
-    if ($selected.title !== event.detail.value) {
-      $selected.title = event.detail.value;
+    if (modalType === 'Rename' && $selection.title !== event.detail) {
+      $selection.title = event.detail;
 
-      await sessions.put($selected);
+      await sessions.put($selection);
+    } else if (modalType === 'Save') {
+      $currentSession.title = event.detail;
+
+      await sessions.add($currentSession);
+      scrollTo(0, 0);
     }
 
     modalShow = false;
@@ -61,7 +79,9 @@
 <ActionModal
   bind:open={actionShow}
   on:deleteAction={() => {
-    sessions.remove($selected);
+    sessions.remove($selection);
+
+    selection.select($currentSession);
 
     actionShow = false;
   }}
