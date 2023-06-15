@@ -36,7 +36,7 @@
   <svelte:fragment slot="header">{type} session</svelte:fragment>
   <input
     bind:this={inputEl}
-    class="font-semibold bg-transparent outline-none border-2 border-solid border-neutral-8 rounded-md py-1 px-2 w-[24rem]"
+    class="font-semibold bg-transparent outline-none border-2 border-solid border-neutral-8 rounded-md py-1 px-2 w-[24rem] placeholder:text-neutral-12"
     slot="content"
     type="text"
     name={type}
@@ -47,6 +47,9 @@
     {minlength}
     {maxlength}
     bind:value
+    on:keydown={(event) => {
+      event.key === 'Enter' && submit();
+    }}
   />
   <button
     {disabled}

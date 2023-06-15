@@ -7,6 +7,8 @@
   import ActionModal from '@components/Modals/ActionModal.svelte';
   import sessions from '@stores/sessions';
   import { filterOptions } from '@stores/settings';
+  import { notification } from '@stores/notification';
+  import { notifications } from '@constants/notifications';
 
   let modalShow = false;
   let modalType: 'Save' | 'Rename' = 'Rename';
@@ -63,13 +65,16 @@
   on:inputSubmit={async (event) => {
     if (modalType === 'Rename' && $selection.title !== event.detail) {
       $selection.title = event.detail;
-
       await sessions.put($selection);
+
+      $notification = notifications.rename.success;
     } else if (modalType === 'Save') {
       $currentSession.title = event.detail;
 
       await sessions.add($currentSession);
       scrollTo(0, 0);
+
+      $notification = notifications.save.success;
     }
 
     modalShow = false;
@@ -78,8 +83,10 @@
 
 <ActionModal
   bind:open={actionShow}
-  on:deleteAction={() => {
-    sessions.remove($selection);
+  on:deleteAction={async () => {
+    await sessions.remove($selection);
+
+    $notification = notifications.remove.success;
 
     selection.select($currentSession);
 

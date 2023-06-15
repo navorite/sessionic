@@ -10,14 +10,14 @@ declare global {
     id: UUID | 'current';
   }
 
-  export interface FilterOptions {
+  interface FilterOptions {
     query?: string;
     default_tabs?: boolean;
   }
 
-  export type Page = 'popup' | 'options';
+  type Page = 'popup' | 'options';
 
-  export type Icon =
+  type Icon =
     | 'default'
     | 'session'
     | 'window'
@@ -35,4 +35,10 @@ declare global {
     | 'rename'
     | 'dark'
     | 'light';
+
+  interface ENotification {
+    type: 'info' | 'success' | 'warning' | 'error';
+    message: string;
+    duration?: number;
+  }
 }
