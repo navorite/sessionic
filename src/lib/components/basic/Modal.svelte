@@ -1,6 +1,8 @@
 <script lang="ts">
   export let open = false;
 
+  export let height = '10rem';
+
   let dialogEl: HTMLDialogElement;
 
   $: open ? dialogEl?.showModal() : dialogEl?.close();
@@ -16,7 +18,8 @@
   class="max-h-lg max-w-lg p-0 bg-transparent backdrop-blur rounded-md border-2 border-solid border-neutral-8 outline-none"
 >
   <div
-    class="min-w-[16rem] min-h-[8rem] w-full h-full py-2 px-4 flex flex-col gap-4"
+    style:height
+    class="min-w-[16rem] min-h-[10rem] w-full h-full py-2 px-4 flex flex-col gap-4"
     on:click|stopPropagation
   >
     {#if $$slots.header}
@@ -37,11 +40,11 @@
     <slot name="content" />
 
     {#if $$slots.footer}
-      <div class="ml-auto font-semibold flex gap-2">
+      <div class="ml-auto mt-auto font-semibold flex gap-2">
         <button
           class="px-4 py-1 bg-neutral-7 rounded-md hover:bg-neutral-8"
           type="button"
-          title="Close modal"
+          title="Cancel"
           on:click={() => {
             open = false;
           }}>Cancel</button

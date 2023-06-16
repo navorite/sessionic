@@ -39,7 +39,7 @@
 
       <button
         type="button"
-        style="background-color:rgba(0,0,0,0.4);"
+        style="background-color:rgba(0,0,0,0.5);"
         class="px-2 py-0.5 text-white rounded-md ml-auto font-bold hover:text-red-600 text-sm"
         title="Close modal"
         on:click={() => (show = false)}>X</button

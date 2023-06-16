@@ -64,7 +64,7 @@ div {
 }
 
 .session-card {
-  @apply w-max max-w-[85%] bg-overlay-black-8 p-2 rounded text-xs font-semibold m-0.5;
+  @apply w-max bg-overlay-black-8 p-2 rounded text-xs font-semibold m-0.5;
 }
 
 mark {
