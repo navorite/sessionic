@@ -1,10 +1,11 @@
-import { writable, type Writable } from 'svelte/store';
+import { get, writable, type Writable } from 'svelte/store';
 import { sessionsDB } from '@utils/database';
 import { generateSession } from '@utils/generateSession';
 import storage from '@utils/storage';
 import { notification } from './notification';
 import { MESSAGES } from '@constants/notifications';
 import log from '@utils/log';
+import { currentSession } from '@components/Sessions/Current.svelte';
 
 export default (() => {
   const { subscribe, set, update }: Writable<ESession[]> = writable();
@@ -29,16 +30,12 @@ export default (() => {
 
     if (!selectionID || selectionID === 'current') return;
 
-    const unsubscribe = subscribe((sessions) => {
-      for (const session of sessions) {
-        if (session.id === selectionID) {
-          select(session);
-          break;
-        }
+    for (const session of sessions) {
+      if (session.id === selectionID) {
+        select(session);
+        break;
       }
-    });
-
-    unsubscribe();
+    }
   }
 
   async function add(session: ESession) {
@@ -138,6 +135,8 @@ export default (() => {
     await sessionsDB.deleteSessions();
 
     set([]); //Empty the array, no longer needed
+
+    select(get(currentSession));
 
     notification.success_warning(MESSAGES.removeAll.success_warning);
   }
