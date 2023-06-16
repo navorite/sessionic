@@ -53,9 +53,12 @@ export async function getSession() {
 
   for (const window of session.windows) {
     window.tabs = await getTabs(
-      { windowId: window.id, url: '*://*/*' },
+      {
+        windowId: window.id,
+        url: ['*://*/*', 'file:///*/*', 'ftp://*/*', 'chrome://*/*'],
+      },
       compress_options
-    );
+    ); //TODO: firefox New Tab doesn't show - add filter option to urls
 
     session.tabsNumber += window.tabs.length;
   }
@@ -127,7 +130,7 @@ export async function createTab(
       discarded: discarded ?? !active,
       openInReaderMode: isInReaderMode,
       muted: mutedInfo.muted,
-      ...(incognito && { cookieStoreId }),
+      ...(!incognito && { cookieStoreId }),
     }),
   });
 }
