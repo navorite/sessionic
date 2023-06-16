@@ -38,7 +38,7 @@ declare global {
 
   interface ENotification {
     type: 'info' | 'success' | 'warning' | 'error';
-    message: string;
+    msg: string;
     duration?: number;
   }
 }

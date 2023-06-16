@@ -34,7 +34,7 @@
       transition:slide={{ duration: slideDuration, easing: cubicInOut }}
     >
       <h2 class="font-semibold">
-        {detail.message}
+        {detail.msg}
       </h2>
 
       <button

@@ -2,6 +2,9 @@ import { writable, type Writable } from 'svelte/store';
 import { sessionsDB } from '@utils/database';
 import { generateSession } from '@utils/generateSession';
 import storage from '@utils/storage';
+import { notification } from './notification';
+import { MESSAGES } from '@constants/notifications';
+import log from '@utils/log';
 
 export default (() => {
   const { subscribe, set, update }: Writable<ESession[]> = writable();
@@ -13,6 +16,8 @@ export default (() => {
     const selectionID = (await storage?.get('selectionID'))?.selectionID;
 
     set(await sessionsDB.loadSessions(count));
+
+    notification.success(MESSAGES.load.success);
 
     if (!selectionID || selectionID === 'current') return;
 
@@ -29,7 +34,12 @@ export default (() => {
   }
 
   async function add(session: ESession) {
-    if (!session.windows.length) return;
+    if (!session.windows.length || !session.tabsNumber) {
+      log.error('[sessions.add]: session is empty');
+
+      notification.error(MESSAGES.save.fail.session_empty);
+      return;
+    }
 
     const generated = generateSession(session);
 
@@ -39,6 +49,8 @@ export default (() => {
       sessions.push(generated);
       return sessions;
     });
+
+    notification.success(MESSAGES.save.success);
 
     select(generated);
 
@@ -57,6 +69,8 @@ export default (() => {
       sessions[sessions.indexOf(target)] = target;
       return sessions;
     });
+
+    notification.success_info(MESSAGES.rename.success_info);
   }
 
   function filter(query: string) {
@@ -79,15 +93,18 @@ export default (() => {
     update((sessions) => {
       const index = sessions.indexOf(target);
 
-      if (index > -1) sessions.splice(index, 1);
+      if (index !== -1) sessions.splice(index, 1);
 
       return sessions;
     });
+
+    notification.success_warning(MESSAGES.remove.success_warning);
   }
 
   async function removeAll() {
     await sessionsDB.deleteSessions();
     set([]);
+    notification.success_warning(MESSAGES.removeAll.success_warning);
   }
 
   async function select(session: ESession) {
