@@ -2,7 +2,6 @@
   import Window from './Window.svelte';
   import sessions from '@stores/sessions';
   import { currentSession } from '@components/Sessions/Current.svelte';
-  import { isExtensionReady } from '@utils/extension';
   import { isFirefox } from '@constants/env';
   import { afterUpdate } from 'svelte/internal';
 
@@ -54,7 +53,7 @@
   }
 </script>
 
-{#if $session && isExtensionReady()}
+{#if $session?.windows && $session?.tabsNumber}
   <ul
     bind:this={ulEl}
     class="overflow-y-auto {className}"
@@ -71,5 +70,7 @@
     {/each}
   </ul>
 {:else}
-  <h2 class="text-lg font-bold mb-1 text-center mx-auto">Select a session!</h2>
+  <h2 class="text-lg font-bold mb-1 text-center mx-auto">
+    Select a session or open some tabs!
+  </h2>
 {/if}
