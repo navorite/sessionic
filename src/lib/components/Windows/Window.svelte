@@ -13,13 +13,13 @@
 
   export let current = false;
 
-  let show = true;
-
   let icon: Icon;
 
+  let collapsed = false;
+
   $: {
-    if (!show) icon = window.incognito ? 'incognito_off' : 'window_off';
-    else icon = window.incognito ? 'incognito' : 'window';
+    if (collapsed) icon = window?.incognito ? 'incognito_off' : 'window_off';
+    else icon = window?.incognito ? 'incognito' : 'window';
   }
 </script>
 
@@ -32,9 +32,7 @@
         {icon}
         title="Collapse Window"
         class="text-2xl hover:text-primary-pure-1"
-        on:click={() => {
-          show = !show;
-        }}
+        on:click={() => (collapsed = !collapsed)}
       />
 
       <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -67,7 +65,7 @@
       {/if}
     </div>
 
-    {#if show}
+    {#if !collapsed}
       <Tabs {window} {current} class="pb-1 px-2" on:delete />
       <!-- <slot name="tabs" /> -->
     {/if}

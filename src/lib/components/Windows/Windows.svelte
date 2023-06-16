@@ -49,8 +49,6 @@
       $session.tabsNumber -= window.tabs.length;
     }
 
-    sessions.put($session);
-
     if (!$session.windows.length || !$session.tabsNumber)
       session.select($currentSession);
   }
@@ -62,7 +60,7 @@
     class="overflow-y-auto {className}"
     style:padding-right={scrollBarPadding}
   >
-    {#each $session.windows as window, windowIndex}
+    {#each $session.windows as window, windowIndex (window)}
       <Window
         {window}
         {current}
