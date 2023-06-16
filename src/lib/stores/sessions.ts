@@ -15,9 +15,17 @@ export default (() => {
   async function load(count?: number) {
     const selectionID = (await storage?.get('selectionID'))?.selectionID;
 
-    set(await sessionsDB.loadSessions(count));
+    const sessions = await sessionsDB.loadSessions(count);
 
-    notification.success(MESSAGES.load.success);
+    set(sessions);
+
+    if (sessions.length)
+      notification.success(
+        MESSAGES.load.success,
+        `[sessions.load] loaded ${sessions.length} sessions`
+      );
+
+    if (!sessions.length) notification.info(MESSAGES.load.info);
 
     if (!selectionID || selectionID === 'current') return;
 
@@ -34,12 +42,11 @@ export default (() => {
   }
 
   async function add(session: ESession) {
-    if (!session.windows.length || !session.tabsNumber) {
-      log.error('[sessions.add]: session is empty');
-
-      notification.error(MESSAGES.save.fail.session_empty);
-      return;
-    }
+    if (!session.windows.length || !session.tabsNumber)
+      return notification.error(
+        MESSAGES.save.fail.session_empty,
+        '[sessions.add]: session is empty'
+      );
 
     const generated = generateSession(session);
 
@@ -53,8 +60,6 @@ export default (() => {
     notification.success(MESSAGES.save.success);
 
     select(generated);
-
-    return generated;
   }
 
   async function put(target: ESession) {
@@ -88,7 +93,17 @@ export default (() => {
   }
 
   async function remove(target: ESession) {
-    await sessionsDB.deleteSession(target);
+    if (!target)
+      return notification.error(
+        MESSAGES.remove.fail.is_undefined,
+        '[sessions.remove] error: removing undefined session'
+      );
+
+    if (target.id === 'current')
+      return notification.error(
+        MESSAGES.remove.fail.current_session,
+        '[sessions.remove] error: removing current session'
+      );
 
     update((sessions) => {
       const index = sessions.indexOf(target);
@@ -98,12 +113,32 @@ export default (() => {
       return sessions;
     });
 
+    await sessionsDB.deleteSession(target);
+
     notification.success_warning(MESSAGES.remove.success_warning);
   }
 
   async function removeAll() {
+    let length = 0;
+
+    const unsubscribe = subscribe((sessions) => {
+      length = sessions.length;
+    });
+
+    unsubscribe();
+
+    if (!length) {
+      notification.error(
+        MESSAGES.removeAll.fail.empty,
+        '[sessions.removeAll] sessions are already empty'
+      );
+      return;
+    }
+
     await sessionsDB.deleteSessions();
-    set([]);
+
+    set([]); //Empty the array, no longer needed
+
     notification.success_warning(MESSAGES.removeAll.success_warning);
   }
 

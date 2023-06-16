@@ -10,14 +10,11 @@
   const commands = [
     {
       title: 'Save current session',
-      action: async () => await sessions.add($currentSession),
+      action: () => sessions.add($currentSession),
     },
     {
       title: 'Delete selected session',
-      action: () =>
-        $selected &&
-        $selected !== $currentSession &&
-        sessions.remove($selected),
+      action: () => sessions.remove($selected),
     },
     { title: 'Delete all sessions', action: sessions.removeAll },
   ];
