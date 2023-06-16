@@ -7,8 +7,6 @@
   import ActionModal from '@components/Modals/ActionModal.svelte';
   import sessions from '@stores/sessions';
   import { filterOptions } from '@stores/settings';
-  import { notification } from '@stores/notification';
-  import { notifications } from '@constants/notifications';
 
   let modalShow = false;
   let modalType: 'Save' | 'Rename' = 'Rename';
@@ -24,7 +22,7 @@
 </script>
 
 <div class="w-full h-full max-h-[90vh] mt-2 flex gap-2 overflow-hidden">
-  <div class="w-[50%] max-w-md h-full flex flex-col">
+  <div class="max-w-xs flex-1 h-full flex flex-col">
     <CurrentSession
       on:click={() => {
         modalType = 'Save';
@@ -66,15 +64,11 @@
     if (modalType === 'Rename' && $selection.title !== event.detail) {
       $selection.title = event.detail;
       await sessions.put($selection);
-
-      $notification = notifications.rename.success;
     } else if (modalType === 'Save') {
       $currentSession.title = event.detail;
 
       await sessions.add($currentSession);
       scrollTo(0, 0);
-
-      $notification = notifications.save.success;
     }
 
     modalShow = false;
@@ -85,8 +79,6 @@
   bind:open={actionShow}
   on:deleteAction={async () => {
     await sessions.remove($selection);
-
-    $notification = notifications.remove.success;
 
     selection.select($currentSession);
 

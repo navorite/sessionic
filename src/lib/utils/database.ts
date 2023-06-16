@@ -22,60 +22,93 @@ class SessionsDB {
   private version = 1;
 
   async initDB() {
-    if (this.open) return;
+    if (this.open) {
+      log.debug('[db.initDB[] already open');
+      return;
+    }
 
-    log.info('initDB(): init');
+    log.info('[db.initDB] init');
 
     this.db = await openDB<DB>('sessions', this.version, {
       upgrade: this.upgradeSessions,
     });
 
     this.open = true;
+
+    this.db.onclose = () => log.info('[db.initDB] closing db');
+
+    this.db.onerror = () => log.error('[db.initDB] error in db: ', this.db);
+
+    this.db.onabort = () =>
+      log.error('[db.initDB]: aborted transactions in db: ', this.db);
   }
 
   async loadSessions(query?: number | IDBKeyRange, count?: number) {
-    log.info('loadSessions(): init');
+    log.info('[db.loadSessions] init');
 
-    if (!this.open) await this.initDB();
+    await this.initDB();
 
     return this.db.getAllFromIndex('sessions', 'dateSaved', query, count);
   }
 
   async saveSession(session: ESession) {
-    log.info('saveSession(): init');
+    log.info('[db.saveSession] init');
 
-    if (!this.open) await this.initDB();
+    await this.initDB();
+
     return this.db.add('sessions', session);
   }
 
-  async updateSession(session: ESession) {
-    log.info('updateSession(): init');
+  async saveSessions(sessions: ESession[]) {
+    log.info('[db.saveSessions] init');
 
-    if (!this.open) await this.initDB();
+    await this.initDB();
+
+    const tx = this.db.transaction('sessions', 'readwrite');
+
+    return new Promise<void>((resolve, reject) => {
+      for (const session of sessions) {
+        tx.store.add(session);
+      }
+
+      tx.oncomplete = () => {
+        log.info('[db.saveSessions] saved batch sessions: ', sessions);
+        resolve();
+      };
+
+      tx.onerror = () => {
+        log.error('[db.saveSessions] error saving sessions: ', sessions);
+        reject();
+      };
+
+      tx.onabort = () => {
+        log.error('[db.saveSessions] aborted saving sessions: ', sessions);
+        reject();
+      };
+    });
+  }
+
+  async updateSession(session: ESession) {
+    log.info('[db.updateSession] init');
+
+    await this.initDB();
 
     return this.db.put('sessions', session);
   }
 
-  async saveSessions(sessions: ESession[]) {
-    if (!this.open) await this.initDB();
-    const tx = this.db.transaction('sessions', 'readwrite');
-
-    for (const session of sessions) {
-      tx.store.add(session);
-    }
-  }
-
   async deleteSession(session: ESession) {
-    log.info('deleteSession(): init');
+    log.info('[db.deleteSession] init');
 
-    if (!this.open) await this.initDB();
+    await this.initDB();
+
     return this.db.delete('sessions', session.id as UUID);
   }
 
   async deleteSessions() {
-    log.info('deleteSessions(): init');
+    log.info('[db.deleteSessions] init');
 
-    if (!this.open) await this.initDB();
+    await this.initDB();
+
     return this.db.clear('sessions');
   }
 
@@ -91,10 +124,12 @@ class SessionsDB {
     event: IDBVersionChangeEvent
   ) {
     log.info(
-      `upgradeSession(): init: version: ${newVersion}, old: ${oldVersion}`
+      `[db.upgradeSession] init - version: ${newVersion}, old: ${oldVersion}`
     );
 
     if (newVersion === 1) {
+      log.info('[db.upgradeSession] creating object store');
+
       const sessionsStore = db.createObjectStore('sessions', {
         keyPath: 'id',
       });
