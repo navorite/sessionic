@@ -1,6 +1,7 @@
 export const MESSAGES = {
   load: {
     success: 'Sessions loaded successfuly!',
+    info: "Let's open some sessions!",
     fail: { generic: 'Error loading sessions' },
   },
 
@@ -14,13 +15,17 @@ export const MESSAGES = {
 
   rename: {
     success_info: 'Session renamed successfuly!',
-    fail: { generic: 'Error renaming session' },
+    fail: {
+      generic: 'Error renaming session',
+    },
   },
 
   remove: {
     success_warning: 'Session removed successfuly!',
     fail: {
       generic: 'Error deleting session',
+      is_undefined: 'Error deleting session: session undefined',
+      current_session: 'Error: Deleting current session is not allowed',
     },
   },
 
@@ -28,6 +33,7 @@ export const MESSAGES = {
     success_warning: 'All sesssions removed successfuly.',
     fail: {
       generic: 'Error deleting all sessions',
+      empty: 'Error deleting all sessions: no sessions found',
     },
   },
 } satisfies Record<string, Record<string, string | Record<string, string>>>;
