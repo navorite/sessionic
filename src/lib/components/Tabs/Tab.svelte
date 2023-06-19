@@ -3,7 +3,7 @@
   import ListItem from '@components/basic/ListItem.svelte';
   import { createEventDispatcher } from 'svelte';
   import { decompress as decompressLZ } from 'lz-string';
-  import { createTab } from '@utils/browser';
+  import { sendMessage } from '@utils/messages';
 
   export let tab: ETab;
   export let current = false;
@@ -18,7 +18,7 @@
       title={tab?.title}
       class="link"
       on:click={() => {
-        createTab(tab);
+        sendMessage({ message: 'createTab', tab });
       }}
     >
       <img

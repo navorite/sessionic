@@ -1,11 +1,11 @@
 <script lang="ts">
   import ListItem from '@components/basic/ListItem.svelte';
   import IconButton from '../IconButton.svelte';
-  import { openSession } from '@utils/browser';
   import { filterOptions } from '@stores/settings';
   import { markResult } from '@utils/markResult';
   import { createEventDispatcher } from 'svelte';
   import sessions from '@stores/sessions';
+  import { sendMessage } from '@utils/messages';
 
   export let session: ESession;
 
@@ -33,7 +33,7 @@
       title="Open Session"
       class="session-name"
       on:click={() => {
-        openSession(session, true);
+        sendMessage({ message: 'openSession', session });
       }}
     >
       {@html title}

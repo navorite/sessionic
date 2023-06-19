@@ -1,4 +1,4 @@
-import { isFirefox } from '@constants/env';
+import { isFirefox } from '../../background/utils/constants';
 
 export default (() => {
   if (!isFirefox) return;

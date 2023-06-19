@@ -7,18 +7,18 @@
 <script lang="ts">
   import IconButton from '../IconButton.svelte';
   import { onMount } from 'svelte';
-  import { getSession } from '@utils/browser';
   import browser from 'webextension-polyfill';
   import sessions from '@stores/sessions';
   import { writable, type Writable } from 'svelte/store';
+  import { sendMessage } from '@utils/messages';
   import { isExtensionReady } from '@utils/extension';
 
   let timeout: number | NodeJS.Timeout;
 
   $: selection = sessions.selection;
 
-  getSession().then((result) => {
-    $session = result;
+  sendMessage({ message: 'getSession' }).then(async (result) => {
+    $session = await result;
 
     if (!$selection) selection.select($session);
   });
@@ -27,7 +27,7 @@
     tabId: number,
     removeInfo: browser.Tabs.OnRemovedRemoveInfoType
   ) {
-    if (!isExtensionReady) return;
+    if (!isExtensionReady()) return;
 
     const window_index = $session.windows.findIndex(
       (window) => window.id === removeInfo.windowId
@@ -60,10 +60,12 @@
   onMount(() => {
     browser?.tabs?.onActivated.addListener(handleUpdate);
     browser?.tabs?.onUpdated.addListener(handleUpdate);
+    browser?.windows?.onFocusChanged.addListener(handleUpdate);
     browser?.tabs?.onRemoved.addListener(handleRemoval);
 
     return () => {
       browser?.tabs?.onActivated.removeListener(handleUpdate);
+      browser?.windows?.onFocusChanged.removeListener(handleUpdate);
       browser?.tabs?.onUpdated.removeListener(handleUpdate);
       browser?.tabs?.onRemoved.removeListener(handleRemoval);
     };
@@ -76,7 +78,7 @@
 
     //should fix inconsistency in update flags
     timeout = setTimeout(async () => {
-      $session = await getSession();
+      $session = await sendMessage({ message: 'getSession' }); //remove on fouc
 
       if ($selection.id === 'current') selection.select($session);
     }, 200);

@@ -1,11 +1,11 @@
 import { get, writable, type Writable } from 'svelte/store';
 import { sessionsDB } from '@utils/database';
 import { generateSession } from '@utils/generateSession';
-import storage from '@utils/storage';
 import { notification } from './notification';
 import { MESSAGES } from '@constants/notifications';
 import log from '@utils/log';
 import { currentSession } from '@components/Sessions/Current.svelte';
+import { storage } from '@constants/env';
 
 export default (() => {
   const { subscribe, set, update }: Writable<ESession[]> = writable();

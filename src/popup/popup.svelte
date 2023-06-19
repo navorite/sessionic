@@ -1,9 +1,19 @@
+<script lang="ts" context="module">
+  import { isPopup } from '@constants/env';
+
+  if (isPopup)
+    sendMessage({ message: 'openPopup' }).then((result) => {
+      if (!result) window.close();
+    });
+</script>
+
 <script lang="ts">
   import Header from '@components/Header.svelte';
   import Sessions from '@components/Sessions/Sessions.svelte';
   import CommandPalette from '@components/basic/CommandPalette.svelte';
+  import { sendMessage } from '@utils/messages';
 
-  export let open = false;
+  let open = false;
 </script>
 
 <svelte:window

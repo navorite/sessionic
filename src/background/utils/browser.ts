@@ -1,7 +1,12 @@
 import browser from 'webextension-polyfill';
-import { compress_options, isFirefox, tabAttr } from '@constants/env';
-import compress from './compress';
 import { compress as compressLZ } from 'lz-string';
+import { isFirefox, tabAttr } from './constants';
+
+export const compress_options: compressOptions = {
+  type: 'image/webp',
+  quality: 0.7,
+  max_size: 20,
+};
 
 // Get current active tab
 export async function getCurrentTab(): Promise<ETab> {
@@ -24,8 +29,8 @@ export async function getTabs(
 
   for (const tab of tabs) {
     if (tab.favIconUrl) {
-      isFirefox &&
-        (tab.favIconUrl = await compress.icon(tab.favIconUrl, options));
+      //isFirefox &&
+      // (tab.favIconUrl = await compress.icon(tab.favIconUrl, options));
 
       tab.favIconUrl = compressLZ(tab.favIconUrl);
     }
