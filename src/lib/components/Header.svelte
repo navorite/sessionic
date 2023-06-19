@@ -5,8 +5,8 @@
   import { filterOptions } from '@stores/settings';
   import darkMode from '@stores/theme';
   import { isPopup } from '@constants/env';
-  import { openOptions, openPopup } from '@utils/extension';
   import { notification } from '@stores/notification';
+  import { sendMessage } from '@utils/messages';
 </script>
 
 <div class="flex items-center w-full h-full max-h-8 gap-2">
@@ -21,12 +21,14 @@
       <IconButton
         icon="open"
         title="View extension in a new tab"
-        on:click={openPopup}
+        on:click={() => {
+          sendMessage({ message: 'openFullView' });
+        }}
       />
     {/if}
 
     <IconButton
-      icon={$darkMode ? 'dark' : 'light'}
+      icon={$darkMode ? 'light' : 'dark'}
       title="Switch to {$darkMode ? 'light' : 'dark'} mode"
       on:click={darkMode.switch}
     />
@@ -34,7 +36,9 @@
     <IconButton
       icon="options"
       title="Open extension Options in a new tab"
-      on:click={openOptions}
+      on:click={() => {
+        sendMessage({ message: 'openOptions' });
+      }}
     />
   </div>
 </div>

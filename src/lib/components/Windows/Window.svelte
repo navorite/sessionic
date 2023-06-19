@@ -2,8 +2,8 @@
   import ListItem from '@components/basic/ListItem.svelte';
   import IconButton from '../IconButton.svelte';
   import Tabs from '../Tabs/Tabs.svelte';
-  import { openInNewWindow } from '@utils/browser';
   import { createEventDispatcher } from 'svelte';
+  import { sendMessage } from '@utils/messages';
   import { isExtensionReady } from '@utils/extension';
 
   const dispatch = createEventDispatcher<{
@@ -41,7 +41,8 @@
         title="Open this Window in a New Window"
         class="w-max max-w-[60%] font-semibold overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline"
         on:click={() => {
-          openInNewWindow(window);
+          sendMessage({ message: 'openInNewWindow', window });
+          //openInNewWindow(window);
         }}
       >
         {window.incognito ? 'Private' : ''} Window

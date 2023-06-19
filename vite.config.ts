@@ -2,20 +2,20 @@ import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 
+export function _dir(path: string) {
+  return fileURLToPath(new URL(path, import.meta.url));
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [svelte()],
   resolve: {
     alias: {
-      '@constants': fileURLToPath(
-        new URL('./src/lib/constants', import.meta.url)
-      ),
-      '@components': fileURLToPath(
-        new URL('./src/lib/components', import.meta.url)
-      ),
-      '@stores': fileURLToPath(new URL('./src/lib/stores', import.meta.url)),
-      '@utils': fileURLToPath(new URL('./src/lib/utils', import.meta.url)),
-      '@styles': fileURLToPath(new URL('./src/styles', import.meta.url)),
+      '@constants': _dir('./src/lib/constants'),
+      '@components': _dir('./src/lib/components'),
+      '@stores': _dir('./src/lib/stores'),
+      '@utils': _dir('./src/lib/utils'),
+      '@styles': _dir('./src/styles'),
     },
   },
 
@@ -23,12 +23,8 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       input: {
-        popup: fileURLToPath(
-          new URL('./src/popup/index.html', import.meta.url)
-        ),
-        options: fileURLToPath(
-          new URL('./src/options/index.html', import.meta.url)
-        ),
+        popup: _dir('./src/popup/index.html'),
+        options: _dir('./src/options/index.html'),
       },
     },
   },
