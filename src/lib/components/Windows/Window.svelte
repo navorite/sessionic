@@ -4,7 +4,7 @@
   import Tabs from '../Tabs/Tabs.svelte';
   import { createEventDispatcher } from 'svelte';
   import { sendMessage } from '@utils/messages';
-  import { isExtensionReady } from '@utils/extension';
+  import { isExtensionViewed } from '@utils/extension';
 
   const dispatch = createEventDispatcher<{
     delete: ETab | undefined;
@@ -24,7 +24,7 @@
   }
 </script>
 
-{#if window.tabs.length && isExtensionReady()}
+{#if window.tabs.length && isExtensionViewed()}
   <ListItem let:hover class="mb-2 rounded-md bg-neutral-3">
     <div
       class="flex items-center gap-2 rounded-md hover:bg-primary-4 p-2 mb-1 group"
