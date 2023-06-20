@@ -10,7 +10,7 @@ export default (() => {
   async function init() {
     const darkMode = await sendMessage({ message: 'getDarkMode' });
 
-    setDarkMode(darkMode ?? isDarkSystem, true);
+    setDarkMode(darkMode ?? isDarkSystem);
 
     set(darkMode ?? isDarkSystem);
   }

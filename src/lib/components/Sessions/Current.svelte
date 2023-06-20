@@ -10,15 +10,15 @@
   import browser from 'webextension-polyfill';
   import sessions from '@stores/sessions';
   import { writable, type Writable } from 'svelte/store';
-  import { sendMessage } from '@utils/messages';
-  import { isExtensionReady } from '@utils/extension';
+  import { isExtensionViewed } from '@utils/extension';
+  import { getSession } from '@utils/getSession';
 
   let timeout: number | NodeJS.Timeout;
 
   $: selection = sessions.selection;
 
-  sendMessage({ message: 'getSession' }).then(async (result) => {
-    $session = await result;
+  getSession().then(async (result) => {
+    $session = result;
 
     if (!$selection) selection.select($session);
   });
@@ -27,7 +27,7 @@
     tabId: number,
     removeInfo: browser.Tabs.OnRemovedRemoveInfoType
   ) {
-    if (!isExtensionReady()) return;
+    if (!isExtensionViewed()) return;
 
     const window_index = $session.windows.findIndex(
       (window) => window.id === removeInfo.windowId
@@ -58,30 +58,27 @@
 
   //TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
   onMount(() => {
-    browser?.tabs?.onActivated.addListener(handleUpdate);
+    document.onvisibilitychange = handleUpdate;
     browser?.tabs?.onUpdated.addListener(handleUpdate);
-    browser?.windows?.onFocusChanged.addListener(handleUpdate);
     browser?.tabs?.onRemoved.addListener(handleRemoval);
 
     return () => {
-      browser?.tabs?.onActivated.removeListener(handleUpdate);
-      browser?.windows?.onFocusChanged.removeListener(handleUpdate);
       browser?.tabs?.onUpdated.removeListener(handleUpdate);
       browser?.tabs?.onRemoved.removeListener(handleRemoval);
     };
   });
 
   async function handleUpdate() {
-    if (timeout) clearTimeout(timeout);
-
-    if (!isExtensionReady()) return;
+    if (!isExtensionViewed() || timeout) return;
 
     //should fix inconsistency in update flags
     timeout = setTimeout(async () => {
-      $session = await sendMessage({ message: 'getSession' }); //remove on fouc
+      $session = await getSession();
 
       if ($selection.id === 'current') selection.select($session);
-    }, 200);
+
+      timeout = null;
+    }, 50);
   }
 </script>
 

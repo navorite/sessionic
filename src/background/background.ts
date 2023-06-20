@@ -1,10 +1,5 @@
 import browser from 'webextension-polyfill';
-import {
-  createTab,
-  openInNewWindow,
-  openSession,
-  getSession,
-} from './utils/browser';
+import { createTab, openInNewWindow, openSession } from './utils/browser';
 import { openFullView, openOptions } from './utils/extension';
 import { storage } from './utils/constants';
 import {
@@ -13,14 +8,14 @@ import {
   getSettings,
 } from './utils/getSettings';
 
-browser.storage.onChanged.addListener(async () => {
-  // console.log(changes, areaName);
-  // const settingsValue = await getSettings();
-  // settings.isPopupEnabled = settingsValue.isPopupEnabled;
-  // settings.darkMode = settingsValue.darkMode;
-});
+// browser.storage.onChanged.addListener(async () => {
+//   // console.log(changes, areaName);
+//   // const settingsValue = await getSettings();
+//   // settings.isPopupEnabled = settingsValue.isPopupEnabled;
+//   // settings.darkMode = settingsValue.darkMode;
+// });
 
-browser.runtime.onMessage.addListener((request) => {
+browser.runtime.onMessage.addListener((request, sender) => {
   switch (request.message) {
     case 'openPopup':
       const isPopupEnabled = getIsPopupEnabled();
@@ -50,9 +45,6 @@ browser.runtime.onMessage.addListener((request) => {
       openSession(request.session, true);
       break;
 
-    case 'getSession':
-      return getSession();
-
     case 'getDarkMode':
       return getDarkMode();
 
@@ -69,8 +61,5 @@ browser.runtime.onMessage.addListener((request) => {
     case 'setPopupEnabled':
       storage?.set({ popupView: request.isPopupEnabled });
       break;
-
-    default:
-      return false;
   }
 });

@@ -1,10 +1,11 @@
 <script>
   import { sendMessage } from '@utils/messages';
+  import darkMode from '@stores/theme';
 
   let isPopupEnabled;
 
-  sendMessage({ message: 'getIsPopupEnabled' }).then(async (result) => {
-    isPopupEnabled = await result;
+  sendMessage({ message: 'getIsPopupEnabled' }).then((result) => {
+    isPopupEnabled = result;
   });
 </script>
 
@@ -18,11 +19,20 @@
     title="Enable Popup view"
     bind:checked={isPopupEnabled}
     on:change={() => {
-      console.log('changed');
       sendMessage({ message: 'setPopupEnabled', isPopupEnabled });
     }}
   />
   <label for="popup">Enable Popup view</label>
+
+  <input
+    type="checkbox"
+    name="darkmode"
+    id="darkmode"
+    title="Enable Dark Mode"
+    bind:checked={$darkMode}
+    on:change={darkMode.switch}
+  />
+  <label for="darkmode">Enable Dark Mode</label>
 </div>
 
 <h2 class="text-xl text-center my-auto">
