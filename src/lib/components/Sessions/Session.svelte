@@ -1,12 +1,12 @@
 <script lang="ts">
   import ListItem from '@components/basic/ListItem.svelte';
   import IconButton from '../IconButton.svelte';
+  import Card from '@components/basic/Card.svelte';
   import { filterOptions } from '@stores/settings';
   import { markResult } from '@utils/markResult';
   import { createEventDispatcher } from 'svelte';
   import sessions from '@stores/sessions';
   import { sendMessage } from '@utils/messages';
-  import Card from '@components/basic/Card.svelte';
 
   export let session: ESession;
 
