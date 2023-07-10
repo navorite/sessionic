@@ -9,22 +9,26 @@ export default {
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
-        'overlay-black': generateScale('blackA', 1, 12),
-        'overlay-white': generateScale('whiteA', 1, 12),
-        neutral: generateScale('gray', 1, 12),
-        primary: generateScale('indigo', 1, 12),
-        secondary: generateScale('blue', 1, 12),
-        info: '#0055B6',
-        success: '#11CB00',
-        warning: '#FF7300',
-        error: '#A20A0A',
+        neutral: generateScale('neutral', 1, 5),
+        'neutral-focus': 'var(--neutral-focus)',
+        primary: 'var(--primary)',
+        'primary-focus': 'var(--primary-focus)',
+        accent: 'var(--accent)',
+        'accent-focus': 'var(--accent-focus)',
+        success: 'var(--success)',
+        'success-focus': 'var(--success-focus)',
+        warning: 'var(--warning)',
+        'warning-focus': 'var(--warning-focus)',
+        error: 'var(--error)',
+        'error-focus': 'var(--error-focus)',
+        'overlay-black': 'var(--overlay-black)',
+        'overlay-white': 'var(--overlay-white)',
+
+        /*Text*/
+        'neutral-content': 'var(--neutral-content)',
+        'neutral-content-disabled': 'var(--neutral-content-disabled)',
+        'neutral-blend': 'var(--neutral-content-blend)',
       },
     },
   },
-
-  plugins: [
-    require('radix-colors-for-tailwind')({
-      colors: ['gray', 'blue', 'indigo', 'blackA', 'whiteA'],
-    }),
-  ],
 } satisfies Config;

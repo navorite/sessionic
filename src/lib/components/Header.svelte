@@ -7,10 +7,17 @@
   import { isPopup } from '@constants/env';
   import { notification } from '@stores/notification';
   import { sendMessage } from '@utils/messages';
+  import Card from './basic/Card.svelte';
+  import { filtered } from './Sessions/Sessions.svelte';
 </script>
 
 <div class="flex items-center w-full h-full max-h-8 gap-2">
   <h1>Tabify</h1>
+  <Card class="text-xs bg-primary text-white" title="Number of saved sessions"
+    >{$filtered?.length ?? 0} Session{$filtered?.length ?? 0 > 1
+      ? 's'
+      : ''}</Card
+  >
 
   <Notification detail={$notification} />
 

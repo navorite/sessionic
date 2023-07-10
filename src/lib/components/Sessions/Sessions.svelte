@@ -1,3 +1,7 @@
+<script lang="ts" context="module">
+  export const filtered: Writable<ESession[]> = writable();
+</script>
+
 <script lang="ts">
   import VirtualList from '@components/basic/VirtualList.svelte';
   import Session from './Session.svelte';
@@ -7,6 +11,7 @@
   import ActionModal from '@components/Modals/ActionModal.svelte';
   import sessions from '@stores/sessions';
   import { filterOptions } from '@stores/settings';
+  import { writable, type Writable } from 'svelte/store';
 
   let modalShow = false;
   let modalType: 'Save' | 'Rename' = 'Rename';
@@ -17,7 +22,7 @@
 
   $: selection = sessions.selection;
 
-  $: filtered =
+  $: $filtered =
     sessions?.filter($filterOptions?.query.trim().toLowerCase()) || $sessions;
 </script>
 
@@ -30,14 +35,10 @@
       }}
     />
 
-    <h2 class="text-lg font-semibold mb-1">
-      Sessions ({filtered?.length ?? 'Loading saved sessions...'})
-    </h2>
-
-    {#if filtered}
+    {#if $filtered}
       <VirtualList
         reversed={true}
-        items={filtered}
+        items={$filtered}
         let:item
         class="flex-1"
         bind:scrollTo

@@ -5,9 +5,46 @@
 @layer utilities {
   @media (prefers-reduced-motion: no-preference) {
     .fade {
-      transition: all 400ms ease-in-out;
+      transition: all 200ms ease-in-out;
     }
   }
+}
+
+:root {
+  --primary: hsl(215, 96%, 32%);
+  --primary-focus: hsl(215, 96%, 37%);
+
+  --accent: hsl(177, 27%, 58%);
+  --accent-focus: hsl(177, 45%, 74%);
+
+  --success: #00bf7d;
+  --success-focus: #00f09c;
+
+  --warning: hsl(27, 100%, 50%);
+  --warning-focus: hsl(27, 100%, 55%);
+
+  --error: hsl(0, 99%, 30%);
+  --error-focus: hsl(0, 99%, 35%);
+
+  --neutral-1: hsl(0, 0%, 97%);
+  --neutral-2: hsl(0, 0%, 92%);
+  --neutral-3: hsl(0, 0%, 87%);
+  --neutral-4: hsl(0, 0%, 82%);
+  --neutral-5: hsl(0, 0%, 77%);
+  --neutral-6: hsl(0, 0%, 72%);
+  --neutral-content: hsl(0, 0%, 0%);
+  --neutral-content-disabled: hsl(0, 0%, 45%);
+  --overlay-black: rgba(255, 255, 255, 0.4);
+}
+
+.dark {
+  --neutral-1: hsl(220, 6%, 9%);
+  --neutral-2: hsl(220, 6%, 14%);
+  --neutral-3: hsl(220, 6%, 19%);
+  --neutral-4: hsl(220, 6%, 24%);
+  --neutral-5: hsl(223, 6%, 29%);
+  --neutral-content: hsl(0, 0%, 90%);
+  --overlay-black: rgba(0, 0, 0, 0.4);
 }
 
 html,
@@ -17,7 +54,7 @@ body {
 }
 
 body {
-  @apply mx-auto container min-h-[500px] min-w-[800px] px-4 py-2 text-neutral-12 bg-neutral-1 font-sans scroll-smooth;
+  @apply mx-auto container min-h-[500px] min-w-[800px] px-4 py-2 text-neutral-content bg-neutral-1 font-sans scroll-smooth;
 }
 
 #root {
@@ -35,16 +72,16 @@ div {
 }
 
 .tab-container {
-  @apply bg-neutral-5 py-1 px-2 mb-1 rounded-md flex items-center;
+  @apply bg-neutral-4 py-1 px-2 mb-1 rounded-md flex items-center;
 }
 
 .session-container {
-  @apply w-full px-2 py-1 mb-2 rounded-md bg-neutral-3 cursor-pointer;
+  @apply w-full px-2 py-1 mb-2 rounded-md bg-neutral-2 cursor-pointer;
 }
 
 .tab-container:hover,
 .session-container:hover {
-  @apply bg-primary-4;
+  @apply bg-neutral-3;
 }
 
 .session-info {
@@ -52,33 +89,31 @@ div {
 }
 
 .session-name {
-  @apply flex-1 max-w-max p-1 overflow-hidden whitespace-nowrap text-ellipsis font-semibold;
+  @apply flex-1 max-w-max pl-1 overflow-hidden whitespace-nowrap text-ellipsis font-semibold;
 }
 
-.session-name:not([data-current]) {
+.session-name {
   @apply cursor-pointer;
 }
 
-.session-name:not([data-current]):hover {
+.session-name:hover {
   @apply underline;
 }
 
-.session-card {
-  @apply w-max bg-overlay-black-8 p-2 rounded text-xs font-semibold m-0.5;
-}
-
 mark {
-  @apply bg-primary-9 rounded-md text-neutral-1 p-0.5 my-auto mx-[1px];
+  @apply bg-primary text-white rounded-md p-0.5 my-auto mx-[1px];
 }
 
 ::-webkit-scrollbar {
-  @apply w-1 bg-neutral-4 rounded-md;
+  @apply w-1 bg-neutral-2 rounded-md;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply rounded-md bg-neutral-10;
+  @apply rounded-md bg-neutral-4;
+  /* bg-neutral-10 */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-neutral-11;
+  @apply bg-neutral-5;
+  /* bg-neutral-11 */
 }

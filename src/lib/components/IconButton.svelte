@@ -1,10 +1,10 @@
 <script lang="ts">
   export let icon: Icon = 'default';
-  export let title: string;
+  export let title: string = null;
 
   $: src = `../../icons/${icon}.svg`;
 
-  let className = 'text-2xl hover:text-primary-9';
+  let className = 'text-2xl hover:text-primary-focus';
   export { className as class };
 </script>
 
@@ -22,3 +22,4 @@
   style:-webkit-mask-size="cover"
   on:click
 />
+<slot />

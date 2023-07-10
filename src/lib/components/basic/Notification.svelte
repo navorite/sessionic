@@ -13,7 +13,7 @@
   let color: string;
 
   $: {
-    if (detail?.type === 'info') color = 'bg-info text-white';
+    if (detail?.type === 'info') color = 'bg-primary text-white';
     else if (detail?.type === 'success') color = 'bg-success text-black';
     else if (detail?.type === 'warning') color = 'bg-warning text-black';
     else color = 'bg-error text-white';

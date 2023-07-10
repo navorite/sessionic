@@ -4,6 +4,7 @@
   import { createEventDispatcher } from 'svelte';
   import { decompress as decompressLZ } from 'lz-string';
   import { sendMessage } from '@utils/messages';
+  import browser, { tabs } from 'webextension-polyfill';
 
   export let tab: ETab;
   export let current = false;
@@ -32,6 +33,17 @@
         {tab?.title ?? 'Loading tab name...'}
       </span>
     </button>
+
+    {#if hover && current}
+      <button
+        type="button"
+        title="Close tab"
+        class="font-bold ml-auto hover:text-error-focus"
+        on:click={() => {
+          browser?.tabs?.remove(tab?.id);
+        }}>X</button
+      >
+    {/if}
 
     {#if hover && !current}
       <IconButton

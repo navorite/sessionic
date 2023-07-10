@@ -1,6 +1,7 @@
 <script>
   import { sendMessage } from '@utils/messages';
   import darkMode from '@stores/theme';
+  import Switch from '@components/basic/Switch.svelte';
 
   let isPopupEnabled;
 
@@ -11,28 +12,17 @@
 
 <h1 class="text-xl">Options</h1>
 
-<div class="flex gap-2">
-  <input
-    type="checkbox"
-    name="popup"
+<div class="flex flex-col gap-2 p-2">
+  <Switch
     id="popup"
-    title="Enable Popup view"
     bind:checked={isPopupEnabled}
     on:change={() => {
       sendMessage({ message: 'setPopupEnabled', isPopupEnabled });
-    }}
-  />
-  <label for="popup">Enable Popup view</label>
-
-  <input
-    type="checkbox"
-    name="darkmode"
-    id="darkmode"
-    title="Enable Dark Mode"
-    bind:checked={$darkMode}
-    on:change={darkMode.switch}
-  />
-  <label for="darkmode">Enable Dark Mode</label>
+    }}>Enable Popup view</Switch
+  >
+  <Switch id="darkmode" checked={$darkMode} on:change={darkMode.switch}
+    >Enable Dark Mode</Switch
+  >
 </div>
 
 <h2 class="text-xl text-center my-auto">
