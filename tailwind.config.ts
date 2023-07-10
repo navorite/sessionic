@@ -1,6 +1,5 @@
-import type { Config } from 'tailwindcss';
 import { generateScale } from './scripts/config';
-
+/** @type {import('tailwindcss').Config} */
 export default {
   darkMode: 'class',
   content: ['./src/**/*.{html,js,ts,svelte}'],
@@ -13,8 +12,6 @@ export default {
         'neutral-focus': 'var(--neutral-focus)',
         primary: 'var(--primary)',
         'primary-focus': 'var(--primary-focus)',
-        accent: 'var(--accent)',
-        'accent-focus': 'var(--accent-focus)',
         success: 'var(--success)',
         'success-focus': 'var(--success-focus)',
         warning: 'var(--warning)',
@@ -31,4 +28,5 @@ export default {
       },
     },
   },
-} satisfies Config;
+  plugins: [],
+};
