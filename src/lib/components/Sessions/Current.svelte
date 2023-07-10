@@ -12,10 +12,13 @@
   import { writable, type Writable } from 'svelte/store';
   import { isExtensionViewed } from '@utils/extension';
   import { getSession } from '@utils/getSession';
+  import Card from '@components/basic/Card.svelte';
 
   let timeout: number | NodeJS.Timeout;
 
   $: selection = sessions.selection;
+
+  $: selected = $selection === $session;
 
   getSession().then(async (result) => {
     $session = result;
@@ -84,28 +87,34 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
-  class="session-container {$selection === $session ? '!bg-primary-5' : ''}"
+  class="w-full px-2 py-1 mb-2 rounded-md bg-neutral-2 text-neutral-content cursor-pointer flex gap-2 border-neutral-5 border-solid border-2 hover:bg-neutral-3 items-center {selected
+    ? '!bg-neutral-4'
+    : ''}"
   on:click={() => selection.select($session)}
 >
-  <div class="session-info">
-    <p title="Current Session" class="session-name" data-current>
-      Current Session
-    </p>
-
-    <IconButton
-      icon="save"
-      title="Save session"
-      class="ml-auto text-2xl hover:text-primary-9"
-      on:click
-    />
-  </div>
-
-  <p title="Session Details" class="session-card">
-    {$session?.windows?.length ?? 0} Window{$session?.windows?.length > 1
-      ? 's'
-      : ''}
-    -
-    {$session?.tabsNumber ?? 0}
-    Tab{$session?.tabsNumber > 1 ? 's' : ''}
+  <p
+    title="Current Session"
+    class="flex-1 max-w-max pl-1 overflow-hidden whitespace-nowrap text-ellipsis font-semibold"
+  >
+    Current Session
   </p>
+
+  <Card
+    title="{$session?.windows.length} Window{$session?.windows.length > 1
+      ? 's'
+      : ''} and {$session?.tabsNumber} Tab{$session?.tabsNumber > 1 ? 's' : ''}"
+  >
+    <IconButton icon="window" class="text-base" />
+    {$session?.windows?.length}
+
+    <IconButton icon="tab" class="text-base ml-2" />
+    {$session?.tabsNumber}
+  </Card>
+
+  <IconButton
+    icon="save"
+    title="Save session"
+    class="ml-auto text-2xl hover:text-primary-focus"
+    on:click
+  />
 </div>

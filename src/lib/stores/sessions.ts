@@ -20,11 +20,11 @@ export default (() => {
 
     set(sessions);
 
-    if (sessions.length)
-      notification.success(
-        MESSAGES.load.success,
-        `[sessions.load] loaded ${sessions.length} sessions`
-      );
+    // if (sessions.length)
+    //   notification.success(
+    //     MESSAGES.load.success,
+    //     `[sessions.load] loaded ${sessions.length} sessions`
+    //   );
 
     if (!sessions.length) notification.info(MESSAGES.load.info);
 

@@ -21,9 +21,10 @@ declare global {
     | 'default'
     | 'session'
     | 'window'
-    | 'window_off'
+    | 'tab'
     | 'incognito'
-    | 'incognito_off'
+    | 'expand'
+    | 'collapse'
     | 'options'
     | 'save'
     | 'delete'
@@ -33,6 +34,7 @@ declare global {
     | 'redo'
     | 'undo'
     | 'rename'
+    | 'more'
     | 'dark'
     | 'light';
 

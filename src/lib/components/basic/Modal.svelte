@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { fade } from 'svelte/transition';
+
   export let open = false;
 
   export let height = '10rem';
@@ -15,7 +17,7 @@
   on:keydown={(event) => {
     if (event.key === 'Escape') open = false;
   }}
-  class="max-h-lg max-w-lg p-0 bg-transparent backdrop-blur rounded-md border-2 border-solid border-neutral-8 outline-none"
+  class="max-h-lg max-w-lg p-0 bg-transparent backdrop-blur rounded-md border-2 border-solid border-neutral-5 outline-none"
 >
   <div
     style:height
@@ -24,13 +26,13 @@
   >
     {#if $$slots.header}
       <div class="flex items-center">
-        <h2 class="text-lg font-semibold text-neutral-12">
+        <h3 class="text-lg font-semibold text-neutral">
           <slot name="header" />
-        </h2>
+        </h3>
 
         <button
           type="button"
-          class="px-2 border-2 border-neutral-8 text-neutral-12 rounded-md ml-auto font-bold hover:text-error"
+          class="px-2 border-2 border-neutral-3 text-neutral rounded-md ml-auto font-bold hover:text-error-focus"
           title="Close modal"
           on:click={() => (open = false)}>X</button
         >
@@ -42,7 +44,7 @@
     {#if $$slots.footer}
       <div class="ml-auto mt-auto font-semibold flex gap-2">
         <button
-          class="px-4 py-1 bg-neutral-7 rounded-md hover:bg-neutral-8"
+          class="px-4 py-1 bg-neutral-4 rounded-md hover:bg-neutral-5"
           type="button"
           title="Cancel"
           on:click={() => {

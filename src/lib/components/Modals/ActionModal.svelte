@@ -18,7 +18,7 @@
     slot="footer"
     type="button"
     title="{type} session"
-    class="px-4 py-1 bg-red-700 rounded-md hover:bg-red-800"
+    class="px-4 py-1 bg-error rounded-md hover:bg-error-focus"
     on:click={() => {
       dispatch('deleteAction');
     }}>{type}</button

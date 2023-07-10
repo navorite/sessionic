@@ -5,6 +5,8 @@
   import { createEventDispatcher } from 'svelte';
   import { sendMessage } from '@utils/messages';
   import { isExtensionViewed } from '@utils/extension';
+  import Card from '@components/basic/Card.svelte';
+  import browser from 'webextension-polyfill';
 
   const dispatch = createEventDispatcher<{
     delete: ETab | undefined;
@@ -14,25 +16,18 @@
 
   export let current = false;
 
-  let icon: Icon;
-
   let collapsed = false;
-
-  $: {
-    if (collapsed) icon = window?.incognito ? 'incognito_off' : 'window_off';
-    else icon = window?.incognito ? 'incognito' : 'window';
-  }
 </script>
 
 {#if window.tabs.length && isExtensionViewed()}
-  <ListItem let:hover class="mb-2 rounded-md bg-neutral-3">
+  <ListItem let:hover class="mb-2 rounded-md bg-neutral-2">
     <div
-      class="flex items-center gap-2 rounded-md hover:bg-primary-4 p-2 mb-1 group"
+      class="flex items-center gap-2 rounded-md hover:bg-neutral-3 p-2 mb-1 group"
     >
       <IconButton
-        {icon}
-        title="Collapse Window"
-        class="text-2xl hover:text-primary-pure-1"
+        icon={window?.incognito ? 'incognito' : 'window'}
+        title="{window?.incognito ? 'Private' : ''} Window"
+        class="text-xl"
         on:click={() => (collapsed = !collapsed)}
       />
 
@@ -48,23 +43,38 @@
         {window.incognito ? 'Private' : ''} Window
       </span>
 
-      <span
-        title="Number of Tabs"
-        class="bg-overlay-black-8 py-0.5 px-2 rounded text-xs font-semibold"
-      >
+      <Card class="text-xs bg-primary text-white">
         {window?.tabs.length} Tab{window?.tabs.length > 1 ? 's' : ''}
-      </span>
+      </Card>
+
+      {#if hover && current}
+        <button
+          type="button"
+          title="Close window"
+          class="font-bold ml-auto hover:text-error-focus"
+          on:click={() => {
+            browser?.windows?.remove(window?.id);
+          }}>X</button
+        >
+      {/if}
 
       {#if hover && !current}
         <IconButton
           icon="delete"
           title="Delete window"
-          class="ml-auto text-2xl text-red-500 hover:text-red-800 invisible group-hover:visible"
+          class="ml-auto text-2xl text-error hover:text-error-focus invisible group-hover:visible"
           on:click={() => {
             dispatch('delete');
           }}
         />
       {/if}
+
+      <IconButton
+        icon={collapsed ? 'expand' : 'collapse'}
+        title="{collapsed ? 'Show' : 'Hide'} window tabs"
+        class="text-2xl hover:text-primary-focus {hover ? '' : 'ml-auto'}"
+        on:click={() => (collapsed = !collapsed)}
+      />
     </div>
 
     {#if !collapsed}
