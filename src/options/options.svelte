@@ -1,30 +1,37 @@
-<script>
+<script lang="ts">
   import { sendMessage } from '@utils/messages';
-  import darkMode from '@stores/theme';
-  import Switch from '@components/basic/Switch.svelte';
+  import Tab from './components/basic/Tab.svelte';
+  import General from './components/General.svelte';
+  import KeyboardShortcuts from './components/KeyboardShortcuts.svelte';
+  import About from './components/About.svelte';
+
+  let group: string;
 
   let isPopupEnabled;
 
-  sendMessage({ message: 'getIsPopupEnabled' }).then((result) => {
-    isPopupEnabled = result;
-  });
+  const settingsPromise = sendMessage({ message: 'getIsPopupEnabled' }).then(
+    (result) => {
+      isPopupEnabled = result;
+    }
+  );
 </script>
 
-<h1 class="text-xl">Options</h1>
+<div class="w-full max-w-4xl mx-auto">
+  <div class="flex justify-center items-center gap-2">
+    <Tab title="General" path="general" bind:group />
+    <Tab title="Keyboard Shortcuts" path="keyboard-shortcuts" bind:group />
+    <Tab title="About" path="about" bind:group />
+  </div>
 
-<div class="flex flex-col gap-2 p-2">
-  <Switch
-    id="popup"
-    bind:checked={isPopupEnabled}
-    on:change={() => {
-      sendMessage({ message: 'setPopupEnabled', isPopupEnabled });
-    }}>Enable Popup view</Switch
-  >
-  <Switch id="darkmode" checked={$darkMode} on:change={darkMode.switch}
-    >Enable Dark Mode</Switch
-  >
+  <div class="flex flex-col gap-4 p-4">
+    {#await settingsPromise then _}
+      {#if group === 'keyboard-shortcuts'}
+        <KeyboardShortcuts />
+      {:else if group === 'about'}
+        <About />
+      {:else}
+        <General bind:isPopupEnabled />
+      {/if}
+    {/await}
+  </div>
 </div>
-
-<h2 class="text-xl text-center my-auto">
-  To be added, look out for future releases!
-</h2>
