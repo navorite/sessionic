@@ -4,7 +4,7 @@
   import { createEventDispatcher } from 'svelte';
   import { decompress as decompressLZ } from 'lz-string';
   import { sendMessage } from '@utils/messages';
-  import browser, { tabs } from 'webextension-polyfill';
+  import browser from 'webextension-polyfill';
 
   export let tab: ETab;
   export let current = false;
@@ -16,7 +16,6 @@
   <ListItem class="tab-container" let:hover>
     <button
       type="button"
-      title={tab?.title}
       class="link"
       on:click={() => {
         sendMessage({ message: 'createTab', tab });
@@ -34,24 +33,14 @@
       </span>
     </button>
 
-    {#if hover && current}
-      <button
-        type="button"
-        title="Close tab"
-        class="font-bold ml-auto hover:text-error-focus"
-        on:click={() => {
-          browser?.tabs?.remove(tab?.id);
-        }}>X</button
-      >
-    {/if}
-
-    {#if hover && !current}
+    {#if hover}
       <IconButton
-        icon="delete"
-        title="Delete tab"
-        class="ml-auto text-2xl text-red-500 hover:text-red-800"
+        icon={current ? 'close' : 'delete'}
+        title="{current ? 'Close' : 'Delete'} tab"
+        class="ml-auto text-2xl text-error hover:text-error-focus"
         on:click={() => {
-          dispatch('delete', tab);
+          if (current) browser?.tabs?.remove(tab?.id);
+          else dispatch('delete', tab);
         }}
       />
     {/if}
