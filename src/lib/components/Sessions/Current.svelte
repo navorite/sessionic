@@ -100,19 +100,19 @@
     Current Session
   </p>
 
-  <Card
-    title="{$session?.windows.length ?? 0} Window{$session?.windows.length > 1
-      ? 's'
-      : ''} and {$session?.tabsNumber ?? 0} Tab{$session?.tabsNumber > 1
-      ? 's'
-      : ''}"
-  >
-    <IconButton icon="window" class="text-base" />
-    {$session?.windows?.length}
+  {#if $session?.windows.length}
+    <Card
+      title="{$session.windows.length} Window{$session.windows.length > 1
+        ? 's'
+        : ''} and {$session.tabsNumber} Tab{$session.tabsNumber > 1 ? 's' : ''}"
+    >
+      <IconButton icon="window" class="text-base" />
+      {$session.windows.length}
 
-    <IconButton icon="tab" class="text-base ml-2" />
-    {$session?.tabsNumber}
-  </Card>
+      <IconButton icon="tab" class="text-base ml-2" />
+      {$session.tabsNumber}
+    </Card>
+  {/if}
 
   <IconButton
     icon="save"
