@@ -15,18 +15,55 @@ export const tooltip: Action<
   function mouseOver() {
     const rect = element.getBoundingClientRect();
 
-    let x = rect.left + window.scrollX + rect.width / 2;
-    let y = rect.top + window.scrollY + rect.height * 1.2;
+    const elX = window.scrollX + rect.left;
+    const elY = window.scrollY + rect.top;
+
+    const spaceX = window.innerWidth - elX;
+    const spaceY = window.innerHeight - elY;
+
+    let positionX = rect.width / 2,
+      positionY = rect.height * 1.2;
+
+    let noSpace = false;
+
+    if (spaceX < 100) {
+      positionX = -8;
+      positionY = 0;
+
+      noSpace = true;
+    }
+
+    if (spaceY < 40) positionY = -spaceY;
+
+    const x = elX + positionX;
+    const y = elY + positionY;
 
     if (!tooltipComponent)
       tooltipComponent = new Tooltip({
         target: document.body,
 
-        props: { title, x, y, delay, duration, show: true },
+        props: {
+          title,
+          x,
+          y,
+          delay,
+          duration,
+          noSpace: positionX < 0,
+          show: true,
+        },
 
         intro: true,
       });
-    else tooltipComponent.$set({ show: true });
+    else
+      tooltipComponent.$set({
+        title,
+        x,
+        y,
+        delay,
+        duration,
+        noSpace: positionX < 0,
+        show: true,
+      });
   }
 
   function mouseLeave() {
