@@ -87,22 +87,25 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
+  tabindex="0"
+  role="button"
   class="w-full px-2 py-1 mb-2 rounded-md bg-neutral-2 text-neutral-content cursor-pointer flex gap-2 border-neutral-5 border-solid border-2 hover:bg-neutral-3 items-center {selected
     ? '!bg-neutral-4'
     : ''}"
   on:click={() => selection.select($session)}
 >
   <p
-    title="Current Session"
     class="flex-1 max-w-max pl-1 overflow-hidden whitespace-nowrap text-ellipsis font-semibold"
   >
     Current Session
   </p>
 
   <Card
-    title="{$session?.windows.length} Window{$session?.windows.length > 1
+    title="{$session?.windows.length ?? 0} Window{$session?.windows.length > 1
       ? 's'
-      : ''} and {$session?.tabsNumber} Tab{$session?.tabsNumber > 1 ? 's' : ''}"
+      : ''} and {$session?.tabsNumber ?? 0} Tab{$session?.tabsNumber > 1
+      ? 's'
+      : ''}"
   >
     <IconButton icon="window" class="text-base" />
     {$session?.windows?.length}
