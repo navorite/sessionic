@@ -48,8 +48,9 @@
       $session.tabsNumber -= window.tabs.length;
     }
 
+    sessions.put($session);
+
     if (!$session.windows.length || !$session.tabsNumber) {
-      sessions.remove($session);
       session.select($currentSession);
     }
   }
