@@ -7,12 +7,8 @@
   let selected = false;
 
   function getLocation() {
-    if (window?.location?.href?.endsWith(`#${path}`)) {
-      group = path;
-    }
+    if (window?.location?.href?.endsWith(`#${path}`)) group = path;
   }
-
-  $: console.log(window?.location?.href?.endsWith(`#${path}`), path, group);
 
   $: selected = group === path;
 </script>
