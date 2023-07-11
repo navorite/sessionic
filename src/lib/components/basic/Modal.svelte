@@ -1,6 +1,5 @@
 <script lang="ts">
   import IconButton from '@components/IconButton.svelte';
-  import { fade } from 'svelte/transition';
 
   export let open = false;
 
@@ -49,9 +48,7 @@
           class="px-4 py-1 bg-neutral-4 rounded-md hover:bg-neutral-5"
           type="button"
           title="Cancel"
-          on:click={() => {
-            open = false;
-          }}>Cancel</button
+          on:click={() => (open = false)}>Cancel</button
         >
         <slot name="footer" />
       </div>
@@ -62,6 +59,6 @@
 <style>
   dialog::backdrop {
     backdrop-filter: blur(1px);
-    background: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
   }
 </style>
