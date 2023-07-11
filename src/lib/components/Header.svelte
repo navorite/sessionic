@@ -27,7 +27,7 @@
     {#if isPopup}
       <IconButton
         icon="open"
-        title="View extension in a new tab"
+        title="Open Full View"
         on:click={() => {
           sendMessage({ message: 'openFullView' });
         }}
@@ -42,7 +42,7 @@
 
     <IconButton
       icon="options"
-      title="Open extension Options in a new tab"
+      title="Open Settings"
       on:click={() => {
         sendMessage({ message: 'openOptions' });
       }}
