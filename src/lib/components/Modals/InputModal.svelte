@@ -10,6 +10,7 @@
   export let minlength = 3;
   export let maxlength = 40;
 
+  let isSubmit = false;
   let disabled = true;
   let errMsg = '';
 
@@ -27,6 +28,7 @@
 
   $: if (open)
     tick().then(() => {
+      isSubmit = false;
       inputEl?.focus();
     });
 
@@ -35,9 +37,8 @@
   async function submit() {
     dispatch('inputSubmit', value);
 
-    afterUpdate(() => {
-      value = '';
-    });
+    isSubmit = true;
+    value = '';
   }
 </script>
 
@@ -61,7 +62,7 @@
       }}
     />
 
-    {#if disabled}
+    {#if disabled && !isSubmit}
       <p
         class="font-semibold rounded-md p-1 px-2 text-sm w-max mx-auto bg-error text-white"
       >
