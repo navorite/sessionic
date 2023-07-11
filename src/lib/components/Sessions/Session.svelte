@@ -7,6 +7,7 @@
   import { createEventDispatcher } from 'svelte';
   import sessions from '@stores/sessions';
   import { sendMessage } from '@utils/messages';
+  import { tooltip } from '@utils/tooltip';
 
   export let session: ESession;
 
@@ -33,7 +34,10 @@
 >
   <div class="session-info">
     <span
-      title="Open Session"
+      tabindex="0"
+      role="button"
+      use:tooltip={{ title: 'Open Session' }}
+      aria-label="Open Session"
       class="session-name"
       on:click={() => {
         sendMessage({ message: 'openSession', session });
@@ -63,9 +67,11 @@
 
   <div class="flex items-center">
     <Card
-      title="{session?.windows.length} Window{session?.windows.length > 1
+      title="{session?.windows.length ?? 0} Window{session?.windows.length > 1
         ? 's'
-        : ''} and {session?.tabsNumber} Tab{session?.tabsNumber > 1 ? 's' : ''}"
+        : ''} and {session?.tabsNumber ?? 0} Tab{session?.tabsNumber > 1
+        ? 's'
+        : ''}"
     >
       <IconButton icon="window" class="text-base" />
       {session?.windows?.length}
