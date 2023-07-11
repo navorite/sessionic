@@ -13,15 +13,15 @@ export const MESSAGES = {
     },
   },
 
-  rename: {
-    success_info: 'Session renamed successfuly!',
+  update: {
+    success_info: 'Session updated successfuly!',
     fail: {
-      generic: 'Error renaming session',
+      generic: 'Error updating session',
     },
   },
 
   remove: {
-    success_warning: 'Session removed successfuly!',
+    success_warning: 'Session was removed!',
     fail: {
       generic: 'Error deleting session',
       is_undefined: 'Error deleting session: session undefined',
