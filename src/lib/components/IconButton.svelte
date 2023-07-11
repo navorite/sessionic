@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { tooltip } from '@utils/tooltip';
+
   export let icon: Icon = 'default';
   export let title: string = null;
 
@@ -10,7 +12,10 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
-  {title}
+  use:tooltip={{ title }}
+  tabindex="0"
+  role="button"
+  aria-label={title}
   class="cursor-pointer bg-current w-[1em] h-[1em] {className}"
   style:mask-image="url({src})"
   style:mask-repeat="no-repeat"
