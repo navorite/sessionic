@@ -72,7 +72,7 @@ export default (() => {
       return sessions;
     });
 
-    notification.success_info(MESSAGES.rename.success_info);
+    notification.success_info(MESSAGES.update.success_info);
   }
 
   function filter(query: string) {
