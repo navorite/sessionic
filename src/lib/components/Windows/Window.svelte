@@ -47,24 +47,14 @@
         {window?.tabs.length} Tab{window?.tabs.length > 1 ? 's' : ''}
       </Card>
 
-      {#if hover && current}
-        <button
-          type="button"
-          title="Close window"
-          class="font-bold ml-auto hover:text-error-focus"
-          on:click={() => {
-            browser?.windows?.remove(window?.id);
-          }}>X</button
-        >
-      {/if}
-
-      {#if hover && !current}
+      {#if hover}
         <IconButton
-          icon="delete"
-          title="Delete window"
-          class="ml-auto text-2xl text-error hover:text-error-focus invisible group-hover:visible"
+          icon={current ? 'close' : 'delete'}
+          title="{current ? 'Close' : 'Delete'} tab"
+          class="ml-auto text-2xl text-error hover:text-error-focus"
           on:click={() => {
-            dispatch('delete');
+            if (current) browser?.windows?.remove(window?.id);
+            else dispatch('delete');
           }}
         />
       {/if}
