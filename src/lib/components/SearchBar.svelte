@@ -50,7 +50,7 @@
       class="font-semibold bg-transparent outline-none"
     />
     <IconButton
-      icon="clear"
+      icon="close"
       title="Clear input"
       class="text-2xl hover:text-red-700"
       on:click={() => {
@@ -59,7 +59,7 @@
       }}
     />
   {:else}
-    <IconButton icon="search" title="Search for Session or Tab name.." />
+    <IconButton icon="search" title="Search for session or tab.." />
   {/if}
 </div>
 
