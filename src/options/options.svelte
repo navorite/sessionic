@@ -4,6 +4,7 @@
   import General from './components/General.svelte';
   import KeyboardShortcuts from './components/KeyboardShortcuts.svelte';
   import About from './components/About.svelte';
+  import { isExtensionViewed } from '@utils/extension';
 
   let group: string;
 
@@ -25,12 +26,14 @@
 
   <div class="flex flex-col gap-4 p-4">
     {#await settingsPromise then _}
-      {#if group === 'keyboard-shortcuts'}
-        <KeyboardShortcuts />
-      {:else if group === 'about'}
-        <About />
-      {:else}
-        <General bind:isPopupEnabled />
+      {#if isExtensionViewed()}
+        {#if group === 'keyboard-shortcuts'}
+          <KeyboardShortcuts />
+        {:else if group === 'about'}
+          <About />
+        {:else}
+          <General bind:isPopupEnabled />
+        {/if}
       {/if}
     {/await}
   </div>
