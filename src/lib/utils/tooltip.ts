@@ -26,7 +26,7 @@ export const tooltip: Action<
 
     let noSpace = false;
 
-    if (spaceX < 100) {
+    if (spaceX < 120) {
       positionX = -8;
       positionY = 0;
 
