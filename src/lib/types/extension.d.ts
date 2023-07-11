@@ -29,14 +29,16 @@ declare global {
     | 'save'
     | 'delete'
     | 'search'
-    | 'clear'
     | 'open'
+    | 'close'
     | 'redo'
     | 'undo'
     | 'rename'
     | 'more'
     | 'dark'
-    | 'light';
+    | 'light'
+    | 'copy'
+    | 'check';
 
   interface ENotification {
     type: 'info' | 'success' | 'warning' | 'error';
