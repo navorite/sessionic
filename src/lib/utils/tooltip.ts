@@ -7,6 +7,8 @@ export const tooltip: Action<
 > = (element: HTMLElement, { title, delay, duration }) => {
   if (!title) return;
 
+  element.setAttribute('aria-label', title);
+
   let tooltipComponent: Tooltip;
 
   element.addEventListener('mouseover', mouseOver);

@@ -13,10 +13,7 @@
 <div class="flex items-center w-full h-full max-h-8 gap-2">
   <h1>Tabify</h1>
 
-  <div
-    aria-label="Number of shown sessions: {$filtered?.length}"
-    class="card bg-primary text-white"
-  >
+  <div aria-label="Number of sessions" class="card bg-primary text-white">
     {$filtered?.length ?? 0} Session{$filtered?.length ?? 0 > 1 ? 's' : ''}
   </div>
 
