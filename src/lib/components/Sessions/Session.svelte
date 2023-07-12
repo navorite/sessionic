@@ -66,8 +66,6 @@
 
   <div class="flex items-center">
     <div
-      aria-label="Number of session windows:{session.windows
-        .length} and tabs:{session.tabsNumber}"
       use:tooltip={{
         title: `${session?.windows.length ?? 0} Window${
           session?.windows.length > 1 ? 's' : ''

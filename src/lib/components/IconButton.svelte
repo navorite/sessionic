@@ -15,7 +15,6 @@
 <div
   use:tooltip={{ title }}
   role="button"
-  aria-label={title}
   class="cursor-pointer bg-current w-[1em] h-[1em] {className}"
   style:mask-image="url({src})"
   style:mask-repeat="no-repeat"

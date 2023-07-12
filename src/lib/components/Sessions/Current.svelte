@@ -103,8 +103,6 @@
   {#if $session?.windows.length}
     <div
       class="card"
-      aria-label="Number of session windows:{$session.windows
-        .length} and tabs:{$session.tabsNumber}"
       use:tooltip={{
         title: `${$session.windows.length} Window${
           $session.windows.length > 1 ? 's' : ''
