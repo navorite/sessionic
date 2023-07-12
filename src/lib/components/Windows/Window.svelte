@@ -1,15 +1,14 @@
 <script lang="ts">
   import ListItem from '@components/basic/ListItem.svelte';
   import IconButton from '../IconButton.svelte';
-  import Tabs from '../Tabs/Tabs.svelte';
-  import { createEventDispatcher } from 'svelte';
-  import { sendMessage } from '@utils/messages';
-  import { isExtensionViewed } from '@utils/extension';
-  import Card from '@components/basic/Card.svelte';
-  import browser from 'webextension-polyfill';
-  import { tooltip } from '@utils/tooltip';
-  import { fade } from 'svelte/transition';
   import Tab from '@components/Tabs/Tab.svelte';
+  import Card from '@components/basic/Card.svelte';
+  import { tooltip } from '@utils/tooltip';
+  import { createEventDispatcher } from 'svelte';
+  import { fade } from 'svelte/transition';
+  import { isExtensionViewed } from '@utils/extension';
+  import { sendMessage } from '@utils/messages';
+  import browser from 'webextension-polyfill';
 
   const dispatch = createEventDispatcher<{
     delete: ETab | undefined;
@@ -45,7 +44,7 @@
           sendMessage({ message: 'openInNewWindow', window });
         }}
       >
-        {window.incognito ? 'Private' : ''} Window
+        {window?.incognito ? 'Private' : ''} Window
       </span>
 
       <Card class="text-xs bg-primary text-white">

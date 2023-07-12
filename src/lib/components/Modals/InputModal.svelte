@@ -1,6 +1,6 @@
 <script lang="ts">
   import Modal from '@components/basic/Modal.svelte';
-  import { afterUpdate, createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from 'svelte';
   import { tick } from 'svelte';
 
   export let type: 'Save' | 'Rename';

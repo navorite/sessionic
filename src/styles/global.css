@@ -106,10 +106,8 @@ mark {
 
 ::-webkit-scrollbar-thumb {
   @apply rounded-md bg-neutral-4;
-  /* bg-neutral-10 */
 }
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-neutral-5;
-  /* bg-neutral-11 */
 }
