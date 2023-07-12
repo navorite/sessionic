@@ -13,6 +13,7 @@
 </script>
 
 <div
+  role="tooltip"
   style="position:absolute;top:{y}px;left:{x}px;translate:{translate.X}% {translate.Y}%"
   in:fade|global={{ delay, duration }}
 >
