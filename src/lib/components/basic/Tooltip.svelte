@@ -13,6 +13,7 @@
 </script>
 
 <div
+  inert
   role="tooltip"
   style="position:absolute;top:{y}px;left:{x}px;translate:{translate.X}% {translate.Y}%"
   in:fade|global={{ delay, duration }}
@@ -22,6 +23,6 @@
 
 <style>
   div {
-    @apply whitespace-nowrap bg-tooltip text-tooltip-content font-semibold text-sm rounded-md py-1 px-2;
+    @apply whitespace-nowrap bg-tooltip text-tooltip-content font-semibold text-sm rounded-md py-1 px-2 pointer-events-none select-none;
   }
 </style>
