@@ -28,6 +28,8 @@
   --neutral-3: hsl(0, 0%, 87%);
   --neutral-4: hsl(0, 0%, 82%);
   --neutral-5: hsl(0, 0%, 77%);
+  --neutral-6: hsl(0, 0%, 72%);
+  --neutral-7: hsl(0, 0%, 67%);
 
   --neutral-content: hsl(0, 0%, 0%);
   --neutral-content-muted: hsl(0, 0%, 45%);
@@ -44,6 +46,7 @@
   --neutral-3: hsl(220, 6%, 19%);
   --neutral-4: hsl(220, 6%, 24%);
   --neutral-5: hsl(220, 6%, 29%);
+  --neutral-6: hsl(220, 6%, 34%);
 
   --neutral-content: hsl(0, 0%, 90%);
 
@@ -107,7 +110,15 @@ div {
 }
 
 .card {
-  @apply inline-flex items-center w-max font-bold gap-1 rounded py-1 px-1.5 mr-1 text-xs;
+  @apply inline-flex items-center w-max font-bold gap-1 rounded py-1 px-1.5 mr-1 text-xs pointer-events-none select-none;
+}
+
+.session-card {
+  @apply flex items-center gap-1 font-medium text-xs bg-neutral-5 py-1 px-2 rounded;
+}
+
+.session-card:hover {
+  @apply bg-neutral-6;
 }
 
 mark {

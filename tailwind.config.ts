@@ -8,7 +8,7 @@ export default {
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
-        neutral: generateScale('neutral', 1, 5),
+        neutral: generateScale('neutral', 1, 6),
         'neutral-focus': 'var(--neutral-focus)',
         primary: 'var(--primary)',
         'primary-focus': 'var(--primary-focus)',
