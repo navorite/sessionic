@@ -1,7 +1,7 @@
 export const MESSAGES = {
   load: {
     success: 'Sessions loaded successfuly!',
-    info: "Let's open some sessions!",
+    info: "Let's save some sessions!",
     fail: { generic: 'Error loading sessions' },
   },
 
