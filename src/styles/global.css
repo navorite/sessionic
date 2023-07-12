@@ -28,9 +28,14 @@
   --neutral-3: hsl(0, 0%, 87%);
   --neutral-4: hsl(0, 0%, 82%);
   --neutral-5: hsl(0, 0%, 77%);
+
   --neutral-content: hsl(0, 0%, 0%);
   --neutral-content-muted: hsl(0, 0%, 45%);
+
   --overlay-black: rgba(255, 255, 255, 0.4);
+
+  --tooltip: hsl(220, 5%, 34%);
+  --tooltip-content: #fff;
 }
 
 .dark {
@@ -39,8 +44,13 @@
   --neutral-3: hsl(220, 6%, 19%);
   --neutral-4: hsl(220, 6%, 24%);
   --neutral-5: hsl(220, 6%, 29%);
+
   --neutral-content: hsl(0, 0%, 90%);
+
   --overlay-black: rgba(0, 0, 0, 0.4);
+
+  --tooltip: hsl(220, 7%, 66%);
+  --tooltip-content: #000;
 }
 
 html,
@@ -50,7 +60,7 @@ body {
 }
 
 body {
-  @apply mx-auto container min-h-[500px] min-w-[800px] px-4 py-2 text-neutral-content bg-neutral-1 font-sans scroll-smooth;
+  @apply container mx-auto min-h-[500px] min-w-[800px] px-4 py-2 text-neutral-content bg-neutral-1 font-sans scroll-smooth;
 }
 
 #root {
@@ -94,6 +104,10 @@ div {
 
 .session-name:hover {
   @apply underline;
+}
+
+.card {
+  @apply inline-flex items-center w-max font-bold gap-1 rounded py-1 px-1.5 mr-1 text-xs;
 }
 
 mark {

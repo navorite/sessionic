@@ -23,8 +23,10 @@ export default {
 
         /*Text*/
         'neutral-content': 'var(--neutral-content)',
-        'neutral-content-disabled': 'var(--neutral-content-disabled)',
-        'neutral-blend': 'var(--neutral-content-blend)',
+        'neutral-content-disabled': 'var(--neutral-content-muted)',
+
+        tooltip: 'var(--tooltip)',
+        'tooltip-content': 'var(--tooltip-content)',
       },
     },
   },
