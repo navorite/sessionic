@@ -4,10 +4,10 @@
   export let icon: Icon = 'default';
   export let title: string = null;
 
-  $: src = `../../icons/${icon}.svg`;
-
-  let className = 'text-2xl hover:text-primary-focus';
   export { className as class };
+  let className = 'text-2xl hover:text-primary-focus';
+
+  $: src = `../../icons/${icon}.svg`;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->

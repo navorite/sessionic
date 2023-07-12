@@ -3,23 +3,13 @@
   import sessions from '@stores/sessions';
   import { currentSession } from '@components/Sessions/Current.svelte';
   import { isFirefox } from '@constants/env';
-  import { afterUpdate } from 'svelte/internal';
 
   export { className as class };
   let className = '';
 
   let ulEl: HTMLUListElement;
 
-  let scrollBarPadding = '0';
-
-  afterUpdate(() => {
-    if (isFirefox) {
-      scrollBarPadding = ulEl?.scrollHeight > ulEl?.clientHeight ? '1rem' : '0';
-      return;
-    }
-
-    scrollBarPadding = ulEl?.scrollHeight > ulEl?.clientHeight ? '0.5rem' : '0';
-  });
+  let scrollBarPadding = isFirefox ? '1rem' : '0.5rem';
 
   $: session = sessions.selection;
 
@@ -59,7 +49,7 @@
 {#if $session?.windows && $session?.tabsNumber}
   <ul
     bind:this={ulEl}
-    class="overflow-y-scroll {className}"
+    class="overflow-y-scroll flex flex-col gap-2 {className}"
     style:padding-right={scrollBarPadding}
   >
     {#each $session.windows as window, windowIndex (window)}
