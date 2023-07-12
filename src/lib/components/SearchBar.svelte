@@ -4,9 +4,8 @@
 
   export let value: string;
 
-  let className = '';
-
   export { className as class };
+  let className = '';
 
   let showInputBar = false;
 
@@ -27,14 +26,13 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <div
   class="flex justify-center items-center font-semibold rounded-md cursor-text {showInputBar
     ? 'bg-neutral-5 px-2 py-0.5'
     : ''} fade {className}"
   on:focusin={handleInputBar}
   on:focusout={handleInputBar}
-  tabindex="0"
+  tabindex="-1"
 >
   {#if showInputBar}
     <input
@@ -44,8 +42,7 @@
       }}
       spellcheck={false}
       type="text"
-      title="Search for Session or Tab name..."
-      placeholder="Search Session..."
+      placeholder="Search session..."
       bind:value
       class="font-semibold bg-transparent outline-none"
     />
@@ -62,12 +59,3 @@
     <IconButton icon="search" title="Search" />
   {/if}
 </div>
-
-<!-- // function expandWidth(node: HTMLElement, duration: number) {
-  //   if (!node?.offsetWidth) return;
-  //   const width = node.offsetWidth;
-
-  //   const speed = width / duration;
-
-  //   // return {duration, tick: (t) => {node.style.width = }}
-  // } -->

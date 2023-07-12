@@ -11,9 +11,9 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-interactive-supports-focus -->
 <div
   use:tooltip={{ title }}
-  tabindex="0"
   role="button"
   aria-label={title}
   class="cursor-pointer bg-current w-[1em] h-[1em] {className}"
