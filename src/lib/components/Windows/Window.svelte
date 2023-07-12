@@ -2,7 +2,6 @@
   import ListItem from '@components/basic/ListItem.svelte';
   import IconButton from '../IconButton.svelte';
   import Tab from '@components/Tabs/Tab.svelte';
-  import Card from '@components/basic/Card.svelte';
   import { tooltip } from '@utils/tooltip';
   import { createEventDispatcher } from 'svelte';
   import { fade } from 'svelte/transition';
@@ -22,10 +21,16 @@
 </script>
 
 {#if window.tabs.length && isExtensionViewed()}
-  <ListItem let:hover class="mb-2 rounded-md bg-neutral-2">
+  <ListItem let:hover class="rounded-md bg-neutral-2">
     <div
       class="flex items-center gap-2 rounded-md hover:bg-neutral-3 p-2 mb-1 group"
     >
+      <IconButton
+        icon={collapsed ? 'expand' : 'collapse'}
+        title="{collapsed ? 'Expand' : 'Collapse'} window"
+        class="text-2xl hover:text-primary-focus"
+        on:click={() => (collapsed = !collapsed)}
+      />
       <IconButton
         icon={window?.incognito ? 'incognito' : 'window'}
         title="{window?.incognito ? 'Private' : ''} Window"
@@ -47,9 +52,12 @@
         {window?.incognito ? 'Private' : ''} Window
       </span>
 
-      <Card class="text-xs bg-primary text-white">
+      <div
+        class="card bg-primary text-white"
+        aria-label="Number of window tabs: {window?.tabs.length}"
+      >
         {window?.tabs.length} Tab{window?.tabs.length > 1 ? 's' : ''}
-      </Card>
+      </div>
 
       {#if hover}
         <IconButton
@@ -62,13 +70,6 @@
           }}
         />
       {/if}
-
-      <IconButton
-        icon={collapsed ? 'expand' : 'collapse'}
-        title="{collapsed ? 'Expand' : 'Collapse'} window"
-        class="text-2xl hover:text-primary-focus {hover ? '' : 'ml-auto'}"
-        on:click={() => (collapsed = !collapsed)}
-      />
     </div>
 
     {#if !collapsed && window}

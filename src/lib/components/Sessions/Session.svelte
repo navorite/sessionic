@@ -1,7 +1,6 @@
 <script lang="ts">
   import ListItem from '@components/basic/ListItem.svelte';
   import IconButton from '../IconButton.svelte';
-  import Card from '@components/basic/Card.svelte';
   import { filterOptions } from '@stores/settings';
   import { markResult } from '@utils/markResult';
   import { createEventDispatcher } from 'svelte';
@@ -66,26 +65,32 @@
   </div>
 
   <div class="flex items-center">
-    <Card
-      title="{session?.windows.length ?? 0} Window{session?.windows.length > 1
-        ? 's'
-        : ''} and {session?.tabsNumber ?? 0} Tab{session?.tabsNumber > 1
-        ? 's'
-        : ''}"
+    <div
+      aria-label="Number of session windows:{session.windows
+        .length} and tabs:{session.tabsNumber}"
+      use:tooltip={{
+        title: `${session?.windows.length ?? 0} Window${
+          session?.windows.length > 1 ? 's' : ''
+        } and ${session?.tabsNumber ?? 0} Tab${
+          session?.tabsNumber > 1 ? 's' : ''
+        }`,
+      }}
+      class="card"
     >
       <IconButton icon="window" class="text-base" />
       {session?.windows?.length}
 
       <IconButton icon="tab" class="text-base ml-2" />
       {session?.tabsNumber}
-    </Card>
+    </div>
+
     {#if session?.dateSaved}
       {@const date = new Date(session.dateSaved)}
-      <Card title="Session save date">
+      <div use:tooltip={{ title: 'Session save date' }} class="card">
         {date.toLocaleDateString([], { dateStyle: 'short' })}
         -
         {date.toLocaleTimeString([], { timeStyle: 'short' })}
-      </Card>
+      </div>
     {/if}
   </div>
 </ListItem>

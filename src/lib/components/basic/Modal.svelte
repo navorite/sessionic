@@ -34,7 +34,6 @@
         <!-- TODO: add tooltip on modals -->
         <IconButton
           icon="close"
-          title="Close"
           class="ml-auto text-2xl hover:text-error-focus"
           on:click={() => (open = false)}
         />

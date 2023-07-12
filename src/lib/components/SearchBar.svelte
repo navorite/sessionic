@@ -59,7 +59,7 @@
       }}
     />
   {:else}
-    <IconButton icon="search" title="Search for session or tab..." />
+    <IconButton icon="search" title="Search" />
   {/if}
 </div>
 

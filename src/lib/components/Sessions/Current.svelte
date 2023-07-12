@@ -12,7 +12,7 @@
   import { writable, type Writable } from 'svelte/store';
   import { isExtensionViewed } from '@utils/extension';
   import { getSession } from '@utils/getSession';
-  import Card from '@components/basic/Card.svelte';
+  import { tooltip } from '@utils/tooltip';
 
   let timeout: number | NodeJS.Timeout;
 
@@ -101,17 +101,22 @@
   </p>
 
   {#if $session?.windows.length}
-    <Card
-      title="{$session.windows.length} Window{$session.windows.length > 1
-        ? 's'
-        : ''} and {$session.tabsNumber} Tab{$session.tabsNumber > 1 ? 's' : ''}"
+    <div
+      class="card"
+      aria-label="Number of session windows:{$session.windows
+        .length} and tabs:{$session.tabsNumber}"
+      use:tooltip={{
+        title: `${$session.windows.length} Window${
+          $session.windows.length > 1 ? 's' : ''
+        } and ${$session.tabsNumber} Tab${$session.tabsNumber > 1 ? 's' : ''}`,
+      }}
     >
       <IconButton icon="window" class="text-base" />
       {$session.windows.length}
 
       <IconButton icon="tab" class="text-base ml-2" />
       {$session.tabsNumber}
-    </Card>
+    </div>
   {/if}
 
   <IconButton
