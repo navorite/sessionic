@@ -20,7 +20,7 @@
 
   $: selected = $selection === $session;
 
-  getSession().then(async (result) => {
+  getSession().then((result) => {
     $session = result;
 
     if (!$selection) selection.select($session);
