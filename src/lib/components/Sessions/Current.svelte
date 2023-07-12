@@ -122,7 +122,7 @@
 
   <IconButton
     icon="save"
-    title="Save session"
+    title="Save"
     class="ml-auto text-2xl hover:text-primary-focus"
     on:click
   />

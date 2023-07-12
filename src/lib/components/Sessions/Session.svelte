@@ -36,7 +36,7 @@
       tabindex="0"
       role="button"
       use:tooltip={{ title: 'Open Session' }}
-      aria-label="Open Session"
+      aria-label="Open"
       class="session-name"
       on:click={() => {
         sendMessage({ message: 'openSession', session });
@@ -48,7 +48,7 @@
     {#if hover}
       <IconButton
         icon="rename"
-        title="Rename session"
+        title="Rename"
         class="ml-auto text-2xl hover:text-primary-focus"
         on:click={() => {
           dispatch('renameModal');
@@ -57,7 +57,7 @@
 
       <IconButton
         icon="delete"
-        title="Delete session"
+        title="Delete"
         class="text-2xl hover:text-error-focus"
         on:click={() => dispatch('deleteModal')}
       />
