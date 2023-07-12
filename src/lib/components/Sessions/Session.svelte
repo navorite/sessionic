@@ -59,7 +59,7 @@
       <IconButton
         icon="delete"
         title="Delete session"
-        class="text-2xl text-red-500 hover:text-error-focus"
+        class="text-2xl hover:text-error-focus"
         on:click={() => dispatch('deleteModal')}
       />
     {/if}

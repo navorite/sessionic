@@ -7,6 +7,9 @@
   import { isExtensionViewed } from '@utils/extension';
   import Card from '@components/basic/Card.svelte';
   import browser from 'webextension-polyfill';
+  import { tooltip } from '@utils/tooltip';
+  import { fade } from 'svelte/transition';
+  import Tab from '@components/Tabs/Tab.svelte';
 
   const dispatch = createEventDispatcher<{
     delete: ETab | undefined;
@@ -33,11 +36,13 @@
 
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <span
-        title="Open this Window in a New Window"
+        use:tooltip={{ title: 'Open in a New Window' }}
+        tabindex="0"
+        role="button"
+        aria-label="Open in a New Window"
         class="w-max max-w-[60%] font-semibold overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline"
         on:click={() => {
           sendMessage({ message: 'openInNewWindow', window });
-          //openInNewWindow(window);
         }}
       >
         {window.incognito ? 'Private' : ''} Window
@@ -50,8 +55,8 @@
       {#if hover}
         <IconButton
           icon={current ? 'close' : 'delete'}
-          title="{current ? 'Close' : 'Delete'} tab"
-          class="ml-auto text-2xl text-error hover:text-error-focus"
+          title="{current ? 'Close' : 'Delete'} window"
+          class="ml-auto text-2xl hover:text-error-focus"
           on:click={() => {
             if (current) browser?.windows?.remove(window?.id);
             else dispatch('delete');
@@ -61,14 +66,18 @@
 
       <IconButton
         icon={collapsed ? 'expand' : 'collapse'}
-        title="{collapsed ? 'Show' : 'Hide'} window tabs"
+        title="{collapsed ? 'Expand' : 'Collapse'} window"
         class="text-2xl hover:text-primary-focus {hover ? '' : 'ml-auto'}"
         on:click={() => (collapsed = !collapsed)}
       />
     </div>
 
-    {#if !collapsed}
-      <Tabs {window} {current} class="pb-1 px-2" on:delete />
+    {#if !collapsed && window}
+      <ul class="pb-1 px-2" transition:fade={{ duration: 250 }}>
+        {#each window?.tabs as tab}
+          <Tab {tab} on:delete {current} />
+        {/each}
+      </ul>
       <!-- <slot name="tabs" /> -->
     {/if}
   </ListItem>

@@ -1,11 +1,12 @@
 <script lang="ts">
-  let hover = false;
-
-  let className = '';
   export { className as class };
+  let className = '';
+
+  let hover = false;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <li
   class={className}
   on:click

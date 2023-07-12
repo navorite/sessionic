@@ -68,7 +68,7 @@ div {
 }
 
 .tab-container {
-  @apply bg-neutral-4 py-1 px-2 mb-1 rounded-md flex items-center;
+  @apply py-1 px-2 mb-1 rounded-md flex items-center;
 }
 
 .session-container {

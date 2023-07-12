@@ -37,7 +37,7 @@
       <IconButton
         icon={current ? 'close' : 'delete'}
         title="{current ? 'Close' : 'Delete'} tab"
-        class="ml-auto text-2xl text-error hover:text-error-focus"
+        class="ml-auto text-2xl hover:text-error-focus"
         on:click={() => {
           if (current) browser?.tabs?.remove(tab?.id);
           else dispatch('delete', tab);
