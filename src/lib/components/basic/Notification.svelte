@@ -1,6 +1,7 @@
 <script lang="ts">
   import { slide } from 'svelte/transition';
   import { cubicInOut } from 'svelte/easing';
+  import IconButton from '@components/IconButton.svelte';
 
   export let detail: ENotification;
 
@@ -37,13 +38,13 @@
         {detail.msg}
       </h2>
 
-      <button
-        type="button"
-        style="background-color:rgba(0,0,0,0.5);"
-        class="px-2 py-0.5 text-white rounded-md ml-auto font-bold hover:text-red-600 text-sm"
-        title="Close modal"
-        on:click={() => (show = false)}>X</button
-      >
+      <div class="bg-overlay-black p-0.5 rounded-md">
+        <IconButton
+          icon="close"
+          class="ml-auto text-xl hover:text-error-focus"
+          on:click={() => (show = false)}
+        />
+      </div>
     </div>
   {/key}
 {/if}

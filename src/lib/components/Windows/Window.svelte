@@ -27,7 +27,7 @@
     >
       <IconButton
         icon={collapsed ? 'expand' : 'collapse'}
-        title="{collapsed ? 'Expand' : 'Collapse'} window"
+        title={collapsed ? 'Expand' : 'Collapse'}
         class="text-2xl hover:text-primary-focus"
         on:click={() => (collapsed = !collapsed)}
       />
@@ -54,7 +54,7 @@
 
       <div
         class="card bg-primary text-white"
-        aria-label="Number of window tabs: {window?.tabs.length}"
+        aria-label="Number of window tabs"
       >
         {window?.tabs.length} Tab{window?.tabs.length > 1 ? 's' : ''}
       </div>
@@ -62,8 +62,8 @@
       {#if hover}
         <IconButton
           icon={current ? 'close' : 'delete'}
-          title="{current ? 'Close' : 'Delete'} window"
-          class="ml-auto text-2xl hover:text-error-focus"
+          title={current ? 'Close' : 'Delete'}
+          class="hidden ml-auto text-2xl group-hover:block hover:text-error-focus"
           on:click={() => {
             if (current) browser?.windows?.remove(window?.id);
             else dispatch('delete');
