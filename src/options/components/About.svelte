@@ -4,7 +4,7 @@
 
 <h1 class="text-xl">About</h1>
 
-<p class="font-semibold">
+<p class="font-normal">
   This extension was created by <a
     href="https://github.com/navorite"
     class="font-bold">@navorite</a
@@ -12,7 +12,7 @@
 </p>
 
 <h2 class="text-lg font-bold">Consider donating</h2>
-<p class="font-semibold mb-2">
+<p class="font-normal mb-2">
   I develop the extension without adding any bloatware or tracking or stuff like
   that for free, so please consider donating to keep the extension development
   alive :)
@@ -61,7 +61,7 @@
 
 <style>
   a {
-    color: var(--primary);
+    color: var(--neutral);
   }
 
   a:hover {

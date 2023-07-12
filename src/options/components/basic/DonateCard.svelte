@@ -6,8 +6,6 @@
   export let title: string;
 
   export let address: string;
-
-  export let type: 'kofi' | 'paypal' | 'crypto';
 </script>
 
 <div class="flex flex-col bg-neutral-2 rounded-md p-4 gap-4 font-semibold">
