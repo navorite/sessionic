@@ -64,31 +64,24 @@
     {/if}
   </div>
 
-  <div class="flex items-center">
-    <div
-      use:tooltip={{
-        title: `${session?.windows.length ?? 0} Window${
-          session?.windows.length > 1 ? 's' : ''
-        } and ${session?.tabsNumber ?? 0} Tab${
-          session?.tabsNumber > 1 ? 's' : ''
-        }`,
-      }}
-      class="card"
-    >
-      <IconButton icon="window" class="text-base" />
+  <div class="flex items-center gap-4 p-1">
+    <div class="session-card" use:tooltip={{ title: 'Windows' }}>
+      <IconButton icon="window" class="text-base" role="note" />
       {session?.windows?.length}
+    </div>
 
-      <IconButton icon="tab" class="text-base ml-2" />
+    <div class="session-card" use:tooltip={{ title: 'Tabs' }}>
+      <IconButton icon="tab" class="text-base" role="note" />
       {session?.tabsNumber}
     </div>
 
-    {#if session?.dateSaved}
-      {@const date = new Date(session.dateSaved)}
-      <div use:tooltip={{ title: 'Session save date' }} class="card">
+    <span class="session-card ml-auto">
+      {#if session?.dateSaved}
+        {@const date = new Date(session.dateSaved)}
         {date.toLocaleDateString([], { dateStyle: 'short' })}
         -
         {date.toLocaleTimeString([], { timeStyle: 'short' })}
-      </div>
-    {/if}
+      {/if}
+    </span>
   </div>
 </ListItem>

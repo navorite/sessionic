@@ -101,19 +101,22 @@
   </p>
 
   {#if $session?.windows.length}
-    <div
-      class="card"
-      use:tooltip={{
-        title: `${$session.windows.length} Window${
-          $session.windows.length > 1 ? 's' : ''
-        } and ${$session.tabsNumber} Tab${$session.tabsNumber > 1 ? 's' : ''}`,
-      }}
-    >
-      <IconButton icon="window" class="text-base" />
-      {$session.windows.length}
+    <div class="flex items-center gap-4 px-1">
+      <div
+        class="flex items-center gap-1 font-medium text-xs"
+        use:tooltip={{ title: 'Windows' }}
+      >
+        <IconButton icon="window" class="text-base" role="note" />
+        {$session?.windows?.length}
+      </div>
 
-      <IconButton icon="tab" class="text-base ml-2" />
-      {$session.tabsNumber}
+      <div
+        class="flex items-center gap-1 font-medium text-xs"
+        use:tooltip={{ title: 'Tabs' }}
+      >
+        <IconButton icon="tab" class="text-base" role="note" />
+        {$session?.tabsNumber}
+      </div>
     </div>
   {/if}
 
