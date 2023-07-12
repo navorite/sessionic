@@ -59,7 +59,7 @@
 {#if $session?.windows && $session?.tabsNumber}
   <ul
     bind:this={ulEl}
-    class="overflow-y-auto {className}"
+    class="overflow-y-scroll {className}"
     style:padding-right={scrollBarPadding}
   >
     {#each $session.windows as window, windowIndex (window)}

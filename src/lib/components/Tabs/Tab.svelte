@@ -21,12 +21,13 @@
         sendMessage({ message: 'createTab', tab });
       }}
     >
+      <!-- TODO: fix layout shift on certain favicons -->
       <img
-        src={decompressLZ(tab?.favIconUrl)}
-        alt=""
         style:width="1em"
         style:height="1em"
         class="rounded-md"
+        src={decompressLZ(tab?.favIconUrl)}
+        alt=""
       />
       <span class="title">
         {tab?.title ?? 'Loading tab name...'}
