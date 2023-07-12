@@ -31,6 +31,7 @@
           <slot name="header" />
         </h3>
 
+        <!-- TODO: add tooltip on modals -->
         <IconButton
           icon="close"
           title="Close"
@@ -47,7 +48,6 @@
         <button
           class="px-4 py-1 bg-neutral-4 rounded-md hover:bg-neutral-5"
           type="button"
-          title="Cancel"
           on:click={() => (open = false)}>Cancel</button
         >
         <slot name="footer" />
