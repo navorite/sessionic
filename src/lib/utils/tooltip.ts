@@ -19,24 +19,33 @@ export const tooltip: Action<
     const elY = window.scrollY + rect.top;
 
     const spaceX = window.innerWidth - elX;
-    const spaceY = window.innerHeight - elY;
+    //const spaceY = window.innerHeight - elY;
 
     let positionX = rect.width / 2,
       positionY = rect.height * 1.2;
 
-    let noSpace = false;
+    let translate = { X: -50, Y: 0 };
 
     if (spaceX < 120) {
+      //show tooltip on the right side
       positionX = -8;
-      positionY = 0;
+      positionY = rect.height / 2;
 
-      noSpace = true;
+      translate = { X: -100, Y: -50 };
     }
 
-    if (spaceY < 40) positionY = -spaceY;
+    if (elX < 120) {
+      //show tooltip on the left side
+      positionX = rect.width + 8;
+      positionY = rect.height / 2;
+
+      translate = { X: 0, Y: -50 };
+    }
 
     const x = elX + positionX;
     const y = elY + positionY;
+
+    // TODO: add 5 full states of tooltip positions
 
     if (!tooltipComponent)
       tooltipComponent = new Tooltip({
@@ -46,28 +55,19 @@ export const tooltip: Action<
           title,
           x,
           y,
+          translate,
           delay,
           duration,
-          noSpace: positionX < 0,
-          show: true,
         },
 
         intro: true,
       });
-    else
-      tooltipComponent.$set({
-        title,
-        x,
-        y,
-        delay,
-        duration,
-        noSpace: positionX < 0,
-        show: true,
-      });
   }
 
   function mouseLeave() {
-    tooltipComponent?.$set({ show: false });
+    tooltipComponent?.$destroy();
+
+    tooltipComponent = null;
   }
 
   return {
