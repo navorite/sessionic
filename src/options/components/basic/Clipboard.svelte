@@ -10,7 +10,7 @@
 </script>
 
 <div
-  class="bg-overlay-black rounded-md p-1"
+  class="bg-neutral-4 rounded-md p-1"
   use:tooltip={{
     title: copied ? 'Copied' : 'Copy to clipboard',
   }}
