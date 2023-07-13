@@ -68,7 +68,7 @@
   >
 </Section>
 
-<Section title="Browser Actions">
+<!-- TODO: <Section title="Browser Actions">
   <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
     >Lazy load tabs</Switch
   >
@@ -87,14 +87,20 @@
   <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
     >Hide Tabify tabs</Switch
   >
-</Section>
+</Section> -->
 
 <Section title="Session Actions">
   <div class="flex gap-2">
     <label class="bg-neutral-4 p-2 max-w-max rounded-md hover:bg-neutral-5">
       Import Sessions
-      <input type="file" class="hidden" on:change={handleImport} />
+      <input
+        type="file"
+        class="hidden"
+        on:change={handleImport}
+        accept=".json"
+      />
     </label>
+
     <button
       class="bg-neutral-4 p-2 max-w-max rounded-md hover:bg-neutral-5"
       on:click={handleExport}>Export Sessions</button
