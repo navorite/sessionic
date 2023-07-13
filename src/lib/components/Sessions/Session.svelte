@@ -35,8 +35,7 @@
     <span
       tabindex="0"
       role="button"
-      use:tooltip={{ title: 'Open Session' }}
-      aria-label="Open"
+      use:tooltip={{ title: 'Open' }}
       class="session-name"
       on:click={() => {
         sendMessage({ message: 'openSession', session });
@@ -49,7 +48,7 @@
       <IconButton
         icon="rename"
         title="Rename"
-        class="ml-auto text-2xl hover:text-primary-focus"
+        class="ml-auto text-xl hover:text-primary-focus"
         on:click={() => {
           dispatch('renameModal');
         }}
@@ -58,24 +57,42 @@
       <IconButton
         icon="delete"
         title="Delete"
-        class="text-2xl hover:text-error-focus"
+        class="text-xl hover:text-error-focus"
         on:click={() => dispatch('deleteModal')}
       />
     {/if}
   </div>
 
-  <div class="flex items-center gap-4 p-1">
-    <div class="session-card" use:tooltip={{ title: 'Windows' }}>
-      <IconButton icon="window" class="text-base" role="note" />
+  <div class="flex items-center gap-2 py-1">
+    <div
+      class="session-card"
+      use:tooltip={{
+        title: `${session?.windows?.length} Window${
+          session?.windows?.length > 0 ? 's' : ''
+        }`,
+      }}
+    >
+      <IconButton
+        icon="window"
+        class="text-base pointer-events-none"
+        role="img"
+      />
       {session?.windows?.length}
     </div>
 
-    <div class="session-card" use:tooltip={{ title: 'Tabs' }}>
-      <IconButton icon="tab" class="text-base" role="note" />
+    <div
+      class="session-card"
+      use:tooltip={{
+        title: `${session?.tabsNumber} Tab${
+          session?.tabsNumber > 0 ? 's' : ''
+        }`,
+      }}
+    >
+      <IconButton icon="tab" class="text-base pointer-events-none" role="img" />
       {session?.tabsNumber}
     </div>
 
-    <span class="session-card ml-auto">
+    <span class="session-card ml-auto" use:tooltip={{ title: 'Date saved' }}>
       {#if session?.dateSaved}
         {@const date = new Date(session.dateSaved)}
         {date.toLocaleString([], { dateStyle: 'short', timeStyle: 'short' })}
