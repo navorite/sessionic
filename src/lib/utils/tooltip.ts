@@ -11,10 +11,14 @@ export const tooltip: Action<
 
   let tooltipComponent: Tooltip;
 
-  element.addEventListener('mouseover', mouseOver);
-  element.addEventListener('mouseleave', mouseLeave);
+  element.addEventListener('pointerover', enter);
+  element.addEventListener('pointerout', leave);
 
-  function mouseOver() {
+  function enter(ev: MouseEvent) {
+    if (ev.target !== ev.currentTarget) return;
+
+    console.log(ev.target, ev.currentTarget);
+
     const rect = element.getBoundingClientRect();
 
     const elX = window.scrollX + rect.left;
@@ -66,7 +70,7 @@ export const tooltip: Action<
       });
   }
 
-  function mouseLeave() {
+  function leave() {
     tooltipComponent?.$destroy();
 
     tooltipComponent = null;
@@ -78,8 +82,8 @@ export const tooltip: Action<
     },
 
     destroy() {
-      element.removeEventListener('mouseover', mouseOver);
-      element.removeEventListener('mouseleave', mouseLeave);
+      element.removeEventListener('pointerover', enter);
+      element.removeEventListener('pointerleave', leave);
 
       tooltipComponent?.$destroy();
       tooltipComponent = null;
