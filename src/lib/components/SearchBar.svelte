@@ -27,8 +27,8 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
-  class="flex justify-center items-center font-semibold rounded-md cursor-text {showInputBar
-    ? 'bg-neutral-5 px-2 py-0.5'
+  class="flex justify-center items-center rounded-md cursor-text text-sm {showInputBar
+    ? 'bg-neutral-3 px-2 py-0.5'
     : ''} fade {className}"
   on:focusin={handleInputBar}
   on:focusout={handleInputBar}
@@ -44,12 +44,12 @@
       type="text"
       placeholder="Search session..."
       bind:value
-      class="font-semibold bg-transparent outline-none"
+      class="bg-transparent font-semibold outline-none text-neutral-content"
     />
     <IconButton
       icon="close"
-      title="Clear input"
-      class="text-2xl hover:text-red-700"
+      title="Clear"
+      class="text-2xl hover:text-error-focus"
       on:click={() => {
         if (value === '') showInputBar = false;
         value = '';

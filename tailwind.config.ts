@@ -8,16 +8,25 @@ export default {
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
+
         neutral: generateScale('neutral', 1, 6),
         'neutral-focus': 'var(--neutral-focus)',
+
         primary: 'var(--primary)',
         'primary-focus': 'var(--primary-focus)',
+
+        accent: 'var(--accent)',
+        'accent-focus': 'var(--accent-focus)',
+
         success: 'var(--success)',
         'success-focus': 'var(--success-focus)',
+
         warning: 'var(--warning)',
         'warning-focus': 'var(--warning-focus)',
+
         error: 'var(--error)',
         'error-focus': 'var(--error-focus)',
+
         'overlay-black': 'var(--overlay-black)',
         'overlay-white': 'var(--overlay-white)',
 
