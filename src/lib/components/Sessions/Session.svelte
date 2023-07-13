@@ -72,11 +72,7 @@
         }`,
       }}
     >
-      <IconButton
-        icon="window"
-        class="text-base pointer-events-none"
-        role="img"
-      />
+      <IconButton icon="window" class="text-base" role="img" />
       {session?.windows?.length}
     </div>
 
@@ -88,7 +84,7 @@
         }`,
       }}
     >
-      <IconButton icon="tab" class="text-base pointer-events-none" role="img" />
+      <IconButton icon="tab" class="text-base" role="img" />
       {session?.tabsNumber}
     </div>
 

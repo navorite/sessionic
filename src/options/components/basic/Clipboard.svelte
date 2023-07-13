@@ -30,8 +30,6 @@
   <IconButton
     role="img"
     icon={copied ? 'check' : 'copy'}
-    class="text-2xl pointer-events-none {copied
-      ? 'text-neutral-content-disabled'
-      : ''}"
+    class="text-2xl {copied ? 'text-neutral-content-disabled' : ''}"
   />
 </button>
