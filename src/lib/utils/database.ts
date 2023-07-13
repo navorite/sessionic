@@ -17,9 +17,16 @@ interface DB extends DBSchema {
 }
 
 class SessionsDB {
+  private static instance: SessionsDB;
   private db: IDBPDatabase<DB>;
   private open = false;
   private version = 1;
+
+  constructor() {
+    if (!SessionsDB.instance) SessionsDB.instance = this;
+
+    return SessionsDB.instance;
+  }
 
   async initDB() {
     if (this.open) {
