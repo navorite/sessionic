@@ -97,7 +97,7 @@
     </label>
     <button
       class="bg-neutral-4 p-2 max-w-max rounded-md hover:bg-neutral-5"
-      on:click={handleExport}>Export sessions</button
+      on:click={handleExport}>Export Sessions</button
     >
   </div>
 </Section>
