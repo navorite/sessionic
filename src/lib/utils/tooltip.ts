@@ -77,6 +77,8 @@ export const tooltip: Action<
   return {
     update(props) {
       title = props.title;
+      delay = props.delay;
+      duration = props.duration;
 
       tooltipComponent?.$set(props);
     },
