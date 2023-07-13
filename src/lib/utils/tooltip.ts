@@ -75,16 +75,17 @@ export const tooltip: Action<
   }
 
   return {
-    update(parameter) {
-      tooltipComponent?.$set(parameter);
+    update(props) {
+      title = props.title;
+
+      tooltipComponent?.$set(props);
     },
 
     destroy() {
       element.removeEventListener('pointerover', enter);
       element.removeEventListener('pointerleave', leave);
 
-      tooltipComponent?.$destroy();
-      tooltipComponent = null;
+      leave();
     },
   };
 };
