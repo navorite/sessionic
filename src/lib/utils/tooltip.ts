@@ -17,8 +17,6 @@ export const tooltip: Action<
   function enter(ev: MouseEvent) {
     if (ev.target !== ev.currentTarget) return;
 
-    console.log(ev.target, ev.currentTarget);
-
     const rect = element.getBoundingClientRect();
 
     const elX = window.scrollX + rect.left;
