@@ -120,7 +120,7 @@ div {
 }
 
 .card {
-  @apply inline-flex items-center w-max font-medium gap-1 rounded py-1 px-1.5 mr-1 text-xs select-none;
+  @apply inline-flex items-center w-max font-medium gap-1 rounded py-0.5 px-1 mr-1 text-xs select-none;
 }
 
 .session-card {
