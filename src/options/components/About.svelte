@@ -4,18 +4,18 @@
 
 <h1 class="text-xl">About</h1>
 
-<p class="font-normal">
+<p>
   This extension was created by <a
     href="https://github.com/navorite"
-    class="font-bold">@navorite</a
+    class="font-bold hover:text-primary-focus hover:underline">@navorite</a
   >
 </p>
 
 <h2 class="text-lg font-bold">Consider donating</h2>
-<p class="font-normal mb-2">
-  I develop the extension without adding any bloatware or tracking or stuff like
-  that for free, so please consider donating to keep the extension development
-  alive :)
+<p class="mb-4">
+  If you like the extension and would like me to continue improving the
+  extension and adding new features to it, consider donating to any of the links
+  below, I would really appreciate it :)
 </p>
 
 <div class="flex flex-wrap gap-4">
@@ -30,11 +30,20 @@
         alt="Donate using Ko-fi.com"
       /></a
     >
-
+    <a
+      href="https://www.patreon.com/navorite"
+      target="_blank"
+      class="flex items-center gap-2 h-full py-2 px-4 bg-[#f96854] text-black rounded-md hover:brightness-125 text-xl font-bold"
+      ><img
+        class="h-10"
+        src="../../images/donate_patreon.png"
+        alt="Donate using Patreon.com"
+      />BECOME A PATRON</a
+    >
     <a
       href="https://paypal.me/navorite"
       target="_blank"
-      class="h-full py-2 px-8 bg-slate-200 rounded-md hover:brightness-110"
+      class="h-full py-2 px-8 bg-slate-200 rounded-md hover:contrast-75"
       ><img
         class="h-full"
         src="../../images/donate_paypal.webp"
@@ -58,14 +67,3 @@
     />
   </div>
 </div>
-
-<style>
-  a {
-    color: var(--neutral);
-  }
-
-  a:hover {
-    color: var(--primary-focus);
-    text-decoration: underline;
-  }
-</style>

@@ -23,6 +23,6 @@
 
 <style>
   div {
-    @apply whitespace-nowrap bg-tooltip text-tooltip-content font-semibold text-sm rounded-md py-1 px-2 pointer-events-none select-none;
+    @apply whitespace-nowrap bg-tooltip text-tooltip-content font-medium text-sm rounded-md py-1 px-2 pointer-events-none select-none;
   }
 </style>

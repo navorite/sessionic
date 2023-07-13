@@ -10,6 +10,13 @@
   }
 }
 
+@font-face {
+  font-family: 'Inter';
+  src: url('../../public/font/Inter.woff2') format('woff2-variations');
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --primary: hsl(215, 96%, 33%);
   --primary-focus: hsl(215, 96%, 38%);
@@ -63,7 +70,10 @@ body {
 }
 
 body {
-  @apply container mx-auto min-h-[500px] min-w-[800px] px-4 py-2 text-neutral-content bg-neutral-1 font-sans scroll-smooth;
+  @apply container mx-auto min-h-[500px] min-w-[800px] px-4 py-2 text-neutral-content bg-neutral-1 scroll-smooth;
+
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #root {
@@ -81,11 +91,11 @@ div {
 }
 
 .tab-container {
-  @apply py-1 px-2 mb-1 rounded-md flex items-center;
+  @apply py-1.5 px-2 rounded-md flex items-center;
 }
 
 .session-container {
-  @apply w-full px-2 py-1 mb-2 rounded-md bg-neutral-2 cursor-pointer;
+  @apply w-full p-2 flex flex-col mb-2 gap-2 rounded-md bg-neutral-2 cursor-pointer;
 }
 
 .tab-container:hover,
@@ -94,11 +104,11 @@ div {
 }
 
 .session-info {
-  @apply flex items-center w-full gap-2 mb-1;
+  @apply flex items-center w-full gap-2;
 }
 
 .session-name {
-  @apply flex-1 max-w-max pl-1 overflow-hidden whitespace-nowrap text-ellipsis font-semibold;
+  @apply flex-1 max-w-max pl-1 overflow-hidden whitespace-nowrap text-ellipsis font-bold text-sm;
 }
 
 .session-name {
@@ -110,11 +120,11 @@ div {
 }
 
 .card {
-  @apply inline-flex items-center w-max font-bold gap-1 rounded py-1 px-1.5 mr-1 text-xs pointer-events-none select-none;
+  @apply inline-flex items-center w-max font-medium gap-1 rounded py-1 px-1.5 mr-1 text-xs select-none;
 }
 
 .session-card {
-  @apply flex items-center gap-1 font-medium text-xs bg-neutral-5 py-1 px-2 rounded;
+  @apply flex items-center gap-1 font-medium text-xs py-0.5 px-1 rounded;
 }
 
 .session-card:hover {

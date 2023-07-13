@@ -38,7 +38,7 @@
       <IconButton
         icon={current ? 'close' : 'delete'}
         title={current ? 'Close' : 'Delete'}
-        class="ml-auto text-2xl hover:text-error-focus"
+        class="ml-auto text-xl hover:text-error-focus"
         on:click={() => {
           if (current) browser?.tabs?.remove(tab?.id);
           else dispatch('delete', tab);
@@ -50,7 +50,7 @@
 
 <style>
   .link {
-    @apply w-max max-w-[90%] flex items-center gap-2 overflow-hidden font-semibold;
+    @apply w-max max-w-[90%] flex items-center gap-2 overflow-hidden;
   }
 
   .link:hover {
@@ -58,6 +58,6 @@
   }
 
   .title {
-    @apply overflow-hidden whitespace-nowrap text-ellipsis;
+    @apply overflow-hidden whitespace-nowrap text-ellipsis text-sm font-medium;
   }
 </style>

@@ -89,36 +89,46 @@
 <div
   tabindex="0"
   role="button"
-  class="w-full px-2 py-1 mb-2 rounded-md bg-neutral-2 text-neutral-content cursor-pointer flex gap-2 border-neutral-5 border-solid border-2 hover:bg-neutral-3 items-center {selected
+  class="w-full p-2 mb-2 rounded-md bg-neutral-2 text-neutral-content cursor-pointer flex gap-2 hover:bg-neutral-3 items-center {selected
     ? '!bg-neutral-4'
     : ''}"
   on:click={() => selection.select($session)}
 >
   <p
-    class="flex-1 max-w-max pl-1 overflow-hidden whitespace-nowrap text-ellipsis font-semibold"
+    class="flex-1 max-w-max overflow-hidden whitespace-nowrap text-ellipsis font-bold text-sm"
   >
     Current Session
   </p>
 
-  {#if $session?.windows.length}
-    <div class="flex items-center gap-4 px-1">
-      <div
-        class="flex items-center gap-1 font-medium text-xs"
-        use:tooltip={{ title: 'Windows' }}
-      >
-        <IconButton icon="window" class="text-base" role="note" />
-        {$session?.windows?.length}
-      </div>
-
-      <div
-        class="flex items-center gap-1 font-medium text-xs"
-        use:tooltip={{ title: 'Tabs' }}
-      >
-        <IconButton icon="tab" class="text-base" role="note" />
-        {$session?.tabsNumber}
-      </div>
+  <div class="flex items-center gap-2 px-1">
+    <div
+      class="session-card"
+      use:tooltip={{
+        title: `${$session?.windows?.length} Window${
+          $session?.windows?.length > 0 ? 's' : ''
+        }`,
+      }}
+    >
+      <IconButton
+        icon="window"
+        class="text-base pointer-events-none"
+        role="img"
+      />
+      {$session?.windows?.length}
     </div>
-  {/if}
+
+    <div
+      class="session-card"
+      use:tooltip={{
+        title: `${$session?.tabsNumber} Tab${
+          $session?.tabsNumber > 0 ? 's' : ''
+        }`,
+      }}
+    >
+      <IconButton icon="tab" class="text-base pointer-events-none" role="img" />
+      {$session?.tabsNumber}
+    </div>
+  </div>
 
   <IconButton
     icon="save"

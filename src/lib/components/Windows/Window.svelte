@@ -20,31 +20,31 @@
   let collapsed = false;
 </script>
 
-{#if window.tabs.length && isExtensionViewed()}
+{#if isExtensionViewed() && window.tabs.length}
   <ListItem let:hover class="rounded-md bg-neutral-2">
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div
-      class="flex items-center gap-2 rounded-md hover:bg-neutral-3 p-2 mb-1 group"
+      class="group p-2 flex items-center gap-2 {collapsed
+        ? 'rounded-md'
+        : 'rounded-t-md'} bg-neutral-3 hover:bg-neutral-4"
+      on:click|self|stopPropagation={() => (collapsed = !collapsed)}
+      role="button"
+      tabindex="0"
     >
       <IconButton
-        icon={collapsed ? 'expand' : 'collapse'}
-        title={collapsed ? 'Expand' : 'Collapse'}
-        class="text-2xl hover:text-primary-focus"
-        on:click={() => (collapsed = !collapsed)}
-      />
-      <IconButton
+        role="img"
         icon={window?.incognito ? 'incognito' : 'window'}
-        title="{window?.incognito ? 'Private' : ''} Window"
-        class="text-xl"
+        class="text-lg"
         on:click={() => (collapsed = !collapsed)}
       />
 
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <span
-        use:tooltip={{ title: 'Open in a New Window' }}
+        use:tooltip={{ title: 'Open' }}
         tabindex="0"
         role="button"
         aria-label="Open in a New Window"
-        class="w-max max-w-[60%] font-semibold overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline"
+        class="w-max max-w-[60%] font-medium text-sm overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline"
         on:click={() => {
           sendMessage({ message: 'openInNewWindow', window });
         }}
@@ -63,17 +63,24 @@
         <IconButton
           icon={current ? 'close' : 'delete'}
           title={current ? 'Close' : 'Delete'}
-          class="hidden ml-auto text-2xl group-hover:block hover:text-error-focus"
+          class="hidden ml-auto text-xl group-hover:block hover:text-error-focus"
           on:click={() => {
             if (current) browser?.windows?.remove(window?.id);
             else dispatch('delete');
           }}
         />
       {/if}
+
+      <IconButton
+        icon={collapsed ? 'collapsed' : 'expanded'}
+        class="text-xl ml-auto group-hover:ml-0 hover:text-primary-focus"
+        title={collapsed ? 'Expand' : 'Collapse'}
+        on:click={() => (collapsed = !collapsed)}
+      />
     </div>
 
     {#if !collapsed && window}
-      <ul class="pb-1 px-2" transition:fade={{ duration: 250 }}>
+      <ul class="p-2 flex flex-col gap-1" transition:fade={{ duration: 250 }}>
         {#each window?.tabs as tab}
           <Tab {tab} on:delete {current} />
         {/each}
