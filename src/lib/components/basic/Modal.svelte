@@ -22,19 +22,19 @@
   <div
     role="none"
     style:height
-    class="min-w-[16rem] min-h-[10rem] w-full h-full py-2 px-4 flex flex-col gap-4"
+    class="min-w-[16rem] min-h-[10rem] w-full h-full py-2 px-4 flex flex-col gap-4 text-base"
     on:click|stopPropagation
   >
     {#if $$slots.header}
       <div class="flex items-center">
-        <h3 class="text-lg font-semibold text-neutral">
+        <h3 class="font-semibold text-neutral">
           <slot name="header" />
         </h3>
 
         <!-- TODO: add tooltip on modals -->
         <IconButton
           icon="close"
-          class="ml-auto text-2xl hover:text-error-focus"
+          class="ml-auto text-xl hover:text-error-focus"
           on:click={() => (open = false)}
         />
       </div>

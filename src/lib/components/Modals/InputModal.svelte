@@ -47,7 +47,7 @@
   <svelte:fragment slot="content">
     <input
       bind:this={inputEl}
-      class="font-semibold bg-transparent outline-none border-2 border-solid border-neutral-4 rounded-md py-1 px-2 w-[24rem] placeholder:text-neutral-content"
+      class="font-normal bg-transparent outline-none border-2 border-solid border-neutral-4 rounded-md py-1 px-2 w-[24rem] placeholder:text-neutral-content"
       type="text"
       name={type}
       id={type}

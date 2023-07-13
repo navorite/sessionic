@@ -31,17 +31,17 @@
 {#if show && detail}
   {#key detail}
     <div
-      class="h-max w-max max-h-full py-1 px-2 rounded-md flex items-center gap-2 {color}"
+      class="h-max w-max max-h-full py-1 px-2 rounded-md flex items-center gap-2 {color} text-sm font-semibold"
       transition:slide|global={{ duration: slideDuration, easing: cubicInOut }}
     >
-      <h2 class="font-semibold">
+      <h2>
         {detail.msg}
       </h2>
 
       <div class="bg-overlay-black p-0.5 rounded-md">
         <IconButton
           icon="close"
-          class="ml-auto text-xl hover:text-error-focus"
+          class="ml-auto text-lg hover:text-error-focus"
           on:click={() => (show = false)}
         />
       </div>
