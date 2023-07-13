@@ -30,6 +30,7 @@
       on:click|self|stopPropagation={() => (collapsed = !collapsed)}
       role="button"
       tabindex="0"
+      aria-expanded={!collapsed}
     >
       <IconButton
         role="img"

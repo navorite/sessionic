@@ -13,6 +13,7 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-interactive-supports-focus -->
+
 <span
   use:tooltip={{ title }}
   {role}
@@ -29,5 +30,3 @@
   style:-webkit-mask-size="cover"
   on:click
 />
-
-<slot />

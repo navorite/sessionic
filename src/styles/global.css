@@ -21,6 +21,9 @@
   --primary: hsl(215, 96%, 33%);
   --primary-focus: hsl(215, 96%, 38%);
 
+  --accent: hsl(156, 100%, 78%);
+  --accent-focus: hsl(156, 100%, 82%);
+
   --success: #00bf7d;
   --success-focus: #00f09c;
 
@@ -128,7 +131,7 @@ div {
 }
 
 .session-card:hover {
-  @apply bg-neutral-6;
+  @apply bg-overlay-black;
 }
 
 mark {

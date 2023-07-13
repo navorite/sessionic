@@ -6,7 +6,7 @@
   export let x: number;
   export let y: number;
 
-  export let delay = 400;
+  export let delay = 600;
   export let duration = 200;
 
   export let translate: { X: number; Y: number };
