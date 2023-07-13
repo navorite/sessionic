@@ -26,16 +26,30 @@
 
     anchor.style = 'display:none;';
 
-    document.body.appendChild(anchor);
-
     anchor.href = url;
     anchor.download = fileName;
+
+    document.body.appendChild(anchor);
 
     anchor.click();
 
     URL.revokeObjectURL(url);
 
     anchor.remove();
+  }
+
+  async function handleImport(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+
+    const fileReader = new FileReader();
+
+    fileReader.onloadend = (ev) => {
+      const sessions = JSON.parse(ev.target.result as string) as ESession[];
+
+      sessionsDB.saveSessions(sessions);
+    };
+
+    fileReader.readAsBinaryString(file);
   }
 </script>
 
@@ -73,9 +87,17 @@
   <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
     >Hide Tabify tabs</Switch
   >
+</Section>
 
-  <button
-    class="bg-neutral-4 p-2 max-w-max rounded-md hover:bg-neutral-5"
-    on:click={handleExport}>Export sessions</button
-  >
+<Section title="Session Actions">
+  <div class="flex gap-2">
+    <label class="bg-neutral-4 p-2 max-w-max rounded-md hover:bg-neutral-5">
+      Import Sessions
+      <input type="file" class="hidden" on:change={handleImport} />
+    </label>
+    <button
+      class="bg-neutral-4 p-2 max-w-max rounded-md hover:bg-neutral-5"
+      on:click={handleExport}>Export sessions</button
+    >
+  </div>
 </Section>
