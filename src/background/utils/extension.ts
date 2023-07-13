@@ -1,5 +1,4 @@
 import browser from 'webextension-polyfill';
-import { storage } from './constants';
 import { runtimeURL } from './constants';
 
 // Get runtime URL for a page in the extension

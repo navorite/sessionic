@@ -78,9 +78,7 @@
     <span class="session-card ml-auto">
       {#if session?.dateSaved}
         {@const date = new Date(session.dateSaved)}
-        {date.toLocaleDateString([], { dateStyle: 'short' })}
-        -
-        {date.toLocaleTimeString([], { timeStyle: 'short' })}
+        {date.toLocaleString([], { dateStyle: 'short', timeStyle: 'short' })}
       {/if}
     </span>
   </div>
