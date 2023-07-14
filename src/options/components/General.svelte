@@ -49,7 +49,7 @@
       sessionsDB.saveSessions(sessions);
     };
 
-    fileReader.readAsBinaryString(file);
+    fileReader.readAsText(file);
   }
 </script>
 
