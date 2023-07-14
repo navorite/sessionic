@@ -73,7 +73,7 @@
       {/if}
 
       <IconButton
-        icon={collapsed ? 'collapsed' : 'expanded'}
+        icon={collapsed ? 'expand' : 'collapse'}
         class="text-xl ml-auto group-hover:ml-0 hover:text-primary-focus"
         title={collapsed ? 'Expand' : 'Collapse'}
         on:click={() => (collapsed = !collapsed)}
