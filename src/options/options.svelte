@@ -8,7 +8,7 @@
 
   let group: string;
 
-  let isPopupEnabled;
+  let isPopupEnabled: boolean;
 
   const settingsPromise = sendMessage({ message: 'getIsPopupEnabled' }).then(
     (result) => {

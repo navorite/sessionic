@@ -8,6 +8,10 @@
   import { notification } from '@stores/notification';
   import { sendMessage } from '@utils/messages';
   import { filtered } from './Sessions/Sessions.svelte';
+  import Modal from './basic/Modal.svelte';
+  import Donate from '@components/Donate.svelte';
+
+  let showDonateModal = false;
 </script>
 
 <div class="flex items-center w-full h-full max-h-8 gap-2">
@@ -39,6 +43,13 @@
     />
 
     <IconButton
+      icon="donate"
+      title="Donate"
+      class="text-2xl hover:text-error-focus"
+      on:click={() => (showDonateModal = true)}
+    />
+
+    <IconButton
       icon="options"
       title="Settings"
       on:click={() => {
@@ -47,3 +58,10 @@
     />
   </div>
 </div>
+
+<Modal bind:open={showDonateModal} height="100%" width="100%">
+  <svelte:fragment slot="header">Consider Donating</svelte:fragment>
+  <svelte:fragment slot="content">
+    <Donate />
+  </svelte:fragment>
+</Modal>
