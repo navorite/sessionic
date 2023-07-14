@@ -21,7 +21,7 @@
   let collapsed = false;
 </script>
 
-{#if (isPopup || isExtensionViewed()) && window.tabs.length}
+{#if isExtensionViewed() && window.tabs.length}
   <ListItem let:hover class="rounded-md bg-neutral-2">
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div
