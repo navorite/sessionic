@@ -2,10 +2,10 @@
 
 A web extension to easily save sessions and manage them.
 
-Full View
+**Full View**
 ![Screenshot of the extension in Full View mode](./assets/tabify-fullview.png)
 
-Popup View  
+**Popup View**
 ![Screenshot of the extension in Popup mode](./assets/tabify-popup.png)
 
 ## Features
@@ -41,11 +41,11 @@ For Chromium:
 
 ## Donate
 
-<div style="display:flex;gap:0.25rem;height:5rem;">
+<div style="display:flex;gap:0.25rem;height:5rem;justify-content:between;">
 <a 
         href="https://ko-fi.com/navorite"
         target="_blank"
-        style="height:100%;"
+        style="height:100%;max-width:33.33%;"
         ><img
         style="height:100%";
           src="./public/images/donate_kofi.webp"
@@ -55,7 +55,7 @@ For Chromium:
       <a
         href="https://www.patreon.com/navorite"
         target="_blank"
-        style="display:flex;align-items:center;gap:0.25rem;height:100%;padding:0 0.25rem;background-color:#f96854;color:black;border-radius:6px;font-weight:bold;text-decoration:none;"
+        style="display:flex;align-items:center;gap:0.25rem;height:100%;padding:0 0.25rem;background-color:#f96854;color:black;border-radius:6px;font-weight:bold;text-decoration:none;max-width:33.33%;"
         ><img
           style="height:2rem;"
           src="./public/images/donate_patreon.png"
@@ -65,7 +65,7 @@ For Chromium:
       <a
         href="https://paypal.me/navorite"
         target="_blank"
-        style="height:100%;padding:0 2rem;background-color:rgba(220, 220, 220);border-radius:6px;"
+        style="height:100%;padding:0 2rem;background-color:rgba(220, 220, 220);border-radius:6px;max-width:33.33%;"
         ><img
           style="height:100%";
           src="./public/images/donate_paypal.webp"
