@@ -34,5 +34,11 @@
     "48": "./icons/tabify-48.png",
     "64": "./icons/tabify-64.png",
     "96": "./icons/tabify-96.png"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "tabify@ahmads.dev"
+    }
   }
 }

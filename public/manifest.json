@@ -38,8 +38,7 @@
 
   "browser_specific_settings": {
     "gecko": {
-      "id": "tabify@ahmads.dev",
-      "strict_min_version": "42.0"
+      "id": "tabify@ahmads.dev"
     }
   }
 }
