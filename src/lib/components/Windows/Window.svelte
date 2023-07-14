@@ -8,6 +8,7 @@
   import { isExtensionViewed } from '@utils/extension';
   import { sendMessage } from '@utils/messages';
   import browser from 'webextension-polyfill';
+  import { isPopup } from '@constants/env';
 
   const dispatch = createEventDispatcher<{
     delete: ETab | undefined;
@@ -20,7 +21,7 @@
   let collapsed = false;
 </script>
 
-{#if isExtensionViewed() && window.tabs.length}
+{#if (isPopup || isExtensionViewed()) && window.tabs.length}
   <ListItem let:hover class="rounded-md bg-neutral-2">
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div
