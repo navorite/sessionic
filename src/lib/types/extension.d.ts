@@ -19,26 +19,23 @@ declare global {
 
   type Icon =
     | 'default'
-    | 'session'
-    | 'window'
-    | 'tab'
-    | 'incognito'
-    | 'expand'
-    | 'collapse'
-    | 'options'
+    | 'copy'
+    | 'check'
     | 'save'
+    | 'rename'
     | 'delete'
-    | 'search'
     | 'open'
     | 'close'
-    | 'redo'
-    | 'undo'
-    | 'rename'
-    | 'more'
-    | 'dark'
+    | 'incognito'
+    | 'window'
+    | 'tab'
+    | 'expand'
+    | 'collapse'
+    | 'search'
     | 'light'
-    | 'copy'
-    | 'check';
+    | 'dark'
+    | 'options'
+    | 'donate';
 
   interface ENotification {
     type: 'info' | 'success' | 'warning' | 'error';
