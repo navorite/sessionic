@@ -47,7 +47,7 @@
   <svelte:fragment slot="content">
     <input
       bind:this={inputEl}
-      class="font-normal bg-transparent outline-none border-2 border-solid border-neutral-4 rounded-md py-1 px-2 w-[24rem] placeholder:text-neutral-content"
+      class="bg-transparent outline-none font-semibold border-2 border-solid border-neutral-4 rounded-md py-1 px-2 w-[24rem] placeholder:text-gray-200 placeholder:font-normal"
       type="text"
       name={type}
       id={type}
@@ -64,7 +64,7 @@
 
     {#if disabled && !isSubmit}
       <p
-        class="font-semibold rounded-md p-1 px-2 text-sm w-max mx-auto bg-error text-white"
+        class="font-semibold rounded-md p-1 px-2 text-sm w-max mx-auto bg-error"
       >
         {errMsg}
       </p>
@@ -78,7 +78,7 @@
     type="button"
     class="{type === 'Rename'
       ? 'px-4'
-      : 'px-6'} py-1 text-center bg-primary text-white rounded-md hover:bg-primary-focus disabled:bg-neutral-2 disabled:text-neutral-content-disabled disabled:cursor-not-allowed"
+      : 'px-6'} py-1 text-center bg-primary rounded-md hover:bg-primary-focus disabled:bg-neutral-2 disabled:text-neutral-content-disabled disabled:cursor-not-allowed"
     on:click={submit}>{type}</button
   >
 </Modal>
