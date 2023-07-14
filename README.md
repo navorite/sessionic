@@ -2,9 +2,11 @@
 
 A web extension to easily save sessions and manage them.
 
-|                                   Full View                                    |                               Popup View                                |
-| :----------------------------------------------------------------------------: | :---------------------------------------------------------------------: |
-| ![Screenshot of the extension in Full View mode](./assets/tabify-fullview.png) | ![Screenshot of the extension in Popup mode](./assets/tabify-popup.png) |
+Full View
+![Screenshot of the extension in Full View mode](./assets/tabify-fullview.png)
+
+Popup View  
+![Screenshot of the extension in Popup mode](./assets/tabify-popup.png)
 
 ## Features
 
