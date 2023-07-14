@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Tabify",
   "description": "A browser extension to save tabs, sessions, and manage them.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "navorite",
   "homepage_url": "https://github.com/navorite/tabify",
 
@@ -17,7 +17,7 @@
   },
 
   "background": {
-    "service_worker": "./src/background/background.js",
+    "scripts": ["./src/background/background.js"],
     "type": "module"
   },
 
@@ -26,7 +26,7 @@
     "open_in_tab": true
   },
 
-  "permissions": ["tabs", "storage", "unlimitedStorage"],
+  "permissions": ["tabs", "storage", "unlimitedStorage", "cookies"],
 
   "icons": {
     "16": "./icons/tabify-16.png",
@@ -34,5 +34,12 @@
     "48": "./icons/tabify-48.png",
     "64": "./icons/tabify-64.png",
     "96": "./icons/tabify-96.png"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "tabify@ahmads.dev",
+      "strict_min_version": "42.0"
+    }
   }
 }
