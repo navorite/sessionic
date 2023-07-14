@@ -45,7 +45,7 @@ For Chromium:
 <a 
         href="https://ko-fi.com/navorite"
         target="_blank"
-        style="height:100%;max-width:33.33%;"
+        style="height:100%;"
         ><img
         style="height:100%";
           src="./public/images/donate_kofi.webp"
@@ -55,20 +55,20 @@ For Chromium:
       <a
         href="https://www.patreon.com/navorite"
         target="_blank"
-        style="display:flex;align-items:center;gap:0.25rem;height:100%;padding:0 0.25rem;background-color:#f96854;color:black;border-radius:6px;font-weight:bold;text-decoration:none;max-width:33.33%;"
+        style="height:100%;"
         ><img
-          style="height:2rem;"
-          src="./public/images/donate_patreon.png"
+          style="height:100%;"
+          src="./assets/become-a-patron-button.webp"
           alt="Donate using Patreon.com"
-        />BECOME A PATRON</a
+        /></a
       >
       <a
         href="https://paypal.me/navorite"
         target="_blank"
-        style="height:100%;padding:0 2rem;background-color:rgba(220, 220, 220);border-radius:6px;max-width:33.33%;"
+        style="height:100%;"
         ><img
           style="height:100%";
-          src="./public/images/donate_paypal.webp"
+          src="./assets/paypal-donate-button.png"
           alt="Donate using PayPal.com"
         /></a
       >
