@@ -5,7 +5,7 @@
 
   export let height = '10rem';
 
-  export let width = 'max-content';
+  export let width = 'fit-content';
 
   let dialogEl: HTMLDialogElement;
 
@@ -15,7 +15,7 @@
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <dialog
   bind:this={dialogEl}
-  class="max-h-lg max-w-4xl p-0 bg-transparent text-white backdrop-blur rounded-md border-2 border-solid border-neutral-5 outline-none"
+  class="max-h-lg max-w-3xl p-0 bg-transparent text-white backdrop-blur rounded-md border-2 border-solid border-neutral-5 outline-none"
   on:mousedown|self={() => (open = false)}
   on:keydown={(event) => {
     if (event.key === 'Escape') open = false;
