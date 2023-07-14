@@ -8,7 +8,9 @@
   export let address: string;
 </script>
 
-<div class="flex flex-col bg-neutral-2 rounded-md p-4 gap-4 font-semibold">
+<div
+  class="flex flex-col bg-[hsla(0,0%,43%,0.5)] rounded-md p-4 gap-4 font-semibold"
+>
   <h3 class="text-lg flex items-center gap-2">
     <img class="h-6 w-6" src={srcIcon} alt={title} />
     Donate using {title}

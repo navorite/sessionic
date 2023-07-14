@@ -11,7 +11,7 @@
 
 <button
   type="button"
-  class="bg-neutral-4 rounded-md p-1 hover:bg-neutral-5"
+  class="bg-overlay-black rounded-md p-1 hover:brightness-110"
   use:tooltip={{
     title: copied ? 'Copied' : 'Copy to clipboard',
   }}
