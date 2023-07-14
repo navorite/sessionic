@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Tabify",
   "description": "A browser extension to save tabs, sessions, and manage them.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "navorite",
   "homepage_url": "https://github.com/navorite/tabify",
 
