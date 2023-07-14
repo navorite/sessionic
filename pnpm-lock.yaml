@@ -16,7 +16,7 @@ dependencies:
 
 devDependencies:
   '@sveltejs/vite-plugin-svelte':
-    specifier: ^2.4.2
+    specifier: ^2.4.1
     version: 2.4.2(svelte@4.0.5)(vite@4.4.2)
   '@tsconfig/svelte':
     specifier: ^5.0.0
@@ -37,10 +37,10 @@ devDependencies:
     specifier: ^8.4.25
     version: 8.4.25
   svelte:
-    specifier: ^4.0.5
+    specifier: ^4.0.0
     version: 4.0.5
   svelte-check:
-    specifier: ^3.4.5
+    specifier: ^3.4.3
     version: 3.4.5(postcss@8.4.25)(svelte@4.0.5)
   tailwindcss:
     specifier: ^3.3.2
@@ -49,7 +49,7 @@ devDependencies:
     specifier: ^2.6.0
     version: 2.6.0
   typescript:
-    specifier: ^5.1.6
+    specifier: ^5.0.0
     version: 5.1.6
   vite:
     specifier: ^4.4.2
