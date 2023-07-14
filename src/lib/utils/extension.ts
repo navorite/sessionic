@@ -1,5 +1,3 @@
 export function isExtensionViewed() {
-  return (
-    document.visibilityState === 'visible' && document.readyState === 'complete'
-  );
+  return document.visibilityState === 'visible';
 }
