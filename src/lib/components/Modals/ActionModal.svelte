@@ -11,7 +11,7 @@
 
 <Modal bind:open>
   <svelte:fragment slot="header">{type} session</svelte:fragment>
-  <p slot="content">
+  <p slot="content" class="font-semibold">
     Are you sure you wanna {type.toLowerCase()} this session?
   </p>
   <button

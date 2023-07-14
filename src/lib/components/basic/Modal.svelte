@@ -5,6 +5,8 @@
 
   export let height = '10rem';
 
+  export let width = 'max-content';
+
   let dialogEl: HTMLDialogElement;
 
   $: open ? dialogEl?.showModal() : dialogEl?.close();
@@ -13,7 +15,7 @@
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <dialog
   bind:this={dialogEl}
-  class="max-h-lg max-w-lg p-0 bg-transparent backdrop-blur rounded-md border-2 border-solid border-neutral-5 outline-none"
+  class="max-h-lg max-w-4xl p-0 bg-transparent text-white backdrop-blur rounded-md border-2 border-solid border-neutral-5 outline-none"
   on:mousedown|self={() => (open = false)}
   on:keydown={(event) => {
     if (event.key === 'Escape') open = false;
@@ -22,12 +24,13 @@
   <div
     role="none"
     style:height
+    style:width
     class="min-w-[16rem] min-h-[10rem] w-full h-full py-2 px-4 flex flex-col gap-4 text-base"
     on:click|stopPropagation
   >
     {#if $$slots.header}
       <div class="flex items-center">
-        <h3 class="font-semibold text-neutral">
+        <h3 class="font-bold">
           <slot name="header" />
         </h3>
 
@@ -45,7 +48,7 @@
     {#if $$slots.footer}
       <div class="ml-auto mt-auto font-semibold flex gap-2">
         <button
-          class="px-4 py-1 bg-neutral-4 rounded-md hover:bg-neutral-5"
+          class="px-4 py-1 bg-neutral-4 rounded-md hover:bg-neutral-5 text-neutral-content"
           type="button"
           on:click={() => (open = false)}>Cancel</button
         >
