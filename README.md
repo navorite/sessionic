@@ -41,35 +41,8 @@ For Chromium:
 
 ## Donate
 
-<div style="display:flex;gap:0.25rem;height:5rem;justify-content:between;">
-<a 
-        href="https://ko-fi.com/navorite"
-        target="_blank"
-        style="height:100%;"
-        ><img
-        style="height:100%";
-          src="./public/images/donate_kofi.webp"
-          alt="Donate using Ko-fi.com"
-        /></a
-      >
-      <a
-        href="https://www.patreon.com/navorite"
-        target="_blank"
-        style="height:100%;"
-        ><img
-          style="height:100%;"
-          src="./assets/become-a-patron-button.webp"
-          alt="Donate using Patreon.com"
-        /></a
-      >
-      <a
-        href="https://paypal.me/navorite"
-        target="_blank"
-        style="height:100%;"
-        ><img
-          style="height:100%";
-          src="./assets/paypal-donate-button.png"
-          alt="Donate using PayPal.com"
-        /></a
-      >
-      </div>
+[![Donate using Ko-fi.com](./public/images/donate_kofi.webp)](https://ko-fi.com/navorite)
+
+[![Donate using Patreon.com](./assets/become-a-patron-button.webp)](https://www.patreon.com/navorite)
+
+[![Donate using PayPal.com](./assets/paypal-donate-button.png)](https://paypal.me/navorite)
