@@ -3,13 +3,23 @@
   import sessions from '@stores/sessions';
   import { currentSession } from '@components/Sessions/Current.svelte';
   import { isFirefox } from '@constants/env';
+  import { afterUpdate } from 'svelte';
 
   export { className as class };
   let className = '';
 
   let ulEl: HTMLUListElement;
 
-  const scrollBarPadding = isFirefox ? '1rem' : '0.5rem';
+  let scrollBarPadding = '0';
+
+  afterUpdate(() => {
+    if (isFirefox) {
+      scrollBarPadding = ulEl?.scrollHeight > ulEl?.clientHeight ? '1rem' : '0';
+      return;
+    }
+
+    scrollBarPadding = ulEl?.scrollHeight > ulEl?.clientHeight ? '0.5rem' : '0';
+  });
 
   $: session = sessions.selection;
 

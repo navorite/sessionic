@@ -10,7 +10,7 @@
   import browser from 'webextension-polyfill';
   import sessions from '@stores/sessions';
   import { writable, type Writable } from 'svelte/store';
-  import { isExtensionViewed } from '@utils/extension';
+  import { isExtensionReady, isExtensionViewed } from '@utils/extension';
   import { getSession } from '@utils/getSession';
   import { tooltip } from '@utils/tooltip';
 
@@ -56,7 +56,8 @@
 
     $session.tabsNumber -= length;
 
-    if ($selection.id === 'current') selection.select($session);
+    if (!$selection?.id || $selection?.id === 'current')
+      selection?.select($session);
   }
 
   //TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
@@ -66,19 +67,21 @@
     browser?.tabs?.onRemoved.addListener(handleRemoval);
 
     return () => {
+      document.onvisibilitychange = null;
       browser?.tabs?.onUpdated.removeListener(handleUpdate);
       browser?.tabs?.onRemoved.removeListener(handleRemoval);
     };
   });
 
   async function handleUpdate() {
-    if (!isExtensionViewed() || timeout) return;
+    if (!(isExtensionViewed() && isExtensionReady()) || timeout) return;
 
     //should fix inconsistency in update flags
     timeout = setTimeout(async () => {
       $session = await getSession();
 
-      if ($selection.id === 'current') selection.select($session);
+      if (!$selection?.id || $selection?.id === 'current')
+        selection.select($session);
 
       timeout = null;
     }, 50);
