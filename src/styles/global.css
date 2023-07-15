@@ -116,11 +116,11 @@ div {
 }
 
 .card {
-  @apply inline-flex items-center w-max font-medium gap-1 rounded py-0.5 px-1 mr-1 text-xs select-none;
+  @apply inline-flex items-center w-max font-medium gap-1 rounded py-0.5 px-1 mr-1 text-xs select-none whitespace-nowrap;
 }
 
 .session-card {
-  @apply flex items-center gap-1 font-medium text-xs py-0.5 px-1 rounded select-none;
+  @apply flex items-center gap-1 font-medium text-xs py-0.5 px-1 rounded select-none whitespace-nowrap;
 }
 
 .session-card:hover {

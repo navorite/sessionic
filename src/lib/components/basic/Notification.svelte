@@ -34,7 +34,7 @@
       class="h-max w-max max-h-full py-1 px-2 rounded-md flex items-center gap-2 {color} text-sm font-semibold"
       transition:slide|global={{ duration: slideDuration, easing: cubicInOut }}
     >
-      <h2>
+      <h2 class="whitespace-nowrap">
         {detail.msg}
       </h2>
 
