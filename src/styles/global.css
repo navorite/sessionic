@@ -124,7 +124,7 @@ div {
 }
 
 .session-card:hover {
-  @apply bg-black/40;
+  @apply bg-black/20;
 }
 
 mark {

@@ -24,9 +24,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <ListItem
   let:hover
-  class="session-container {$selected === session
-    ? '!bg-primary/30 dark:text-white'
-    : ''}"
+  class="session-container {$selected === session ? '!bg-primary/20' : ''}"
   on:click={() => {
     selected.select(session);
   }}
