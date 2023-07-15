@@ -10,12 +10,12 @@ A web extension to easily save sessions and manage them.
 
 ## Features
 
-1. Ability to save and manage sessions and
-2. Ability to export and import sessions for backup.
-3. Built with performance in mind
-4. Low memory usage
-5. Doesn't consume RAM or CPU when not in use.
-6. Cross-browser support. (Firefox, Chrome, Edge, and Opera)
+- Ability to save and manage sessions
+- Ability to export and import sessions for backup
+- Built with performance in mind
+- Low memory usage
+- Doesn't consume RAM or CPU when not in use
+- Cross-browser support. (Firefox, Chrome, Edge, and Opera)
 
 ## Build locally
 
@@ -38,11 +38,3 @@ For Chromium:
 1. Enable Debugging mode
 2. Add an unsigned extension
 3. Open the `./dist/` folder
-
-## Donate
-
-[![Donate using Ko-fi.com](./public/images/donate_kofi.webp)](https://ko-fi.com/navorite)
-
-[![Donate using Patreon.com](./assets/become-a-patron-button.webp)](https://www.patreon.com/navorite)
-
-[![Donate using PayPal.com](./assets/paypal-donate-button.png)](https://paypal.me/navorite)
