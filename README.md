@@ -1,12 +1,22 @@
-# ![Tabify icon](./public/icons/tabify-48.png) Tabify
+<div align='center'>
+
+![Tabify icon](./public/icons/tabify-96.png)
+
+# Tabify
 
 A web extension to easily save sessions and manage them.
+
+![Latest version](https://img.shields.io/badge/Latest_version-v1.0.0-blue)
 
 **Full View**
 ![Screenshot of the extension in Full View mode](./assets/tabify-fullview.png)
 
 **Popup View**
 ![Screenshot of the extension in Popup mode](./assets/tabify-popup.png)
+
+</div>
+
+---
 
 ## Features
 
@@ -26,15 +36,18 @@ A web extension to easily save sessions and manage them.
 
 ## Adding to browser
 
-For Firefox:
+### For Firefox
 
-1. Run Developer Edition
-2. Go to Remote Debugging
-3. Add an unsigned extension
-4. Open the `./dist/folder`
+1. Go to Extensions
+2. Click the Settings icon
+3. Click Debug Add-ons
+4. Go to This Firefox
+5. Click on Load Temporary Add-on...
+6. Open the `./dist/folder`
 
-For Chromium:
+### For Chromium
 
-1. Enable Debugging mode
-2. Add an unsigned extension
-3. Open the `./dist/` folder
+1. Go to Extensions
+2. Enable Developer mode
+3. Click on Load unpacked
+4. Open the `./dist/` folder
