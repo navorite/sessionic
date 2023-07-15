@@ -9,12 +9,12 @@
 
   $: show = !!detail;
 
-  let timeout: number | NodeJS.Timeout;
+  let timeout: NodeJS.Timeout;
 
   let color: string;
 
   $: {
-    if (detail?.type === 'info') color = 'bg-primary text-white';
+    if (detail?.type === 'info') color = 'bg-info text-white';
     else if (detail?.type === 'success') color = 'bg-success text-black';
     else if (detail?.type === 'warning') color = 'bg-warning text-black';
     else color = 'bg-error text-white';

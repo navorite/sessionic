@@ -25,7 +25,7 @@
 <ListItem
   let:hover
   class="session-container {$selected === session
-    ? '!bg-neutral-4 !text-neutral-content'
+    ? '!bg-primary/30 dark:text-white'
     : ''}"
   on:click={() => {
     selected.select(session);

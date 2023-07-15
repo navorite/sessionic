@@ -90,7 +90,7 @@
   tabindex="0"
   role="button"
   class="w-full p-2 mb-2 rounded-md bg-neutral-2 text-neutral-content cursor-pointer flex gap-2 hover:bg-neutral-3 items-center {selected
-    ? '!bg-neutral-4 !text-primary-focus'
+    ? '!bg-primary/30 dark:text-white'
     : ''}"
   on:click={() => selection.select($session)}
 >

@@ -8,8 +8,6 @@
   import { isExtensionViewed } from '@utils/extension';
   import { sendMessage } from '@utils/messages';
   import browser from 'webextension-polyfill';
-  import { isPopup } from '@constants/env';
-
   const dispatch = createEventDispatcher<{
     delete: ETab | undefined;
   }>();
@@ -55,7 +53,7 @@
       </span>
 
       <div
-        class="card bg-primary text-white"
+        class="card bg-info hover:bg-info-focus text-white"
         aria-label="Number of window tabs"
       >
         {window?.tabs.length} Tab{window?.tabs.length > 1 ? 's' : ''}

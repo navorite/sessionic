@@ -1,4 +1,5 @@
 import { generateScale } from './scripts/config';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: 'class',
@@ -10,32 +11,32 @@ export default {
         current: 'currentColor',
 
         neutral: generateScale('neutral', 1, 6),
-        'neutral-focus': 'var(--neutral-focus)',
+        'neutral-content': 'hsl(var(--neutral-content) / <alpha-value>)',
 
-        primary: 'var(--primary)',
-        'primary-focus': 'var(--primary-focus)',
+        primary: 'hsl(var(--primary) / <alpha-value>)',
+        'primary-focus': 'hsl(var(--primary-focus) / <alpha-value>)',
 
-        accent: 'var(--accent)',
-        'accent-focus': 'var(--accent-focus)',
+        accent: 'hsl(var(--accent) / <alpha-value>)',
+        'accent-focus': 'hsl(var(--accent-focus) / <alpha-value>)',
 
-        success: 'var(--success)',
-        'success-focus': 'var(--success-focus)',
+        info: 'hsl(var(--info) / <alpha-value>)',
+        'info-focus': 'hsl(var(--info-focus) / <alpha-value>)',
 
-        warning: 'var(--warning)',
-        'warning-focus': 'var(--warning-focus)',
+        success: 'hsl(var(--success) / <alpha-value>)',
+        'success-focus': 'hsl(var(--success-focus) / <alpha-value>)',
 
-        error: 'var(--error)',
-        'error-focus': 'var(--error-focus)',
+        warning: 'hsl(var(--warning) / <alpha-value>)',
+        'warning-focus': 'hsl(var(--warning-focus) / <alpha-value>)',
 
-        'overlay-black': 'var(--overlay-black)',
-        'overlay-white': 'var(--overlay-white)',
+        error: 'hsl(var(--error) / <alpha-value>)',
+        'error-focus': 'hsl(var(--error-focus) / <alpha-value>)',
 
-        /*Text*/
-        'neutral-content': 'var(--neutral-content)',
-        'neutral-content-disabled': 'var(--neutral-content-muted)',
+        tooltip: 'hsl(var(--tooltip) / <alpha-value>)',
+        'tooltip-content': 'hsl(var(--tooltip-content) / <alpha-value>)',
+      },
 
-        tooltip: 'var(--tooltip)',
-        'tooltip-content': 'var(--tooltip-content)',
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
       },
     },
   },

@@ -14,7 +14,7 @@
 
 <style>
   label:hover {
-    background-color: var(--neutral-3);
+    background-color: hsl(var(--neutral-3));
     cursor: pointer;
   }
 
@@ -29,20 +29,20 @@
   }
 
   label:hover span {
-    border-color: var(--neutral-content);
+    border-color: hsl(var(--neutral-content));
   }
 
   label:hover span:before {
-    background-color: var(--error-focus);
+    background-color: hsl(var(--error-focus));
   }
 
   input:checked + span:before {
     translate: 100% 0%;
-    background-color: var(--success);
+    background-color: hsl(var(--success));
   }
 
   input:checked:hover + span:before {
     translate: 100% 0%;
-    background-color: var(--success-focus);
+    background-color: hsl(var(--success-focus));
   }
 </style>

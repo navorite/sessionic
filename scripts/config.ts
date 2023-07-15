@@ -6,7 +6,7 @@ export function generateScale(
   const length = end - start + 1;
   let palette = Array.from({ length }) as [[number, string]];
   for (let i = 0; i < length; i++) {
-    palette[i] = [i + 1, `var(--${color}-${i + start})`];
+    palette[i] = [i + 1, `hsl(var(--${color}-${i + start}) / <alpha-value>)`];
   }
 
   return Object.fromEntries(palette);

@@ -1,3 +1,5 @@
+@import './fonts';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,60 +12,54 @@
   }
 }
 
-@font-face {
-  font-family: 'Inter';
-  src: url('../../public/font/Inter.woff2') format('woff2-variations');
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
-  --primary: hsl(215, 96%, 33%);
-  --primary-focus: hsl(215, 96%, 38%);
+  --primary: 215 96% 31%;
+  --primary-focus: 215 96% 36%;
 
-  --accent: hsl(156, 100%, 78%);
-  --accent-focus: hsl(156, 100%, 82%);
+  --accent: 156 100% 78%;
+  --accent-focus: 156 100% 82%;
 
-  --success: #00bf7d;
-  --success-focus: #00f09c;
+  --info: 215 96% 33%;
+  --info-focus: 215 96% 38%;
 
-  --warning: hsl(27, 100%, 50%);
-  --warning-focus: hsl(27, 100%, 55%);
+  --success: 159 100% 37%;
+  --success-focus: 159 100% 47%;
 
-  --error: hsl(0, 99%, 30%);
-  --error-focus: hsl(0, 99%, 35%);
+  --warning: 27 100% 50%;
+  --warning-focus: 27 100% 55%;
 
-  --neutral-1: hsl(0, 0%, 97%);
-  --neutral-2: hsl(0, 0%, 92%);
-  --neutral-3: hsl(0, 0%, 87%);
-  --neutral-4: hsl(0, 0%, 82%);
-  --neutral-5: hsl(0, 0%, 77%);
-  --neutral-6: hsl(0, 0%, 72%);
-  --neutral-7: hsl(0, 0%, 67%);
+  --error: 0 99% 30%;
+  --error-focus: 0 99% 35%;
 
-  --neutral-content: hsl(0, 0%, 0%);
-  --neutral-content-muted: hsl(0, 0%, 45%);
+  --neutral-1: 0 0% 97%;
+  --neutral-2: 0 0% 92%;
+  --neutral-3: 0 0% 87%;
+  --neutral-4: 0 0% 82%;
+  --neutral-5: 0 0% 77%;
+  --neutral-6: 0 0% 72%;
+  --neutral-7: 0 0% 67%;
 
-  --overlay-black: rgba(255, 255, 255, 0.4);
+  --neutral-content: 0 0% 0%;
 
-  --tooltip: hsl(220, 5%, 34%);
-  --tooltip-content: #fff;
+  --tooltip: 220 5% 34%;
+  --tooltip-content: 0 0% 100%;
 }
 
 .dark {
-  --neutral-1: hsl(220, 6%, 9%);
-  --neutral-2: hsl(220, 6%, 14%);
-  --neutral-3: hsl(220, 6%, 19%);
-  --neutral-4: hsl(220, 6%, 24%);
-  --neutral-5: hsl(220, 6%, 29%);
-  --neutral-6: hsl(220, 6%, 34%);
+  --primary: 215 96% 69%;
+  --primary-focus: 215 96% 74%;
 
-  --neutral-content: hsl(0, 0%, 90%);
+  --neutral-1: 220 6% 9%;
+  --neutral-2: 220 6% 14%;
+  --neutral-3: 220 6% 19%;
+  --neutral-4: 220 6% 24%;
+  --neutral-5: 220 6% 29%;
+  --neutral-6: 220 6% 34%;
 
-  --overlay-black: rgba(0, 0, 0, 0.4);
+  --neutral-content: 0 0% 90%;
 
-  --tooltip: hsl(220, 7%, 66%);
-  --tooltip-content: #000;
+  --tooltip: 220 7% 66%;
+  --tooltip-content: 0 0% 0%;
 }
 
 html,
@@ -73,10 +69,7 @@ body {
 }
 
 body {
-  @apply container mx-auto min-h-[500px] min-w-[800px] px-4 py-2 text-neutral-content bg-neutral-1 scroll-smooth;
-
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  @apply container mx-auto min-h-[500px] min-w-[800px] px-4 py-2 text-neutral-content bg-neutral-1 scroll-smooth font-sans;
 }
 
 #root {
@@ -127,11 +120,11 @@ div {
 }
 
 .session-card {
-  @apply flex items-center gap-1 font-medium text-xs py-0.5 px-1 rounded;
+  @apply flex items-center gap-1 font-medium text-xs py-0.5 px-1 rounded select-none;
 }
 
 .session-card:hover {
-  @apply bg-overlay-black;
+  @apply bg-black/40;
 }
 
 mark {
