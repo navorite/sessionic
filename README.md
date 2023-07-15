@@ -51,3 +51,7 @@ A web extension to easily save sessions and manage them.
 2. Enable Developer mode
 3. Click on Load unpacked
 4. Open the `./dist/` folder
+
+## License
+
+[AGPL](./LICENSE) © navorite
