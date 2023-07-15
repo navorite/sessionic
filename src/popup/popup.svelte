@@ -1,4 +1,5 @@
 <script lang="ts" context="module">
+  import { sendMessage } from '@utils/messages';
   import { isPopup } from '@constants/env';
 
   if (isPopup)
@@ -11,7 +12,6 @@
   import Header from '@components/Header.svelte';
   import Sessions from '@components/Sessions/Sessions.svelte';
   import CommandPalette from '@components/basic/CommandPalette.svelte';
-  import { sendMessage } from '@utils/messages';
 
   let open = false;
 </script>
