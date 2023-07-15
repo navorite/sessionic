@@ -2,10 +2,6 @@
   export { session as currentSession };
 
   const session: Writable<ESession> = writable();
-
-  getSession().then((result) => {
-    session.set(result);
-  });
 </script>
 
 <script lang="ts">
@@ -18,13 +14,17 @@
   import { getSession } from '@utils/getSession';
   import { tooltip } from '@utils/tooltip';
 
+  getSession().then((result) => {
+    $session = result;
+
+    if (!$selection) selection.select($session);
+  });
+
   let timeout: NodeJS.Timeout;
 
   $: selection = sessions.selection;
 
   $: selected = $selection === $session;
-
-  if ($session && !$selection) selection.select($session);
 
   function handleRemoval(
     tabId: number,
@@ -90,7 +90,7 @@
   tabindex="0"
   role="button"
   class="w-full p-2 mb-2 rounded-md bg-neutral-2 text-neutral-content cursor-pointer flex gap-2 hover:bg-neutral-3 items-center {selected
-    ? '!bg-neutral-4'
+    ? '!bg-neutral-4 !text-primary-focus'
     : ''}"
   on:click={() => selection.select($session)}
 >
