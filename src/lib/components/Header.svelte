@@ -15,11 +15,13 @@
 </script>
 
 <div class="flex items-center w-full h-full max-h-8 gap-2">
-  <h1>Tabify</h1>
-
-  <div role="note" class="card bg-info hover:bg-info-focus text-white">
-    BETA
-  </div>
+  <h1 class="relative">
+    Tabify<span
+      class="inline-block text-[10px] -bottom-[14px] left-1/2 -translate-x-1/2 absolute"
+    >
+      BETA</span
+    >
+  </h1>
 
   <div
     aria-label="Number of sessions"
