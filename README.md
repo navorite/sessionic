@@ -6,7 +6,8 @@
 
 A web extension to easily save sessions and manage them.
 
-![Latest version](https://img.shields.io/badge/Latest_version-v1.0.0-blue)
+![Latest release](https://img.shields.io/github/v/release/navorite/tabify)
+[![License](https://img.shields.io/github/license/navorite/tabify?color=blue)](./LICENSE)
 
 **Full View**
 ![Screenshot of the extension in Full View mode](./assets/tabify-fullview.png)
@@ -51,7 +52,3 @@ A web extension to easily save sessions and manage them.
 2. Enable Developer mode
 3. Click on Load unpacked
 4. Open the `./dist/` folder
-
-## License
-
-[AGPL](./LICENSE) © navorite
