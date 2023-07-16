@@ -1,6 +1,6 @@
 <div align='center'>
 
-![Sessionic icon](./public/icons/96.png)
+![Sessionic icon](./public/favicons/96.png)
 
 # Sessionic
 
