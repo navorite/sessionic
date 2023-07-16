@@ -24,15 +24,17 @@ A web extension to easily save sessions and manage them.
 ## Features
 
 - Ability to save and manage sessions
-- Ability to export and import sessions for backup
+- Ability to import and export sessions for backup
 - Built with performance in mind
-- Low memory usage
-- Doesn't consume RAM or CPU when not in use
+- Optimized for lower memory usage
+- Doesn't consume RAM or CPU when idle
+- Modern UI
+- Light and Dark mode
 - Cross-browser support. (Firefox, Chrome, Edge, and Opera)
 
 ## Build locally
 
-1. Clone the repository `git clone https://github.com/navorite/tabify.git`
+1. Clone the repository `git clone https://github.com/navorite/sessionic.git`
 2. Run `pnpm install`
 3. Configure the extension manifest.json in `./src/public/` folder
 4. Run `pnpm run build`
