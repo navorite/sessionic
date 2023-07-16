@@ -1,4 +1,4 @@
-import { generateScale } from './scripts/config';
+import { generateScale } from './scripts/utils';
 
 /** @type {import('tailwindcss').Config} */
 export default {

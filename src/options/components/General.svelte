@@ -12,7 +12,9 @@
 
     const sessions = await sessionsDB.loadSessions();
 
-    const fileName = `tabify-${date.toLocaleDateString([], {
+    const fileName = `[${__EXT_NAME__}]${
+      sessions.length ?? 0
+    }_session-${date.toLocaleDateString([], {
       dateStyle: 'short',
     })}-${date.toLocaleTimeString([], {
       timeStyle: 'short',
@@ -104,6 +106,6 @@
     >Ask for session name before saving</Switch
   >
   <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
-    >Hide Tabify tabs</Switch
+    >Hide Sessionic tabs</Switch
   >
 </Section> -->

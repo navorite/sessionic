@@ -4,7 +4,7 @@
   import IconButton from '@components/IconButton.svelte';
   import { filterOptions } from '@stores/settings';
   import darkMode from '@stores/theme';
-  import { isPopup } from '@constants/env';
+  import { EXT_NAME, isPopup } from '@constants/env';
   import { notification } from '@stores/notification';
   import { sendMessage } from '@utils/messages';
   import { filtered } from './Sessions/Sessions.svelte';
@@ -12,15 +12,19 @@
   import Donate from '@components/Donate.svelte';
 
   let showDonateModal = false;
+
+  const EXT_VER = 'BETA' || __EXT_VER__;
 </script>
 
 <div class="flex items-center w-full h-full max-h-8 gap-2">
   <h1 class="relative">
-    Tabify<span
-      class="inline-block text-[10px] -bottom-[14px] left-1/2 -translate-x-1/2 absolute"
-    >
-      BETA</span
-    >
+    {EXT_NAME}
+    {#if EXT_VER}
+      <span
+        class="inline-block text-[10px] -bottom-[14px] left-1/2 -translate-x-1/2 absolute"
+        >{EXT_VER}</span
+      >
+    {/if}
   </h1>
 
   <div

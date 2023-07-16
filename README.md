@@ -1,13 +1,15 @@
 <div align='center'>
 
-![Tabify icon](./public/icons/tabify-96.png)
+![Sessionic icon](./public/icons/tabify-96.png)
 
-# Tabify
+# Sessionic
 
 A web extension to easily save sessions and manage them.
 
-![Latest release](https://img.shields.io/github/v/release/navorite/tabify)
-[![License](https://img.shields.io/github/license/navorite/tabify?color=blue)](./LICENSE)
+![Latest release](https://img.shields.io/github/v/release/navorite/sessionic)
+[![License](https://img.shields.io/github/license/navorite/sessionic?color=blue)](./LICENSE)
+[![Discord Server](https://img.shields.io/badge/chat-discord-%237289da)](https://discord.gg/HwZ65UBg)
+[![Sponsor using Ko-fi](https://img.shields.io/badge/sponsor-Ko--fi-%2300c1fd)](https://ko-fi.com/navorite)
 
 **Full View**
 ![Screenshot of the extension in Full View mode](./assets/tabify-fullview.png)

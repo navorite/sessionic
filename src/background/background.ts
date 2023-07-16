@@ -19,8 +19,8 @@ browser.runtime.onMessage.addListener((request, sender) => {
   switch (request.message) {
     case 'openPopup':
       const isPopupEnabled = getIsPopupEnabled();
-      isPopupEnabled.then((isPopupEnabled) => {
-        if (!isPopupEnabled) openFullView();
+      isPopupEnabled.then((result) => {
+        if (!result) openFullView();
       });
 
       return isPopupEnabled;

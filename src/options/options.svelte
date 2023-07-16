@@ -5,6 +5,7 @@
   import KeyboardShortcuts from './components/KeyboardShortcuts.svelte';
   import About from './components/About.svelte';
   import { isExtensionViewed } from '@utils/extension';
+  import { EXT_NAME } from '@constants/env';
 
   let group: string;
 
@@ -38,3 +39,7 @@
     {/await}
   </div>
 </div>
+
+<svelte:head>
+  <title>{EXT_NAME} Settings</title>
+</svelte:head>

@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
   import { sendMessage } from '@utils/messages';
-  import { isPopup } from '@constants/env';
+  import { EXT_NAME, isPopup } from '@constants/env';
 
   if (isPopup)
     sendMessage({ message: 'openPopup' }).then((result) => {
@@ -16,6 +16,16 @@
   let open = false;
 </script>
 
+<Header />
+<Sessions />
+<CommandPalette bind:open />
+
+<svelte:head>
+  <title>
+    {EXT_NAME}
+  </title>
+</svelte:head>
+
 <svelte:window
   on:keydown={(event) => {
     if (event.key === 'k' && event.ctrlKey) {
@@ -24,7 +34,3 @@
     }
   }}
 />
-
-<Header />
-<Sessions />
-<CommandPalette bind:open />

@@ -1,5 +1,9 @@
 import browser from 'webextension-polyfill';
 
+export const EXT_NAME = __EXT_NAME__;
+
+export const isDEV = process.env.NODE_ENV !== 'production';
+
 export const isFirefox = !!browser?.runtime?.getBrowserInfo;
 
 export const runtimeURL = browser?.runtime?.getURL('');

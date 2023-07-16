@@ -5,12 +5,12 @@ export async function getDarkMode() {
 }
 
 export async function getIsPopupEnabled() {
-  return (await storage.get('popupView'))?.popupView;
+  return (await storage.get('popupView'))?.popupView ?? true;
 }
 
 export async function getSettings() {
   const darkMode = (await getDarkMode()) ?? true;
-  const isPopupEnabled = (await getIsPopupEnabled()) ?? false;
+  const isPopupEnabled = (await getIsPopupEnabled()) ?? true;
 
   return { isPopupEnabled, darkMode };
 }
