@@ -1,6 +1,6 @@
 <div align='center'>
 
-![Sessionic icon](./public/icons/tabify-96.png)
+![Sessionic icon](./public/icons/96.png)
 
 # Sessionic
 
@@ -12,10 +12,10 @@ A web extension to easily save sessions and manage them.
 [![Sponsor using Ko-fi](https://img.shields.io/badge/sponsor-Ko--fi-%2300c1fd)](https://ko-fi.com/navorite)
 
 **Full View**
-![Screenshot of the extension in Full View mode](./assets/tabify-fullview.png)
+![Screenshot of the extension in Full View mode](./assets/fullview.png)
 
 **Popup View**
-![Screenshot of the extension in Popup mode](./assets/tabify-popup.png)
+![Screenshot of the extension in Popup mode](./assets/popup.png)
 
 </div>
 
