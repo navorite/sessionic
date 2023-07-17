@@ -11,11 +11,11 @@ A web extension to easily save sessions and manage them.
 [![Discord Server](https://img.shields.io/badge/chat-discord-%237289da)](https://discord.gg/HwZ65UBg)
 [![Sponsor using Ko-fi](https://img.shields.io/badge/sponsor-Ko--fi-%2300c1fd)](https://ko-fi.com/navorite)
 
-**Full View**
-![Screenshot of the extension in Full View mode](./assets/fullview.png)
-
 **Popup View**
 ![Screenshot of the extension in Popup mode](./assets/popup.png)
+
+**Full View**
+![Screenshot of the extension in Full View mode](./assets/fullview.png)
 
 </div>
 
@@ -36,23 +36,9 @@ A web extension to easily save sessions and manage them.
 
 1. Clone the repository `git clone https://github.com/navorite/sessionic.git`
 2. Run `pnpm install`
-3. Configure the extension manifest.json in `./src/public/` folder
-4. Run `pnpm run build`
+3. Run `pnpm run build` for Chromium `pnpm run build-ff` for Firefox
 
-## Adding to browser
+## Running in browser
 
-### For Firefox
-
-1. Go to Extensions
-2. Click the Settings icon
-3. Click Debug Add-ons
-4. Go to This Firefox
-5. Click on Load Temporary Add-on...
-6. Open the `./dist/folder`
-
-### For Chromium
-
-1. Go to Extensions
-2. Enable Developer mode
-3. Click on Load unpacked
-4. Open the `./dist/` folder
+1. Build the extension locally
+2. Run `pnpm run add` for Chromium or `pnpm run add:ff` for Firefox

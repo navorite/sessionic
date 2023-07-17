@@ -10,6 +10,8 @@
     "build-ff": "npm run clean && run-p build:* manifest:ff",
     "build:web": "vite build",
     "build:background": "vite build -c vite.config.background.ts",
+    "add": "web-ext run --source-dir=./dist -t chromium",
+    "add:ff": "web-ext run --source-dir=./dist",
     "manifest": "tsx ./scripts/main.ts",
     "manifest:ff": "cross-env BROWSER_ENV=FF tsx ./scripts/main.ts",
     "clean": "rimraf dist",
