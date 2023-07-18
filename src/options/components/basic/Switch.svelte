@@ -7,7 +7,7 @@
   <input type="checkbox" {id} name={id} bind:checked on:change />
   <span
     title={checked ? 'On' : 'Off'}
-    class="inline-block relative border-2 border-solid border-neutral-content-disabled w-11 h-5 rounded-md fade before:fade before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:block before:w-5 before:h-4 before:rounded-md before:bg-error"
+    class="inline-block relative bg-neutral-6 w-11 h-6 rounded-full fade before:fade before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:block before:w-5 before:h-5 before:rounded-full before:bg-error"
   />
   <slot />
 </label>
@@ -16,12 +16,6 @@
   label:hover {
     background-color: hsl(var(--neutral-3));
     cursor: pointer;
-  }
-
-  span,
-  span::before,
-  span::after {
-    box-sizing: content-box;
   }
 
   input {
