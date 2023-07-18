@@ -1,10 +1,6 @@
-import { sendMessage } from './messages';
+let timeout: NodeJS.Timeout;
 
-let timeout;
-
-export async function setDarkMode(darkMode: boolean, fade?: boolean) {
-  sendMessage({ message: 'setDarkMode', darkMode });
-
+export async function applyTheme(darkMode: boolean, fade?: boolean) {
   if (timeout) clearTimeout(timeout);
 
   if (fade) document.body.classList.add('fade');

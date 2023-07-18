@@ -1,21 +1,13 @@
 <script lang="ts">
-  import { sendMessage } from '@utils/messages';
   import Tab from './components/basic/Tab.svelte';
   import General from './components/General.svelte';
   import KeyboardShortcuts from './components/KeyboardShortcuts.svelte';
   import About from './components/About.svelte';
   import { isExtensionViewed } from '@utils/extension';
   import { EXT_NAME } from '@constants/env';
+  import settings from '@stores/settings';
 
   let group: string;
-
-  let isPopupEnabled: boolean;
-
-  const settingsPromise = sendMessage({ message: 'getIsPopupEnabled' }).then(
-    (result) => {
-      isPopupEnabled = result;
-    }
-  );
 </script>
 
 <div class="w-full max-w-4xl mx-auto">
@@ -26,17 +18,17 @@
   </div>
 
   <div class="flex flex-col gap-4 p-4">
-    {#await settingsPromise then _}
-      {#if isExtensionViewed()}
+    {#if isExtensionViewed()}
+      {#await settings.init() then _}
         {#if group === 'keyboard-shortcuts'}
           <KeyboardShortcuts />
         {:else if group === 'about'}
           <About />
         {:else}
-          <General bind:isPopupEnabled />
+          <General />
         {/if}
-      {/if}
-    {/await}
+      {/await}
+    {/if}
   </div>
 </div>
 
