@@ -1,11 +1,12 @@
 import { get, writable, type Writable } from 'svelte/store';
 import { sessionsDB } from '@utils/database';
 import { generateSession } from '@utils/generateSession';
+import settings from './settings';
 import { notification } from './notification';
 import { MESSAGES } from '@constants/notifications';
 import log from '@utils/log';
 import { currentSession } from '@components/Sessions/Current.svelte';
-import { storage } from '@constants/env';
+import type { UUID } from 'crypto';
 
 export default (() => {
   const { subscribe, set, update }: Writable<ESession[]> = writable();
@@ -14,28 +15,21 @@ export default (() => {
   load();
 
   async function load(count?: number) {
-    const selectionID = (await storage?.get('selectionID'))?.selectionID;
-
     const sessions = await sessionsDB.loadSessions(count);
 
     set(sessions);
 
-    // if (sessions.length)
-    //   notification.success(
-    //     MESSAGES.load.success,
-    //     `[sessions.load] loaded ${sessions.length} sessions`
-    //   );
+    log.info(`[sessions.load] loaded ${sessions.length} session`);
 
     if (!sessions.length) notification.info(MESSAGES.load.info);
 
-    if (!selectionID || selectionID === 'current') return;
+    await settings.init(); // to fix inconsistent behaviour with FF and Chrome - need to check
 
-    for (const session of sessions) {
-      if (session.id === selectionID) {
-        select(session);
-        break;
-      }
-    }
+    const selectionId = get(settings).selectionId;
+
+    if (selectionId === 'current') return;
+
+    selectById(selectionId);
   }
 
   async function add(session: ESession) {
@@ -76,15 +70,9 @@ export default (() => {
   }
 
   function filter(query: string) {
-    let filtered: ESession[];
-
-    const unsubscribe = subscribe((sessions) => {
-      filtered = sessions?.filter?.((session) =>
-        session?.title?.toLowerCase().includes(query)
-      );
-    });
-
-    unsubscribe();
+    const filtered: ESession[] = get({ subscribe })?.filter((session) =>
+      session?.title?.toLowerCase().includes(query)
+    );
 
     return filtered; //subject to change
   }
@@ -94,12 +82,6 @@ export default (() => {
       return notification.error(
         MESSAGES.remove.fail.is_undefined,
         '[sessions.remove] error: removing undefined session'
-      );
-
-    if (target.id === 'current')
-      return notification.error(
-        MESSAGES.remove.fail.current_session,
-        '[sessions.remove] error: removing current session'
       );
 
     update((sessions) => {
@@ -116,13 +98,7 @@ export default (() => {
   }
 
   async function removeAll() {
-    let length = 0;
-
-    const unsubscribe = subscribe((sessions) => {
-      length = sessions.length;
-    });
-
-    unsubscribe();
+    const length = get({ subscribe }).length;
 
     if (!length) {
       notification.error(
@@ -141,10 +117,24 @@ export default (() => {
     notification.success_warning(MESSAGES.removeAll.success_warning);
   }
 
-  async function select(session: ESession) {
+  function select(session: ESession) {
     selection.set(session);
 
-    storage?.set({ selectionID: session.id });
+    settings.changeSetting('selectionId', session.id);
+  }
+
+  // Without a call to changeSetting - this is used in certain area where we do not need to save storage.
+  function selectById(selectionId: 'current' | UUID) {
+    if (selectionId === 'current') return selection.set(get(currentSession));
+
+    const sessions = get({ subscribe });
+
+    for (const session of sessions) {
+      if (session.id === selectionId) {
+        selection.set(session);
+        break;
+      }
+    }
   }
 
   return {
@@ -155,6 +145,11 @@ export default (() => {
     filter,
     remove,
     removeAll,
-    selection: { subscribe: selection.subscribe, select, set: selection.set }, //TODO: remove the ability to set
+    selection: {
+      subscribe: selection.subscribe,
+      select,
+      selectById,
+      set: selection.set, //TODO: remove the ability to set
+    },
   };
 })();

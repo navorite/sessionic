@@ -1,6 +1,6 @@
 import browser from 'webextension-polyfill';
 
-import { isFirefox } from './constants';
+const isFirefox = !!browser?.runtime?.getBrowserInfo;
 
 //TODO support discarded in chromium, fix popup open bug in firefox
 export async function openInCurrentWindow(window: EWindow) {

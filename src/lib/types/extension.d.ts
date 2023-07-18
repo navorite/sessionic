@@ -42,4 +42,10 @@ declare global {
     msg: string;
     duration?: number;
   }
+
+  interface ESettings {
+    darkMode: boolean;
+    popupView: boolean;
+    selectionId: 'current' | UUID;
+  }
 }
