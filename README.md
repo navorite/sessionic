@@ -7,6 +7,7 @@
 A web extension to easily save sessions and manage them.
 
 ![Latest release](https://img.shields.io/github/v/release/navorite/sessionic)
+[![Mozilla Add-on version](https://img.shields.io/amo/v/sessionic)](https://addons.mozilla.org/en-US/firefox/addon/sessionic)
 [![License](https://img.shields.io/github/license/navorite/sessionic?color=blue)](./LICENSE)
 [![Discord Server](https://img.shields.io/badge/chat-discord-%237289da)](https://discord.gg/HwZ65UBg)
 [![Sponsor using Ko-fi](https://img.shields.io/badge/sponsor-Ko--fi-%2300c1fd)](https://ko-fi.com/navorite)
