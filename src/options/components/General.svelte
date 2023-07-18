@@ -38,12 +38,12 @@
   }
 
   async function handleImport(event: Event) {
-    const file = (event.target as HTMLInputElement).files[0];
+    const file = (event.target as HTMLInputElement).files![0]!;
 
     const fileReader = new FileReader();
 
     fileReader.onloadend = (ev) => {
-      const sessions = JSON.parse(ev.target.result as string) as ESession[];
+      const sessions = JSON.parse(ev.target!.result as string) as ESession[];
 
       sessionsDB.saveSessions(sessions);
     };
