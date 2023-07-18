@@ -32,6 +32,10 @@ A web extension to easily save sessions and manage them.
 - Light and Dark mode
 - Cross-browser support. (Firefox, Chrome, Edge, and Opera)
 
+## Download
+
+[![Firefox Add-on Link](https://extensionworkshop.com/assets/img/documentation/publish/get-the-addon-178x60px.dad84b42.png)](https://addons.mozilla.org/en-US/firefox/addon/sessionic)
+
 ## Build locally
 
 1. Clone the repository `git clone https://github.com/navorite/sessionic.git`
