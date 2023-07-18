@@ -56,16 +56,18 @@
 
 <Section title="User Interface">
   <Switch
+    title="Popup View"
     checked={$settings.popupView}
     on:change={() => {
       settings.changeSetting('popupView', !$settings.popupView);
-    }}>Popup view</Switch
-  >
+    }}
+  />
+
   <Switch
+    title="Dark Mode"
     checked={$settings.darkMode}
     on:change={() => settings.changeSetting('darkMode', !$settings.darkMode)}
-    >Dark Mode</Switch
-  >
+  />
 </Section>
 
 <Section title="Session Actions">
