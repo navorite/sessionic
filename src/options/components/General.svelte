@@ -70,7 +70,9 @@
 
 <Section title="Session Actions">
   <div class="flex gap-2">
-    <label class="bg-neutral-4 p-2 max-w-max rounded-md hover:bg-neutral-5">
+    <label
+      class="bg-neutral-4 p-2 max-w-max rounded-md hover:bg-neutral-5 cursor-pointer"
+    >
       Import Sessions
       <input
         type="file"
