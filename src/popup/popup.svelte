@@ -6,9 +6,11 @@
   import settings from '@stores/settings';
   import { openFullView } from '@utils/extension';
 
-  settings.init();
+  shouldLoadPopup();
 
   async function shouldLoadPopup() {
+    await settings.init();
+
     if (!isPopup) return;
 
     if (!$settings.popupView) {
@@ -17,8 +19,6 @@
       window.close();
     }
   }
-
-  shouldLoadPopup();
 
   let open = false;
 </script>
