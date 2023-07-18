@@ -2,12 +2,12 @@
   export let checked = false;
 </script>
 
-<label class="flex max-w-max gap-2 items-center p-2 rounded-md">
+<label class="flex max-w-max gap-2 items-center p-2 rounded-md font-medium">
   <input type="checkbox" aria-hidden="true" bind:checked on:change />
   <span
     role="switch"
     aria-checked={checked}
-    class="block relative bg-neutral-6 w-11 h-6 rounded-full before:fade before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:block before:w-5 before:h-5 before:rounded-full before:bg-error"
+    class="block relative bg-neutral-6 w-[3.25rem] h-7 rounded-full before:fade before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:block before:w-6 before:h-6 before:rounded-full"
   />
   <slot />
 </label>
