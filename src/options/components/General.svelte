@@ -56,14 +56,12 @@
 
 <Section title="User Interface">
   <Switch
-    id="popup"
     checked={$settings.popupView}
     on:change={() => {
       settings.changeSetting('popupView', !$settings.popupView);
     }}>Popup view</Switch
   >
   <Switch
-    id="darkmode"
     checked={$settings.darkMode}
     on:change={() => settings.changeSetting('darkMode', !$settings.darkMode)}
     >Dark Mode</Switch

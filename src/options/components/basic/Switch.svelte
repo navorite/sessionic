@@ -1,13 +1,13 @@
 <script lang="ts">
-  export let id: string;
   export let checked = false;
 </script>
 
 <label class="flex max-w-max gap-2 items-center p-2 rounded-md">
-  <input type="checkbox" {id} name={id} bind:checked on:change />
+  <input type="checkbox" aria-hidden="true" bind:checked on:change />
   <span
-    title={checked ? 'On' : 'Off'}
-    class="inline-block relative bg-neutral-6 w-11 h-6 rounded-full fade before:fade before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:block before:w-5 before:h-5 before:rounded-full before:bg-error"
+    role="switch"
+    aria-checked={checked}
+    class="block relative bg-neutral-6 w-11 h-6 rounded-full before:fade before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:block before:w-5 before:h-5 before:rounded-full before:bg-error"
   />
   <slot />
 </label>
