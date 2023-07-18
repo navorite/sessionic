@@ -2,14 +2,13 @@
   import SearchBar from '@components/SearchBar.svelte';
   import Notification from './basic/Notification.svelte';
   import IconButton from '@components/IconButton.svelte';
-  import { filterOptions } from '@stores/settings';
-  import darkMode from '@stores/theme';
+  import settings, { filterOptions } from '@stores/settings';
   import { EXT_NAME, isPopup } from '@constants/env';
   import { notification } from '@stores/notification';
-  import { sendMessage } from '@utils/messages';
   import { filtered } from './Sessions/Sessions.svelte';
   import Modal from './basic/Modal.svelte';
   import Donate from '@components/Donate.svelte';
+  import { openFullView, openOptions } from '@utils/extension';
 
   let showDonateModal = false;
 
@@ -40,19 +39,15 @@
     <SearchBar bind:value={$filterOptions.query} />
 
     {#if isPopup}
-      <IconButton
-        icon="open"
-        title="Full View"
-        on:click={() => {
-          sendMessage({ message: 'openFullView' });
-        }}
-      />
+      <IconButton icon="open" title="Full View" on:click={openFullView} />
     {/if}
 
     <IconButton
-      icon={$darkMode ? 'dark' : 'light'}
-      title="{$darkMode ? 'Dark' : 'Light'} mode"
-      on:click={darkMode.switch}
+      icon={$settings.darkMode ? 'dark' : 'light'}
+      title="{$settings.darkMode ? 'Dark' : 'Light'} mode"
+      on:click={() => {
+        settings.changeSetting('darkMode', !$settings.darkMode);
+      }}
     />
 
     <IconButton
@@ -62,13 +57,7 @@
       on:click={() => (showDonateModal = true)}
     />
 
-    <IconButton
-      icon="options"
-      title="Settings"
-      on:click={() => {
-        sendMessage({ message: 'openOptions' });
-      }}
-    />
+    <IconButton icon="options" title="Settings" on:click={openOptions} />
   </div>
 </div>
 

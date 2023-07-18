@@ -1,11 +1,8 @@
 <script lang="ts">
-  import darkMode from '@stores/theme';
   import Switch from './basic/Switch.svelte';
   import Section from './basic/Section.svelte';
-  import { sendMessage } from '@utils/messages';
   import { sessionsDB } from '@utils/database';
-
-  export let isPopupEnabled: boolean;
+  import settings from '@stores/settings';
 
   async function handleExport() {
     const date = new Date();
@@ -60,12 +57,15 @@
 <Section title="User Interface">
   <Switch
     id="popup"
-    bind:checked={isPopupEnabled}
+    checked={$settings.popupView}
     on:change={() => {
-      sendMessage({ message: 'setPopupEnabled', isPopupEnabled });
+      settings.changeSetting('popupView', !$settings.popupView);
     }}>Popup view</Switch
   >
-  <Switch id="darkmode" checked={$darkMode} on:change={darkMode.switch}
+  <Switch
+    id="darkmode"
+    checked={$settings.darkMode}
+    on:change={() => settings.changeSetting('darkMode', !$settings.darkMode)}
     >Dark Mode</Switch
   >
 </Section>
@@ -89,17 +89,16 @@
   </div>
 </Section>
 
-<!-- TODO: <Section title="Browser Actions">
-  <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
-    >Lazy load tabs</Switch
-  >
-  <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
-    >Restore Window position</Switch
-  >
-</Section>
-
 <Section title="Extension Actions">
-  <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
+  <button
+    type="button"
+    class="bg-error hover:bg-error-focus text-white py-2 px-4 rounded-md max-w-fit"
+    on:click={settings.clear}
+  >
+    Reset All Settings
+  </button>
+
+  <!-- TODO: <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
     >Automatically save current session</Switch
   >
   <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
@@ -107,5 +106,14 @@
   >
   <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
     >Hide Sessionic tabs</Switch
+  > -->
+</Section>
+
+<!-- TODO: <Section title="Browser Actions">
+  <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
+    >Lazy load tabs</Switch
+  >
+  <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
+    >Restore Window position</Switch
   >
 </Section> -->

@@ -9,7 +9,7 @@ export const MESSAGES = {
     success: 'Session saved successfuly!',
     fail: {
       generic: 'Error saving session',
-      session_empty: 'Error saving session: session is empty',
+      session_empty: 'Error: Cannot save empty session',
     },
   },
 
@@ -24,8 +24,7 @@ export const MESSAGES = {
     success_warning: 'Session was removed!',
     fail: {
       generic: 'Error deleting session',
-      is_undefined: 'Error deleting session: session undefined',
-      current_session: 'Error: Deleting current session is not allowed',
+      is_undefined: 'Error: Cannot delete non-existing session',
     },
   },
 
@@ -33,7 +32,7 @@ export const MESSAGES = {
     success_warning: 'All sesssions removed successfuly.',
     fail: {
       generic: 'Error deleting all sessions',
-      empty: 'Error deleting all sessions: no sessions found',
+      empty: 'Error: No sessions found to delete',
     },
   },
 } satisfies Record<string, Record<string, string | Record<string, string>>>;

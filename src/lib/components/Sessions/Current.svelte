@@ -13,11 +13,14 @@
   import { isExtensionReady, isExtensionViewed } from '@utils/extension';
   import { getSession } from '@utils/getSession';
   import { tooltip } from '@utils/tooltip';
+  import settings from '@stores/settings';
 
-  getSession().then((result) => {
+  getSession().then(async (result) => {
     $session = result;
 
-    if (!$selection) selection.select($session);
+    await settings.init(); // to fix inconsistent behaviour with FF and Chrome - need to check
+
+    if ($settings.selectionId === 'current') selection.select($session);
   });
 
   let timeout: NodeJS.Timeout;

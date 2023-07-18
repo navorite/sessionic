@@ -21,14 +21,18 @@
         sendMessage({ message: 'createTab', tab });
       }}
     >
-      <!-- TODO: fix layout shift on certain favicons -->
-      <img
-        style:width="1em"
-        style:height="1em"
-        class="rounded-md"
-        src={decompressLZ(tab?.favIconUrl)}
-        alt=""
-      />
+      {#if tab?.favIconUrl}
+        <!-- TODO: fix layout shift on certain favicons -->
+        <img
+          style:width="1em"
+          style:height="1em"
+          class="rounded-md"
+          src={decompressLZ(tab?.favIconUrl)}
+          alt=""
+        />
+      {:else}
+        <IconButton icon="tab" class="text-neutral-content" />
+      {/if}
       <span class="title">
         {tab?.title ?? 'Loading tab name...'}
       </span>
