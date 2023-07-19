@@ -1,5 +1,5 @@
 name: "\U0001F41E Bug report"
-description: Report an issue with Svelte
+description: Report a bug with Sessionic
 labels: ['triage: bug']
 body:
   - type: markdown
