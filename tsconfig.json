@@ -10,7 +10,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "noUncheckedIndexedAccess": true,
     "noEmit": true,
     "paths": {
