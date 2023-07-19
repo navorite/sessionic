@@ -22,18 +22,19 @@ body:
         4. See error
     validations:
       required: true
-    - type: input
+  - type: input
     id: version
     attributes:
       label: Version
       description: What version of our software are you running?
       placeholder: v1.0.0
+    validations:
+      required: true
   - type: textarea
     id: system-info
     attributes:
       label: System Info
       description: Please provide the system information the bug occured on.
-      render: shell
       value: |
         - OS: [e.g. Windows 10, Windows 11, Ubuntu, Arch Linux, etc..]
         - Browser: [e.g. Firefox 115, Chrome 105, etc..]
