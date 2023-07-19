@@ -13,10 +13,14 @@ A web extension to easily save sessions and manage them.
 [![Sponsor using Ko-fi](https://img.shields.io/badge/sponsor-Ko--fi-%2300c1fd)](https://ko-fi.com/navorite)
 
 **Popup View**
-![Screenshot of the extension in Popup mode](./assets/popup.png)
+| Light | Dark |
+| :------------------------------------------------------: | :-------------------------------------------------------------: |
+| ![Screenshot of the extension popup in Light mode](.github/popup-light.png) | ![Screenshot of the extension popup in Dark mode](.github/popup.png) |
 
 **Full View**
-![Screenshot of the extension in Full View mode](./assets/fullview.png)
+| Light | Dark |
+| :------------------------------------------------------: | :-------------------------------------------------------------: |
+| ![Screenshot of the extension Full View in Light mode](.github/fullview-light.png) | ![Screenshot of the extension Full View in Dark mode](.github/fullview.png) |
 
 </div>
 
