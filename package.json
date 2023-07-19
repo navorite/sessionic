@@ -15,9 +15,11 @@
     "manifest": "tsx ./scripts/main.ts",
     "manifest:ff": "cross-env BROWSER_ENV=FF tsx ./scripts/main.ts",
     "clean": "rimraf dist",
-    "check": "svelte-check --tsconfig ./tsconfig.json"
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "release": "release-it"
   },
   "devDependencies": {
+    "@release-it/conventional-changelog": "^7.0.0",
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
     "@tsconfig/svelte": "^5.0.0",
     "@types/node": "^20.4.2",
@@ -26,6 +28,7 @@
     "cross-env": "^7.0.3",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.26",
+    "release-it": "^16.1.2",
     "rimraf": "^5.0.1",
     "svelte": "^4.0.5",
     "svelte-check": "^3.4.6",
@@ -42,5 +45,35 @@
     "lz-string": "^1.5.0",
     "pino": "^8.14.1",
     "url": "^0.11.1"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release v${version}"
+    },
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": false
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "infile": "CHANGELOG.md",
+        "preset": {
+          "name": "conventionalcommits",
+          "types": [
+            {
+              "type": "feat",
+              "section": "Features"
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes"
+            },
+            {}
+          ]
+        }
+      }
+    }
   }
 }
