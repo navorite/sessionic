@@ -28,10 +28,8 @@ export default defineConfig({
   build: {
     ...(isDEV && {
       watch: {},
-      // sourcemap: 'inline',  - Project is opensource anyways
+      sourcemap: 'inline',
     }),
-
-    sourcemap: true,
 
     emptyOutDir: false,
     rollupOptions: {
