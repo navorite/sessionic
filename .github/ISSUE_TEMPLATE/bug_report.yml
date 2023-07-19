@@ -19,10 +19,11 @@ body:
     attributes:
       label: Reproduction
       description: Please provide th steps to reproduce the bug.
-      placeholder: 1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+      value: |
+      1. Go to '...'
+      2. Click on '....'
+      3. Scroll down to '....'
+      4. See error
     validations:
       required: true
   - type: textarea
@@ -31,8 +32,9 @@ body:
       label: System Info
       description: Please provide the system information the bug occured on.
       render: shell
-      placeholder:  - OS: [e.g. Windows, Linux]
- - Browser [e.g. Firefox, Chrome]
- - Version [e.g. 22]
+      value: |
+      - OS: [e.g. Windows, Linux]
+      - Browser [e.g. Firefox, Chrome]
+      - Version [e.g. 22]
     validations:
       required: true
