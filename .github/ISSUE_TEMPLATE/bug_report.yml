@@ -2,10 +2,6 @@ name: "\U0001F41E Bug report"
 description: Report a bug with Sessionic
 labels: ['triage: bug']
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for taking the time to fill out this bug report!
   - type: textarea
     id: bug-description
     attributes:
@@ -19,7 +15,7 @@ body:
     attributes:
       label: Reproduction
       description: Please provide th steps to reproduce the bug.
-      value: |
+      placeholder: |
         1. Go to '...'
         2. Click on '....'
         3. Scroll down to '....'
@@ -34,7 +30,7 @@ body:
       render: shell
       value: |
         - OS: [e.g. Windows, Linux]
-        - Browser [e.g. Firefox, Chrome]
-        - Version [e.g. 22]
+        - Browser: [e.g. Firefox, Chrome]
+        - Version: [e.g. 22]
     validations:
       required: true
