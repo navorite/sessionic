@@ -52,8 +52,6 @@
   }
 </script>
 
-<h1 class="text-xl">General</h1>
-
 <Section title="User Interface">
   <Switch
     title="Popup View"

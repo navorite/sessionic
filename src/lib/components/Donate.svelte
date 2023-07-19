@@ -2,7 +2,7 @@
   import DonateCard from '@components/basic/DonateCard.svelte';
 </script>
 
-<div class="max-w-2xl">
+<div class="container">
   <p class="mb-4">
     If you like the extension and would like to help me continue improving the
     extension, you can donate to any of the links below, I really appreciate it

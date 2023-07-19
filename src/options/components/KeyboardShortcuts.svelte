@@ -1,7 +1,8 @@
 <script>
+  import Section from './basic/Section.svelte';
   import Shortcut from './basic/Shortcut.svelte';
 </script>
 
-<h1 class="text-xl">Keyboard Shortcuts</h1>
-
-<Shortcut command="CTRL + K" action="Open Command Palette" />
+<Section title="Keyboard Shortcuts">
+  <Shortcut command="CTRL + K" action="Open Command Palette" />
+</Section>
