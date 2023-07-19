@@ -35,7 +35,7 @@ body:
     attributes:
       label: System Info
       description: Please provide the system information the bug occured on.
-      value: |
+      placeholder: |
         - OS: [e.g. Windows 10, Windows 11, Ubuntu, Arch Linux, etc..]
         - Browser: [e.g. Firefox 115, Chrome 105, etc..]
     validations:
