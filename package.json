@@ -16,7 +16,8 @@
     "manifest:ff": "cross-env BROWSER_ENV=FF tsx ./scripts/main.ts",
     "clean": "rimraf dist",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "release": "release-it"
+    "release": "release-it",
+    "prerelease": "release-it --prerelease"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^7.0.0",
