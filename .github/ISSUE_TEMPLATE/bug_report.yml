@@ -40,3 +40,12 @@ body:
         - Browser: [e.g. Firefox 115, Chrome 105, etc..]
     validations:
       required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: Select the severity of this bug
+      options:
+        - annoyance
+        - severe
+        - blocking all usage of Sessionic
