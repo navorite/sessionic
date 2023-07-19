@@ -21,7 +21,7 @@
         sendMessage({ message: 'createTab', tab });
       }}
     >
-      {#if tab?.favIconUrl}
+      {#if tab.favIconUrl}
         <!-- TODO: fix layout shift on certain favicons -->
         <img
           style:width="100%"
@@ -29,7 +29,7 @@
           style:max-width="1rem"
           style:max-height="1rem"
           class="rounded-md"
-          src={decompressLZ(tab?.favIconUrl)}
+          src={decompressLZ(tab.favIconUrl)}
           alt=""
         />
       {:else}
@@ -39,7 +39,7 @@
         />
       {/if}
       <span class="title">
-        {tab?.title ?? 'Loading tab name...'}
+        {tab.title}
       </span>
     </button>
 
@@ -49,7 +49,7 @@
         title={current ? 'Close' : 'Delete'}
         class="ml-auto text-xl hover:text-error-focus"
         on:click={() => {
-          if (current) browser?.tabs?.remove(tab?.id);
+          if (current && tab.id) browser.tabs.remove(tab.id);
           else dispatch('delete', tab);
         }}
       />
