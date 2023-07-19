@@ -1,6 +1,6 @@
 {
   "name": "sessionic",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "private": true,
   "type": "module",
   "scripts": {

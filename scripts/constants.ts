@@ -1,8 +1,10 @@
+import { version } from 'package.json';
+
 export const isFirefox = process.env.BROWSER_ENV === 'FF';
 
 export const extension = {
   name: 'Sessionic',
-  version: '0.0.2',
+  version,
   description: 'A browser extension to save tabs, sessions, and manage them.',
   author: 'navorite',
   homepage_url: 'https://github.com/navorite/sessonic',
