@@ -21,7 +21,6 @@
       "@styles/*": ["src/styles/*"]
     },
     "useDefineForClassFields": true,
-    "resolveJsonModule": true,
     "isolatedModules": true
   },
 
