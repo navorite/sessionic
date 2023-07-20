@@ -1,3 +1,13 @@
+
+
+## [0.1.1](https://github.com/navorite/sessionic/compare/v0.1.0...v0.1.1) (2023-07-20)
+
+
+### Bug Fixes
+
+* Session fails to load with bad tab icons ([5a0c43d](https://github.com/navorite/sessionic/commit/5a0c43dd4270c4ef0e5113eae4ac8b79e06d5122))
+* **ui:** set max size of tab icons ([1320d11](https://github.com/navorite/sessionic/commit/1320d11bc05d1194c0451adb396c9ca8ac031a69))
+
 ## [0.1.0](https://github.com/navorite/sessionic/compare/v0.0.2...v0.1.0) (2023-07-19)
 
 ### Features
