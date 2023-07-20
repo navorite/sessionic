@@ -15,7 +15,7 @@
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <dialog
   bind:this={dialogEl}
-  class="max-h-lg max-w-3xl text-white backdrop-blur rounded-md border-2 border-solid border-neutral-5 outline-none"
+  class="max-h-lg max-w-3xl text-white backdrop-blur rounded-md border-2 border-solid border-neutral-5 outline-none bg-transparent"
   on:mousedown|self={() => (open = false)}
   on:keydown={(event) => {
     if (event.key === 'Escape') open = false;

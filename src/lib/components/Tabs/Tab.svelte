@@ -24,8 +24,8 @@
       {#if tab.favIconUrl}
         <!-- TODO: fix layout shift on certain favicons -->
         <img
-          style:width="100%"
-          style:height="100%"
+          style:width="1rem"
+          style:height="1rem"
           style:max-width="1rem"
           style:max-height="1rem"
           class="rounded-md"
@@ -35,7 +35,7 @@
       {:else}
         <IconButton
           icon="tab"
-          class="text-neutral-content w-full text-base max-w-[1rem]"
+          class="text-neutral-content text-base w-[1rem] h-[1rem] max-w-[1rem]"
         />
       {/if}
       <span class="title">
