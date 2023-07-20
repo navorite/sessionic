@@ -1,15 +1,15 @@
 import { isFirefox } from '@constants/env';
+import log from './log';
 
 export default (() => {
   if (!isFirefox) return;
 
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
   const img = document.createElement('img');
+  const ctx = document.createElement('canvas').getContext('2d');
 
   return {
-    async icon(src: string, options?: compressOptions) {
-      if (!ctx || !img || !src) return;
+    async icon(src: string, tabURL: string, options?: compressOptions) {
+      if (!ctx || !img || !src || !src.startsWith('data:')) return src;
 
       return new Promise((resolve: (dataURL: string) => any) => {
         img.src = src;
@@ -29,9 +29,7 @@ export default (() => {
 
             const dataURL = ctx.canvas.toDataURL(options.type, quality);
 
-            if (dataURL.length > src.length) resolve(src);
-
-            resolve(dataURL);
+            resolve(src.length > dataURL.length ? dataURL : src);
           }
         };
       });

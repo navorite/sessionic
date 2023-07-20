@@ -4,7 +4,7 @@ import browser from 'webextension-polyfill';
 import compress from './compress';
 
 // Get current active tab
-export async function getCurrentTab(): Promise<ETab> {
+export async function getCurrentTab() {
   return (await getWindowTabs({ active: true }))[0];
 }
 
@@ -25,7 +25,11 @@ export async function getTabs(
   for (const tab of tabs) {
     if (tab.favIconUrl) {
       isFirefox &&
-        (tab.favIconUrl = await compress.icon(tab.favIconUrl, options));
+        (tab.favIconUrl = await compress.icon(
+          tab.favIconUrl,
+          tab.url,
+          options
+        ));
 
       tab.favIconUrl = compressLZ(tab.favIconUrl);
     }

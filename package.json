@@ -1,6 +1,6 @@
 {
   "name": "sessionic",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -16,8 +16,7 @@
     "manifest:ff": "cross-env BROWSER_ENV=FF tsx ./scripts/main.ts",
     "clean": "rimraf dist",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "release": "release-it",
-    "prerelease": "release-it --prerelease"
+    "release": "release-it"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^7.0.0",
