@@ -48,5 +48,6 @@ declare global {
     popupView: boolean;
     selectionId: 'current' | UUID;
     discarded: boolean;
+    urlFilterList: string[];
   }
 }
