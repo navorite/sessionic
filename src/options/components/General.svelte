@@ -69,12 +69,32 @@
 </Section>
 
 <Section title="Extension Actions">
+  <label class="flex flex-col gap-2 font-medium">
+    URL Filter List
+    <textarea
+      name="filter-list"
+      id="filter-list"
+      rows="4"
+      placeholder={'Supports wildcard matching e.g.,\nhttps://*.google.com\nhttps://www.youtube.com/*'}
+      class="bg-neutral-4 p-2 rounded-md placeholder:text-neutral-content/40"
+      inputmode="url"
+      on:change={(ev) => {
+        //TODO: sanitize for duplicates and verify url structure
+        settings.changeSetting(
+          'urlFilterList',
+          ev.currentTarget.value.split('\n')
+        );
+      }}
+    />
+  </label>
+
   <Switch
     title="Lazy load tabs"
     description="Greatly reduce memory usage by not loading tab until selected"
     checked={$settings.discarded}
     on:change={() => settings.changeSetting('discarded', !$settings.discarded)}
   />
+
   <button
     type="button"
     class="bg-error hover:bg-error-focus text-white py-2 px-4 rounded-md max-w-fit"

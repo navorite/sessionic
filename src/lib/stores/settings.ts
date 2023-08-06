@@ -14,6 +14,7 @@ const defaultSettings: ESettings = {
   darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches,
   selectionId: 'current',
   discarded: true,
+  urlFilterList: [],
 };
 
 const settings = () => {
