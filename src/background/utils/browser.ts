@@ -1,8 +1,12 @@
 import browser from 'webextension-polyfill';
+import { decompress as decompressLZ } from 'lz-string';
 
 const isFirefox = !!browser?.runtime?.getBrowserInfo;
 
-export async function openInCurrentWindow(window: EWindow) {
+export async function openInCurrentWindow(
+  window: EWindow,
+  discarded?: boolean
+) {
   window.id = (await browser?.windows?.getCurrent()).id;
 
   for (const tab of window?.tabs) {
@@ -53,6 +57,7 @@ export async function createTab(
   const {
     url,
     title,
+    favIconUrl,
     active,
     pinned,
     cookieStoreId,
@@ -62,7 +67,14 @@ export async function createTab(
   } = tab;
 
   return browser?.tabs?.create({
-    url,
+    url:
+      isFirefox || active || !discarded
+        ? url
+        : `src/discarded/index.html?title=${encodeURIComponent(
+            title!
+          )}&url=${url}&icon=${encodeURIComponent(
+            decompressLZ(favIconUrl ?? '')
+          )}`,
     active,
     windowId: windowId ?? tab.windowId,
     pinned,
@@ -70,7 +82,7 @@ export async function createTab(
       title,
       discarded: discarded ?? !active,
       openInReaderMode: isInReaderMode,
-      muted: mutedInfo.muted,
+      muted: mutedInfo?.muted,
       ...(!incognito && { cookieStoreId }),
     }),
   });

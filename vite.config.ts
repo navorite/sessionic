@@ -36,6 +36,7 @@ export default defineConfig({
       input: {
         popup: 'src/popup/index.html',
         options: 'src/options/index.html',
+        discarded: 'src/discarded/index.html',
       },
     },
   },
