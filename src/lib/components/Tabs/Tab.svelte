@@ -5,6 +5,7 @@
   import { decompress as decompressLZ } from 'lz-string';
   import { sendMessage } from '@utils/messages';
   import browser from 'webextension-polyfill';
+  import settings from '@stores/settings';
 
   export let tab: ETab;
   export let current = false;
@@ -18,7 +19,11 @@
       type="button"
       class="link"
       on:click={() => {
-        sendMessage({ message: 'createTab', tab });
+        sendMessage({
+          message: 'createTab',
+          tab,
+          discarded: $settings.discarded,
+        });
       }}
     >
       {#if tab.favIconUrl}

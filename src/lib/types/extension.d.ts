@@ -47,5 +47,6 @@ declare global {
     darkMode: boolean;
     popupView: boolean;
     selectionId: 'current' | UUID;
+    discarded: boolean;
   }
 }
