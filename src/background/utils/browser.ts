@@ -49,6 +49,7 @@ export async function createTab(
 ) {
   const {
     url,
+    title,
     active,
     pinned,
     cookieStoreId,
@@ -59,6 +60,7 @@ export async function createTab(
 
   return browser?.tabs?.create({
     url,
+    title,
     active,
     windowId: windowId ?? tab.windowId,
     pinned,
