@@ -8,6 +8,7 @@
   import { isExtensionViewed } from '@utils/extension';
   import { sendMessage } from '@utils/messages';
   import browser from 'webextension-polyfill';
+  import settings from '@stores/settings';
   const dispatch = createEventDispatcher<{
     delete: ETab | undefined;
   }>();
@@ -46,7 +47,11 @@
         aria-label="Open in a New Window"
         class="w-max max-w-[60%] font-medium text-sm overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer hover:underline"
         on:click={() => {
-          sendMessage({ message: 'openInNewWindow', window });
+          sendMessage({
+            message: 'openInNewWindow',
+            window,
+            discarded: $settings.discarded,
+          });
         }}
       >
         {window?.incognito ? 'Private' : ''} Window

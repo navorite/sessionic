@@ -1,9 +1,15 @@
 <script lang="ts">
+  import { tooltip } from '@utils/tooltip';
+
   export let title: string;
   export let checked = false;
+  export let description = '';
 </script>
 
-<label class="flex max-w-max gap-2 items-center p-2 rounded-md font-medium">
+<label
+  class="flex max-w-max gap-2 items-center p-2 rounded-md font-medium"
+  use:tooltip={{ title: description }}
+>
   <input type="checkbox" aria-hidden="true" bind:checked on:change />
   <span
     tabindex="0"

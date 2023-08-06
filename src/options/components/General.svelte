@@ -68,6 +68,22 @@
   />
 </Section>
 
+<Section title="Extension Actions">
+  <Switch
+    title="Lazy load tabs"
+    description="Greatly reduce memory usage by not loading tab until selected"
+    checked={$settings.discarded}
+    on:change={() => settings.changeSetting('discarded', !$settings.discarded)}
+  />
+  <button
+    type="button"
+    class="bg-error hover:bg-error-focus text-white py-2 px-4 rounded-md max-w-fit"
+    on:click={settings.clear}
+  >
+    Reset All Settings
+  </button>
+</Section>
+
 <Section title="Session Actions">
   <div class="flex gap-2">
     <label
@@ -88,32 +104,3 @@
     >
   </div>
 </Section>
-
-<Section title="Extension Actions">
-  <button
-    type="button"
-    class="bg-error hover:bg-error-focus text-white py-2 px-4 rounded-md max-w-fit"
-    on:click={settings.clear}
-  >
-    Reset All Settings
-  </button>
-
-  <!-- TODO: <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
-    >Automatically save current session</Switch
-  >
-  <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
-    >Ask for session name before saving</Switch
-  >
-  <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
-    >Hide Sessionic tabs</Switch
-  > -->
-</Section>
-
-<!-- TODO: <Section title="Browser Actions">
-  <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
-    >Lazy load tabs</Switch
-  >
-  <Switch id="lazyload" checked={$darkMode} on:change={darkMode.switch}
-    >Restore Window position</Switch
-  >
-</Section> -->

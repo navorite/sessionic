@@ -1,7 +1,7 @@
 <script lang="ts">
   import ListItem from '@components/basic/ListItem.svelte';
   import IconButton from '../IconButton.svelte';
-  import { filterOptions } from '@stores/settings';
+  import settings, { filterOptions } from '@stores/settings';
   import { markResult } from '@utils/markResult';
   import { createEventDispatcher } from 'svelte';
   import sessions from '@stores/sessions';
@@ -36,7 +36,11 @@
       use:tooltip={{ title: 'Open' }}
       class="session-name"
       on:click={() => {
-        sendMessage({ message: 'openSession', session });
+        sendMessage({
+          message: 'openSession',
+          session,
+          discarded: $settings.discarded,
+        });
       }}
     >
       {@html title}

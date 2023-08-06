@@ -2,16 +2,15 @@ import browser from 'webextension-polyfill';
 
 const isFirefox = !!browser?.runtime?.getBrowserInfo;
 
-//TODO support discarded in chromium, fix popup open bug in firefox
 export async function openInCurrentWindow(window: EWindow) {
   window.id = (await browser?.windows?.getCurrent()).id;
 
   for (const tab of window?.tabs) {
-    createTab(tab, window.id);
+    createTab(tab, window.id, discarded);
   }
 }
 
-export async function openInNewWindow(window: EWindow) {
+export async function openInNewWindow(window: EWindow, discarded?: boolean) {
   const windowId = (
     await browser?.windows?.create({
       incognito: window.incognito,
@@ -27,18 +26,22 @@ export async function openInNewWindow(window: EWindow) {
   ).id;
 
   for (const tab of window?.tabs) {
-    createTab(tab, windowId);
+    createTab(tab, windowId, discarded);
   }
 }
 
-export async function openSession(session: ESession, newWindow?: boolean) {
+export async function openSession(
+  session: ESession,
+  newWindow?: boolean,
+  discarded?: boolean
+) {
   for (const window of session.windows) {
     if (newWindow) {
-      openInNewWindow(window);
+      openInNewWindow(window, discarded);
       continue;
     }
 
-    openInCurrentWindow(window);
+    openInCurrentWindow(window, discarded);
   }
 }
 

@@ -13,6 +13,7 @@ const defaultSettings: ESettings = {
   popupView: true,
   darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches,
   selectionId: 'current',
+  discarded: true,
 };
 
 const settings = () => {
