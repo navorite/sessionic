@@ -60,11 +60,11 @@ export async function createTab(
 
   return browser?.tabs?.create({
     url,
-    title,
     active,
     windowId: windowId ?? tab.windowId,
     pinned,
     ...(isFirefox && {
+      title,
       discarded: discarded ?? !active,
       openInReaderMode: isInReaderMode,
       muted: mutedInfo.muted,
