@@ -6,7 +6,7 @@
   {#if title}
     <h2 class="text-lg font-bold mb-2">{title}</h2>
   {/if}
-  <div class="flex flex-col gap-2">
+  <div class="flex flex-col gap-4">
     <slot />
   </div>
 </section>
