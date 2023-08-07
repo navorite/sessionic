@@ -13,8 +13,8 @@
 }
 
 :root {
-  --primary: 215 96% 31%;
-  --primary-focus: 215 96% 36%;
+  --primary: 215 96% 38%;
+  --primary-focus: 215 96% 43%;
 
   --accent: 156 100% 78%;
   --accent-focus: 156 100% 82%;
@@ -46,9 +46,6 @@
 }
 
 .dark {
-  --primary: 215 96% 69%;
-  --primary-focus: 215 96% 74%;
-
   --neutral-1: 220 6% 9%;
   --neutral-2: 220 6% 14%;
   --neutral-3: 220 6% 19%;
