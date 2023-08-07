@@ -40,7 +40,7 @@
       {:else}
         <IconButton
           icon="tab"
-          class="text-neutral-content text-base w-[1rem] h-[1rem] max-w-[1rem]"
+          class="text-neutral-content text-base min-h-[1rem] min-w-[1rem] max-w-[1rem] max-h-[1rem] rounded-md"
         />
       {/if}
       <span class="title">
