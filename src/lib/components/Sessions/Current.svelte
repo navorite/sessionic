@@ -15,10 +15,9 @@
   import { tooltip } from '@utils/tooltip';
   import settings from '@stores/settings';
 
-  getSession().then(async (result) => {
-    $session = result;
-
-    await settings.init(); // to fix inconsistent behaviour with FF and Chrome - need to check
+  // to fix inconsistent behaviour with FF and Chrome - need to check
+  settings.init().then(async () => {
+    $session = await getSession($settings.urlFilterList);
 
     if ($settings.selectionId === 'current') selection.select($session);
   });
