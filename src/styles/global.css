@@ -139,3 +139,11 @@ mark {
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-neutral-5;
 }
+
+textarea::-webkit-scrollbar {
+  @apply w-3 border border-neutral-6 border-solid;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  @apply border border-neutral-6 border-solid;
+}

@@ -95,9 +95,9 @@
     <textarea
       name="filter-list"
       id="filter-list"
-      rows="7"
+      rows="8"
       placeholder={'e.g. track only the following URL match patterns:\n*://*/*\nfile:///*/*\nftp://*/*\nchrome://*/*\nhttps://*.google.com/\nhttps://www.youtube.com/*\n'}
-      class="bg-neutral-4 p-2 rounded-md placeholder:text-neutral-content/40 text-sm"
+      class="bg-neutral-3 p-2 rounded-md placeholder:text-neutral-content/40 text-sm resize-none"
       inputmode="url"
       value={urlList}
       on:change={handleFilterListChange}
