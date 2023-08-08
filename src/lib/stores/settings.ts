@@ -14,7 +14,7 @@ const defaultSettings: ESettings = {
   darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches,
   selectionId: 'current',
   discarded: true,
-  urlFilterList: [],
+  urlFilterList: ['<all_urls>'],
 };
 
 const settings = () => {
@@ -40,7 +40,7 @@ const settings = () => {
   function onStorageChange(changes: Storage.StorageAreaOnChangedChangesType) {
     update((settings) => {
       for (const change in changes) {
-        settings[change] = changes[change].newValue ?? defaultSettings[change];
+        settings[change] = changes[change]?.newValue ?? defaultSettings[change];
 
         if (change === 'darkMode') applyTheme(settings[change], true);
 

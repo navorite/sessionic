@@ -4,6 +4,11 @@
   import { sessionsDB } from '@utils/database';
   import settings from '@stores/settings';
 
+  $: urlList =
+    $settings.urlFilterList[0] === '<all_urls>'
+      ? ''
+      : $settings.urlFilterList.join('\n');
+
   async function handleExport() {
     const date = new Date();
 
@@ -50,6 +55,22 @@
 
     fileReader.readAsText(file);
   }
+
+  function handleFilterListChange(
+    ev: Event & { currentTarget: EventTarget & HTMLTextAreaElement }
+  ) {
+    //TODO: sanitize for duplicates and verify url structure
+
+    const value = ev.currentTarget.value;
+
+    const urls = value.match(
+      /(\b(https?|ftp|file)|\B\*):\/{2}(\*|(\*\.)?[^*/\s:]*)\/[^\s]*/g
+    ) ?? ['<all_urls>'];
+
+    settings.changeSetting('urlFilterList', urls);
+
+    ev.currentTarget.value = urlList;
+  }
 </script>
 
 <Section title="User Interface">
@@ -74,17 +95,12 @@
     <textarea
       name="filter-list"
       id="filter-list"
-      rows="4"
-      placeholder={'Supports wildcard matching e.g.,\nhttps://*.google.com\nhttps://www.youtube.com/*'}
-      class="bg-neutral-4 p-2 rounded-md placeholder:text-neutral-content/40"
+      rows="7"
+      placeholder={'e.g. track only the following URL match patterns:\n*://*/*\nfile:///*/*\nftp://*/*\nchrome://*/*\nhttps://*.google.com/\nhttps://www.youtube.com/*\n'}
+      class="bg-neutral-4 p-2 rounded-md placeholder:text-neutral-content/40 text-sm"
       inputmode="url"
-      on:change={(ev) => {
-        //TODO: sanitize for duplicates and verify url structure
-        settings.changeSetting(
-          'urlFilterList',
-          ev.currentTarget.value.split('\n')
-        );
-      }}
+      value={urlList}
+      on:change={handleFilterListChange}
     />
   </label>
 

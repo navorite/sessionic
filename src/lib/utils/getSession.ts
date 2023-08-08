@@ -2,6 +2,7 @@ import { compress_options, isFirefox, tabAttr } from '@constants/env';
 import { compress as compressLZ } from 'lz-string';
 import browser from 'webextension-polyfill';
 import compress from './compress';
+import log from './log';
 
 // Get current active tab
 export async function getCurrentTab() {
@@ -43,7 +44,7 @@ export async function getTabs(
 }
 
 // Get current session - TODO: arg: options?: compressOptions goes undefined after 1st call
-export async function getSession() {
+export async function getSession(urlFilterList?: string[]) {
   const session: ESession = {
     title: 'Current Session',
     windows: [],
@@ -59,11 +60,10 @@ export async function getSession() {
     window.tabs = await getTabs(
       {
         windowId: window.id,
-        url: ['*://*/*', 'file:///*/*', 'ftp://*/*', 'chrome://*/*'],
+        url: urlFilterList,
       },
       compress_options
     ); //TODO: firefox New Tab doesn't show - add filter option to urls
-
     session.tabsNumber += window.tabs.length;
   }
 

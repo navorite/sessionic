@@ -17,6 +17,8 @@ declare global {
 
   type Page = 'popup' | 'options';
 
+  type URLFilterList = string[] | ['<all_urls>'];
+
   type Icon =
     | 'default'
     | 'copy'
@@ -48,6 +50,6 @@ declare global {
     popupView: boolean;
     selectionId: 'current' | UUID;
     discarded: boolean;
-    urlFilterList: string[];
+    urlFilterList: URLFilterList;
   }
 }
