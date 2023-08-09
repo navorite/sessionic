@@ -31,27 +31,27 @@
 
 		const window = $session.windows[windowIndex];
 
-		if (!window || !window.tabs?.length) return;
+		if (!window) return;
 
-		if (tab) {
-			const tabIndex = window.tabs.indexOf(tab);
+		if (window.tabs?.length) {
+			if (tab) {
+				const tabIndex = window.tabs.indexOf(tab);
 
-			if (tabIndex === -1) return;
+				if (tabIndex === -1) return;
 
-			window.tabs.splice(tabIndex, 1);
+				window.tabs.splice(tabIndex, 1);
 
-			$session.tabsNumber--;
-		} else {
-			$session.windows.splice(windowIndex, 1);
-
-			$session.tabsNumber -= window.tabs.length;
+				$session.tabsNumber--;
+			} else $session.tabsNumber -= window.tabs?.length;
 		}
+
+		if (!window.tabs?.length || (!tab && window))
+			$session.windows.splice(windowIndex, 1);
 
 		sessions.put($session);
 
-		if (!$session.windows.length || !$session.tabsNumber) {
+		if (!$session.windows.length || !$session.tabsNumber)
 			session.select($currentSession);
-		}
 	}
 </script>
 
@@ -72,7 +72,9 @@
 		{/each}
 	</ul>
 {:else}
-	<h2 class="mx-auto mb-1 text-center text-lg font-bold">Select a session or open some tabs!</h2>
+	<h2 class="mx-auto mb-1 text-center text-lg font-bold">
+		Select a session or open some tabs!
+	</h2>
 {/if}
 
 <style>
