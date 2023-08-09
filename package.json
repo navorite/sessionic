@@ -17,10 +17,9 @@
 		"clean": "rimraf dist",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"release": "release-it",
-		"format": "prettier --plugin-search-dir . --check .",
-		"format:write": "prettier --plugin-search-dir . --write .",
-		"lint": "npm run format:write && eslint .",
-		"lint:fix": "npm run format:write && eslint . --fix"
+		"format": "prettier --plugin-search-dir . --write .",
+		"lint": "npm run format && eslint .",
+		"lint:fix": "npm run format && eslint . --fix"
 	},
 	"devDependencies": {
 		"@release-it/conventional-changelog": "^7.0.0",
