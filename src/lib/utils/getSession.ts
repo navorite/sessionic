@@ -6,66 +6,59 @@ import log from './log';
 
 // Get current active tab
 export async function getCurrentTab() {
-  return (await getWindowTabs({ active: true }))[0];
+	return (await getWindowTabs({ active: true }))[0];
 }
 
 // Get all tabs of current window
-export async function getWindowTabs(
-  optionalQuery: QueryInfo = {}
-): Promise<ETab[]> {
-  return getTabs({ ...optionalQuery, currentWindow: true });
+export async function getWindowTabs(optionalQuery: QueryInfo = {}): Promise<ETab[]> {
+	return getTabs({ ...optionalQuery, currentWindow: true });
 }
 
 // Get all tabs that match a query obj - TODO: (Firefox) => compress favicon string even further?
 export async function getTabs(
-  queryInfo: QueryInfo = {},
-  options?: compressOptions
+	queryInfo: QueryInfo = {},
+	options?: compressOptions
 ): Promise<ETab[]> {
-  const tabs = await browser?.tabs?.query(queryInfo);
+	const tabs = await browser?.tabs?.query(queryInfo);
 
-  for (const tab of tabs) {
-    if (tab.favIconUrl) {
-      isFirefox &&
-        (tab.favIconUrl = await compress.icon(
-          tab.favIconUrl,
-          tab.url,
-          options
-        ));
+	for (const tab of tabs) {
+		if (tab.favIconUrl) {
+			isFirefox && (tab.favIconUrl = await compress.icon(tab.favIconUrl, tab.url, options));
 
-      tab.favIconUrl = compressLZ(tab.favIconUrl);
-    }
+			tab.favIconUrl = compressLZ(tab.favIconUrl);
+		}
 
-    for (const prop in tab) {
-      if (!tabAttr.includes(prop)) delete tab[prop];
-    }
-  }
+		for (const prop in tab) {
+			if (!tabAttr.includes(prop)) delete tab[prop];
+		}
+	}
 
-  return tabs;
+	return tabs;
 }
 
 // Get current session - TODO: arg: options?: compressOptions goes undefined after 1st call
 export async function getSession(urlFilterList?: string[]) {
-  const session: ESession = {
-    title: 'Current Session',
-    windows: [],
-    id: 'current',
-    dateSaved: null,
-    dateModified: null,
-    tabsNumber: 0,
-  };
+	const session: ESession = {
+		title: 'Current Session',
+		windows: [],
+		id: 'current',
+		dateSaved: null,
+		dateModified: null,
+		tabsNumber: 0
+	};
 
-  session.windows = await browser?.windows?.getAll();
+	session.windows = await browser?.windows?.getAll();
 
-  for (const window of session.windows) {
-    window.tabs = await getTabs(
-      {
-        windowId: window.id,
-        url: urlFilterList,
-      },
-      compress_options
-    ); //TODO: firefox New Tab doesn't show - add filter option to urls
-    session.tabsNumber += window.tabs.length;
-  }
+	for (const window of session.windows) {
+		window.tabs = await getTabs(
+			{
+				windowId: window.id,
+				url: urlFilterList
+			},
+			compress_options
+		); //TODO: firefox New Tab doesn't show - add filter option to urls
+		session.tabsNumber += window.tabs.length;
+	}
 
-  return session;
+	return session;
 }

@@ -1,27 +1,30 @@
 {
-  "extends": "@tsconfig/svelte/tsconfig.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "module": "ESNext",
-    "target": "ESNext",
-    "strict": true,
-    "allowJs": true,
-    "checkJs": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "noUnusedLocals": true,
-    "noUncheckedIndexedAccess": true,
-    "noEmit": true,
-    "paths": {
-      "@constants/*": ["src/lib/constants/*"],
-      "@components/*": ["src/lib/components/*"],
-      "@stores/*": ["src/lib/stores/*"],
-      "@utils/*": ["src/lib/utils/*"],
-      "@styles/*": ["src/styles/*"]
-    },
-    "useDefineForClassFields": true,
-    "isolatedModules": true
-  },
+	"extends": "@tsconfig/svelte/tsconfig.json",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"module": "ESNext",
+		"target": "ESNext",
+		"strict": true,
+		"allowJs": true,
+		"checkJs": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"noUnusedLocals": true,
+		"noUncheckedIndexedAccess": true,
+		"noEmit": true,
+		"moduleResolution": "Bundler",
+		"resolveJsonModule": true,
+		"useDefineForClassFields": true,
+		"isolatedModules": true,
+		"paths": {
+			"@/*": ["./src/*"],
+			"@constants/*": ["src/lib/constants/*"],
+			"@components/*": ["src/lib/components/*"],
+			"@stores/*": ["src/lib/stores/*"],
+			"@utils/*": ["src/lib/utils/*"],
+			"@styles/*": ["src/styles/*"]
+		}
+	},
 
-  "include": ["src", "scripts"]
+	"include": ["src", "scripts"]
 }

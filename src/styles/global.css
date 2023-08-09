@@ -5,145 +5,145 @@
 @tailwind utilities;
 
 @layer utilities {
-  @media (prefers-reduced-motion: no-preference) {
-    .fade {
-      transition: all 200ms ease-in-out;
-    }
-  }
+	@media (prefers-reduced-motion: no-preference) {
+		.fade {
+			transition: all 200ms ease-in-out;
+		}
+	}
 }
 
 :root {
-  --primary: 215 96% 38%;
-  --primary-focus: 215 96% 43%;
+	--primary: 215 96% 38%;
+	--primary-focus: 215 96% 43%;
 
-  --accent: 156 100% 78%;
-  --accent-focus: 156 100% 82%;
+	--accent: 156 100% 78%;
+	--accent-focus: 156 100% 82%;
 
-  --info: 215 96% 33%;
-  --info-focus: 215 96% 38%;
+	--info: 215 96% 33%;
+	--info-focus: 215 96% 38%;
 
-  --success: 159 100% 37%;
-  --success-focus: 159 100% 47%;
+	--success: 159 100% 37%;
+	--success-focus: 159 100% 47%;
 
-  --warning: 27 100% 50%;
-  --warning-focus: 27 100% 55%;
+	--warning: 27 100% 50%;
+	--warning-focus: 27 100% 55%;
 
-  --error: 0 99% 30%;
-  --error-focus: 0 99% 35%;
+	--error: 0 99% 30%;
+	--error-focus: 0 99% 35%;
 
-  --neutral-1: 0 0% 97%;
-  --neutral-2: 0 0% 92%;
-  --neutral-3: 0 0% 87%;
-  --neutral-4: 0 0% 82%;
-  --neutral-5: 0 0% 77%;
-  --neutral-6: 0 0% 72%;
-  --neutral-7: 0 0% 67%;
+	--neutral-1: 0 0% 97%;
+	--neutral-2: 0 0% 92%;
+	--neutral-3: 0 0% 87%;
+	--neutral-4: 0 0% 82%;
+	--neutral-5: 0 0% 77%;
+	--neutral-6: 0 0% 72%;
+	--neutral-7: 0 0% 67%;
 
-  --neutral-content: 0 0% 0%;
+	--neutral-content: 0 0% 0%;
 
-  --tooltip: 220 5% 34%;
-  --tooltip-content: 0 0% 100%;
+	--tooltip: 220 5% 34%;
+	--tooltip-content: 0 0% 100%;
 }
 
 .dark {
-  --neutral-1: 220 6% 9%;
-  --neutral-2: 220 6% 14%;
-  --neutral-3: 220 6% 19%;
-  --neutral-4: 220 6% 24%;
-  --neutral-5: 220 6% 29%;
-  --neutral-6: 220 6% 34%;
+	--neutral-1: 220 6% 9%;
+	--neutral-2: 220 6% 14%;
+	--neutral-3: 220 6% 19%;
+	--neutral-4: 220 6% 24%;
+	--neutral-5: 220 6% 29%;
+	--neutral-6: 220 6% 34%;
 
-  --neutral-content: 0 0% 90%;
+	--neutral-content: 0 0% 90%;
 
-  --tooltip: 220 7% 66%;
-  --tooltip-content: 0 0% 0%;
+	--tooltip: 220 7% 66%;
+	--tooltip-content: 0 0% 0%;
 }
 
 html,
 body {
-  height: 100%;
-  overflow-y: hidden;
+	height: 100%;
+	overflow-y: hidden;
 }
 
 body {
-  @apply container mx-auto min-h-[500px] min-w-[800px] px-4 py-2 text-neutral-content bg-neutral-1 scroll-smooth font-sans;
+	@apply container mx-auto min-h-[500px] min-w-[800px] scroll-smooth bg-neutral-1 px-4 py-2 font-sans text-neutral-content;
 }
 
 #root {
-  @apply w-full h-full flex flex-col;
+	@apply flex h-full w-full flex-col;
 }
 
 h1 {
-  @apply text-xl font-bold;
+	@apply text-xl font-bold;
 }
 
 p,
 span,
 div {
-  @apply text-base;
+	@apply text-base;
 }
 
 .tab-container {
-  @apply py-1.5 px-2 rounded-md flex items-center;
+	@apply flex items-center rounded-md px-2 py-1.5;
 }
 
 .session-container {
-  @apply w-full p-2 flex flex-col mb-2 gap-2 rounded-md bg-neutral-2 cursor-pointer;
+	@apply mb-2 flex w-full cursor-pointer flex-col gap-2 rounded-md bg-neutral-2 p-2;
 }
 
 .tab-container:hover,
 .session-container:hover {
-  @apply bg-neutral-3;
+	@apply bg-neutral-3;
 }
 
 .session-info {
-  @apply flex items-center w-full gap-2;
+	@apply flex w-full items-center gap-2;
 }
 
 .session-name {
-  @apply flex-1 max-w-max pl-1 overflow-hidden whitespace-nowrap text-ellipsis font-bold text-sm;
+	@apply max-w-max flex-1 overflow-hidden text-ellipsis whitespace-nowrap pl-1 text-sm font-bold;
 }
 
 .session-name {
-  @apply cursor-pointer;
+	@apply cursor-pointer;
 }
 
 .session-name:hover {
-  @apply underline;
+	@apply underline;
 }
 
 .card {
-  @apply inline-flex items-center w-max font-medium gap-1 rounded py-0.5 px-1 mr-1 text-xs select-none whitespace-nowrap;
+	@apply mr-1 inline-flex w-max select-none items-center gap-1 whitespace-nowrap rounded px-1 py-0.5 text-xs font-medium;
 }
 
 .session-card {
-  @apply flex items-center gap-1 font-medium text-xs py-0.5 px-1 rounded select-none whitespace-nowrap;
+	@apply flex select-none items-center gap-1 whitespace-nowrap rounded px-1 py-0.5 text-xs font-medium;
 }
 
 .session-card:hover {
-  @apply bg-black/20;
+	@apply bg-black/20;
 }
 
 mark {
-  @apply bg-primary text-white rounded-md p-0.5 my-auto mx-[1px];
+	@apply mx-[1px] my-auto rounded-md bg-primary p-0.5 text-white;
 }
 
 ::-webkit-scrollbar {
-  @apply w-1 bg-neutral-2 rounded-md;
+	@apply w-1 rounded-md bg-neutral-2;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply rounded-md bg-neutral-4;
+	@apply rounded-md bg-neutral-4;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-neutral-5;
+	@apply bg-neutral-5;
 }
 
 textarea::-webkit-scrollbar {
-  @apply w-3 border border-neutral-6 border-solid;
+	@apply w-3 border border-solid border-neutral-6;
 }
 
 textarea::-webkit-scrollbar-thumb {
-  @apply border border-neutral-6 border-solid;
+	@apply border border-solid border-neutral-6;
 }

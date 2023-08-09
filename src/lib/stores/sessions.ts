@@ -9,147 +9,146 @@ import { currentSession } from '@components/Sessions/Current.svelte';
 import type { UUID } from 'crypto';
 
 export default (() => {
-  const { subscribe, set, update }: Writable<ESession[]> = writable();
-  const selection: Writable<ESession> = writable();
+	const { subscribe, set, update }: Writable<ESession[]> = writable();
+	const selection: Writable<ESession> = writable();
 
-  load();
+	load();
 
-  async function load(count?: number) {
-    const sessions = await sessionsDB.loadSessions(count);
+	async function load(count?: number) {
+		const sessions = await sessionsDB.loadSessions(count);
 
-    set(sessions);
+		set(sessions);
 
-    log.info(`[sessions.load] loaded ${sessions.length} session`);
+		log.info(`[sessions.load] loaded ${sessions.length} session`);
 
-    if (!sessions.length) notification.info(MESSAGES.load.info);
+		if (!sessions.length) notification.info(MESSAGES.load.info);
 
-    await settings.init(); // to fix inconsistent behaviour with FF and Chrome - need to check
+		await settings.init(); // to fix inconsistent behaviour with FF and Chrome - need to check
 
-    const selectionId = get(settings).selectionId;
+		const selectionId = get(settings).selectionId;
 
-    if (selectionId === 'current') return;
+		if (selectionId === 'current') return;
 
-    selectById(selectionId);
-  }
+		selectById(selectionId);
+	}
 
-  async function add(session: ESession) {
-    if (!session.windows.length || !session.tabsNumber)
-      return notification.error(
-        MESSAGES.save.fail.session_empty,
-        '[sessions.add]: session is empty'
-      );
+	async function add(session: ESession) {
+		if (!session.windows.length || !session.tabsNumber)
+			return notification.error(
+				MESSAGES.save.fail.session_empty,
+				'[sessions.add]: session is empty'
+			);
 
-    const generated = generateSession(session);
+		const generated = generateSession(session);
 
-    await sessionsDB.saveSession(generated);
+		await sessionsDB.saveSession(generated);
 
-    update((sessions) => {
-      sessions.push(generated);
-      return sessions;
-    });
+		update((sessions) => {
+			sessions.push(generated);
+			return sessions;
+		});
 
-    notification.success(MESSAGES.save.success);
+		notification.success(MESSAGES.save.success);
 
-    select(generated);
-  }
+		select(generated);
+	}
 
-  async function put(target: ESession) {
-    if (!target.windows.length || !target.tabsNumber)
-      return await remove(target);
+	async function put(target: ESession) {
+		if (!target.windows.length || !target.tabsNumber) return await remove(target);
 
-    await sessionsDB.updateSession(target);
+		await sessionsDB.updateSession(target);
 
-    update((sessions) => {
-      target.dateModified = Date.now();
+		update((sessions) => {
+			target.dateModified = Date.now();
 
-      sessions[sessions.indexOf(target)] = target;
-      return sessions;
-    });
+			sessions[sessions.indexOf(target)] = target;
+			return sessions;
+		});
 
-    notification.success_info(MESSAGES.update.success_info);
-  }
+		notification.success_info(MESSAGES.update.success_info);
+	}
 
-  function filter(query: string) {
-    const filtered: ESession[] = get({ subscribe })?.filter((session) =>
-      session?.title?.toLowerCase().includes(query)
-    );
+	function filter(query: string) {
+		const filtered: ESession[] = get({ subscribe })?.filter((session) =>
+			session?.title?.toLowerCase().includes(query)
+		);
 
-    return filtered; //subject to change
-  }
+		return filtered; //subject to change
+	}
 
-  async function remove(target: ESession) {
-    if (!target)
-      return notification.error(
-        MESSAGES.remove.fail.is_undefined,
-        '[sessions.remove] error: removing undefined session'
-      );
+	async function remove(target: ESession) {
+		if (!target)
+			return notification.error(
+				MESSAGES.remove.fail.is_undefined,
+				'[sessions.remove] error: removing undefined session'
+			);
 
-    update((sessions) => {
-      const index = sessions.indexOf(target);
+		update((sessions) => {
+			const index = sessions.indexOf(target);
 
-      if (index !== -1) sessions.splice(index, 1);
+			if (index !== -1) sessions.splice(index, 1);
 
-      return sessions;
-    });
+			return sessions;
+		});
 
-    await sessionsDB.deleteSession(target);
+		await sessionsDB.deleteSession(target);
 
-    notification.success_warning(MESSAGES.remove.success_warning);
-  }
+		notification.success_warning(MESSAGES.remove.success_warning);
+	}
 
-  async function removeAll() {
-    const length = get({ subscribe }).length;
+	async function removeAll() {
+		const length = get({ subscribe }).length;
 
-    if (!length) {
-      notification.error(
-        MESSAGES.removeAll.fail.empty,
-        '[sessions.removeAll] sessions are already empty'
-      );
-      return;
-    }
+		if (!length) {
+			notification.error(
+				MESSAGES.removeAll.fail.empty,
+				'[sessions.removeAll] sessions are already empty'
+			);
+			return;
+		}
 
-    await sessionsDB.deleteSessions();
+		await sessionsDB.deleteSessions();
 
-    set([]); //Empty the array, no longer needed
+		set([]); //Empty the array, no longer needed
 
-    select(get(currentSession));
+		select(get(currentSession));
 
-    notification.success_warning(MESSAGES.removeAll.success_warning);
-  }
+		notification.success_warning(MESSAGES.removeAll.success_warning);
+	}
 
-  function select(session: ESession) {
-    selection.set(session);
+	function select(session: ESession) {
+		selection.set(session);
 
-    settings.changeSetting('selectionId', session.id);
-  }
+		settings.changeSetting('selectionId', session.id);
+	}
 
-  // Without a call to changeSetting - this is used in certain area where we do not need to save storage.
-  function selectById(selectionId: 'current' | UUID) {
-    if (selectionId === 'current') return selection.set(get(currentSession));
+	// Without a call to changeSetting - this is used in certain area where we do not need to save storage.
+	function selectById(selectionId: 'current' | UUID) {
+		if (selectionId === 'current') return selection.set(get(currentSession));
 
-    const sessions = get({ subscribe });
+		const sessions = get({ subscribe });
 
-    for (const session of sessions) {
-      if (session.id === selectionId) {
-        selection.set(session);
-        break;
-      }
-    }
-  }
+		for (const session of sessions) {
+			if (session.id === selectionId) {
+				selection.set(session);
+				break;
+			}
+		}
+	}
 
-  return {
-    subscribe,
-    load,
-    add,
-    put,
-    filter,
-    remove,
-    removeAll,
-    selection: {
-      subscribe: selection.subscribe,
-      select,
-      selectById,
-      set: selection.set, //TODO: remove the ability to set
-    },
-  };
+	return {
+		subscribe,
+		load,
+		add,
+		put,
+		filter,
+		remove,
+		removeAll,
+		selection: {
+			subscribe: selection.subscribe,
+			select,
+			selectById,
+			set: selection.set //TODO: remove the ability to set
+		}
+	};
 })();

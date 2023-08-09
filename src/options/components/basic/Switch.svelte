@@ -1,40 +1,40 @@
 <script lang="ts">
-  import { tooltip } from '@utils/tooltip';
+	import { tooltip } from '@utils/tooltip';
 
-  export let title: string;
-  export let checked = false;
-  export let description = '';
+	export let title: string;
+	export let checked = false;
+	export let description = '';
 </script>
 
 <label
-  class="flex max-w-max gap-2 items-center rounded-md font-medium text-sm cursor-pointer hover:brightness-125"
-  use:tooltip={{ title: description }}
+	class="flex max-w-max cursor-pointer items-center gap-2 rounded-md text-sm font-medium hover:brightness-125"
+	use:tooltip={{ title: description }}
 >
-  <input type="checkbox" aria-hidden="true" bind:checked on:change />
-  <span
-    tabindex="0"
-    role="switch"
-    aria-checked={checked}
-    aria-label={title}
-    class="block relative bg-neutral-6 w-11 h-6 rounded-full before:fade before:content-[''] before:bg-white before:absolute before:block before:w-6 before:h-6 before:rounded-full before:-left-0.5"
-  />
-  {title}
+	<input type="checkbox" aria-hidden="true" bind:checked on:change />
+	<span
+		tabindex="0"
+		role="switch"
+		aria-checked={checked}
+		aria-label={title}
+		class="before:fade relative block h-6 w-11 rounded-full bg-neutral-6 before:absolute before:-left-0.5 before:block before:h-6 before:w-6 before:rounded-full before:bg-white before:content-['']"
+	/>
+	{title}
 </label>
 
 <style>
-  input {
-    display: none; /*not the best for accessibility*/
-  }
+	input {
+		display: none; /*not the best for accessibility*/
+	}
 
-  input:checked + span {
-    background-color: hsl(var(--primary));
-  }
+	input:checked + span {
+		background-color: hsl(var(--primary));
+	}
 
-  input:checked + span:before {
-    translate: 100% 0%;
-  }
+	input:checked + span:before {
+		translate: 100% 0%;
+	}
 
-  label:hover > span::before {
-    background-color: white;
-  }
+	label:hover > span::before {
+		background-color: white;
+	}
 </style>

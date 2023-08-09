@@ -1,11 +1,8 @@
-
-
 ## [0.1.2](https://github.com/navorite/sessionic/compare/v0.1.1...v0.1.2) (2023-07-20)
-
 
 ### Bug Fixes
 
-* **UI:** Fix modal and tab UI not showing properly ([84805bf](https://github.com/navorite/sessionic/commit/84805bf0b55e335ba3e9562f081531787455698b))
+- **UI:** Fix modal and tab UI not showing properly ([84805bf](https://github.com/navorite/sessionic/commit/84805bf0b55e335ba3e9562f081531787455698b))
 
 ## [0.1.1](https://github.com/navorite/sessionic/compare/v0.1.0...v0.1.1) (2023-07-20)
 
