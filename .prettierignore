@@ -4,6 +4,7 @@ vite.config.ts.timestamp-*
 .env
 .env.*
 dist/
+public
 .github/
 .vscode/
 
