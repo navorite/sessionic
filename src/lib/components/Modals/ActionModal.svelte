@@ -2,7 +2,7 @@
 	import Modal from '@components/basic/Modal.svelte';
 	import { createEventDispatcher } from 'svelte';
 
-	export let type: 'Delete' = 'Delete';
+	export let type = 'Delete' as const;
 
 	export let open: boolean;
 

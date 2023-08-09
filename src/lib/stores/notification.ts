@@ -1,5 +1,6 @@
 import log from '@utils/log';
 import { writable, type Writable } from 'svelte/store';
+import type { ENotification } from '../types';
 
 export const notification = (() => {
 	const { subscribe, set }: Writable<ENotification> = writable();

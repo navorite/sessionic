@@ -1,8 +1,8 @@
-import { compress_options, isFirefox, tabAttr } from '@constants/env';
+import { compress_options, tabAttr } from '@constants/env';
 import { compress as compressLZ } from 'lz-string';
 import browser from 'webextension-polyfill';
 import compress from './compress';
-import log from './log';
+import type { ESession, ETab, QueryInfo, compressOptions } from '../types';
 
 // Get current active tab
 export async function getCurrentTab() {
@@ -22,14 +22,14 @@ export async function getTabs(
 	const tabs = await browser?.tabs?.query(queryInfo);
 
 	for (const tab of tabs) {
-		if (tab.favIconUrl) {
-			isFirefox && (tab.favIconUrl = await compress.icon(tab.favIconUrl, tab.url, options));
+		if (tab.favIconUrl && tab.url) {
+			if (compress) tab.favIconUrl = await compress.icon(tab.favIconUrl, options);
 
 			tab.favIconUrl = compressLZ(tab.favIconUrl);
 		}
 
 		for (const prop in tab) {
-			if (!tabAttr.includes(prop)) delete tab[prop];
+			if (!tabAttr.includes(prop)) delete tab[prop as keyof ETab];
 		}
 	}
 
@@ -42,8 +42,8 @@ export async function getSession(urlFilterList?: string[]) {
 		title: 'Current Session',
 		windows: [],
 		id: 'current',
-		dateSaved: null,
-		dateModified: null,
+		dateSaved: undefined,
+		dateModified: undefined,
 		tabsNumber: 0
 	};
 

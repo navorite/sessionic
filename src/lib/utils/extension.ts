@@ -1,5 +1,6 @@
 import { runtimeURL } from '@constants/env';
 import browser from 'webextension-polyfill';
+import type { Page } from '../types';
 
 export function isExtensionViewed() {
 	return document.visibilityState === 'visible';
@@ -30,8 +31,8 @@ export async function openFullView() {
 			url: browser.runtime.getURL('src/popup/index.html?tab=true')
 		});
 	else {
-		browser.windows.update(tabs[0].windowId, { focused: true });
-		browser.tabs.update(tabs[0].id, {
+		browser.windows.update(tabs[0]!.windowId!, { focused: true }); //TODO: make it open next to current active tab
+		browser.tabs.update(tabs[0]!.id, {
 			active: true,
 			highlighted: true
 		});

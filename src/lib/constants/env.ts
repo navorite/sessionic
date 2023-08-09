@@ -1,4 +1,5 @@
 import browser from 'webextension-polyfill';
+import type { compressOptions } from '../types';
 
 export const EXT_NAME = __EXT_NAME__;
 

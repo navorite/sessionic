@@ -1,5 +1,9 @@
 <script lang="ts" context="module">
-	export const filtered: Writable<ESession[]> = writable();
+	export const filtered = derived(
+		[sessions, filterOptions],
+		([$sessions, $filterOptions]) =>
+			sessions?.filter($filterOptions.query.trim().toLowerCase()) || $sessions
+	);
 </script>
 
 <script lang="ts">
@@ -11,7 +15,7 @@
 	import ActionModal from '@components/Modals/ActionModal.svelte';
 	import sessions from '@stores/sessions';
 	import { filterOptions } from '@stores/settings';
-	import { writable, type Writable } from 'svelte/store';
+	import { derived } from 'svelte/store';
 
 	let modalShow = false;
 	let modalType: 'Save' | 'Rename' = 'Rename';
@@ -21,8 +25,6 @@
 	let scrollTo: (x: number, y: number) => void;
 
 	$: selection = sessions.selection;
-
-	$: $filtered = sessions?.filter($filterOptions?.query.trim().toLowerCase()) || $sessions;
 </script>
 
 <div class="mt-2 flex h-full max-h-[90vh] w-full gap-2 overflow-hidden">

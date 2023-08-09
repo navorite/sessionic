@@ -19,6 +19,7 @@
 
 	<div class="flex flex-col gap-4 p-4">
 		{#if isExtensionViewed()}
+			<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 			{#await settings.init() then _}
 				{#if group === 'keyboard-shortcuts'}
 					<KeyboardShortcuts />

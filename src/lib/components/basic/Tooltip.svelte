@@ -21,7 +21,7 @@
 	{title}
 </div>
 
-<style>
+<style lang="postcss">
 	div {
 		@apply pointer-events-none select-none whitespace-nowrap rounded-md bg-tooltip px-2 py-1 text-sm font-medium text-tooltip-content;
 	}

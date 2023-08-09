@@ -33,7 +33,7 @@
 	});
 
 	let divEl: HTMLDivElement;
-	let timeout: string | number | NodeJS.Timeout;
+	let timeout: NodeJS.Timeout;
 
 	$: viewport = getAvailableViewport(divEl, items?.length, 300);
 	$: (start = viewport.start), (end = viewport.end);
@@ -60,6 +60,7 @@
 			style:padding-top="{viewport.paddingTop}px"
 			style:padding-bottom="{viewport.paddingBottom}px"
 		>
+			<!--  eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 			{#each { length: end - start } as _, i}
 				{@const item = reversed ? items[items.length - 1 - i - start] : items[i + start]}
 				<slot {item} />

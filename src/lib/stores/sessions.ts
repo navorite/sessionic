@@ -7,6 +7,7 @@ import { MESSAGES } from '@constants/notifications';
 import log from '@utils/log';
 import { currentSession } from '@components/Sessions/Current.svelte';
 import type { UUID } from 'crypto';
+import type { ESession } from '../types';
 
 export default (() => {
 	const { subscribe, set, update }: Writable<ESession[]> = writable();

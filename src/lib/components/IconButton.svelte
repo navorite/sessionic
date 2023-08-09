@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { tooltip } from '@utils/tooltip';
+	import type { Icon } from '../types';
 
 	export let icon: Icon = 'default';
-	export let title: string = null;
+	export let title: string = '';
 	export let role: 'button' | 'img' = 'button';
 
 	export { className as class };
@@ -10,9 +11,6 @@
 
 	$: src = `../../icons/${icon}.svg`;
 </script>
-
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-interactive-supports-focus -->
 
 <span
 	use:tooltip={{ title }}

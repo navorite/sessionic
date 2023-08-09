@@ -6,7 +6,7 @@
 
 	let copied = false;
 
-	let timeout: NodeJS.Timeout;
+	let timeout: NodeJS.Timeout | null;
 </script>
 
 <button

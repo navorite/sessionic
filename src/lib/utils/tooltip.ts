@@ -9,7 +9,7 @@ export const tooltip: Action<HTMLElement, { title: string; delay?: number; durat
 
 	element.setAttribute('aria-label', title);
 
-	let tooltipComponent: Tooltip;
+	let tooltipComponent: Tooltip | null;
 
 	element.addEventListener('pointerover', enter);
 	element.addEventListener('pointerout', leave);

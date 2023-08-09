@@ -7,6 +7,7 @@
 	import sessions from '@stores/sessions';
 	import { sendMessage } from '@utils/messages';
 	import { tooltip } from '@utils/tooltip';
+	import type { ESession } from '@/lib/types';
 
 	export let session: ESession;
 
@@ -43,6 +44,7 @@
 				});
 			}}
 		>
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			{@html title}
 		</span>
 
