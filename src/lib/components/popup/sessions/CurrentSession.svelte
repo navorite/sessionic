@@ -25,13 +25,17 @@
 
 	//TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
 	onMount(() => {
-		document.onvisibilitychange = handleUpdate;
+		document.addEventListener('visibilitychange', handleUpdate);
 		browser.tabs.onUpdated.addListener(handleUpdate);
+		browser.tabs.onMoved.addListener(handleUpdate);
+		browser.tabs.onDetached.addListener(handleUpdate);
 		browser.tabs.onRemoved.addListener(handleRemoval);
 
 		return () => {
-			document.onvisibilitychange = null;
+			document.removeEventListener('visibilitychange', handleUpdate);
 			browser.tabs.onUpdated.removeListener(handleUpdate);
+			browser.tabs.onMoved.removeListener(handleUpdate);
+			browser.tabs.onDetached.removeListener(handleUpdate);
 			browser.tabs.onRemoved.removeListener(handleRemoval);
 		};
 	});
