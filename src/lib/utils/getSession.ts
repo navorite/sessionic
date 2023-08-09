@@ -1,8 +1,8 @@
+import browser from 'webextension-polyfill';
+import type { ESession, ETab, QueryInfo, compressOptions } from '@/lib/types';
 import { compress_options, tabAttr } from '@constants/env';
 import { compress as compressLZ } from 'lz-string';
-import browser from 'webextension-polyfill';
-import compress from './compress';
-import type { ESession, ETab, QueryInfo, compressOptions } from '../types';
+import { compress } from '@/lib/utils';
 
 // Get current active tab
 export async function getCurrentTab() {
@@ -10,7 +10,9 @@ export async function getCurrentTab() {
 }
 
 // Get all tabs of current window
-export async function getWindowTabs(optionalQuery: QueryInfo = {}): Promise<ETab[]> {
+export async function getWindowTabs(
+	optionalQuery: QueryInfo = {}
+): Promise<ETab[]> {
 	return getTabs({ ...optionalQuery, currentWindow: true });
 }
 
@@ -23,7 +25,8 @@ export async function getTabs(
 
 	for (const tab of tabs) {
 		if (tab.favIconUrl && tab.url) {
-			if (compress) tab.favIconUrl = await compress.icon(tab.favIconUrl, options);
+			if (compress)
+				tab.favIconUrl = await compress.icon(tab.favIconUrl, options);
 
 			tab.favIconUrl = compressLZ(tab.favIconUrl);
 		}

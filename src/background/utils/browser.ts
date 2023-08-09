@@ -4,7 +4,10 @@ import type { EWindow, ESession, ETab } from '@/lib/types';
 
 const isFirefox = !!browser?.runtime?.getBrowserInfo;
 
-export async function openInCurrentWindow(window: EWindow, discarded?: boolean) {
+export async function openInCurrentWindow(
+	window: EWindow,
+	discarded?: boolean
+) {
 	if (!window.tabs?.length) return;
 
 	window.id = (await browser.windows.getCurrent()).id;
@@ -36,7 +39,11 @@ export async function openInNewWindow(window: EWindow, discarded?: boolean) {
 	}
 }
 
-export async function openSession(session: ESession, newWindow?: boolean, discarded?: boolean) {
+export async function openSession(
+	session: ESession,
+	newWindow?: boolean,
+	discarded?: boolean
+) {
 	for (const window of session.windows) {
 		if (newWindow) {
 			openInNewWindow(window, discarded);
@@ -47,7 +54,11 @@ export async function openSession(session: ESession, newWindow?: boolean, discar
 	}
 }
 
-export async function createTab(tab: ETab, windowId?: number, discarded?: boolean) {
+export async function createTab(
+	tab: ETab,
+	windowId?: number,
+	discarded?: boolean
+) {
 	const {
 		url,
 		title,
@@ -66,7 +77,9 @@ export async function createTab(tab: ETab, windowId?: number, discarded?: boolea
 				? url
 				: `src/discarded/index.html?title=${encodeURIComponent(
 						title!
-				  )}&url=${url}&icon=${encodeURIComponent(decompressLZ(favIconUrl ?? ''))}`,
+				  )}&url=${url}&icon=${encodeURIComponent(
+						decompressLZ(favIconUrl ?? '')
+				  )}`,
 		active,
 		windowId: windowId ?? tab.windowId,
 		pinned,

@@ -1,7 +1,6 @@
 <script lang="ts">
-	import sessions from '@stores/sessions';
-	import Modal from './Modal.svelte';
-	import { currentSession } from '@components/Sessions/Current.svelte';
+	import { currentSession, sessions } from '@/lib/stores';
+	import { Modal } from '@/lib/components';
 
 	export let open = false;
 

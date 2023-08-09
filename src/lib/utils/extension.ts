@@ -1,6 +1,6 @@
-import { runtimeURL } from '@constants/env';
+import type { Page } from '@/lib/types';
 import browser from 'webextension-polyfill';
-import type { Page } from '../types';
+import { runtimeURL } from '@constants/env';
 
 export function isExtensionViewed() {
 	return document.visibilityState === 'visible';

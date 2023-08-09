@@ -1,10 +1,10 @@
-import Tooltip from '@components/basic/Tooltip.svelte';
 import type { Action } from 'svelte/action';
+import { Tooltip } from '@/lib/components';
 
-export const tooltip: Action<HTMLElement, { title: string; delay?: number; duration?: number }> = (
-	element: HTMLElement,
-	{ title, delay, duration }
-) => {
+export const tooltip: Action<
+	HTMLElement,
+	{ title: string; delay?: number; duration?: number }
+> = (element: HTMLElement, { title, delay, duration }) => {
 	if (!title) return;
 
 	element.setAttribute('aria-label', title);

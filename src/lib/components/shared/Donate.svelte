@@ -1,17 +1,25 @@
 <script>
-	import DonateCard from '@components/basic/DonateCard.svelte';
+	import { DonateCard } from '@/lib/components';
 </script>
 
 <div class="container">
 	<p class="mb-4">
-		If you like the extension and would like to help me continue improving the extension, you can
-		donate to any of the links below, I really appreciate it :)
+		If you like the extension and would like to help me continue improving the
+		extension, you can donate to any of the links below, I really appreciate it
+		:)
 	</p>
 
 	<div class="flex flex-wrap gap-4">
 		<div class="flex h-20 w-full justify-center gap-4">
-			<a href="https://ko-fi.com/navorite" target="_blank" class="h-full hover:brightness-110"
-				><img class="h-full" src="../../images/donate_kofi.webp" alt="Donate using Ko-fi.com" /></a
+			<a
+				href="https://ko-fi.com/navorite"
+				target="_blank"
+				class="h-full hover:brightness-110"
+				><img
+					class="h-full"
+					src="../../images/donate_kofi.webp"
+					alt="Donate using Ko-fi.com"
+				/></a
 			>
 			<a
 				href="https://www.patreon.com/navorite"

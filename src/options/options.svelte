@@ -1,11 +1,8 @@
 <script lang="ts">
-	import Tab from './components/basic/Tab.svelte';
-	import General from './components/General.svelte';
-	import KeyboardShortcuts from './components/KeyboardShortcuts.svelte';
-	import About from './components/About.svelte';
+	import { settings } from '@/lib/stores';
+	import { Tab, General, KeyboardShortcuts, About } from '@/lib/components';
 	import { isExtensionViewed } from '@utils/extension';
 	import { EXT_NAME } from '@constants/env';
-	import settings from '@stores/settings';
 
 	let group: string;
 </script>

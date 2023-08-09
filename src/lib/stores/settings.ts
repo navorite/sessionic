@@ -1,10 +1,9 @@
-import log from '@utils/log';
-import { getStorage, setStorage } from '@utils/storage';
-import { applyTheme } from '@utils/theme';
-import { writable, type Writable } from 'svelte/store';
 import { storage, type Storage } from 'webextension-polyfill';
-import sessions from './sessions';
-import type { ESettings, FilterOptions } from '../types';
+import type { ESettings, FilterOptions } from '@/lib/types';
+import { writable, type Writable } from 'svelte/store';
+import { sessions } from '@/lib/stores';
+import { getStorage, setStorage } from '@utils/storage';
+import { log, applyTheme } from '@/lib/utils';
 
 export const filterOptions: Writable<FilterOptions> = writable({ query: '' });
 
@@ -18,7 +17,7 @@ const defaultSettings: ESettings = {
 	urlFilterList: ['<all_urls>']
 };
 
-const settings = () => {
+export const settings = (() => {
 	const { subscribe, set, update } = writable(defaultSettings);
 
 	init();
@@ -45,7 +44,8 @@ const settings = () => {
 
 				if (change === 'darkMode') applyTheme(settings[change], true);
 
-				if (change === 'selectionId') sessions.selection.selectById(settings[change]);
+				if (change === 'selectionId')
+					sessions.selection.selectById(settings[change]);
 			}
 			return settings;
 		});
@@ -69,6 +69,4 @@ const settings = () => {
 		},
 		clear
 	};
-};
-
-export default settings();
+})();

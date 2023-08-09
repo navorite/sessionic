@@ -1,5 +1,5 @@
 import type { UUID } from 'crypto';
-import type { EWindow } from './browser';
+import type { EWindow } from '@/lib/types';
 
 export interface ESession {
 	title: string;

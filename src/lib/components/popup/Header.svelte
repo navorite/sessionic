@@ -1,13 +1,18 @@
 <script lang="ts">
-	import SearchBar from '@components/SearchBar.svelte';
-	import Notification from './basic/Notification.svelte';
-	import IconButton from '@components/IconButton.svelte';
-	import settings, { filterOptions } from '@stores/settings';
 	import { EXT_NAME, isPopup } from '@constants/env';
-	import { notification } from '@stores/notification';
-	import { filtered } from './Sessions/Sessions.svelte';
-	import Modal from './basic/Modal.svelte';
-	import Donate from '@components/Donate.svelte';
+	import {
+		settings,
+		filterOptions,
+		notification,
+		filtered
+	} from '@/lib/stores';
+	import {
+		SearchBar,
+		Notification,
+		IconButton,
+		Modal,
+		Donate
+	} from '@/lib/components';
 	import { openFullView, openOptions } from '@utils/extension';
 
 	let showDonateModal = false;
@@ -19,13 +24,17 @@
 	<h1 class="relative">
 		{EXT_NAME}
 		{#if EXT_VER}
-			<span class="absolute -bottom-[14px] left-1/2 inline-block -translate-x-1/2 text-[10px]"
+			<span
+				class="absolute -bottom-[14px] left-1/2 inline-block -translate-x-1/2 text-[10px]"
 				>{EXT_VER}</span
 			>
 		{/if}
 	</h1>
 
-	<div aria-label="Number of sessions" class="card bg-info text-white hover:bg-info-focus">
+	<div
+		aria-label="Number of sessions"
+		class="card bg-info text-white hover:bg-info-focus"
+	>
 		{$filtered?.length ?? 0} Session{$filtered?.length ?? 0 > 1 ? 's' : ''}
 	</div>
 

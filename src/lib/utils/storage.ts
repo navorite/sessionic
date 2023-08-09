@@ -1,5 +1,5 @@
+import type { ESettings } from '@/lib/types';
 import { storage } from 'webextension-polyfill';
-import type { ESettings } from '../types';
 
 export async function getStorageItem<K extends keyof ESettings>(key: K) {
 	return (await storage.local.get(key))[key] as ESettings[K];

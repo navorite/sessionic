@@ -1,7 +1,6 @@
 <script lang="ts">
-	import Modal from '@components/basic/Modal.svelte';
-	import { createEventDispatcher } from 'svelte';
-	import { tick } from 'svelte';
+	import { createEventDispatcher, tick } from 'svelte';
+	import { Modal } from '@/lib/components';
 
 	export let type: 'Save' | 'Rename';
 
@@ -63,7 +62,9 @@
 		/>
 
 		{#if disabled && !isSubmit}
-			<p class="mx-auto w-max rounded-md bg-error p-1 px-2 text-sm font-semibold">
+			<p
+				class="mx-auto w-max rounded-md bg-error p-1 px-2 text-sm font-semibold"
+			>
 				{errMsg}
 			</p>
 		{/if}

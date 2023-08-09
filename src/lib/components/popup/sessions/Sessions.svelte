@@ -1,21 +1,13 @@
-<script lang="ts" context="module">
-	export const filtered = derived(
-		[sessions, filterOptions],
-		([$sessions, $filterOptions]) =>
-			sessions?.filter($filterOptions.query.trim().toLowerCase()) || $sessions
-	);
-</script>
-
 <script lang="ts">
-	import VirtualList from '@components/basic/VirtualList.svelte';
-	import Session from './Session.svelte';
-	import CurrentSession, { currentSession } from './Current.svelte';
-	import Windows from '../Windows/Windows.svelte';
-	import InputModal from '@components/Modals/InputModal.svelte';
-	import ActionModal from '@components/Modals/ActionModal.svelte';
-	import sessions from '@stores/sessions';
-	import { filterOptions } from '@stores/settings';
-	import { derived } from 'svelte/store';
+	import { currentSession, filtered, sessions } from '@/lib/stores';
+	import {
+		VirtualList,
+		Windows,
+		InputModal,
+		ActionModal,
+		Session,
+		CurrentSession
+	} from '@/lib/components';
 
 	let modalShow = false;
 	let modalType: 'Save' | 'Rename' = 'Rename';
@@ -37,7 +29,13 @@
 		/>
 
 		{#if $filtered}
-			<VirtualList reversed={true} items={$filtered} let:item class="flex-1" bind:scrollTo>
+			<VirtualList
+				reversed={true}
+				items={$filtered}
+				let:item
+				class="flex-1"
+				bind:scrollTo
+			>
 				<Session
 					session={item}
 					on:renameModal={() => {

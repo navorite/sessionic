@@ -1,6 +1,10 @@
 let elementHeight: number, clientHeight: number;
 
-export function getAvailableViewport(parent: HTMLElement, length: number, buffer: number = 0) {
+export function getAvailableViewport(
+	parent: HTMLElement,
+	length: number,
+	buffer: number = 0
+) {
 	let start = 0,
 		end = length ?? 0,
 		paddingTop = 0,

@@ -1,5 +1,5 @@
 import browser from 'webextension-polyfill';
-import type { compressOptions } from '../types';
+import type { compressOptions } from '@/lib/types';
 
 export const EXT_NAME = __EXT_NAME__;
 

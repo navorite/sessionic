@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { tick } from 'svelte';
-	import IconButton from './IconButton.svelte';
+	import { IconButton } from '@/lib/components';
 
 	export let value: string;
 

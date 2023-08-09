@@ -1,7 +1,7 @@
 import { isFirefox } from '@constants/env';
-import type { compressOptions } from '../types';
+import type { compressOptions } from '@/lib/types';
 
-export default (() => {
+export const compress = (() => {
 	if (!isFirefox) return undefined;
 
 	const img = document.createElement('img');
@@ -16,7 +16,10 @@ export default (() => {
 				img.onload = (event) => {
 					if (event.currentTarget instanceof HTMLImageElement) {
 						//TODO: perform better checks and default values
-						let { max_size, quality } = options || { max_size: 20, quality: 0.7 };
+						let { max_size, quality } = options || {
+							max_size: 20,
+							quality: 0.7
+						};
 
 						if (!max_size || max_size >= event.currentTarget.naturalWidth) {
 							max_size = event.currentTarget.naturalWidth;

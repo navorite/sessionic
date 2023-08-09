@@ -1,12 +1,11 @@
 <script lang="ts">
-	import IconButton from '@components/IconButton.svelte';
-	import ListItem from '@components/basic/ListItem.svelte';
-	import { createEventDispatcher } from 'svelte';
-	import { decompress as decompressLZ } from 'lz-string';
-	import { sendMessage } from '@utils/messages';
 	import browser from 'webextension-polyfill';
-	import settings from '@stores/settings';
 	import type { ETab } from '@/lib/types';
+	import { createEventDispatcher } from 'svelte';
+	import { settings } from '@/lib/stores';
+	import { IconButton, ListItem } from '@/lib/components';
+	import { sendMessage } from '@/lib/utils';
+	import { decompress as decompressLZ } from 'lz-string';
 
 	export let tab: ETab;
 	export let current = false;

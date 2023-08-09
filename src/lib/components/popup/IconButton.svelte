@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { tooltip } from '@utils/tooltip';
-	import type { Icon } from '../types';
+	import type { Icon } from '@/lib/types';
+	import { tooltip } from '@/lib/utils';
 
 	export let icon: Icon = 'default';
 	export let title: string = '';

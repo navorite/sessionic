@@ -6,7 +6,12 @@ export const extension = {
 	description: 'A browser extension to save tabs, sessions, and manage them.',
 	author: 'navorite',
 	homepage_url: 'https://github.com/navorite/sessonic',
-	permissions: ['tabs', 'storage', 'unlimitedStorage', ...(isFirefox ? ['cookies'] : [])],
+	permissions: [
+		'tabs',
+		'storage',
+		'unlimitedStorage',
+		...(isFirefox ? ['cookies'] : [])
+	],
 	firefoxId: 'sessonic@navorite'
 };
 

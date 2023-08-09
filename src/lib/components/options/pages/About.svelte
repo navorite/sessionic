@@ -1,6 +1,5 @@
 <script>
-	import Donate from '../../lib/components/Donate.svelte';
-	import Section from './basic/Section.svelte';
+	import { Donate, Section } from '@/lib/components';
 </script>
 
 <Section title="About">

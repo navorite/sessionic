@@ -1,5 +1,5 @@
 <script lang="ts">
-	import IconButton from '@components/IconButton.svelte';
+	import { IconButton } from '@/lib/components';
 
 	export let open = false;
 

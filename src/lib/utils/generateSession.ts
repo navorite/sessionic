@@ -1,4 +1,4 @@
-import type { ESession } from '../types';
+import type { ESession } from '@/lib/types';
 
 export function generateSession(session: ESession): ESession {
 	const date = Date.now();
