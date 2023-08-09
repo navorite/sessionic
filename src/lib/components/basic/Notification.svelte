@@ -2,6 +2,7 @@
 	import { slide } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 	import IconButton from '@components/IconButton.svelte';
+	import type { ENotification } from '@/lib/types';
 
 	export let detail: ENotification;
 

@@ -3,6 +3,7 @@
 	import Section from './basic/Section.svelte';
 	import { sessionsDB } from '@utils/database';
 	import settings from '@stores/settings';
+	import type { ESession } from '@/lib/types';
 
 	$: urlList =
 		$settings.urlFilterList[0] === '<all_urls>' ? '' : $settings.urlFilterList.join('\n');

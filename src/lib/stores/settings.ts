@@ -4,6 +4,7 @@ import { applyTheme } from '@utils/theme';
 import { writable, type Writable } from 'svelte/store';
 import { storage, type Storage } from 'webextension-polyfill';
 import sessions from './sessions';
+import type { ESettings, FilterOptions } from '../types';
 
 export const filterOptions: Writable<FilterOptions> = writable({ query: '' });
 

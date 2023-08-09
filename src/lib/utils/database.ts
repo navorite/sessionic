@@ -7,6 +7,7 @@ import {
 } from 'idb/with-async-ittr';
 import type { UUID } from 'crypto';
 import log from './log';
+import type { ESession } from '../types';
 
 interface DB extends DBSchema {
 	sessions: {
@@ -18,7 +19,7 @@ interface DB extends DBSchema {
 
 class SessionsDB {
 	private static instance: SessionsDB;
-	private db: IDBPDatabase<DB>;
+	private db!: IDBPDatabase<DB>;
 	private open = false;
 	private version = 1;
 
@@ -122,7 +123,9 @@ class SessionsDB {
 		db: IDBPDatabase<DB>,
 		oldVersion: number,
 		newVersion: number,
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		transaction: IDBPTransaction<DB, ArrayLike<StoreNames<DB>>, 'versionchange'>,
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		event: IDBVersionChangeEvent
 	) {
 		log.info(`[db.upgradeSession] init - version: ${newVersion}, old: ${oldVersion}`);

@@ -25,7 +25,6 @@
 	}
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
 	class="flex cursor-text items-center justify-center rounded-md text-sm {showInputBar
 		? 'bg-neutral-3 px-2 py-0.5'

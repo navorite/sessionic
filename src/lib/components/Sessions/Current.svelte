@@ -14,6 +14,7 @@
 	import { getSession } from '@utils/getSession';
 	import { tooltip } from '@utils/tooltip';
 	import settings from '@stores/settings';
+	import type { ESession } from '@/lib/types';
 
 	// to fix inconsistent behaviour with FF and Chrome - need to check
 	settings.init().then(async () => {
@@ -22,7 +23,7 @@
 		if ($settings.selectionId === 'current') selection.select($session);
 	});
 
-	let timeout: NodeJS.Timeout;
+	let timeout: NodeJS.Timeout | null;
 
 	$: selection = sessions.selection;
 
@@ -38,11 +39,11 @@
 		if (window_index === -1) return;
 
 		if (removeInfo.isWindowClosing) {
-			length = $session.windows[window_index].tabs.length;
+			length = $session.windows[window_index]!.tabs!.length;
 
 			$session.windows.splice(window_index, 1);
 		} else {
-			const tabs = $session.windows[window_index].tabs;
+			const tabs = $session.windows[window_index]!.tabs!;
 
 			const tab_index = tabs.findIndex((tab) => tab.id === tabId);
 

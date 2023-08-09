@@ -5,10 +5,10 @@
 	import { tooltip } from '@utils/tooltip';
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { isExtensionViewed } from '@utils/extension';
 	import { sendMessage } from '@utils/messages';
 	import browser from 'webextension-polyfill';
 	import settings from '@stores/settings';
+	import type { ETab, EWindow } from '@/lib/types';
 	const dispatch = createEventDispatcher<{
 		delete: ETab | undefined;
 	}>();
@@ -20,7 +20,7 @@
 	let collapsed = false;
 </script>
 
-{#if window.tabs.length}
+{#if window.tabs?.length}
 	<ListItem let:hover class="rounded-md bg-neutral-2">
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div
@@ -58,7 +58,7 @@
 			</span>
 
 			<div class="card bg-info text-white hover:bg-info-focus" aria-label="Number of window tabs">
-				{window?.tabs.length} Tab{window?.tabs.length > 1 ? 's' : ''}
+				{window?.tabs?.length} Tab{window?.tabs?.length ?? 0 > 1 ? 's' : ''}
 			</div>
 
 			{#if hover}
@@ -67,7 +67,7 @@
 					title={current ? 'Close' : 'Delete'}
 					class="ml-auto hidden text-xl hover:text-error-focus group-hover:block"
 					on:click={() => {
-						if (current) browser?.windows?.remove(window?.id);
+						if (current && window.id) browser.windows.remove(window.id);
 						else dispatch('delete');
 					}}
 				/>
@@ -81,9 +81,9 @@
 			/>
 		</div>
 
-		{#if !collapsed && window}
+		{#if !collapsed && window && window.tabs}
 			<ul class="flex flex-col gap-1 p-2" transition:fade={{ duration: 250 }}>
-				{#each window?.tabs as tab}
+				{#each window.tabs as tab}
 					<Tab {tab} on:delete {current} />
 				{/each}
 			</ul>

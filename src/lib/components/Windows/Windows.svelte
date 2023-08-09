@@ -4,6 +4,7 @@
 	import { currentSession } from '@components/Sessions/Current.svelte';
 	import { isFirefox } from '@constants/env';
 	import { afterUpdate } from 'svelte';
+	import type { ETab } from '@/lib/types';
 
 	export { className as class };
 	let className = '';
@@ -30,7 +31,7 @@
 
 		const window = $session.windows[windowIndex];
 
-		if (!window) return;
+		if (!window || !window.tabs?.length) return;
 
 		if (tab) {
 			const tabIndex = window.tabs.indexOf(tab);
@@ -40,9 +41,7 @@
 			window.tabs.splice(tabIndex, 1);
 
 			$session.tabsNumber--;
-		}
-
-		if (!tab && (window || !window.tabs.length)) {
+		} else {
 			$session.windows.splice(windowIndex, 1);
 
 			$session.tabsNumber -= window.tabs.length;

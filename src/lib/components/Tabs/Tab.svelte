@@ -6,6 +6,7 @@
 	import { sendMessage } from '@utils/messages';
 	import browser from 'webextension-polyfill';
 	import settings from '@stores/settings';
+	import type { ETab } from '@/lib/types';
 
 	export let tab: ETab;
 	export let current = false;
@@ -62,7 +63,7 @@
 	</ListItem>
 {/if}
 
-<style>
+<style lang="postcss">
 	.link {
 		@apply flex w-max max-w-[90%] items-center gap-2 overflow-hidden;
 	}

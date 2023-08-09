@@ -1,19 +1,24 @@
 import browser from 'webextension-polyfill';
 import { decompress as decompressLZ } from 'lz-string';
+import type { EWindow, ESession, ETab } from '@/lib/types';
 
 const isFirefox = !!browser?.runtime?.getBrowserInfo;
 
 export async function openInCurrentWindow(window: EWindow, discarded?: boolean) {
-	window.id = (await browser?.windows?.getCurrent()).id;
+	if (!window.tabs?.length) return;
 
-	for (const tab of window?.tabs) {
+	window.id = (await browser.windows.getCurrent()).id;
+
+	for (const tab of window.tabs) {
 		createTab(tab, window.id, discarded);
 	}
 }
 
 export async function openInNewWindow(window: EWindow, discarded?: boolean) {
+	if (!window.tabs?.length) return;
+
 	const windowId = (
-		await browser?.windows?.create({
+		await browser.windows.create({
 			incognito: window.incognito,
 			...(window.state !== 'normal'
 				? { state: window.state }
@@ -26,7 +31,7 @@ export async function openInNewWindow(window: EWindow, discarded?: boolean) {
 		})
 	).id;
 
-	for (const tab of window?.tabs) {
+	for (const tab of window.tabs) {
 		createTab(tab, windowId, discarded);
 	}
 }
