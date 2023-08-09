@@ -1,85 +1,83 @@
 <script lang="ts">
-  import Window from './Window.svelte';
-  import sessions from '@stores/sessions';
-  import { currentSession } from '@components/Sessions/Current.svelte';
-  import { isFirefox } from '@constants/env';
-  import { afterUpdate } from 'svelte';
+	import Window from './Window.svelte';
+	import sessions from '@stores/sessions';
+	import { currentSession } from '@components/Sessions/Current.svelte';
+	import { isFirefox } from '@constants/env';
+	import { afterUpdate } from 'svelte';
 
-  export { className as class };
-  let className = '';
+	export { className as class };
+	let className = '';
 
-  let ulEl: HTMLUListElement;
+	let ulEl: HTMLUListElement;
 
-  let scrollBarPadding = '0';
+	let scrollBarPadding = '0';
 
-  afterUpdate(() => {
-    if (isFirefox) {
-      scrollBarPadding = ulEl?.scrollHeight > ulEl?.clientHeight ? '1rem' : '0';
-      return;
-    }
+	afterUpdate(() => {
+		if (isFirefox) {
+			scrollBarPadding = ulEl?.scrollHeight > ulEl?.clientHeight ? '1rem' : '0';
+			return;
+		}
 
-    scrollBarPadding = ulEl?.scrollHeight > ulEl?.clientHeight ? '0.5rem' : '0';
-  });
+		scrollBarPadding = ulEl?.scrollHeight > ulEl?.clientHeight ? '0.5rem' : '0';
+	});
 
-  $: session = sessions.selection;
+	$: session = sessions.selection;
 
-  $: current = $session === $currentSession;
+	$: current = $session === $currentSession;
 
-  function deleteTab(windowIndex: number, tab: ETab) {
-    if (!$session || !$session.windows) return;
+	function deleteTab(windowIndex: number, tab: ETab) {
+		if (!$session || !$session.windows) return;
 
-    const window = $session.windows[windowIndex];
+		const window = $session.windows[windowIndex];
 
-    if (!window) return;
+		if (!window) return;
 
-    if (tab) {
-      const tabIndex = window.tabs.indexOf(tab);
+		if (tab) {
+			const tabIndex = window.tabs.indexOf(tab);
 
-      if (tabIndex === -1) return;
+			if (tabIndex === -1) return;
 
-      window.tabs.splice(tabIndex, 1);
+			window.tabs.splice(tabIndex, 1);
 
-      $session.tabsNumber--;
-    }
+			$session.tabsNumber--;
+		}
 
-    if (!tab && (window || !window.tabs.length)) {
-      $session.windows.splice(windowIndex, 1);
+		if (!tab && (window || !window.tabs.length)) {
+			$session.windows.splice(windowIndex, 1);
 
-      $session.tabsNumber -= window.tabs.length;
-    }
+			$session.tabsNumber -= window.tabs.length;
+		}
 
-    sessions.put($session);
+		sessions.put($session);
 
-    if (!$session.windows.length || !$session.tabsNumber) {
-      session.select($currentSession);
-    }
-  }
+		if (!$session.windows.length || !$session.tabsNumber) {
+			session.select($currentSession);
+		}
+	}
 </script>
 
 {#if $session?.windows && $session?.tabsNumber}
-  <ul
-    bind:this={ulEl}
-    class="overflow-y-auto flex flex-col gap-2 {className}"
-    style:padding-right={scrollBarPadding}
-  >
-    {#each $session.windows as window, windowIndex (window)}
-      <Window
-        {window}
-        {current}
-        on:delete={(event) => {
-          deleteTab(windowIndex, event.detail);
-        }}
-      />
-    {/each}
-  </ul>
+	<ul
+		bind:this={ulEl}
+		class="flex flex-col gap-2 overflow-y-auto {className}"
+		style:padding-right={scrollBarPadding}
+	>
+		{#each $session.windows as window, windowIndex (window)}
+			<Window
+				{window}
+				{current}
+				on:delete={(event) => {
+					deleteTab(windowIndex, event.detail);
+				}}
+			/>
+		{/each}
+	</ul>
 {:else}
-  <h2 class="text-lg font-bold mb-1 text-center mx-auto">
-    Select a session or open some tabs!
-  </h2>
+	<h2 class="mx-auto mb-1 text-center text-lg font-bold">Select a session or open some tabs!</h2>
 {/if}
 
 <style>
-  .gutter {
-    scrollbar-gutter: stable;
-  }
+	.gutter {
+		scrollbar-gutter: stable;
+	}
 </style>

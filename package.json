@@ -1,79 +1,91 @@
 {
-  "name": "sessionic",
-  "version": "0.1.2",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "npm run clean && cross-env NODE_ENV=development run-p manifest build:*",
-    "dev-ff": "npm run clean && cross-env NODE_ENV=development run-p manifest:ff build:*",
-    "build": "npm run clean && run-p manifest build:*",
-    "build-ff": "npm run clean && run-p build:* manifest:ff",
-    "build:web": "vite build",
-    "build:background": "vite build -c vite.config.background.ts",
-    "add": "web-ext run --source-dir=./dist -t chromium",
-    "add:ff": "web-ext run --source-dir=./dist",
-    "manifest": "tsx ./scripts/main.ts",
-    "manifest:ff": "cross-env BROWSER_ENV=FF tsx ./scripts/main.ts",
-    "clean": "rimraf dist",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "release": "release-it"
-  },
-  "devDependencies": {
-    "@release-it/conventional-changelog": "^7.0.0",
-    "@sveltejs/vite-plugin-svelte": "^2.4.2",
-    "@tsconfig/svelte": "^5.0.0",
-    "@types/node": "^20.4.2",
-    "@types/webextension-polyfill": "^0.10.1",
-    "autoprefixer": "^10.4.14",
-    "cross-env": "^7.0.3",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.26",
-    "release-it": "^16.1.2",
-    "rimraf": "^5.0.1",
-    "svelte": "^4.0.5",
-    "svelte-check": "^3.4.6",
-    "tailwindcss": "^3.3.3",
-    "tslib": "^2.6.0",
-    "tsx": "^3.12.7",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.4",
-    "web-ext": "^7.6.2",
-    "webextension-polyfill": "^0.10.0"
-  },
-  "dependencies": {
-    "idb": "^7.1.1",
-    "lz-string": "^1.5.0",
-    "pino": "^8.14.1",
-    "url": "^0.11.1"
-  },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release v${version}"
-    },
-    "github": {
-      "release": true
-    },
-    "npm": {
-      "publish": false
-    },
-    "plugins": {
-      "@release-it/conventional-changelog": {
-        "infile": "CHANGELOG.md",
-        "preset": {
-          "name": "conventionalcommits",
-          "types": [
-            {
-              "type": "feat",
-              "section": "Features"
-            },
-            {
-              "type": "fix",
-              "section": "Bug Fixes"
-            },
-            {}
-          ]
-        }
-      }
-    }
-  }
+	"name": "sessionic",
+	"version": "0.1.2",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "npm run clean && cross-env NODE_ENV=development run-p manifest build:*",
+		"dev-ff": "npm run clean && cross-env NODE_ENV=development run-p manifest:ff build:*",
+		"build": "npm run clean && run-p manifest build:*",
+		"build-ff": "npm run clean && run-p build:* manifest:ff",
+		"build:web": "vite build",
+		"build:background": "vite build -c vite.config.background.ts",
+		"add": "web-ext run --source-dir=./dist -t chromium",
+		"add:ff": "web-ext run --source-dir=./dist",
+		"manifest": "tsx ./scripts/main.ts",
+		"manifest:ff": "cross-env BROWSER_ENV=FF tsx ./scripts/main.ts",
+		"clean": "rimraf dist",
+		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"release": "release-it",
+		"format": "prettier --plugin-search-dir . --check .",
+		"format:write": "prettier --plugin-search-dir . --write .",
+		"lint": "npm run format:write && eslint .",
+		"lint:fix": "npm run format:write && eslint . --fix"
+	},
+	"devDependencies": {
+		"@release-it/conventional-changelog": "^7.0.0",
+		"@sveltejs/vite-plugin-svelte": "^2.4.2",
+		"@tsconfig/svelte": "^5.0.0",
+		"@types/node": "^20.4.2",
+		"@types/webextension-polyfill": "^0.10.1",
+		"@typescript-eslint/eslint-plugin": "^6.3.0",
+		"@typescript-eslint/parser": "^6.3.0",
+		"autoprefixer": "^10.4.14",
+		"cross-env": "^7.0.3",
+		"eslint": "^8.46.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-svelte": "^2.32.4",
+		"npm-run-all": "^4.1.5",
+		"postcss": "^8.4.26",
+		"prettier": "2.8.7",
+		"prettier-plugin-svelte": "2.10.0",
+		"prettier-plugin-tailwindcss": "0.2.7",
+		"release-it": "^16.1.2",
+		"rimraf": "^5.0.1",
+		"svelte": "^4.0.5",
+		"svelte-check": "^3.4.6",
+		"tailwindcss": "^3.3.3",
+		"tslib": "^2.6.0",
+		"tsx": "^3.12.7",
+		"typescript": "^5.1.6",
+		"vite": "^4.4.4",
+		"web-ext": "^7.6.2",
+		"webextension-polyfill": "^0.10.0"
+	},
+	"dependencies": {
+		"idb": "^7.1.1",
+		"lz-string": "^1.5.0",
+		"pino": "^8.14.1",
+		"url": "^0.11.1"
+	},
+	"release-it": {
+		"git": {
+			"commitMessage": "chore: release v${version}"
+		},
+		"github": {
+			"release": true
+		},
+		"npm": {
+			"publish": false
+		},
+		"plugins": {
+			"@release-it/conventional-changelog": {
+				"infile": "CHANGELOG.md",
+				"preset": {
+					"name": "conventionalcommits",
+					"types": [
+						{
+							"type": "feat",
+							"section": "Features"
+						},
+						{
+							"type": "fix",
+							"section": "Bug Fixes"
+						},
+						{}
+					]
+				}
+			}
+		}
+	}
 }

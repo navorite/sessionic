@@ -1,0 +1,15 @@
+node_modules
+.env
+.env.*
+dist
+.github
+.vscode
+
+# Ignore files for PNPM, NPM and YARN
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+tsconfig.json
+
+CHANGELOG.md
