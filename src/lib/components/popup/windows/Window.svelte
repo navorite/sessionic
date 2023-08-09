@@ -1,14 +1,12 @@
 <script lang="ts">
-	import ListItem from '@components/basic/ListItem.svelte';
-	import IconButton from '../IconButton.svelte';
-	import Tab from '@components/Tabs/Tab.svelte';
-	import { tooltip } from '@utils/tooltip';
+	import browser from 'webextension-polyfill';
+	import type { ETab, EWindow } from '@/lib/types';
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { sendMessage } from '@utils/messages';
-	import browser from 'webextension-polyfill';
-	import settings from '@stores/settings';
-	import type { ETab, EWindow } from '@/lib/types';
+	import { settings } from '@/lib/stores';
+	import { ListItem, IconButton, TabItem } from '@/lib/components';
+	import { tooltip, sendMessage } from '@/lib/utils';
+
 	const dispatch = createEventDispatcher<{
 		delete: ETab | undefined;
 	}>();
@@ -57,7 +55,10 @@
 				{window?.incognito ? 'Private' : ''} Window
 			</span>
 
-			<div class="card bg-info text-white hover:bg-info-focus" aria-label="Number of window tabs">
+			<div
+				class="card bg-info text-white hover:bg-info-focus"
+				aria-label="Number of window tabs"
+			>
 				{window?.tabs?.length} Tab{window?.tabs?.length ?? 0 > 1 ? 's' : ''}
 			</div>
 
@@ -84,7 +85,7 @@
 		{#if !collapsed && window && window.tabs}
 			<ul class="flex flex-col gap-1 p-2" transition:fade={{ duration: 250 }}>
 				{#each window.tabs as tab}
-					<Tab {tab} on:delete {current} />
+					<TabItem {tab} on:delete {current} />
 				{/each}
 			</ul>
 			<!-- <slot name="tabs" /> -->

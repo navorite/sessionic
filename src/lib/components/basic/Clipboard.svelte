@@ -1,6 +1,6 @@
 <script lang="ts">
-	import IconButton from '@components/IconButton.svelte';
-	import { tooltip } from '@utils/tooltip';
+	import { IconButton } from '@/lib/components';
+	import { tooltip } from '@/lib/utils';
 
 	export let value: string;
 

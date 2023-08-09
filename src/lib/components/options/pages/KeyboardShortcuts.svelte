@@ -1,6 +1,5 @@
 <script>
-	import Section from './basic/Section.svelte';
-	import Shortcut from './basic/Shortcut.svelte';
+	import { Section, Shortcut } from '@/lib/components';
 </script>
 
 <Section title="Keyboard Shortcuts">

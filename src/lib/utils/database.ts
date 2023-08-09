@@ -6,8 +6,8 @@ import {
 	type StoreNames
 } from 'idb/with-async-ittr';
 import type { UUID } from 'crypto';
-import log from './log';
-import type { ESession } from '../types';
+import type { ESession } from '@/lib/types';
+import { log } from '@/lib/utils';
 
 interface DB extends DBSchema {
 	sessions: {
@@ -47,7 +47,8 @@ class SessionsDB {
 
 		this.db.onerror = () => log.error('[db.initDB] error in db: ', this.db);
 
-		this.db.onabort = () => log.error('[db.initDB]: aborted transactions in db: ', this.db);
+		this.db.onabort = () =>
+			log.error('[db.initDB]: aborted transactions in db: ', this.db);
 	}
 
 	async loadSessions(query?: number | IDBKeyRange, count?: number) {
@@ -124,11 +125,17 @@ class SessionsDB {
 		oldVersion: number,
 		newVersion: number,
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		transaction: IDBPTransaction<DB, ArrayLike<StoreNames<DB>>, 'versionchange'>,
+		transaction: IDBPTransaction<
+			DB,
+			ArrayLike<StoreNames<DB>>,
+			'versionchange'
+		>,
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		event: IDBVersionChangeEvent
 	) {
-		log.info(`[db.upgradeSession] init - version: ${newVersion}, old: ${oldVersion}`);
+		log.info(
+			`[db.upgradeSession] init - version: ${newVersion}, old: ${oldVersion}`
+		);
 
 		if (newVersion === 1) {
 			log.info('[db.upgradeSession] creating object store');

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Modal from '@components/basic/Modal.svelte';
 	import { createEventDispatcher } from 'svelte';
+	import { Modal } from '@/lib/components';
 
 	export let type = 'Delete' as const;
 

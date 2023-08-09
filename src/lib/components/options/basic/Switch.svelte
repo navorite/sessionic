@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { tooltip } from '@utils/tooltip';
+	import { tooltip } from '@/lib/utils';
 
 	export let title: string;
 	export let checked = false;

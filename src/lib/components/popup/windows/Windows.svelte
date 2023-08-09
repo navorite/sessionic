@@ -1,10 +1,9 @@
 <script lang="ts">
-	import Window from './Window.svelte';
-	import sessions from '@stores/sessions';
-	import { currentSession } from '@components/Sessions/Current.svelte';
-	import { isFirefox } from '@constants/env';
-	import { afterUpdate } from 'svelte';
 	import type { ETab } from '@/lib/types';
+	import { afterUpdate } from 'svelte';
+	import { isFirefox } from '@constants/env';
+	import { sessions, currentSession } from '@/lib/stores';
+	import { Window } from '@/lib/components';
 
 	export { className as class };
 	let className = '';

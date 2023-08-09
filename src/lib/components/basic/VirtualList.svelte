@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { isFirefox } from '@constants/env';
-
 	import { afterUpdate } from 'svelte';
-
 	import { getAvailableViewport } from '@utils/viewport';
 
 	export { className as class };
@@ -15,7 +13,11 @@
 	export let start: number = 0;
 	export let end: number = 0;
 
-	export function scrollTo(x: number, y: number, behavior: ScrollBehavior = 'smooth') {
+	export function scrollTo(
+		x: number,
+		y: number,
+		behavior: ScrollBehavior = 'smooth'
+	) {
 		divEl?.scrollTo({ top: y, left: x, behavior: behavior });
 	}
 
@@ -25,11 +27,13 @@
 
 	afterUpdate(() => {
 		if (isFirefox) {
-			scrollBarPadding = divEl?.scrollHeight > divEl?.clientHeight ? '1rem' : '0';
+			scrollBarPadding =
+				divEl?.scrollHeight > divEl?.clientHeight ? '1rem' : '0';
 			return;
 		}
 
-		scrollBarPadding = divEl?.scrollHeight > divEl?.clientHeight ? '0.5rem' : '0';
+		scrollBarPadding =
+			divEl?.scrollHeight > divEl?.clientHeight ? '0.5rem' : '0';
 	});
 
 	let divEl: HTMLDivElement;
@@ -62,7 +66,9 @@
 		>
 			<!--  eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 			{#each { length: end - start } as _, i}
-				{@const item = reversed ? items[items.length - 1 - i - start] : items[i + start]}
+				{@const item = reversed
+					? items[items.length - 1 - i - start]
+					: items[i + start]}
 				<slot {item} />
 			{/each}
 		</ul>

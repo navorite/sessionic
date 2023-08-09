@@ -14,5 +14,6 @@ if (favIcon) {
 document.onvisibilitychange = replaceTab;
 
 function replaceTab() {
-	if (document.visibilityState === 'visible') location.href = searchParams.get('url')!;
+	if (document.visibilityState === 'visible')
+		location.href = searchParams.get('url')!;
 }

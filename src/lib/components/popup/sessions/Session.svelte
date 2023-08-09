@@ -1,13 +1,9 @@
 <script lang="ts">
-	import ListItem from '@components/basic/ListItem.svelte';
-	import IconButton from '../IconButton.svelte';
-	import settings, { filterOptions } from '@stores/settings';
-	import { markResult } from '@utils/markResult';
-	import { createEventDispatcher } from 'svelte';
-	import sessions from '@stores/sessions';
-	import { sendMessage } from '@utils/messages';
-	import { tooltip } from '@utils/tooltip';
 	import type { ESession } from '@/lib/types';
+	import { createEventDispatcher } from 'svelte';
+	import { settings, filterOptions, sessions } from '@/lib/stores';
+	import { ListItem, IconButton } from '@/lib/components';
+	import { tooltip, sendMessage, markResult } from '@/lib/utils';
 
 	export let session: ESession;
 
@@ -71,7 +67,9 @@
 		<div
 			class="session-card"
 			use:tooltip={{
-				title: `${session?.windows?.length} Window${session?.windows?.length > 0 ? 's' : ''}`
+				title: `${session?.windows?.length} Window${
+					session?.windows?.length > 0 ? 's' : ''
+				}`
 			}}
 		>
 			<IconButton icon="window" class="text-base" role="img" />

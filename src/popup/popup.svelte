@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { EXT_NAME, isPopup } from '@constants/env';
-	import Header from '@components/Header.svelte';
-	import Sessions from '@components/Sessions/Sessions.svelte';
-	import CommandPalette from '@components/basic/CommandPalette.svelte';
-	import settings from '@stores/settings';
+	import { settings } from '@/lib/stores/';
 	import { openFullView } from '@utils/extension';
+	import { CommandPalette, Header, Sessions } from '@/lib/components';
 
 	shouldLoadPopup();
 

@@ -1,24 +1,24 @@
 <script lang="ts">
-	import Switch from './basic/Switch.svelte';
-	import Section from './basic/Section.svelte';
-	import { sessionsDB } from '@utils/database';
-	import settings from '@stores/settings';
 	import type { ESession } from '@/lib/types';
+	import { settings } from '@/lib/stores';
+	import { sessionsDB } from '@/lib/utils';
+	import { Switch, Section } from '@/lib/components';
 
 	$: urlList =
-		$settings.urlFilterList[0] === '<all_urls>' ? '' : $settings.urlFilterList.join('\n');
+		$settings.urlFilterList[0] === '<all_urls>'
+			? ''
+			: $settings.urlFilterList.join('\n');
 
 	async function handleExport() {
 		const date = new Date();
 
 		const sessions = await sessionsDB.loadSessions();
 
-		const fileName = `[${__EXT_NAME__}]${sessions.length ?? 0}_session-${date.toLocaleDateString(
-			[],
-			{
-				dateStyle: 'short'
-			}
-		)}-${date.toLocaleTimeString([], {
+		const fileName = `[${__EXT_NAME__}]${
+			sessions.length ?? 0
+		}_session-${date.toLocaleDateString([], {
+			dateStyle: 'short'
+		})}-${date.toLocaleTimeString([], {
 			timeStyle: 'short'
 		})}.json`;
 
@@ -63,9 +63,9 @@
 
 		const value = ev.currentTarget.value;
 
-		const urls = value.match(/(\b(https?|ftp|file)|\B\*):\/{2}(\*|(\*\.)?[^*/\s:]*)\/[^\s]*/g) ?? [
-			'<all_urls>'
-		];
+		const urls = value.match(
+			/(\b(https?|ftp|file)|\B\*):\/{2}(\*|(\*\.)?[^*/\s:]*)\/[^\s]*/g
+		) ?? ['<all_urls>'];
 
 		settings.changeSetting('urlFilterList', urls);
 
@@ -122,13 +122,21 @@
 
 <Section title="Session Actions">
 	<div class="flex gap-2">
-		<label class="max-w-max cursor-pointer rounded-md bg-neutral-4 p-2 hover:bg-neutral-5">
+		<label
+			class="max-w-max cursor-pointer rounded-md bg-neutral-4 p-2 hover:bg-neutral-5"
+		>
 			Import Sessions
-			<input type="file" class="hidden" on:change={handleImport} accept=".json" />
+			<input
+				type="file"
+				class="hidden"
+				on:change={handleImport}
+				accept=".json"
+			/>
 		</label>
 
-		<button class="max-w-max rounded-md bg-neutral-4 p-2 hover:bg-neutral-5" on:click={handleExport}
-			>Export Sessions</button
+		<button
+			class="max-w-max rounded-md bg-neutral-4 p-2 hover:bg-neutral-5"
+			on:click={handleExport}>Export Sessions</button
 		>
 	</div>
 </Section>

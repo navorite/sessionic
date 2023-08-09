@@ -1,16 +1,13 @@
-import { get, writable, type Writable } from 'svelte/store';
-import { sessionsDB } from '@utils/database';
-import { generateSession } from '@utils/generateSession';
-import settings from './settings';
-import { notification } from './notification';
-import { MESSAGES } from '@constants/notifications';
-import log from '@utils/log';
-import { currentSession } from '@components/Sessions/Current.svelte';
 import type { UUID } from 'crypto';
-import type { ESession } from '../types';
+import type { ESession } from '@/lib/types';
+import { derived, get, writable, type Writable } from 'svelte/store';
+import { sessionsDB } from '@utils/database';
+import { settings, notification, filterOptions } from '@/lib/stores';
+import { MESSAGES } from '@constants/notifications';
+import { log, generateSession } from '@/lib/utils';
 
-export default (() => {
-	const { subscribe, set, update }: Writable<ESession[]> = writable();
+export const sessions = (() => {
+	const { subscribe, set, update }: Writable<ESession[]> = writable([]);
 	const selection: Writable<ESession> = writable();
 
 	load();
@@ -55,7 +52,8 @@ export default (() => {
 	}
 
 	async function put(target: ESession) {
-		if (!target.windows.length || !target.tabsNumber) return await remove(target);
+		if (!target.windows.length || !target.tabsNumber)
+			return await remove(target);
 
 		await sessionsDB.updateSession(target);
 
@@ -153,3 +151,11 @@ export default (() => {
 		}
 	};
 })();
+
+export const filtered = derived(
+	[sessions, filterOptions],
+	([$sessions, $filterOptions]) =>
+		sessions?.filter($filterOptions?.query?.trim().toLowerCase()) || $sessions
+);
+
+export const currentSession: Writable<ESession> = writable();

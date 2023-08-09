@@ -1,20 +1,14 @@
-<script lang="ts" context="module">
-	export { session as currentSession };
-
-	const session: Writable<ESession> = writable();
-</script>
-
 <script lang="ts">
-	import IconButton from '../IconButton.svelte';
-	import { onMount } from 'svelte';
 	import browser from 'webextension-polyfill';
-	import sessions from '@stores/sessions';
-	import { writable, type Writable } from 'svelte/store';
-	import { isExtensionReady, isExtensionViewed } from '@utils/extension';
-	import { getSession } from '@utils/getSession';
-	import { tooltip } from '@utils/tooltip';
-	import settings from '@stores/settings';
-	import type { ESession } from '@/lib/types';
+	import { onMount } from 'svelte';
+	import { settings, sessions, currentSession as session } from '@/lib/stores';
+	import { IconButton } from '@/lib/components';
+	import {
+		tooltip,
+		getSession,
+		isExtensionReady,
+		isExtensionViewed
+	} from '@/lib/utils';
 
 	// to fix inconsistent behaviour with FF and Chrome - need to check
 	settings.init().then(async () => {
@@ -28,6 +22,19 @@
 	$: selection = sessions.selection;
 
 	$: selected = $selection === $session;
+
+	//TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
+	onMount(() => {
+		document.onvisibilitychange = handleUpdate;
+		browser.tabs.onUpdated.addListener(handleUpdate);
+		browser.tabs.onRemoved.addListener(handleRemoval);
+
+		return () => {
+			document.onvisibilitychange = null;
+			browser.tabs.onUpdated.removeListener(handleUpdate);
+			browser.tabs.onRemoved.removeListener(handleRemoval);
+		};
+	});
 
 	function handleRemoval(
 		tabId: number,
@@ -64,19 +71,6 @@
 		if (!$selection?.id || $selection?.id === 'current')
 			selection?.select($session);
 	}
-
-	//TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
-	onMount(() => {
-		document.onvisibilitychange = handleUpdate;
-		browser?.tabs?.onUpdated.addListener(handleUpdate);
-		browser?.tabs?.onRemoved.addListener(handleRemoval);
-
-		return () => {
-			document.onvisibilitychange = null;
-			browser?.tabs?.onUpdated.removeListener(handleUpdate);
-			browser?.tabs?.onRemoved.removeListener(handleRemoval);
-		};
-	});
 
 	async function handleUpdate() {
 		if (!(isExtensionViewed() && isExtensionReady()) || timeout) return;
