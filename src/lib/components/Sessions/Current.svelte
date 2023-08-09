@@ -29,32 +29,40 @@
 
 	$: selected = $selection === $session;
 
-	function handleRemoval(tabId: number, removeInfo: browser.Tabs.OnRemovedRemoveInfoType) {
+	function handleRemoval(
+		tabId: number,
+		removeInfo: browser.Tabs.OnRemovedRemoveInfoType
+	) {
 		if (!isExtensionViewed()) return;
 
-		const window_index = $session.windows.findIndex((window) => window.id === removeInfo.windowId);
-
-		let length = 1;
+		const window_index = $session.windows.findIndex(
+			(window) => window.id === removeInfo.windowId
+		);
 
 		if (window_index === -1) return;
 
-		if (removeInfo.isWindowClosing) {
-			length = $session.windows[window_index]!.tabs!.length;
+		const window = $session.windows[window_index]!;
 
-			$session.windows.splice(window_index, 1);
-		} else {
-			const tabs = $session.windows[window_index]!.tabs!;
+		let length = 1;
 
-			const tab_index = tabs.findIndex((tab) => tab.id === tabId);
+		if (!removeInfo.isWindowClosing && window.tabs?.length) {
+			const tab_index = window.tabs.findIndex((tab) => tab.id === tabId);
 
 			if (tab_index === -1) return;
 
-			tabs.splice(tab_index, 1);
+			window.tabs.splice(tab_index, 1);
+		}
+
+		if (removeInfo.isWindowClosing || !window.tabs?.length) {
+			length = window.tabs?.length || length;
+
+			$session.windows.splice(window_index, 1);
 		}
 
 		$session.tabsNumber -= length;
 
-		if (!$selection?.id || $selection?.id === 'current') selection?.select($session);
+		if (!$selection?.id || $selection?.id === 'current')
+			selection?.select($session);
 	}
 
 	//TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
@@ -77,7 +85,8 @@
 		timeout = setTimeout(async () => {
 			$session = await getSession($settings.urlFilterList);
 
-			if (!$selection?.id || $selection?.id === 'current') selection.select($session);
+			if (!$selection?.id || $selection?.id === 'current')
+				selection.select($session);
 
 			timeout = null;
 		}, 50);
@@ -93,7 +102,9 @@
 		: ''}"
 	on:click={() => selection.select($session)}
 >
-	<p class="max-w-max flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-sm font-bold">
+	<p
+		class="max-w-max flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-sm font-bold"
+	>
 		Current Session
 	</p>
 
@@ -101,7 +112,9 @@
 		<div
 			class="session-card"
 			use:tooltip={{
-				title: `${$session?.windows?.length} Window${$session?.windows?.length > 0 ? 's' : ''}`
+				title: `${$session?.windows?.length} Window${
+					$session?.windows?.length > 0 ? 's' : ''
+				}`
 			}}
 		>
 			<IconButton icon="window" class="text-base" role="img" />
@@ -111,7 +124,9 @@
 		<div
 			class="session-card"
 			use:tooltip={{
-				title: `${$session?.tabsNumber} Tab${$session?.tabsNumber > 0 ? 's' : ''}`
+				title: `${$session?.tabsNumber} Tab${
+					$session?.tabsNumber > 0 ? 's' : ''
+				}`
 			}}
 		>
 			<IconButton icon="tab" class="text-base" role="img" />
@@ -119,5 +134,10 @@
 		</div>
 	</div>
 
-	<IconButton icon="save" title="Save" class="ml-auto text-2xl hover:text-primary-focus" on:click />
+	<IconButton
+		icon="save"
+		title="Save"
+		class="ml-auto text-2xl hover:text-primary-focus"
+		on:click
+	/>
 </div>
