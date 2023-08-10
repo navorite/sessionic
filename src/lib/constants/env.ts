@@ -5,9 +5,9 @@ export const EXT_NAME = __EXT_NAME__;
 
 export const isDEV = process.env.NODE_ENV !== 'production';
 
-export const isFirefox = !!browser?.runtime?.getBrowserInfo;
+export const isFirefox = !!browser.runtime?.getBrowserInfo;
 
-export const runtimeURL = browser?.runtime?.getURL('');
+export const runtimeURL = browser.runtime.getURL('');
 
 export const isPopup = !new URL(document.location.href).searchParams.has('tab');
 
