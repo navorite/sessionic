@@ -1,6 +1,6 @@
 import type { Page } from '@/lib/types';
 import browser from 'webextension-polyfill';
-import { runtimeURL } from '@constants/env';
+import { isFirefox, runtimeURL } from '@constants/env';
 
 export function isExtensionViewed() {
 	return document.visibilityState === 'visible';
@@ -10,31 +10,52 @@ export function isExtensionReady() {
 	return document.readyState === 'complete';
 }
 
+// Open the Options page
+export function openOptions() {
+	return openExtensionPage('options');
+}
+
+// Open the Popup page
+export function openFullView() {
+	return openExtensionPage('popup', '?tab=true');
+}
+
+// Open an extension page, under a unique ID to prevent duplicate tabs
+// candidate: close already open full view pages if it exists
+export async function openExtensionPage(page: Page, query?: string) {
+	const [t1, t2] = await Promise.all([
+		browser.tabs.query({ active: true, currentWindow: true }),
+		browser.tabs.query({
+			url: getExtensionURL(page, query)
+		})
+	]);
+
+	if (!t1.length) return;
+
+	const currentTab = t1[0]!;
+
+	if (!t2.length)
+		browser.tabs.create({
+			url: getExtensionURL(page, query),
+			index: currentTab.index
+		});
+	else {
+		const extensionTab = t2[0]!;
+
+		if (
+			(Math.abs(currentTab.index - extensionTab.index) >= 15 && isFirefox) ||
+			extensionTab.windowId !== currentTab.windowId
+		)
+			browser.tabs.move(extensionTab.id!, {
+				index: currentTab.index,
+				windowId: currentTab.windowId
+			});
+
+		browser.tabs.update(extensionTab.id, { active: true, highlighted: true });
+	}
+}
+
 // Get runtime URL for a page in the extension
 export function getExtensionURL(page?: Page, query: string = '') {
 	return `${runtimeURL}src/${page}/index.html${query}`;
-}
-
-// Open the extension Options page, under a unique ID to prevent duplicate tabs
-export function openOptions() {
-	return browser?.runtime?.openOptionsPage();
-}
-
-// Open the extension Popup page, under a unique ID to prevent duplicate tabs
-export async function openFullView() {
-	const tabs = await browser.tabs.query({
-		url: [browser.runtime.getURL('src/popup/index.html?tab=true')]
-	});
-
-	if (!tabs.length)
-		browser.tabs.create({
-			url: browser.runtime.getURL('src/popup/index.html?tab=true')
-		});
-	else {
-		browser.windows.update(tabs[0]!.windowId!, { focused: true }); //TODO: make it open next to current active tab
-		browser.tabs.update(tabs[0]!.id, {
-			active: true,
-			highlighted: true
-		});
-	}
 }
