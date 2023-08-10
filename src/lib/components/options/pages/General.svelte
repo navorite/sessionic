@@ -3,6 +3,7 @@
 	import { settings } from '@/lib/stores';
 	import { sessionsDB } from '@/lib/utils';
 	import { Switch, Section } from '@/lib/components';
+	import { compressToUint8Array, decompressFromUint8Array } from 'lz-string';
 
 	$: urlList =
 		$settings.urlFilterList[0] === '<all_urls>'
@@ -22,7 +23,9 @@
 			timeStyle: 'short'
 		})}.json`;
 
-		const blob = new Blob([JSON.stringify(sessions)]);
+		const compressed = compressToUint8Array(JSON.stringify(sessions));
+
+		const blob = new Blob([compressed]);
 
 		const url = URL.createObjectURL(blob);
 
@@ -47,20 +50,24 @@
 
 		const fileReader = new FileReader();
 
-		fileReader.onloadend = (ev) => {
-			const sessions = JSON.parse(ev.target!.result as string) as ESession[];
+		fileReader.readAsArrayBuffer(file);
+
+		fileReader.onloadend = async (ev) => {
+			const bytes = new Uint8Array(ev.target?.result as ArrayBufferLike);
+
+			const sessions = JSON.parse(
+				decompressFromUint8Array(bytes)
+			) as ESession[];
+
+			if (!sessions.length) return;
 
 			sessionsDB.saveSessions(sessions);
 		};
-
-		fileReader.readAsText(file);
 	}
 
 	function handleFilterListChange(
 		ev: Event & { currentTarget: EventTarget & HTMLTextAreaElement }
 	) {
-		//TODO: sanitize for duplicates and verify url structure
-
 		const value = ev.currentTarget.value;
 
 		const urls = value.match(
