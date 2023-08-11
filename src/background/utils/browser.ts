@@ -71,13 +71,15 @@ export async function createTab(
 		incognito
 	} = tab;
 
+	if (!url) return;
+
 	return browser?.tabs?.create({
 		url:
 			isFirefox || active || !discarded
 				? url
 				: `src/discarded/index.html?title=${encodeURIComponent(
 						title!
-				  )}&url=${url}&icon=${encodeURIComponent(
+				  )}&url=${encodeURIComponent(url)}&icon=${encodeURIComponent(
 						decompressLZ(favIconUrl ?? '')
 				  )}`,
 		active,
