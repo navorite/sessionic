@@ -6,13 +6,12 @@ export async function handleExport() {
 
 	const sessions = await sessionsDB.loadSessions();
 
-	const fileName = `[${__EXT_NAME__}]${
-		sessions.length ?? 0
-	}_session-${date.toLocaleDateString([], {
-		dateStyle: 'short'
-	})}-${date.toLocaleTimeString([], {
-		timeStyle: 'short'
-	})}.ssf`;
+	if (!sessions.length) return;
+
+	const fileName = `[${__EXT_NAME__}:${sessions.length}]${date.toLocaleString(
+		[],
+		{ dateStyle: 'medium', timeStyle: 'short' }
+	)}.ssf`;
 
 	const compressed = compressToUint8Array(JSON.stringify(sessions));
 
