@@ -1,5 +1,12 @@
 
 
+## [0.2.1](https://github.com/navorite/sessionic/compare/v0.2.0...v0.2.1) (2023-08-11)
+
+
+### Bug Fixes
+
+* Tabs don't open when tab lazy loading is off ([b374699](https://github.com/navorite/sessionic/commit/b374699441d7f987fbdc5879404c566074d39b7b))
+
 ## [0.2.0](https://github.com/navorite/sessionic/compare/v0.1.2...v0.2.0) (2023-08-11)
 
 
