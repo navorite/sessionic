@@ -6,9 +6,10 @@ export function handleFilterListChange(
 ) {
 	const value = ev.currentTarget.value;
 
-	const urls = value.match(
-		/(\b(https?|ftp|file)|\B\*):\/{2}(\*|(\*\.)?[^*/\s:]*)\/[^\s]*/g
-	);
+	const urls =
+		value.match(
+			/(\b(https?|ftp|file)|\B\*):\/{2}(\*|(\*\.)?[^*/\s:]*)\/[^\s]*/g
+		) ?? undefined;
 
 	settings.changeSetting('urlFilterList', urls);
 
