@@ -15,5 +15,5 @@ document.onvisibilitychange = replaceTab;
 
 function replaceTab() {
 	if (document.visibilityState === 'visible')
-		location.href = searchParams.get('url')!;
+		location.href = decodeURIComponent(searchParams.get('url')!);
 }
