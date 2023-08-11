@@ -13,7 +13,7 @@
 	const dispatch = createEventDispatcher<{ delete: ETab }>();
 </script>
 
-{#if tab}
+{#if tab?.url}
 	<ListItem class="tab-container" let:hover>
 		<button
 			type="button"
@@ -26,7 +26,7 @@
 				});
 			}}
 		>
-			{#if tab.favIconUrl}
+			{#if tab.favIconUrl && !tab.url.startsWith('chrome-extension://')}
 				<!-- TODO: fix layout shift on certain favicons -->
 				<img
 					style:width="1rem"
