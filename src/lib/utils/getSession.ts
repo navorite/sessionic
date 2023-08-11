@@ -8,7 +8,7 @@ import type {
 } from '@/lib/types';
 import { compress_options, tabAttr } from '@constants/env';
 import { compress as compressLZ } from 'lz-string';
-import { compress } from '@/lib/utils';
+import { compress, getExtensionURL } from '@/lib/utils';
 
 // Get current active tab
 export async function getCurrentTab() {
@@ -30,7 +30,12 @@ export async function getTabs(
 	const tabs = await browser?.tabs?.query(queryInfo);
 
 	for (const tab of tabs) {
-		if (tab.favIconUrl && tab.url) {
+		if (!tab.url) continue;
+
+		if (tab.url.startsWith(getExtensionURL('discarded')))
+			tab.url = replaceDiscardedURL(tab.url);
+
+		if (tab.favIconUrl) {
 			if (compress)
 				tab.favIconUrl = await compress.icon(tab.favIconUrl, options);
 
@@ -62,7 +67,7 @@ export async function getSession(urlFilterList?: URLFilterList) {
 		window.tabs = await getTabs(
 			{
 				windowId: window.id,
-				url: urlFilterList
+				url: urlFilterList as undefined
 			},
 			compress_options
 		);
@@ -71,4 +76,10 @@ export async function getSession(urlFilterList?: URLFilterList) {
 	}
 
 	return session;
+}
+
+function replaceDiscardedURL(url: string) {
+	const searchParams = new URLSearchParams(new URL(url).search);
+
+	return decodeURIComponent(searchParams.get('url')!);
 }
