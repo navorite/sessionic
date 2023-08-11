@@ -3,16 +3,19 @@ import { createTab, openInNewWindow, openSession } from './utils/browser';
 
 browser.runtime.onMessage.addListener((request) => {
 	switch (request.message) {
-		case 'openInNewWindow':
+		case 'openInNewWindow': {
 			openInNewWindow(request.window, request.discarded);
 			break;
+		}
 
-		case 'createTab':
+		case 'createTab': {
 			createTab(request.tab, undefined, request.discarded);
 			break;
+		}
 
-		case 'openSession':
+		case 'openSession': {
 			openSession(request.session, true, request.discarded);
 			break;
+		}
 	}
 });
