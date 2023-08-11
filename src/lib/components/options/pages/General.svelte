@@ -1,83 +1,16 @@
 <script lang="ts">
-	import type { ESession } from '@/lib/types';
 	import { settings } from '@/lib/stores';
-	import { sessionsDB } from '@/lib/utils';
 	import { Switch, Section } from '@/lib/components';
-	import { compressToUint8Array, decompressFromUint8Array } from 'lz-string';
+	import {
+		handleExport,
+		handleFilterListChange,
+		handleImport
+	} from '@/lib/utils';
 
 	$: urlList =
 		$settings.urlFilterList[0] === '<all_urls>'
 			? ''
 			: $settings.urlFilterList.join('\n');
-
-	async function handleExport() {
-		const date = new Date();
-
-		const sessions = await sessionsDB.loadSessions();
-
-		const fileName = `[${__EXT_NAME__}]${
-			sessions.length ?? 0
-		}_session-${date.toLocaleDateString([], {
-			dateStyle: 'short'
-		})}-${date.toLocaleTimeString([], {
-			timeStyle: 'short'
-		})}.json`;
-
-		const compressed = compressToUint8Array(JSON.stringify(sessions));
-
-		const blob = new Blob([compressed]);
-
-		const url = URL.createObjectURL(blob);
-
-		const anchor = document.createElement('a') as HTMLAnchorElement;
-
-		anchor.style.display = 'none';
-
-		anchor.href = url;
-		anchor.download = fileName;
-
-		document.body.appendChild(anchor);
-
-		anchor.click();
-
-		URL.revokeObjectURL(url);
-
-		anchor.remove();
-	}
-
-	async function handleImport(event: Event) {
-		const file = (event.target as HTMLInputElement).files![0]!;
-
-		const fileReader = new FileReader();
-
-		fileReader.readAsArrayBuffer(file);
-
-		fileReader.onloadend = async (ev) => {
-			const bytes = new Uint8Array(ev.target?.result as ArrayBufferLike);
-
-			const sessions = JSON.parse(
-				decompressFromUint8Array(bytes)
-			) as ESession[];
-
-			if (!sessions.length) return;
-
-			sessionsDB.saveSessions(sessions);
-		};
-	}
-
-	function handleFilterListChange(
-		ev: Event & { currentTarget: EventTarget & HTMLTextAreaElement }
-	) {
-		const value = ev.currentTarget.value;
-
-		const urls = value.match(
-			/(\b(https?|ftp|file)|\B\*):\/{2}(\*|(\*\.)?[^*/\s:]*)\/[^\s]*/g
-		) ?? ['<all_urls>'];
-
-		settings.changeSetting('urlFilterList', urls);
-
-		ev.currentTarget.value = urlList;
-	}
 </script>
 
 <Section title="User Interface">
@@ -107,7 +40,7 @@
 			class="resize-none rounded-md bg-neutral-3 p-2 text-sm placeholder:text-neutral-content/40"
 			inputmode="url"
 			value={urlList}
-			on:change={handleFilterListChange}
+			on:change={(ev) => handleFilterListChange(ev, urlList)}
 		/>
 	</label>
 
@@ -137,7 +70,7 @@
 				type="file"
 				class="hidden"
 				on:change={handleImport}
-				accept=".json"
+				accept=".json, .ssf"
 			/>
 		</label>
 
