@@ -59,7 +59,8 @@ export async function getSession(urlFilterList?: string[]) {
 				url: urlFilterList
 			},
 			compress_options
-		); //TODO: firefox New Tab doesn't show - add filter option to urls
+		);
+
 		session.tabsNumber += window.tabs.length;
 	}
 

@@ -27,7 +27,6 @@
 			}}
 		>
 			{#if tab.favIconUrl && !tab.url.startsWith('chrome-extension://')}
-				<!-- TODO: fix layout shift on certain favicons -->
 				<img
 					style:width="1rem"
 					style:height="1rem"
