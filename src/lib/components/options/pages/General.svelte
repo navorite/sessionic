@@ -7,10 +7,7 @@
 		handleImport
 	} from '@/lib/utils';
 
-	$: urlList =
-		$settings.urlFilterList[0] === '<all_urls>'
-			? ''
-			: $settings.urlFilterList.join('\n');
+	$: urlList = $settings.urlFilterList?.join('\n') ?? '';
 </script>
 
 <Section title="User Interface">
