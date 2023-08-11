@@ -15,7 +15,7 @@ export interface FilterOptions {
 	default_tabs?: boolean;
 }
 
-export type Page = 'popup' | 'options';
+export type Page = 'popup' | 'options' | 'discarded';
 
 export type Icon =
 	| 'default'
@@ -43,7 +43,7 @@ export interface ENotification {
 	duration?: number;
 }
 
-export type URLFilterList = string[] | ['<all_urls>'] | undefined;
+export type URLFilterList = string[] | ['<all_urls>'] | null;
 
 export interface ESettings {
 	darkMode: boolean;
