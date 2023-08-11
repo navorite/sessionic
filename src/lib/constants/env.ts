@@ -20,7 +20,8 @@ export const tabAttr = [
 	'discarded',
 	'pinned',
 	'incognito',
-	...(isFirefox ? ['mutedInfo', 'isInReaderMode', 'cookieStoreId'] : [])
+	'mutedInfo',
+	...(isFirefox ? ['isInReaderMode', 'cookieStoreId'] : ['groupId'])
 ];
 
 export const compress_options: compressOptions = {
