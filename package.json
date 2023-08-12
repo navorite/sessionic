@@ -80,15 +80,19 @@
 					"types": [
 						{
 							"type": "feat",
-							"section": "Features"
+							"section": ":fire: Features"
 						},
 						{
 							"type": "perf",
-							"section": "Performance Optimizations"
+							"section": ":rocket: Performance Optimizations"
 						},
 						{
 							"type": "fix",
-							"section": "Bug Fixes"
+							"section": ":bug: Bug Fixes"
+						},
+						{
+							"type": "change",
+							"section": ":trollface: Changes"
 						}
 					]
 				}
