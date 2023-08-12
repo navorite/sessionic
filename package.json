@@ -16,12 +16,12 @@
 		"manifest:ff": "cross-env BROWSER_ENV=FF tsx ./scripts/main.ts",
 		"clean": "rimraf dist",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
-		"release": "release-it",
-		"release:beta": "release-it --preRelease=beta",
-		"release:info": "release-it --release-version",
 		"format": "prettier --plugin-search-dir . --write .",
 		"lint": "npm run format && eslint .",
-		"lint:fix": "npm run format && eslint . --fix"
+		"lint:fix": "npm run format && eslint . --fix",
+		"release": "release-it",
+		"release:beta": "release-it --preRelease=beta",
+		"release:info": "release-it --release-version"
 	},
 	"devDependencies": {
 		"@release-it/conventional-changelog": "^7.0.0",
@@ -67,7 +67,7 @@
 		"github": {
 			"draft": true,
 			"release": true,
-			"tokenRef": "GITHUB_AUTH"
+			"tokenRef": "GITHUB_AUTH_RELEASE_IT"
 		},
 		"npm": {
 			"publish": false
