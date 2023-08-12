@@ -17,6 +17,8 @@
 		"clean": "rimraf dist",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"release": "release-it",
+		"release:beta": "release-it --preRelease=beta",
+		"release:info": "release-it --release-version",
 		"format": "prettier --plugin-search-dir . --write .",
 		"lint": "npm run format && eslint .",
 		"lint:fix": "npm run format && eslint . --fix"
@@ -59,12 +61,13 @@
 	},
 	"release-it": {
 		"git": {
-			"commitMessage": "chore: release v${version}"
+			"commitMessage": "chore(release): v${version}",
+			"tageName": "${name}@${version}"
 		},
 		"github": {
+			"draft": true,
 			"release": true,
-			"web": true,
-			"skipChecks": true
+			"tokenRef": "GITHUB_AUTH"
 		},
 		"npm": {
 			"publish": false
@@ -72,6 +75,7 @@
 		"plugins": {
 			"@release-it/conventional-changelog": {
 				"infile": "CHANGELOG.md",
+				"header": "# Changelog",
 				"preset": {
 					"name": "conventionalcommits",
 					"types": [
@@ -80,14 +84,13 @@
 							"section": "Features"
 						},
 						{
-							"type": "fix",
-							"section": "Bug Fixes"
+							"type": "perf",
+							"section": "Performance Optimizations"
 						},
 						{
-							"type": "perf",
-							"section": "Changes"
-						},
-						{}
+							"type": "fix",
+							"section": "Bug Fixes"
+						}
 					]
 				}
 			}
