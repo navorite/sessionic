@@ -62,7 +62,8 @@
 			"commitMessage": "chore: release v${version}"
 		},
 		"github": {
-			"release": true
+			"release": true,
+			"web": true
 		},
 		"npm": {
 			"publish": false
@@ -80,6 +81,10 @@
 						{
 							"type": "fix",
 							"section": "Bug Fixes"
+						},
+						{
+							"type": "perf",
+							"section": "Changes"
 						},
 						{}
 					]
