@@ -63,7 +63,8 @@
 		},
 		"github": {
 			"release": true,
-			"web": true
+			"web": true,
+			"skipChecks": true
 		},
 		"npm": {
 			"publish": false
