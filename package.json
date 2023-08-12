@@ -62,12 +62,11 @@
 	"release-it": {
 		"git": {
 			"commitMessage": "chore(release): v${version}",
-			"tageName": "${name}@${version}"
+			"tagName": "v${version}"
 		},
 		"github": {
 			"draft": true,
-			"release": true,
-			"tokenRef": "GITHUB_AUTH_RELEASE_IT"
+			"release": true
 		},
 		"npm": {
 			"publish": false
