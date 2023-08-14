@@ -8,15 +8,13 @@
 			{__EXT_NAME__}
 			{__EXT_VER__}
 		</p>
-		<a href="https://github.com/navorite/sessionic/releases">Changelog</a>
-		<a href="https://github.com/navorite/sessionic">Source code (AGPL v3)</a>
-	</div>
-
-	<p>
-		This extension was created by <a href="https://github.com/navorite"
-			>@navorite</a
+		<a href="https://github.com/navorite/sessionic/releases" target="_blank"
+			>Changelog</a
 		>
-	</p>
+		<a href="https://github.com/navorite/sessionic" target="_blank"
+			>Source code (AGPL v3)</a
+		>
+	</div>
 
 	<h2 class="text-lg font-bold">Consider Donating</h2>
 
