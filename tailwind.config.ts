@@ -16,8 +16,8 @@ export default {
 				primary: 'hsl(var(--primary) / <alpha-value>)',
 				'primary-focus': 'hsl(var(--primary-focus) / <alpha-value>)',
 
-				accent: 'hsl(var(--accent) / <alpha-value>)',
-				'accent-focus': 'hsl(var(--accent-focus) / <alpha-value>)',
+				link: 'hsl(var(--link) / <alpha-value>)',
+				'link-focus': 'hsl(var(--link-focus) / <alpha-value>)',
 
 				info: 'hsl(var(--info) / <alpha-value>)',
 				'info-focus': 'hsl(var(--info-focus) / <alpha-value>)',
