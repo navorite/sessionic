@@ -2,7 +2,7 @@ import { storage, type Storage } from 'webextension-polyfill';
 import type { ESettings, FilterOptions } from '@/lib/types';
 import { writable, type Writable } from 'svelte/store';
 import { sessions } from '@/lib/stores';
-import { getStorage, setStorage, applyTheme } from '@/lib/utils';
+import { getStorage, setStorage, applyTheme, log } from '@/lib/utils';
 
 export const filterOptions: Writable<FilterOptions> = writable({ query: '' });
 
@@ -29,7 +29,7 @@ export const settings = (() => {
 
 		loaded = true;
 
-		console.log('[settings.init]');
+		log.info('[settings.init]');
 
 		const settings = await getStorage(defaultSettings);
 
