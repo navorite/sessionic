@@ -17,16 +17,16 @@
 
 	let showDonateModal = false;
 
-	const EXT_VER = 'BETA' || __EXT_VER__;
+	const EXT_MODE = __EXT_MODE__;
 </script>
 
 <div class="flex h-full max-h-8 w-full items-center gap-2">
 	<h1 class="relative">
 		{EXT_NAME}
-		{#if EXT_VER}
+		{#if EXT_MODE}
 			<span
 				class="absolute -bottom-[14px] left-1/2 inline-block -translate-x-1/2 text-[10px]"
-				>{EXT_VER}</span
+				>{EXT_MODE}</span
 			>
 		{/if}
 	</h1>
