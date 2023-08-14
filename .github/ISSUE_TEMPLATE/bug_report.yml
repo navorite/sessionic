@@ -27,7 +27,7 @@ body:
     attributes:
       label: Version
       description: In which version of Sessionic does this bug occur?
-      placeholder: v1.0.0
+      placeholder: e.g. 1.0.0
     validations:
       required: true
   - type: input
@@ -35,7 +35,7 @@ body:
     attributes:
       label: Browser
       description: In which browser does this bug occur?
-      placeholder: Firefox 115, Chrome 105
+      placeholder: e.g. Firefox 115
     validations:
       required: true
   - type: input
@@ -43,7 +43,7 @@ body:
     attributes:
       label: Browser
       description: In which operating system does this bug occur?
-      placeholder: Windows 11, Arch Linux, macOS 13
+      placeholder: e.g. Windows 11
     validations:
       required: true
   - type: dropdown
