@@ -26,18 +26,24 @@ body:
     id: version
     attributes:
       label: Version
-      description: What version of Sessionic are you running?
-      placeholder: v1.0.0
+      description: In which version of Sessionic does this bug occur?
+      placeholder: e.g. 1.0.0
     validations:
       required: true
-  - type: textarea
-    id: system-info
+  - type: input
+    id: browser
     attributes:
-      label: System Info
-      description: Please provide the system information the bug occured on.
-      placeholder: |
-        - OS: [e.g. Windows 10, Windows 11, Ubuntu, Arch Linux, etc..]
-        - Browser: [e.g. Firefox 115, Chrome 105, etc..]
+      label: Browser
+      description: In which browser does this bug occur?
+      placeholder: e.g. Firefox 115
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      description: In which operating system does this bug occur?
+      placeholder: e.g. Windows 11
     validations:
       required: true
   - type: dropdown
