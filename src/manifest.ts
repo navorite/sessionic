@@ -1,7 +1,7 @@
 import type { Manifest } from 'webextension-polyfill';
-import { extension, isFirefox } from './constants';
+import { extension, isFirefox } from '../scripts/constants';
 
-const manifest: Manifest.WebExtensionManifest = {
+export const manifest: Manifest.WebExtensionManifest = {
 	manifest_version: 3,
 	name: extension.name,
 	version: extension.version,
@@ -52,5 +52,3 @@ const manifest: Manifest.WebExtensionManifest = {
 		}
 	})
 };
-
-export default manifest;
