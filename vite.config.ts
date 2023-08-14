@@ -11,7 +11,13 @@ export function _dir(path: string) {
 export default defineConfig({
 	define: {
 		__EXT_NAME__: JSON.stringify(extension.name),
-		__EXT_VER__: isDEV ? JSON.stringify('DEV') : null
+		__EXT_VER__: JSON.stringify(extension.version),
+		__EXT_MODE__:
+			parseInt(extension.version) < 1
+				? JSON.stringify('ALPHA')
+				: isDEV
+				? JSON.stringify('DEV')
+				: null
 	},
 
 	plugins: [svelte()],
