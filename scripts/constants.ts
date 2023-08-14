@@ -1,4 +1,4 @@
-export const isFirefox = process.env.BROWSER_ENV === 'FF';
+export const isFirefox = process.env.TARGET === 'firefox';
 
 export const extension = {
 	name: 'Sessionic',
@@ -18,5 +18,3 @@ export const extension = {
 export const isDEV = process.env.NODE_ENV !== 'production';
 
 export const dir = './dist/';
-
-export const views = ['popup', 'options'];

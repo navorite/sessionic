@@ -27,11 +27,6 @@ export default defineConfig({
 	},
 
 	build: {
-		...(isDEV && {
-			watch: {},
-			sourcemap: 'inline'
-		}),
-
 		emptyOutDir: false,
 		rollupOptions: {
 			input: {

@@ -14,14 +14,20 @@ export enum colors {
 	white = 37
 }
 
+export function ensureDir(dir: string) {
+	!existsSync(dir) && mkdirSync(dir, { recursive: true });
+}
+
 export function writeJSON(
 	dir: string,
 	fileName: string,
 	manifest: Manifest.WebExtensionManifest
 ) {
-	!existsSync(dir) && mkdirSync(dir);
+	ensureDir(dir);
 
-	writeFileSync(`${dir}${fileName}`, JSON.stringify(manifest, null, 2));
+	writeFileSync(`${dir}${fileName}`, JSON.stringify(manifest, null, 2), {
+		flag: 'wx'
+	});
 }
 
 export function clog(msg: string, color: colors = colors.default) {
