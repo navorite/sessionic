@@ -35,7 +35,7 @@ body:
     attributes:
       label: Browser
       description: In which browser does this bug occur?
-      placeholder: e.g. Firefox 115, Chrome 105, etc..
+      placeholder: Firefox 115, Chrome 105
     validations:
       required: true
   - type: input
@@ -43,7 +43,7 @@ body:
     attributes:
       label: Browser
       description: In which operating system does this bug occur?
-      placeholder: e.g. Windows 10, Windows 11, Ubuntu, Arch Linux, macOS 13 etc..
+      placeholder: Windows 11, Arch Linux, macOS 13
     validations:
       required: true
   - type: dropdown
