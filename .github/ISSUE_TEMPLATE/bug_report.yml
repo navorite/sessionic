@@ -41,7 +41,7 @@ body:
   - type: input
     id: os
     attributes:
-      label: Browser
+      label: Operating System
       description: In which operating system does this bug occur?
       placeholder: e.g. Windows 11
     validations:
