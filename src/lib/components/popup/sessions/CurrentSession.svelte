@@ -10,12 +10,15 @@
 		isExtensionViewed
 	} from '@/lib/utils';
 
-	// to fix inconsistent behaviour with FF and Chrome - need to check
-	settings.init().then(async () => {
+	async function getSelection() {
+		await settings.init();
+
 		$session = await getSession($settings.urlFilterList);
 
 		if ($settings.selectionId === 'current') selection.select($session);
-	});
+	}
+
+	getSelection();
 
 	let timeout: NodeJS.Timeout | null;
 

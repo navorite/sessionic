@@ -2,22 +2,21 @@ import { storage, type Storage } from 'webextension-polyfill';
 import type { ESettings, FilterOptions } from '@/lib/types';
 import { writable, type Writable } from 'svelte/store';
 import { sessions } from '@/lib/stores';
-import { getStorage, setStorage } from '@utils/storage';
-import { log, applyTheme } from '@/lib/utils';
+import { getStorage, setStorage, applyTheme } from '@/lib/utils';
 
 export const filterOptions: Writable<FilterOptions> = writable({ query: '' });
 
-let loaded = false;
-
-const defaultSettings: ESettings = {
-	popupView: true,
-	darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches,
-	selectionId: 'current',
-	discarded: true,
-	urlFilterList: null
-};
-
 export const settings = (() => {
+	let loaded = false;
+
+	const defaultSettings: ESettings = {
+		popupView: true,
+		darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches,
+		selectionId: 'current',
+		discarded: true,
+		urlFilterList: null
+	};
+
 	const { subscribe, set, update } = writable(defaultSettings);
 
 	init();
@@ -26,13 +25,13 @@ export const settings = (() => {
 		storage.local.onChanged.addListener(onStorageChange);
 
 	async function init() {
-		if (loaded) return log.info('[settings.init] already called');
+		if (loaded) return await new Promise((resolve) => setTimeout(resolve, 0));
+
+		loaded = true;
 
 		const settings = await getStorage(defaultSettings);
 
 		set(settings);
-
-		loaded = true;
 
 		applyTheme(settings.darkMode, false);
 	}
