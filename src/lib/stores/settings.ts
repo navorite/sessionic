@@ -29,6 +29,8 @@ export const settings = (() => {
 
 		loaded = true;
 
+		console.log('[settings.init]');
+
 		const settings = await getStorage(defaultSettings);
 
 		set(settings);
