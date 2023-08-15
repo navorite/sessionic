@@ -20,6 +20,38 @@ export async function openInCurrentWindow(
 export async function openInNewWindow(window: EWindow, discarded?: boolean) {
 	if (!window.tabs?.length) return;
 
+	if (!isFirefox) {
+		/**
+		 * @see https://source.chromium.org/chromium/chromium/src/+/d51682b36adc22496f45a8111358a8bb30914534
+		 */
+		const {
+			width: screenWidth,
+			height: screenHeight
+		}: { width: number; height: number } = (
+			await chrome.system.display.getInfo()
+		)[0].bounds;
+
+		console.log(screenWidth, screenHeight);
+		window.top = window.top ?? 0;
+		window.left = window.left ?? 0;
+		window.height = window.height ?? screenHeight;
+		window.width = window.width ?? screenWidth;
+
+		if (window.height > screenHeight * 2) window.height = screenHeight;
+
+		if (window.width > screenWidth * 2) window.width = screenWidth;
+
+		if (window.top + window.height < screenHeight / 2) window.top = 0;
+
+		if (window.top + window.height > screenHeight)
+			window.top -= window.top + window.height - screenHeight;
+
+		if (window.left + window.width < screenWidth / 2) window.left = 0;
+
+		if (window.left + window.width > screenWidth)
+			window.left -= window.left + window.width - screenWidth;
+	}
+
 	const windowId = (
 		await browser.windows.create({
 			incognito: window.incognito,
