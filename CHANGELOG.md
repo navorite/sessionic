@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/navorite/sessionic/compare/v0.2.2...v0.2.3) (2023-08-15)
+
+
+### :bug: Bug Fixes
+
+* Fix tabs do not open correctly when active ([0f5710a](https://github.com/navorite/sessionic/commit/0f5710a3c1e1105e94180268213344c86f7f1be1))
+
 ## [0.2.2](https://github.com/navorite/sessionic/compare/v0.2.1...v0.2.0) (2023-08-15)
 
 
