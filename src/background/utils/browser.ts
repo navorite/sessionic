@@ -128,8 +128,7 @@ export async function createTab(
 		windowId: windowId ?? tab.windowId,
 		pinned,
 		...(isFirefox && {
-			...(discarded && { title }),
-			discarded: discarded ?? !active,
+			...(!active && discarded && { title, discarded: true }),
 			openInReaderMode: isInReaderMode,
 			muted: mutedInfo?.muted,
 			...(!incognito && { cookieStoreId })
