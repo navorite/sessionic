@@ -7,7 +7,7 @@ import { getStorage, setStorage, applyTheme, log } from '@/lib/utils';
 export const filterOptions: Writable<FilterOptions> = writable({ query: '' });
 
 export const settings = (() => {
-	let loaded = false;
+	let loaded: Promise<ESettings>;
 
 	const defaultSettings: ESettings = {
 		popupView: true,
@@ -25,17 +25,22 @@ export const settings = (() => {
 		storage.local.onChanged.addListener(onStorageChange);
 
 	async function init() {
-		if (loaded) return await new Promise((resolve) => setTimeout(resolve, 0));
-
-		loaded = true;
+		if (loaded) {
+			await loaded;
+			return;
+		}
 
 		log.info('[settings.init]');
 
-		const settings = await getStorage(defaultSettings);
+		loaded = getStorage(defaultSettings);
+
+		const settings = await loaded;
 
 		set(settings);
 
 		applyTheme(settings.darkMode, false);
+
+		loaded = Promise.resolve({} as ESettings);
 	}
 
 	function onStorageChange(changes: Storage.StorageAreaOnChangedChangesType) {
