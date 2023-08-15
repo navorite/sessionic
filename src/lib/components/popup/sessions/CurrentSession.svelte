@@ -44,14 +44,18 @@
 	}
 
 	function addEvents() {
+		browser.tabs.onCreated.addListener(handleUpdate);
 		browser.tabs.onUpdated.addListener(handleUpdate);
+		browser.tabs.onActivated.addListener(handleUpdate);
 		browser.tabs.onMoved.addListener(handleUpdate);
 		browser.tabs.onDetached.addListener(handleUpdate);
 		browser.tabs.onRemoved.addListener(handleRemoval);
 	}
 
 	function removeEvents() {
+		browser.tabs.onCreated.removeListener(handleUpdate);
 		browser.tabs.onUpdated.removeListener(handleUpdate);
+		browser.tabs.onActivated.removeListener(handleUpdate);
 		browser.tabs.onMoved.removeListener(handleUpdate);
 		browser.tabs.onDetached.removeListener(handleUpdate);
 		browser.tabs.onRemoved.removeListener(handleRemoval);
