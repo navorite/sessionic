@@ -75,9 +75,3 @@
 		Select a session or open some tabs!
 	</h2>
 {/if}
-
-<style>
-	.gutter {
-		scrollbar-gutter: stable;
-	}
-</style>
