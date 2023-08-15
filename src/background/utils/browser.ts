@@ -17,21 +17,31 @@ export async function openInCurrentWindow(
 	}
 }
 
+declare const chrome: {
+	system: {
+		display: {
+			getInfo: () => Promise<
+				Array<{ bounds: { width: number; height: number } }>
+			>;
+		};
+	};
+};
+
 export async function openInNewWindow(window: EWindow, discarded?: boolean) {
 	if (!window.tabs?.length) return;
 
-	if (!isFirefox) {
+	if (!isFirefox && window.state === 'normal') {
 		/**
 		 * @see https://source.chromium.org/chromium/chromium/src/+/d51682b36adc22496f45a8111358a8bb30914534
 		 */
+
 		const {
 			width: screenWidth,
 			height: screenHeight
 		}: { width: number; height: number } = (
 			await chrome.system.display.getInfo()
-		)[0].bounds;
+		)[0]?.bounds ?? { width: 800, height: 600 };
 
-		console.log(screenWidth, screenHeight);
 		window.top = window.top ?? 0;
 		window.left = window.left ?? 0;
 		window.height = window.height ?? screenHeight;
