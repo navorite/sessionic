@@ -3,12 +3,7 @@
 	import { onMount } from 'svelte';
 	import { settings, sessions, currentSession as session } from '@/lib/stores';
 	import { IconButton } from '@/lib/components';
-	import {
-		tooltip,
-		getSession,
-		isExtensionReady,
-		isExtensionViewed
-	} from '@/lib/utils';
+	import { tooltip, getSession, isExtensionViewed } from '@/lib/utils';
 
 	async function getSelection() {
 		await settings.init();
@@ -20,7 +15,7 @@
 
 	getSelection();
 
-	let timeout: NodeJS.Timeout | null;
+	let timeout: NodeJS.Timeout;
 
 	$: selection = sessions.selection;
 
@@ -28,27 +23,44 @@
 
 	//TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
 	onMount(() => {
-		document.addEventListener('visibilitychange', handleUpdate);
+		handleVisibility();
+
+		document.addEventListener('visibilitychange', handleVisibility);
+
+		return () => {
+			removeEvents();
+
+			document.removeEventListener('visibilitychange', handleVisibility);
+		};
+	});
+
+	function handleVisibility() {
+		if (isExtensionViewed()) {
+			handleUpdate();
+			addEvents();
+		} else {
+			removeEvents();
+		}
+	}
+
+	function addEvents() {
 		browser.tabs.onUpdated.addListener(handleUpdate);
 		browser.tabs.onMoved.addListener(handleUpdate);
 		browser.tabs.onDetached.addListener(handleUpdate);
 		browser.tabs.onRemoved.addListener(handleRemoval);
+	}
 
-		return () => {
-			document.removeEventListener('visibilitychange', handleUpdate);
-			browser.tabs.onUpdated.removeListener(handleUpdate);
-			browser.tabs.onMoved.removeListener(handleUpdate);
-			browser.tabs.onDetached.removeListener(handleUpdate);
-			browser.tabs.onRemoved.removeListener(handleRemoval);
-		};
-	});
+	function removeEvents() {
+		browser.tabs.onUpdated.removeListener(handleUpdate);
+		browser.tabs.onMoved.removeListener(handleUpdate);
+		browser.tabs.onDetached.removeListener(handleUpdate);
+		browser.tabs.onRemoved.removeListener(handleRemoval);
+	}
 
 	function handleRemoval(
 		tabId: number,
 		removeInfo: browser.Tabs.OnRemovedRemoveInfoType
 	) {
-		if (!isExtensionViewed()) return;
-
 		const window_index = $session.windows.findIndex(
 			(window) => window.id === removeInfo.windowId
 		);
@@ -80,7 +92,7 @@
 	}
 
 	async function handleUpdate() {
-		if (!(isExtensionViewed() && isExtensionReady()) || timeout) return;
+		clearTimeout(timeout);
 
 		//should fix inconsistency in update flags
 		timeout = setTimeout(async () => {
@@ -88,8 +100,6 @@
 
 			if (!$selection?.id || $selection?.id === 'current')
 				selection.select($session);
-
-			timeout = null;
 		}, 50);
 	}
 </script>
