@@ -1,4 +1,18 @@
+# Changelog
 
+## [0.2.2](https://github.com/navorite/sessionic/compare/v0.2.1...v0.2.0) (2023-08-15)
+
+
+### :rocket: Performance Improvements
+
+* Unload events when not visible ([29fbe0e](https://github.com/navorite/sessionic/commit/29fbe0e31b79893a7597ad1707d23b43f5db4216))
+
+
+### :bug: Bug Fixes
+
+* Do not load settings at every init call ([3ff2298](https://github.com/navorite/sessionic/commit/3ff22987f50f90f57bc216fbeb291407cd7211a7))
+* Fix Chromium window bound size error ([f654d36](https://github.com/navorite/sessionic/commit/f654d36935fdc879e1e22b1b2372fc6d8ff70b40))
+* Update tabs when necessary events happen ([728c1da](https://github.com/navorite/sessionic/commit/728c1dacbfab2b80a197ed5ceaacc1e902f5d83b))
 
 ## [0.2.1](https://github.com/navorite/sessionic/compare/v0.2.0...v0.2.1) (2023-08-11)
 

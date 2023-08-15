@@ -1,6 +1,6 @@
 {
 	"name": "sessionic",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"private": true,
 	"type": "module",
 	"scripts": {
@@ -63,7 +63,8 @@
 	"release-it": {
 		"git": {
 			"commitMessage": "chore(release): v${version}",
-			"tagName": "v${version}"
+			"tagName": "v${version}",
+			"requireCleanWorkingDir": false
 		},
 		"github": {
 			"draft": true,
@@ -85,7 +86,7 @@
 						},
 						{
 							"type": "perf",
-							"section": ":rocket: Performance Optimizations"
+							"section": ":rocket: Performance Improvements"
 						},
 						{
 							"type": "fix",
