@@ -93,6 +93,10 @@
 							"section": ":rocket: Enhancements"
 						},
 						{
+							"type": "enhance",
+							"section": ":rocket: Enhancements"
+						},
+						{
 							"type": "fix",
 							"section": ":bug: Bug Fixes"
 						}
