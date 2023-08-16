@@ -82,19 +82,19 @@
 					"types": [
 						{
 							"type": "feat",
-							"section": ":fire: Features"
+							"section": ":fire: New Features"
 						},
 						{
 							"type": "perf",
-							"section": ":rocket: Performance Improvements"
+							"section": ":rocket: Enhancements"
+						},
+						{
+							"type": "refactor",
+							"section": ":rocket: Enhancements"
 						},
 						{
 							"type": "fix",
 							"section": ":bug: Bug Fixes"
-						},
-						{
-							"type": "change",
-							"section": ":trollface: Changes"
 						}
 					]
 				}
