@@ -77,7 +77,7 @@
 		type="button"
 		class="{type === 'Rename'
 			? 'px-4'
-			: 'px-6'} disabled:text-neutral-content-disabled rounded-md bg-primary py-1 text-center text-neutral-1 hover:bg-primary-focus disabled:cursor-not-allowed disabled:bg-neutral-2"
+			: 'px-6'} rounded-md bg-primary py-1 text-center text-white hover:bg-primary-focus disabled:cursor-not-allowed disabled:bg-neutral-2 disabled:text-neutral-6"
 		on:click={submit}>{type}</button
 	>
 </Modal>
