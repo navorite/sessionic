@@ -1,19 +1,9 @@
 <script lang="ts">
 	import browser from 'webextension-polyfill';
-	import { onMount } from 'svelte';
+	import { onDestroy } from 'svelte';
 	import { settings, sessions, currentSession as session } from '@/lib/stores';
 	import { IconButton } from '@/lib/components';
 	import { tooltip, getSession, isExtensionViewed } from '@/lib/utils';
-
-	async function getSelection() {
-		await settings.init();
-
-		$session = await getSession($settings.urlFilterList);
-
-		if ($settings.selectionId === 'current') selection.select($session);
-	}
-
-	getSelection();
 
 	let timeout: NodeJS.Timeout;
 
@@ -21,29 +11,28 @@
 
 	$: selected = $selection === $session;
 
-	//TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
-	onMount(() => {
-		handleVisibility();
+	document.addEventListener('visibilitychange', handleVisibility);
 
-		document.addEventListener('visibilitychange', handleVisibility);
+	settings.init().then(handleVisibility);
 
-		return () => {
-			removeEvents();
+	onDestroy(() => {
+		removeEvents();
 
-			document.removeEventListener('visibilitychange', handleVisibility);
-		};
+		document.removeEventListener('visibilitychange', handleVisibility);
 	});
 
 	function handleVisibility() {
 		if (isExtensionViewed()) {
 			handleUpdate();
 			addEvents();
-		} else {
-			removeEvents();
+			return;
 		}
+
+		removeEvents();
 	}
 
 	function addEvents() {
+		//TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
 		browser.tabs.onCreated.addListener(handleUpdate);
 		browser.tabs.onUpdated.addListener(handleUpdate);
 		browser.tabs.onActivated.addListener(handleUpdate);
@@ -91,8 +80,7 @@
 
 		$session.tabsNumber -= length;
 
-		if (!$selection?.id || $selection?.id === 'current')
-			selection?.select($session);
+		if ($settings.selectionId === 'current') selection.select($session);
 	}
 
 	async function handleUpdate() {
@@ -102,8 +90,7 @@
 		timeout = setTimeout(async () => {
 			$session = await getSession($settings.urlFilterList);
 
-			if (!$selection?.id || $selection?.id === 'current')
-				selection.select($session);
+			if ($settings.selectionId === 'current') selection.select($session);
 		}, 50);
 	}
 </script>
