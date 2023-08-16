@@ -21,8 +21,7 @@ export const settings = (() => {
 
 	init();
 
-	if (!storage.local.onChanged.hasListener(onStorageChange))
-		storage.local.onChanged.addListener(onStorageChange);
+	storage.local.onChanged.addListener(onStorageChange);
 
 	async function init() {
 		if (loaded) {
