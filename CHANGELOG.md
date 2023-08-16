@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/navorite/sessionic/compare/v0.2.3...v0.2.4) (2023-08-16)
+
+
+### :bug: Bug Fixes
+
+* Selected session is not in sync sometimes ([c4fcfce](https://github.com/navorite/sessionic/commit/c4fcfce4e40dcaccbfb9f4f10e9afd215065787a))
+
 ## [0.2.3](https://github.com/navorite/sessionic/compare/v0.2.2...v0.2.3) (2023-08-15)
 
 
