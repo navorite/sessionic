@@ -30,7 +30,7 @@
 		"@types/node": "^20.5.0",
 		"@types/webextension-polyfill": "^0.10.1",
 		"@typescript-eslint/eslint-plugin": "^6.3.0",
-		"@typescript-eslint/parser": "^6.3.0",
+		"@typescript-eslint/parser": "^6.4.0",
 		"autoprefixer": "^10.4.15",
 		"cross-env": "^7.0.3",
 		"eslint": "^8.47.0",
