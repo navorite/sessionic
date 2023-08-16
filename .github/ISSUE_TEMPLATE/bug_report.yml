@@ -1,4 +1,4 @@
-name: "\U0001F41E Bug report"
+name: "\U0001F41B Bug report"
 description: Report a bug with Sessionic
 labels: ['triage: bug']
 body:
