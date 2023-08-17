@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { EXT_NAME, isPopup } from '@constants/env';
+	import { EXT_MODE, EXT_NAME, isPopup } from '@constants/env';
 	import {
 		settings,
 		filterOptions,
@@ -16,8 +16,6 @@
 	import { openFullView, openOptions } from '@utils/extension';
 
 	let showDonateModal = false;
-
-	const EXT_MODE = __EXT_MODE__;
 </script>
 
 <div class="flex h-full max-h-8 w-full items-center gap-2">

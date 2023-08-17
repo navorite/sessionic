@@ -2,6 +2,8 @@ import browser from 'webextension-polyfill';
 import type { compressOptions } from '@/lib/types';
 
 export const EXT_NAME = __EXT_NAME__;
+export const EXT_VER = __EXT_VER__;
+export const EXT_MODE = __EXT_MODE__;
 
 export const isDEV = process.env.NODE_ENV !== 'production';
 

@@ -1,3 +1,4 @@
+import { EXT_NAME } from '@/lib/constants/env';
 import { sessionsDB } from '@/lib/utils';
 import { compressToUint8Array } from 'lz-string';
 
@@ -8,10 +9,10 @@ export async function handleExport() {
 
 	if (!sessions.length) return;
 
-	const fileName = `[${__EXT_NAME__}:${sessions.length}]${date.toLocaleString(
-		[],
-		{ dateStyle: 'medium', timeStyle: 'short' }
-	)}.ssf`;
+	const fileName = `[${EXT_NAME}:${sessions.length}]${date.toLocaleString([], {
+		dateStyle: 'medium',
+		timeStyle: 'short'
+	})}.ssf`;
 
 	const compressed = compressToUint8Array(JSON.stringify(sessions));
 

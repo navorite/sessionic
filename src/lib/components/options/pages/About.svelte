@@ -1,12 +1,13 @@
 <script>
 	import { Donate, Section } from '@/lib/components';
+	import { EXT_NAME, EXT_VER } from '@/lib/constants/env';
 </script>
 
 <Section title="About">
 	<div class="flex flex-col items-baseline gap-2 text-sm font-medium">
 		<p class="text-sm">
-			{__EXT_NAME__}
-			{__EXT_VER__}
+			{EXT_NAME}
+			{EXT_VER}
 		</p>
 		<a href="https://github.com/navorite/sessionic/releases" target="_blank"
 			>Changelog</a
