@@ -88,6 +88,14 @@ class SessionsDB {
 		return sessions;
 	}
 
+	async loadSession(id: UUID) {
+		log.info('[db.loadSession] init');
+
+		await this.initDB();
+
+		return this.db.get('sessions', id);
+	}
+
 	async saveSession(session: ESession) {
 		log.info('[db.saveSession] init');
 
