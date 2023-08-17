@@ -1,5 +1,5 @@
 import type { UUID } from 'crypto';
-import type { ESession } from '@/lib/types';
+import type { ESession, EWindow } from '@/lib/types';
 import { derived, get, writable, type Writable } from 'svelte/store';
 import { sessionsDB } from '@utils/database';
 import { settings, notification, filterOptions } from '@/lib/stores';
@@ -12,8 +12,8 @@ export const sessions = (() => {
 
 	load();
 
-	async function load(count?: number) {
-		const sessions = await sessionsDB.loadSessions(count);
+	async function load() {
+		const sessions = await sessionsDB.lazyLoadSessions();
 
 		set(sessions);
 
@@ -24,8 +24,6 @@ export const sessions = (() => {
 		await settings.init(); // to fix inconsistent behaviour with FF and Chrome - need to check
 
 		const selectionId = get(settings).selectionId;
-
-		if (selectionId === 'current') return;
 
 		selectById(selectionId);
 	}
@@ -42,13 +40,15 @@ export const sessions = (() => {
 		await sessionsDB.saveSession(generated);
 
 		update((sessions) => {
+			generated.windows = { length: generated.windows.length } as EWindow[]; //unref the obj for GC
+
 			sessions.push(generated);
 			return sessions;
 		});
 
-		notification.success(MESSAGES.save.success);
-
 		select(generated);
+
+		notification.success(MESSAGES.save.success);
 	}
 
 	async function put(target: ESession) {
@@ -60,16 +60,21 @@ export const sessions = (() => {
 		update((sessions) => {
 			target.dateModified = Date.now();
 
+			target.windows = { length: target.windows.length } as EWindow[]; //unref the obj for GC
+
 			sessions[sessions.indexOf(target)] = target;
+
 			return sessions;
 		});
+
+		selectById(target.id);
 
 		notification.success_info(MESSAGES.update.success_info);
 	}
 
 	function filter(query: string) {
-		const filtered: ESession[] = get({ subscribe })?.filter((session) =>
-			session?.title?.toLowerCase().includes(query)
+		const filtered: ESession[] = get({ subscribe })?.filter(
+			(session) => session?.title?.toLowerCase().includes(query)
 		);
 
 		return filtered; //subject to change
@@ -115,24 +120,40 @@ export const sessions = (() => {
 		notification.success_warning(MESSAGES.removeAll.success_warning);
 	}
 
-	function select(session: ESession) {
-		selection.set(session);
-
+	async function select(session: ESession) {
 		settings.changeSetting('selectionId', session.id);
 	}
 
 	// Without a call to changeSetting - this is used in certain area where we do not need to save storage.
-	function selectById(selectionId: 'current' | UUID) {
-		if (selectionId === 'current') return selection.set(get(currentSession));
+	async function selectById(selectionId: 'current' | UUID) {
+		if (selectionId === 'current') {
+			clearSelection();
+			return selection.set(get(currentSession));
+		}
+
+		const windowsPromise = sessionsDB.loadSessionWindows(selectionId as UUID);
 
 		const sessions = get({ subscribe });
 
 		for (const session of sessions) {
 			if (session.id === selectionId) {
+				//TODO: remove the ability to set
+				clearSelection();
+				session.windows = (await windowsPromise) as EWindow[];
+
 				selection.set(session);
 				break;
 			}
 		}
+	}
+
+	function clearSelection() {
+		selection.update((value) => {
+			if (value?.id !== 'current' && value?.windows?.length)
+				value.windows = { length: value.windows.length } as EWindow[];
+
+			return value;
+		});
 	}
 
 	return {
@@ -147,8 +168,8 @@ export const sessions = (() => {
 			subscribe: selection.subscribe,
 			select,
 			selectById,
-			set: selection.set //TODO: remove the ability to set
-		}
+			set: selection.set
+		} //TODO: remove the ability to set
 	};
 })();
 

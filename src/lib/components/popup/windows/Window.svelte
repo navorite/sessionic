@@ -18,7 +18,7 @@
 	let collapsed = false;
 </script>
 
-{#if window.tabs?.length}
+{#if window?.tabs?.length}
 	<ListItem let:hover class="rounded-md bg-neutral-2">
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div

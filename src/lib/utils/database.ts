@@ -6,7 +6,7 @@ import {
 	type StoreNames
 } from 'idb/with-async-ittr';
 import type { UUID } from 'crypto';
-import type { ESession } from '@/lib/types';
+import type { ESession, EWindow } from '@/lib/types';
 import { log } from '@/lib/utils';
 
 interface DB extends DBSchema {
@@ -57,6 +57,43 @@ class SessionsDB {
 		await this.initDB();
 
 		return this.db.getAllFromIndex('sessions', 'dateSaved', query, count);
+	}
+
+	async lazyLoadSessions(
+		query?: number | IDBKeyRange,
+		direction?: IDBCursorDirection
+	) {
+		log.info('[db.lazyLoadSessions] init');
+
+		const sessions: ESession[] = [];
+
+		await this.initDB();
+
+		const tx = this.db.transaction('sessions').store.index('dateSaved');
+
+		for await (const cursor of tx.iterate(query, direction)) {
+			const { dateModified, dateSaved, id, title, tabsNumber, windows } =
+				cursor.value;
+
+			sessions.push({
+				dateModified,
+				dateSaved,
+				id,
+				title,
+				tabsNumber,
+				windows: { length: windows.length } as EWindow[]
+			});
+		}
+
+		return sessions;
+	}
+
+	async loadSessionWindows(id: UUID) {
+		log.info('[db.loadSession] init');
+
+		await this.initDB();
+
+		return (await this.db.get('sessions', id))?.windows;
 	}
 
 	async saveSession(session: ESession) {
