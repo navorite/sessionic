@@ -12,8 +12,8 @@ export const sessions = (() => {
 
 	load();
 
-	async function load(count?: number) {
-		const sessions = await sessionsDB.loadSessions(count);
+	async function load() {
+		const sessions = await sessionsDB.lazyLoadSessions(undefined, 'prev');
 
 		set(sessions);
 
@@ -68,8 +68,8 @@ export const sessions = (() => {
 	}
 
 	function filter(query: string) {
-		const filtered: ESession[] = get({ subscribe })?.filter((session) =>
-			session?.title?.toLowerCase().includes(query)
+		const filtered: ESession[] = get({ subscribe })?.filter(
+			(session) => session?.title?.toLowerCase().includes(query)
 		);
 
 		return filtered; //subject to change
