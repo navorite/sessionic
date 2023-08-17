@@ -13,7 +13,7 @@ export const sessions = (() => {
 	load();
 
 	async function load() {
-		const sessions = await sessionsDB.lazyLoadSessions(undefined, 'prev');
+		const sessions = await sessionsDB.lazyLoadSessions();
 
 		set(sessions);
 
