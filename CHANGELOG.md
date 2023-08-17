@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.5](https://github.com/navorite/sessionic/compare/v0.1.2...v0.3.0) (2023-08-17)
+
+
+### :rocket: Enhancements
+
+* Change color of delete icons to red ([ae1af62](https://github.com/navorite/sessionic/commit/ae1af623d4c1b9285a4bb891ccecbe110d403a0d))
+* Remove unneeded events to reduce memory usage ([131c0b2](https://github.com/navorite/sessionic/commit/131c0b2e5f7024561c6a4b2a0c0541f30c11431f))
+* Enhance color contrast of input modal ([ed90b65](https://github.com/navorite/sessionic/commit/ed90b652675a187bae9680873bf2ad0043be0d42))
+* Enhance Switch UI ([5047cf7](https://github.com/navorite/sessionic/commit/5047cf74835da73d98024dcf6db502480d0f40e9))
+* Greatly reduce memory usage by loading only the session currently viewed ([#34](https://github.com/navorite/sessionic/issues/34)) ([034d9a3](https://github.com/navorite/sessionic/commit/034d9a3bec7e980b882a70c3976e17ec3bad2a16))
+
 ## [0.2.4](https://github.com/navorite/sessionic/compare/v0.2.3...v0.2.4) (2023-08-16)
 
 
