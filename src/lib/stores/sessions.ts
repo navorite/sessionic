@@ -40,13 +40,15 @@ export const sessions = (() => {
 		await sessionsDB.saveSession(generated);
 
 		update((sessions) => {
+			generated.windows = { length: generated.windows.length } as EWindow[];
+
 			sessions.push(generated);
 			return sessions;
 		});
 
-		notification.success(MESSAGES.save.success);
-
 		select(generated);
+
+		notification.success(MESSAGES.save.success);
 	}
 
 	async function put(target: ESession) {
