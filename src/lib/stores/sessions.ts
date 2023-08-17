@@ -1,5 +1,5 @@
 import type { UUID } from 'crypto';
-import type { ESession } from '@/lib/types';
+import type { ESession, EWindow } from '@/lib/types';
 import { derived, get, writable, type Writable } from 'svelte/store';
 import { sessionsDB } from '@utils/database';
 import { settings, notification, filterOptions } from '@/lib/stores';
@@ -24,8 +24,6 @@ export const sessions = (() => {
 		await settings.init(); // to fix inconsistent behaviour with FF and Chrome - need to check
 
 		const selectionId = get(settings).selectionId;
-
-		if (selectionId === 'current') return;
 
 		selectById(selectionId);
 	}
@@ -115,20 +113,23 @@ export const sessions = (() => {
 		notification.success_warning(MESSAGES.removeAll.success_warning);
 	}
 
-	function select(session: ESession) {
-		selection.set(session);
-
+	async function select(session: ESession) {
 		settings.changeSetting('selectionId', session.id);
 	}
 
 	// Without a call to changeSetting - this is used in certain area where we do not need to save storage.
-	function selectById(selectionId: 'current' | UUID) {
+	async function selectById(selectionId: 'current' | UUID) {
 		if (selectionId === 'current') return selection.set(get(currentSession));
 
 		const sessions = get({ subscribe });
 
 		for (const session of sessions) {
 			if (session.id === selectionId) {
+				session.windows = (await sessionsDB.loadSessionWindows(
+					session.id as UUID
+				)) as EWindow[];
+				//TODO: remove the ability to set
+
 				selection.set(session);
 				break;
 			}
@@ -147,8 +148,8 @@ export const sessions = (() => {
 			subscribe: selection.subscribe,
 			select,
 			selectById,
-			set: selection.set //TODO: remove the ability to set
-		}
+			set: selection.set
+		} //TODO: remove the ability to set
 	};
 })();
 
