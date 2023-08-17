@@ -40,7 +40,7 @@ export const sessions = (() => {
 		await sessionsDB.saveSession(generated);
 
 		update((sessions) => {
-			generated.windows = { length: generated.windows.length } as EWindow[];
+			generated.windows = { length: generated.windows.length } as EWindow[]; //unref the obj for GC
 
 			sessions.push(generated);
 			return sessions;
@@ -60,7 +60,10 @@ export const sessions = (() => {
 		update((sessions) => {
 			target.dateModified = Date.now();
 
+			target.windows = { length: target.windows.length } as EWindow[]; //unref the obj for GC
+
 			sessions[sessions.indexOf(target)] = target;
+
 			return sessions;
 		});
 
