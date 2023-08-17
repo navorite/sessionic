@@ -20,7 +20,6 @@
 					style:height="1rem"
 					style:max-width="1rem"
 					style:max-height="1rem"
-					class="rounded-md"
 					src={decompressLZ(tab.favIconUrl)}
 					alt=""
 				/>
@@ -39,7 +38,7 @@
 			<IconButton
 				icon={current ? 'close' : 'delete'}
 				title={current ? 'Close' : 'Delete'}
-				class="ml-auto text-xl hover:text-error-focus"
+				class="ml-auto text-xl text-error hover:text-error-focus"
 				on:click={() => {
 					if (current && tab.id) browser.tabs.remove(tab.id);
 					else dispatch('delete', tab);

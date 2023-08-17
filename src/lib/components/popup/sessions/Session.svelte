@@ -57,7 +57,7 @@
 			<IconButton
 				icon="delete"
 				title="Delete"
-				class="text-xl hover:text-error-focus"
+				class="text-xl text-error hover:text-error-focus"
 				on:click={() => dispatch('deleteModal')}
 			/>
 		{/if}

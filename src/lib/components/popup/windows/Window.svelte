@@ -66,7 +66,7 @@
 				<IconButton
 					icon={current ? 'close' : 'delete'}
 					title={current ? 'Close' : 'Delete'}
-					class="ml-auto hidden text-xl hover:text-error-focus group-hover:block"
+					class="ml-auto hidden text-xl text-error hover:text-error-focus group-hover:block"
 					on:click={() => {
 						if (current && window.id) browser.windows.remove(window.id);
 						else dispatch('delete');
