@@ -90,7 +90,8 @@
 		timeout = setTimeout(async () => {
 			$session = await getSession($settings.urlFilterList);
 
-			if ($settings.selectionId === 'current') selection.select($session);
+			if ($settings.selectionId === 'current')
+				selection.selectById($session.id);
 		}, 50);
 	}
 </script>
