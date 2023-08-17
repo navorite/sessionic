@@ -126,21 +126,34 @@ export const sessions = (() => {
 
 	// Without a call to changeSetting - this is used in certain area where we do not need to save storage.
 	async function selectById(selectionId: 'current' | UUID) {
-		if (selectionId === 'current') return selection.set(get(currentSession));
+		if (selectionId === 'current') {
+			clearSelection();
+			return selection.set(get(currentSession));
+		}
+
+		const windowsPromise = sessionsDB.loadSessionWindows(selectionId as UUID);
 
 		const sessions = get({ subscribe });
 
 		for (const session of sessions) {
 			if (session.id === selectionId) {
-				session.windows = (await sessionsDB.loadSessionWindows(
-					session.id as UUID
-				)) as EWindow[];
 				//TODO: remove the ability to set
+				clearSelection();
+				session.windows = (await windowsPromise) as EWindow[];
 
 				selection.set(session);
 				break;
 			}
 		}
+	}
+
+	function clearSelection() {
+		selection.update((value) => {
+			if (value?.id !== 'current' && value?.windows?.length)
+				value.windows = { length: value.windows.length } as EWindow[];
+
+			return value;
+		});
 	}
 
 	return {
