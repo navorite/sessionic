@@ -2,9 +2,7 @@
 	import browser from 'webextension-polyfill';
 	import type { ETab } from '@/lib/types';
 	import { createEventDispatcher } from 'svelte';
-	import { settings } from '@/lib/stores';
 	import { IconButton, ListItem } from '@/lib/components';
-	import { sendMessage } from '@/lib/utils';
 	import { decompress as decompressLZ } from 'lz-string';
 
 	export let tab: ETab;
@@ -15,17 +13,7 @@
 
 {#if tab?.url}
 	<ListItem class="tab-container" let:hover>
-		<button
-			type="button"
-			class="link"
-			on:click={() => {
-				sendMessage({
-					message: 'createTab',
-					tab,
-					discarded: $settings.discarded
-				});
-			}}
-		>
+		<a class="link" href={tab.url} target="_blank">
 			{#if tab.favIconUrl && !tab.url.startsWith('chrome-extension://')}
 				<img
 					style:width="1rem"
@@ -45,7 +33,7 @@
 			<span class="title">
 				{tab.title}
 			</span>
-		</button>
+		</a>
 
 		{#if hover}
 			<IconButton
@@ -63,7 +51,7 @@
 
 <style lang="postcss">
 	.link {
-		@apply flex w-max max-w-[90%] items-center gap-2 overflow-hidden;
+		@apply flex w-max max-w-[90%] items-center gap-2;
 	}
 
 	.link:hover {
