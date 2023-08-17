@@ -67,6 +67,8 @@ export const sessions = (() => {
 			return sessions;
 		});
 
+		selectById(target.id);
+
 		notification.success_info(MESSAGES.update.success_info);
 	}
 
