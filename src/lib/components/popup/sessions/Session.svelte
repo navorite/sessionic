@@ -1,9 +1,10 @@
 <script lang="ts">
-	import type { ESession } from '@/lib/types';
+	import type { ESession, EWindow } from '@/lib/types';
 	import { createEventDispatcher } from 'svelte';
 	import { settings, filterOptions, sessions } from '@/lib/stores';
 	import { ListItem, IconButton } from '@/lib/components';
-	import { tooltip, sendMessage, markResult } from '@/lib/utils';
+	import { tooltip, sendMessage, markResult, sessionsDB } from '@/lib/utils';
+	import type { UUID } from 'crypto';
 
 	export let session: ESession;
 
@@ -16,6 +17,21 @@
 				case_sensitive: false
 		  })
 		: session?.title;
+
+	async function openSession() {
+		if (!session.windows[0]?.tabs?.length)
+			session.windows = (await sessionsDB.loadSessionWindows(
+				session.id as UUID
+			)) as EWindow[];
+
+		sendMessage({
+			message: 'openSession',
+			session,
+			discarded: $settings.discarded
+		});
+
+		session.windows = { length: session.windows.length } as EWindow[];
+	}
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -32,13 +48,7 @@
 			role="button"
 			use:tooltip={{ title: 'Open' }}
 			class="session-name"
-			on:click={() => {
-				sendMessage({
-					message: 'openSession',
-					session,
-					discarded: $settings.discarded
-				});
-			}}
+			on:click|stopPropagation={openSession}
 		>
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			{@html title}
