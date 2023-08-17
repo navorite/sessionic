@@ -48,6 +48,8 @@ if (isDEV) {
 writeJSON(dir, 'manifest.json', manifest);
 
 clog(
-	`Created ${dir}manifest.json - ${isFirefox ? 'Firefox' : 'Chromium'} version`,
+	`\n\nCreated ${dir}manifest.json - ${
+		isFirefox ? 'Firefox' : 'Chromium'
+	} version\n`,
 	colors.green
 );
