@@ -27,7 +27,7 @@
 		"@release-it/conventional-changelog": "^7.0.0",
 		"@sveltejs/vite-plugin-svelte": "^2.4.5",
 		"@tsconfig/svelte": "^5.0.0",
-		"@types/node": "^20.5.0",
+		"@types/node": "^20.5.7",
 		"@types/webextension-polyfill": "^0.10.1",
 		"@typescript-eslint/eslint-plugin": "^6.4.0",
 		"@typescript-eslint/parser": "^6.4.0",
