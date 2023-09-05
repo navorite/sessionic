@@ -48,7 +48,7 @@
 		{#if $$slots.footer}
 			<div class="ml-auto mt-auto flex gap-2 font-semibold">
 				<button
-					class="rounded-md bg-neutral-4 px-4 py-1 text-neutral-content hover:bg-neutral-5"
+					class="rounded-md bg-neutral-4 px-4 py-1 font-medium text-neutral-content hover:bg-neutral-5"
 					type="button"
 					on:click={() => (open = false)}>Cancel</button
 				>
