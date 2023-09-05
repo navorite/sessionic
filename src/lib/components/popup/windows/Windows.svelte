@@ -60,7 +60,7 @@
 		class="flex flex-col gap-2 overflow-y-auto {className}"
 		style:padding-right={scrollBarPadding}
 	>
-		{#each $session.windows as window, windowIndex (window)}
+		{#each $session.windows as window, windowIndex}
 			<Window
 				{window}
 				{current}
