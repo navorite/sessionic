@@ -1,5 +1,5 @@
 import { extension, isDEV } from './scripts/constants';
-import { defineConfig } from 'vite';
+import { defineConfig, type UserConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { fileURLToPath } from 'url';
 
@@ -7,8 +7,7 @@ export function _dir(path: string) {
 	return fileURLToPath(new URL(path, import.meta.url));
 }
 
-// https://vitejs.dev/config/
-export default defineConfig({
+export const sharedConfig: UserConfig = {
 	define: {
 		__EXT_NAME__: JSON.stringify(extension.name),
 		__EXT_VER__: JSON.stringify(extension.version),
@@ -20,7 +19,6 @@ export default defineConfig({
 				: null
 	},
 
-	plugins: [svelte()],
 	resolve: {
 		alias: {
 			'@': _dir('src'),
@@ -30,7 +28,14 @@ export default defineConfig({
 			'@utils': _dir('src/lib/utils'),
 			'@styles': _dir('src/styles')
 		}
-	},
+	}
+};
+
+// https://vitejs.dev/config/
+export default defineConfig({
+	...sharedConfig,
+
+	plugins: [svelte()],
 
 	build: {
 		emptyOutDir: false,
