@@ -7,7 +7,7 @@ import {
 } from 'idb/with-async-ittr';
 import type { UUID } from 'crypto';
 import type { ESession, EWindow } from '@/lib/types';
-import { log } from '@/lib/utils';
+import { log } from '@/lib/utils/log';
 
 interface DB extends DBSchema {
 	sessions: {
