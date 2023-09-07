@@ -7,6 +7,7 @@
 		handleImport,
 		sendMessage
 	} from '@/lib/utils';
+	import browser from 'webextension-polyfill';
 
 	$: urlList = $settings.urlFilterList?.join('\n') ?? '';
 </script>
@@ -32,7 +33,12 @@
 		title="Automatically save sessions"
 		description="Greatly reduce memory usage by not loading tab until selected"
 		checked={$settings.autoSave}
-		on:change={() => settings.changeSetting('autoSave', !$settings.autoSave)}
+		on:change={() => {
+			settings.changeSetting('autoSave', !$settings.autoSave);
+
+			if ($settings.autoSave) sendMessage({ message: 'createTimer' });
+			else browser.alarms.clear('auto-save');
+		}}
 	/>
 	<label class="text-sm font-medium">
 		<input
