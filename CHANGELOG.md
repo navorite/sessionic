@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.3.0](https://github.com/navorite/sessionic/compare/v0.2.5...v0.3.0) (2023-09-07)
+
+
+### :fire: New Features
+
+* Add Autosave for sessions ([#42](https://github.com/navorite/sessionic/issues/42)) ([a55c7e3](https://github.com/navorite/sessionic/commit/a55c7e341c462a65f240709009a78b2ddb425569))
+
+
+### :rocket: Enhancements
+
+* Improve modal buttons font ([f9f1796](https://github.com/navorite/sessionic/commit/f9f17962fc9ac8612036e0cce25f42b7ce1816d7))
+
+
+### :bug: Bug Fixes
+
+* Closing a tab doesn't update session properly ([5788608](https://github.com/navorite/sessionic/commit/57886084de8fc7fd15dcb94e77888069e34bb2ef))
+
 ## [0.2.5](https://github.com/navorite/sessionic/compare/v0.1.2...v0.3.0) (2023-08-17)
 
 
