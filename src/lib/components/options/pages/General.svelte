@@ -4,7 +4,8 @@
 	import {
 		handleExport,
 		handleFilterListChange,
-		handleImport
+		handleImport,
+		sendMessage
 	} from '@/lib/utils';
 
 	$: urlList = $settings.urlFilterList?.join('\n') ?? '';
@@ -69,6 +70,8 @@
 					'autoSaveTimer',
 					Number(event.currentTarget.value)
 				);
+
+				sendMessage({ message: 'createTimer' });
 			}}
 			disabled={!$settings.autoSave}
 		/>
