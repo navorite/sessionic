@@ -3,8 +3,21 @@ import { createTab, openInNewWindow, openSession } from './utils/browser';
 import { getSession } from '@/lib/utils/getSession';
 import { sessionsDB } from '@/lib/utils/database';
 import { generateSession } from '@/lib/utils/generateSession';
+import { getStorage } from '@/lib/utils/storage';
 
-browser.alarms.create('auto-save', { periodInMinutes: 1 });
+async function createTimer() {
+	const [settings, alarm] = await Promise.all([
+		getStorage(null),
+		browser.alarms.get('auto-save')
+	]);
+
+	if (settings.autoSave && typeof alarm === 'undefined')
+		browser.alarms.create('auto-save', {
+			periodInMinutes: settings.autoSaveTimer
+		});
+}
+
+createTimer();
 
 browser.alarms.onAlarm.addListener(async (alarm) => {
 	if (alarm.name === 'auto-save') {
