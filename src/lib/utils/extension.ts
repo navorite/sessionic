@@ -1,6 +1,6 @@
 import type { Page } from '@/lib/types';
 import browser from 'webextension-polyfill';
-import { isFirefox, runtimeURL } from '@constants/env';
+import { isFirefox, runtimeURL } from '@constants/shared';
 
 export function isExtensionViewed() {
 	return document.visibilityState === 'visible';
