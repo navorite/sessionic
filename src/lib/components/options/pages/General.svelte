@@ -40,7 +40,7 @@
 			else browser.alarms.clear('auto-save');
 		}}
 	/>
-	<label class="text-sm font-medium">
+	<label class="max-w-max text-sm font-medium">
 		<input
 			type="number"
 			class="mr-2 h-7 w-11 rounded-md text-center disabled:text-neutral-6"
@@ -62,7 +62,7 @@
 		/>
 		Max number of saved sessions (max. 15 sessions)
 	</label>
-	<label class="text-sm font-medium">
+	<label class="max-w-max text-sm font-medium">
 		<input
 			type="number"
 			class="mr-2 h-7 w-11 rounded-md text-center disabled:text-neutral-6"
