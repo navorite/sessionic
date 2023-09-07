@@ -26,6 +26,57 @@
 	/>
 </Section>
 
+<Section title="Sessions">
+	<Switch
+		title="Automatically save sessions"
+		description="Greatly reduce memory usage by not loading tab until selected"
+		checked={$settings.autoSave}
+		on:change={() => settings.changeSetting('autoSave', !$settings.autoSave)}
+	/>
+	<label class="text-sm font-medium">
+		<input
+			type="number"
+			class="mr-2 h-7 w-11 rounded-md text-center disabled:text-neutral-6"
+			min="0"
+			max="15"
+			value={$settings.autoSaveMaxSessions}
+			on:change={(event) => {
+				if (Number(event.currentTarget.value) > 15)
+					event.currentTarget.value = '15';
+				if (Number(event.currentTarget.value) < 0)
+					event.currentTarget.value = '0';
+
+				settings.changeSetting(
+					'autoSaveMaxSessions',
+					Number(event.currentTarget.value)
+				);
+			}}
+			disabled={!$settings.autoSave}
+		/>
+		Max number of saved sessions (max. 15 sessions)
+	</label>
+	<label class="text-sm font-medium">
+		<input
+			type="number"
+			class="mr-2 h-7 w-11 rounded-md text-center disabled:text-neutral-6"
+			min="1"
+			value={$settings.autoSaveTimer}
+			on:change={(event) => {
+				if (Number(event.currentTarget.value) < 1)
+					event.currentTarget.value = '1';
+
+				settings.changeSetting(
+					'autoSaveTimer',
+					Number(event.currentTarget.value)
+				);
+			}}
+			disabled={!$settings.autoSave}
+		/>
+
+		Save period in minutes (min. 1 minute)
+	</label>
+</Section>
+
 <Section title="Extension Actions">
 	<label class="flex flex-col gap-2 font-medium">
 		URL Filter List

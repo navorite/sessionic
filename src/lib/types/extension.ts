@@ -51,4 +51,7 @@ export interface ESettings {
 	selectionId: 'current' | UUID;
 	discarded: boolean;
 	urlFilterList: URLFilterList;
+	autoSave: boolean;
+	autoSaveMaxSessions: number;
+	autoSaveTimer: number;
 }
