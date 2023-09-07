@@ -3,7 +3,7 @@ import { createTab, openInNewWindow, openSession } from './utils/browser';
 import { getSession } from '@/lib/utils/getSession';
 import { sessionsDB } from '@/lib/utils/database';
 import { generateSession } from '@/lib/utils/generateSession';
-import { getStorage } from '@/lib/utils/storage';
+import { getStorage, getStorageItem } from '@/lib/utils/storage';
 
 async function createTimer() {
 	const [settings, alarm] = await Promise.all([
@@ -27,8 +27,17 @@ browser.alarms.onAlarm.addListener(async (alarm) => {
 	if (alarm.name === 'auto-save') {
 		const session = await getSession();
 		session.title = 'Autosave';
+		session.tags = 'Autosave';
 
-		sessionsDB.saveSession(generateSession(session));
+		await sessionsDB.saveSession(generateSession(session));
+
+		const [count, autoSaveMaxSessions] = await Promise.all([
+			sessionsDB.getAutosavedCount(),
+			getStorageItem('autoSaveMaxSessions')
+		]);
+
+		if (count > autoSaveMaxSessions)
+			sessionsDB.deleteLastAutosavedSession(count - autoSaveMaxSessions);
 	}
 });
 

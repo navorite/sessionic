@@ -150,6 +150,33 @@ class SessionsDB {
 		return this.db.delete('sessions', session.id as UUID);
 	}
 
+	async getAutosavedCount() {
+		log.info('[db.getAutosavedCount] init');
+
+		await this.initDB();
+
+		return this.db.countFromIndex('sessions', 'tags', 'Autosave');
+	}
+
+	async deleteLastAutosavedSession(count: number = 1) {
+		log.info('[db.deleteLastAutosavedSession] init');
+
+		await this.initDB();
+
+		const tx = this.db
+			.transaction('sessions', 'readwrite')
+			.store.index('dateSaved');
+
+		for await (const cursor of tx.iterate(null, 'next')) {
+			if (cursor.value.tags === 'Autosave') {
+				cursor.delete();
+
+				count--;
+				if (!count) break;
+			}
+		}
+	}
+
 	async deleteSessions() {
 		log.info('[db.deleteSessions] init');
 
