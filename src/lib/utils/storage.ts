@@ -5,7 +5,9 @@ export async function getStorageItem<K extends keyof ESettings>(key: K) {
 	return (await storage.local.get(key))[key] as ESettings[K];
 }
 
-export async function getStorage<T extends ESettings>(keys: T) {
+export async function getStorage<T extends ESettings>(
+	keys: T | null | undefined
+) {
 	return (await storage.local.get(keys)) as T;
 }
 
