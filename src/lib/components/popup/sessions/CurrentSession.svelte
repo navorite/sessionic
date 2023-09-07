@@ -80,7 +80,7 @@
 
 		$session.tabsNumber -= length;
 
-		if ($settings.selectionId === 'current') selection.select($session);
+		if ($settings.selectionId === 'current') selection.selectById('current');
 	}
 
 	async function handleUpdate() {
