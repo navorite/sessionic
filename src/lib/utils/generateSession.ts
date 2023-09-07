@@ -9,6 +9,7 @@ export function generateSession(session: ESession): ESession {
 		tabsNumber: session.tabsNumber,
 		dateSaved: date,
 		dateModified: date,
-		id: crypto.randomUUID()
+		id: crypto.randomUUID(),
+		tags: session.tags
 	};
 }

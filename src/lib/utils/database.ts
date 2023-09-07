@@ -7,13 +7,13 @@ import {
 } from 'idb/with-async-ittr';
 import type { UUID } from 'crypto';
 import type { ESession, EWindow } from '@/lib/types';
-import { log } from '@/lib/utils';
+import { log } from '@/lib/utils/log';
 
 interface DB extends DBSchema {
 	sessions: {
 		value: ESession;
 		key: UUID;
-		indexes: { title: string; dateSaved: number };
+		indexes: { title: string; dateSaved: number; tags: string | string[] };
 	};
 }
 
@@ -72,7 +72,7 @@ class SessionsDB {
 		const tx = this.db.transaction('sessions').store.index('dateSaved');
 
 		for await (const cursor of tx.iterate(query, direction)) {
-			const { dateModified, dateSaved, id, title, tabsNumber, windows } =
+			const { dateModified, dateSaved, id, title, tabsNumber, windows, tags } =
 				cursor.value;
 
 			sessions.push({
@@ -81,7 +81,8 @@ class SessionsDB {
 				id,
 				title,
 				tabsNumber,
-				windows: { length: windows.length } as EWindow[]
+				windows: { length: windows.length } as EWindow[],
+				tags
 			});
 		}
 
@@ -149,6 +150,33 @@ class SessionsDB {
 		return this.db.delete('sessions', session.id as UUID);
 	}
 
+	async getAutosavedCount() {
+		log.info('[db.getAutosavedCount] init');
+
+		await this.initDB();
+
+		return this.db.countFromIndex('sessions', 'tags', 'Autosave');
+	}
+
+	async deleteLastAutosavedSession(count: number = 1) {
+		log.info('[db.deleteLastAutosavedSession] init');
+
+		await this.initDB();
+
+		const tx = this.db
+			.transaction('sessions', 'readwrite')
+			.store.index('dateSaved');
+
+		for await (const cursor of tx.iterate(null, 'next')) {
+			if (cursor.value.tags === 'Autosave') {
+				cursor.delete();
+
+				count--;
+				if (!count) break;
+			}
+		}
+	}
+
 	async deleteSessions() {
 		log.info('[db.deleteSessions] init');
 
@@ -183,6 +211,7 @@ class SessionsDB {
 
 			sessionsStore.createIndex('title', 'title', { unique: false });
 			sessionsStore.createIndex('dateSaved', 'dateSaved', { unique: false });
+			sessionsStore.createIndex('tags', 'tags', { unique: false });
 		}
 	}
 }

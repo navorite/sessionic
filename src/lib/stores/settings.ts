@@ -14,7 +14,10 @@ export const settings = (() => {
 		darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches,
 		selectionId: 'current',
 		discarded: true,
-		urlFilterList: null
+		urlFilterList: null,
+		autoSave: false,
+		autoSaveMaxSessions: 5,
+		autoSaveTimer: 15
 	};
 
 	const { subscribe, set, update } = writable(defaultSettings);

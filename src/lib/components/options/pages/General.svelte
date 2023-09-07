@@ -4,8 +4,10 @@
 	import {
 		handleExport,
 		handleFilterListChange,
-		handleImport
+		handleImport,
+		sendMessage
 	} from '@/lib/utils';
+	import browser from 'webextension-polyfill';
 
 	$: urlList = $settings.urlFilterList?.join('\n') ?? '';
 </script>
@@ -24,6 +26,64 @@
 		checked={$settings.darkMode}
 		on:change={() => settings.changeSetting('darkMode', !$settings.darkMode)}
 	/>
+</Section>
+
+<Section title="Sessions">
+	<Switch
+		title="Automatically save sessions"
+		description="Greatly reduce memory usage by not loading tab until selected"
+		checked={$settings.autoSave}
+		on:change={() => {
+			settings.changeSetting('autoSave', !$settings.autoSave);
+
+			if ($settings.autoSave) sendMessage({ message: 'createTimer' });
+			else browser.alarms.clear('auto-save');
+		}}
+	/>
+	<label class="max-w-max text-sm font-medium">
+		<input
+			type="number"
+			class="mr-2 h-7 w-11 rounded-md text-center disabled:text-neutral-6"
+			min="1"
+			max="15"
+			value={$settings.autoSaveMaxSessions}
+			on:change={(event) => {
+				if (Number(event.currentTarget.value) > 15)
+					event.currentTarget.value = '15';
+				if (Number(event.currentTarget.value) < 1)
+					event.currentTarget.value = '1';
+
+				settings.changeSetting(
+					'autoSaveMaxSessions',
+					Number(event.currentTarget.value)
+				);
+			}}
+			disabled={!$settings.autoSave}
+		/>
+		Max number of saved sessions (max. 15 sessions)
+	</label>
+	<label class="max-w-max text-sm font-medium">
+		<input
+			type="number"
+			class="mr-2 h-7 w-11 rounded-md text-center disabled:text-neutral-6"
+			min="1"
+			value={$settings.autoSaveTimer}
+			on:change={(event) => {
+				if (Number(event.currentTarget.value) < 1)
+					event.currentTarget.value = '1';
+
+				settings.changeSetting(
+					'autoSaveTimer',
+					Number(event.currentTarget.value)
+				);
+
+				sendMessage({ message: 'createTimer' });
+			}}
+			disabled={!$settings.autoSave}
+		/>
+
+		Save period in minutes (min. 1 minute)
+	</label>
 </Section>
 
 <Section title="Extension Actions">

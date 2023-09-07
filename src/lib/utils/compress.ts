@@ -1,4 +1,4 @@
-import { isFirefox } from '@constants/env';
+import { isFirefox } from '@constants/shared';
 import type { compressOptions } from '@/lib/types';
 
 export const compress = (() => {

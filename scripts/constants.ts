@@ -10,6 +10,7 @@ export const extension = {
 		'tabs',
 		'storage',
 		'unlimitedStorage',
+		'alarms',
 		...(isFirefox ? ['cookies'] : ['system.display'])
 	],
 	firefoxId: 'sessonic@navorite'

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { EXT_MODE, EXT_NAME, isPopup } from '@constants/env';
+	import { EXT_MODE, EXT_NAME, isPopup } from '@/lib/constants';
 	import {
 		settings,
 		filterOptions,

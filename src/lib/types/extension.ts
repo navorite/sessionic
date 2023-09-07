@@ -8,6 +8,7 @@ export interface ESession {
 	dateSaved: number | undefined;
 	dateModified: number | undefined;
 	id: UUID | 'current';
+	tags?: string | string[];
 }
 
 export interface FilterOptions {
@@ -51,4 +52,7 @@ export interface ESettings {
 	selectionId: 'current' | UUID;
 	discarded: boolean;
 	urlFilterList: URLFilterList;
+	autoSave: boolean;
+	autoSaveMaxSessions: number;
+	autoSaveTimer: number;
 }
