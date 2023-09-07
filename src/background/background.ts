@@ -11,7 +11,11 @@ async function createTimer() {
 		browser.alarms.get('auto-save')
 	]);
 
-	if (settings.autoSave && typeof alarm === 'undefined')
+	if (
+		settings.autoSave &&
+		(typeof alarm === 'undefined' ||
+			alarm.periodInMinutes !== settings.autoSaveTimer)
+	)
 		browser.alarms.create('auto-save', {
 			periodInMinutes: settings.autoSaveTimer
 		});
@@ -42,6 +46,11 @@ browser.runtime.onMessage.addListener((request) => {
 
 		case 'openSession': {
 			openSession(request.session, true, request.discarded);
+			break;
+		}
+
+		case 'createTimer': {
+			createTimer();
 			break;
 		}
 	}
