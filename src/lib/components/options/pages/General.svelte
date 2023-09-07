@@ -44,14 +44,14 @@
 		<input
 			type="number"
 			class="mr-2 h-7 w-11 rounded-md text-center disabled:text-neutral-6"
-			min="0"
+			min="1"
 			max="15"
 			value={$settings.autoSaveMaxSessions}
 			on:change={(event) => {
 				if (Number(event.currentTarget.value) > 15)
 					event.currentTarget.value = '15';
-				if (Number(event.currentTarget.value) < 0)
-					event.currentTarget.value = '0';
+				if (Number(event.currentTarget.value) < 1)
+					event.currentTarget.value = '1';
 
 				settings.changeSetting(
 					'autoSaveMaxSessions',
