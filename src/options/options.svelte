@@ -2,7 +2,7 @@
 	import { settings } from '@/lib/stores';
 	import { Tab, General, KeyboardShortcuts, About } from '@/lib/components';
 	import { isExtensionViewed } from '@utils/extension';
-	import { EXT_NAME } from '@constants/env';
+	import { EXT_NAME } from '@/lib/constants';
 
 	let group: string;
 </script>

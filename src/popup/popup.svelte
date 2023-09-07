@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { EXT_NAME, isPopup } from '@constants/env';
+	import { EXT_NAME, isPopup } from '@/lib/constants';
 	import { settings } from '@/lib/stores/';
 	import { openFullView } from '@utils/extension';
 	import { CommandPalette, Header, Sessions } from '@/lib/components';

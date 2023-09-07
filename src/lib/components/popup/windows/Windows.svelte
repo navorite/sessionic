@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { ETab } from '@/lib/types';
 	import { afterUpdate } from 'svelte';
-	import { isFirefox } from '@constants/env';
+	import { isFirefox } from '@/lib/constants';
 	import { sessions, currentSession } from '@/lib/stores';
 	import { Window } from '@/lib/components';
 

@@ -1,6 +1,6 @@
 <script>
 	import { Donate, Section } from '@/lib/components';
-	import { EXT_NAME, EXT_VER } from '@/lib/constants/env';
+	import { EXT_NAME, EXT_VER } from '@/lib/constants';
 </script>
 
 <Section title="About">

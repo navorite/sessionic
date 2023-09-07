@@ -1,4 +1,4 @@
-import { EXT_NAME } from '@/lib/constants/env';
+import { EXT_NAME } from '@/lib/constants';
 import { sessionsDB } from '@/lib/utils';
 import { compressToUint8Array } from 'lz-string';
 

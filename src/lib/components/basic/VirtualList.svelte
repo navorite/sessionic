@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { isFirefox } from '@constants/env';
+	import { isFirefox } from '@/lib/constants';
 	import { afterUpdate } from 'svelte';
 	import { getAvailableViewport } from '@utils/viewport';
 
