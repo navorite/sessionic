@@ -4,10 +4,12 @@ import { getSession } from '@/lib/utils/getSession';
 import { sessionsDB } from '@/lib/utils/database';
 import { generateSession } from '@/lib/utils/generateSession';
 import { getStorage, getStorageItem } from '@/lib/utils/storage';
+import { autoSaveDefaults } from '@/lib/constants/shared';
+import type { ESettings } from '@/lib/types';
 
 async function createTimer() {
 	const [settings, alarm] = await Promise.all([
-		getStorage(null),
+		getStorage(autoSaveDefaults as ESettings),
 		browser.alarms.get('auto-save')
 	]);
 
@@ -33,7 +35,10 @@ browser.alarms.onAlarm.addListener(async (alarm) => {
 
 		const [count, autoSaveMaxSessions] = await Promise.all([
 			sessionsDB.getAutosavedCount(),
-			getStorageItem('autoSaveMaxSessions')
+			getStorageItem(
+				'autoSaveMaxSessions',
+				autoSaveDefaults.autoSaveMaxSessions
+			)
 		]);
 
 		if (count > autoSaveMaxSessions)
