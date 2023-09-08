@@ -29,3 +29,9 @@ export const compress_options: compressOptions = {
 	quality: 0.7,
 	max_size: 20
 };
+
+export const autoSaveDefaults = {
+	autoSave: false,
+	autoSaveMaxSessions: 5,
+	autoSaveTimer: 15
+};

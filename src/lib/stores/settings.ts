@@ -3,6 +3,7 @@ import type { ESettings, FilterOptions } from '@/lib/types';
 import { writable, type Writable } from 'svelte/store';
 import { sessions } from '@/lib/stores';
 import { getStorage, setStorage, applyTheme, log } from '@/lib/utils';
+import { autoSaveDefaults } from '@/lib/constants';
 
 export const filterOptions: Writable<FilterOptions> = writable({ query: '' });
 
@@ -15,9 +16,9 @@ export const settings = (() => {
 		selectionId: 'current',
 		discarded: true,
 		urlFilterList: null,
-		autoSave: false,
-		autoSaveMaxSessions: 5,
-		autoSaveTimer: 15
+		autoSave: autoSaveDefaults.autoSave,
+		autoSaveMaxSessions: autoSaveDefaults.autoSaveMaxSessions,
+		autoSaveTimer: autoSaveDefaults.autoSaveTimer
 	};
 
 	const { subscribe, set, update } = writable(defaultSettings);
