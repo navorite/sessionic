@@ -11,7 +11,7 @@ A web extension to easily save sessions and manage them.
 [![License](https://img.shields.io/badge/License-AGPL--3.0-blue)](./LICENSE)
 [![Discord Server](https://img.shields.io/badge/Chat-Discord-7289da?logo=discord&logoColor=7289da)](https://discord.gg/HwZ65UBg)
 ![Support me using Patreon](https://img.shields.io/badge/Sponsor-Patreon-FF424D?logo=patreon&link=https%3A%2F%2Fpatreon.com%2Fnavorite)
-[![Support me using Ko-fi](https://img.shields.io/badge/Sponsor-Ko--fi-blue?logo=kofi&link=ko-fi.com%2Fnavorite%20)](https://ko-fi.com/navorite)
+[![Support me using Ko-fi](https://img.shields.io/badge/Sponsor-Ko--fi-FF5E5B?logo=kofi&logoColor=FF5E5B)](https://ko-fi.com/navorite)
 ![Support me using PayPal](https://img.shields.io/badge/Sponsor-Paypal-00457C?logo=paypal&link=https%3A%2F%2Fwww.paypal.me%2Fnavorite%20)
 
 **Popup View**
