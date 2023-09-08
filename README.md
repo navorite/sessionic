@@ -6,13 +6,13 @@
 
 A web extension to easily save sessions and manage them.
 
-![Latest GitHub release](https://img.shields.io/github/v/release/navorite/sessionic?logo=github&label=Release)
+[![Latest GitHub release](https://img.shields.io/github/v/release/navorite/sessionic?logo=github&label=Release)](https://github.com/navorite/sessionic/releases)
 [![Mozilla Add-on Version](https://img.shields.io/amo/v/sessonic%40navorite?logo=firefox&label=Firefox)](https://addons.mozilla.org/en-US/firefox/addon/sessionic)
 [![License](https://img.shields.io/badge/License-AGPL--3.0-blue)](./LICENSE)
 [![Discord Server](https://img.shields.io/badge/Chat-Discord-7289da?logo=discord&logoColor=7289da)](https://discord.gg/HwZ65UBg)
-![Support me using Patreon](https://img.shields.io/badge/Sponsor-Patreon-FF424D?logo=patreon&link=https%3A%2F%2Fpatreon.com%2Fnavorite)
 [![Support me using Ko-fi](https://img.shields.io/badge/Sponsor-Ko--fi-FF5E5B?logo=kofi&logoColor=FF5E5B)](https://ko-fi.com/navorite)
-![Support me using PayPal](https://img.shields.io/badge/Sponsor-Paypal-00457C?logo=paypal&link=https%3A%2F%2Fwww.paypal.me%2Fnavorite%20)
+[![Support me using Patreon](https://img.shields.io/badge/Sponsor-Patreon-FF424D?logo=patreon)](https://www.patreon.com/navorite)
+[![Support me using PayPal](https://img.shields.io/badge/Sponsor-Paypal-00457C?logo=paypal)](https://www.paypal.me/navorite)
 
 **Popup View**
 | Light | Dark |
