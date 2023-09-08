@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.1](https://github.com/navorite/sessionic/compare/v0.3.0...v0.3.1) (2023-09-08)
+
+### :bug: Bug Fixes
+
+* Fix Autosave does not remove oldest session after exceeding max session number ([e5aba20](https://github.com/navorite/sessionic/commit/728d37ccd111bbb167043651764c31b9736e5264))
+
 ## [0.3.0](https://github.com/navorite/sessionic/compare/v0.2.5...v0.3.0) (2023-09-07)
 
 
