@@ -116,8 +116,8 @@ export async function sanitizeTab(targetTab: ETab) {
 	}
 
 	if (tab.favIconUrl && tab.url) {
-		if (compress)
-			tab.favIconUrl = await compress.icon(tab.favIconUrl, compress_options);
+		// if (compress)
+		// 	tab.favIconUrl = await compress.icon(tab.favIconUrl, compress_options); -- TODO: Implement this in a better method
 
 		tab.favIconUrl = compressLZ(tab.favIconUrl);
 	}
