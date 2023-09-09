@@ -13,12 +13,17 @@
 	export let start: number = 0;
 	export let end: number = 0;
 
-	export function scrollTo(
-		x: number,
-		y: number,
+	export function scrollToIndex(
+		index: number,
 		behavior: ScrollBehavior = 'smooth'
 	) {
-		divEl?.scrollTo({ top: y, left: x, behavior: behavior });
+		const position = reversed ? items.length - index - 1 : index;
+
+		divEl?.scrollTo({
+			top: (divEl?.scrollHeight / items.length) * position,
+			left: 0,
+			behavior: behavior
+		});
 	}
 
 	export let reversed = false;

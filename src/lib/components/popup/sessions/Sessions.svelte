@@ -9,14 +9,21 @@
 		CurrentSession
 	} from '@/lib/components';
 
+	$: selection = sessions.selection;
+
+	$: if ($selection && !isScrolled) {
+		isScrolled = true;
+		scrollToIndex($sessions.indexOf($selection));
+	}
+
 	let modalShow = false;
 	let modalType: 'Save' | 'Rename' = 'Rename';
 
 	let actionShow = false;
 
-	let scrollTo: (x: number, y: number) => void;
+	let scrollToIndex: (index: number) => void;
 
-	$: selection = sessions.selection;
+	let isScrolled = false;
 </script>
 
 <div class="mt-2 flex h-full max-h-[90vh] w-full gap-2 overflow-hidden">
@@ -34,7 +41,7 @@
 				items={$filtered}
 				let:item
 				class="flex-1"
-				bind:scrollTo
+				bind:scrollToIndex
 			>
 				<Session
 					session={item}
@@ -62,7 +69,7 @@
 			$currentSession.title = event.detail;
 
 			await sessions.add($currentSession);
-			scrollTo(0, 0);
+			scrollToIndex(0);
 		}
 
 		modalShow = false;
