@@ -30,15 +30,14 @@ A web extension to easily save sessions and manage them.
 
 ## Features
 
-- Ability to save and manage sessions
-- Ability to import and export sessions for backup
-- Compatible with popular extensions like Session Buddy and Tab Session Manager
-- Built with performance in mind
-- Optimized for lower memory usage
-- Doesn't consume RAM or CPU when idle
-- Modern UI
-- Light and Dark mode
-- Cross-browser support. (Firefox, Chrome, Edge, and Opera)
+- Save and manage sessions
+- Import and export sessions
+- Save sessions automatically based on an interval
+- Filter URL list to track using [match patterns](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Match_patterns)
+- Modern UI with Light and Dark mode support
+- Focused on performance and lower RAM usage
+- Cross-browser support (Firefox, Chrome, Edge, and Opera)
+- Compatible with Session Buddy and Tab Session Manager
 
 ## Download
 
