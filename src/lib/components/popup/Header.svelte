@@ -65,7 +65,7 @@
 </div>
 
 <Modal bind:open={showDonateModal} height="100%" width="100%">
-	<svelte:fragment slot="header">Consider Donating</svelte:fragment>
+	<svelte:fragment slot="header">Support the project</svelte:fragment>
 	<svelte:fragment slot="content">
 		<Donate />
 	</svelte:fragment>

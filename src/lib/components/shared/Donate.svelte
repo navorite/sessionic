@@ -3,10 +3,10 @@
 </script>
 
 <div class="container">
-	<p class="mb-4">
-		If you like the extension and would like to help me continue improving the
-		extension, you can donate to any of the links below, I really appreciate it
-		:)
+	<p class="mb-4 text-center">
+		Sessionic is free forever without ads, bloat or tracking. It takes a lot of
+		my time in development. <br /> If you woud like to help me improve the extension,
+		please consider donating using the links below :)
 	</p>
 
 	<div class="flex flex-wrap gap-4">

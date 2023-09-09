@@ -17,7 +17,7 @@
 		>
 	</div>
 
-	<h2 class="text-lg font-bold">Consider Donating</h2>
+	<h2 class="text-lg font-bold">Support the project</h2>
 
 	<Donate />
 </Section>

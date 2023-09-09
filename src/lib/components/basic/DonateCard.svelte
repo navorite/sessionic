@@ -9,7 +9,7 @@
 </script>
 
 <div
-	class="flex max-w-xs flex-col gap-4 rounded-md bg-[hsla(0,0%,43%,0.5)] p-4 font-semibold"
+	class="flex max-w-xs flex-col gap-4 rounded-md bg-[hsla(0,0%,60%,0.2)] p-4 font-semibold"
 >
 	<h3 class="flex items-center gap-2">
 		<img class="h-5 w-5" src={srcIcon} alt={title} />
