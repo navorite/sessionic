@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.0.0](https://github.com/navorite/sessionic/compare/v0.3.1...v1.0.0) (2023-09-09)
+
+### Sessionic has finally hit v1.0.0! :sparkles:
+
+### :rocket: Enhancements
+
+* Adjust naming of autosave section ([7a2d470](https://github.com/navorite/sessionic/commit/7a2d470c85bb0e1dbe9565c249586334a588f346))
+* Adjust naming of save interval input ([1014310](https://github.com/navorite/sessionic/commit/10143103b2ce0e6d941720c1456f6674a5c205fb))
+* Scroll to selected session on start ([39c3cdd](https://github.com/navorite/sessionic/commit/39c3cdd586a12e4a20bd671c2443c01488be58bb))
+
+
+### :bug: Bug Fixes
+
+* Fix importing sessions from other extensions ([a91631c](https://github.com/navorite/sessionic/commit/a91631c0dacee1df2eb5141f075a1c3a385c7166))
+
 ## [0.3.1](https://github.com/navorite/sessionic/compare/v0.3.0...v0.3.1) (2023-09-08)
 
 ### :bug: Bug Fixes
