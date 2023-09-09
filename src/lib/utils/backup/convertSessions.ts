@@ -6,9 +6,8 @@ import type {
 	ETab,
 	EWindow
 } from '@/lib/types';
-import { compress_options, tabAttr } from '@/lib/constants';
+import { tabAttr } from '@/lib/constants';
 import { compress as compressLZ } from 'lz-string';
-import { compress } from '..';
 
 export async function convertSessions(target: ETSM[] | ESBImport) {
 	if (!target) return;
