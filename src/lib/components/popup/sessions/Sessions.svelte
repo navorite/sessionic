@@ -11,7 +11,7 @@
 
 	$: selection = sessions.selection;
 
-	$: if ($selection && !isScrolled) {
+	$: if ($selection && typeof scrollToIndex !== 'undefined' && !isScrolled) {
 		isScrolled = true;
 		scrollToIndex($sessions.indexOf($selection));
 	}
