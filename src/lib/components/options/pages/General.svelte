@@ -28,7 +28,7 @@
 	/>
 </Section>
 
-<Section title="Sessions">
+<Section title="Automatic saving">
 	<Switch
 		title="Automatically save sessions"
 		description="Greatly reduce memory usage by not loading tab until selected"
