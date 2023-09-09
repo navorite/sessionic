@@ -81,8 +81,7 @@
 			}}
 			disabled={!$settings.autoSave}
 		/>
-
-		Save period in minutes (min. 1 minute)
+		Save interval in minutes (min. 1 minute)
 	</label>
 </Section>
 
