@@ -90,7 +90,7 @@ class SessionsDB {
 	}
 
 	async loadSessionWindows(id: UUID) {
-		log.info('[db.loadSession] init');
+		log.info('[db.loadSessionWindows] init');
 
 		await this.initDB();
 
@@ -184,7 +184,6 @@ class SessionsDB {
 
 		return this.db.clear('sessions');
 	}
-
 	upgradeSessions(
 		db: IDBPDatabase<DB>,
 		oldVersion: number,
