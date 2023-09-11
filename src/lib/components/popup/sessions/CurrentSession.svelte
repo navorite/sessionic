@@ -33,6 +33,7 @@
 
 	function addEvents() {
 		//TODO: optimize: updating on tab basis instead of getting whole session - use activated, updated and removed to get the effect
+		browser.windows.onFocusChanged.addListener(handleUpdate);
 		browser.tabs.onCreated.addListener(handleUpdate);
 		browser.tabs.onUpdated.addListener(handleUpdate);
 		browser.tabs.onActivated.addListener(handleUpdate);
@@ -42,6 +43,7 @@
 	}
 
 	function removeEvents() {
+		browser.windows.onFocusChanged.removeListener(handleUpdate);
 		browser.tabs.onCreated.removeListener(handleUpdate);
 		browser.tabs.onUpdated.removeListener(handleUpdate);
 		browser.tabs.onActivated.removeListener(handleUpdate);
