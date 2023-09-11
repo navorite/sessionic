@@ -4,7 +4,8 @@ import { derived, get, writable, type Writable } from 'svelte/store';
 import { sessionsDB } from '@utils/database';
 import { settings, notification, filterOptions } from '@/lib/stores';
 import { MESSAGES } from '@constants/notifications';
-import { log, generateSession } from '@/lib/utils';
+import { log, generateSession, sendMessage } from '@/lib/utils';
+import browser from 'webextension-polyfill';
 
 export const sessions = (() => {
 	const { subscribe, set, update }: Writable<ESession[]> = writable([]);
@@ -43,6 +44,9 @@ export const sessions = (() => {
 			generated.windows = { length: generated.windows.length } as EWindow[]; //unref the obj for GC
 
 			sessions.push(generated);
+
+			notify(sessions);
+
 			return sessions;
 		});
 
@@ -63,6 +67,8 @@ export const sessions = (() => {
 			target.windows = { length: target.windows.length } as EWindow[]; //unref the obj for GC
 
 			sessions[sessions.indexOf(target)] = target;
+
+			notify(sessions, target.id);
 
 			return sessions;
 		});
@@ -92,6 +98,8 @@ export const sessions = (() => {
 
 			if (index !== -1) sessions.splice(index, 1);
 
+			notify(sessions);
+
 			return sessions;
 		});
 
@@ -118,6 +126,8 @@ export const sessions = (() => {
 		select(get(currentSession));
 
 		notification.success_warning(MESSAGES.removeAll.success_warning);
+
+		notify([]);
 	}
 
 	async function select(session: ESession) {
@@ -155,6 +165,19 @@ export const sessions = (() => {
 			return value;
 		});
 	}
+
+	function notify(sessions: ESession[], selectedId?: UUID | 'current') {
+		log.info('[db.notify]: init');
+		sendMessage({ message: 'notifyChangeDB', sessions, selectedId });
+	}
+
+	browser.runtime.onMessage.addListener((request) => {
+		if (request.message === 'notifyChangeDB') {
+			set(request.sessions);
+			if (typeof request.selectedId !== 'undefined')
+				selectById(request.selectedId);
+		}
+	});
 
 	return {
 		subscribe,
