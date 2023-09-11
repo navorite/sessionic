@@ -16,6 +16,8 @@
 	export let current = false;
 
 	let collapsed = false;
+
+	$: active = window?.focused ? 'text-link' : '';
 </script>
 
 {#if window?.tabs?.length}
@@ -33,7 +35,7 @@
 			<IconButton
 				role="img"
 				icon={window?.incognito ? 'incognito' : 'window'}
-				class="text-lg"
+				class="{active} text-lg"
 				on:click={() => (collapsed = !collapsed)}
 			/>
 
@@ -43,7 +45,7 @@
 				tabindex="0"
 				role="button"
 				aria-label="Open in a New Window"
-				class="w-max max-w-[60%] cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap text-sm font-medium hover:underline"
+				class="{active} w-max max-w-[60%] cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap text-sm font-medium hover:underline"
 				on:click={() => {
 					sendMessage({
 						message: 'openInNewWindow',
