@@ -69,7 +69,8 @@
 			$currentSession.title = event.detail;
 
 			await sessions.add($currentSession);
-			scrollToIndex(0);
+
+			if ($sessions.length) scrollToIndex($sessions.length);
 		}
 
 		modalShow = false;
