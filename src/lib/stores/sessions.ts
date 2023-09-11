@@ -45,7 +45,7 @@ export const sessions = (() => {
 
 			sessions.push(generated);
 
-			notify(sessions);
+			notify(sessions, generated.id);
 
 			return sessions;
 		});
