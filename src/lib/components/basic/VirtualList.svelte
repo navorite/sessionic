@@ -17,6 +17,8 @@
 		index: number,
 		behavior: ScrollBehavior = 'smooth'
 	) {
+		if (index < 0) return;
+
 		const position = reversed ? items.length - index - 1 : index;
 
 		divEl?.scrollTo({
