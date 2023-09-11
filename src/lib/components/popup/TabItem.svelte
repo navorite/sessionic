@@ -9,6 +9,8 @@
 	export let current = false;
 
 	const dispatch = createEventDispatcher<{ delete: ETab }>();
+
+	$: active = tab?.active ? 'text-link' : '';
 </script>
 
 {#if tab?.url}
@@ -26,10 +28,11 @@
 			{:else}
 				<IconButton
 					icon="tab"
-					class="max-h-[1rem] min-h-[1rem] min-w-[1rem] max-w-[1rem] rounded-md text-base text-neutral-content"
+					class="max-h-[1rem] min-h-[1rem] min-w-[1rem] max-w-[1rem] rounded-md text-base {active ||
+						'text-neutral-content'}"
 				/>
 			{/if}
-			<span class="title">
+			<span class="title {active}">
 				{tab.title}
 			</span>
 		</a>
