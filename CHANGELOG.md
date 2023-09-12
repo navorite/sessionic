@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.0.1](https://github.com/navorite/sessionic/compare/v1.0.0...v1.0.1) (2023-09-12)
+
+
+### :rocket: Enhancements
+
+* Notify when extension gets updated ([5248bc6](https://github.com/navorite/sessionic/commit/5248bc67eece0e13372321ee5f5867be7d04368b))
+* Select Current Session if selected session was not found ([976e2a2](https://github.com/navorite/sessionic/commit/976e2a2f101394fd232ffaecf5dabe97daf61990))
+* Sync autosaved sessions with all views in real-time ([68a17ee](https://github.com/navorite/sessionic/commit/68a17ee6d993d2c9a5a10816d3e44c1e1705f0eb))
+* **UI:** Indicate focused tab in window ([7d11c5b](https://github.com/navorite/sessionic/commit/7d11c5bdb1f05564b54a8a84d46bac2f67552d6d))
+* **UI:** Indicate focused window in sessions ([fe0c934](https://github.com/navorite/sessionic/commit/fe0c934902736fdf2e8ab032aa1d48239843bb30))
+* Update focused window when it changes ([5716688](https://github.com/navorite/sessionic/commit/5716688df4ad1a0329c43e3209be977f65e829fe))
+* Update selected session for all views when it changes in real-time  ([e117289](https://github.com/navorite/sessionic/commit/e1172891eef8c5189a07d702112d0a3b55da9d0c))
+
+
+### :bug: Bug Fixes
+
+* Clear windows object to avoid memory leak in certain cases ([59335c8](https://github.com/navorite/sessionic/commit/59335c8083f724f252349e91021a17f82f6e055a))
+* Do not scroll if Current Session is selected ([e62271b](https://github.com/navorite/sessionic/commit/e62271bbedae265943f43e956ee33427091da0af))
+* Fix saving a session scrolls to the end of the list ([cc37353](https://github.com/navorite/sessionic/commit/cc37353287d2597d6cc7afb06dc102d7836376b4))
+
 ## [1.0.0](https://github.com/navorite/sessionic/compare/v0.3.1...v1.0.0) (2023-09-09)
 
 ### Sessionic has finally hit v1.0.0! :sparkles:
