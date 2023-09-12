@@ -174,8 +174,10 @@ export const sessions = (() => {
 	browser.runtime.onMessage.addListener((request) => {
 		if (request.message === 'notifyChangeDB') {
 			set(request.sessions);
-			if (typeof request.selectedId !== 'undefined')
-				selectById(request.selectedId);
+
+			if (!request.selectedId) return;
+
+			selectById(request.selectedId);
 		}
 	});
 

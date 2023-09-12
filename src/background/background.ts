@@ -3,9 +3,10 @@ import { createTab, openInNewWindow, openSession } from './utils/browser';
 import { getSession } from '@/lib/utils/getSession';
 import { sessionsDB } from '@/lib/utils/database';
 import { generateSession } from '@/lib/utils/generateSession';
-import { getStorage, getStorageItem } from '@/lib/utils/storage';
+import { getStorage } from '@/lib/utils/storage';
 import { autoSaveDefaults } from '@/lib/constants/shared';
 import type { ESettings } from '@/lib/types';
+import { sendMessage } from '@/lib/utils/messages';
 
 async function createTimer() {
 	const [settings, alarm] = await Promise.all([
@@ -33,16 +34,24 @@ browser.alarms.onAlarm.addListener(async (alarm) => {
 
 		await sessionsDB.saveSession(generateSession(session));
 
-		const [count, autoSaveMaxSessions] = await Promise.all([
+		const [count, { autoSaveMaxSessions, selectionId }] = await Promise.all([
 			sessionsDB.getAutosavedCount(),
-			getStorageItem(
-				'autoSaveMaxSessions',
-				autoSaveDefaults.autoSaveMaxSessions
-			)
+			getStorage({
+				autoSaveMaxSessions: autoSaveDefaults.autoSaveMaxSessions,
+				selectionId: 'current'
+			} as ESettings)
 		]);
 
 		if (count > autoSaveMaxSessions)
 			sessionsDB.deleteLastAutosavedSession(count - autoSaveMaxSessions);
+
+		const sessions = sessionsDB.lazyLoadSessions();
+
+		sendMessage({
+			message: 'notifyChangeDB',
+			sessions: await sessions,
+			selectedId: selectionId
+		});
 	}
 });
 
