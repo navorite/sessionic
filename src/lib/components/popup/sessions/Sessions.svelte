@@ -70,7 +70,7 @@
 
 			await sessions.add($currentSession);
 
-			if ($sessions.length) scrollToIndex($sessions.length);
+			scrollToIndex($sessions.length);
 		}
 
 		modalShow = false;
