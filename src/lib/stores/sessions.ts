@@ -153,6 +153,8 @@ export const sessions = (() => {
 				return;
 			}
 		}
+
+		return select(get(currentSession));
 	}
 
 	function clearSelection() {
