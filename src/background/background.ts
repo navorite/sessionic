@@ -3,7 +3,7 @@ import { createTab, openInNewWindow, openSession } from './utils/browser';
 import { getSession } from '@/lib/utils/getSession';
 import { sessionsDB } from '@/lib/utils/database';
 import { generateSession } from '@/lib/utils/generateSession';
-import { getStorage } from '@/lib/utils/storage';
+import { getStorage, setStorage } from '@/lib/utils/storage';
 import { autoSaveDefaults } from '@/lib/constants/shared';
 import type { ESettings } from '@/lib/types';
 import { sendMessage } from '@/lib/utils/messages';
@@ -53,6 +53,10 @@ browser.alarms.onAlarm.addListener(async (alarm) => {
 			selectedId: selectionId
 		});
 	}
+});
+
+browser.runtime.onInstalled.addListener((details) => {
+	if (details.reason === 'update') setStorage({ updated: true });
 });
 
 browser.runtime.onMessage.addListener((request) => {

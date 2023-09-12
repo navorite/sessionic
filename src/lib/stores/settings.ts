@@ -1,9 +1,16 @@
 import { storage, type Storage } from 'webextension-polyfill';
 import type { ESettings, FilterOptions } from '@/lib/types';
 import { writable, type Writable } from 'svelte/store';
-import { sessions } from '@/lib/stores';
-import { getStorage, setStorage, applyTheme, log } from '@/lib/utils';
+import { notification, sessions } from '@/lib/stores';
+import {
+	getStorage,
+	setStorage,
+	applyTheme,
+	log,
+	getStorageItem
+} from '@/lib/utils';
 import { autoSaveDefaults } from '@/lib/constants';
+import browser from 'webextension-polyfill';
 
 export const filterOptions: Writable<FilterOptions> = writable({ query: '' });
 
@@ -44,6 +51,19 @@ export const settings = (() => {
 		applyTheme(settings.darkMode, false);
 
 		loaded = Promise.resolve({} as ESettings);
+
+		const updated = await getStorageItem('updated' as keyof ESettings, false);
+
+		if (updated) {
+			notification.set({
+				msg: `Sessionic was updated to v${
+					browser.runtime.getManifest().version
+				}`,
+				type: 'info'
+			});
+
+			setStorage({ updated: false });
+		}
 	}
 
 	function onStorageChange(changes: Storage.StorageAreaOnChangedChangesType) {

@@ -39,6 +39,7 @@ export const notification = (() => {
 
 	return {
 		subscribe,
+		set,
 		info,
 		success,
 		warning,

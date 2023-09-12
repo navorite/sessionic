@@ -20,8 +20,6 @@ export const sessions = (() => {
 
 		log.info(`[sessions.load] loaded ${sessions.length} session`);
 
-		if (!sessions.length) notification.info(MESSAGES.load.info);
-
 		await settings.init(); // to fix inconsistent behaviour with FF and Chrome - need to check
 
 		const selectionId = get(settings).selectionId;
