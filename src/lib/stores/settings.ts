@@ -56,9 +56,7 @@ export const settings = (() => {
 
 		if (updated) {
 			notification.set({
-				msg: `Sessionic was updated to v${
-					browser.runtime.getManifest().version
-				}`,
+				msg: `Sessionic was updated to v${__EXT_VER__}`,
 				type: 'info'
 			});
 
