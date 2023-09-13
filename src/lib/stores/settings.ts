@@ -10,7 +10,6 @@ import {
 	getStorageItem
 } from '@/lib/utils';
 import { autoSaveDefaults } from '@/lib/constants';
-import browser from 'webextension-polyfill';
 
 export const filterOptions: Writable<FilterOptions> = writable({ query: '' });
 
