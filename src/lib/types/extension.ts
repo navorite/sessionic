@@ -8,7 +8,7 @@ export interface ESession {
 	dateSaved: number | undefined;
 	dateModified: number | undefined;
 	id: UUID | 'current';
-	tags?: string | string[];
+	tags?: string;
 }
 
 export interface FilterOptions {
