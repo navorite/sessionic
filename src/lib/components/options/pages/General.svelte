@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { settings } from '@/lib/stores';
-	import { Switch, Section } from '@/lib/components';
+	import { Switch, Section, TagEditor } from '@/lib/components';
 	import {
 		handleExport,
 		handleFilterListChange,
@@ -117,6 +117,8 @@
 </Section>
 
 <Section title="Session Actions">
+	<TagEditor />
+
 	<div class="flex gap-2">
 		<label
 			class="max-w-max cursor-pointer rounded-md bg-neutral-4 p-2 hover:bg-neutral-5"
