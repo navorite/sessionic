@@ -37,7 +37,6 @@
 </script>
 
 <table class="w-full table-fixed rounded-md">
-	<caption class="mt-2 text-neutral-content/50">List of tags</caption>
 	<thead>
 		<tr class="border-b border-b-neutral-4/50 text-neutral-content/50">
 			<td>Tag</td>
