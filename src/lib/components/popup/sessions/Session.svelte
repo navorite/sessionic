@@ -115,9 +115,9 @@
 					sessions.put(session);
 				}}
 			/>
-		{:else if hover}
+		{:else}
 			<IconButton
-				icon="save"
+				icon="tag"
 				title="Add tag"
 				class="ml-auto text-xl hover:text-primary-focus"
 				on:click={() => {
