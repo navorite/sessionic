@@ -2,7 +2,7 @@
 	import type { ESession, EWindow } from '@/lib/types';
 	import { createEventDispatcher } from 'svelte';
 	import { settings, filterOptions, sessions } from '@/lib/stores';
-	import { ListItem, IconButton } from '@/lib/components';
+	import { ListItem, IconButton, Tag } from '@/lib/components';
 	import { tooltip, sendMessage, markResult, sessionsDB } from '@/lib/utils';
 	import type { UUID } from 'crypto';
 
@@ -96,11 +96,44 @@
 			{session?.tabsNumber}
 		</div>
 
-		<span class="session-card ml-auto" use:tooltip={{ title: 'Date saved' }}>
+		<span class="session-card" use:tooltip={{ title: 'Date saved' }}>
 			{#if session?.dateSaved}
 				{@const date = new Date(session.dateSaved)}
 				{date.toLocaleString([], { dateStyle: 'short', timeStyle: 'short' })}
 			{/if}
 		</span>
+
+		{#if session.tags}
+			{@const tag = $settings.tags[session.tags]}
+			<Tag
+				name={session.tags}
+				bgColor={tag?.bgColor}
+				textColor={tag?.textColor}
+				class="ml-auto"
+				><span
+					class="hidden rounded-md bg-error hover:bg-error-focus group-hover:block"
+				>
+					<IconButton
+						icon="close"
+						class="text-sm text-white"
+						title="Remove tag"
+						on:click={() => {
+							delete session.tags;
+
+							sessions.put(session);
+						}}
+					/>
+				</span></Tag
+			>
+		{:else}
+			<IconButton
+				icon="tag"
+				title="Add tag"
+				class="ml-auto text-xl hover:text-primary-focus"
+				on:click={() => {
+					dispatch('tagsModal');
+				}}
+			></IconButton>
+		{/if}
 	</div>
 </ListItem>

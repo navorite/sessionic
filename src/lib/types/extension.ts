@@ -8,7 +8,7 @@ export interface ESession {
 	dateSaved: number | undefined;
 	dateModified: number | undefined;
 	id: UUID | 'current';
-	tags?: string | string[];
+	tags?: string;
 }
 
 export interface FilterOptions {
@@ -32,6 +32,7 @@ export type Icon =
 	| 'tab'
 	| 'expand'
 	| 'collapse'
+	| 'tag'
 	| 'search'
 	| 'light'
 	| 'dark'
@@ -55,4 +56,12 @@ export interface ESettings {
 	autoSave: boolean;
 	autoSaveMaxSessions: number;
 	autoSaveTimer: number;
+	tags: Record<
+		string,
+		{
+			name?: string;
+			bgColor: string;
+			textColor: string;
+		}
+	>;
 }
