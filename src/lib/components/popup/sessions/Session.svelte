@@ -105,7 +105,11 @@
 
 		{#if session.tags}
 			{@const tag = $settings.tags[session.tags]}
-			<Tag name={session.tags} bgColor={tag?.bgColor} textColor={tag?.textColor}
+			<Tag
+				name={session.tags}
+				bgColor={tag?.bgColor}
+				textColor={tag?.textColor}
+				class="ml-auto"
 				><span
 					class="hidden rounded-md bg-error hover:bg-error-focus group-hover:block"
 				>
