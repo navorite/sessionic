@@ -28,6 +28,8 @@
 				if (!tag || typeof tag !== 'string') return;
 
 				dispatch('tagSubmit', tag);
+
+				open = false;
 			}}
 		>
 			<select name="tags" id="tags" class="rounded-md p-1">
