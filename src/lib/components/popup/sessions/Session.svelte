@@ -73,7 +73,7 @@
 		{/if}
 	</div>
 
-	<div class="flex items-center gap-2 py-1">
+	<div class="mt-2 flex items-center gap-2">
 		<div
 			class="session-card"
 			use:tooltip={{
