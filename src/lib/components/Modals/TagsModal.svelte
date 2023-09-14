@@ -53,7 +53,7 @@
 			<select
 				name="tags"
 				id="tags"
-				class="rounded-md p-1"
+				class="rounded-md bg-neutral-5 p-1 text-neutral-content"
 				bind:value={selectVal}
 			>
 				<option value={'createANewTag'}>Create new</option>
