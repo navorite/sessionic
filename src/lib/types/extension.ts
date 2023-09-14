@@ -32,6 +32,7 @@ export type Icon =
 	| 'tab'
 	| 'expand'
 	| 'collapse'
+	| 'tag'
 	| 'search'
 	| 'light'
 	| 'dark'
