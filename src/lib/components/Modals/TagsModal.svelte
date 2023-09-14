@@ -32,7 +32,7 @@
 	<svelte:fragment slot="header">Assign a tag</svelte:fragment>
 	<svelte:fragment slot="content">
 		<form
-			class="flex h-full w-full flex-col justify-around gap-4"
+			class="flex h-full w-full flex-col justify-around gap-2"
 			on:submit|preventDefault={() => {
 				if (selectVal === 'createANewTag') {
 					const tags = $settings.tags;
@@ -50,23 +50,29 @@
 				open = false;
 			}}
 		>
-			<select
-				name="tags"
-				id="tags"
-				class="rounded-md bg-neutral-5 p-1 text-neutral-content"
-				bind:value={selectVal}
-			>
-				<option value={'createANewTag'}>Create new</option>
-				{#if tags}
-					{#each Object.keys(tags) as tag}
-						<option
-							style:background-color={tags[tag]?.bgColor}
-							style:color={tags[tag]?.textColor}
-							value={tag}>{tag}</option
-						>
-					{/each}
-				{/if}
-			</select>
+			<label class="flex items-center gap-2">
+				Select a tag:
+				<select
+					name="tags"
+					id="tags"
+					class="flex-1 rounded-md border-2 border-neutral-4 bg-transparent p-1 outline-none"
+					bind:value={selectVal}
+				>
+					<option
+						value={'createANewTag'}
+						class="bg-neutral-6 text-neutral-content">Create new</option
+					>
+					{#if tags}
+						{#each Object.keys(tags) as tag}
+							<option
+								style:background-color={tags[tag]?.bgColor}
+								style:color={tags[tag]?.textColor}
+								value={tag}>{tag}</option
+							>
+						{/each}
+					{/if}
+				</select>
+			</label>
 
 			{#if selectVal === 'createANewTag'}
 				<div class="flex flex-col gap-2">
@@ -77,7 +83,7 @@
 							minlength="1"
 							maxlength="12"
 							placeholder="e.g. Personal"
-							class="rounded-md px-2 py-1"
+							class="rounded-md border-2 border-neutral-4 bg-transparent px-2 py-1 outline-none"
 							value={tag.name}
 							on:input={(event) => {
 								const value = event.currentTarget.value;
