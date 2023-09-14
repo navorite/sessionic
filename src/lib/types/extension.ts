@@ -55,4 +55,12 @@ export interface ESettings {
 	autoSave: boolean;
 	autoSaveMaxSessions: number;
 	autoSaveTimer: number;
+	tags: Record<
+		string,
+		{
+			name?: string;
+			bgColor: string;
+			textColor: string;
+		}
+	>;
 }

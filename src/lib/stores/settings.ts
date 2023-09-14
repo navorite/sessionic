@@ -24,7 +24,8 @@ export const settings = (() => {
 		urlFilterList: null,
 		autoSave: autoSaveDefaults.autoSave,
 		autoSaveMaxSessions: autoSaveDefaults.autoSaveMaxSessions,
-		autoSaveTimer: autoSaveDefaults.autoSaveTimer
+		autoSaveTimer: autoSaveDefaults.autoSaveTimer,
+		tags: {}
 	};
 
 	const { subscribe, set, update } = writable(defaultSettings);
