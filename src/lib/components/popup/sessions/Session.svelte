@@ -105,16 +105,22 @@
 
 		{#if session.tags}
 			{@const tag = $settings.tags[session.tags]}
-			<Tag
-				name={session.tags}
-				bgColor={tag?.bgColor}
-				textColor={tag?.textColor}
-				on:click={() => {
-					delete session.tags;
+			<Tag name={session.tags} bgColor={tag?.bgColor} textColor={tag?.textColor}
+				><span
+					class="hidden rounded-md bg-error hover:bg-error-focus group-hover:block"
+				>
+					<IconButton
+						icon="close"
+						class="text-sm text-white"
+						title="Remove tag"
+						on:click={() => {
+							delete session.tags;
 
-					sessions.put(session);
-				}}
-			/>
+							sessions.put(session);
+						}}
+					/>
+				</span></Tag
+			>
 		{:else}
 			<IconButton
 				icon="tag"

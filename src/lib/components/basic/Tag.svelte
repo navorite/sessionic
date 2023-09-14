@@ -13,14 +13,5 @@
 	aria-label="Tag"
 >
 	{name}
-	<span
-		class="hidden rounded-md bg-error hover:bg-error-focus group-hover:block"
-	>
-		<IconButton
-			icon="close"
-			class="text-sm text-white"
-			title="Remove tag"
-			on:click
-		/>
-	</span>
+	<slot />
 </span>
