@@ -5,6 +5,7 @@
 		Windows,
 		InputModal,
 		ActionModal,
+		TagsModal,
 		Session,
 		CurrentSession
 	} from '@/lib/components';
@@ -24,6 +25,8 @@
 	let scrollToIndex: (index: number) => void;
 
 	let isScrolled = false;
+
+	let tagsShow = false;
 </script>
 
 <div class="mt-2 flex h-full max-h-[90vh] w-full gap-2 overflow-hidden">
@@ -50,6 +53,9 @@
 						modalShow = true;
 					}}
 					on:deleteModal={() => (actionShow = true)}
+					on:tagsModal={() => {
+						tagsShow = true;
+					}}
 				/>
 			</VirtualList>
 		{/if}
@@ -85,5 +91,16 @@
 		selection.select($currentSession);
 
 		actionShow = false;
+	}}
+/>
+
+<TagsModal
+	bind:open={tagsShow}
+	on:tagSubmit={(event) => {
+		const tag = event.detail;
+
+		$selection.tags = tag;
+
+		sessions.put($selection);
 	}}
 />
