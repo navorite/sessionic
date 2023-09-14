@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { settings } from '@/lib/stores';
-	import { ColorInput, IconButton } from '@/lib/components';
+	import { ColorInput, IconButton, Tag } from '@/lib/components';
 
 	$: tags = $settings.tags;
 
@@ -76,12 +76,11 @@
 					/>
 				</td>
 				<td>
-					<span
-						style:background-color={tags[tagName]?.bgColor}
-						style:color={tags[tagName]?.textColor}
-						class="session-card pointer-events-none max-w-max"
-						aria-hidden="true">{tags[tagName].name || tagName}</span
-					>
+					<Tag
+						name={tags[tagName].name || tagName}
+						bgColor={tags[tagName]?.bgColor}
+						textColor={tags[tagName]?.textColor}
+					/>
 				</td>
 				<td>
 					<IconButton
@@ -123,12 +122,11 @@
 				/>
 			</td>
 			<td>
-				<span
-					style:background-color={addedTag.bgColor}
-					style:color={addedTag.textColor}
-					class="session-card pointer-events-none max-w-max"
-					aria-hidden="true">{addedTag.name || 'Preview'}</span
-				>
+				<Tag
+					name={addedTag.name || 'Preview'}
+					bgColor={addedTag.bgColor}
+					textColor={addedTag.textColor}
+				/>
 			</td>
 			<td>
 				<button
