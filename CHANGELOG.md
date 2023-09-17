@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/navorite/sessionic/compare/v1.0.1...v1.1.0) (2023-09-17)
+
+
+### :fire: New Features
+
+* Add tags to sessions ([#43](https://github.com/navorite/sessionic/issues/43)) ([ee4ec74](https://github.com/navorite/sessionic/commit/ee4ec74f1db97b40649a16f1d7bc17735445a44f))
+
+
+### :rocket: Enhancements
+
+* **UI:** Improve Session Card ([ca5fbf0](https://github.com/navorite/sessionic/commit/ca5fbf058ef3f0b787e3eb0aefb65098f2adb9e3))
+* **UI:** Do not hide options page overflow ([a9a03bb](https://github.com/navorite/sessionic/commit/a9a03bb1ce021311db291ca68c547c9ea04eace3))
+
 ## [1.0.1](https://github.com/navorite/sessionic/compare/v1.0.0...v1.0.1) (2023-09-12)
 
 
