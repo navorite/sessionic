@@ -69,7 +69,16 @@
 					dispatch('renameModal');
 				}}
 			/>
-
+			{#if !session?.tags}
+				<IconButton
+					icon="tag"
+					title="Add tag"
+					class="text-xl hover:text-primary-focus"
+					on:click={() => {
+						dispatch('tagsModal');
+					}}
+				></IconButton>
+			{/if}
 			<IconButton
 				icon="delete"
 				title="Delete"
@@ -102,19 +111,13 @@
 			{session?.tabsNumber}
 		</div>
 
-		{#if session?.dateSaved}
-			<span class="session-card" use:tooltip={{ title: 'Date saved' }}>
-				{getRelativeTime(session.dateSaved)}
-			</span>
-		{/if}
-
 		{#if session.tags}
 			{@const tag = $settings.tags[session.tags]}
 			<Tag
 				name={session.tags}
 				bgColor={tag?.bgColor}
 				textColor={tag?.textColor}
-				class="ml-auto"
+				class="mx-auto"
 				><span
 					class="hidden rounded-md bg-error hover:bg-error-focus group-hover:block"
 				>
@@ -130,15 +133,12 @@
 					/>
 				</span></Tag
 			>
-		{:else}
-			<IconButton
-				icon="tag"
-				title="Add tag"
-				class="ml-auto text-xl hover:text-primary-focus"
-				on:click={() => {
-					dispatch('tagsModal');
-				}}
-			></IconButton>
+		{/if}
+
+		{#if session?.dateSaved}
+			<span class="session-card ml-auto" use:tooltip={{ title: 'Date saved' }}>
+				{getRelativeTime(session.dateSaved)}
+			</span>
 		{/if}
 	</div>
 </ListItem>
