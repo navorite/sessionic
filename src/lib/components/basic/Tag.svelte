@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { tooltip } from '@/lib/utils';
+
 	export let bgColor: string = 'royalblue';
 	export let textColor: string = 'white';
 	export let name: string;
@@ -7,12 +9,15 @@
 	export { className as class };
 </script>
 
-<span
+<div
 	style:background-color={bgColor}
 	style:color={textColor}
-	class="session-card group relative max-w-max bg-primary text-white hover:bg-primary {className}"
-	aria-label="Tag"
+	class="session-card group relative w-28 {className}"
+	use:tooltip={{ title: name }}
 >
-	{name}
+	<span
+		class="mx-auto overflow-hidden overflow-ellipsis whitespace-nowrap px-4 text-xs"
+		>{name}</span
+	>
 	<slot />
-</span>
+</div>

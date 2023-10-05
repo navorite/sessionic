@@ -119,7 +119,7 @@
 				textColor={tag?.textColor}
 				class="mx-auto"
 				><span
-					class="hidden rounded-md bg-error hover:bg-error-focus group-hover:block"
+					class="absolute right-0.5 hidden rounded-md bg-error hover:bg-error-focus group-hover:block"
 				>
 					<IconButton
 						icon="close"
