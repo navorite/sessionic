@@ -12,3 +12,4 @@ export * from './tooltip';
 export * from './viewport';
 export * from './backup';
 export * from './handleFilterListChange';
+export * from './getRelativeTime';

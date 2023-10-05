@@ -3,7 +3,13 @@
 	import { createEventDispatcher } from 'svelte';
 	import { settings, filterOptions, sessions } from '@/lib/stores';
 	import { ListItem, IconButton, Tag } from '@/lib/components';
-	import { tooltip, sendMessage, markResult, sessionsDB } from '@/lib/utils';
+	import {
+		tooltip,
+		sendMessage,
+		markResult,
+		sessionsDB,
+		getRelativeTime
+	} from '@/lib/utils';
 	import type { UUID } from 'crypto';
 
 	export let session: ESession;
@@ -98,8 +104,7 @@
 
 		<span class="session-card" use:tooltip={{ title: 'Date saved' }}>
 			{#if session?.dateSaved}
-				{@const date = new Date(session.dateSaved)}
-				{date.toLocaleString([], { dateStyle: 'short', timeStyle: 'short' })}
+				{getRelativeTime(session.dateSaved)}
 			{/if}
 		</span>
 
