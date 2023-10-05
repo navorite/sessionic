@@ -102,11 +102,11 @@
 			{session?.tabsNumber}
 		</div>
 
-		<span class="session-card" use:tooltip={{ title: 'Date saved' }}>
-			{#if session?.dateSaved}
+		{#if session?.dateSaved}
+			<span class="session-card" use:tooltip={{ title: 'Date saved' }}>
 				{getRelativeTime(session.dateSaved)}
-			{/if}
-		</span>
+			</span>
+		{/if}
 
 		{#if session.tags}
 			{@const tag = $settings.tags[session.tags]}
