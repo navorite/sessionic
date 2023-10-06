@@ -88,7 +88,7 @@
 							on:input={(event) => {
 								const value = event.currentTarget.value;
 
-								if (value.length < 1 || value.length > 12)
+								if (value.length > 12)
 									return (event.currentTarget.value = tag.name);
 
 								tag.name = value;
@@ -109,8 +109,9 @@
 				/>
 			</span>
 
-			<button class="rounded-md bg-primary px-2 py-1 hover:bg-primary-focus"
-				>Submit</button
+			<button
+				class="rounded-md bg-primary px-2 py-1 hover:bg-primary-focus disabled:bg-neutral-3/50 disabled:text-neutral-content/50"
+				disabled={!tag.name.length}>Submit</button
 			>
 		</form>
 	</svelte:fragment>
