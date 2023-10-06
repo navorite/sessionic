@@ -64,4 +64,5 @@ export interface ESettings {
 			textColor: string;
 		}
 	>;
+	doNotAskForTitle: boolean;
 }

@@ -25,7 +25,8 @@ export const settings = (() => {
 		autoSave: autoSaveDefaults.autoSave,
 		autoSaveMaxSessions: autoSaveDefaults.autoSaveMaxSessions,
 		autoSaveTimer: autoSaveDefaults.autoSaveTimer,
-		tags: {}
+		tags: {},
+		doNotAskForTitle: true
 	};
 
 	const { subscribe, set, update } = writable(defaultSettings);

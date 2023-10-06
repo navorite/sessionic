@@ -117,6 +117,14 @@
 </Section>
 
 <Section title="Session Actions">
+	<Switch
+		title="Do not ask for session name when saving"
+		checked={$settings.doNotAskForTitle}
+		on:change={() => {
+			settings.changeSetting('doNotAskForTitle', !$settings.doNotAskForTitle);
+		}}
+	/>
+
 	<TagEditor />
 
 	<div class="flex gap-2">

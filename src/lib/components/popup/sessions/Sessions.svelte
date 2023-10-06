@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { currentSession, filtered, sessions } from '@/lib/stores';
+	import { currentSession, filtered, sessions, settings } from '@/lib/stores';
 	import {
 		VirtualList,
 		Windows,
@@ -27,6 +27,14 @@
 	let isScrolled = false;
 
 	let tagsShow = false;
+
+	async function saveSession(title: string) {
+		$currentSession.title = title;
+
+		await sessions.add($currentSession);
+
+		scrollToIndex($sessions.length);
+	}
 </script>
 
 <div class="mt-2 flex h-full max-h-[90vh] w-full gap-2 overflow-hidden">
@@ -34,6 +42,8 @@
 		<CurrentSession
 			on:click={() => {
 				modalType = 'Save';
+				if ($settings.doNotAskForTitle) return saveSession('Unnamed session');
+
 				modalShow = true;
 			}}
 		/>
@@ -70,13 +80,10 @@
 	on:inputSubmit={async (event) => {
 		if (modalType === 'Rename' && $selection.title !== event.detail) {
 			$selection.title = event.detail;
+
 			await sessions.put($selection);
 		} else if (modalType === 'Save') {
-			$currentSession.title = event.detail;
-
-			await sessions.add($currentSession);
-
-			scrollToIndex($sessions.length);
+			saveSession(event.detail);
 		}
 
 		modalShow = false;
