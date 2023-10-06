@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.2.0](https://github.com/navorite/sessionic/compare/v1.1.0...v1.2.0) (2023-10-06)
+
+
+### :fire: New Features
+
+* Allow saving session without asking for name ([9a87c9e](https://github.com/navorite/sessionic/commit/9a87c9e2700f906946068dc214359bb803ca0734))
+
+
+### :rocket: Enhancements
+
+* Adjust location of adding tag icon ([a21f225](https://github.com/navorite/sessionic/commit/a21f225fa9c1830ed9dd79734fce50fcc6b15c93))
+* Improve Tag UI ([ecd2110](https://github.com/navorite/sessionic/commit/ecd2110a988d23f846bd45b7d1ab53f7f155877c))
+* Updated the logo ([e29b459](https://github.com/navorite/sessionic/commit/e29b459ae7e57e5fb5e634a71ae77808e978739e))
+* Use relative time for sessions instead ([71cd43d](https://github.com/navorite/sessionic/commit/71cd43dec76f8b198687470ee07ce847cea8f109))
+
+
+### :bug: Bug Fixes
+
+* Allow clearing tag name when creating tags ([b90f572](https://github.com/navorite/sessionic/commit/b90f572e4cf694f56af864f381eafa5ec929d707))
+* Do not show date saved if undefined ([4276f7f](https://github.com/navorite/sessionic/commit/4276f7f549ab37efee93bdcff30ec33d75ea7108))
+
 ## [1.1.0](https://github.com/navorite/sessionic/compare/v1.0.1...v1.1.0) (2023-09-17)
 
 
