@@ -69,6 +69,20 @@
 					dispatch('renameModal');
 				}}
 			/>
+
+			<IconButton
+				icon={session?.tags ? 'untag' : 'tag'}
+				title="Add tag"
+				class="text-xl hover:text-primary-focus"
+				on:click={() => {
+					if (!session?.tags) return dispatch('tagsModal');
+
+					delete session.tags;
+
+					sessions.put(session);
+				}}
+			/>
+
 			<IconButton
 				icon="delete"
 				title="Delete"
@@ -126,33 +140,7 @@
 				bgColor={tag?.bgColor}
 				textColor={tag?.textColor}
 				class="ml-auto"
-			>
-				{#if hover}
-					<span
-						class="absolute right-0.5 hidden rounded-md bg-black/80 p-px text-error hover:text-error-focus group-hover:block"
-					>
-						<IconButton
-							icon="close"
-							class="text-sm"
-							title="Remove tag"
-							on:click={() => {
-								delete session.tags;
-
-								sessions.put(session);
-							}}
-						/>
-					</span>
-				{/if}
-			</Tag>
-		{:else if hover}
-			<IconButton
-				icon="tag"
-				title="Add tag"
-				class="ml-auto text-xl hover:text-primary-focus"
-				on:click={() => {
-					dispatch('tagsModal');
-				}}
-			></IconButton>
+			/>
 		{/if}
 	</div>
 </ListItem>

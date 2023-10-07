@@ -12,11 +12,12 @@
 <div
 	style:background-color={bgColor}
 	style:color={textColor}
-	class="session-card group relative bg-primary text-white hover:bg-primary {className}"
+	class="session-card bg-primary text-white hover:bg-primary {className} group"
 >
 	<span
-		class="mx-auto max-w-[8rem] overflow-hidden overflow-ellipsis whitespace-nowrap px-1 text-xs"
-		use:tooltip={{ title: name }}>{name}</span
+		class="cursor-default overflow-hidden overflow-ellipsis whitespace-nowrap px-1 text-xs"
+		use:tooltip={{ title: name }}
 	>
-	<slot />
+		{name}
+	</span>
 </div>

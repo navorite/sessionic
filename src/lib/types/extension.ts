@@ -34,6 +34,7 @@ export type Icon =
 	| 'expand'
 	| 'collapse'
 	| 'tag'
+	| 'untag'
 	| 'search'
 	| 'light'
 	| 'dark'
