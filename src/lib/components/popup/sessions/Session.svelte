@@ -69,16 +69,6 @@
 					dispatch('renameModal');
 				}}
 			/>
-			{#if !session?.tags}
-				<IconButton
-					icon="tag"
-					title="Add tag"
-					class="text-xl hover:text-primary-focus"
-					on:click={() => {
-						dispatch('tagsModal');
-					}}
-				></IconButton>
-			{/if}
 			<IconButton
 				icon="delete"
 				title="Delete"
@@ -154,6 +144,15 @@
 					</span>
 				{/if}
 			</Tag>
+		{:else if hover}
+			<IconButton
+				icon="tag"
+				title="Add tag"
+				class="ml-auto text-xl hover:text-primary-focus"
+				on:click={() => {
+					dispatch('tagsModal');
+				}}
+			></IconButton>
 		{/if}
 	</div>
 </ListItem>
