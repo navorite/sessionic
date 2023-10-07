@@ -12,7 +12,7 @@
 <div
 	style:background-color={bgColor}
 	style:color={textColor}
-	class="session-card group relative {className}"
+	class="session-card group relative bg-primary text-white hover:bg-primary {className}"
 >
 	<span
 		class="mx-auto max-w-[8rem] overflow-hidden overflow-ellipsis whitespace-nowrap px-1 text-xs"
