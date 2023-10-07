@@ -97,7 +97,7 @@
 				}`
 			}}
 		>
-			<IconButton icon="window" class="text-base" role="img" />
+			<IconButton icon="window" class="text-sm" role="img" />
 			{session?.windows?.length}
 		</div>
 
@@ -107,7 +107,7 @@
 				title: `${session?.tabsNumber} Tab${session?.tabsNumber > 0 ? 's' : ''}`
 			}}
 		>
-			<IconButton icon="tab" class="text-base" role="img" />
+			<IconButton icon="tab" class="text-sm" role="img" />
 			{session?.tabsNumber}
 		</div>
 
