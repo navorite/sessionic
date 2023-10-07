@@ -26,5 +26,5 @@
 	style:-webkit-mask-repeat="no-repeat"
 	style:-webkit-mask-position="center"
 	style:-webkit-mask-size="cover"
-	on:click
+	on:click|stopPropagation
 />
