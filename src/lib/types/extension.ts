@@ -30,6 +30,7 @@ export type Icon =
 	| 'incognito'
 	| 'window'
 	| 'tab'
+	| 'savedate'
 	| 'expand'
 	| 'collapse'
 	| 'tag'

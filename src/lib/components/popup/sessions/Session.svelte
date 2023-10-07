@@ -88,7 +88,7 @@
 		{/if}
 	</div>
 
-	<div class="mt-2 flex items-center gap-2">
+	<div class="mt-2 flex gap-2">
 		<div
 			class="session-card"
 			use:tooltip={{
@@ -111,13 +111,31 @@
 			{session?.tabsNumber}
 		</div>
 
+		{#if session?.dateSaved}
+			<div
+				class="session-card"
+				use:tooltip={{
+					title: `Saved at ${new Date(session.dateSaved).toLocaleString(
+						navigator.language,
+						{
+							dateStyle: 'short',
+							timeStyle: 'short'
+						}
+					)}`
+				}}
+			>
+				<IconButton icon="savedate" class="text-sm" role="img" />
+				{getRelativeTime(session.dateSaved)}
+			</div>
+		{/if}
+
 		{#if session.tags}
 			{@const tag = $settings.tags[session.tags]}
 			<Tag
 				name={session.tags}
 				bgColor={tag?.bgColor}
 				textColor={tag?.textColor}
-				class="mx-auto"
+				class="ml-auto"
 			>
 				{#if hover}
 					<span
@@ -136,23 +154,6 @@
 					</span>
 				{/if}
 			</Tag>
-		{/if}
-
-		{#if session?.dateSaved}
-			<span
-				class="session-card ml-auto"
-				use:tooltip={{
-					title: `Saved at ${new Date(session.dateSaved).toLocaleString(
-						navigator.language,
-						{
-							dateStyle: 'short',
-							timeStyle: 'short'
-						}
-					)}`
-				}}
-			>
-				{getRelativeTime(session.dateSaved)}
-			</span>
 		{/if}
 	</div>
 </ListItem>
