@@ -1,9 +1,11 @@
 <script lang="ts">
 	import browser from 'webextension-polyfill';
-	import { onDestroy } from 'svelte';
+	import { createEventDispatcher, onDestroy } from 'svelte';
 	import { settings, sessions, currentSession as session } from '@/lib/stores';
 	import { IconButton } from '@/lib/components';
 	import { tooltip, getSession, isExtensionViewed } from '@/lib/utils';
+
+	const dispatch = createEventDispatcher();
 
 	let timeout: NodeJS.Timeout;
 
@@ -143,6 +145,6 @@
 		icon="save"
 		title="Save"
 		class="ml-auto text-2xl hover:text-primary-focus"
-		on:click
+		on:click={() => dispatch('save')}
 	/>
 </div>

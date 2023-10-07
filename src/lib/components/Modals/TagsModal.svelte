@@ -25,7 +25,7 @@
 			tags = value;
 		});
 
-	const dispatch = createEventDispatcher<{ tagSubmit: string }>();
+	const dispatch = createEventDispatcher();
 </script>
 
 <Modal bind:open height="full">

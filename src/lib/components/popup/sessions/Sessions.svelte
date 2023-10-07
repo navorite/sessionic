@@ -40,7 +40,7 @@
 <div class="mt-2 flex h-full max-h-[90vh] w-full gap-2 overflow-hidden">
 	<div class="flex h-full max-w-xs flex-1 flex-col">
 		<CurrentSession
-			on:click={() => {
+			on:save={() => {
 				modalType = 'Save';
 				if ($settings.doNotAskForTitle) return saveSession('Unnamed session');
 
@@ -63,9 +63,7 @@
 						modalShow = true;
 					}}
 					on:deleteModal={() => (actionShow = true)}
-					on:tagsModal={() => {
-						tagsShow = true;
-					}}
+					on:tagsModal={() => (tagsShow = true)}
 				/>
 			</VirtualList>
 		{/if}
