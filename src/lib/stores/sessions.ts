@@ -54,8 +54,12 @@ export const sessions = (() => {
 	}
 
 	async function put(target: ESession) {
-		if (!target.windows.length || !target.tabsNumber)
-			return await remove(target);
+		if (!target.windows.length || !target.tabsNumber) return remove(target);
+
+		if (!Array.isArray(target.windows))
+			target.windows = (await sessionsDB.loadSessionWindows(
+				target.id as UUID
+			))!;
 
 		await sessionsDB.updateSession(target);
 
