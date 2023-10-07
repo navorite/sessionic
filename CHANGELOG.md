@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.2.1](https://github.com/navorite/sessionic/compare/v1.2.0...v1.2.1) (2023-10-07)
+
+
+### :rocket: Enhancements
+
+* Add icon to save date and change its position ([7902b92](https://github.com/navorite/sessionic/commit/7902b928d39dc9eb00eb4533f1ce4202a772c658))
+* Change untagging to be a separate icon ([dd3db43](https://github.com/navorite/sessionic/commit/dd3db436f2280223a3ba6ce8aff2f55c379fec85))
+* Improve relative date format ([bf12623](https://github.com/navorite/sessionic/commit/bf12623ca6d848805e57f7f0a5c61c4a2483bcdd))
+* Reduce windows and tabs icon sizes ([c2b48fb](https://github.com/navorite/sessionic/commit/c2b48fb58d83906f08519eae3174ff8050b313df))
+* Show date when hovering over session save relative time ([c063e3d](https://github.com/navorite/sessionic/commit/c063e3db43638132c108898e36a6c852cd353f01))
+
+
+### :bug: Bug Fixes
+
+* Add default tag background when not specified ([f0f230e](https://github.com/navorite/sessionic/commit/f0f230e613a6a5dceb9b312416ec9b7a9b0e8725))
+* Session updates clears windows if the session was not selected ([e8699ce](https://github.com/navorite/sessionic/commit/e8699cea77fbfcfce756a95b1fe2c4d9a6509a67))
+
 ## [1.2.0](https://github.com/navorite/sessionic/compare/v1.1.0...v1.2.0) (2023-10-06)
 
 
