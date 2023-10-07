@@ -139,7 +139,18 @@
 		{/if}
 
 		{#if session?.dateSaved}
-			<span class="session-card ml-auto" use:tooltip={{ title: 'Date saved' }}>
+			<span
+				class="session-card ml-auto"
+				use:tooltip={{
+					title: `Saved at ${new Date(session.dateSaved).toLocaleString(
+						navigator.language,
+						{
+							dateStyle: 'short',
+							timeStyle: 'short'
+						}
+					)}`
+				}}
+			>
 				{getRelativeTime(session.dateSaved)}
 			</span>
 		{/if}
