@@ -12,7 +12,7 @@
 	$: src = `../../icons/${icon}.svg`;
 </script>
 
-<span
+<button
 	use:tooltip={{ title }}
 	{role}
 	class="block h-[1em] w-[1em] cursor-pointer bg-current {role === 'img'
@@ -27,4 +27,4 @@
 	style:-webkit-mask-position="center"
 	style:-webkit-mask-size="cover"
 	on:click
-/>
+></button>

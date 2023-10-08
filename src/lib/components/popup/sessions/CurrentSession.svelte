@@ -100,10 +100,7 @@
 	}
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<div
-	tabindex="0"
-	role="button"
+<button
 	class="mb-2 flex w-full cursor-pointer items-center gap-2 rounded-md bg-neutral-2 p-2 text-neutral-content hover:bg-neutral-3 {selected
 		? '!bg-primary/30'
 		: ''}"
@@ -147,4 +144,4 @@
 		class="ml-auto text-2xl hover:text-primary-focus"
 		on:click={() => dispatch('save')}
 	/>
-</div>
+</button>
