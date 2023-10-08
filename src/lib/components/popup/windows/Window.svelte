@@ -4,7 +4,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { settings } from '@/lib/stores';
-	import { ListItem, IconButton, TabItem } from '@/lib/components';
+	import { IconButton, TabItem } from '@/lib/components';
 	import { tooltip, sendMessage } from '@/lib/utils';
 
 	const dispatch = createEventDispatcher<{
@@ -21,15 +21,12 @@
 </script>
 
 {#if window?.tabs?.length}
-	<ListItem let:hover class="rounded-md bg-neutral-2">
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div
+	<li class="rounded-md bg-neutral-2">
+		<button
 			class="group flex items-center gap-2 p-2 {collapsed
 				? 'rounded-md'
-				: 'rounded-t-md'} bg-neutral-3 hover:bg-neutral-4"
+				: 'rounded-t-md'} w-full bg-neutral-3 hover:bg-neutral-4"
 			on:click|self|stopPropagation={() => (collapsed = !collapsed)}
-			role="button"
-			tabindex="0"
 			aria-expanded={!collapsed}
 		>
 			<IconButton
@@ -39,11 +36,8 @@
 				on:click={() => (collapsed = !collapsed)}
 			/>
 
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<span
+			<button
 				use:tooltip={{ title: 'Open' }}
-				tabindex="0"
-				role="button"
 				aria-label="Open in a New Window"
 				class="{active} w-max max-w-[60%] cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap text-sm font-medium hover:underline"
 				on:click={() => {
@@ -55,7 +49,7 @@
 				}}
 			>
 				{window?.incognito ? 'Private' : ''} Window
-			</span>
+			</button>
 
 			<div
 				class="card bg-info text-white hover:bg-info-focus"
@@ -64,17 +58,15 @@
 				{window?.tabs?.length} Tab{window?.tabs?.length ?? 0 > 1 ? 's' : ''}
 			</div>
 
-			{#if hover}
-				<IconButton
-					icon={current ? 'close' : 'delete'}
-					title={current ? 'Close' : 'Delete'}
-					class="ml-auto hidden text-xl text-error hover:text-error-focus group-hover:block"
-					on:click={() => {
-						if (current && window.id) browser.windows.remove(window.id);
-						else dispatch('delete');
-					}}
-				/>
-			{/if}
+			<IconButton
+				icon={current ? 'close' : 'delete'}
+				title={current ? 'Close' : 'Delete'}
+				class="ml-auto hidden text-xl text-error hover:text-error-focus group-hover:block"
+				on:click={() => {
+					if (current && window.id) browser.windows.remove(window.id);
+					else dispatch('delete');
+				}}
+			/>
 
 			<IconButton
 				icon={collapsed ? 'expand' : 'collapse'}
@@ -82,7 +74,7 @@
 				title={collapsed ? 'Expand' : 'Collapse'}
 				on:click={() => (collapsed = !collapsed)}
 			/>
-		</div>
+		</button>
 
 		{#if !collapsed && window && window.tabs}
 			<ul class="flex flex-col gap-1 p-2" transition:fade={{ duration: 250 }}>
@@ -92,5 +84,5 @@
 			</ul>
 			<!-- <slot name="tabs" /> -->
 		{/if}
-	</ListItem>
+	</li>
 {/if}

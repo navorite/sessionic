@@ -2,7 +2,7 @@
 	import browser from 'webextension-polyfill';
 	import type { ETab } from '@/lib/types';
 	import { createEventDispatcher } from 'svelte';
-	import { IconButton, ListItem } from '@/lib/components';
+	import { IconButton } from '@/lib/components';
 	import { decompress as decompressLZ } from 'lz-string';
 
 	export let tab: ETab;
@@ -14,7 +14,7 @@
 </script>
 
 {#if tab?.url}
-	<ListItem class="tab-container" let:hover>
+	<li class="tab-container group">
 		<a class="link" href={tab.url} target="_blank">
 			{#if tab.favIconUrl && !tab.url.startsWith('chrome-extension://')}
 				<img
@@ -37,18 +37,16 @@
 			</span>
 		</a>
 
-		{#if hover}
-			<IconButton
-				icon={current ? 'close' : 'delete'}
-				title={current ? 'Close' : 'Delete'}
-				class="ml-auto text-xl text-error hover:text-error-focus"
-				on:click={() => {
-					if (current && tab.id) browser.tabs.remove(tab.id);
-					else dispatch('delete', tab);
-				}}
-			/>
-		{/if}
-	</ListItem>
+		<IconButton
+			icon={current ? 'close' : 'delete'}
+			title={current ? 'Close' : 'Delete'}
+			class="ml-auto hidden text-xl text-error hover:text-error-focus group-hover:block"
+			on:click={() => {
+				if (current && tab.id) browser.tabs.remove(tab.id);
+				else dispatch('delete', tab);
+			}}
+		/>
+	</li>
 {/if}
 
 <style lang="postcss">

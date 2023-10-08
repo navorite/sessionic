@@ -2,7 +2,7 @@
 	import type { ESession, EWindow } from '@/lib/types';
 	import { createEventDispatcher } from 'svelte';
 	import { settings, filterOptions, sessions } from '@/lib/stores';
-	import { ListItem, IconButton, Tag } from '@/lib/components';
+	import { IconButton, Tag } from '@/lib/components';
 	import {
 		tooltip,
 		sendMessage,
@@ -40,31 +40,27 @@
 	}
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<ListItem
-	let:hover
-	class="session-container {$selected === session ? '!bg-primary/30' : ''}"
-	on:click={() => {
-		selected.select(session);
-	}}
->
-	<div class="session-info">
-		<span
-			tabindex="0"
-			role="button"
-			use:tooltip={{ title: 'Open' }}
-			class="session-name"
-			on:click|stopPropagation={openSession}
-		>
-			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			{@html title}
-		</span>
+<li>
+	<button
+		class="session-container group {$selected === session
+			? '!bg-primary/30'
+			: ''}"
+		on:click={() => selected.select(session)}
+	>
+		<div class="session-info">
+			<button
+				use:tooltip={{ title: 'Open' }}
+				class="session-name"
+				on:click|stopPropagation={openSession}
+			>
+				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+				{@html title}
+			</button>
 
-		{#if hover}
 			<IconButton
 				icon="rename"
 				title="Rename"
-				class="ml-auto text-xl hover:text-primary-focus"
+				class="ml-auto hidden text-xl  hover:text-primary-focus group-hover:block"
 				on:click={() => {
 					dispatch('renameModal');
 				}}
@@ -73,7 +69,7 @@
 			<IconButton
 				icon={session?.tags ? 'untag' : 'tag'}
 				title="Add tag"
-				class="text-xl hover:text-primary-focus"
+				class="hidden text-xl hover:text-primary-focus group-hover:block"
 				on:click={() => {
 					if (!session?.tags) return dispatch('tagsModal');
 
@@ -86,61 +82,63 @@
 			<IconButton
 				icon="delete"
 				title="Delete"
-				class="text-xl text-error hover:text-error-focus"
+				class="hidden text-xl text-error hover:text-error-focus group-hover:block"
 				on:click={() => dispatch('deleteModal')}
 			/>
-		{/if}
-	</div>
-
-	<div class="mt-2 flex gap-2">
-		<div
-			class="session-card"
-			use:tooltip={{
-				title: `${session?.windows?.length} Window${
-					session?.windows?.length > 0 ? 's' : ''
-				}`
-			}}
-		>
-			<IconButton icon="window" class="text-sm" role="img" />
-			{session?.windows?.length}
 		</div>
 
-		<div
-			class="session-card"
-			use:tooltip={{
-				title: `${session?.tabsNumber} Tab${session?.tabsNumber > 0 ? 's' : ''}`
-			}}
-		>
-			<IconButton icon="tab" class="text-sm" role="img" />
-			{session?.tabsNumber}
-		</div>
-
-		{#if session?.dateSaved}
+		<div class="mt-2 flex gap-2">
 			<div
 				class="session-card"
 				use:tooltip={{
-					title: `Saved at ${new Date(session.dateSaved).toLocaleString(
-						navigator.language,
-						{
-							dateStyle: 'short',
-							timeStyle: 'short'
-						}
-					)}`
+					title: `${session?.windows?.length} Window${
+						session?.windows?.length > 0 ? 's' : ''
+					}`
 				}}
 			>
-				<IconButton icon="savedate" class="text-sm" role="img" />
-				{getRelativeTime(session.dateSaved)}
+				<IconButton icon="window" class="text-sm" role="img" />
+				{session?.windows?.length}
 			</div>
-		{/if}
 
-		{#if session.tags}
-			{@const tag = $settings.tags[session.tags]}
-			<Tag
-				name={session.tags}
-				bgColor={tag?.bgColor}
-				textColor={tag?.textColor}
-				class="ml-auto"
-			/>
-		{/if}
-	</div>
-</ListItem>
+			<div
+				class="session-card"
+				use:tooltip={{
+					title: `${session?.tabsNumber} Tab${
+						session?.tabsNumber > 0 ? 's' : ''
+					}`
+				}}
+			>
+				<IconButton icon="tab" class="text-sm" role="img" />
+				{session?.tabsNumber}
+			</div>
+
+			{#if session?.dateSaved}
+				<div
+					class="session-card"
+					use:tooltip={{
+						title: `Saved at ${new Date(session.dateSaved).toLocaleString(
+							navigator.language,
+							{
+								dateStyle: 'short',
+								timeStyle: 'short'
+							}
+						)}`
+					}}
+				>
+					<IconButton icon="savedate" class="text-sm" role="img" />
+					{getRelativeTime(session.dateSaved)}
+				</div>
+			{/if}
+
+			{#if session.tags}
+				{@const tag = $settings.tags[session.tags]}
+				<Tag
+					name={session.tags}
+					bgColor={tag?.bgColor}
+					textColor={tag?.textColor}
+					class="ml-auto"
+				/>
+			{/if}
+		</div>
+	</button>
+</li>
