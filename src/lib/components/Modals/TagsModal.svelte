@@ -81,14 +81,14 @@
 						<input
 							type="text"
 							minlength="1"
-							maxlength="12"
+							maxlength="15"
 							placeholder="e.g. Personal"
 							class="rounded-md border-2 border-neutral-4 bg-transparent px-2 py-1 outline-none"
 							value={tag.name}
 							on:input={(event) => {
 								const value = event.currentTarget.value;
 
-								if (value.length > 12)
+								if (value.length > 15)
 									return (event.currentTarget.value = tag.name);
 
 								tag.name = value;

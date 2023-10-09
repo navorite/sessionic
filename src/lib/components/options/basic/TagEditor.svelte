@@ -14,7 +14,7 @@
 	) {
 		const value = ev.currentTarget.value;
 
-		if (value.length < 1 || value.length > 12)
+		if (value.length < 1 || value.length > 15)
 			return (ev.currentTarget.value = tags[tagName]!.name!);
 
 		tags[tagName]!.name = value;
@@ -131,7 +131,7 @@
 				<button
 					class="max-w-max rounded-md bg-primary px-2 py-1 text-white hover:bg-primary-focus"
 					on:click={() => {
-						if (addedTag.name.length < 1 || addedTag.name.length > 12) return;
+						if (addedTag.name.length < 1 || addedTag.name.length > 15) return;
 
 						tags[addedTag.name] = {
 							bgColor: addedTag.bgColor,
