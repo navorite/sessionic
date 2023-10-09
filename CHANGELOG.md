@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.2](https://github.com/navorite/sessionic/compare/v1.2.1...v1.2.2) (2023-10-09)
+
+
+### :rocket: Enhancements
+* Do not show saved sessions number if empty ([83d6b64](https://github.com/navorite/sessionic/commit/83d6b64f47a7b06a2eae00b490d9d44d6f3bbb6a))
+* Code clean up and accessibility improvements to various components ([ac773c5](https://github.com/navorite/sessionic/commit/ac773c5043f7f8e32fb02496d2601a65f3f1dbed), [4007d7a](https://github.com/navorite/sessionic/commit/4007d7a0de6a5ca63e9f8f46fceee1a8785a0fa5))
+* Increased tag characters limit to 15 characters ([10c52df](https://github.com/navorite/sessionic/commit/10c52df64664b82cf794debd9f2a3232be17fe4b))
+
 ## [1.2.1](https://github.com/navorite/sessionic/compare/v1.2.0...v1.2.1) (2023-10-07)
 
 
