@@ -9,15 +9,11 @@
 	export { className as class };
 </script>
 
-<div
+<span
 	style:background-color={bgColor}
 	style:color={textColor}
-	class="session-card bg-primary text-white hover:bg-primary {className} group"
+	class="my-auto inline-block w-full max-w-[8rem] cursor-default overflow-hidden overflow-ellipsis whitespace-nowrap rounded-md bg-primary px-1 py-0.5 text-center text-xs font-semibold text-white {className}"
+	use:tooltip={{ title: name }}
 >
-	<span
-		class="cursor-default overflow-hidden overflow-ellipsis whitespace-nowrap px-1 text-xs"
-		use:tooltip={{ title: name }}
-	>
-		{name}
-	</span>
-</div>
+	{name}
+</span>

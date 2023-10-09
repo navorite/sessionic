@@ -87,7 +87,7 @@
 			/>
 		</div>
 
-		<div class="mt-2 flex gap-2">
+		<div class="mt-2 flex w-full flex-1 gap-2">
 			<div
 				class="session-card"
 				use:tooltip={{
