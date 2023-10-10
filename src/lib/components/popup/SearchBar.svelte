@@ -26,9 +26,9 @@
 </script>
 
 <div
-	class="flex cursor-text items-center justify-center rounded-md text-sm {showInputBar
-		? 'bg-neutral-3 px-2 py-0.5'
-		: ''} fade {className}"
+	class="flex items-center justify-center rounded-md text-sm {showInputBar
+		? 'cursor-text bg-neutral-3 px-2 py-0.5'
+		: 'cursor-pointer'} fade {className}"
 	on:focusin={handleInputBar}
 	on:focusout={handleInputBar}
 	tabindex="-1"
@@ -55,6 +55,6 @@
 			}}
 		/>
 	{:else}
-		<IconButton icon="search" title="Search" />
+		<IconButton icon="search" role="img" class="text-2xl" />
 	{/if}
 </div>
