@@ -4,6 +4,8 @@
 	import { createEventDispatcher } from 'svelte';
 	import { IconButton } from '@/lib/components';
 	import { decompress as decompressLZ } from 'lz-string';
+	import { filterOptions } from '@/lib/stores';
+	import { markResult } from '@/lib/utils';
 
 	export let tab: ETab;
 	export let current = false;
@@ -11,6 +13,13 @@
 	const dispatch = createEventDispatcher<{ delete: ETab }>();
 
 	$: active = tab?.active ? 'text-link' : '';
+
+	$: title =
+		$filterOptions?.query.trim() && tab.title
+			? markResult(tab.title, $filterOptions?.query, {
+					case_sensitive: false
+			  })
+			: tab.title;
 </script>
 
 {#if tab?.url}
@@ -33,7 +42,8 @@
 				/>
 			{/if}
 			<span class="title {active}">
-				{tab.title}
+				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+				{@html title}
 			</span>
 		</a>
 

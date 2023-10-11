@@ -41,7 +41,7 @@
 			}}
 			spellcheck={false}
 			type="text"
-			placeholder="Search session..."
+			placeholder="Search session or tab name..."
 			bind:value
 			class="bg-transparent font-semibold text-neutral-content outline-none"
 		/>

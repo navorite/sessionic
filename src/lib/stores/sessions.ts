@@ -80,12 +80,45 @@ export const sessions = (() => {
 		notification.success_info(MESSAGES.update.success_info);
 	}
 
-	function filter(query: string) {
-		const filtered: ESession[] = get({ subscribe })?.filter(
-			(session) => session?.title?.toLowerCase().includes(query)
-		);
+	let timeout: NodeJS.Timeout;
 
-		return filtered; //subject to change
+	async function filter(query: string) {
+		console.log('called: ', { query });
+		if (timeout) clearTimeout(timeout);
+
+		const result = await new Promise<ESession[]>((resolve, reject) => {
+			timeout = setTimeout(async () => {
+				if (!query) reject('There is no search query');
+
+				const sessions = await sessionsDB.loadSessions();
+
+				if (!sessions.length) reject('There are no saved sessions');
+
+				const filtered: ESession[] = [];
+
+				for (const session of sessions) {
+					if (session?.title?.toLowerCase().includes(query)) {
+						filtered.push(session);
+						continue;
+					}
+
+					if (
+						session.windows.some(
+							(window) =>
+								window.tabs?.some(
+									(tab) => tab.title?.toLowerCase().includes(query)
+								)
+						)
+					) {
+						session.windows = { length: session.windows.length } as EWindow[];
+						filtered.push(session);
+					}
+				}
+				resolve(filtered); //subject to change;
+			}, 250);
+		});
+
+		return result;
 	}
 
 	async function remove(target: ESession) {
@@ -203,7 +236,9 @@ export const sessions = (() => {
 export const filtered = derived(
 	[sessions, filterOptions],
 	([$sessions, $filterOptions]) =>
-		sessions?.filter($filterOptions?.query?.trim().toLowerCase()) || $sessions
+		$filterOptions.query
+			? sessions?.filter($filterOptions?.query?.trim().toLowerCase())
+			: $sessions
 );
 
 export const currentSession: Writable<ESession> = writable();

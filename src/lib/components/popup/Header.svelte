@@ -29,14 +29,16 @@
 		{/if}
 	</h1>
 
-	{#if $filtered?.length}
-		<div
-			aria-label="Number of sessions"
-			class="card bg-info text-white hover:bg-info-focus"
-		>
-			{$filtered.length} Session{$filtered.length > 1 ? 's' : ''}
-		</div>
-	{/if}
+	{#await $filtered then filtered}
+		{#if filtered?.length}
+			<div
+				aria-label="Number of sessions"
+				class="card bg-info text-white hover:bg-info-focus"
+			>
+				{filtered.length} Session{filtered.length > 1 ? 's' : ''}
+			</div>
+		{/if}
+	{/await}
 
 	<Notification detail={$notification} />
 

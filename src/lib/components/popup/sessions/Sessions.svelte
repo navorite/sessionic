@@ -48,27 +48,32 @@
 			}}
 		/>
 
-		{#if $filtered}
-			<VirtualList
-				reversed={true}
-				items={$filtered}
-				let:item
-				class="flex-1"
-				bind:scrollToIndex
-			>
-				<Session
-					session={item}
-					on:renameModal={() => {
-						modalType = 'Rename';
-						modalShow = true;
-					}}
-					on:deleteModal={() => (actionShow = true)}
-					on:tagsModal={() => (tagsShow = true)}
-				/>
-			</VirtualList>
-		{/if}
+		{#await $filtered}
+			<p class="mt-2 text-center font-normal">Looking for sessions...</p>
+		{:then filtered}
+			{#if filtered}
+				<VirtualList
+					reversed={true}
+					items={filtered}
+					let:item
+					class="flex-1"
+					bind:scrollToIndex
+				>
+					<Session
+						session={item}
+						on:renameModal={() => {
+							modalType = 'Rename';
+							modalShow = true;
+						}}
+						on:deleteModal={() => (actionShow = true)}
+						on:tagsModal={() => (tagsShow = true)}
+					/>
+				</VirtualList>
+			{:else}
+				<p class="mt-2 text-center font-normal">No sessions were found</p>
+			{/if}
+		{/await}
 	</div>
-
 	<Windows class="flex-1" />
 </div>
 
