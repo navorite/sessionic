@@ -9,6 +9,7 @@
 		Session,
 		CurrentSession
 	} from '@/lib/components';
+	import { isInputTarget } from '@/lib/utils';
 
 	$: selection = sessions.selection;
 
@@ -35,18 +36,81 @@
 
 		scrollToIndex($sessions.length);
 	}
+
+	export function saveAction() {
+		modalType = 'Save';
+		if ($settings.doNotAskForTitle) return saveSession('Unnamed session');
+
+		modalShow = true;
+	}
+
+	function handleKeydown(ev: KeyboardEvent) {
+		if (
+			(ev.target instanceof HTMLElement && isInputTarget(ev.target)) ||
+			ev.repeat ||
+			ev.ctrlKey ||
+			ev.shiftKey ||
+			ev.altKey ||
+			ev.metaKey
+		)
+			return;
+
+		switch (ev.code) {
+			case 'KeyS':
+				saveAction();
+				break;
+
+			case 'KeyC':
+				selection.select($currentSession);
+				break;
+
+			case 'KeyE': {
+				let index =
+					$sessions.findIndex((session) => session.id === $selection.id) + 1;
+
+				if (index >= $sessions.length || index <= 0) index = 0;
+
+				selection.select($sessions[index]!);
+				scrollToIndex(index);
+				break;
+			}
+
+			case 'KeyD': {
+				let index =
+					$sessions.findIndex((session) => session.id === $selection.id) - 1;
+
+				if (index <= -1) index = $sessions.length - 1;
+
+				console.log(index);
+
+				selection.select($sessions[index]!);
+
+				scrollToIndex(index);
+				break;
+			}
+
+			case 'KeyR':
+				modalType = 'Rename';
+				modalShow = true;
+				break;
+
+			case 'Delete':
+				sessions.remove($selection);
+				break;
+
+			default:
+				return;
+		}
+
+		ev.preventDefault();
+	}
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 <div class="mt-2 flex h-full max-h-[90vh] w-full gap-2 overflow-hidden">
 	<div class="flex h-full max-w-xs flex-1 flex-col">
-		<CurrentSession
-			on:save={() => {
-				modalType = 'Save';
-				if ($settings.doNotAskForTitle) return saveSession('Unnamed session');
-
-				modalShow = true;
-			}}
-		/>
+		<CurrentSession on:save={saveAction} />
 
 		{#await $filtered}
 			<p class="mt-2 text-center font-normal">Looking for sessions...</p>

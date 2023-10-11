@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { tick } from 'svelte';
 	import { IconButton } from '@/lib/components';
+	import { isInputTarget } from '@/lib/utils';
 
 	export let value: string;
 
@@ -11,19 +12,38 @@
 
 	let inputEl: HTMLInputElement;
 
-	async function handleInputBar(event: FocusEvent) {
-		if (event?.type === 'focusin') {
+	async function handleInputBar(ev: FocusEvent) {
+		if (ev?.type === 'focusin') {
 			showInputBar = true;
 			await tick();
 			inputEl?.focus();
 		} else if (
-			event?.type == 'focusout' &&
-			!(event?.currentTarget as Node).contains(event?.relatedTarget as Node) &&
+			ev?.type == 'focusout' &&
+			!(ev?.currentTarget as Node).contains(ev?.relatedTarget as Node) &&
 			value === ''
 		)
 			showInputBar = false;
 	}
+
+	function handleKeydown(ev: KeyboardEvent) {
+		if (
+			(ev.target instanceof HTMLElement && isInputTarget(ev.target)) ||
+			ev.repeat ||
+			ev.ctrlKey ||
+			ev.shiftKey ||
+			ev.altKey ||
+			ev.metaKey
+		)
+			return;
+
+		if (ev.code === 'KeyF') {
+			handleInputBar({ type: 'focusin' } as FocusEvent);
+			ev.preventDefault();
+		}
+	}
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 <div
 	class="flex items-center justify-center rounded-md text-sm {showInputBar

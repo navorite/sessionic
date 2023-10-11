@@ -3,6 +3,7 @@
 	import { settings } from '@/lib/stores/';
 	import { openFullView } from '@utils/extension';
 	import { CommandPalette, Header, Sessions } from '@/lib/components';
+	import { isInputTarget } from '@/lib/utils';
 
 	shouldLoadPopup();
 
@@ -28,10 +29,19 @@
 </svelte:head>
 
 <svelte:window
-	on:keydown={(event) => {
-		if (event.key === 'k' && event.ctrlKey) {
-			event.preventDefault();
-			if (!event.repeat) open = !open;
+	on:keydown={(ev) => {
+		if (
+			(ev.target instanceof HTMLElement && isInputTarget(ev.target)) ||
+			ev.repeat ||
+			ev.shiftKey ||
+			ev.altKey ||
+			ev.metaKey
+		)
+			return;
+
+		if (ev.code === 'KeyK' && ev.ctrlKey) {
+			open = !open;
+			ev.preventDefault();
 		}
 	}}
 />
