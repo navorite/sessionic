@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/navorite/sessionic/compare/v1.2.2...v1.3.0) (2023-10-11)
+
+
+### :fire: New Features
+
+* Add search support for tab names ([0bff259](https://github.com/navorite/sessionic/commit/0bff259425ded96d73ea35fbe4bd101eba74b597))
+
+
+### :bug: Bug Fixes
+
+* Fixed Search Bar not opening ([3f8355e](https://github.com/navorite/sessionic/commit/3f8355e20352613189b7a5bf4eef2690427348e1))
+* Tags are now displayed more consistently ([c7b98a5](https://github.com/navorite/sessionic/commit/c7b98a5c62c08a9f3b021b10f72d50e147d3d232))
+
 ## [1.2.2](https://github.com/navorite/sessionic/compare/v1.2.1...v1.2.2) (2023-10-09)
 
 
