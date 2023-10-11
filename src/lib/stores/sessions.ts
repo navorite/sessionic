@@ -83,7 +83,6 @@ export const sessions = (() => {
 	let timeout: NodeJS.Timeout;
 
 	async function filter(query: string) {
-		console.log('called: ', { query });
 		if (timeout) clearTimeout(timeout);
 
 		const result = await new Promise<ESession[]>((resolve, reject) => {
