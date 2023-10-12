@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.2](https://github.com/navorite/sessionic/compare/v1.3.1...v1.3.2) (2023-10-12)
+
+
+### :rocket: Enhancements
+
+* Reset modal inputs when closed ([574b24f](https://github.com/navorite/sessionic/commit/574b24f73bb9e0f60a15c722c6ade069ce8986ac))
+
+
+### :bug: Bug Fixes
+
+* Add remove tag tooltip ([eacba56](https://github.com/navorite/sessionic/commit/eacba56c28cc88c9c639ba3433c098345ec65075))
+
 ## [1.3.1](https://github.com/navorite/sessionic/compare/v1.3.0...v1.3.1) (2023-10-12)
 
 
