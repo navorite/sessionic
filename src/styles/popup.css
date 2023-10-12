@@ -1,0 +1,44 @@
+.tab-container {
+	@apply flex items-center rounded-md px-2 py-1.5;
+}
+
+.session-container {
+	@apply mb-2 flex w-full cursor-pointer flex-col gap-2 rounded-md bg-neutral-2 p-2;
+}
+
+.tab-container:hover,
+.session-container:hover {
+	@apply bg-neutral-3;
+}
+
+.session-info {
+	@apply flex w-full items-center gap-2;
+}
+
+.session-name {
+	@apply max-w-max flex-1 overflow-hidden text-ellipsis whitespace-nowrap pl-1 text-sm font-bold;
+}
+
+.session-name {
+	@apply cursor-pointer;
+}
+
+.session-name:hover {
+	@apply underline;
+}
+
+.card {
+	@apply mr-1 inline-flex w-max select-none items-center gap-1 whitespace-nowrap rounded px-1 py-0.5 text-xs font-medium;
+}
+
+.session-card {
+	@apply flex select-none items-center gap-1 whitespace-nowrap rounded px-1 py-0.5 text-xs font-medium;
+}
+
+.session-card:hover {
+	@apply bg-black/20;
+}
+
+mark {
+	@apply mx-[1px] my-auto rounded-md bg-primary p-0.5 text-white;
+}
