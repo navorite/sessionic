@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.3](https://github.com/navorite/sessionic/compare/v1.3.2...v1.3.3) (2023-10-12)
+
+
+### :bug: Bug Fixes
+
+* Fix document being used in background service ([702a9af](https://github.com/navorite/sessionic/commit/702a9af2ffdafb38b2679d5d966255d7a04c9dc4))
+
 ## [1.3.2](https://github.com/navorite/sessionic/compare/v1.3.1...v1.3.2) (2023-10-12)
 
 
