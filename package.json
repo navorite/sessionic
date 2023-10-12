@@ -17,7 +17,7 @@
 		"clean": "rimraf dist",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"format": "prettier --plugin=prettier-plugin-tailwindcss --write .",
-		"lint": "npm run format && eslint .",
+		"lint": "eslint .",
 		"lint:fix": "npm run format && eslint . --fix",
 		"release": "release-it",
 		"release:beta": "release-it --preRelease=beta",
