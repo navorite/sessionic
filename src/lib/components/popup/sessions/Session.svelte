@@ -125,7 +125,7 @@
 						)}`
 					}}
 				>
-					<IconButton icon="savedate" class="text-sm" role="img" />
+					<IconButton icon="history" class="text-sm" role="img" />
 					{getRelativeTime(session.dateSaved)}
 				</div>
 			{/if}

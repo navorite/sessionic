@@ -1,6 +1,7 @@
-import type { Page } from '@/lib/types';
+import type { Icon, Page } from '@/lib/types';
 import browser from 'webextension-polyfill';
 import { isFirefox, runtimeURL } from '@constants/shared';
+import { tabType } from '../constants';
 
 export function isExtensionViewed() {
 	return document.visibilityState === 'visible';
@@ -58,4 +59,12 @@ export async function openExtensionPage(page: Page, query?: string) {
 // Get runtime URL for a page in the extension
 export function getExtensionURL(page?: Page, query: string = '') {
 	return `${runtimeURL}src/${page}/index.html${query}`;
+}
+
+export function getTabType(url: string): Icon {
+	for (const tab in tabType) {
+		if (url.includes(tab)) return tabType[tab] as Icon;
+	}
+
+	return 'tab';
 }

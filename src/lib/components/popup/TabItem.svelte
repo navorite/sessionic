@@ -5,14 +5,22 @@
 	import { IconButton } from '@/lib/components';
 	import { decompress as decompressLZ } from 'lz-string';
 	import { filterOptions } from '@/lib/stores';
-	import { markResult } from '@/lib/utils';
+	import { getTabType, markResult } from '@/lib/utils';
+	import { runtimeURL } from '@/lib/constants';
 
 	export let tab: ETab;
 	export let current = false;
 
 	const dispatch = createEventDispatcher<{ delete: ETab }>();
 
-	$: active = tab?.active ? 'text-link' : '';
+	$: active = tab.active ? 'text-link' : '';
+
+	let favIconUrl: string;
+
+	$: favIconUrl = tab.favIconUrl ? decompressLZ(tab.favIconUrl) : '';
+
+	$: isBrowserTab =
+		favIconUrl?.startsWith('chrome') && !favIconUrl.startsWith(runtimeURL);
 
 	$: title =
 		$filterOptions?.query.trim() && tab.title
@@ -25,19 +33,20 @@
 {#if tab?.url}
 	<li class="tab-container group">
 		<a class="link" href={tab.url} target="_blank">
-			{#if tab.favIconUrl && !tab.url.startsWith('chrome-extension://')}
+			{#if favIconUrl && !isBrowserTab}
 				<img
 					style:width="1rem"
 					style:height="1rem"
 					style:max-width="1rem"
 					style:max-height="1rem"
-					src={decompressLZ(tab.favIconUrl)}
+					src={favIconUrl}
 					alt=""
+					role="presentation"
 				/>
 			{:else}
 				<IconButton
-					icon="tab"
-					class="max-h-[1rem] min-h-[1rem] min-w-[1rem] max-w-[1rem] rounded-md text-base {active ||
+					icon={getTabType(tab.url)}
+					class="max-h-[1rem] min-h-[1rem] min-w-[1rem] max-w-[1rem] rounded-md text-lg {active ||
 						'text-neutral-content'}"
 				/>
 			{/if}

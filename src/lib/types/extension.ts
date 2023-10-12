@@ -30,7 +30,9 @@ export type Icon =
 	| 'incognito'
 	| 'window'
 	| 'tab'
-	| 'savedate'
+	| 'chrometab'
+	| 'extension'
+	| 'history'
 	| 'expand'
 	| 'collapse'
 	| 'tag'
@@ -38,7 +40,7 @@ export type Icon =
 	| 'search'
 	| 'light'
 	| 'dark'
-	| 'options'
+	| 'settings'
 	| 'donate';
 
 export interface ENotification {

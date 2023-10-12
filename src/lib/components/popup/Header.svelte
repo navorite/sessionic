@@ -64,7 +64,7 @@
 			on:click={() => (showDonateModal = true)}
 		/>
 
-		<IconButton icon="options" title="Settings" on:click={openOptions} />
+		<IconButton icon="settings" title="Settings" on:click={openOptions} />
 	</div>
 </div>
 
