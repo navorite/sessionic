@@ -68,7 +68,7 @@
 
 			<IconButton
 				icon={session?.tags ? 'untag' : 'tag'}
-				title="Add tag"
+				title="{session.tags ? 'Remove' : 'Add'} tag"
 				class="hidden text-xl hover:text-primary-focus group-hover:block"
 				on:click={() => {
 					if (!session?.tags) return dispatch('tagsModal');
