@@ -20,10 +20,13 @@
 				textColor: $settings.tags[selectVal]?.textColor ?? 'white'
 		  });
 
-	$: if (open)
+	$: if (open) {
 		getStorageItem('tags', {}).then((value) => {
 			tags = value;
 		});
+	} else {
+		tag = { name: 'Preview', bgColor: 'royalblue', textColor: 'white' };
+	}
 
 	const dispatch = createEventDispatcher();
 </script>

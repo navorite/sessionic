@@ -25,11 +25,14 @@
 
 	let inputEl: HTMLInputElement;
 
-	$: if (open)
+	$: if (open) {
 		tick().then(() => {
 			isSubmit = false;
 			inputEl?.focus();
 		});
+	} else {
+		value = '';
+	}
 
 	const dispatch = createEventDispatcher<{ inputSubmit: string }>();
 
