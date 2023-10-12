@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.1](https://github.com/navorite/sessionic/compare/v1.3.0...v1.3.1) (2023-10-12)
+
+
+### :rocket: Enhancements
+
+* Add more keyboard shortcuts ([e80a2e4](https://github.com/navorite/sessionic/commit/e80a2e4560a19c9b2e9384c0c63567ddcb1c9ac1))
+* Minor UI tweaks ([f3cdbf8](https://github.com/navorite/sessionic/commit/f3cdbf8e0ea49de359bd14a8cdf25e3e243afc07), [0e76c25](https://github.com/navorite/sessionic/commit/0e76c25d8a8207f4a30438f03ab2b9d36318a163), [707bdba](https://github.com/navorite/sessionic/commit/707bdba23bbe76450cbb3ec60043d46122304632))
+
 ## [1.3.0](https://github.com/navorite/sessionic/compare/v1.2.2...v1.3.0) (2023-10-11)
 
 
