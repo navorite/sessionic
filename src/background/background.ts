@@ -9,76 +9,76 @@ import type { ESettings } from '@/lib/types';
 import { sendMessage } from '@/lib/utils/messages';
 
 async function createTimer() {
-	const [settings, alarm] = await Promise.all([
-		getStorage(autoSaveDefaults as ESettings),
-		browser.alarms.get('auto-save')
-	]);
+  const [settings, alarm] = await Promise.all([
+    getStorage(autoSaveDefaults as ESettings),
+    browser.alarms.get('auto-save')
+  ]);
 
-	if (
-		settings.autoSave &&
-		(typeof alarm === 'undefined' ||
-			alarm.periodInMinutes !== settings.autoSaveTimer)
-	)
-		browser.alarms.create('auto-save', {
-			periodInMinutes: settings.autoSaveTimer
-		});
+  if (
+    settings.autoSave &&
+    (typeof alarm === 'undefined' ||
+      alarm.periodInMinutes !== settings.autoSaveTimer)
+  )
+    browser.alarms.create('auto-save', {
+      periodInMinutes: settings.autoSaveTimer
+    });
 }
 
 createTimer();
 
 browser.alarms.onAlarm.addListener(async (alarm) => {
-	if (alarm.name === 'auto-save') {
-		const session = await getSession();
-		session.title = 'Autosave';
-		session.tags = 'Autosave';
+  if (alarm.name === 'auto-save') {
+    const session = await getSession();
+    session.title = 'Autosave';
+    session.tags = 'Autosave';
 
-		await sessionsDB.saveSession(generateSession(session));
+    await sessionsDB.saveSession(generateSession(session));
 
-		const [count, { autoSaveMaxSessions, selectionId }] = await Promise.all([
-			sessionsDB.getAutosavedCount(),
-			getStorage({
-				autoSaveMaxSessions: autoSaveDefaults.autoSaveMaxSessions,
-				selectionId: 'current'
-			} as ESettings)
-		]);
+    const [count, { autoSaveMaxSessions, selectionId }] = await Promise.all([
+      sessionsDB.getAutosavedCount(),
+      getStorage({
+        autoSaveMaxSessions: autoSaveDefaults.autoSaveMaxSessions,
+        selectionId: 'current'
+      } as ESettings)
+    ]);
 
-		if (count > autoSaveMaxSessions)
-			sessionsDB.deleteLastAutosavedSession(count - autoSaveMaxSessions);
+    if (count > autoSaveMaxSessions)
+      sessionsDB.deleteLastAutosavedSession(count - autoSaveMaxSessions);
 
-		const sessions = sessionsDB.lazyLoadSessions();
+    const sessions = sessionsDB.lazyLoadSessions();
 
-		sendMessage({
-			message: 'notifyChangeDB',
-			sessions: await sessions,
-			selectedId: selectionId
-		});
-	}
+    sendMessage({
+      message: 'notifyChangeDB',
+      sessions: await sessions,
+      selectedId: selectionId
+    });
+  }
 });
 
 browser.runtime.onInstalled.addListener((details) => {
-	if (details.reason === 'update') setStorage({ updated: true });
+  if (details.reason === 'update') setStorage({ updated: true });
 });
 
 browser.runtime.onMessage.addListener((request) => {
-	switch (request.message) {
-		case 'openInNewWindow': {
-			openInNewWindow(request.window, request.discarded);
-			break;
-		}
+  switch (request.message) {
+    case 'openInNewWindow': {
+      openInNewWindow(request.window, request.discarded);
+      break;
+    }
 
-		case 'createTab': {
-			createTab(request.tab, undefined, request.discarded);
-			break;
-		}
+    case 'createTab': {
+      createTab(request.tab, undefined, request.discarded);
+      break;
+    }
 
-		case 'openSession': {
-			openSession(request.session, true, request.discarded);
-			break;
-		}
+    case 'openSession': {
+      openSession(request.session, true, request.discarded);
+      break;
+    }
 
-		case 'createTimer': {
-			createTimer();
-			break;
-		}
-	}
+    case 'createTimer': {
+      createTimer();
+      break;
+    }
+  }
 });

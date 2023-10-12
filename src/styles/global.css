@@ -5,100 +5,100 @@
 @tailwind utilities;
 
 @layer utilities {
-	@media (prefers-reduced-motion: no-preference) {
-		.fade {
-			transition: all 200ms ease-in-out;
-		}
-	}
+  @media (prefers-reduced-motion: no-preference) {
+    .fade {
+      transition: all 200ms ease-in-out;
+    }
+  }
 }
 
 :root {
-	--primary: 215 96% 38%;
-	--primary-focus: 215 96% 43%;
+  --primary: 215 96% 38%;
+  --primary-focus: 215 96% 43%;
 
-	--neutral-1: 0 0% 97%;
-	--neutral-2: 0 0% 92%;
-	--neutral-3: 0 0% 87%;
-	--neutral-4: 0 0% 82%;
-	--neutral-5: 0 0% 77%;
-	--neutral-6: 0 0% 72%;
-	--neutral-7: 0 0% 67%;
-	--neutral-content: 0 0% 0%;
+  --neutral-1: 0 0% 97%;
+  --neutral-2: 0 0% 92%;
+  --neutral-3: 0 0% 87%;
+  --neutral-4: 0 0% 82%;
+  --neutral-5: 0 0% 77%;
+  --neutral-6: 0 0% 72%;
+  --neutral-7: 0 0% 67%;
+  --neutral-content: 0 0% 0%;
 
-	--info: 215 96% 33%;
-	--info-focus: 215 96% 38%;
+  --info: 215 96% 33%;
+  --info-focus: 215 96% 38%;
 
-	--success: 159 100% 37%;
-	--success-focus: 159 100% 47%;
+  --success: 159 100% 37%;
+  --success-focus: 159 100% 47%;
 
-	--warning: 27 100% 50%;
-	--warning-focus: 27 100% 55%;
+  --warning: 27 100% 50%;
+  --warning-focus: 27 100% 55%;
 
-	--error: 0 99% 30%;
-	--error-focus: 0 99% 35%;
+  --error: 0 99% 30%;
+  --error-focus: 0 99% 35%;
 
-	--link: 222 100% 34%;
-	--link-focus: 222 100% 24%;
+  --link: 222 100% 34%;
+  --link-focus: 222 100% 24%;
 
-	--tooltip: 220 5% 34%;
-	--tooltip-content: 0 0% 100%;
+  --tooltip: 220 5% 34%;
+  --tooltip-content: 0 0% 100%;
 }
 
 .dark {
-	--neutral-1: 220 6% 9%;
-	--neutral-2: 220 6% 14%;
-	--neutral-3: 220 6% 19%;
-	--neutral-4: 220 6% 24%;
-	--neutral-5: 220 6% 29%;
-	--neutral-6: 220 6% 34%;
-	--neutral-content: 0 0% 90%;
+  --neutral-1: 220 6% 9%;
+  --neutral-2: 220 6% 14%;
+  --neutral-3: 220 6% 19%;
+  --neutral-4: 220 6% 24%;
+  --neutral-5: 220 6% 29%;
+  --neutral-6: 220 6% 34%;
+  --neutral-content: 0 0% 90%;
 
-	--link: 222 95% 74%;
-	--link-focus: 222 95% 84%;
+  --link: 222 95% 74%;
+  --link-focus: 222 95% 84%;
 
-	--tooltip: 220 7% 66%;
-	--tooltip-content: 0 0% 0%;
+  --tooltip: 220 7% 66%;
+  --tooltip-content: 0 0% 0%;
 }
 
 html,
 body {
-	height: 100%;
+  height: 100%;
 }
 
 body {
-	@apply container mx-auto min-h-[500px] min-w-[800px] scroll-smooth bg-neutral-1 px-4 py-2 font-sans text-neutral-content;
+  @apply container mx-auto min-h-[500px] min-w-[800px] scroll-smooth bg-neutral-1 px-4 py-2 font-sans text-neutral-content;
 }
 
 #root {
-	@apply flex h-full w-full flex-col;
+  @apply flex h-full w-full flex-col;
 }
 
 h1 {
-	@apply text-xl font-bold;
+  @apply text-xl font-bold;
 }
 
 p,
 span,
 div {
-	@apply text-base;
+  @apply text-base;
 }
 
 ::-webkit-scrollbar {
-	@apply w-1 rounded-md bg-neutral-2;
+  @apply w-1 rounded-md bg-neutral-2;
 }
 
 ::-webkit-scrollbar-thumb {
-	@apply rounded-md bg-neutral-4;
+  @apply rounded-md bg-neutral-4;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	@apply bg-neutral-5;
+  @apply bg-neutral-5;
 }
 
 textarea::-webkit-scrollbar {
-	@apply w-3 border border-solid border-neutral-6;
+  @apply w-3 border border-solid border-neutral-6;
 }
 
 textarea::-webkit-scrollbar-thumb {
-	@apply border border-solid border-neutral-6;
+  @apply border border-solid border-neutral-6;
 }

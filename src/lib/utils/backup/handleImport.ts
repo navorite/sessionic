@@ -3,32 +3,32 @@ import { decompressFromUint8Array } from 'lz-string';
 import { convertSessions, sessionsDB } from '@/lib/utils';
 
 export async function handleImport(event: Event) {
-	const file = (event.target as HTMLInputElement).files![0]!;
+  const file = (event.target as HTMLInputElement).files![0]!;
 
-	const fileReader = new FileReader();
+  const fileReader = new FileReader();
 
-	const isSSF = file.name.endsWith('ssf');
+  const isSSF = file.name.endsWith('ssf');
 
-	isSSF ? fileReader.readAsArrayBuffer(file) : fileReader.readAsText(file);
+  isSSF ? fileReader.readAsArrayBuffer(file) : fileReader.readAsText(file);
 
-	fileReader.onloadend = async (ev) => {
-		let sessions: ESession[] | undefined = [];
+  fileReader.onloadend = async (ev) => {
+    let sessions: ESession[] | undefined = [];
 
-		let result = ev.target?.result;
+    let result = ev.target?.result;
 
-		if (isSSF) {
-			const bytes = new Uint8Array(result as ArrayBufferLike);
+    if (isSSF) {
+      const bytes = new Uint8Array(result as ArrayBufferLike);
 
-			sessions = JSON.parse(decompressFromUint8Array(bytes)) as ESession[];
-		} else {
-			if ((result as string).charCodeAt(0) === 0xfeff)
-				result = result?.slice(1);
+      sessions = JSON.parse(decompressFromUint8Array(bytes)) as ESession[];
+    } else {
+      if ((result as string).charCodeAt(0) === 0xfeff)
+        result = result?.slice(1);
 
-			sessions = await convertSessions(JSON.parse(result as string));
-		}
+      sessions = await convertSessions(JSON.parse(result as string));
+    }
 
-		if (!sessions?.length) return;
+    if (!sessions?.length) return;
 
-		sessionsDB.saveSessions(sessions);
-	};
+    sessionsDB.saveSessions(sessions);
+  };
 }

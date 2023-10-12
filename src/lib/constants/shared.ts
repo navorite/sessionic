@@ -12,34 +12,34 @@ export const isFirefox = !!browser.runtime?.getBrowserInfo;
 export const runtimeURL = browser.runtime.getURL('');
 
 export const tabAttr = [
-	'id',
-	'title',
-	'url',
-	'favIconUrl',
-	'active',
-	'discarded',
-	'pinned',
-	'incognito',
-	'mutedInfo',
-	...(isFirefox ? ['isInReaderMode', 'cookieStoreId'] : ['groupId'])
+  'id',
+  'title',
+  'url',
+  'favIconUrl',
+  'active',
+  'discarded',
+  'pinned',
+  'incognito',
+  'mutedInfo',
+  ...(isFirefox ? ['isInReaderMode', 'cookieStoreId'] : ['groupId'])
 ];
 
 export const compress_options: compressOptions = {
-	type: 'image/webp',
-	quality: 0.7,
-	max_size: 20
+  type: 'image/webp',
+  quality: 0.7,
+  max_size: 20
 };
 
 export const autoSaveDefaults = {
-	autoSave: false,
-	autoSaveMaxSessions: 5,
-	autoSaveTimer: 15
+  autoSave: false,
+  autoSaveMaxSessions: 5,
+  autoSaveTimer: 15
 };
 
 export const tabType: Record<string, Icon> = {
-	'://settings': 'settings',
-	'://history': 'history',
-	'extension://': 'extension',
-	'://extensions': 'extension',
-	'://newtab': 'chrometab'
+  '://settings': 'settings',
+  '://history': 'history',
+  'extension://': 'extension',
+  '://extensions': 'extension',
+  '://newtab': 'chrometab'
 };

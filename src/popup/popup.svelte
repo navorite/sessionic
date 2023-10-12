@@ -1,49 +1,49 @@
 <script lang="ts">
-	import { EXT_NAME, isPopup } from '@/lib/constants';
-	import { settings } from '@/lib/stores/';
-	import { openFullView } from '@utils/extension';
-	import { CommandPalette, Header, Sessions } from '@/lib/components';
-	import { isInputTarget } from '@/lib/utils';
+  import { EXT_NAME, isPopup } from '@/lib/constants';
+  import { settings } from '@/lib/stores/';
+  import { openFullView } from '@utils/extension';
+  import { CommandPalette, Header, Sessions } from '@/lib/components';
+  import { isInputTarget } from '@/lib/utils';
 
-	shouldLoadPopup();
+  shouldLoadPopup();
 
-	async function shouldLoadPopup() {
-		await settings.init();
+  async function shouldLoadPopup() {
+    await settings.init();
 
-		if (!isPopup) return;
+    if (!isPopup) return;
 
-		if (!$settings.popupView) {
-			await openFullView();
+    if (!$settings.popupView) {
+      await openFullView();
 
-			window.close();
-		}
-	}
+      window.close();
+    }
+  }
 
-	let open = false;
+  let open = false;
 </script>
 
 <svelte:head>
-	<title>
-		{EXT_NAME}
-	</title>
+  <title>
+    {EXT_NAME}
+  </title>
 </svelte:head>
 
 <svelte:window
-	on:keydown={(ev) => {
-		if (
-			(ev.target instanceof HTMLElement && isInputTarget(ev.target)) ||
-			ev.repeat ||
-			ev.shiftKey ||
-			ev.altKey ||
-			ev.metaKey
-		)
-			return;
+  on:keydown={(ev) => {
+    if (
+      (ev.target instanceof HTMLElement && isInputTarget(ev.target)) ||
+      ev.repeat ||
+      ev.shiftKey ||
+      ev.altKey ||
+      ev.metaKey
+    )
+      return;
 
-		if (ev.code === 'KeyK' && ev.ctrlKey) {
-			open = !open;
-			ev.preventDefault();
-		}
-	}}
+    if (ev.code === 'KeyK' && ev.ctrlKey) {
+      open = !open;
+      ev.preventDefault();
+    }
+  }}
 />
 
 <Header />

@@ -3,35 +3,35 @@ import { sessionsDB } from '@/lib/utils';
 import { compressToUint8Array } from 'lz-string';
 
 export async function handleExport() {
-	const date = new Date();
+  const date = new Date();
 
-	const sessions = await sessionsDB.loadSessions();
+  const sessions = await sessionsDB.loadSessions();
 
-	if (!sessions.length) return;
+  if (!sessions.length) return;
 
-	const fileName = `[${EXT_NAME}:${sessions.length}]${date.toLocaleString([], {
-		dateStyle: 'medium',
-		timeStyle: 'short'
-	})}.ssf`;
+  const fileName = `[${EXT_NAME}:${sessions.length}]${date.toLocaleString([], {
+    dateStyle: 'medium',
+    timeStyle: 'short'
+  })}.ssf`;
 
-	const compressed = compressToUint8Array(JSON.stringify(sessions));
+  const compressed = compressToUint8Array(JSON.stringify(sessions));
 
-	const blob = new Blob([compressed]);
+  const blob = new Blob([compressed]);
 
-	const url = URL.createObjectURL(blob);
+  const url = URL.createObjectURL(blob);
 
-	const anchor = document.createElement('a') as HTMLAnchorElement;
+  const anchor = document.createElement('a') as HTMLAnchorElement;
 
-	anchor.style.display = 'none';
+  anchor.style.display = 'none';
 
-	anchor.href = url;
-	anchor.download = fileName;
+  anchor.href = url;
+  anchor.download = fileName;
 
-	document.body.appendChild(anchor);
+  document.body.appendChild(anchor);
 
-	anchor.click();
+  anchor.click();
 
-	URL.revokeObjectURL(url);
+  URL.revokeObjectURL(url);
 
-	anchor.remove();
+  anchor.remove();
 }

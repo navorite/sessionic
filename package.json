@@ -1,104 +1,104 @@
 {
-	"name": "sessionic",
-	"version": "1.3.3",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"dev": "npm run clean && cross-env NODE_ENV=development run-p setup build:background dev:web",
-		"dev-ff": "npm run clean && cross-env NODE_ENV=development TARGET=firefox run-p setup build:background dev:web",
-		"dev:web": "vite dev",
-		"build": "npm run clean && cross-env NODE_ENV=production run-p build:* setup",
-		"build-ff": "npm run clean && cross-env NODE_ENV=production TARGET=firefox run-p build:* setup",
-		"build:web": "vite build",
-		"build:background": "vite build -c vite.config.background.ts",
-		"open": "web-ext run -s=dist -t=chromium",
-		"open:ff": "web-ext run -s=dist",
-		"setup": "tsx ./scripts/main.ts",
-		"clean": "rimraf dist",
-		"check": "svelte-check --tsconfig ./tsconfig.json",
-		"format": "prettier --plugin=prettier-plugin-tailwindcss --write .",
-		"lint": "eslint .",
-		"lint:fix": "npm run format && eslint . --fix",
-		"release": "release-it",
-		"release:beta": "release-it --preRelease=beta",
-		"release:info": "release-it --release-version"
-	},
-	"devDependencies": {
-		"@release-it/conventional-changelog": "^7.0.2",
-		"@sveltejs/vite-plugin-svelte": "^2.4.6",
-		"@tsconfig/svelte": "^5.0.2",
-		"@types/node": "^20.8.5",
-		"@types/webextension-polyfill": "^0.10.4",
-		"@typescript-eslint/eslint-plugin": "^6.7.5",
-		"@typescript-eslint/parser": "^6.7.5",
-		"autoprefixer": "^10.4.16",
-		"cross-env": "^7.0.3",
-		"eslint": "^8.51.0",
-		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-svelte": "^2.34.0",
-		"npm-run-all": "^4.1.5",
-		"postcss": "^8.4.31",
-		"prettier": "^3.0.3",
-		"prettier-plugin-svelte": "^3.0.3",
-		"prettier-plugin-tailwindcss": "^0.5.5",
-		"release-it": "^16.2.1",
-		"rimraf": "^5.0.5",
-		"svelte": "^4.2.1",
-		"svelte-check": "^3.5.2",
-		"tailwindcss": "^3.3.3",
-		"tslib": "^2.6.2",
-		"tsx": "^3.13.0",
-		"typescript": "^5.2.2",
-		"vite": "^4.4.11",
-		"web-ext": "^7.8.0",
-		"webextension-polyfill": "^0.10.0"
-	},
-	"dependencies": {
-		"chokidar": "^3.5.3",
-		"idb": "^7.1.1",
-		"lz-string": "^1.5.0",
-		"pino": "^8.16.0",
-		"url": "^0.11.3"
-	},
-	"release-it": {
-		"git": {
-			"commitMessage": "chore(release): v${version}",
-			"tagName": "v${version}",
-			"requireCleanWorkingDir": false
-		},
-		"github": {
-			"draft": true,
-			"release": true
-		},
-		"npm": {
-			"publish": false
-		},
-		"plugins": {
-			"@release-it/conventional-changelog": {
-				"infile": "CHANGELOG.md",
-				"header": "# Changelog",
-				"preset": {
-					"name": "conventionalcommits",
-					"types": [
-						{
-							"type": "feat",
-							"section": ":fire: New Features"
-						},
-						{
-							"type": "perf",
-							"section": ":rocket: Enhancements"
-						},
-						{
-							"type": "enhance",
-							"section": ":rocket: Enhancements"
-						},
-						{
-							"type": "fix",
-							"section": ":bug: Bug Fixes"
-						}
-					]
-				}
-			}
-		}
-	}
+  "name": "sessionic",
+  "version": "1.3.3",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run clean && cross-env NODE_ENV=development run-p setup build:background dev:web",
+    "dev-ff": "npm run clean && cross-env NODE_ENV=development TARGET=firefox run-p setup build:background dev:web",
+    "dev:web": "vite dev",
+    "build": "npm run clean && cross-env NODE_ENV=production run-p build:* setup",
+    "build-ff": "npm run clean && cross-env NODE_ENV=production TARGET=firefox run-p build:* setup",
+    "build:web": "vite build",
+    "build:background": "vite build -c vite.config.background.ts",
+    "open": "web-ext run -s=dist -t=chromium",
+    "open:ff": "web-ext run -s=dist",
+    "setup": "tsx ./scripts/main.ts",
+    "clean": "rimraf dist",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "format": "prettier --plugin=prettier-plugin-tailwindcss --write .",
+    "lint": "eslint .",
+    "lint:fix": "npm run format && eslint . --fix",
+    "release": "release-it",
+    "release:beta": "release-it --preRelease=beta",
+    "release:info": "release-it --release-version"
+  },
+  "devDependencies": {
+    "@release-it/conventional-changelog": "^7.0.2",
+    "@sveltejs/vite-plugin-svelte": "^2.4.6",
+    "@tsconfig/svelte": "^5.0.2",
+    "@types/node": "^20.8.5",
+    "@types/webextension-polyfill": "^0.10.4",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "@typescript-eslint/parser": "^6.7.5",
+    "autoprefixer": "^10.4.16",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.51.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-svelte": "^2.34.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.31",
+    "prettier": "^3.0.3",
+    "prettier-plugin-svelte": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.5",
+    "release-it": "^16.2.1",
+    "rimraf": "^5.0.5",
+    "svelte": "^4.2.1",
+    "svelte-check": "^3.5.2",
+    "tailwindcss": "^3.3.3",
+    "tslib": "^2.6.2",
+    "tsx": "^3.13.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.11",
+    "web-ext": "^7.8.0",
+    "webextension-polyfill": "^0.10.0"
+  },
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "idb": "^7.1.1",
+    "lz-string": "^1.5.0",
+    "pino": "^8.16.0",
+    "url": "^0.11.3"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore(release): v${version}",
+      "tagName": "v${version}",
+      "requireCleanWorkingDir": false
+    },
+    "github": {
+      "draft": true,
+      "release": true
+    },
+    "npm": {
+      "publish": false
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "infile": "CHANGELOG.md",
+        "header": "# Changelog",
+        "preset": {
+          "name": "conventionalcommits",
+          "types": [
+            {
+              "type": "feat",
+              "section": ":fire: New Features"
+            },
+            {
+              "type": "perf",
+              "section": ":rocket: Enhancements"
+            },
+            {
+              "type": "enhance",
+              "section": ":rocket: Enhancements"
+            },
+            {
+              "type": "fix",
+              "section": ":bug: Bug Fixes"
+            }
+          ]
+        }
+      }
+    }
+  }
 }

@@ -4,24 +4,24 @@ import { _dir, sharedConfig } from './vite.config';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	...sharedConfig,
+  ...sharedConfig,
 
-	build: {
-		emptyOutDir: false,
+  build: {
+    emptyOutDir: false,
 
-		...(isDEV && {
-			watch: {},
-			sourcemap: 'inline'
-		}),
+    ...(isDEV && {
+      watch: {},
+      sourcemap: 'inline'
+    }),
 
-		rollupOptions: {
-			input: {
-				background: _dir('src/background/background.ts')
-			},
-			output: {
-				format: 'iife',
-				entryFileNames: 'src/background/background.js'
-			}
-		}
-	}
+    rollupOptions: {
+      input: {
+        background: _dir('src/background/background.ts')
+      },
+      output: {
+        format: 'iife',
+        entryFileNames: 'src/background/background.js'
+      }
+    }
+  }
 });
