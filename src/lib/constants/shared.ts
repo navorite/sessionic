@@ -1,5 +1,5 @@
 import browser from 'webextension-polyfill';
-import type { compressOptions } from '@/lib/types';
+import type { compressOptions, Icon } from '@/lib/types';
 
 export const EXT_NAME = __EXT_NAME__;
 export const EXT_VER = __EXT_VER__;
@@ -34,4 +34,12 @@ export const autoSaveDefaults = {
 	autoSave: false,
 	autoSaveMaxSessions: 5,
 	autoSaveTimer: 15
+};
+
+export const tabType: Record<string, Icon> = {
+	'://settings': 'settings',
+	'://history': 'history',
+	'extension://': 'extension',
+	'://extensions': 'extension',
+	'://newtab': 'chrometab'
 };

@@ -1,7 +1,7 @@
 import type { Icon, Page } from '@/lib/types';
 import browser from 'webextension-polyfill';
 import { isFirefox, runtimeURL } from '@constants/shared';
-import { tabType } from '../constants';
+import { tabType } from '@constants/shared';
 
 export function isExtensionViewed() {
 	return document.visibilityState === 'visible';
