@@ -15,7 +15,7 @@
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <dialog
 	bind:this={dialogEl}
-	class="max-h-lg max-w-3xl rounded-md border-2 border-solid border-neutral-5 bg-transparent text-white outline-none backdrop-blur"
+	class="max-h-lg max-w-3xl rounded-md border border-white/25 bg-transparent text-white outline-none backdrop-blur"
 	on:mousedown|self={() => (open = false)}
 	on:keydown={(event) => {
 		if (event.key === 'Escape') open = false;
@@ -46,9 +46,9 @@
 		<slot name="content" />
 
 		{#if $$slots.footer}
-			<div class="ml-auto mt-auto flex gap-2 font-semibold">
+			<div class="ml-auto mt-auto flex gap-2 font-medium">
 				<button
-					class="rounded-md bg-neutral-4 px-4 py-1 font-medium text-neutral-content hover:bg-neutral-5"
+					class="rounded-md bg-neutral-3 px-4 py-1 text-neutral-content hover:bg-neutral-4"
 					type="button"
 					on:click={() => (open = false)}>Cancel</button
 				>
