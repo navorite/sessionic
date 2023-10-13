@@ -1,180 +1,184 @@
 <script lang="ts">
-	import { currentSession, filtered, sessions, settings } from '@/lib/stores';
-	import {
-		VirtualList,
-		Windows,
-		InputModal,
-		ActionModal,
-		TagsModal,
-		Session,
-		CurrentSession
-	} from '@/lib/components';
-	import { isInputTarget } from '@/lib/utils';
+  import { currentSession, filtered, sessions, settings } from '@/lib/stores';
+  import {
+    VirtualList,
+    Windows,
+    InputModal,
+    ActionModal,
+    TagsModal,
+    Session,
+    CurrentSession
+  } from '@/lib/components';
+  import { isInputTarget } from '@/lib/utils';
 
-	$: selection = sessions.selection;
+  $: selection = sessions.selection;
 
-	$: if ($selection && typeof scrollToIndex !== 'undefined' && !isScrolled) {
-		isScrolled = true;
-		scrollToIndex($sessions.indexOf($selection));
-	}
+  $: if ($selection && typeof scrollToIndex !== 'undefined' && !isScrolled) {
+    isScrolled = true;
+    scrollToIndex($sessions.indexOf($selection));
+  }
 
-	let modalShow = false;
-	let modalType: 'Save' | 'Rename' = 'Rename';
+  let modalShow = false;
+  let modalType: 'Save' | 'Rename' = 'Rename';
 
-	let actionShow = false;
+  let actionShow = false;
 
-	let scrollToIndex: (index: number) => void;
+  let scrollToIndex: (index: number) => void;
 
-	let isScrolled = false;
+  let isScrolled = false;
 
-	let tagsShow = false;
+  let tagsShow = false;
 
-	async function saveSession(title: string) {
-		$currentSession.title = title;
+  async function saveSession(title: string) {
+    $currentSession.title = title;
 
-		await sessions.add($currentSession);
+    await sessions.add($currentSession);
 
-		scrollToIndex($sessions.length);
-	}
+    scrollToIndex($sessions.length);
+  }
 
-	export function saveAction() {
-		modalType = 'Save';
-		if ($settings.doNotAskForTitle) return saveSession('Unnamed session');
+  export function saveAction() {
+    modalType = 'Save';
+    if ($settings.doNotAskForTitle) return saveSession('Unnamed session');
 
-		modalShow = true;
-	}
+    modalShow = true;
+  }
 
-	function handleKeydown(ev: KeyboardEvent) {
-		if (
-			(ev.target instanceof HTMLElement && isInputTarget(ev.target)) ||
-			ev.repeat ||
-			ev.ctrlKey ||
-			ev.shiftKey ||
-			ev.altKey ||
-			ev.metaKey
-		)
-			return;
+  async function handleKeydown(ev: KeyboardEvent) {
+    if (
+      (ev.target instanceof HTMLElement && isInputTarget(ev.target)) ||
+      ev.repeat ||
+      ev.ctrlKey ||
+      ev.shiftKey ||
+      ev.altKey ||
+      ev.metaKey
+    )
+      return;
 
-		switch (ev.code) {
-			case 'KeyS':
-				saveAction();
-				break;
+    switch (ev.code) {
+      case 'KeyS':
+        saveAction();
+        break;
 
-			case 'KeyC':
-				selection.select($currentSession);
-				break;
+      case 'KeyC':
+        selection.select($currentSession);
+        break;
 
-			case 'KeyE': {
-				let index =
-					$sessions.findIndex((session) => session.id === $selection.id) + 1;
+      case 'KeyE': {
+        const sessions = await $filtered;
 
-				if (index >= $sessions.length || index <= 0) index = 0;
+        let index =
+          sessions.findIndex((session) => session.id === $selection.id) + 1;
 
-				selection.select($sessions[index]!);
-				scrollToIndex(index);
-				break;
-			}
+        if (index >= sessions.length || index <= 0) index = 0;
 
-			case 'KeyD': {
-				let index =
-					$sessions.findIndex((session) => session.id === $selection.id) - 1;
+        selection.select(sessions[index]!);
+        scrollToIndex(index);
+        break;
+      }
 
-				if (index <= -1) index = $sessions.length - 1;
+      case 'KeyD': {
+        const sessions = await $filtered;
 
-				console.log(index);
+        let index =
+          sessions.findIndex((session) => session.id === $selection.id) - 1;
 
-				selection.select($sessions[index]!);
+        if (index <= -1) index = sessions.length - 1;
 
-				scrollToIndex(index);
-				break;
-			}
+        console.log(index);
 
-			case 'KeyR':
-				modalType = 'Rename';
-				modalShow = true;
-				break;
+        selection.select(sessions[index]!);
 
-			case 'Delete':
-				sessions.remove($selection);
-				break;
+        scrollToIndex(index);
+        break;
+      }
 
-			default:
-				return;
-		}
+      case 'KeyR':
+        modalType = 'Rename';
+        modalShow = true;
+        break;
 
-		ev.preventDefault();
-	}
+      case 'Delete':
+        sessions.remove($selection);
+        break;
+
+      default:
+        return;
+    }
+
+    ev.preventDefault();
+  }
 </script>
 
 <svelte:window on:keydown={handleKeydown} />
 
 <div class="mt-2 flex h-full max-h-[90vh] w-full gap-2 overflow-hidden">
-	<div class="flex h-full max-w-xs flex-1 flex-col">
-		<CurrentSession on:save={saveAction} />
+  <div class="flex h-full max-w-xs flex-1 flex-col">
+    <CurrentSession on:save={saveAction} />
 
-		{#await $filtered}
-			<p class="mt-2 text-center font-normal">Looking for sessions...</p>
-		{:then filtered}
-			{#if filtered}
-				<VirtualList
-					reversed={true}
-					items={filtered}
-					let:item
-					class="flex-1"
-					bind:scrollToIndex
-				>
-					<Session
-						session={item}
-						on:renameModal={() => {
-							modalType = 'Rename';
-							modalShow = true;
-						}}
-						on:deleteModal={() => (actionShow = true)}
-						on:tagsModal={() => (tagsShow = true)}
-					/>
-				</VirtualList>
-			{:else}
-				<p class="mt-2 text-center font-normal">No sessions were found</p>
-			{/if}
-		{/await}
-	</div>
-	<Windows class="flex-1" />
+    {#await $filtered}
+      <p class="mt-2 text-center font-normal">Looking for sessions...</p>
+    {:then filtered}
+      {#if filtered}
+        <VirtualList
+          reversed={true}
+          items={filtered}
+          let:item
+          class="flex-1"
+          bind:scrollToIndex
+        >
+          <Session
+            session={item}
+            on:renameModal={() => {
+              modalType = 'Rename';
+              modalShow = true;
+            }}
+            on:deleteModal={() => (actionShow = true)}
+            on:tagsModal={() => (tagsShow = true)}
+          />
+        </VirtualList>
+      {:else}
+        <p class="mt-2 text-center font-normal">No sessions were found</p>
+      {/if}
+    {/await}
+  </div>
+  <Windows class="flex-1" />
 </div>
 
 <InputModal
-	bind:open={modalShow}
-	type={modalType}
-	on:inputSubmit={async (event) => {
-		if (modalType === 'Rename' && $selection.title !== event.detail) {
-			$selection.title = event.detail;
+  bind:open={modalShow}
+  type={modalType}
+  on:inputSubmit={async (event) => {
+    if (modalType === 'Rename' && $selection.title !== event.detail) {
+      $selection.title = event.detail;
 
-			await sessions.put($selection);
-		} else if (modalType === 'Save') {
-			saveSession(event.detail);
-		}
+      await sessions.put($selection);
+    } else if (modalType === 'Save') {
+      saveSession(event.detail);
+    }
 
-		modalShow = false;
-	}}
+    modalShow = false;
+  }}
 />
 
 <ActionModal
-	bind:open={actionShow}
-	on:deleteAction={async () => {
-		await sessions.remove($selection);
+  bind:open={actionShow}
+  on:deleteAction={async () => {
+    await sessions.remove($selection);
 
-		selection.select($currentSession);
+    selection.select($currentSession);
 
-		actionShow = false;
-	}}
+    actionShow = false;
+  }}
 />
 
 <TagsModal
-	bind:open={tagsShow}
-	on:tagSubmit={(event) => {
-		const tag = event.detail;
+  bind:open={tagsShow}
+  on:tagSubmit={(event) => {
+    const tag = event.detail;
 
-		$selection.tags = tag;
+    $selection.tags = tag;
 
-		sessions.put($selection);
-	}}
+    sessions.put($selection);
+  }}
 />
