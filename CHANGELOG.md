@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.4](https://github.com/navorite/sessionic/compare/v1.3.3...v1.3.4) (2023-10-14)
+
+
+### :bug: Bug Fixes
+
+* Session selection doesn't work inside search ([425fb14](https://github.com/navorite/sessionic/commit/425fb1477fae256f09d19812689f27bb6b5a17d1))
+
 ## [1.3.3](https://github.com/navorite/sessionic/compare/v1.3.2...v1.3.3) (2023-10-12)
 
 
