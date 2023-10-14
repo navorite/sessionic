@@ -42,7 +42,7 @@
 
 <li>
   <button
-    class="session-container group {$selected === session
+    class="session-container group {$selected.id === session.id
       ? '!bg-primary/30'
       : ''}"
     on:click={() => selected.select(session)}

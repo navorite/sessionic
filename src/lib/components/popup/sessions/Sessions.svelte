@@ -85,8 +85,6 @@
 
         if (index <= -1) index = sessions.length - 1;
 
-        console.log(index);
-
         selection.select(sessions[index]!);
 
         scrollToIndex(index);
