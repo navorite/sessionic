@@ -92,7 +92,10 @@
 
     //should fix inconsistency in update flags
     timeout = setTimeout(async () => {
-      $session = await getSession($settings.urlFilterList);
+      $session = await getSession({
+        pinned: !$settings.excludePinned,
+        url: $settings.urlFilterList
+      });
 
       if ($settings.selectionId === 'current')
         selection.selectById($session.id);

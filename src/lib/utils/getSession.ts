@@ -1,11 +1,5 @@
 import browser from 'webextension-polyfill';
-import type {
-  ESession,
-  ETab,
-  QueryInfo,
-  URLFilterList,
-  compressOptions
-} from '@/lib/types';
+import type { ESession, ETab, QueryInfo, compressOptions } from '@/lib/types';
 import { compress_options, tabAttr } from '@/lib/constants/shared';
 import { compress as compressLZ } from 'lz-string';
 import { getExtensionURL } from '@/lib/utils/extension';
@@ -52,7 +46,7 @@ export async function getTabs(
 }
 
 // Get current session - TODO: arg: options?: compressOptions goes undefined after 1st call
-export async function getSession(urlFilterList?: URLFilterList) {
+export async function getSession(queryInfo?: QueryInfo) {
   const session: ESession = {
     title: 'Current Session',
     windows: [],
@@ -62,16 +56,14 @@ export async function getSession(urlFilterList?: URLFilterList) {
     tabsNumber: 0
   };
 
+  if (!queryInfo) queryInfo = {};
+
   session.windows = await browser?.windows?.getAll();
 
   for (const window of session.windows) {
-    window.tabs = await getTabs(
-      {
-        windowId: window.id,
-        url: urlFilterList as undefined
-      },
-      compress_options
-    );
+    queryInfo.windowId = window.id;
+
+    window.tabs = await getTabs(queryInfo, compress_options);
 
     session.tabsNumber += window.tabs.length;
   }
