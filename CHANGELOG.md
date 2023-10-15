@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.5](https://github.com/navorite/sessionic/compare/v1.3.4...v1.3.5) (2023-10-15)
+
+
+### :bug: Bug Fixes
+
+* Check for selected object before accessing id ([7ba2b6f](https://github.com/navorite/sessionic/commit/7ba2b6fbe4ad1fce8fc651ff6550589a157b879e))
+* Selected session is not highlighted in search ([2b13ee5](https://github.com/navorite/sessionic/commit/2b13ee5051af4603990cc17072c6cd16fc4fa8aa))
+
 ## [1.3.4](https://github.com/navorite/sessionic/compare/v1.3.3...v1.3.4) (2023-10-14)
 
 
