@@ -10,7 +10,7 @@ export function handleFilterListChange(
     /(\b(https?|ftp|file)|\B\*):\/{2}(\*|(\*\.)?[^*/\s:]*)\/[^\s]*/g
   );
 
-  settings.changeSetting('urlFilterList', urls);
+  settings.changeSetting('urlFilterList', urls ? urls : undefined);
 
   if (urlList) ev.currentTarget.value = urlList;
 }

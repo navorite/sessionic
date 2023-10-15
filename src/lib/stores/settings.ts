@@ -21,7 +21,7 @@ export const settings = (() => {
     darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches,
     selectionId: 'current',
     discarded: true,
-    urlFilterList: null,
+    urlFilterList: undefined,
     autoSave: autoSaveDefaults.autoSave,
     autoSaveMaxSessions: autoSaveDefaults.autoSaveMaxSessions,
     autoSaveTimer: autoSaveDefaults.autoSaveTimer,

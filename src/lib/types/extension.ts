@@ -49,7 +49,7 @@ export interface ENotification {
   duration?: number;
 }
 
-export type URLFilterList = string[] | ['<all_urls>'] | null;
+export type URLFilterList = string[] | ['<all_urls>'] | undefined;
 
 export interface ESettings {
   darkMode: boolean;
