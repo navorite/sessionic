@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/navorite/sessionic/compare/v1.4.0...v1.4.1) (2023-10-16)
+
+
+### :bug: Bug Fixes
+
+* Including pinned tab shows only pinned tabs ([4ab4682](https://github.com/navorite/sessionic/commit/4ab4682b095348188e8c982322ded25624bbe2a9))
+
 ## [1.4.0](https://github.com/navorite/sessionic/compare/v1.3.5...v1.4.0) (2023-10-16)
 
 
