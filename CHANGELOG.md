@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.4.0](https://github.com/navorite/sessionic/compare/v1.3.5...v1.4.0) (2023-10-16)
+
+
+### :fire: New Features
+
+* Add an option to exclude pinned tabs ([09bfe30](https://github.com/navorite/sessionic/commit/09bfe3072146b0c884d43926297e0adca16eefb5))
+* Support importing OneTab lists to a separate session ([c2405be](https://github.com/navorite/sessionic/commit/c2405be4e614b0d4d26032c8cbb5939572e8121c))
+
+
+### :rocket: Enhancements
+
+* Enhance tab icons ([10749e8](https://github.com/navorite/sessionic/commit/10749e84e1eb5f4d11158d979cb50d028fd75895))
+
 ## [1.3.5](https://github.com/navorite/sessionic/compare/v1.3.4...v1.3.5) (2023-10-15)
 
 
