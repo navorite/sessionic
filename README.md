@@ -47,11 +47,11 @@ A web extension to easily save sessions and manage them.
 ## Download
 
 <a href="https://addons.mozilla.org/en-US/firefox/addon/sessionic
-"><img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt='Get the Extension on Firefox' height="97">
+"><img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt='Get the Extension on Firefox' height="75">
 </a>
-<a href="https://chrome.google.com/webstore/detail/sessionic/mdakbhkahkmdafnfhdikbddkngcbhenc"><img src="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/iNEddTyWiMfLSwFD6qGq.png" alt="Get the Extesion on Chrome" height="96" style="border: 1px solid transparent; border-radius:6px;">
+<a href="https://chrome.google.com/webstore/detail/sessionic/mdakbhkahkmdafnfhdikbddkngcbhenc"><img src="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/iNEddTyWiMfLSwFD6qGq.png" alt="Get the Extesion on Chrome" height="75" style="border: 1px solid transparent; border-radius:6px;">
 </a>
-<a href="https://microsoftedge.microsoft.com/addons/detail/sessionic/opniekmiofodaifalpdfoecpcloliico"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Get_it_from_Microsoft_Badge.svg/320px-Get_it_from_Microsoft_Badge.svg.png" alt="Get the Extension on Edge" height="96" style="border: 1px solid transparent; border-radius:4px;">
+<a href="https://microsoftedge.microsoft.com/addons/detail/sessionic/opniekmiofodaifalpdfoecpcloliico"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Get_it_from_Microsoft_Badge.svg/320px-Get_it_from_Microsoft_Badge.svg.png" alt="Get the Extension on Edge" height="75" style="border: 1px solid transparent; border-radius:4px;">
 </a>
 
 ## Build locally
