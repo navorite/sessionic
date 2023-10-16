@@ -1,7 +1,7 @@
-import browser from 'webextension-polyfill';
 import type { ESession, ETab, QueryInfo, compressOptions } from '@/lib/types';
-import { compress_options, tabAttr } from '@/lib/constants/shared';
+import browser from 'webextension-polyfill';
 import { compress as compressLZ } from 'lz-string';
+import { compress_options, tabAttr } from '@/lib/constants/shared';
 import { getExtensionURL } from '@/lib/utils/extension';
 import { compress } from '@utils/compress';
 

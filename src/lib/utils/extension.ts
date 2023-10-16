@@ -1,7 +1,12 @@
 import type { Icon, Page } from '@/lib/types';
 import browser from 'webextension-polyfill';
-import { isFirefox, runtimeURL } from '@constants/shared';
-import { tabType } from '@constants/shared';
+import {
+  favIconAllowedList,
+  favIconDisallowedList,
+  isFirefox,
+  runtimeURL
+} from '@constants/shared';
+import { decompress } from 'lz-string';
 
 export function isExtensionViewed() {
   return document.visibilityState === 'visible';
@@ -61,10 +66,32 @@ export function getExtensionURL(page?: Page, query: string = '') {
   return `${runtimeURL}src/${page}/index.html${query}`;
 }
 
-export function getTabType(url: string): Icon {
-  for (const tab in tabType) {
-    if (url.includes(tab)) return tabType[tab] as Icon;
+// Get the favIcon
+export function getFavIcon(
+  url: string | undefined,
+  favIconUrl: string | undefined
+) {
+  if (!url) return null;
+
+  if (favIconUrl) favIconUrl = decompress(favIconUrl);
+
+  if (
+    (isFirefox || url.startsWith('http')) &&
+    favIconAllowedList.some((favIcon) => favIconUrl?.startsWith(favIcon))
+  )
+    return favIconUrl;
+
+  return defaultFavIcon(url);
+}
+
+// Get a fall-back icon for some urls
+export const getFavIconType = (url: string) => {
+  for (const tab in favIconDisallowedList) {
+    if (url.includes(tab)) return favIconDisallowedList[tab] as Icon;
   }
 
-  return 'tab';
-}
+  return 'global';
+};
+
+const defaultFavIcon = (url: string) =>
+  isFirefox ? null : `${runtimeURL}_favicon/?pageUrl=${url}&size=16`;

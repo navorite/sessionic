@@ -36,10 +36,13 @@ export const autoSaveDefaults = {
   autoSaveTimer: 15
 };
 
-export const tabType: Record<string, Icon> = {
-  '://settings': 'settings',
-  '://history': 'history',
-  'extension://': 'extension',
-  '://extensions': 'extension',
-  '://newtab': 'chrometab'
+export const favIconAllowedList: string[] = [
+  'http',
+  'data:image',
+  ...(isFirefox ? ['chrome://branding'] : [])
+];
+
+export const favIconDisallowedList: Record<string, Icon> = {
+  'about:addons': 'extension',
+  'about:preferences': 'settings'
 };

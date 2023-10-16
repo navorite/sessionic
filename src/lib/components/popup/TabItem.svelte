@@ -3,10 +3,8 @@
   import type { ETab } from '@/lib/types';
   import { createEventDispatcher } from 'svelte';
   import { IconButton } from '@/lib/components';
-  import { decompress as decompressLZ } from 'lz-string';
   import { filterOptions } from '@/lib/stores';
-  import { getTabType, markResult } from '@/lib/utils';
-  import { runtimeURL } from '@/lib/constants';
+  import { getFavIcon, getFavIconType, markResult } from '@/lib/utils';
 
   export let tab: ETab;
   export let current = false;
@@ -15,12 +13,7 @@
 
   $: active = tab.active ? 'text-link' : '';
 
-  let favIconUrl: string;
-
-  $: favIconUrl = tab.favIconUrl ? decompressLZ(tab.favIconUrl) : '';
-
-  $: isBrowserTab =
-    favIconUrl?.startsWith('chrome') && !favIconUrl.startsWith(runtimeURL);
+  $: favIconUrl = getFavIcon(tab.url, tab.favIconUrl);
 
   $: title =
     $filterOptions?.query.trim() && tab.title
@@ -33,7 +26,7 @@
 {#if tab?.url}
   <li class="tab-container group">
     <a class="link" href={tab.url} target="_blank">
-      {#if favIconUrl && !isBrowserTab}
+      {#if favIconUrl}
         <img
           style:width="1rem"
           style:height="1rem"
@@ -45,7 +38,7 @@
         />
       {:else}
         <IconButton
-          icon={getTabType(tab.url)}
+          icon={getFavIconType(tab.url)}
           class="max-h-[1rem] min-h-[1rem] min-w-[1rem] max-w-[1rem] rounded-md text-lg {active ||
             'text-neutral-content'}"
         />

@@ -30,7 +30,7 @@ export type Icon =
   | 'incognito'
   | 'window'
   | 'tab'
-  | 'chrometab'
+  | 'global'
   | 'extension'
   | 'history'
   | 'expand'
