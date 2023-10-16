@@ -93,7 +93,7 @@
     //should fix inconsistency in update flags
     timeout = setTimeout(async () => {
       $session = await getSession({
-        pinned: !$settings.excludePinned,
+        pinned: $settings.excludePinned ? false : undefined,
         url: $settings.urlFilterList
       });
 
