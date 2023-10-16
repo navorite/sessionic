@@ -143,7 +143,7 @@
         type="file"
         class="hidden"
         on:change={handleImport}
-        accept=".json, .ssf"
+        accept=".json, .ssf, .txt"
       />
     </label>
 

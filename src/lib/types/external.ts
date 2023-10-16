@@ -1,6 +1,7 @@
 import type { UUID } from 'crypto';
 import type { ETab, EWindow } from '@/lib/types';
 
+//Tab Session Manager sessions
 export interface ETSM {
   name: string;
   windows: ETSMWindow;
@@ -24,6 +25,7 @@ interface ETSMWindowInfo {
   [windowId: string]: EWindow;
 }
 
+//Session Buddy session
 export interface ESB {
   type: 'saved' | 'current';
   name: string;
@@ -35,6 +37,7 @@ export interface ESB {
   windows: EWindow[];
 }
 
+//Session Buddy sessions
 export interface ESBImport {
   sessions: ESB[];
 }

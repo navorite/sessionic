@@ -6,8 +6,10 @@ import type {
   ETab,
   EWindow
 } from '@/lib/types';
-import { tabAttr } from '@/lib/constants';
+import { runtime } from 'webextension-polyfill';
 import { compress as compressLZ } from 'lz-string';
+import { tabAttr } from '@/lib/constants';
+import { generateSession } from '@/lib/utils';
 
 export async function convertSessions(target: ETSM[] | ESBImport) {
   if (!target) return;
@@ -17,6 +19,40 @@ export async function convertSessions(target: ETSM[] | ESBImport) {
     : convertETSMSessions(target));
 
   return converted;
+}
+
+//OneTab
+export function convertOTSessions(target: string) {
+  const targetWindows = target.split('\n\n');
+
+  if (!targetWindows.length) return;
+
+  const windows: EWindow[] = [];
+  let tabsNumber = 0;
+
+  for (const window of targetWindows) {
+    const tabsTarget = window.split('\n');
+    const tabs: ETab[] = [];
+
+    for (const tab of tabsTarget) {
+      const [url, title] = tab.split(' | ');
+
+      tabs.push({
+        url,
+        title,
+        favIconUrl: `chrome-extension://${runtime.id}/_favicon/?pageUrl=${url}&size=16`
+      } as ETab);
+    }
+
+    tabsNumber += tabs.length;
+    windows.push({ tabs } as EWindow);
+  }
+
+  return generateSession({
+    title: 'OneTab Imported Session',
+    tabsNumber,
+    windows
+  } as ESession);
 }
 
 async function convertESBSessions(target: ESB[]) {

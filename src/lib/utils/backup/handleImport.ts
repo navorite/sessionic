@@ -1,6 +1,6 @@
 import type { ESession } from '@/lib/types';
 import { decompressFromUint8Array } from 'lz-string';
-import { convertSessions, sessionsDB } from '@/lib/utils';
+import { convertOTSessions, convertSessions, sessionsDB } from '@/lib/utils';
 
 export async function handleImport(event: Event) {
   const file = (event.target as HTMLInputElement).files![0]!;
@@ -24,7 +24,15 @@ export async function handleImport(event: Event) {
       if ((result as string).charCodeAt(0) === 0xfeff)
         result = result?.slice(1);
 
-      sessions = await convertSessions(JSON.parse(result as string));
+      try {
+        sessions = await convertSessions(JSON.parse(result as string));
+      } catch (e) {
+        const session = convertOTSessions(result as string);
+
+        if (!session) return;
+
+        sessions = [session];
+      }
     }
 
     if (!sessions?.length) return;
