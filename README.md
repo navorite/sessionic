@@ -42,7 +42,7 @@ A web extension to easily save sessions and manage them.
 - Ability to add tags to sessions
 - Focused on performance and lower RAM usage
 - Cross-browser support (Firefox, Chrome, Edge, and Opera)
-- Compatible with Session Buddy and Tab Session Manager
+- Compatible with Session Buddy, OneTab and Tab Session Manager
 
 ## Download
 
