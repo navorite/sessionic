@@ -14,3 +14,4 @@ export * from './backup';
 export * from './handleFilterListChange';
 export * from './getRelativeTime';
 export * from './input';
+export * from './sortSessions';
