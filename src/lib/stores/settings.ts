@@ -78,6 +78,8 @@ export const settings = (() => {
 
         if (change === 'selectionId')
           sessions.selection.selectById(settings[change]);
+
+        if (change === 'sortMethod') sessions.sort();
       }
       return settings;
     });
