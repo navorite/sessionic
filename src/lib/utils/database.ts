@@ -60,6 +60,7 @@ class SessionsDB {
   }
 
   async lazyLoadSessions(
+    index: keyof DB['sessions']['indexes'] = 'dateSaved',
     query?: number | IDBKeyRange,
     direction?: IDBCursorDirection
   ) {
@@ -69,7 +70,7 @@ class SessionsDB {
 
     await this.initDB();
 
-    const tx = this.db.transaction('sessions').store.index('dateSaved');
+    const tx = this.db.transaction('sessions').store.index(index);
 
     for await (const cursor of tx.iterate(query, direction)) {
       const { dateModified, dateSaved, id, title, tabsNumber, windows, tags } =
