@@ -30,10 +30,10 @@
   </h1>
 
   <select name="" id="" class="rounded-md p-0.5 text-xs">
-    <option value="">Date: Newest</option>
-    <option value="">Date: Oldest</option>
-    <option value="">Name: A-Z</option>
-    <option value="">Name: Z-A</option>
+    <option value="newest">Date: Newest</option>
+    <option value="oldest">Date: Oldest</option>
+    <option value="az">Name: A-Z</option>
+    <option value="za">Name: Z-A</option>
   </select>
 
   {#await $filtered then filtered}
