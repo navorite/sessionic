@@ -1,10 +1,10 @@
 import type { UUID } from 'crypto';
-import type { ESession, EWindow, SortMethod } from '@/lib/types';
+import type { ESession, EWindow } from '@/lib/types';
 import { derived, get, writable, type Writable } from 'svelte/store';
 import { sessionsDB } from '@utils/database';
 import { settings, notification, filterOptions } from '@/lib/stores';
 import { MESSAGES } from '@constants/notifications';
-import { log, generateSession, sendMessage } from '@/lib/utils';
+import { log, generateSession, sendMessage, sortSessions } from '@/lib/utils';
 import browser from 'webextension-polyfill';
 
 export const sessions = (() => {
@@ -210,38 +210,6 @@ export const sessions = (() => {
     });
   }
 
-  function sortSessions(sortMethod: SortMethod, sessions: ESession[]) {
-    switch (sortMethod) {
-      case 'newest': {
-        return sessions.sort((a, b) => {
-          if (a.dateModified! > b.dateModified!) return 1;
-
-          if (a.dateModified! < b.dateModified!) return -1;
-
-          return 0;
-        });
-      }
-
-      case 'oldest': {
-        return sessions.sort((a, b) => {
-          if (a.dateModified! > b.dateModified!) return -1;
-
-          if (a.dateModified! < b.dateModified!) return 1;
-
-          return 0;
-        });
-      }
-
-      case 'az': {
-        return sessions.sort((a, b) => -a.title.localeCompare(b.title));
-      }
-
-      case 'za': {
-        return sessions.sort((a, b) => a.title.localeCompare(b.title));
-      }
-    }
-  }
-
   function notify(sessions: ESession[], selectedId?: UUID | 'current') {
     log.info('[db.notify]: init');
     sendMessage({ message: 'notifyChangeDB', sessions, selectedId });
@@ -279,12 +247,25 @@ export const sessions = (() => {
   };
 })();
 
+let query = '';
+
 export const filtered = derived(
   [sessions, filterOptions],
-  ([$sessions, $filterOptions]) =>
-    $filterOptions.query
-      ? sessions?.filter($filterOptions?.query?.trim().toLowerCase())
-      : $sessions
+  (
+    [$sessions, $filterOptions],
+    set: (val: ESession[] | Promise<ESession[]>) => void,
+    update
+  ) => {
+    if (!$filterOptions.query) return set($sessions);
+
+    if (query !== $filterOptions.query) {
+      query = $filterOptions.query;
+
+      return set(sessions.filter($filterOptions.query.trim().toLowerCase()));
+    }
+
+    update(async (val) => sortSessions(get(settings).sortMethod, await val));
+  }
 );
 
 export const currentSession: Writable<ESession> = writable();
