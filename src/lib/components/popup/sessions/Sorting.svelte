@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { settings } from '@/lib/stores';
+  import { sessions, settings } from '@/lib/stores';
   import type { SortMethod } from '@/lib/types';
 
   function changeSortMethod(val: string) {
     settings.changeSetting('sortMethod', val as SortMethod);
+    sessions.sort();
   }
 </script>
 
