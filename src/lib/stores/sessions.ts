@@ -18,30 +18,10 @@ export const sessions = (() => {
 
     const { selectionId, sortMethod } = get(settings);
 
-    let sortIndex: 'dateSaved' | 'title' = 'dateSaved',
-      direction: IDBCursorDirection = 'next';
-
-    switch (sortMethod) {
-      case 'oldest': {
-        direction = 'prev';
-        break;
-      }
-      case 'az': {
-        sortIndex = 'title';
-        break;
-      }
-      case 'za': {
-        sortIndex = 'title';
-        direction = 'prev';
-        break;
-      }
-    }
-
     const count = await sessionsDB.streamSessions(
-      sortIndex,
-      set,
-      50,
-      direction
+      'dateSaved',
+      (sessions) => set(sortSessions(sortMethod, sessions)),
+      50
     );
 
     log.info(`[sessions.load] loaded ${count} session`);
@@ -253,23 +233,11 @@ export const sessions = (() => {
       }
 
       case 'az': {
-        return sessions.sort((a, b) => {
-          if (a.title > b.title) return 1;
-
-          if (a.title < b.title) return -1;
-
-          return 0;
-        });
+        return sessions.sort((a, b) => -a.title.localeCompare(b.title));
       }
 
       case 'za': {
-        return sessions.sort((a, b) => {
-          if (a.title > b.title) return -1;
-
-          if (a.title < b.title) return 1;
-
-          return 0;
-        });
+        return sessions.sort((a, b) => a.title.localeCompare(b.title));
       }
     }
   }
