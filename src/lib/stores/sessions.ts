@@ -143,7 +143,7 @@ export const sessions = (() => {
             filtered.push(session);
           }
         }
-        resolve(filtered); //subject to change;
+        resolve(sortSessions(get(settings).sortMethod, filtered)); //subject to change;
       }, 250);
     });
 
