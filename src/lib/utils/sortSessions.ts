@@ -3,23 +3,11 @@ import type { SortMethod, ESession } from '@/lib/types';
 export function sortSessions(sortMethod: SortMethod, sessions: ESession[]) {
   switch (sortMethod) {
     case 'newest': {
-      return sessions.sort((a, b) => {
-        if (a.dateModified! > b.dateModified!) return 1;
-
-        if (a.dateModified! < b.dateModified!) return -1;
-
-        return 0;
-      });
+      return sessions.sort((a, b) => a.dateSaved! - b.dateSaved!);
     }
 
     case 'oldest': {
-      return sessions.sort((a, b) => {
-        if (a.dateModified! > b.dateModified!) return -1;
-
-        if (a.dateModified! < b.dateModified!) return 1;
-
-        return 0;
-      });
+      return sessions.sort((a, b) => b.dateSaved! - a.dateSaved!);
     }
 
     case 'az': {
