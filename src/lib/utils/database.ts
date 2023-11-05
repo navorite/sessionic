@@ -59,8 +59,10 @@ class SessionsDB {
     return this.db.getAllFromIndex('sessions', 'dateSaved', query, count);
   }
 
-  async lazyLoadSessions(
-    query?: number | IDBKeyRange,
+  async streamSessions(
+    index: keyof DB['sessions']['indexes'] = 'dateSaved',
+    callback: (sessions: ESession[]) => unknown,
+    maxBatch?: number | IDBKeyRange,
     direction?: IDBCursorDirection
   ) {
     log.info('[db.lazyLoadSessions] init');
@@ -69,24 +71,29 @@ class SessionsDB {
 
     await this.initDB();
 
-    const tx = this.db.transaction('sessions').store.index('dateSaved');
+    const tx = this.db.transaction('sessions').store.index(index);
 
-    for await (const cursor of tx.iterate(query, direction)) {
-      const { dateModified, dateSaved, id, title, tabsNumber, windows, tags } =
-        cursor.value;
+    const totalCount = await tx.count();
+    let currentCount = 0;
 
-      sessions.push({
-        dateModified,
-        dateSaved,
-        id,
-        title,
-        tabsNumber,
-        windows: { length: windows.length } as EWindow[],
-        tags
-      });
+    if (!maxBatch) maxBatch = totalCount;
+
+    for await (const cursor of tx.iterate(undefined, direction)) {
+      cursor.value.windows = {
+        length: cursor.value.windows.length
+      } as EWindow[];
+
+      sessions.push(cursor.value);
+
+      currentCount++;
+
+      if (currentCount === maxBatch || sessions.length === totalCount) {
+        currentCount = 0;
+        callback(sessions);
+      }
     }
 
-    return sessions;
+    return totalCount;
   }
 
   async loadSessionWindows(id: UUID) {

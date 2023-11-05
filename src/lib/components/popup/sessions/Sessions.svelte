@@ -32,9 +32,9 @@
   async function saveSession(title: string) {
     $currentSession.title = title;
 
-    await sessions.add($currentSession);
+    const id = await sessions.add($currentSession);
 
-    scrollToIndex($sessions.length);
+    scrollToIndex($sessions.findIndex((session) => session.id === id));
   }
 
   export function saveAction() {
@@ -151,6 +151,10 @@
       $selection.title = event.detail;
 
       await sessions.put($selection);
+
+      scrollToIndex(
+        $sessions.findIndex((session) => session.id === $selection.id)
+      );
     } else if (modalType === 'Save') {
       saveSession(event.detail);
     }

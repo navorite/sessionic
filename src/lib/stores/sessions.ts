@@ -4,7 +4,7 @@ import { derived, get, writable, type Writable } from 'svelte/store';
 import { sessionsDB } from '@utils/database';
 import { settings, notification, filterOptions } from '@/lib/stores';
 import { MESSAGES } from '@constants/notifications';
-import { log, generateSession, sendMessage } from '@/lib/utils';
+import { log, generateSession, sendMessage, sortSessions } from '@/lib/utils';
 import browser from 'webextension-polyfill';
 
 export const sessions = (() => {
@@ -14,15 +14,17 @@ export const sessions = (() => {
   load();
 
   async function load() {
-    const sessions = await sessionsDB.lazyLoadSessions();
-
-    set(sessions);
-
-    log.info(`[sessions.load] loaded ${sessions.length} session`);
-
     await settings.init(); // to fix inconsistent behaviour with FF and Chrome - need to check
 
-    const selectionId = get(settings).selectionId;
+    const { selectionId, sortMethod } = get(settings);
+
+    const count = await sessionsDB.streamSessions(
+      'dateSaved',
+      (sessions) => set(sortSessions(sortMethod, sessions)),
+      50
+    );
+
+    log.info(`[sessions.load] loaded ${count} session`);
 
     selectById(selectionId);
   }
@@ -41,7 +43,11 @@ export const sessions = (() => {
     update((sessions) => {
       generated.windows = { length: generated.windows.length } as EWindow[]; //unref the obj for GC
 
+      const { sortMethod } = get(settings);
+
       sessions.push(generated);
+
+      sortSessions(sortMethod, sessions);
 
       notify(sessions, generated.id);
 
@@ -51,6 +57,8 @@ export const sessions = (() => {
     select(generated);
 
     notification.success(MESSAGES.save.success);
+
+    return generated.id;
   }
 
   async function put(target: ESession) {
@@ -69,6 +77,8 @@ export const sessions = (() => {
       target.windows = { length: target.windows.length } as EWindow[]; //unref the obj for GC
 
       sessions[sessions.indexOf(target)] = target;
+
+      sortSessions(get(settings).sortMethod, sessions);
 
       notify(sessions, target.id);
 
@@ -113,7 +123,7 @@ export const sessions = (() => {
             filtered.push(session);
           }
         }
-        resolve(filtered); //subject to change;
+        resolve(sortSessions(get(settings).sortMethod, filtered)); //subject to change;
       }, 250);
     });
 
@@ -228,16 +238,34 @@ export const sessions = (() => {
       select,
       selectById,
       set: selection.set
-    } //TODO: remove the ability to set
+    }, //TODO: remove the ability to set
+    sort() {
+      update((sessions) => {
+        return sortSessions(get(settings).sortMethod, sessions);
+      });
+    }
   };
 })();
 
+let query = '';
+
 export const filtered = derived(
   [sessions, filterOptions],
-  ([$sessions, $filterOptions]) =>
-    $filterOptions.query
-      ? sessions?.filter($filterOptions?.query?.trim().toLowerCase())
-      : $sessions
+  (
+    [$sessions, $filterOptions],
+    set: (val: ESession[] | Promise<ESession[]>) => void,
+    update
+  ) => {
+    if (!$filterOptions.query) return set($sessions);
+
+    if (query !== $filterOptions.query) {
+      query = $filterOptions.query;
+
+      return set(sessions.filter($filterOptions.query.trim().toLowerCase()));
+    }
+
+    update(async (val) => sortSessions(get(settings).sortMethod, await val));
+  }
 );
 
 export const currentSession: Writable<ESession> = writable();

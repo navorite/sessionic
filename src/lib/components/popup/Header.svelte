@@ -11,7 +11,8 @@
     Notification,
     IconButton,
     Modal,
-    Donate
+    Donate,
+    Sorting
   } from '@/lib/components';
   import { openFullView, openOptions } from '@utils/extension';
 
@@ -28,6 +29,8 @@
       >
     {/if}
   </h1>
+
+  <Sorting />
 
   {#await $filtered then filtered}
     {#if filtered?.length}

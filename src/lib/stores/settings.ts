@@ -27,7 +27,8 @@ export const settings = (() => {
     autoSaveTimer: autoSaveDefaults.autoSaveTimer,
     tags: {},
     doNotAskForTitle: true,
-    excludePinned: true
+    excludePinned: true,
+    sortMethod: 'newest'
   };
 
   const { subscribe, set, update } = writable(defaultSettings);
@@ -77,6 +78,8 @@ export const settings = (() => {
 
         if (change === 'selectionId')
           sessions.selection.selectById(settings[change]);
+
+        if (change === 'sortMethod') sessions.sort();
       }
       return settings;
     });
