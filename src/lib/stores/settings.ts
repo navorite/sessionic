@@ -27,7 +27,8 @@ export const settings = (() => {
     autoSaveTimer: autoSaveDefaults.autoSaveTimer,
     tags: {},
     doNotAskForTitle: true,
-    excludePinned: true
+    excludePinned: true,
+    sortType: 'newest'
   };
 
   const { subscribe, set, update } = writable(defaultSettings);

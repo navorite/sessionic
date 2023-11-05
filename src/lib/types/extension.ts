@@ -70,4 +70,5 @@ export interface ESettings {
   >;
   doNotAskForTitle: boolean;
   excludePinned: boolean;
+  sortType: 'newest';
 }
