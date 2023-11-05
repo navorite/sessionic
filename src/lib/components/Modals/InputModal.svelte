@@ -60,7 +60,7 @@
       {maxlength}
       bind:value
       on:keydown={(event) => {
-        event.key === 'Enter' && submit();
+        event.key === 'Enter' && !disabled && submit();
       }}
     />
 
