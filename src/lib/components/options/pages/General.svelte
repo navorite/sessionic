@@ -126,7 +126,7 @@
   />
 
   <Switch
-    title="Exculde pinned tabs from session"
+    title="Exclude pinned tabs from session"
     checked={$settings.excludePinned}
     on:change={() =>
       settings.changeSetting('excludePinned', !$settings.excludePinned)}
