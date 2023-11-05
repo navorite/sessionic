@@ -14,13 +14,37 @@ export const sessions = (() => {
   load();
 
   async function load() {
-    const count = await sessionsDB.streamSessions('dateSaved', set, 50);
-
-    log.info(`[sessions.load] loaded ${count} session`);
-
     await settings.init(); // to fix inconsistent behaviour with FF and Chrome - need to check
 
-    const { selectionId } = get(settings);
+    const { selectionId, sortMethod } = get(settings);
+
+    let sortIndex: 'dateSaved' | 'title' = 'dateSaved',
+      direction: IDBCursorDirection = 'next';
+
+    switch (sortMethod) {
+      case 'oldest': {
+        direction = 'prev';
+        break;
+      }
+      case 'az': {
+        sortIndex = 'title';
+        break;
+      }
+      case 'za': {
+        sortIndex = 'title';
+        direction = 'prev';
+        break;
+      }
+    }
+
+    const count = await sessionsDB.streamSessions(
+      sortIndex,
+      set,
+      50,
+      direction
+    );
+
+    log.info(`[sessions.load] loaded ${count} session`);
 
     selectById(selectionId);
   }
