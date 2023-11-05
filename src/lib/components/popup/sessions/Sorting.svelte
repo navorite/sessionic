@@ -10,7 +10,7 @@
 <select
   name="sort-method"
   id="sort-method"
-  class="rounded-md p-0.5 text-xs"
+  class="rounded-md px-2 py-1 text-xs"
   value={$settings.sortMethod}
   on:change={(ev) => changeSortMethod(ev.currentTarget.value)}
 >
