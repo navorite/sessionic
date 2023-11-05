@@ -11,7 +11,8 @@
     Notification,
     IconButton,
     Modal,
-    Donate
+    Donate,
+    Sorting
   } from '@/lib/components';
   import { openFullView, openOptions } from '@utils/extension';
 
@@ -29,12 +30,7 @@
     {/if}
   </h1>
 
-  <select name="" id="" class="rounded-md p-0.5 text-xs">
-    <option value="newest">Date: Newest</option>
-    <option value="oldest">Date: Oldest</option>
-    <option value="az">Name: A-Z</option>
-    <option value="za">Name: Z-A</option>
-  </select>
+  <Sorting />
 
   {#await $filtered then filtered}
     {#if filtered?.length}
