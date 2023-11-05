@@ -14,15 +14,13 @@ export const sessions = (() => {
   load();
 
   async function load() {
-    const sessions = await sessionsDB.lazyLoadSessions();
+    const count = await sessionsDB.streamSessions('dateSaved', set, 50);
 
-    set(sessions);
-
-    log.info(`[sessions.load] loaded ${sessions.length} session`);
+    log.info(`[sessions.load] loaded ${count} session`);
 
     await settings.init(); // to fix inconsistent behaviour with FF and Chrome - need to check
 
-    const selectionId = get(settings).selectionId;
+    const { selectionId } = get(settings);
 
     selectById(selectionId);
   }
