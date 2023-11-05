@@ -1,5 +1,5 @@
 import type { UUID } from 'crypto';
-import type { ESession, EWindow } from '@/lib/types';
+import type { ESession, EWindow, SortMethod } from '@/lib/types';
 import { derived, get, writable, type Writable } from 'svelte/store';
 import { sessionsDB } from '@utils/database';
 import { settings, notification, filterOptions } from '@/lib/stores';
@@ -63,7 +63,11 @@ export const sessions = (() => {
     update((sessions) => {
       generated.windows = { length: generated.windows.length } as EWindow[]; //unref the obj for GC
 
+      const { sortMethod } = get(settings);
+
       sessions.push(generated);
+
+      sortSessions(sortMethod, sessions);
 
       notify(sessions, generated.id);
 
@@ -91,6 +95,8 @@ export const sessions = (() => {
       target.windows = { length: target.windows.length } as EWindow[]; //unref the obj for GC
 
       sessions[sessions.indexOf(target)] = target;
+
+      sortSessions(get(settings).sortMethod, sessions);
 
       notify(sessions, target.id);
 
@@ -222,6 +228,50 @@ export const sessions = (() => {
     });
   }
 
+  function sortSessions(sortMethod: SortMethod, sessions: ESession[]) {
+    switch (sortMethod) {
+      case 'newest': {
+        return sessions.sort((a, b) => {
+          if (a.dateModified! > b.dateModified!) return 1;
+
+          if (a.dateModified! < b.dateModified!) return -1;
+
+          return 0;
+        });
+      }
+
+      case 'oldest': {
+        return sessions.sort((a, b) => {
+          if (a.dateModified! > b.dateModified!) return -1;
+
+          if (a.dateModified! < b.dateModified!) return 1;
+
+          return 0;
+        });
+      }
+
+      case 'az': {
+        return sessions.sort((a, b) => {
+          if (a.title > b.title) return 1;
+
+          if (a.title < b.title) return -1;
+
+          return 0;
+        });
+      }
+
+      case 'za': {
+        return sessions.sort((a, b) => {
+          if (a.title > b.title) return -1;
+
+          if (a.title < b.title) return 1;
+
+          return 0;
+        });
+      }
+    }
+  }
+
   function notify(sessions: ESession[], selectedId?: UUID | 'current') {
     log.info('[db.notify]: init');
     sendMessage({ message: 'notifyChangeDB', sessions, selectedId });
@@ -250,7 +300,12 @@ export const sessions = (() => {
       select,
       selectById,
       set: selection.set
-    } //TODO: remove the ability to set
+    }, //TODO: remove the ability to set
+    sort() {
+      update((sessions) => {
+        return sortSessions(get(settings).sortMethod, sessions);
+      });
+    }
   };
 })();
 
