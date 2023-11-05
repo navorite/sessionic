@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.5.0](https://github.com/navorite/sessionic/compare/v1.4.1...v1.5.0) (2023-11-05)
+
+
+### :fire: New Features
+
+* Add sorting option to sessions ([#49](https://github.com/navorite/sessionic/issues/49)) ([ebc296a](https://github.com/navorite/sessionic/commit/ebc296aaf6f5dcb247ae4b8244699d4e79be6a44))
+
+### :rocket: Enhancements
+
+* Enhance performance by streaming sessions ([#49](https://github.com/navorite/sessionic/issues/49)) ([ebc296a](https://github.com/navorite/sessionic/commit/ebc296aaf6f5dcb247ae4b8244699d4e79be6a44))
+
+
+### :bug: Bug Fixes
+
+* Saving a session using Enter key no longer bypasses error checks ([e615998](https://github.com/navorite/sessionic/commit/e61599857660d771235375e9cef17bb35c1a4c8d))
+* Fix typo in "Exclude pinned tabs" ([c4d9bc8](https://github.com/navorite/sessionic/commit/c4d9bc894ef5227070c7aba95e5bd4cd7b848681))
+
 ## [1.4.1](https://github.com/navorite/sessionic/compare/v1.4.0...v1.4.1) (2023-10-16)
 
 
