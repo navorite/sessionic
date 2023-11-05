@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { createEventDispatcher, tick } from 'svelte';
   import { Modal } from '@/lib/components';
+  import { createEventDispatcher, tick } from 'svelte';
 
   export let type: 'Save' | 'Rename';
 
@@ -9,7 +9,6 @@
   export let minlength = 3;
   export let maxlength = 40;
 
-  let isSubmit = false;
   let disabled = true;
   let errMsg = '';
 
@@ -27,7 +26,6 @@
 
   $: if (open) {
     tick().then(() => {
-      isSubmit = false;
       inputEl?.focus();
     });
   } else {
@@ -39,7 +37,6 @@
   async function submit() {
     dispatch('inputSubmit', value);
 
-    isSubmit = true;
     value = '';
   }
 </script>
@@ -59,12 +56,9 @@
       {minlength}
       {maxlength}
       bind:value
-      on:keydown={(event) => {
-        event.key === 'Enter' && !disabled && submit();
-      }}
     />
 
-    {#if disabled && !isSubmit}
+    {#if disabled}
       <p
         class="mx-auto w-max rounded-md bg-error p-1 px-2 text-sm font-semibold"
       >
