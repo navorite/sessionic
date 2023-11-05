@@ -51,6 +51,8 @@ export interface ENotification {
 
 export type URLFilterList = string[] | ['<all_urls>'] | undefined;
 
+export type SortMethod = 'newest' | 'oldest' | 'az' | 'za';
+
 export interface ESettings {
   darkMode: boolean;
   popupView: boolean;
@@ -70,5 +72,5 @@ export interface ESettings {
   >;
   doNotAskForTitle: boolean;
   excludePinned: boolean;
-  sortType: 'newest';
+  sortMethod: SortMethod;
 }

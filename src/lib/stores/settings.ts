@@ -28,7 +28,7 @@ export const settings = (() => {
     tags: {},
     doNotAskForTitle: true,
     excludePinned: true,
-    sortType: 'newest'
+    sortMethod: 'newest'
   };
 
   const { subscribe, set, update } = writable(defaultSettings);
