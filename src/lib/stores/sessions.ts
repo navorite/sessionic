@@ -77,6 +77,8 @@ export const sessions = (() => {
     select(generated);
 
     notification.success(MESSAGES.save.success);
+
+    return generated.id;
   }
 
   async function put(target: ESession) {
