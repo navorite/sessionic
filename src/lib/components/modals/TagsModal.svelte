@@ -28,7 +28,7 @@
     tag = { name: 'Preview', bgColor: 'royalblue', textColor: 'white' };
   }
 
-  const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher<{ tagSubmit: string }>();
 </script>
 
 <Modal bind:open height="full">
@@ -39,7 +39,6 @@
       on:submit|preventDefault={() => {
         if (selectVal === 'createANewTag') {
           const tags = $settings.tags;
-
           tags[tag.name] = {
             bgColor: tag.bgColor,
             textColor: tag.textColor
