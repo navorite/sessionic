@@ -32,7 +32,7 @@
 {#if show && detail}
   {#key detail}
     <div
-      class="flex h-max max-h-full w-max items-center gap-2 rounded-md px-2 py-1 {color} text-sm font-semibold"
+      class="flex h-max max-h-full w-max items-center gap-2 rounded-md px-2 py-1 {color} absolute bottom-5 right-5 text-sm font-semibold"
       transition:slide|global={{ duration: slideDuration, easing: cubicInOut }}
     >
       <h2 class="whitespace-nowrap">
