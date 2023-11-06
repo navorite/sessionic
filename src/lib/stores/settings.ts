@@ -11,7 +11,11 @@ import {
 } from '@/lib/utils';
 import { autoSaveDefaults } from '@/lib/constants';
 
-export const filterOptions: Writable<FilterOptions> = writable({ query: '' });
+export const filterOptions: Writable<FilterOptions> = writable({
+  query: '',
+  sortMethod: 'newest',
+  tagsFilter: '__all__'
+});
 
 export const settings = (() => {
   let loaded: Promise<ESettings>;
@@ -28,7 +32,8 @@ export const settings = (() => {
     tags: {},
     doNotAskForTitle: true,
     excludePinned: true,
-    sortMethod: 'newest'
+    sortMethod: 'newest',
+    tagsFilter: '__all__'
   };
 
   const { subscribe, set, update } = writable(defaultSettings);
@@ -79,7 +84,14 @@ export const settings = (() => {
         if (change === 'selectionId')
           sessions.selection.selectById(settings[change]);
 
-        if (change === 'sortMethod') sessions.sort();
+        if (change === 'sortMethod' || change === 'tagsFilter')
+          filterOptions.update((val) => {
+            (val[
+              change as keyof FilterOptions
+            ] as FilterOptions[keyof FilterOptions]) = settings[change];
+
+            return val;
+          });
       }
       return settings;
     });
