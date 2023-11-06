@@ -270,4 +270,16 @@ export const filtered = (() => {
   return { subscribe };
 })();
 
+export const tags = derived(sessions, ($sessions) => {
+  const tagsList: Record<string, number> = {};
+
+  for (const session of $sessions) {
+    if (session.tags) {
+      tagsList[session.tags] = (tagsList[session.tags] ?? 0) + 1;
+    }
+  }
+
+  return tagsList;
+});
+
 export const currentSession: Writable<ESession> = writable();
