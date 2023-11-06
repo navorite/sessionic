@@ -1,17 +1,16 @@
 <script lang="ts">
-  import { sessions, settings } from '@/lib/stores';
   import type { SortMethod } from '@/lib/types';
+  import { settings } from '@/lib/stores';
 
   function changeSortMethod(val: string) {
     settings.changeSetting('sortMethod', val as SortMethod);
-    sessions.sort();
   }
 </script>
 
 <select
   name="sort-method"
   id="sort-method"
-  class="rounded-md bg-neutral-3 px-2 py-1 text-xs"
+  class="min-w-[5rem] rounded-md bg-neutral-3 p-1 text-center text-xs"
   value={$settings.sortMethod}
   on:change={(ev) => changeSortMethod(ev.currentTarget.value)}
 >

@@ -19,3 +19,18 @@ export function sortSessions(sortMethod: SortMethod, sessions: ESession[]) {
     }
   }
 }
+
+export function filterTags(sessions: ESession[], tag: '__all__' | string) {
+  if (tag !== '__all__')
+    return sessions.filter((session) => session.tags === tag);
+
+  return sessions;
+}
+
+export function filterTagsAndSort(
+  sessions: ESession[],
+  sortMethod: SortMethod,
+  tagsFilter: string
+) {
+  return sortSessions(sortMethod, filterTags(sessions, tagsFilter));
+}
