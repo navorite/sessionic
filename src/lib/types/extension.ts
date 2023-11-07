@@ -13,6 +13,8 @@ export interface ESession {
 
 export interface FilterOptions {
   query: string;
+  sortMethod: SortMethod;
+  tagsFilter: '__all__' | (string & NonNullable<unknown>);
   default_tabs?: boolean;
 }
 
@@ -73,4 +75,5 @@ export interface ESettings {
   doNotAskForTitle: boolean;
   excludePinned: boolean;
   sortMethod: SortMethod;
+  tagsFilter: '__all__' | (string & NonNullable<unknown>);
 }

@@ -1,18 +1,14 @@
 <script lang="ts">
   import { EXT_MODE, EXT_NAME, isPopup } from '@/lib/constants';
-  import {
-    settings,
-    filterOptions,
-    notification,
-    filtered
-  } from '@/lib/stores';
+  import { settings, filterOptions, notification } from '@/lib/stores';
   import {
     SearchBar,
     Notification,
     IconButton,
     Modal,
     Donate,
-    Sorting
+    Sorting,
+    TagFilter
   } from '@/lib/components';
   import { openFullView, openOptions } from '@utils/extension';
 
@@ -30,18 +26,8 @@
     {/if}
   </h1>
 
+  <TagFilter />
   <Sorting />
-
-  {#await $filtered then filtered}
-    {#if filtered?.length}
-      <div
-        aria-label="Number of sessions"
-        class="card bg-info text-white hover:bg-info-focus"
-      >
-        {filtered.length} Session{filtered.length > 1 ? 's' : ''}
-      </div>
-    {/if}
-  {/await}
 
   <Notification detail={$notification} />
 

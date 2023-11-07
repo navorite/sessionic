@@ -4,29 +4,35 @@ import { derived, get, writable, type Writable } from 'svelte/store';
 import { sessionsDB } from '@utils/database';
 import { settings, notification, filterOptions } from '@/lib/stores';
 import { MESSAGES } from '@constants/notifications';
-import { log, generateSession, sendMessage, sortSessions } from '@/lib/utils';
+import {
+  log,
+  generateSession,
+  sendMessage,
+  filterTagsAndSort
+} from '@/lib/utils';
 import browser from 'webextension-polyfill';
+
+export let finished = false;
 
 export const sessions = (() => {
   const { subscribe, set, update }: Writable<ESession[]> = writable([]);
+
   const selection: Writable<ESession> = writable();
 
   load();
 
   async function load() {
-    await settings.init(); // to fix inconsistent behaviour with FF and Chrome - need to check
-
-    const { selectionId, sortMethod } = get(settings);
-
-    const count = await sessionsDB.streamSessions(
-      'dateSaved',
-      (sessions) => set(sortSessions(sortMethod, sessions)),
-      50
-    );
+    const count = await sessionsDB.streamSessions('dateSaved', set, 50);
 
     log.info(`[sessions.load] loaded ${count} session`);
 
+    await settings.init(); // to fix inconsistent behaviour with FF and Chrome - need to check
+
+    const { selectionId } = get(settings);
+
     selectById(selectionId);
+
+    finished = true;
   }
 
   async function add(session: ESession) {
@@ -43,11 +49,7 @@ export const sessions = (() => {
     update((sessions) => {
       generated.windows = { length: generated.windows.length } as EWindow[]; //unref the obj for GC
 
-      const { sortMethod } = get(settings);
-
       sessions.push(generated);
-
-      sortSessions(sortMethod, sessions);
 
       notify(sessions, generated.id);
 
@@ -77,8 +79,6 @@ export const sessions = (() => {
       target.windows = { length: target.windows.length } as EWindow[]; //unref the obj for GC
 
       sessions[sessions.indexOf(target)] = target;
-
-      sortSessions(get(settings).sortMethod, sessions);
 
       notify(sessions, target.id);
 
@@ -123,7 +123,7 @@ export const sessions = (() => {
             filtered.push(session);
           }
         }
-        resolve(sortSessions(get(settings).sortMethod, filtered)); //subject to change;
+        resolve(filtered); //subject to change;
       }, 250);
     });
 
@@ -238,34 +238,46 @@ export const sessions = (() => {
       select,
       selectById,
       set: selection.set
-    }, //TODO: remove the ability to set
-    sort() {
-      update((sessions) => {
-        return sortSessions(get(settings).sortMethod, sessions);
-      });
-    }
+    } //TODO: remove the ability to set
   };
 })();
 
-let query = '';
+export const filtered = (() => {
+  let currentQuery = '';
+  let filteredList: ESession[] = [];
 
-export const filtered = derived(
-  [sessions, filterOptions],
-  (
-    [$sessions, $filterOptions],
-    set: (val: ESession[] | Promise<ESession[]>) => void,
-    update
-  ) => {
-    if (!$filterOptions.query) return set($sessions);
+  const { subscribe } = derived(
+    [sessions, filterOptions],
+    ([$sessions, $filterOptions], set: (val: ESession[]) => void) => {
+      const { query, tagsFilter, sortMethod } = $filterOptions;
 
-    if (query !== $filterOptions.query) {
-      query = $filterOptions.query;
+      if (!query) {
+        set(filterTagsAndSort($sessions, sortMethod, tagsFilter));
+      } else if (currentQuery !== query) {
+        currentQuery = query;
 
-      return set(sessions.filter($filterOptions.query.trim().toLowerCase()));
+        sessions.filter(query.trim().toLowerCase()).then((val) => {
+          filteredList = val;
+
+          set(filterTagsAndSort(filteredList, sortMethod, tagsFilter));
+        });
+      } else set(filterTagsAndSort(filteredList, sortMethod, tagsFilter));
     }
+  );
 
-    update(async (val) => sortSessions(get(settings).sortMethod, await val));
+  return { subscribe };
+})();
+
+export const tags = derived(sessions, ($sessions) => {
+  const tagsList: Record<string, number> = {};
+
+  for (const session of $sessions) {
+    if (session.tags) {
+      tagsList[session.tags] = (tagsList[session.tags] ?? 0) + 1;
+    }
   }
-);
+
+  return tagsList;
+});
 
 export const currentSession: Writable<ESession> = writable();
