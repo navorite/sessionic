@@ -16,7 +16,7 @@ export function getAvailableViewport(
 
       if (!clientHeight) clientHeight = parent.clientHeight;
 
-      if (scrollHeight >= clientHeight) {
+      if (scrollHeight > clientHeight) {
         if (!elementHeight) elementHeight = scrollHeight / length;
 
         start = Math.floor((scrollTop - buffer) / elementHeight);
