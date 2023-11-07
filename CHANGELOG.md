@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.6.0](https://github.com/navorite/sessionic/compare/v1.5.0...v1.6.0) (2023-11-07)
+
+
+### :fire: New Features
+
+* Add Filter by Tags option ([#50](https://github.com/navorite/sessionic/issues/50)) ([1eef72d](https://github.com/navorite/sessionic/commit/1eef72d834d4d82b0c567085398b87d08ec00288))
+
+
+### :rocket: Enhancements
+
+* **UI:** Move notifications to bottom right ([7bc9dae](https://github.com/navorite/sessionic/commit/7bc9dae4ded313ddb77d521b92ab911e6ce3a9f6))
+
+* Optimize sorting performance ([#50](https://github.com/navorite/sessionic/issues/50)) ([1eef72d](https://github.com/navorite/sessionic/commit/1eef72d834d4d82b0c567085398b87d08ec00288))
+
 ## [1.5.0](https://github.com/navorite/sessionic/compare/v1.4.1...v1.5.0) (2023-11-05)
 
 
