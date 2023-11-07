@@ -58,6 +58,12 @@ export const settings = (() => {
 
     applyTheme(settings.darkMode, false);
 
+    filterOptions.set({
+      sortMethod: settings.sortMethod,
+      tagsFilter: settings.tagsFilter,
+      query: ''
+    });
+
     loaded = Promise.resolve({} as ESettings);
 
     const updated = await getStorageItem('updated' as keyof ESettings, false);
