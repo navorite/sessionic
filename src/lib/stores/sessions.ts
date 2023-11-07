@@ -12,6 +12,8 @@ import {
 } from '@/lib/utils';
 import browser from 'webextension-polyfill';
 
+export let finished = false;
+
 export const sessions = (() => {
   const { subscribe, set, update }: Writable<ESession[]> = writable([]);
 
@@ -29,6 +31,8 @@ export const sessions = (() => {
     const { selectionId } = get(settings);
 
     selectById(selectionId);
+
+    finished = true;
   }
 
   async function add(session: ESession) {
@@ -248,10 +252,8 @@ export const filtered = (() => {
       const { query, tagsFilter, sortMethod } = $filterOptions;
 
       if (!query) {
-        return set(filterTagsAndSort($sessions, sortMethod, tagsFilter));
-      }
-
-      if (currentQuery !== query) {
+        set(filterTagsAndSort($sessions, sortMethod, tagsFilter));
+      } else if (currentQuery !== query) {
         currentQuery = query;
 
         sessions.filter(query.trim().toLowerCase()).then((val) => {
@@ -259,11 +261,7 @@ export const filtered = (() => {
 
           set(filterTagsAndSort(filteredList, sortMethod, tagsFilter));
         });
-
-        return;
-      }
-
-      set(filterTagsAndSort(filteredList, sortMethod, tagsFilter));
+      } else set(filterTagsAndSort(filteredList, sortMethod, tagsFilter));
     }
   );
 
