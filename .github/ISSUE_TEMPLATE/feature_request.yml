@@ -24,7 +24,7 @@ body:
       label: Alternatives considered
       description: "Please provide a clear and concise description of any alternative solutions or features you've considered."
     validations:
-      required: true
+      required: false
   - type: dropdown
     id: importance
     attributes:
