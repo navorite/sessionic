@@ -40,8 +40,6 @@ export type Icon =
   | 'tag'
   | 'untag'
   | 'search'
-  | 'light'
-  | 'dark'
   | 'settings'
   | 'donate';
 
