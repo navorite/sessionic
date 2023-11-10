@@ -1,6 +1,6 @@
 <script lang="ts">
   import { EXT_MODE, EXT_NAME, isPopup } from '@/lib/constants';
-  import { settings, filterOptions, notification } from '@/lib/stores';
+  import { filterOptions, notification } from '@/lib/stores';
   import {
     SearchBar,
     Notification,
@@ -37,14 +37,6 @@
     {#if isPopup}
       <IconButton icon="open" title="Full View" on:click={openFullView} />
     {/if}
-
-    <IconButton
-      icon={$settings.darkMode ? 'dark' : 'light'}
-      title="{$settings.darkMode ? 'Dark' : 'Light'} mode"
-      on:click={() => {
-        settings.changeSetting('darkMode', !$settings.darkMode);
-      }}
-    />
 
     <IconButton
       icon="donate"
