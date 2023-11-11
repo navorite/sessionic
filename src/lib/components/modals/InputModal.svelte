@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Modal } from '@/lib/components';
   import { createEventDispatcher, tick } from 'svelte';
+  import { i18n } from 'webextension-polyfill';
 
   export let type: 'Save' | 'Rename';
 
@@ -16,10 +17,13 @@
 
   $: if (value?.length < minlength || value?.length > maxlength) {
     disabled = true;
-    errMsg = `Session name must be between ${minlength} and ${maxlength} characters.`;
+    errMsg = i18n.getMessage('inputModalErrorLength', [
+      minlength.toString(),
+      maxlength.toString()
+    ]);
   } else if (/[<>]/.test(value)) {
     disabled = true;
-    errMsg = "Session name must not contain '<' or '>' characters.";
+    errMsg = i18n.getMessage('inputModalErrorChar');
   } else disabled = false;
 
   let inputEl: HTMLInputElement;
@@ -42,7 +46,11 @@
 </script>
 
 <Modal bind:open height="12rem">
-  <svelte:fragment slot="header">{type} session</svelte:fragment>
+  <svelte:fragment slot="header"
+    >{i18n.getMessage(
+      type === 'Save' ? 'saveModalTitle' : 'renameModalTitle'
+    )}</svelte:fragment
+  >
   <svelte:fragment slot="content">
     <input
       bind:this={inputEl}
@@ -50,7 +58,7 @@
       type="text"
       name={type}
       id={type}
-      placeholder="Enter session name..."
+      placeholder={i18n.getMessage('inputModalPlaceholder')}
       title="Session name"
       spellcheck={false}
       {minlength}
@@ -75,6 +83,6 @@
     class="{type === 'Rename'
       ? 'px-4'
       : 'px-6'} rounded-md bg-primary py-1 text-center font-medium text-white hover:bg-primary-focus disabled:cursor-not-allowed disabled:bg-neutral-2 disabled:text-neutral-6"
-    on:click={submit}>{type}</button
+    on:click={submit}>{i18n.getMessage(`label${type}`)}</button
   >
 </Modal>

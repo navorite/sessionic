@@ -3,6 +3,7 @@
   import { Modal, ColorInput, Tag } from '@/lib/components';
   import { getStorageItem } from '@/lib/utils';
   import { settings } from '@/lib/stores';
+  import { i18n } from 'webextension-polyfill';
 
   export let open = false;
 
@@ -32,7 +33,9 @@
 </script>
 
 <Modal bind:open height="full">
-  <svelte:fragment slot="header">Assign a tag</svelte:fragment>
+  <svelte:fragment slot="header"
+    >{i18n.getMessage('labelAddTag')}</svelte:fragment
+  >
   <svelte:fragment slot="content">
     <form
       class="flex h-full w-full flex-col justify-around gap-2"
@@ -53,7 +56,7 @@
       }}
     >
       <label class="flex items-center gap-2">
-        Select a tag:
+        {i18n.getMessage('tagsModalSelectTag')}:
         <select
           name="tags"
           id="tags"
@@ -62,7 +65,8 @@
         >
           <option
             value={'createANewTag'}
-            class="bg-neutral-6 text-neutral-content">Create new</option
+            class="bg-neutral-6 text-neutral-content"
+            >{i18n.getMessage('labelAddTag')}</option
           >
           {#if tags}
             {#each Object.keys(tags) as tag}
@@ -79,7 +83,7 @@
       {#if selectVal === 'createANewTag'}
         <div class="flex flex-col gap-2">
           <label>
-            Name:
+            {i18n.getMessage('labelSortName')}:
             <input
               type="text"
               minlength="1"
@@ -97,13 +101,17 @@
               }}
             /></label
           >
-          <ColorInput bind:color={tag.bgColor}>Background:</ColorInput>
-          <ColorInput bind:color={tag.textColor}>Text:</ColorInput>
+          <ColorInput bind:color={tag.bgColor}
+            >{i18n.getMessage('settingsTagsBackground')}:</ColorInput
+          >
+          <ColorInput bind:color={tag.textColor}
+            >{i18n.getMessage('settingsTagsText')}:</ColorInput
+          >
         </div>
       {/if}
 
       <span class="flex gap-2">
-        Preview:
+        {i18n.getMessage('settingsTagsPreview')}:
         <Tag
           bind:name={tag.name}
           bind:bgColor={tag.bgColor}
@@ -113,7 +121,7 @@
 
       <button
         class="rounded-md bg-primary px-2 py-1 hover:bg-primary-focus disabled:bg-neutral-3/50 disabled:text-neutral-content/50"
-        disabled={!tag.name.length}>Submit</button
+        disabled={!tag.name.length}>{i18n.getMessage('labelAddTag')}</button
       >
     </form>
   </svelte:fragment>

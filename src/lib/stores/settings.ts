@@ -1,4 +1,4 @@
-import { storage, type Storage } from 'webextension-polyfill';
+import { i18n, storage, type Storage } from 'webextension-polyfill';
 import type { ESettings, FilterOptions } from '@/lib/types';
 import { writable, type Writable } from 'svelte/store';
 import { notification, sessions } from '@/lib/stores';
@@ -70,7 +70,7 @@ export const settings = (() => {
 
     if (updated) {
       notification.set({
-        msg: `Sessionic was updated to v${__EXT_VER__}`,
+        msg: i18n.getMessage('notifyExtUpdate', __EXT_VER__),
         type: 'info'
       });
 

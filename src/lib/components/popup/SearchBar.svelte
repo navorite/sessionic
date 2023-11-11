@@ -2,6 +2,7 @@
   import { tick } from 'svelte';
   import { IconButton } from '@/lib/components';
   import { isInputTarget } from '@/lib/utils';
+  import { i18n } from 'webextension-polyfill';
 
   export let value: string;
 
@@ -61,13 +62,13 @@
       }}
       spellcheck={false}
       type="text"
-      placeholder="Search session or tab name..."
+      placeholder={i18n.getMessage('labelSearchPlaceholder')}
       bind:value
       class="bg-transparent font-semibold text-neutral-content outline-none"
     />
     <IconButton
       icon="close"
-      title="Clear"
+      title={i18n.getMessage('labelClear')}
       class="text-2xl hover:text-error-focus"
       on:click={() => {
         if (value === '') showInputBar = false;

@@ -1,14 +1,30 @@
 <script>
   import { Section, Shortcut } from '@/lib/components';
+  import { i18n } from 'webextension-polyfill';
 </script>
 
-<Section title="Keyboard Shortcuts">
-  <Shortcut keybind={['CTRL', 'K']} action="Open Command Palette" />
-  <Shortcut keybind={['S']} action="Save current session" />
-  <Shortcut keybind={['R']} action="Rename selected session" />
-  <Shortcut keybind={['F']} action="Focus search box" />
-  <Shortcut keybind={['C']} action="Display current session" />
-  <Shortcut keybind={['E']} action="Select previous session" />
-  <Shortcut keybind={['D']} action="Select next session" />
-  <Shortcut keybind={['Delete']} action="Delete selected session" />
+<Section title={i18n.getMessage('keyboardShortcutsHeading')}>
+  <Shortcut
+    keybind={['CTRL', 'K']}
+    action={i18n.getMessage('shortcutCommandPalette')}
+  />
+  <Shortcut keybind={['S']} action={i18n.getMessage('shortcutSaveCurrent')} />
+  <Shortcut
+    keybind={['R']}
+    action={i18n.getMessage('shortcutRenameSelected')}
+  />
+  <Shortcut keybind={['F']} action={i18n.getMessage('shortcutFocusSearch')} />
+  <Shortcut
+    keybind={['C']}
+    action={i18n.getMessage('shortcutDisplayCurrent')}
+  />
+  <Shortcut
+    keybind={['E']}
+    action={i18n.getMessage('shortcutSelectPrevious')}
+  />
+  <Shortcut keybind={['D']} action={i18n.getMessage('shortcutSelectNext')} />
+  <Shortcut
+    keybind={['Delete']}
+    action={i18n.getMessage('shortcutDeleteSelected')}
+  />
 </Section>

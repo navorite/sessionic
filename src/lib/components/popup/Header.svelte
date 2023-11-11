@@ -11,6 +11,7 @@
     TagFilter
   } from '@/lib/components';
   import { openFullView, openOptions } from '@utils/extension';
+  import { i18n } from 'webextension-polyfill';
 
   let showDonateModal = false;
 </script>
@@ -35,22 +36,32 @@
     <SearchBar bind:value={$filterOptions.query} />
 
     {#if isPopup}
-      <IconButton icon="open" title="Full View" on:click={openFullView} />
+      <IconButton
+        icon="open"
+        title={i18n.getMessage('labelFullView')}
+        on:click={openFullView}
+      />
     {/if}
 
     <IconButton
       icon="donate"
-      title="Donate"
+      title={i18n.getMessage('labelDonate')}
       class="text-2xl hover:text-error-focus"
       on:click={() => (showDonateModal = true)}
     />
 
-    <IconButton icon="settings" title="Settings" on:click={openOptions} />
+    <IconButton
+      icon="settings"
+      title={i18n.getMessage('labelSettings')}
+      on:click={openOptions}
+    />
   </div>
 </div>
 
 <Modal bind:open={showDonateModal} height="100%" width="100%">
-  <svelte:fragment slot="header">Support the project</svelte:fragment>
+  <svelte:fragment slot="header"
+    >{i18n.getMessage('aboutDonateHeading')}</svelte:fragment
+  >
   <svelte:fragment slot="content">
     <Donate />
   </svelte:fragment>

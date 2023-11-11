@@ -1,8 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
   import { Modal } from '@/lib/components';
-
-  export let type = 'Delete' as const;
+  import { i18n } from 'webextension-polyfill';
 
   export let open: boolean;
 
@@ -10,17 +9,18 @@
 </script>
 
 <Modal bind:open>
-  <svelte:fragment slot="header">{type} session</svelte:fragment>
+  <svelte:fragment slot="header"
+    >{i18n.getMessage('deleteModalTitle')}</svelte:fragment
+  >
   <p slot="content" class="font-semibold">
-    Are you sure you wanna {type.toLowerCase()} this session?
+    {i18n.getMessage('deleteModalContent')}
   </p>
   <button
     slot="footer"
     type="button"
-    title="{type} session"
     class="rounded-md bg-error px-4 py-1 hover:bg-error-focus"
     on:click={() => {
       dispatch('deleteAction');
-    }}>{type}</button
+    }}>{i18n.getMessage('labelDelete')}</button
   >
 </Modal>

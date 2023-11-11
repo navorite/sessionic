@@ -6,6 +6,7 @@
     settings,
     tags
   } from '@/lib/stores';
+  import { i18n } from 'webextension-polyfill';
 
   $: tagsFilter = $settings.tagsFilter;
 
@@ -22,7 +23,9 @@
     settings.changeSetting('tagsFilter', ev.currentTarget.value);
   }}
 >
-  <option value="__all__">All ({$sessions?.length ?? 0})</option>
+  <option value="__all__"
+    >{i18n.getMessage('labelTagsAll')} ({$sessions?.length ?? 0})</option
+  >
   {#each Object.keys($tags) as tag}
     <option value={tag}>{tag} ({$tags[tag]})</option>
   {/each}

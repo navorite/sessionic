@@ -11,6 +11,7 @@
     getRelativeTime
   } from '@/lib/utils';
   import type { UUID } from 'crypto';
+  import { i18n } from 'webextension-polyfill';
 
   export let session: ESession;
 
@@ -49,7 +50,7 @@
   >
     <div class="session-info">
       <button
-        use:tooltip={{ title: 'Open' }}
+        use:tooltip={{ title: i18n.getMessage('popupTipOpen') }}
         class="session-name"
         on:click|stopPropagation={openSession}
       >
@@ -59,7 +60,7 @@
 
       <IconButton
         icon="rename"
-        title="Rename"
+        title={i18n.getMessage('labelRename')}
         class="ml-auto hidden text-xl  hover:text-primary-focus group-hover:block"
         on:click={() => {
           dispatch('renameModal');
@@ -68,7 +69,7 @@
 
       <IconButton
         icon={session?.tags ? 'untag' : 'tag'}
-        title="{session.tags ? 'Remove' : 'Add'} tag"
+        title={i18n.getMessage(session.tags ? 'labelRemoveTag' : 'labelAddTag')}
         class="hidden text-xl hover:text-primary-focus group-hover:block"
         on:click={() => {
           if (!session?.tags) return dispatch('tagsModal');
@@ -81,7 +82,7 @@
 
       <IconButton
         icon="delete"
-        title="Delete"
+        title={i18n.getMessage('labelDelete')}
         class="hidden text-xl text-error hover:text-error-focus group-hover:block"
         on:click={() => dispatch('deleteModal')}
       />
@@ -116,13 +117,12 @@
         <div
           class="session-card"
           use:tooltip={{
-            title: `Saved at ${new Date(session.dateSaved).toLocaleString(
-              navigator.language,
-              {
-                dateStyle: 'short',
-                timeStyle: 'short'
-              }
-            )}`
+            title: `${i18n.getMessage('labelSavedAt')} ${new Date(
+              session.dateSaved
+            ).toLocaleString(navigator.language, {
+              dateStyle: 'short',
+              timeStyle: 'short'
+            })}`
           }}
         >
           <IconButton icon="history" class="text-sm" role="img" />
