@@ -57,6 +57,10 @@ A web extension to save, manage and restore sessions and tabs.
 
 You can check the project's [Roadmap](https://github.com/users/navorite/projects/1) for a brief look into upcoming features.
 
+## Localization
+
+You can contribute to the localization of the extension at [Weblate](https://hosted.weblate.org/projects/sessionic/sessionic/)!
+
 ## Build locally
 
 1. Clone the repository `git clone https://github.com/navorite/sessionic.git`
