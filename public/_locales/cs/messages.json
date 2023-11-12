@@ -1,1 +1,294 @@
-{}
+{
+    "labelSortZA": {
+        "message": "Z-A",
+        "description": "The label for sorting by Z to A for saved sessions"
+    },
+    "labelSortAZ": {
+        "message": "A-Z",
+        "description": "The label for sorting by A to Z for saved sessions"
+    },
+    "labelCurrentSession": {
+        "message": "Aktuální relace",
+        "description": "The label for Current Session"
+    },
+    "notifyDeleteFail": {
+        "message": "Smazání relace selhalo",
+        "description": "The label for the failure of deleting session notification"
+    },
+    "labelSearchPlaceholder": {
+        "message": "Hledej relaci nebo tab ...",
+        "description": "The placeholder for the Searchbar"
+    },
+    "notifyDeleteAllSuccess": {
+        "message": "Všechny relace smazány!",
+        "description": "The label for the success of deleting all sessions notification"
+    },
+    "settingsTagsPreview": {
+        "message": "Náhled",
+        "description": "The label for the tags table preview column in settings"
+    },
+    "notifySaveSuccess": {
+        "message": "Relace uložena!",
+        "description": "The label for the success of saving session notification"
+    },
+    "labelSortOldest": {
+        "message": "Nejstarš",
+        "description": "The label for sorting by oldest saved session"
+    },
+    "labelJustNow": {
+        "message": "právě teď",
+        "description": "The label for just now"
+    },
+    "settingsExtensionActionsHeading": {
+        "message": "Akce rozšíření",
+        "description": "The label for the extension actions section heading in settings"
+    },
+    "labelWindow": {
+        "message": "Okno",
+        "description": "The label for Window"
+    },
+    "labelTabs": {
+        "message": "Karty",
+        "description": "The label for Tabs"
+    },
+    "notifyUpdateSuccess": {
+        "message": "Relace aktualizována!",
+        "description": "The label for the success of updating session notification"
+    },
+    "labelSearch": {
+        "message": "Vyhledávat",
+        "description": "The label for Search"
+    },
+    "labelWindows": {
+        "message": "Okna",
+        "description": "The label for Windows"
+    },
+    "labelClose": {
+        "message": "Zavřít",
+        "description": "The label for Close"
+    },
+    "settingsAutosave": {
+        "message": "Automaticky ukládat relace",
+        "description": "The label for the Autosave option in settings"
+    },
+    "shortcutSaveCurrent": {
+        "message": "Uložit aktuální relaci",
+        "description": "The label for saving current session keyboard shortcut"
+    },
+    "aboutPage": {
+        "message": "O rozšíření",
+        "description": "The label for the About page in settings"
+    },
+    "settingsAutosaveInterval": {
+        "message": "Ukládací interval v minutách (minimálně 1 minuta)",
+        "description": "The label for the auto save interval option in settings"
+    },
+    "settingsTagsTag": {
+        "message": "Štítek",
+        "description": "The label for the tags table tag column in settings"
+    },
+    "settingsAutosaveHeading": {
+        "message": "Automatické ukládání",
+        "description": "The label for the automatic saving section heading in settings"
+    },
+    "labelSettings": {
+        "message": "Nastavení",
+        "description": "The label for Settings"
+    },
+    "settingsTagsAction": {
+        "message": "Akce",
+        "description": "The label for the tags table action column in settings"
+    },
+    "labelYear": {
+        "message": "rok",
+        "description": "The label for year (abbreviated if possible)"
+    },
+    "renameModalTitle": {
+        "message": "Přejmenuj relaci",
+        "description": "The label for the rename session modal title"
+    },
+    "keyboardShortcutsPage": {
+        "message": "Klávesnicové zkratky",
+        "description": "The label for the Keyboard Shortcuts page in settings"
+    },
+    "settingsTagsText": {
+        "message": "Text",
+        "description": "The label for the tags table text color column in settings"
+    },
+    "labelSortDate": {
+        "message": "Datum",
+        "description": "The label for sorting by date category"
+    },
+    "labelOpen": {
+        "message": "Otevřít",
+        "description": "The label for Open"
+    },
+    "extDesc": {
+        "message": "Webové rozšíření k ukládání, spravování a obnova relací a tabs.",
+        "description": "Description of the extension"
+    },
+    "settingsDoNotAskForSessionName": {
+        "message": "Neptat se na jméno relace při ukládání",
+        "description": "The label for the do not ask for session name when saving option in settings"
+    },
+    "labelDelete": {
+        "message": "Smazat",
+        "description": "The label for Delete"
+    },
+    "deleteModalTitle": {
+        "message": "Smazat relaci",
+        "description": "The label for the delete session modal title"
+    },
+    "tagsModalSelectTag": {
+        "message": "Vyber štítek",
+        "description": "The label for selecting a tag in the create tag modal"
+    },
+    "labelRemoveTag": {
+        "message": "Smazat štítek",
+        "description": "The label for Remove tag icon"
+    },
+    "extName": {
+        "message": "Sessionic",
+        "description": "Name of the extension"
+    },
+    "aboutDonateText": {
+        "message": "Sessionic je navždy zdarma bez reklam, bloat or tracking. Vývoj mi zabere hodně času. Pokud by mi chtěli pomoc ve zlepšení tohoto rozšíření, prosím zvažte donating using the links below",
+        "description": "The paragrah used in the donate modal and the about page"
+    },
+    "deleteModalContent": {
+        "message": "Jsi si jistý, že chceš smazat tuto relaci?",
+        "description": "The label for the delete session modal content"
+    },
+    "labelMonth": {
+        "message": "měsíc",
+        "description": "The label for month (abbreviated if possible)"
+    },
+    "settingsTagsBackground": {
+        "message": "Pozadí",
+        "description": "The label for the tags table background column in settings"
+    },
+    "settingsImportSessions": {
+        "message": "Importovat relace",
+        "description": "The label for importing sessions button in settings"
+    },
+    "notifySaveFail": {
+        "message": "Uložení relace selhalo",
+        "description": "The label for the failure of saving session notification"
+    },
+    "shortcutRenameSelected": {
+        "message": "Přejmenovat vybranou relaci",
+        "description": "The label for opening command palette keyboard shortcut"
+    },
+    "saveModalTitle": {
+        "message": "Ulož relaci",
+        "description": "The label for the save session modal title"
+    },
+    "labelSortNewest": {
+        "message": "Nejnovější",
+        "description": "The label for sorting by newest saved session"
+    },
+    "labelPrivateWindow": {
+        "message": "Soukromé okno",
+        "description": "The label for Private Window"
+    },
+    "generalPage": {
+        "message": "Všeobecné",
+        "description": "The label for the General page in settings"
+    },
+    "shortcutSelectNext": {
+        "message": "Vyber další relaci",
+        "description": "The label for selecting next session keyboard shortcut"
+    },
+    "labelSortName": {
+        "message": "Jméno",
+        "description": "The label for sorting by name category for saved sessions"
+    },
+    "shortcutDeleteSelected": {
+        "message": "Smazat vybranou relaci",
+        "description": "The label for deleting selected session keyboard shortcut"
+    },
+    "keyboardShortcutsHeading": {
+        "message": "Klávesnicové zkratky",
+        "description": "The label for keyboard shortcuts section in keyboard shortcuts page"
+    },
+    "labelMinute": {
+        "message": "minuta",
+        "description": "The label for minute (abbreviated if possible)"
+    },
+    "labelHour": {
+        "message": "hodina",
+        "description": "The label for hour (abbreviated if possible)"
+    },
+    "labelTab": {
+        "message": "Karta",
+        "description": "The label for Tab"
+    },
+    "settingsUserInterfaceHeading": {
+        "message": "Uživatelské rozhraní",
+        "description": "The label for the user interface section heading in settings"
+    },
+    "labelRename": {
+        "message": "Přejmenovat",
+        "description": "The label for Rename"
+    },
+    "labelDonate": {
+        "message": "Přispěj",
+        "description": "The label for Donate"
+    },
+    "labelDay": {
+        "message": "den",
+        "description": "The label for day"
+    },
+    "settingsSessionActionsHeading": {
+        "message": "Akce relací",
+        "description": "The label for the session actions section heading in settings"
+    },
+    "labelSavedAt": {
+        "message": "Uloženo v",
+        "description": "The label for Saved at (date)"
+    },
+    "labelClear": {
+        "message": "Vyčistit",
+        "description": "The label for Clear"
+    },
+    "settingsExportSessions": {
+        "message": "Exportovat relace",
+        "description": "The label for exporting sessions button in settings"
+    },
+    "notifyDeleteAllFail": {
+        "message": "Smazání relací selhalo",
+        "description": "The label for the failure of deleting all session notification"
+    },
+    "aboutDonateHeading": {
+        "message": "Podpořte tento projekt",
+        "description": "The heading used in the donate modal"
+    },
+    "settingsDarkMode": {
+        "message": "Tmavý motiv",
+        "description": "The label for the Dark Mode option in settings"
+    },
+    "labelTagsAll": {
+        "message": "Vše",
+        "description": "The label for showing all tags for saved sessions"
+    },
+    "notifyDeleteSuccess": {
+        "message": "Relace smazána!",
+        "description": "The label for the success of deleting session notification"
+    },
+    "labelUnnamedSession": {
+        "message": "Nepojmenovaná relace",
+        "description": "The label for Unnamed Session when saving without naming a session"
+    },
+    "labelSave": {
+        "message": "Uložit",
+        "description": "The label for Save"
+    },
+    "labelAddTag": {
+        "message": "Přidat štítek",
+        "description": "The label for Add tag"
+    },
+    "shortcutSelectPrevious": {
+        "message": "Vyber minulou relaci",
+        "description": "The label for selecting previous session shortcut"
+    }
+}
