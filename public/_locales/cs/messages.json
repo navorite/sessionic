@@ -16,7 +16,7 @@
         "description": "The label for the failure of deleting session notification"
     },
     "labelSearchPlaceholder": {
-        "message": "Hledej relaci nebo tab ...",
+        "message": "Hledej relaci nebo tab…",
         "description": "The placeholder for the Searchbar"
     },
     "notifyDeleteAllSuccess": {
