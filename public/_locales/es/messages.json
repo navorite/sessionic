@@ -187,10 +187,6 @@
         "message": "Eliminar una etiqueta",
         "description": "The label for Remove tag icon"
     },
-    "extName": {
-        "message": "Sessionic",
-        "description": "Name of the extension"
-    },
     "aboutDonateText": {
         "message": "Sessionic es gratis para siempre sin anuncios, bloat o seguimiento. Requiere mucho de mi tiempo de desarrollo. Si quieres ayudarme a mejorar la extensión, por favor considera hacer una donación usando los siguientes enlaces",
         "description": "The paragrah used in the donate modal and the about page"
