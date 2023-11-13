@@ -148,7 +148,7 @@
         "description": "The label for Remove tag icon"
     },
     "aboutDonateText": {
-        "message": "Sessionic je navždy zdarma bez reklam, bloat or tracking. Vývoj mi zabere hodně času. Pokud by mi chtěli pomoc ve zlepšení tohoto rozšíření, prosím zvažte donating using the links below",
+        "message": "Sessionic je navždy zdarma bez reklam, bez zbytečností nebo sledování. Vývoj mi zabere hodně času. Pokud byste mi chtěli pomoc ve zlepšení tohoto rozšíření, prosím zvažte darování pomocí odkazů dole",
         "description": "The paragrah used in the donate modal and the about page"
     },
     "deleteModalContent": {
@@ -290,5 +290,89 @@
     "labelExpand": {
         "message": "Rozbalit",
         "description": "The label for Expand"
+    },
+    "settingsLazyload": {
+        "message": "Líné načítání karet",
+        "description": "The label for the lazy load tabs option in settings"
+    },
+    "inputModalPlaceholder": {
+        "message": "Zadejte název relace…",
+        "description": "The label for the session modal input"
+    },
+    "shortcutFocusSearch": {
+        "message": "Zaměřit vyhledávací pole",
+        "description": "The label for focusing search box keyboard shortcut"
+    },
+    "notifyDeleteAllFailUndefined": {
+        "message": "Selhalo smazání: Relace neexistují",
+        "description": "The label for the failure of deleting non-existing sessions notification"
+    },
+    "notifyDeleteFailUndefined": {
+        "message": "Selhalo smazání: Relace neexistuje",
+        "description": "The label for the failure of deleting non-existing session notification"
+    },
+    "notifyUpdateFail": {
+        "message": "Selhalo aktualizování relace",
+        "description": "The label for the failure  of updating session notification"
+    },
+    "settingsAutosaveMax": {
+        "message": "Maximální počet uložených relací (max. 15 relací)",
+        "description": "The label for the Autosave max number of saved sessions option in settings"
+    },
+    "labelCollapse": {
+        "message": "Zabalit",
+        "description": "The label for Collapse"
+    },
+    "settingsURLFilterList": {
+        "message": "Seznam filtrů URL adres",
+        "description": "The label for the URL Filter List text option in settings"
+    },
+    "settingsPopupView": {
+        "message": "Vyskakovací okno",
+        "description": "The label for the Popup View option in settings"
+    },
+    "notifySaveFailEmpty": {
+        "message": "Selhalo uložení prázdné relace",
+        "description": "The label for the failure of saving empty session notification"
+    },
+    "labelFullView": {
+        "message": "Plné zobrazení",
+        "description": "The label for Full View"
+    },
+    "notifyLoadFail": {
+        "message": "Selhalo načítání relací",
+        "description": "The label for the failure of loading sessions notification"
+    },
+    "settingsResetAll": {
+        "message": "Resetovat všechna nastavení",
+        "description": "The label for the reset all settings button in settings"
+    },
+    "settingsURLFilterListPlaceholder": {
+        "message": "Např. sledovat jenom URL adresy, které odpovídají následujícím vzorům:\n*://*/*\nfile:///*/*\nftp://*/*\nchrome://*/*\nhttps://*.google.com/\nhttps://www.youtube.com/*\n",
+        "description": "The label for the URL Filter List placeholder in settings"
+    },
+    "shortcutCommandPalette": {
+        "message": "Otevřít paletu příkazů",
+        "description": "The label for opening command palette keyboard shortcut"
+    },
+    "inputModalErrorChar": {
+        "message": "Jméno relace nesmí obsahovat '<' nebo '>'.",
+        "description": "The label for the containing unallowed characters error in input modal"
+    },
+    "settingsExcludePinnedTabs": {
+        "message": "Vyloučit připnuté karty z relace",
+        "description": "The label for the excluding pinned tabs in settings"
+    },
+    "notifyExtUpdate": {
+        "message": "Sessionic byl aktualizován na v$1!",
+        "description": "The label for the extension was updated notification - $1 is placeholder for version injection"
+    },
+    "inputModalErrorLength": {
+        "message": "Název relace musí být mezi $1 a $2 znaky.",
+        "description": "The label for the containing unallowed characters error in input modal"
+    },
+    "shortcutDisplayCurrent": {
+        "message": "Zobrazit aktuální relaci",
+        "description": "The label for displaying current session keyboard shortcut"
     }
 }
