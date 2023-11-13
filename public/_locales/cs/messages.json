@@ -286,5 +286,9 @@
     "shortcutSelectPrevious": {
         "message": "Vyber minulou relaci",
         "description": "The label for selecting previous session shortcut"
+    },
+    "labelExpand": {
+        "message": "Rozšířit",
+        "description": "The label for Expand"
     }
 }
