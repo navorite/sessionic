@@ -20,7 +20,7 @@
         "description": "The label for the failure of deleting session notification"
     },
     "inputModalPlaceholder": {
-        "message": "Introducir el nombre de la sesión...",
+        "message": "Introducir el nombre de la sesión…",
         "description": "The label for the session modal input"
     },
     "labelSearchPlaceholder": {
