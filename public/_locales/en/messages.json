@@ -1,8 +1,4 @@
 {
-    "extName": {
-        "message": "Sessionic",
-        "description": "Name of the extension"
-    },
     "extDesc": {
         "message": "A web extension to save, manage and restore sessions and tabs.",
         "description": "Description of the extension"
