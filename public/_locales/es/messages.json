@@ -24,7 +24,7 @@
         "description": "The label for the session modal input"
     },
     "labelSearchPlaceholder": {
-        "message": "Buscar la sesión o el nombre de la pestaña...",
+        "message": "Buscar la sesión o el nombre de la pestaña…",
         "description": "The placeholder for the Searchbar"
     },
     "notifyDeleteAllSuccess": {
