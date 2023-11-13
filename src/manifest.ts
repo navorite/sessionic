@@ -44,6 +44,8 @@ export const manifest: Manifest.WebExtensionManifest = {
     96: './favicons/96.png'
   },
 
+  default_locale: 'en',
+
   ...(isFirefox && {
     browser_specific_settings: {
       gecko: {

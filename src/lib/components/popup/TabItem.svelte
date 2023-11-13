@@ -1,5 +1,5 @@
 <script lang="ts">
-  import browser from 'webextension-polyfill';
+  import browser, { i18n } from 'webextension-polyfill';
   import type { ETab } from '@/lib/types';
   import { createEventDispatcher } from 'svelte';
   import { IconButton } from '@/lib/components';
@@ -51,7 +51,7 @@
 
     <IconButton
       icon={current ? 'close' : 'delete'}
-      title={current ? 'Close' : 'Delete'}
+      title={i18n.getMessage(current ? 'labelClose' : 'labelDelete')}
       class="ml-auto hidden text-xl text-error hover:text-error-focus group-hover:block"
       on:click={() => {
         if (current && tab.id) browser.tabs.remove(tab.id);

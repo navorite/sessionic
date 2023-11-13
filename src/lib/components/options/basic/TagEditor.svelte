@@ -1,6 +1,7 @@
 <script lang="ts">
   import { settings } from '@/lib/stores';
   import { ColorInput, IconButton, Tag } from '@/lib/components';
+  import { i18n } from 'webextension-polyfill';
 
   $: tags = $settings.tags;
 
@@ -39,11 +40,13 @@
 <table class="w-full table-fixed rounded-md">
   <thead>
     <tr class="border-b border-b-neutral-4/50 text-neutral-content/50">
-      <td>Tag</td>
-      <td>Background</td>
-      <td>Text</td>
-      <td>Preview</td>
-      <td class="flex items-center gap-2">Action</td>
+      <td>{i18n.getMessage('settingsTagsTag')}</td>
+      <td>{i18n.getMessage('settingsTagsBackground')}</td>
+      <td>{i18n.getMessage('settingsTagsText')}</td>
+      <td>{i18n.getMessage('settingsTagsPreview')}</td>
+      <td class="flex items-center gap-2"
+        >{i18n.getMessage('settingsTagsAction')}</td
+      >
     </tr>
   </thead>
   <tbody>
@@ -141,7 +144,7 @@
             settings.changeSetting('tags', tags);
 
             addedTag = { name: '', bgColor: 'royalblue', textColor: 'white' };
-          }}>Add tag</button
+          }}>{i18n.getMessage('labelAddTag')}</button
         >
       </td>
     </tr>

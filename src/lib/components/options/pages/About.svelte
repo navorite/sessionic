@@ -1,9 +1,10 @@
 <script>
   import { Donate, Section } from '@/lib/components';
   import { EXT_NAME, EXT_VER } from '@/lib/constants';
+  import { i18n } from 'webextension-polyfill';
 </script>
 
-<Section title="About">
+<Section title={i18n.getMessage('aboutPage')}>
   <div class="flex flex-col items-baseline gap-2 text-sm font-medium">
     <p class="text-sm">
       {EXT_NAME}
@@ -17,7 +18,7 @@
     >
   </div>
 
-  <h2 class="text-lg font-bold">Support the project</h2>
+  <h2 class="text-lg font-bold">{i18n.getMessage('aboutDonateHeading')}</h2>
 
   <Donate />
 </Section>

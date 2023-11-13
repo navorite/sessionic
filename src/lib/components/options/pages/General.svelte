@@ -7,14 +7,14 @@
     handleImport,
     sendMessage
   } from '@/lib/utils';
-  import browser from 'webextension-polyfill';
+  import browser, { i18n } from 'webextension-polyfill';
 
   $: urlList = $settings.urlFilterList?.join('\n') ?? '';
 </script>
 
-<Section title="User Interface">
+<Section title={i18n.getMessage('settingsUserInterfaceHeading')}>
   <Switch
-    title="Popup View"
+    title={i18n.getMessage('settingsPopupView')}
     checked={$settings.popupView}
     on:change={() => {
       settings.changeSetting('popupView', !$settings.popupView);
@@ -22,15 +22,15 @@
   />
 
   <Switch
-    title="Dark Mode"
+    title={i18n.getMessage('settingsDarkMode')}
     checked={$settings.darkMode}
     on:change={() => settings.changeSetting('darkMode', !$settings.darkMode)}
   />
 </Section>
 
-<Section title="Automatic saving">
+<Section title={i18n.getMessage('settingsAutosaveHeading')}>
   <Switch
-    title="Automatically save sessions"
+    title={i18n.getMessage('settingsAutosave')}
     description="Greatly reduce memory usage by not loading tab until selected"
     checked={$settings.autoSave}
     on:change={() => {
@@ -60,7 +60,7 @@
       }}
       disabled={!$settings.autoSave}
     />
-    Max number of saved sessions (max. 15 sessions)
+    {i18n.getMessage('settingsAutosaveMax')}
   </label>
   <label class="max-w-max text-sm font-medium">
     <input
@@ -81,18 +81,18 @@
       }}
       disabled={!$settings.autoSave}
     />
-    Save interval in minutes (min. 1 minute)
+    {i18n.getMessage('settingsAutosaveInterval')}
   </label>
 </Section>
 
-<Section title="Extension Actions">
+<Section title={i18n.getMessage('settingsExtensionActionsHeading')}>
   <label class="flex flex-col gap-2 font-medium">
-    URL Filter List
+    {i18n.getMessage('settingsURLFilterList')}
     <textarea
       name="filter-list"
       id="filter-list"
       rows="8"
-      placeholder={'e.g. track only the following URL match patterns:\n*://*/*\nfile:///*/*\nftp://*/*\nchrome://*/*\nhttps://*.google.com/\nhttps://www.youtube.com/*\n'}
+      placeholder={i18n.getMessage('settingsURLFilterListPlaceholder')}
       class="resize-none rounded-md bg-neutral-3 p-2 text-sm placeholder:text-neutral-content/40"
       inputmode="url"
       value={urlList}
@@ -101,7 +101,7 @@
   </label>
 
   <Switch
-    title="Lazy load tabs"
+    title={i18n.getMessage('settingsLazyload')}
     description="Greatly reduce memory usage by not loading tab until selected"
     checked={$settings.discarded}
     on:change={() => settings.changeSetting('discarded', !$settings.discarded)}
@@ -112,13 +112,13 @@
     class="max-w-fit rounded-md bg-error px-4 py-2 text-white hover:bg-error-focus"
     on:click={settings.clear}
   >
-    Reset All Settings
+    {i18n.getMessage('settingsResetAll')}
   </button>
 </Section>
 
-<Section title="Session Actions">
+<Section title={i18n.getMessage('settingsSessionActionsHeading')}>
   <Switch
-    title="Do not ask for session name when saving"
+    title={i18n.getMessage('settingsDoNotAskForSessionName')}
     checked={$settings.doNotAskForTitle}
     on:change={() => {
       settings.changeSetting('doNotAskForTitle', !$settings.doNotAskForTitle);
@@ -126,7 +126,7 @@
   />
 
   <Switch
-    title="Exclude pinned tabs from session"
+    title={i18n.getMessage('settingsExcludePinnedTabs')}
     checked={$settings.excludePinned}
     on:change={() =>
       settings.changeSetting('excludePinned', !$settings.excludePinned)}
@@ -138,7 +138,7 @@
     <label
       class="max-w-max cursor-pointer rounded-md bg-neutral-4 p-2 hover:bg-neutral-5"
     >
-      Import Sessions
+      {i18n.getMessage('settingsImportSessions')}
       <input
         type="file"
         class="hidden"
@@ -149,7 +149,8 @@
 
     <button
       class="max-w-max rounded-md bg-neutral-4 p-2 hover:bg-neutral-5"
-      on:click={handleExport}>Export Sessions</button
+      on:click={handleExport}
+      >{i18n.getMessage('settingsExportSessions')}</button
     >
   </div>
 </Section>

@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { SortMethod } from '@/lib/types';
   import { settings } from '@/lib/stores';
+  import { i18n } from 'webextension-polyfill';
 
   function changeSortMethod(val: string) {
     settings.changeSetting('sortMethod', val as SortMethod);
@@ -14,12 +15,12 @@
   value={$settings.sortMethod}
   on:change={(ev) => changeSortMethod(ev.currentTarget.value)}
 >
-  <optgroup label="Date">
-    <option value="newest">Newest</option>
-    <option value="oldest">Oldest</option>
+  <optgroup label={i18n.getMessage('popupSortDate')}>
+    <option value="newest">{i18n.getMessage('labelSortNewest')}</option>
+    <option value="oldest">{i18n.getMessage('labelSortOldest')}</option>
   </optgroup>
-  <optgroup label="Name">
-    <option value="az">A-Z</option>
-    <option value="za">Z-A</option>
+  <optgroup label={i18n.getMessage('labelSortName')}>
+    <option value="az">{i18n.getMessage('labelSortAZ')}</option>
+    <option value="za">{i18n.getMessage('labelSortZA')}</option>
   </optgroup>
 </select>

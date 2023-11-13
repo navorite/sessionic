@@ -1,0 +1,382 @@
+{
+  "extName": {
+    "message": "Sessionic",
+    "description": "Name of the extension"
+  },
+  "extDesc": {
+    "message": "A web extension to save, manage and restore sessions and tabs.",
+    "description": "Description of the extension"
+  },
+  "generalPage": {
+    "message": "الإعدادات العامة",
+    "description": "The label for the General page in settings"
+  },
+  "keyboardShortcutsPage":{
+    "message": "الإختصارات",
+    "description": "The label for the Keyboard Shortcuts page in settings"
+  },
+  "aboutPage":{
+    "message": "حول البرنامج",
+    "description": "The label for the About page in settings"
+  },
+  "aboutDonateHeading":{
+    "message": "دعم البرنامج",
+    "description": "The heading used in the donate modal"
+  },
+  "aboutDonateText":{
+    "message": "سيشونيك سيسظل مجانا للأبد ومفتوح المصدر بدون اي اعلانات او إضافات مزعجة بغرض الربح، ولكن تطويره يستنفذ الكثير من الوقت مني لذا إذا أعجبك البرنامج من فضلك قم بدعمي عن طريق احد تلك المواقع",
+    "description": "The paragrah used in the donate modal and the about page"
+  },
+  "labelWindow":{
+    "message": "نافذة",
+    "description": "The label for Window"
+  },
+  "labelWindows":{
+    "message": "نوافذ",
+    "description": "The label for Windows"
+  },
+  "labelPrivateWindow":{
+    "message": "نافذة سرية",
+    "description": "The label for Private Window"
+  },
+  "labelTab":{
+    "message": "تبويب",
+    "description": "The label for Tab"
+  },
+  "labelTabs":{
+    "message": "تبويبات",
+    "description": "The label for Tabs"
+  },
+  "labelCurrentSession": {
+    "message": "الجلسة الحالية",
+    "description": "The label for Current Session"
+  },
+  "labelUnnamedSession": {
+    "message": "جلسة غير مسماة",
+    "description": "The label for Unnamed Session when saving without naming a session"
+  },
+  "labelSortDate":{
+    "message": "التاريخ",
+    "description": "The label for sorting by date category"
+  },
+  "labelSortNewest":{
+    "message": "الأحدث",
+    "description": "The label for sorting by newest saved session"
+  },
+  "labelSortOldest":{
+    "message": "الأقدم",
+    "description": "The label for sorting by oldest saved session"
+  },
+  "labelSortName":{
+    "message": "الاسم",
+    "description": "The label for sorting by name category for saved sessions"
+  },
+  "labelSortAZ":{
+    "message": "أ-ى",
+    "description": "The label for sorting by A to Z for saved sessions"
+  },
+  "labelSortZA":{
+    "message": "ى-أ",
+    "description": "The label for sorting by Z to A for saved sessions"
+  },
+  "labelTagsAll":{
+    "message": "الكل",
+    "description": "The label for showing all tags for saved sessions"
+  },
+  "labelYear":{
+    "message": "سنة",
+    "description": "The label for year (abbreviated if possible)"
+  },
+  "labelMonth":{
+    "message": "شهر",
+    "description": "The label for month (abbreviated if possible)"
+  },
+  "labelDay":{
+    "message": "يوم",
+    "description": "The label for day"
+  },
+  "labelHour":{
+    "message": "س",
+    "description": "The label for hour (abbreviated if possible)"
+  },
+  "labelMinute":{
+    "message": "د",
+    "description": "The label for minute (abbreviated if possible)"
+  },
+  "labelJustNow":{
+    "message": "حالاً",
+    "description": "The label for just now"
+  },
+  "labelSavedAt":{
+    "message": "حفظ بتاريخ",
+    "description": "The label for Saved at (date)"
+  },
+  "labelSettings":{
+    "message": "الإعدادات",
+    "description": "The label for Settings"
+  },
+  "labelDonate":{
+    "message": "تبرع",
+    "description": "The label for Donate"
+  },
+  "labelFullView":{
+    "message": "الرؤية الكاملة",
+    "description": "The label for Full View"
+  },
+  "labelSearch":{
+    "message": "بحث",
+    "description": "The label for Search"
+  },
+  "labelSearchPlaceholder":{
+    "message": "...البحث عن اسم جلسة او تبويب",
+    "description": "The placeholder for the Searchbar"
+  },
+  "labelClear":{
+    "message": "محو",
+    "description": "The label for Clear"
+  },
+  "labelSave":{
+    "message": "حفظ",
+    "description": "The label for Save"
+  },
+  "labelCollapse":{
+    "message": "طوي",
+    "description": "The label for Collapse"
+  },
+  "labelExpand":{
+    "message": "مد",
+    "description": "The label for Expand"
+  },
+  "labelRename":{
+    "message": "اعد التسمية",
+    "description": "The label for Rename"
+  },
+  "labelClose":{
+    "message": "غلق",
+    "description": "The label for Close"
+  },
+  "labelDelete":{
+    "message": "حذف",
+    "description": "The label for Delete"
+  },
+  "labelAddTag":{
+    "message": "اضف شعار",
+    "description": "The label for Add tag"
+  },
+  "labelRemoveTag":{
+    "message": "حذف الشعار",
+    "description": "The label for Remove tag"
+  },
+  "labelOpen":{
+    "message": "فتح",
+    "description": "The label for Open"
+  },
+  "tagsModalSelectTag":{
+    "message": "اختر شعار",
+    "description": "The label for selecting a tag in the create tag modal"
+  },
+  "renameModalTitle":{
+    "message": "اعادة تسمية الجلسة",
+    "description": "The label for the rename session modal title"
+  },
+  "saveModalTitle":{
+    "message": "حفظ الجلسة",
+    "description": "The label for the save session modal title"
+  },
+  "inputModalPlaceholder":{
+    "message": "...ادخل اسم الجلسة",
+    "description": "The label for the session modal input"
+  },
+  "inputModalErrorLength":{
+    "message": "طول اسم الجلسة يجب ان يكون بين $1 و $2 من الحروف",
+    "description": "The label for the containing unallowed characters error in input modal"
+  },
+  "inputModalErrorChar":{
+    "message": "يجب ألا يحتوي اسم الجلسة على حرف '<' او '>'",
+    "description": "The label for the containing unallowed characters error in input modal"
+  },
+  "deleteModalTitle":{
+    "message": "حذف الجلسة",
+    "description": "The label for the delete session modal title"
+  },
+  "deleteModalContent":{
+    "message": "هل انت متأكد من انك تريد حذف هذه الجلسة؟",
+    "description": "The label for the delete session modal content"
+  },
+  "notifyLoadFail":{
+    "message": "فشل تحميل الجلسات",
+    "description": "The label for the failure of loading sessions notification"
+  },
+  "notifySaveSuccess":{
+    "message": "!تم حفظ الجلسة",
+    "description": "The label for the success of saving session notification"
+  },
+  "notifySaveFail":{
+    "message": "فشل حفظ الجلسة",
+    "description": "The label for the failure of saving session notification"
+  },
+  "notifySaveFailEmpty":{
+    "message": "فشل حفظ جلسة فارغة",
+    "description": "The label for the failure of saving empty session notification"
+  },
+  "notifyUpdateSuccess":{
+    "message": "!تم تحديث الجلسة",
+    "description": "The label for the success of updating session notification"
+  },
+  "notifyUpdateFail":{
+    "message": "فشل تحديث الجلسة",
+    "description": "The label for the failure  of updating session notification"
+  },
+  "notifyDeleteSuccess":{
+    "message": "!تم حذف الجلسة",
+    "description": "The label for the success of deleting session notification"
+  },
+  "notifyDeleteFail":{
+    "message": "فشل حذف الجلسة",
+    "description": "The label for the failure of deleting session notification"
+  },
+  "notifyDeleteFailUndefined":{
+    "message": "فشل حذف الجلسة: جلسة غير موجودة",
+    "description": "The label for the failure of deleting non-existing session notification"
+  },
+  "notifyDeleteAllSuccess":{
+    "message": "!تم حذف جميع الجلسات",
+    "description": "The label for the success of deleting all sessions notification"
+  },
+  "notifyDeleteAllFail":{
+    "message": "فشل حذف الجلسات",
+    "description": "The label for the failure of deleting all session notification"
+  },
+  "notifyDeleteAllFailUndefined":{
+    "message": "فشل الحذف: جلسات غير موجودة",
+    "description": "The label for the failure of deleting non-existing sessions notification"
+  },
+  "notifyExtUpdate":{
+    "message": "!سيشونيك تم تحديثه لنسخة $1",
+    "description": "The label for the extension was updated notification - $1 is placeholder for version injection"
+  },
+  "settingsUserInterfaceHeading":{
+    "message": "واجهة المستخدم",
+    "description": "The label for the user interface section heading in settings"
+  },
+  "settingsPopupView":{
+    "message": "وضع النافذة المصغرة",
+    "description": "The label for the Popup View option in settings"
+  },
+  "settingsDarkMode":{
+    "message": "الوضع الداكن المريح للعين",
+    "description": "The label for the Dark Mode option in settings"
+  },
+  "settingsAutosaveHeading":{
+    "message": "الحفظ التلقائي",
+    "description": "The label for the automatic saving section heading in settings"
+  },
+  "settingsAutosave":{
+    "message": "احتفظ بالجلسات تلقائياً",
+    "description": "The label for the Autosave option in settings"
+  },
+  "settingsAutosaveMax":{
+    "message": "أقصى عدد للجلسات المحفوظة (لا تزيد عن 15 جلسة)",
+    "description": "The label for the Autosave max number of saved sessions option in settings"
+  },
+  "settingsAutosaveInterval":{
+    "message": "الوقت الدوري للحفظ (لا تقل عن دقيقه)",
+    "description": "The label for the auto save interval option in settings"
+  },
+  "settingsExtensionActionsHeading":{
+    "message": "تصرفات البرنامج",
+    "description": "The label for the extension actions section heading in settings"
+  },
+  "settingsURLFilterList":{
+    "message": "قائمة تنقية العناوين",
+    "description": "The label for the URL Filter List text option in settings"
+  },
+  "settingsURLFilterListPlaceholder":{
+    "message": "مثال: تتبع الأنماط او العناوين التالية فقط\n*://*/*\nfile:///*/*\nftp://*/*\nchrome://*/*\nhttps://*.google.com/\nhttps://www.youtube.com/*\n",
+    "description": "The label for the URL Filter List placeholder in settings"
+  },
+  "settingsLazyload":{
+    "message": "تحميل نوافذ التبويب في وضعية حفظ الأداء",
+    "description": "The label for the lazy load tabs option in settings"
+  },
+  "settingsResetAll":{
+    "message": "مسح جميع الإعدادات",
+    "description": "The label for the reset all settings button in settings"
+  },
+  "settingsDoNotAskForSessionName":{
+    "message": "عدم السؤال عن اسم الجلسة عند الحفظ",
+    "description": "The label for the do not ask for session name when saving option in settings"
+  },
+  "settingsExcludePinnedTabs":{
+    "message": "استبعادت نوافذ التبويب المثبتة من الجلسة",
+    "description": "The label for the excluding pinned tabs in settings"
+  },
+  "settingsSessionActionsHeading":{
+    "message": "تصرفات الجلسة",
+    "description": "The label for the session actions section heading in settings"
+  },
+  "settingsTagsTag":{
+    "message": "الشعار",
+    "description": "The label for the tags table tag column in settings"
+  },
+  "settingsTagsBackground":{
+    "message": "لون الخلفية",
+    "description": "The label for the tags table background column in settings"
+  },
+  "settingsTagsText":{
+    "message": "لون الكتابة",
+    "description": "The label for the tags table text color column in settings"
+  },
+  "settingsTagsPreview":{
+    "message": "المعاينة",
+    "description": "The label for the tags table preview column in settings"
+  },
+  "settingsTagsAction":{
+    "message": "فعل",
+    "description": "The label for the tags table action column in settings"
+  },
+  "settingsImportSessions":{
+    "message": "استرد جلسات",
+    "description": "The label for importing sessions button in settings"
+  },
+  "settingsExportSessions":{
+    "message": "احفظ الجلسات",
+    "description": "The label for exporting sessions button in settings"
+  },
+  "keyboardShortcutsHeading":{
+    "message": "إختصارات لوحة المفاتيح",
+    "description": "The label for keyboard shortcuts section in keyboard shortcuts page"
+  },
+  "shortcutCommandPalette":{
+    "message": "فتح لوحة الأوامر",
+    "description": "The label for opening command palette keyboard shortcut"
+  },
+  "shortcutSaveCurrent":{
+    "message": "حفظ الجلسة الحالية",
+    "description": "The label for saving current session keyboard shortcut"
+  },
+  "shortcutRenameSelected":{
+    "message": "إعادة تسمية الجلسة المختارة",
+    "description": "The label for opening command palette keyboard shortcut"
+  },
+  "shortcutFocusSearch":{
+    "message": "التركيز على نافذة البحث",
+    "description": "The label for focusing search box keyboard shortcut"
+  },
+  "shortcutDisplayCurrent":{
+    "message": "عرض الجلسة الحالية",
+    "description": "The label for displaying current session keyboard shortcut"
+  },
+  "shortcutSelectPrevious":{
+    "message": "اختيار الجلسة السابقة",
+    "description": "The label for selecting previous session shortcut"
+  },
+  "shortcutSelectNext":{
+    "message": "اختيار الجلسة التالية",
+    "description": "The label for selecting next session keyboard shortcut"
+  },
+  "shortcutDeleteSelected":{
+    "message": "حذف الجلسة المختارة",
+    "description": "The label for deleting selected session keyboard shortcut"
+  }
+}

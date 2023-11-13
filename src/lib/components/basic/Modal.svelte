@@ -1,5 +1,6 @@
 <script lang="ts">
   import { IconButton } from '@/lib/components';
+  import { i18n } from 'webextension-polyfill';
 
   export let open = false;
 
@@ -50,7 +51,8 @@
         <button
           class="rounded-md bg-neutral-3 px-4 py-1 text-neutral-content hover:bg-neutral-4"
           type="button"
-          on:click={() => (open = false)}>Cancel</button
+          on:click={() => (open = false)}
+          >{i18n.getMessage('labelClose')}</button
         >
         <slot name="footer" />
       </div>

@@ -1,12 +1,11 @@
 <script>
   import { DonateCard } from '@/lib/components';
+  import { i18n } from 'webextension-polyfill';
 </script>
 
 <div class="container">
   <p class="mb-4 text-center">
-    Sessionic is free forever without ads, bloat or tracking. It takes a lot of
-    my time in development. <br /> If you woud like to help me improve the extension,
-    please consider donating using the links below :)
+    {i18n.getMessage('aboutDonateText')}
   </p>
 
   <div class="flex flex-wrap gap-4">

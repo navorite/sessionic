@@ -3,14 +3,13 @@ import type { ESession, EWindow } from '@/lib/types';
 import { derived, get, writable, type Writable } from 'svelte/store';
 import { sessionsDB } from '@utils/database';
 import { settings, notification, filterOptions } from '@/lib/stores';
-import { MESSAGES } from '@constants/notifications';
 import {
   log,
   generateSession,
   sendMessage,
   filterTagsAndSort
 } from '@/lib/utils';
-import browser from 'webextension-polyfill';
+import browser, { i18n } from 'webextension-polyfill';
 
 export let finished = false;
 
@@ -38,7 +37,7 @@ export const sessions = (() => {
   async function add(session: ESession) {
     if (!session.windows.length || !session.tabsNumber)
       return notification.error(
-        MESSAGES.save.fail.session_empty,
+        i18n.getMessage('notifySaveFailEmpty'),
         '[sessions.add]: session is empty'
       );
 
@@ -58,7 +57,7 @@ export const sessions = (() => {
 
     select(generated);
 
-    notification.success(MESSAGES.save.success);
+    notification.success(i18n.getMessage('notifySaveSuccess'));
 
     return generated.id;
   }
@@ -87,7 +86,7 @@ export const sessions = (() => {
 
     selectById(target.id);
 
-    notification.success_info(MESSAGES.update.success_info);
+    notification.success_info(i18n.getMessage('notifyUpdateSuccess'));
   }
 
   let timeout: NodeJS.Timeout;
@@ -133,7 +132,7 @@ export const sessions = (() => {
   async function remove(target: ESession) {
     if (!target)
       return notification.error(
-        MESSAGES.remove.fail.is_undefined,
+        i18n.getMessage('notifyDeleteFailUndefined'),
         '[sessions.remove] error: removing undefined session'
       );
 
@@ -149,7 +148,7 @@ export const sessions = (() => {
 
     await sessionsDB.deleteSession(target);
 
-    notification.success_warning(MESSAGES.remove.success_warning);
+    notification.success_warning(i18n.getMessage('notifyDeleteSuccess'));
   }
 
   async function removeAll() {
@@ -157,7 +156,7 @@ export const sessions = (() => {
 
     if (!length) {
       notification.error(
-        MESSAGES.removeAll.fail.empty,
+        i18n.getMessage('notifyDeleteAllFailEmpty'),
         '[sessions.removeAll] sessions are already empty'
       );
       return;
@@ -169,7 +168,7 @@ export const sessions = (() => {
 
     select(get(currentSession));
 
-    notification.success_warning(MESSAGES.removeAll.success_warning);
+    notification.success_warning(i18n.getMessage('notifyDeleteAllSuccess'));
 
     notify([]);
   }

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import browser from 'webextension-polyfill';
+  import browser, { i18n } from 'webextension-polyfill';
   import { createEventDispatcher, onDestroy } from 'svelte';
   import { settings, sessions, currentSession as session } from '@/lib/stores';
   import { IconButton } from '@/lib/components';
@@ -112,7 +112,7 @@
   <p
     class="max-w-max flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-sm font-bold"
   >
-    Current Session
+    {i18n.getMessage('labelCurrentSession')}
   </p>
 
   <div class="flex items-center gap-2 px-1">
@@ -143,7 +143,7 @@
 
   <IconButton
     icon="save"
-    title="Save"
+    title={i18n.getMessage('labelSave')}
     class="ml-auto text-2xl hover:text-primary-focus"
     on:click={() => dispatch('save')}
   />

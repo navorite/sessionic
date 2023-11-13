@@ -10,6 +10,7 @@
     CurrentSession
   } from '@/lib/components';
   import { isInputTarget } from '@/lib/utils';
+  import { i18n } from 'webextension-polyfill';
 
   $: selection = sessions.selection;
 
@@ -39,7 +40,8 @@
 
   export function saveAction() {
     modalType = 'Save';
-    if ($settings.doNotAskForTitle) return saveSession('Unnamed session');
+    if ($settings.doNotAskForTitle)
+      return saveSession(i18n.getMessage('labelUnnamedSession'));
 
     modalShow = true;
   }
