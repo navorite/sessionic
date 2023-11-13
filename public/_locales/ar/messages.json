@@ -180,15 +180,15 @@
         "description": "The label for the save session modal title"
     },
     "inputModalPlaceholder": {
-        "message": "...ادخل اسم الجلسة",
+        "message": "ادخل اسم الجلسة…",
         "description": "The label for the session modal input"
     },
     "inputModalErrorLength": {
-        "message": "طول اسم الجلسة يجب ان يكون بين $1 و $2 من الحروف",
+        "message": "طول اسم الجلسة يجب أن يكون بين $1 و $2 حروف.",
         "description": "The label for the containing unallowed characters error in input modal"
     },
     "inputModalErrorChar": {
-        "message": "يجب ألا يحتوي اسم الجلسة على حرف '<' او '>'",
+        "message": "يجب ألا يحتوي اسم الجلسة على رمز > او < .",
         "description": "The label for the containing unallowed characters error in input modal"
     },
     "deleteModalTitle": {
@@ -204,7 +204,7 @@
         "description": "The label for the failure of loading sessions notification"
     },
     "notifySaveSuccess": {
-        "message": "!تم حفظ الجلسة",
+        "message": "تم حفظ الجلسة!",
         "description": "The label for the success of saving session notification"
     },
     "notifySaveFail": {
@@ -216,7 +216,7 @@
         "description": "The label for the failure of saving empty session notification"
     },
     "notifyUpdateSuccess": {
-        "message": "!تم تحديث الجلسة",
+        "message": "تم تحديث الجلسة!",
         "description": "The label for the success of updating session notification"
     },
     "notifyUpdateFail": {
@@ -224,7 +224,7 @@
         "description": "The label for the failure  of updating session notification"
     },
     "notifyDeleteSuccess": {
-        "message": "!تم حذف الجلسة",
+        "message": "تم حذف الجلسة!",
         "description": "The label for the success of deleting session notification"
     },
     "notifyDeleteFail": {
@@ -236,7 +236,7 @@
         "description": "The label for the failure of deleting non-existing session notification"
     },
     "notifyDeleteAllSuccess": {
-        "message": "!تم حذف جميع الجلسات",
+        "message": "تم حذف جميع الجلسات!",
         "description": "The label for the success of deleting all sessions notification"
     },
     "notifyDeleteAllFail": {
@@ -248,7 +248,7 @@
         "description": "The label for the failure of deleting non-existing sessions notification"
     },
     "notifyExtUpdate": {
-        "message": "!سيشونيك تم تحديثه لنسخة $1",
+        "message": "تم تحديث Sessionic لنخسة $1!",
         "description": "The label for the extension was updated notification - $1 is placeholder for version injection"
     },
     "settingsUserInterfaceHeading": {
