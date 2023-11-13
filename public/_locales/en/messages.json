@@ -264,8 +264,8 @@
     "description": "The label for the Popup View option in settings"
   },
   "settingsDarkMode":{
-    "message": "Dark Mode",
-    "description": "The label for the Dark Mode option in settings"
+    "message": "Dark theme",
+    "description": "The label for the Dark theme option in settings"
   },
   "settingsAutosaveHeading":{
     "message": "Automatic Saving",
