@@ -128,7 +128,7 @@
         "description": "The label for Search"
     },
     "labelSearchPlaceholder": {
-        "message": "...البحث عن اسم جلسة او تبويب",
+        "message": "البحث عن اسم جلسة او تبويب…",
         "description": "The placeholder for the Searchbar"
     },
     "labelClear": {
