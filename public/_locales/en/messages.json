@@ -180,7 +180,7 @@
         "description": "The label for the save session modal title"
     },
     "inputModalPlaceholder": {
-        "message": "Enter session name...",
+        "message": "Enter session name…",
         "description": "The label for the session modal input"
     },
     "inputModalErrorLength": {
