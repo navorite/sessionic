@@ -1,1 +1,378 @@
-{}
+{
+    "labelSortZA": {
+        "message": "Z-A",
+        "description": "The label for sorting by Z to A for saved sessions"
+    },
+    "labelSortAZ": {
+        "message": "A-Z",
+        "description": "The label for sorting by A to Z for saved sessions"
+    },
+    "labelCurrentSession": {
+        "message": "Session courante",
+        "description": "The label for Current Session"
+    },
+    "settingsLazyload": {
+        "message": "Chargement différé des onglets",
+        "description": "The label for the lazy load tabs option in settings"
+    },
+    "notifyDeleteFail": {
+        "message": "Échec de la suppression de la session",
+        "description": "The label for the failure of deleting session notification"
+    },
+    "inputModalPlaceholder": {
+        "message": "Saisissez un nom de session…",
+        "description": "The label for the session modal input"
+    },
+    "labelSearchPlaceholder": {
+        "message": "Rechercher le nom d'une session ou d'un onglet…",
+        "description": "The placeholder for the Searchbar"
+    },
+    "notifyDeleteAllSuccess": {
+        "message": "Toutes les sessions ont été supprimées !",
+        "description": "The label for the success of deleting all sessions notification"
+    },
+    "settingsTagsPreview": {
+        "message": "Aperçu",
+        "description": "The label for the tags table preview column in settings"
+    },
+    "notifySaveSuccess": {
+        "message": "Session enregistrée !",
+        "description": "The label for the success of saving session notification"
+    },
+    "shortcutFocusSearch": {
+        "message": "Sélectionner le champ de recherche",
+        "description": "The label for focusing search box keyboard shortcut"
+    },
+    "labelSortOldest": {
+        "message": "Le plus ancien",
+        "description": "The label for sorting by oldest saved session"
+    },
+    "labelJustNow": {
+        "message": "à l'instant",
+        "description": "The label for just now"
+    },
+    "notifyDeleteAllFailUndefined": {
+        "message": "Échec de la suppression : Sessions non existantes",
+        "description": "The label for the failure of deleting non-existing sessions notification"
+    },
+    "settingsExtensionActionsHeading": {
+        "message": "Actions de l'extension",
+        "description": "The label for the extension actions section heading in settings"
+    },
+    "labelExpand": {
+        "message": "Étendre",
+        "description": "The label for Expand"
+    },
+    "labelWindow": {
+        "message": "Fenêtre",
+        "description": "The label for Window"
+    },
+    "labelTabs": {
+        "message": "Onglets",
+        "description": "The label for Tabs"
+    },
+    "notifyUpdateSuccess": {
+        "message": "Session mise à jour !",
+        "description": "The label for the success of updating session notification"
+    },
+    "labelSearch": {
+        "message": "Rechercher",
+        "description": "The label for Search"
+    },
+    "labelWindows": {
+        "message": "Fenêtres",
+        "description": "The label for Windows"
+    },
+    "labelClose": {
+        "message": "Fermer",
+        "description": "The label for Close"
+    },
+    "settingsAutosave": {
+        "message": "Sauvegarder les sessions automatiquement",
+        "description": "The label for the Autosave option in settings"
+    },
+    "shortcutSaveCurrent": {
+        "message": "Sauvegarder la session courante",
+        "description": "The label for saving current session keyboard shortcut"
+    },
+    "notifyDeleteFailUndefined": {
+        "message": "Échec de la suppression : Session inexistante",
+        "description": "The label for the failure of deleting non-existing session notification"
+    },
+    "notifyUpdateFail": {
+        "message": "Échec de la mise à jour de la session",
+        "description": "The label for the failure  of updating session notification"
+    },
+    "aboutPage": {
+        "message": "À propos",
+        "description": "The label for the About page in settings"
+    },
+    "settingsAutosaveInterval": {
+        "message": "Intervalle de sauvegarde en minutes (min. 1 minute)",
+        "description": "The label for the auto save interval option in settings"
+    },
+    "settingsTagsTag": {
+        "message": "Étiquette",
+        "description": "The label for the tags table tag column in settings"
+    },
+    "settingsAutosaveHeading": {
+        "message": "Sauvegarde automatique",
+        "description": "The label for the automatic saving section heading in settings"
+    },
+    "labelSettings": {
+        "message": "Paramètres",
+        "description": "The label for Settings"
+    },
+    "settingsTagsAction": {
+        "message": "Action",
+        "description": "The label for the tags table action column in settings"
+    },
+    "labelYear": {
+        "message": "an",
+        "description": "The label for year (abbreviated if possible)"
+    },
+    "renameModalTitle": {
+        "message": "Renommer la session",
+        "description": "The label for the rename session modal title"
+    },
+    "keyboardShortcutsPage": {
+        "message": "Raccourcis clavier",
+        "description": "The label for the Keyboard Shortcuts page in settings"
+    },
+    "settingsTagsText": {
+        "message": "Texte",
+        "description": "The label for the tags table text color column in settings"
+    },
+    "labelSortDate": {
+        "message": "Date",
+        "description": "The label for sorting by date category"
+    },
+    "labelOpen": {
+        "message": "Ouvrir",
+        "description": "The label for Open"
+    },
+    "extDesc": {
+        "message": "Une extension web pour sauvegarder, gérer et restaurer les sessions et les onglets.",
+        "description": "Description of the extension"
+    },
+    "settingsAutosaveMax": {
+        "message": "Nombre maximal de sessions sauvegardées (max. 15 sessions)",
+        "description": "The label for the Autosave max number of saved sessions option in settings"
+    },
+    "labelCollapse": {
+        "message": "Réduire",
+        "description": "The label for Collapse"
+    },
+    "settingsDoNotAskForSessionName": {
+        "message": "Ne pas demander de nom de session lors de la sauvegarde",
+        "description": "The label for the do not ask for session name when saving option in settings"
+    },
+    "labelDelete": {
+        "message": "Supprimer",
+        "description": "The label for Delete"
+    },
+    "deleteModalTitle": {
+        "message": "Supprimer la session",
+        "description": "The label for the delete session modal title"
+    },
+    "settingsURLFilterList": {
+        "message": "Liste des filtres d'URL",
+        "description": "The label for the URL Filter List text option in settings"
+    },
+    "tagsModalSelectTag": {
+        "message": "Sélectionner une étiquette",
+        "description": "The label for selecting a tag in the create tag modal"
+    },
+    "labelRemoveTag": {
+        "message": "Retirer l'étiquette",
+        "description": "The label for Remove tag icon"
+    },
+    "aboutDonateText": {
+        "message": "Sessionic est gratuit sans limite de temps, sans publicité, sans superflu et sans pistage. Son développement me prend beaucoup de temps. Si vous souhaitez m'aider à améliorer l'extension, vous pouvez faire un don en utilisant les liens ci-dessous",
+        "description": "The paragrah used in the donate modal and the about page"
+    },
+    "deleteModalContent": {
+        "message": "Voulez-vous vraiment supprimer cette session ?",
+        "description": "The label for the delete session modal content"
+    },
+    "labelMonth": {
+        "message": "m",
+        "description": "The label for month (abbreviated if possible)"
+    },
+    "settingsTagsBackground": {
+        "message": "Arrière-plan",
+        "description": "The label for the tags table background column in settings"
+    },
+    "settingsImportSessions": {
+        "message": "Importer des sessions",
+        "description": "The label for importing sessions button in settings"
+    },
+    "notifySaveFail": {
+        "message": "Échec de la sauvegarde de la session",
+        "description": "The label for the failure of saving session notification"
+    },
+    "shortcutRenameSelected": {
+        "message": "Renommer la session sélectionnée",
+        "description": "The label for opening command palette keyboard shortcut"
+    },
+    "saveModalTitle": {
+        "message": "Sauvegarder la session",
+        "description": "The label for the save session modal title"
+    },
+    "settingsPopupView": {
+        "message": "Vue fenêtre",
+        "description": "The label for the Popup View option in settings"
+    },
+    "labelSortNewest": {
+        "message": "Le plus récent",
+        "description": "The label for sorting by newest saved session"
+    },
+    "labelPrivateWindow": {
+        "message": "Fenêtre privée",
+        "description": "The label for Private Window"
+    },
+    "generalPage": {
+        "message": "Général",
+        "description": "The label for the General page in settings"
+    },
+    "shortcutSelectNext": {
+        "message": "Sélectionner la session suivante",
+        "description": "The label for selecting next session keyboard shortcut"
+    },
+    "labelSortName": {
+        "message": "Nom",
+        "description": "The label for sorting by name category for saved sessions"
+    },
+    "notifySaveFailEmpty": {
+        "message": "Impossible de sauvegarder une session vierge",
+        "description": "The label for the failure of saving empty session notification"
+    },
+    "shortcutDeleteSelected": {
+        "message": "Supprimer la session sélectionnée",
+        "description": "The label for deleting selected session keyboard shortcut"
+    },
+    "labelFullView": {
+        "message": "Vue complète",
+        "description": "The label for Full View"
+    },
+    "notifyLoadFail": {
+        "message": "Échec du chargement des sessions",
+        "description": "The label for the failure of loading sessions notification"
+    },
+    "keyboardShortcutsHeading": {
+        "message": "Raccourcis clavier",
+        "description": "The label for keyboard shortcuts section in keyboard shortcuts page"
+    },
+    "labelMinute": {
+        "message": "min",
+        "description": "The label for minute (abbreviated if possible)"
+    },
+    "labelHour": {
+        "message": "h",
+        "description": "The label for hour (abbreviated if possible)"
+    },
+    "labelTab": {
+        "message": "Onglet",
+        "description": "The label for Tab"
+    },
+    "settingsUserInterfaceHeading": {
+        "message": "Interface utilisateur",
+        "description": "The label for the user interface section heading in settings"
+    },
+    "labelRename": {
+        "message": "Renommer",
+        "description": "The label for Rename"
+    },
+    "settingsResetAll": {
+        "message": "Réinitialiser tous les paramètres",
+        "description": "The label for the reset all settings button in settings"
+    },
+    "settingsURLFilterListPlaceholder": {
+        "message": "Par ex. suivre uniquement les URL correspondant aux schémas suivants :\n*://*/*\nfile:///*/*\nftp://*/*\nchrome://*/*\nhttps://*.google.com/\nhttps://www.youtube.com/*\n",
+        "description": "The label for the URL Filter List placeholder in settings"
+    },
+    "labelDonate": {
+        "message": "Faire un don",
+        "description": "The label for Donate"
+    },
+    "shortcutCommandPalette": {
+        "message": "Ouvrir la palette de commandes",
+        "description": "The label for opening command palette keyboard shortcut"
+    },
+    "labelDay": {
+        "message": "jour",
+        "description": "The label for day"
+    },
+    "inputModalErrorChar": {
+        "message": "Le nom de la session ne doit pas comporter les caractères « < » ou « > ».",
+        "description": "The label for the containing unallowed characters error in input modal"
+    },
+    "settingsSessionActionsHeading": {
+        "message": "Actions de la session",
+        "description": "The label for the session actions section heading in settings"
+    },
+    "labelSavedAt": {
+        "message": "Sauvegardé à",
+        "description": "The label for Saved at (date)"
+    },
+    "settingsExcludePinnedTabs": {
+        "message": "Exclure les onglets épinglés de la session",
+        "description": "The label for the excluding pinned tabs in settings"
+    },
+    "labelClear": {
+        "message": "Effacer",
+        "description": "The label for Clear"
+    },
+    "settingsExportSessions": {
+        "message": "Exporter des sessions",
+        "description": "The label for exporting sessions button in settings"
+    },
+    "notifyDeleteAllFail": {
+        "message": "Échec de la suppression des sessions",
+        "description": "The label for the failure of deleting all session notification"
+    },
+    "notifyExtUpdate": {
+        "message": "Sessionic a été mis à jour vers la version v$1 !",
+        "description": "The label for the extension was updated notification - $1 is placeholder for version injection"
+    },
+    "aboutDonateHeading": {
+        "message": "Soutenir le projet",
+        "description": "The heading used in the donate modal"
+    },
+    "inputModalErrorLength": {
+        "message": "Le nom de la session doit comporter entre $1 et $2 caractères.",
+        "description": "The label for the containing unallowed characters error in input modal"
+    },
+    "settingsDarkMode": {
+        "message": "Thème sombre",
+        "description": "The label for the Dark theme option in settings"
+    },
+    "labelTagsAll": {
+        "message": "Tout",
+        "description": "The label for showing all tags for saved sessions"
+    },
+    "notifyDeleteSuccess": {
+        "message": "Session supprimée !",
+        "description": "The label for the success of deleting session notification"
+    },
+    "shortcutDisplayCurrent": {
+        "message": "Afficher la session courante",
+        "description": "The label for displaying current session keyboard shortcut"
+    },
+    "labelUnnamedSession": {
+        "message": "Session sans nom",
+        "description": "The label for Unnamed Session when saving without naming a session"
+    },
+    "labelSave": {
+        "message": "Sauvegarder",
+        "description": "The label for Save"
+    },
+    "labelAddTag": {
+        "message": "Ajouter une étiquette",
+        "description": "The label for Add tag"
+    },
+    "shortcutSelectPrevious": {
+        "message": "Sélectionner la session précédente",
+        "description": "The label for selecting previous session shortcut"
+    }
+}
