@@ -288,7 +288,7 @@
         "description": "The label for selecting previous session shortcut"
     },
     "labelExpand": {
-        "message": "Rozšířit",
+        "message": "Rozbalit",
         "description": "The label for Expand"
     }
 }
