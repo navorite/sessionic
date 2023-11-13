@@ -59,7 +59,13 @@ You can check the project's [Roadmap](https://github.com/users/navorite/projects
 
 ## Localization
 
-You can contribute to the localization of the extension at [Weblate](https://hosted.weblate.org/projects/sessionic/sessionic/)!
+You can contribute to the localization of the extension at [Weblate](https://hosted.weblate.org/projects/sessionic/)!
+
+<h3 align="center">Translation status</h3>
+
+<a href="https://hosted.weblate.org/engage/sessionic/">
+      <img src="https://hosted.weblate.org/widgets/sessionic/-/multi-auto.svg" alt="Translation status"/>
+</a>
 
 ## Build locally
 
