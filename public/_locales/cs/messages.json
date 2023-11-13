@@ -147,10 +147,6 @@
         "message": "Smazat štítek",
         "description": "The label for Remove tag icon"
     },
-    "extName": {
-        "message": "Sessionic",
-        "description": "Name of the extension"
-    },
     "aboutDonateText": {
         "message": "Sessionic je navždy zdarma bez reklam, bloat or tracking. Vývoj mi zabere hodně času. Pokud by mi chtěli pomoc ve zlepšení tohoto rozšíření, prosím zvažte donating using the links below",
         "description": "The paragrah used in the donate modal and the about page"
