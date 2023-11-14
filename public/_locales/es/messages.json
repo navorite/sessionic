@@ -152,7 +152,7 @@
         "description": "The label for Open"
     },
     "extDesc": {
-        "message": "Una extensión web para guardar, gestionar, restaurar sesiones y pestañas.",
+        "message": "Una extensión web para guardar, gestionar y restaurar sesiones, ventanas y pestañas.",
         "description": "Description of the extension"
     },
     "settingsAutosaveMax": {
