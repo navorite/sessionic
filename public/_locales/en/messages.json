@@ -1,6 +1,6 @@
 {
     "extDesc": {
-        "message": "A web extension to save, manage and restore sessions and tabs.",
+        "message": "A web extension to save, manage and restore sessions, windows and tabs.",
         "description": "Description of the extension"
     },
     "generalPage": {
