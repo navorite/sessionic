@@ -370,5 +370,9 @@
     "notifyDeleteSuccess": {
         "message": "",
         "description": "The label for the success of deleting session notification"
+    },
+    "labelSearchPlaceholder": {
+        "message": "",
+        "description": "The placeholder for the Searchbar"
     }
 }
