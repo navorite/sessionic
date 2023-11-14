@@ -1,398 +1,394 @@
 {
-  "extName": {
-    "message": "Sessionic",
-    "description": "Name of the extension"
-  },
-  "extDesc": {
-    "message": "A web extension to save, manage and restore sessions and tabs.",
-    "description": "Description of the extension"
-  },
-  "generalPage": {
-    "message": "General",
-    "description": "The label for the General page in settings"
-  },
-  "keyboardShortcutsPage":{
-    "message": "Keyboard Shortcuts",
-    "description": "The label for the Keyboard Shortcuts page in settings"
-  },
-  "aboutPage":{
-    "message": "About",
-    "description": "The label for the About page in settings"
-  },
-  "aboutDonateHeading":{
-    "message": "Support the project",
-    "description": "The heading used in the donate modal"
-  },
-  "aboutDonateText":{
-    "message": "Sessionic is free forever without ads, bloat or tracking. It takes a lot of my time in development. If you woud like to help me improve the extension, please consider donating using the links below",
-    "description": "The paragrah used in the donate modal and the about page"
-  },
-  "labelWindow":{
-    "message": "Window",
-    "description": "The label for Window"
-  },
-  "labelWindows":{
-    "message": "Windows",
-    "description": "The label for Windows"
-  },
-  "labelPrivateWindow":{
-    "message": "Private Window",
-    "description": "The label for Private Window"
-  },
-  "labelTab":{
-    "message": "Tab",
-    "description": "The label for Tab"
-  },
-  "labelTabs":{
-    "message": "Tabs",
-    "description": "The label for Tabs"
-  },
-  "labelCurrentSession": {
-    "message": "Current Session",
-    "description": "The label for Current Session"
-  },
-  "labelUnnamedSession": {
-    "message": "Unnamed Session",
-    "description": "The label for Unnamed Session when saving without naming a session"
-  },
-  "labelSortDate":{
-    "message": "Date",
-    "description": "The label for sorting by date category"
-  },
-  "labelSortNewest":{
-    "message": "Newest",
-    "description": "The label for sorting by newest saved session"
-  },
-  "labelSortOldest":{
-    "message": "Oldest",
-    "description": "The label for sorting by oldest saved session"
-  },
-  "labelSortName":{
-    "message": "Name",
-    "description": "The label for sorting by name category for saved sessions"
-  },
-  "labelSortAZ":{
-    "message": "A-Z",
-    "description": "The label for sorting by A to Z for saved sessions"
-  },
-  "labelSortZA":{
-    "message": "Z-A",
-    "description": "The label for sorting by Z to A for saved sessions"
-  },
-  "labelTagsAll":{
-    "message": "All",
-    "description": "The label for showing all tags for saved sessions"
-  },
-  "labelYear":{
-    "message": "yr",
-    "description": "The label for year (abbreviated if possible)"
-  },
-  "labelMonth":{
-    "message": "mo",
-    "description": "The label for month (abbreviated if possible)"
-  },
-  "labelDay":{
-    "message": "day",
-    "description": "The label for day"
-  },
-  "labelHour":{
-    "message": "hr",
-    "description": "The label for hour (abbreviated if possible)"
-  },
-  "labelMinute":{
-    "message": "min",
-    "description": "The label for minute (abbreviated if possible)"
-  },
-  "labelJustNow":{
-    "message": "just now",
-    "description": "The label for just now"
-  },
-  "labelSavedAt":{
-    "message": "Saved at",
-    "description": "The label for Saved at (date)"
-  },
-  "labelSettings":{
-    "message": "Settings",
-    "description": "The label for Settings"
-  },
-  "labelDonate":{
-    "message": "Donate",
-    "description": "The label for Donate"
-  },
-  "labelFullView":{
-    "message": "Full View",
-    "description": "The label for Full View"
-  },
-  "labelSearch":{
-    "message": "Search",
-    "description": "The label for Search"
-  },
-  "labelSearchPlaceholder":{
-    "message": "Search session or tab name...",
-    "description": "The placeholder for the Searchbar"
-  },
-  "labelClear":{
-    "message": "Clear",
-    "description": "The label for Clear"
-  },
-  "labelSave":{
-    "message": "Save",
-    "description": "The label for Save"
-  },
-  "labelCollapse":{
-    "message": "Collapse",
-    "description": "The label for Collapse"
-  },
-  "labelExpand":{
-    "message": "Expand",
-    "description": "The label for Expand"
-  },
-  "labelRename":{
-    "message": "Rename",
-    "description": "The label for Rename"
-  },
-  "labelClose":{
-    "message": "Close",
-    "description": "The label for Close"
-  },
-  "labelDelete":{
-    "message": "Delete",
-    "description": "The label for Delete"
-  },
-  "labelAddTag":{
-    "message": "Add tag",
-    "description": "The label for Add tag"
-  },
-  "labelRemoveTag":{
-    "message": "Remove tag",
-    "description": "The label for Remove tag icon"
-  },
-  "labelOpen":{
-    "message": "Open",
-    "description": "The label for Open"
-  },
-  "tagsModalSelectTag":{
-    "message": "Select a tag",
-    "description": "The label for selecting a tag in the create tag modal"
-  },
-  "renameModalTitle":{
-    "message": "Rename session",
-    "description": "The label for the rename session modal title"
-  },
-  "saveModalTitle":{
-    "message": "Save session",
-    "description": "The label for the save session modal title"
-  },
-  "inputModalPlaceholder":{
-    "message": "Enter session name...",
-    "description": "The label for the session modal input"
-  },
-  "inputModalErrorLength":{
-    "message": "Session name must be between $1 and $2 characters.",
-    "description": "The label for the containing unallowed characters error in input modal"
-  },
-  "inputModalErrorChar":{
-    "message": "Session name must not contain '<' or '>' characters.",
-    "description": "The label for the containing unallowed characters error in input modal"
-  },
-  "deleteModalTitle":{
-    "message": "Delete session",
-    "description": "The label for the delete session modal title"
-  },
-  "deleteModalContent":{
-    "message": "Are you sure you wanna delete this session?",
-    "description": "The label for the delete session modal content"
-  },
-  "notifyLoadFail":{
-    "message": "Failed to load sessions",
-    "description": "The label for the failure of loading sessions notification"
-  },
-  "notifySaveSuccess":{
-    "message": "The session was saved!",
-    "description": "The label for the success of saving session notification"
-  },
-  "notifySaveFail":{
-    "message": "Failed to save the session",
-    "description": "The label for the failure of saving session notification"
-  },
-  "notifySaveFailEmpty":{
-    "message": "Failed to save empty session",
-    "description": "The label for the failure of saving empty session notification"
-  },
-  "notifyUpdateSuccess":{
-    "message": "The session was updated!",
-    "description": "The label for the success of updating session notification"
-  },
-  "notifyUpdateFail":{
-    "message": "Failed to update the session",
-    "description": "The label for the failure  of updating session notification"
-  },
-  "notifyDeleteSuccess":{
-    "message": "The session was deleted!",
-    "description": "The label for the success of deleting session notification"
-  },
-  "notifyDeleteFail":{
-    "message": "Failed to delete the session",
-    "description": "The label for the failure of deleting session notification"
-  },
-  "notifyDeleteFailUndefined":{
-    "message": "Failed to delete: Non-existing session",
-    "description": "The label for the failure of deleting non-existing session notification"
-  },
-  "notifyDeleteAllSuccess":{
-    "message": "All the sessions were deleted!",
-    "description": "The label for the success of deleting all sessions notification"
-  },
-  "notifyDeleteAllFail":{
-    "message": "Failed to delete sessions",
-    "description": "The label for the failure of deleting all session notification"
-  },
-  "notifyDeleteAllFailUndefined":{
-    "message": "Failed to delete: Non-existing sessions",
-    "description": "The label for the failure of deleting non-existing sessions notification"
-  },
-  "notifyExtUpdate":{
-    "message": "Sessionic was updated to v$1!",
-    "description": "The label for the extension was updated notification - $1 is placeholder for version injection"
-  },
-  "settingsUserInterfaceHeading":{
-    "message": "User Interface",
-    "description": "The label for the user interface section heading in settings"
-  },
-  "settingsPopupView":{
-    "message": "Popup View",
-    "description": "The label for the Popup View option in settings"
-  },
-  "settingsDarkMode":{
-    "message": "Dark theme",
-    "description": "The label for the Dark theme option in settings"
-  },
-  "settingsAutosaveHeading":{
-    "message": "Automatic Saving",
-    "description": "The label for the automatic saving section heading in settings"
-  },
-  "settingsAutosave":{
-    "message": "Automatically save sessions",
-    "description": "The label for the Autosave option in settings"
-  },
-  "settingsAutosaveMax":{
-    "message": "Max number of saved sessions (max. 15 sessions)",
-    "description": "The label for the Autosave max number of saved sessions option in settings"
-  },
-  "settingsAutosaveInterval":{
-    "message": "Save interval in minutes (min. 1 minute)",
-    "description": "The label for the auto save interval option in settings"
-  },
-  "settingsExtensionActionsHeading":{
-    "message": "Extension Actions",
-    "description": "The label for the extension actions section heading in settings"
-  },
-  "settingsURLFilterList":{
-    "message": "URL Filter List",
-    "description": "The label for the URL Filter List text option in settings"
-  },
-  "settingsURLFilterListPlaceholder":{
-    "message": "e.g. track only the following URL match patterns:\n*://*/*\nfile:///*/*\nftp://*/*\nchrome://*/*\nhttps://*.google.com/\nhttps://www.youtube.com/*\n",
-    "description": "The label for the URL Filter List placeholder in settings"
-  },
-  "settingsLazyload":{
-    "message": "Lazy load tabs",
-    "description": "The label for the lazy load tabs option in settings"
-  },
-  "settingsResetAll":{
-    "message": "Reset All Settings",
-    "description": "The label for the reset all settings button in settings"
-  },
-  "settingsDoNotAskForSessionName":{
-    "message": "Do not ask for session name when saving",
-    "description": "The label for the do not ask for session name when saving option in settings"
-  },
-  "settingsExcludePinnedTabs":{
-    "message": "Exclude pinned tabs from session",
-    "description": "The label for the excluding pinned tabs in settings"
-  },
-  "settingsSessionActionsHeading":{
-    "message": "Session Actions",
-    "description": "The label for the session actions section heading in settings"
-  },
-  "settingsTagsTag":{
-    "message": "Tag",
-    "description": "The label for the tags table tag column in settings"
-  },
-  "settingsTagsBackground":{
-    "message": "Background",
-    "description": "The label for the tags table background column in settings"
-  },
-  "settingsTagsText":{
-    "message": "Text",
-    "description": "The label for the tags table text color column in settings"
-  },
-  "settingsTagsPreview":{
-    "message": "Preview",
-    "description": "The label for the tags table preview column in settings"
-  },
-  "settingsTagsAction":{
-    "message": "Action",
-    "description": "The label for the tags table action column in settings"
-  },
-  "settingsImportSessions":{
-    "message": "Import Sessions",
-    "description": "The label for importing sessions button in settings"
-  },
-  "settingsExportSessions":{
-    "message": "Export Sessions",
-    "description": "The label for exporting sessions button in settings"
-  },
-  "keyboardShortcutsHeading":{
-    "message": "Keyboard Shortcuts",
-    "description": "The label for keyboard shortcuts section in keyboard shortcuts page"
-  },
-  "shortcutCommandPalette":{
-    "message": "Open Command Palette",
-    "description": "The label for opening command palette keyboard shortcut"
-  },
-  "shortcutSaveCurrent":{
-    "message": "Save current session",
-    "description": "The label for saving current session keyboard shortcut"
-  },
-  "shortcutRenameSelected":{
-    "message": "Rename selected session",
-    "description": "The label for opening command palette keyboard shortcut"
-  },
-  "shortcutFocusSearch":{
-    "message": "Focus search box",
-    "description": "The label for focusing search box keyboard shortcut"
-  },
-  "shortcutDisplayCurrent":{
-    "message": "Display current session",
-    "description": "The label for displaying current session keyboard shortcut"
-  },
-  "shortcutSelectPrevious":{
-    "message": "Select previous session",
-    "description": "The label for selecting previous session shortcut"
-  },
-  "shortcutSelectNext":{
-    "message": "Select next session",
-    "description": "The label for selecting next session keyboard shortcut"
-  },
-  "shortcutDeleteSelected":{
-    "message": "Delete selected session",
-    "description": "The label for deleting selected session keyboard shortcut"
-  },
-  "aboutTranslationsLabel":{
-    "message": "Translations",
-    "description": "The label for Translations in About page"
-  },
-  "aboutLicenseLabel":{
-    "message": "Licence AGPL v3",
-    "description": "The label for License in About page"
-  },
-  "aboutChangelogLabel":{
-    "message": "Changelog",
-    "description": "The label for Changelog in About page"
-  },
-  "aboutSourceCodeLabel":{
-    "message": "Source code",
-    "description": "The label for Source code in About page"
-  }
+    "extDesc": {
+        "message": "A web extension to save, manage and restore sessions and tabs.",
+        "description": "Description of the extension"
+    },
+    "generalPage": {
+        "message": "General",
+        "description": "The label for the General page in settings"
+    },
+    "keyboardShortcutsPage": {
+        "message": "Keyboard Shortcuts",
+        "description": "The label for the Keyboard Shortcuts page in settings"
+    },
+    "aboutPage": {
+        "message": "About",
+        "description": "The label for the About page in settings"
+    },
+    "aboutDonateHeading": {
+        "message": "Support the project",
+        "description": "The heading used in the donate modal"
+    },
+    "aboutDonateText": {
+        "message": "Sessionic is free forever without ads, bloat or tracking. It takes a lot of my time in development. If you woud like to help me improve the extension, please consider donating using the links below",
+        "description": "The paragrah used in the donate modal and the about page"
+    },
+    "labelWindow": {
+        "message": "Window",
+        "description": "The label for Window"
+    },
+    "labelWindows": {
+        "message": "Windows",
+        "description": "The label for Windows"
+    },
+    "labelPrivateWindow": {
+        "message": "Private Window",
+        "description": "The label for Private Window"
+    },
+    "labelTab": {
+        "message": "Tab",
+        "description": "The label for Tab"
+    },
+    "labelTabs": {
+        "message": "Tabs",
+        "description": "The label for Tabs"
+    },
+    "labelCurrentSession": {
+        "message": "Current Session",
+        "description": "The label for Current Session"
+    },
+    "labelUnnamedSession": {
+        "message": "Unnamed Session",
+        "description": "The label for Unnamed Session when saving without naming a session"
+    },
+    "labelSortDate": {
+        "message": "Date",
+        "description": "The label for sorting by date category"
+    },
+    "labelSortNewest": {
+        "message": "Newest",
+        "description": "The label for sorting by newest saved session"
+    },
+    "labelSortOldest": {
+        "message": "Oldest",
+        "description": "The label for sorting by oldest saved session"
+    },
+    "labelSortName": {
+        "message": "Name",
+        "description": "The label for sorting by name category for saved sessions"
+    },
+    "labelSortAZ": {
+        "message": "A-Z",
+        "description": "The label for sorting by A to Z for saved sessions"
+    },
+    "labelSortZA": {
+        "message": "Z-A",
+        "description": "The label for sorting by Z to A for saved sessions"
+    },
+    "labelTagsAll": {
+        "message": "All",
+        "description": "The label for showing all tags for saved sessions"
+    },
+    "labelYear": {
+        "message": "yr",
+        "description": "The label for year (abbreviated if possible)"
+    },
+    "labelMonth": {
+        "message": "mo",
+        "description": "The label for month (abbreviated if possible)"
+    },
+    "labelDay": {
+        "message": "day",
+        "description": "The label for day"
+    },
+    "labelHour": {
+        "message": "hr",
+        "description": "The label for hour (abbreviated if possible)"
+    },
+    "labelMinute": {
+        "message": "min",
+        "description": "The label for minute (abbreviated if possible)"
+    },
+    "labelJustNow": {
+        "message": "just now",
+        "description": "The label for just now"
+    },
+    "labelSavedAt": {
+        "message": "Saved at",
+        "description": "The label for Saved at (date)"
+    },
+    "labelSettings": {
+        "message": "Settings",
+        "description": "The label for Settings"
+    },
+    "labelDonate": {
+        "message": "Donate",
+        "description": "The label for Donate"
+    },
+    "labelFullView": {
+        "message": "Full View",
+        "description": "The label for Full View"
+    },
+    "labelSearch": {
+        "message": "Search",
+        "description": "The label for Search"
+    },
+    "labelSearchPlaceholder": {
+        "message": "Search session or tab name…",
+        "description": "The placeholder for the Searchbar"
+    },
+    "labelClear": {
+        "message": "Clear",
+        "description": "The label for Clear"
+    },
+    "labelSave": {
+        "message": "Save",
+        "description": "The label for Save"
+    },
+    "labelCollapse": {
+        "message": "Collapse",
+        "description": "The label for Collapse"
+    },
+    "labelExpand": {
+        "message": "Expand",
+        "description": "The label for Expand"
+    },
+    "labelRename": {
+        "message": "Rename",
+        "description": "The label for Rename"
+    },
+    "labelClose": {
+        "message": "Close",
+        "description": "The label for Close"
+    },
+    "labelDelete": {
+        "message": "Delete",
+        "description": "The label for Delete"
+    },
+    "labelAddTag": {
+        "message": "Add tag",
+        "description": "The label for Add tag"
+    },
+    "labelRemoveTag": {
+        "message": "Remove tag",
+        "description": "The label for Remove tag icon"
+    },
+    "labelOpen": {
+        "message": "Open",
+        "description": "The label for Open"
+    },
+    "tagsModalSelectTag": {
+        "message": "Select a tag",
+        "description": "The label for selecting a tag in the create tag modal"
+    },
+    "renameModalTitle": {
+        "message": "Rename session",
+        "description": "The label for the rename session modal title"
+    },
+    "saveModalTitle": {
+        "message": "Save session",
+        "description": "The label for the save session modal title"
+    },
+    "inputModalPlaceholder": {
+        "message": "Enter session name…",
+        "description": "The label for the session modal input"
+    },
+    "inputModalErrorLength": {
+        "message": "Session name must be between $1 and $2 characters.",
+        "description": "The label for the containing unallowed characters error in input modal"
+    },
+    "inputModalErrorChar": {
+        "message": "Session name must not contain '<' or '>' characters.",
+        "description": "The label for the containing unallowed characters error in input modal"
+    },
+    "deleteModalTitle": {
+        "message": "Delete session",
+        "description": "The label for the delete session modal title"
+    },
+    "deleteModalContent": {
+        "message": "Are you sure you wanna delete this session?",
+        "description": "The label for the delete session modal content"
+    },
+    "notifyLoadFail": {
+        "message": "Failed to load sessions",
+        "description": "The label for the failure of loading sessions notification"
+    },
+    "notifySaveSuccess": {
+        "message": "The session was saved!",
+        "description": "The label for the success of saving session notification"
+    },
+    "notifySaveFail": {
+        "message": "Failed to save the session",
+        "description": "The label for the failure of saving session notification"
+    },
+    "notifySaveFailEmpty": {
+        "message": "Failed to save empty session",
+        "description": "The label for the failure of saving empty session notification"
+    },
+    "notifyUpdateSuccess": {
+        "message": "The session was updated!",
+        "description": "The label for the success of updating session notification"
+    },
+    "notifyUpdateFail": {
+        "message": "Failed to update the session",
+        "description": "The label for the failure  of updating session notification"
+    },
+    "notifyDeleteSuccess": {
+        "message": "The session was deleted!",
+        "description": "The label for the success of deleting session notification"
+    },
+    "notifyDeleteFail": {
+        "message": "Failed to delete the session",
+        "description": "The label for the failure of deleting session notification"
+    },
+    "notifyDeleteFailUndefined": {
+        "message": "Failed to delete: Non-existing session",
+        "description": "The label for the failure of deleting non-existing session notification"
+    },
+    "notifyDeleteAllSuccess": {
+        "message": "All the sessions were deleted!",
+        "description": "The label for the success of deleting all sessions notification"
+    },
+    "notifyDeleteAllFail": {
+        "message": "Failed to delete sessions",
+        "description": "The label for the failure of deleting all session notification"
+    },
+    "notifyDeleteAllFailUndefined": {
+        "message": "Failed to delete: Non-existing sessions",
+        "description": "The label for the failure of deleting non-existing sessions notification"
+    },
+    "notifyExtUpdate": {
+        "message": "Sessionic was updated to v$1!",
+        "description": "The label for the extension was updated notification - $1 is placeholder for version injection"
+    },
+    "settingsUserInterfaceHeading": {
+        "message": "User Interface",
+        "description": "The label for the user interface section heading in settings"
+    },
+    "settingsPopupView": {
+        "message": "Popup View",
+        "description": "The label for the Popup View option in settings"
+    },
+    "settingsDarkMode": {
+        "message": "Dark theme",
+        "description": "The label for the Dark theme option in settings"
+    },
+    "settingsAutosaveHeading": {
+        "message": "Automatic Saving",
+        "description": "The label for the automatic saving section heading in settings"
+    },
+    "settingsAutosave": {
+        "message": "Automatically save sessions",
+        "description": "The label for the Autosave option in settings"
+    },
+    "settingsAutosaveMax": {
+        "message": "Max number of saved sessions (max. 15 sessions)",
+        "description": "The label for the Autosave max number of saved sessions option in settings"
+    },
+    "settingsAutosaveInterval": {
+        "message": "Save interval in minutes (min. 1 minute)",
+        "description": "The label for the auto save interval option in settings"
+    },
+    "settingsExtensionActionsHeading": {
+        "message": "Extension Actions",
+        "description": "The label for the extension actions section heading in settings"
+    },
+    "settingsURLFilterList": {
+        "message": "URL Filter List",
+        "description": "The label for the URL Filter List text option in settings"
+    },
+    "settingsURLFilterListPlaceholder": {
+        "message": "e.g. track only the following URL match patterns:\n*://*/*\nfile:///*/*\nftp://*/*\nchrome://*/*\nhttps://*.google.com/\nhttps://www.youtube.com/*\n",
+        "description": "The label for the URL Filter List placeholder in settings"
+    },
+    "settingsLazyload": {
+        "message": "Lazy load tabs",
+        "description": "The label for the lazy load tabs option in settings"
+    },
+    "settingsResetAll": {
+        "message": "Reset All Settings",
+        "description": "The label for the reset all settings button in settings"
+    },
+    "settingsDoNotAskForSessionName": {
+        "message": "Do not ask for session name when saving",
+        "description": "The label for the do not ask for session name when saving option in settings"
+    },
+    "settingsExcludePinnedTabs": {
+        "message": "Exclude pinned tabs from session",
+        "description": "The label for the excluding pinned tabs in settings"
+    },
+    "settingsSessionActionsHeading": {
+        "message": "Session Actions",
+        "description": "The label for the session actions section heading in settings"
+    },
+    "settingsTagsTag": {
+        "message": "Tag",
+        "description": "The label for the tags table tag column in settings"
+    },
+    "settingsTagsBackground": {
+        "message": "Background",
+        "description": "The label for the tags table background column in settings"
+    },
+    "settingsTagsText": {
+        "message": "Text",
+        "description": "The label for the tags table text color column in settings"
+    },
+    "settingsTagsPreview": {
+        "message": "Preview",
+        "description": "The label for the tags table preview column in settings"
+    },
+    "settingsTagsAction": {
+        "message": "Action",
+        "description": "The label for the tags table action column in settings"
+    },
+    "settingsImportSessions": {
+        "message": "Import Sessions",
+        "description": "The label for importing sessions button in settings"
+    },
+    "settingsExportSessions": {
+        "message": "Export Sessions",
+        "description": "The label for exporting sessions button in settings"
+    },
+    "keyboardShortcutsHeading": {
+        "message": "Keyboard Shortcuts",
+        "description": "The label for keyboard shortcuts section in keyboard shortcuts page"
+    },
+    "shortcutCommandPalette": {
+        "message": "Open Command Palette",
+        "description": "The label for opening command palette keyboard shortcut"
+    },
+    "shortcutSaveCurrent": {
+        "message": "Save current session",
+        "description": "The label for saving current session keyboard shortcut"
+    },
+    "shortcutRenameSelected": {
+        "message": "Rename selected session",
+        "description": "The label for opening command palette keyboard shortcut"
+    },
+    "shortcutFocusSearch": {
+        "message": "Focus search box",
+        "description": "The label for focusing search box keyboard shortcut"
+    },
+    "shortcutDisplayCurrent": {
+        "message": "Display current session",
+        "description": "The label for displaying current session keyboard shortcut"
+    },
+    "shortcutSelectPrevious": {
+        "message": "Select previous session",
+        "description": "The label for selecting previous session shortcut"
+    },
+    "shortcutSelectNext": {
+        "message": "Select next session",
+        "description": "The label for selecting next session keyboard shortcut"
+    },
+    "shortcutDeleteSelected": {
+        "message": "Delete selected session",
+        "description": "The label for deleting selected session keyboard shortcut"
+    },
+    "aboutTranslationsLabel":{
+        "message": "Translations",
+        "description": "The label for Translations in About page"
+    },
+    "aboutLicenseLabel":{
+        "message": "Licence AGPL v3",
+        "description": "The label for License in About page"
+    },
+    "aboutChangelogLabel":{
+      "message": "Changelog",
+      "description": "The label for Changelog in About page"
+    },
+    "aboutSourceCodeLabel":{
+      "message": "Source code",
+      "description": "The label for Source code in About page"
+    }
 }
