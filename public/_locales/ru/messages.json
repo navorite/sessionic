@@ -1,1 +1,370 @@
-{}
+{
+    "labelSortZA": {
+        "message": "",
+        "description": "The label for sorting by Z to A for saved sessions"
+    },
+    "labelSortAZ": {
+        "message": "",
+        "description": "The label for sorting by A to Z for saved sessions"
+    },
+    "labelCurrentSession": {
+        "message": "",
+        "description": "The label for Current Session"
+    },
+    "settingsLazyload": {
+        "message": "",
+        "description": "The label for the lazy load tabs option in settings"
+    },
+    "notifyDeleteFail": {
+        "message": "",
+        "description": "The label for the failure of deleting session notification"
+    },
+    "notifyDeleteAllSuccess": {
+        "message": "",
+        "description": "The label for the success of deleting all sessions notification"
+    },
+    "settingsTagsPreview": {
+        "message": "",
+        "description": "The label for the tags table preview column in settings"
+    },
+    "notifySaveSuccess": {
+        "message": "",
+        "description": "The label for the success of saving session notification"
+    },
+    "shortcutFocusSearch": {
+        "message": "",
+        "description": "The label for focusing search box keyboard shortcut"
+    },
+    "labelSortOldest": {
+        "message": "",
+        "description": "The label for sorting by oldest saved session"
+    },
+    "labelJustNow": {
+        "message": "",
+        "description": "The label for just now"
+    },
+    "notifyDeleteAllFailUndefined": {
+        "message": "",
+        "description": "The label for the failure of deleting non-existing sessions notification"
+    },
+    "settingsExtensionActionsHeading": {
+        "message": "",
+        "description": "The label for the extension actions section heading in settings"
+    },
+    "labelExpand": {
+        "message": "",
+        "description": "The label for Expand"
+    },
+    "labelWindow": {
+        "message": "",
+        "description": "The label for Window"
+    },
+    "labelTabs": {
+        "message": "",
+        "description": "The label for Tabs"
+    },
+    "notifyUpdateSuccess": {
+        "message": "",
+        "description": "The label for the success of updating session notification"
+    },
+    "labelSearch": {
+        "message": "",
+        "description": "The label for Search"
+    },
+    "labelWindows": {
+        "message": "",
+        "description": "The label for Windows"
+    },
+    "labelClose": {
+        "message": "",
+        "description": "The label for Close"
+    },
+    "settingsAutosave": {
+        "message": "",
+        "description": "The label for the Autosave option in settings"
+    },
+    "shortcutSaveCurrent": {
+        "message": "",
+        "description": "The label for saving current session keyboard shortcut"
+    },
+    "notifyDeleteFailUndefined": {
+        "message": "",
+        "description": "The label for the failure of deleting non-existing session notification"
+    },
+    "notifyUpdateFail": {
+        "message": "",
+        "description": "The label for the failure  of updating session notification"
+    },
+    "aboutPage": {
+        "message": "",
+        "description": "The label for the About page in settings"
+    },
+    "settingsAutosaveInterval": {
+        "message": "",
+        "description": "The label for the auto save interval option in settings"
+    },
+    "settingsTagsTag": {
+        "message": "",
+        "description": "The label for the tags table tag column in settings"
+    },
+    "settingsAutosaveHeading": {
+        "message": "",
+        "description": "The label for the automatic saving section heading in settings"
+    },
+    "labelSettings": {
+        "message": "",
+        "description": "The label for Settings"
+    },
+    "settingsTagsAction": {
+        "message": "",
+        "description": "The label for the tags table action column in settings"
+    },
+    "labelYear": {
+        "message": "",
+        "description": "The label for year (abbreviated if possible)"
+    },
+    "renameModalTitle": {
+        "message": "",
+        "description": "The label for the rename session modal title"
+    },
+    "keyboardShortcutsPage": {
+        "message": "",
+        "description": "The label for the Keyboard Shortcuts page in settings"
+    },
+    "settingsTagsText": {
+        "message": "",
+        "description": "The label for the tags table text color column in settings"
+    },
+    "labelSortDate": {
+        "message": "",
+        "description": "The label for sorting by date category"
+    },
+    "labelOpen": {
+        "message": "",
+        "description": "The label for Open"
+    },
+    "extDesc": {
+        "message": "",
+        "description": "Description of the extension"
+    },
+    "settingsAutosaveMax": {
+        "message": "",
+        "description": "The label for the Autosave max number of saved sessions option in settings"
+    },
+    "labelCollapse": {
+        "message": "",
+        "description": "The label for Collapse"
+    },
+    "settingsDoNotAskForSessionName": {
+        "message": "",
+        "description": "The label for the do not ask for session name when saving option in settings"
+    },
+    "labelDelete": {
+        "message": "",
+        "description": "The label for Delete"
+    },
+    "deleteModalTitle": {
+        "message": "",
+        "description": "The label for the delete session modal title"
+    },
+    "settingsURLFilterList": {
+        "message": "",
+        "description": "The label for the URL Filter List text option in settings"
+    },
+    "tagsModalSelectTag": {
+        "message": "",
+        "description": "The label for selecting a tag in the create tag modal"
+    },
+    "labelRemoveTag": {
+        "message": "",
+        "description": "The label for Remove tag icon"
+    },
+    "aboutDonateText": {
+        "message": "",
+        "description": "The paragrah used in the donate modal and the about page"
+    },
+    "deleteModalContent": {
+        "message": "",
+        "description": "The label for the delete session modal content"
+    },
+    "labelMonth": {
+        "message": "",
+        "description": "The label for month (abbreviated if possible)"
+    },
+    "settingsTagsBackground": {
+        "message": "",
+        "description": "The label for the tags table background column in settings"
+    },
+    "settingsImportSessions": {
+        "message": "",
+        "description": "The label for importing sessions button in settings"
+    },
+    "notifySaveFail": {
+        "message": "",
+        "description": "The label for the failure of saving session notification"
+    },
+    "shortcutRenameSelected": {
+        "message": "",
+        "description": "The label for opening command palette keyboard shortcut"
+    },
+    "saveModalTitle": {
+        "message": "",
+        "description": "The label for the save session modal title"
+    },
+    "settingsPopupView": {
+        "message": "",
+        "description": "The label for the Popup View option in settings"
+    },
+    "labelSortNewest": {
+        "message": "",
+        "description": "The label for sorting by newest saved session"
+    },
+    "labelPrivateWindow": {
+        "message": "",
+        "description": "The label for Private Window"
+    },
+    "generalPage": {
+        "message": "",
+        "description": "The label for the General page in settings"
+    },
+    "shortcutSelectNext": {
+        "message": "",
+        "description": "The label for selecting next session keyboard shortcut"
+    },
+    "labelSortName": {
+        "message": "",
+        "description": "The label for sorting by name category for saved sessions"
+    },
+    "notifySaveFailEmpty": {
+        "message": "",
+        "description": "The label for the failure of saving empty session notification"
+    },
+    "shortcutDeleteSelected": {
+        "message": "",
+        "description": "The label for deleting selected session keyboard shortcut"
+    },
+    "labelFullView": {
+        "message": "",
+        "description": "The label for Full View"
+    },
+    "notifyLoadFail": {
+        "message": "",
+        "description": "The label for the failure of loading sessions notification"
+    },
+    "keyboardShortcutsHeading": {
+        "message": "",
+        "description": "The label for keyboard shortcuts section in keyboard shortcuts page"
+    },
+    "labelMinute": {
+        "message": "",
+        "description": "The label for minute (abbreviated if possible)"
+    },
+    "labelHour": {
+        "message": "",
+        "description": "The label for hour (abbreviated if possible)"
+    },
+    "labelTab": {
+        "message": "",
+        "description": "The label for Tab"
+    },
+    "settingsUserInterfaceHeading": {
+        "message": "",
+        "description": "The label for the user interface section heading in settings"
+    },
+    "labelRename": {
+        "message": "",
+        "description": "The label for Rename"
+    },
+    "settingsResetAll": {
+        "message": "",
+        "description": "The label for the reset all settings button in settings"
+    },
+    "settingsURLFilterListPlaceholder": {
+        "message": "",
+        "description": "The label for the URL Filter List placeholder in settings"
+    },
+    "labelDonate": {
+        "message": "",
+        "description": "The label for Donate"
+    },
+    "shortcutCommandPalette": {
+        "message": "",
+        "description": "The label for opening command palette keyboard shortcut"
+    },
+    "labelDay": {
+        "message": "",
+        "description": "The label for day"
+    },
+    "inputModalErrorChar": {
+        "message": "",
+        "description": "The label for the containing unallowed characters error in input modal"
+    },
+    "settingsSessionActionsHeading": {
+        "message": "",
+        "description": "The label for the session actions section heading in settings"
+    },
+    "labelSavedAt": {
+        "message": "",
+        "description": "The label for Saved at (date)"
+    },
+    "settingsExcludePinnedTabs": {
+        "message": "",
+        "description": "The label for the excluding pinned tabs in settings"
+    },
+    "labelClear": {
+        "message": "",
+        "description": "The label for Clear"
+    },
+    "settingsExportSessions": {
+        "message": "",
+        "description": "The label for exporting sessions button in settings"
+    },
+    "notifyDeleteAllFail": {
+        "message": "",
+        "description": "The label for the failure of deleting all session notification"
+    },
+    "notifyExtUpdate": {
+        "message": "",
+        "description": "The label for the extension was updated notification - $1 is placeholder for version injection"
+    },
+    "aboutDonateHeading": {
+        "message": "",
+        "description": "The heading used in the donate modal"
+    },
+    "inputModalErrorLength": {
+        "message": "",
+        "description": "The label for the containing unallowed characters error in input modal"
+    },
+    "settingsDarkMode": {
+        "message": "",
+        "description": "The label for the Dark theme option in settings"
+    },
+    "labelTagsAll": {
+        "message": "",
+        "description": "The label for showing all tags for saved sessions"
+    },
+    "notifyDeleteSuccess": {
+        "message": "",
+        "description": "The label for the success of deleting session notification"
+    },
+    "shortcutDisplayCurrent": {
+        "message": "",
+        "description": "The label for displaying current session keyboard shortcut"
+    },
+    "labelUnnamedSession": {
+        "message": "",
+        "description": "The label for Unnamed Session when saving without naming a session"
+    },
+    "labelSave": {
+        "message": "",
+        "description": "The label for Save"
+    },
+    "labelAddTag": {
+        "message": "",
+        "description": "The label for Add tag"
+    },
+    "shortcutSelectPrevious": {
+        "message": "",
+        "description": "The label for selecting previous session shortcut"
+    }
+}
