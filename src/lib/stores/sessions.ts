@@ -130,7 +130,7 @@ export const sessions = (() => {
   }
 
   async function remove(target: ESession) {
-    if (!target)
+    if (!target || !target.id || target.id === 'current')
       return notification.error(
         i18n.getMessage('notifyDeleteFailUndefined'),
         '[sessions.remove] error: removing undefined session'
@@ -139,16 +139,25 @@ export const sessions = (() => {
     update((sessions) => {
       const index = sessions.indexOf(target);
 
-      if (index !== -1) sessions.splice(index, 1);
+      if (index === -1) {
+        notification.error(
+          i18n.getMessage('notifyDeleteFailUndefined'),
+          '[sessions.remove] error: removing undefined session'
+        );
+
+        return sessions;
+      }
+
+      sessionsDB.deleteSession(target);
+
+      sessions.splice(index, 1);
 
       notify(sessions);
 
+      notification.success_warning(i18n.getMessage('notifyDeleteSuccess'));
+
       return sessions;
     });
-
-    await sessionsDB.deleteSession(target);
-
-    notification.success_warning(i18n.getMessage('notifyDeleteSuccess'));
   }
 
   async function removeAll() {
@@ -156,7 +165,7 @@ export const sessions = (() => {
 
     if (!length) {
       notification.error(
-        i18n.getMessage('notifyDeleteAllFailEmpty'),
+        i18n.getMessage('notifyDeleteAllFailUndefined'),
         '[sessions.removeAll] sessions are already empty'
       );
       return;
