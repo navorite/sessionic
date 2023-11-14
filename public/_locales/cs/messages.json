@@ -377,5 +377,8 @@
     },
     "tagPlaceholder": {
         "message": "například Osobní"
+    },
+    "settingsLazyloadDescription": {
+        "message": ""
     }
 }
