@@ -373,5 +373,24 @@
     "shortcutSelectPrevious": {
         "message": "",
         "description": "The label for selecting previous session shortcut"
+    },
+    "inputModalPlaceholder": {
+        "message": "",
+        "description": "The label for the session modal input"
+    },
+    "labelSearchPlaceholder": {
+        "message": "",
+        "description": "The placeholder for the Searchbar"
+    },
+    "settingsLazyloadDescription": {
+        "message": ""
+    },
+    "extDesc": {
+        "message": "",
+        "description": "Description of the extension"
+    },
+    "deleteModalContent": {
+        "message": "",
+        "description": "The label for the delete session modal content"
     }
 }
