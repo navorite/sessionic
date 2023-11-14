@@ -374,5 +374,8 @@
     "notifyDeleteSuccess": {
         "message": "Økten ble slettet",
         "description": "The label for the success of deleting session notification"
+    },
+    "settingsLazyloadDescription": {
+        "message": ""
     }
 }
