@@ -366,5 +366,13 @@
     "shortcutSelectPrevious": {
         "message": "",
         "description": "The label for selecting previous session shortcut"
+    },
+    "inputModalPlaceholder": {
+        "message": "",
+        "description": "The label for the session modal input"
+    },
+    "labelSearchPlaceholder": {
+        "message": "",
+        "description": "The placeholder for the Searchbar"
     }
 }
