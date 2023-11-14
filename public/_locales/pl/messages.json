@@ -1,1 +1,166 @@
-{}
+{
+    "labelSortZA": {
+        "message": "Z-A",
+        "description": "The label for sorting by Z to A for saved sessions"
+    },
+    "labelSortAZ": {
+        "message": "A-Z",
+        "description": "The label for sorting by A to Z for saved sessions"
+    },
+    "labelCurrentSession": {
+        "message": "Bieżąca sesja",
+        "description": "The label for Current Session"
+    },
+    "settingsTagsPreview": {
+        "message": "Podgląd",
+        "description": "The label for the tags table preview column in settings"
+    },
+    "labelSortOldest": {
+        "message": "Najstarsze",
+        "description": "The label for sorting by oldest saved session"
+    },
+    "labelJustNow": {
+        "message": "właśnie teraz",
+        "description": "The label for just now"
+    },
+    "labelExpand": {
+        "message": "Rozwiń",
+        "description": "The label for Expand"
+    },
+    "labelWindow": {
+        "message": "Okno",
+        "description": "The label for Window"
+    },
+    "labelTabs": {
+        "message": "Karty",
+        "description": "The label for Tabs"
+    },
+    "labelSearch": {
+        "message": "Wyszukaj",
+        "description": "The label for Search"
+    },
+    "labelWindows": {
+        "message": "Okna",
+        "description": "The label for Windows"
+    },
+    "labelClose": {
+        "message": "Zamknij",
+        "description": "The label for Close"
+    },
+    "aboutPage": {
+        "message": "O rozszerzeniu",
+        "description": "The label for the About page in settings"
+    },
+    "settingsTagsTag": {
+        "message": "Tag",
+        "description": "The label for the tags table tag column in settings"
+    },
+    "labelSettings": {
+        "message": "Ustawienia",
+        "description": "The label for Settings"
+    },
+    "settingsTagsAction": {
+        "message": "Działanie",
+        "description": "The label for the tags table action column in settings"
+    },
+    "labelYear": {
+        "message": "rocznie",
+        "description": "The label for year (abbreviated if possible)"
+    },
+    "keyboardShortcutsPage": {
+        "message": "Skróty klawiszowe",
+        "description": "The label for the Keyboard Shortcuts page in settings"
+    },
+    "settingsTagsText": {
+        "message": "Tekst",
+        "description": "The label for the tags table text color column in settings"
+    },
+    "labelSortDate": {
+        "message": "Data",
+        "description": "The label for sorting by date category"
+    },
+    "labelOpen": {
+        "message": "Otwórz",
+        "description": "The label for Open"
+    },
+    "labelCollapse": {
+        "message": "Zwiń",
+        "description": "The label for Collapse"
+    },
+    "labelDelete": {
+        "message": "Usuń",
+        "description": "The label for Delete"
+    },
+    "labelRemoveTag": {
+        "message": "Usuń tag",
+        "description": "The label for Remove tag icon"
+    },
+    "labelMonth": {
+        "message": "miesiecznie",
+        "description": "The label for month (abbreviated if possible)"
+    },
+    "settingsTagsBackground": {
+        "message": "Tło",
+        "description": "The label for the tags table background column in settings"
+    },
+    "labelSortNewest": {
+        "message": "Najnowsze",
+        "description": "The label for sorting by newest saved session"
+    },
+    "labelPrivateWindow": {
+        "message": "Okno prywatne",
+        "description": "The label for Private Window"
+    },
+    "generalPage": {
+        "message": "Ogólne",
+        "description": "The label for the General page in settings"
+    },
+    "labelSortName": {
+        "message": "Nazwa",
+        "description": "The label for sorting by name category for saved sessions"
+    },
+    "labelFullView": {
+        "message": "Pełny widok",
+        "description": "The label for Full View"
+    },
+    "labelTab": {
+        "message": "Karta",
+        "description": "The label for Tab"
+    },
+    "labelRename": {
+        "message": "Zmień nazwę",
+        "description": "The label for Rename"
+    },
+    "labelDonate": {
+        "message": "Przekaż darowiznę",
+        "description": "The label for Donate"
+    },
+    "labelDay": {
+        "message": "dziennie",
+        "description": "The label for day"
+    },
+    "labelSavedAt": {
+        "message": "Zapisano",
+        "description": "The label for Saved at (date)"
+    },
+    "labelClear": {
+        "message": "Wyczyść",
+        "description": "The label for Clear"
+    },
+    "labelTagsAll": {
+        "message": "Wszystko",
+        "description": "The label for showing all tags for saved sessions"
+    },
+    "labelUnnamedSession": {
+        "message": "Nienazwana sesja",
+        "description": "The label for Unnamed Session when saving without naming a session"
+    },
+    "labelSave": {
+        "message": "Zapisz",
+        "description": "The label for Save"
+    },
+    "labelAddTag": {
+        "message": "Dodaj tag",
+        "description": "The label for Add tag"
+    }
+}
