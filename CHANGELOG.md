@@ -4,7 +4,7 @@
 
 
 ### :rocket: Enhancements
-* Add Arabic translation ([f3c5d38](https://github.com/navorite/sessionic/commit/f3c5d3850aac9beafd627e3c767b0794fe170ab7))
+* Add Arabic, Czech, French, Norwegian, Spanish translations ([#81](https://github.com/navorite/sessionic/pull/81))
 * Open Full View after active tab ([#101](https://github.com/navorite/sessionic/issues/101)) ([2ec9a05](https://github.com/navorite/sessionic/commit/2ec9a059a1f069fb949b5cac91f1f7797f64b4fd))
 * Remove theme switch icon in popup (Use settings to switch them) ([#56](https://github.com/navorite/sessionic/issues/56)) ([ce79ef0](https://github.com/navorite/sessionic/commit/ce79ef0141ea92a2e56db935fea0f54aad0e49f4))
 
