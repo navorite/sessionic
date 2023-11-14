@@ -69,7 +69,7 @@ You can contribute to the localization of the extension at [Weblate](https://hos
 
 ## Common Questions and Answers
 
-You can check the project's Common Questions and Answers [here](https://github.com/navorite/sessionic/discussions/69).
+You can read the project's Common Questions and Answers [here](https://github.com/navorite/sessionic/discussions/69).
 
 ## Build locally
 
