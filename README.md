@@ -67,6 +67,10 @@ You can contribute to the localization of the extension at [Weblate](https://hos
       <img src="https://hosted.weblate.org/widgets/sessionic/-/multi-auto.svg" alt="Translation status"/>
 </a>
 
+## Common Questions and Answers
+
+You can read the extension's Common Questions and Answers [here](https://github.com/navorite/sessionic/discussions/69).
+
 ## Build locally
 
 1. Clone the repository `git clone https://github.com/navorite/sessionic.git`
