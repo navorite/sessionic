@@ -22,7 +22,7 @@ body:
     id: alternatives
     attributes:
       label: Alternatives considered
-      description: "Please provide a clear and concise description of any alternative solutions or features you've considered."
+      description: "Please provide any alternative solutions or features you've considered."
     validations:
       required: false
   - type: dropdown
