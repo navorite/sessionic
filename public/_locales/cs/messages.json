@@ -16,7 +16,7 @@
         "description": "The label for the failure of deleting session notification"
     },
     "labelSearchPlaceholder": {
-        "message": "Hledej relaci nebo tab…",
+        "message": "Hledej relaci nebo kartu …",
         "description": "The placeholder for the Searchbar"
     },
     "notifyDeleteAllSuccess": {
@@ -32,7 +32,7 @@
         "description": "The label for the success of saving session notification"
     },
     "labelSortOldest": {
-        "message": "Nejstarš",
+        "message": "Nejstarší",
         "description": "The label for sorting by oldest saved session"
     },
     "labelJustNow": {
@@ -56,7 +56,7 @@
         "description": "The label for the success of updating session notification"
     },
     "labelSearch": {
-        "message": "Vyhledávat",
+        "message": "Vyhledávání",
         "description": "The label for Search"
     },
     "labelWindows": {
@@ -188,11 +188,11 @@
         "description": "The label for Private Window"
     },
     "generalPage": {
-        "message": "Všeobecné",
+        "message": "Obecné",
         "description": "The label for the General page in settings"
     },
     "shortcutSelectNext": {
-        "message": "Vyber další relaci",
+        "message": "Vybrat další relaci",
         "description": "The label for selecting next session keyboard shortcut"
     },
     "labelSortName": {
@@ -284,7 +284,7 @@
         "description": "The label for Add tag"
     },
     "shortcutSelectPrevious": {
-        "message": "Vyber minulou relaci",
+        "message": "Vybrat minulou relaci",
         "description": "The label for selecting previous session shortcut"
     },
     "labelExpand": {
