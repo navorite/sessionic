@@ -99,10 +99,6 @@
         "message": "Dato",
         "description": "The label for sorting by date category"
     },
-    "labelOpen": {
-        "message": "",
-        "description": "The label for Open"
-    },
     "labelDelete": {
         "message": "Slett",
         "description": "The label for Delete"
