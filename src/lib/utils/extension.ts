@@ -43,7 +43,7 @@ export async function openExtensionPage(page: Page, query?: string) {
   if (!t2.length)
     browser.tabs.create({
       url: getExtensionURL(page, query),
-      index: currentTab.index
+      index: currentTab.index + 1
     });
   else {
     const extensionTab = t2[0]!;
@@ -53,7 +53,7 @@ export async function openExtensionPage(page: Page, query?: string) {
       extensionTab.windowId !== currentTab.windowId
     )
       browser.tabs.move(extensionTab.id!, {
-        index: currentTab.index,
+        index: currentTab.index + 1,
         windowId: currentTab.windowId
       });
 
