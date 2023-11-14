@@ -208,7 +208,7 @@
     "description": "The label for the failure of loading sessions notification"
   },
   "notifySaveSuccess":{
-    "message": "Saved the session!",
+    "message": "The session was saved!",
     "description": "The label for the success of saving session notification"
   },
   "notifySaveFail":{
@@ -220,7 +220,7 @@
     "description": "The label for the failure of saving empty session notification"
   },
   "notifyUpdateSuccess":{
-    "message": "Updated the session!",
+    "message": "The session was updated!",
     "description": "The label for the success of updating session notification"
   },
   "notifyUpdateFail":{
@@ -228,7 +228,7 @@
     "description": "The label for the failure  of updating session notification"
   },
   "notifyDeleteSuccess":{
-    "message": "Deleted the session!",
+    "message": "The session was deleted!",
     "description": "The label for the success of deleting session notification"
   },
   "notifyDeleteFail":{
@@ -240,7 +240,7 @@
     "description": "The label for the failure of deleting non-existing session notification"
   },
   "notifyDeleteAllSuccess":{
-    "message": "Deleted all the sessions!",
+    "message": "All the sessions were deleted!",
     "description": "The label for the success of deleting all sessions notification"
   },
   "notifyDeleteAllFail":{
