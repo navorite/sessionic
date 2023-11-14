@@ -384,11 +384,11 @@
         "description": "The label for License in About page"
     },
     "aboutChangelogLabel":{
-      "message": "Changelog",
-      "description": "The label for Changelog in About page"
+        "message": "Changelog",
+        "description": "The label for Changelog in About page"
     },
     "aboutSourceCodeLabel":{
-      "message": "Source code",
-      "description": "The label for Source code in About page"
+        "message": "Source code",
+        "description": "The label for Source code in About page"
     }
 }
