@@ -1,0 +1,246 @@
+{
+    "labelSortZA": {
+        "message": "Å-A",
+        "description": "The label for sorting by Z to A for saved sessions"
+    },
+    "labelSortAZ": {
+        "message": "A-Å",
+        "description": "The label for sorting by A to Z for saved sessions"
+    },
+    "labelCurrentSession": {
+        "message": "Nåværende økt",
+        "description": "The label for Current Session"
+    },
+    "inputModalPlaceholder": {
+        "message": "Skriv inn øktnavn …",
+        "description": "The label for the session modal input"
+    },
+    "settingsTagsPreview": {
+        "message": "Forhåndsvis",
+        "description": "The label for the tags table preview column in settings"
+    },
+    "shortcutFocusSearch": {
+        "message": "Fokuser på søkefeltet",
+        "description": "The label for focusing search box keyboard shortcut"
+    },
+    "labelSortOldest": {
+        "message": "Eldst",
+        "description": "The label for sorting by oldest saved session"
+    },
+    "labelJustNow": {
+        "message": "akkurat nå",
+        "description": "The label for just now"
+    },
+    "labelExpand": {
+        "message": "Utvid",
+        "description": "The label for Expand"
+    },
+    "labelWindow": {
+        "message": "Vindu",
+        "description": "The label for Window"
+    },
+    "labelTabs": {
+        "message": "Faner",
+        "description": "The label for Tabs"
+    },
+    "labelSearch": {
+        "message": "Søk",
+        "description": "The label for Search"
+    },
+    "labelWindows": {
+        "message": "Vinduer",
+        "description": "The label for Windows"
+    },
+    "labelClose": {
+        "message": "Lukk",
+        "description": "The label for Close"
+    },
+    "shortcutSaveCurrent": {
+        "message": "Lagre nåværende økt",
+        "description": "The label for saving current session keyboard shortcut"
+    },
+    "aboutPage": {
+        "message": "Om",
+        "description": "The label for the About page in settings"
+    },
+    "settingsTagsTag": {
+        "message": "Etikett",
+        "description": "The label for the tags table tag column in settings"
+    },
+    "settingsAutosaveHeading": {
+        "message": "Automatisk lagring",
+        "description": "The label for the automatic saving section heading in settings"
+    },
+    "labelSettings": {
+        "message": "Innstillinger",
+        "description": "The label for Settings"
+    },
+    "settingsTagsAction": {
+        "message": "Handling",
+        "description": "The label for the tags table action column in settings"
+    },
+    "labelYear": {
+        "message": "år",
+        "description": "The label for year (abbreviated if possible)"
+    },
+    "renameModalTitle": {
+        "message": "Gi økt nytt navn",
+        "description": "The label for the rename session modal title"
+    },
+    "keyboardShortcutsPage": {
+        "message": "Tastatursnarveier",
+        "description": "The label for the Keyboard Shortcuts page in settings"
+    },
+    "settingsTagsText": {
+        "message": "Tekst",
+        "description": "The label for the tags table text color column in settings"
+    },
+    "labelSortDate": {
+        "message": "Dato",
+        "description": "The label for sorting by date category"
+    },
+    "labelDelete": {
+        "message": "Slett",
+        "description": "The label for Delete"
+    },
+    "deleteModalTitle": {
+        "message": "Slett økt",
+        "description": "The label for the delete session modal title"
+    },
+    "settingsURLFilterList": {
+        "message": "Nettadresse-filterliste",
+        "description": "The label for the URL Filter List text option in settings"
+    },
+    "tagsModalSelectTag": {
+        "message": "Velg en etikett",
+        "description": "The label for selecting a tag in the create tag modal"
+    },
+    "labelRemoveTag": {
+        "message": "Fjern etikett",
+        "description": "The label for Remove tag icon"
+    },
+    "labelMonth": {
+        "message": "må",
+        "description": "The label for month (abbreviated if possible)"
+    },
+    "settingsTagsBackground": {
+        "message": "Bakgrunn",
+        "description": "The label for the tags table background column in settings"
+    },
+    "settingsImportSessions": {
+        "message": "Importer økter",
+        "description": "The label for importing sessions button in settings"
+    },
+    "shortcutRenameSelected": {
+        "message": "Gi valgt økt nytt navn",
+        "description": "The label for opening command palette keyboard shortcut"
+    },
+    "saveModalTitle": {
+        "message": "Lagre økt",
+        "description": "The label for the save session modal title"
+    },
+    "labelSortNewest": {
+        "message": "Nyeste",
+        "description": "The label for sorting by newest saved session"
+    },
+    "labelPrivateWindow": {
+        "message": "Privat vindu",
+        "description": "The label for Private Window"
+    },
+    "generalPage": {
+        "message": "Generelt",
+        "description": "The label for the General page in settings"
+    },
+    "shortcutSelectNext": {
+        "message": "Velg neste økt",
+        "description": "The label for selecting next session keyboard shortcut"
+    },
+    "labelSortName": {
+        "message": "Navn",
+        "description": "The label for sorting by name category for saved sessions"
+    },
+    "shortcutDeleteSelected": {
+        "message": "Slett valgt økt",
+        "description": "The label for deleting selected session keyboard shortcut"
+    },
+    "keyboardShortcutsHeading": {
+        "message": "Tastatursnarveier",
+        "description": "The label for keyboard shortcuts section in keyboard shortcuts page"
+    },
+    "labelMinute": {
+        "message": "min",
+        "description": "The label for minute (abbreviated if possible)"
+    },
+    "labelHour": {
+        "message": "t",
+        "description": "The label for hour (abbreviated if possible)"
+    },
+    "labelTab": {
+        "message": "Fane",
+        "description": "The label for Tab"
+    },
+    "settingsUserInterfaceHeading": {
+        "message": "Brukergrensesnitt",
+        "description": "The label for the user interface section heading in settings"
+    },
+    "labelRename": {
+        "message": "Gi nytt navn",
+        "description": "The label for Rename"
+    },
+    "labelDonate": {
+        "message": "Doner",
+        "description": "The label for Donate"
+    },
+    "labelDay": {
+        "message": "dag",
+        "description": "The label for day"
+    },
+    "settingsSessionActionsHeading": {
+        "message": "Økthandlinger",
+        "description": "The label for the session actions section heading in settings"
+    },
+    "labelSavedAt": {
+        "message": "Lagret",
+        "description": "The label for Saved at (date)"
+    },
+    "labelClear": {
+        "message": "Tøm",
+        "description": "The label for Clear"
+    },
+    "settingsExportSessions": {
+        "message": "Eksporter økter",
+        "description": "The label for exporting sessions button in settings"
+    },
+    "aboutDonateHeading": {
+        "message": "Støtt prosjektet",
+        "description": "The heading used in the donate modal"
+    },
+    "settingsDarkMode": {
+        "message": "Mørk drakt",
+        "description": "The label for the Dark theme option in settings"
+    },
+    "labelTagsAll": {
+        "message": "Alle",
+        "description": "The label for showing all tags for saved sessions"
+    },
+    "shortcutDisplayCurrent": {
+        "message": "Vis nåværende økt",
+        "description": "The label for displaying current session keyboard shortcut"
+    },
+    "labelUnnamedSession": {
+        "message": "Ikke navngitt økt",
+        "description": "The label for Unnamed Session when saving without naming a session"
+    },
+    "labelSave": {
+        "message": "Lagre",
+        "description": "The label for Save"
+    },
+    "labelAddTag": {
+        "message": "Legg til etikett",
+        "description": "The label for Add tag"
+    },
+    "shortcutSelectPrevious": {
+        "message": "Velg forrige økt",
+        "description": "The label for selecting previous session shortcut"
+    }
+}
