@@ -39,7 +39,10 @@
       <IconButton
         icon="open"
         title={i18n.getMessage('labelFullView')}
-        on:click={openFullView}
+        on:click={async () => {
+          await openFullView();
+          window.close();
+        }}
       />
     {/if}
 
@@ -53,7 +56,11 @@
     <IconButton
       icon="settings"
       title={i18n.getMessage('labelSettings')}
-      on:click={openOptions}
+      on:click={async () => {
+        await openOptions();
+
+        if (isPopup) window.close();
+      }}
     />
   </div>
 </div>
