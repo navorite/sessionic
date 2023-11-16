@@ -383,5 +383,8 @@
     },
     "aboutTranslationsLabel": {
         "message": "Translations"
+    },
+    "aboutChangelogLabel": {
+        "message": "Changelog"
     }
 }
