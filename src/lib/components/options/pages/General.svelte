@@ -31,7 +31,6 @@
 <Section title={i18n.getMessage('settingsAutosaveHeading')}>
   <Switch
     title={i18n.getMessage('settingsAutosave')}
-    description={i18n.getMessage('settingsAutosaveDescription')}
     checked={$settings.autoSave}
     on:change={() => {
       settings.changeSetting('autoSave', !$settings.autoSave);
