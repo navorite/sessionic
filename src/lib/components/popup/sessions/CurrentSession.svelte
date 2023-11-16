@@ -132,7 +132,7 @@
       class="session-card"
       use:tooltip={{
         title: `${$session?.tabsNumber} ${
-          $session?.tabsNumber > 1 ? i18n.getMessage('TabsTitle'), : i18n.getMessage('TabTitle')
+          i18n.getMessage($session?.tabsNumber > 1 ? 'labelTabs' : 'labelTab')
         }`
       }}
     >
