@@ -377,5 +377,8 @@
     },
     "tagPlaceholder": {
         "message": "e.g. Personal"
+    },
+    "settingsLazyloadDescription": {
+        "message": "Greatly reduce memory usage by not loading tab until selected"
     }
 }
