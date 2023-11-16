@@ -374,21 +374,5 @@
     "shortcutDeleteSelected": {
         "message": "Delete selected session",
         "description": "The label for deleting selected session keyboard shortcut"
-    },
-    "aboutTranslationsLabel":{
-        "message": "Translations",
-        "description": "The label for Translations in About page"
-    },
-    "aboutLicenseLabel":{
-        "message": "Licence AGPL v3",
-        "description": "The label for License in About page"
-    },
-    "aboutChangelogLabel":{
-        "message": "Changelog",
-        "description": "The label for Changelog in About page"
-    },
-    "aboutSourceCodeLabel":{
-        "message": "Source code",
-        "description": "The label for Source code in About page"
     }
 }
