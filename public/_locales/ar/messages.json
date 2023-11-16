@@ -374,5 +374,8 @@
     "shortcutDeleteSelected": {
         "message": "حذف الجلسة المختارة",
         "description": "The label for deleting selected session keyboard shortcut"
+    },
+    "tagPlaceholder": {
+        "message": "مثال: خاص"
     }
 }
