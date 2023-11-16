@@ -196,7 +196,7 @@
         "description": "The label for the delete session modal title"
     },
     "deleteModalContent": {
-        "message": "Are you sure you wanna delete this session?",
+        "message": "Are you sure you want to delete this session?",
         "description": "The label for the delete session modal content"
     },
     "notifyLoadFail": {
@@ -379,6 +379,6 @@
         "message": "e.g. Personal"
     },
     "settingsLazyloadDescription": {
-        "message": "Greatly reduce memory usage by not loading tab until selected"
+        "message": "Greatly reduce memory usage by not loading tabs until selected"
     }
 }
