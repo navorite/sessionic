@@ -120,7 +120,7 @@
       class="session-card"
       use:tooltip={{
         title: `${$session?.windows?.length} ${
-          $session?.windows?.length > 1 ? i18n.getMessage('WindowsTitle'), : i18n.getMessage('WindowTitle')
+          i18n.getMessage($session?.windows?.length > 1 ? 'labelWindows' : 'labelWindow')
         }`
       }}
     >
