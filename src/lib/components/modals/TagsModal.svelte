@@ -90,7 +90,7 @@
               type="text"
               minlength="1"
               maxlength="15"
-              placeholder={i18n.getMessage('NewTagInputPlaceholder')}
+              placeholder={i18n.getMessage('tagPlaceholder')}
               class="rounded-md border-2 border-neutral-4 bg-transparent px-2 py-1 outline-none"
               value={tag.name}
               on:input={(event) => {
