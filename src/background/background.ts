@@ -45,12 +45,12 @@ browser.alarms.onAlarm.addListener(async (alarm) => {
     if (count > autoSaveMaxSessions)
       sessionsDB.deleteLastAutosavedSession(count - autoSaveMaxSessions);
 
-    const sessions = sessionsDB.lazyLoadSessions();
-
-    sendMessage({
-      message: 'notifyChangeDB',
-      sessions: await sessions,
-      selectedId: selectionId
+    sessionsDB.streamSessions('dateSaved', (sessions) => {
+      sendMessage({
+        message: 'notifyChangeDB',
+        sessions,
+        selectedId: selectionId
+      });
     });
   }
 });

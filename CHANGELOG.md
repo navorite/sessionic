@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.6.1](https://github.com/navorite/sessionic/compare/v1.6.0...v1.6.1) (2023-11-14)
+
+
+### :rocket: Enhancements
+* Add Arabic, Czech, French, Norwegian, Spanish translations ([#81](https://github.com/navorite/sessionic/pull/81))
+* Open Full View after active tab ([#101](https://github.com/navorite/sessionic/issues/101)) ([2ec9a05](https://github.com/navorite/sessionic/commit/2ec9a059a1f069fb949b5cac91f1f7797f64b4fd))
+* Remove theme switch icon in popup (Use settings to switch them) ([#56](https://github.com/navorite/sessionic/issues/56)) ([ce79ef0](https://github.com/navorite/sessionic/commit/ce79ef0141ea92a2e56db935fea0f54aad0e49f4))
+
+
+### :bug: Bug Fixes
+
+* Autosaved sessions did not show up real-time ([564ee1f](https://github.com/navorite/sessionic/commit/564ee1f7c6dc0dd163654586004b8bceab623cba))
+* Show error when deleting empty session list ([e30abaf](https://github.com/navorite/sessionic/commit/e30abaf9545b2acbcf9c145c7c770b4c4f8a7acf))
+
 ## [1.6.0](https://github.com/navorite/sessionic/compare/v1.5.0...v1.6.0) (2023-11-07)
 
 
