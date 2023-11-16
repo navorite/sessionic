@@ -377,5 +377,8 @@
     },
     "tagPlaceholder": {
         "message": "مثال: خاص"
+    },
+    "settingsLazyloadDescription": {
+        "message": "تقليل إستهلاك الذاكرة بصورة كبيرة عن طريق عدم تحميل التبويبات حتى يتم إختيارها"
     }
 }
