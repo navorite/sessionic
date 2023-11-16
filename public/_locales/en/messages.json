@@ -380,5 +380,8 @@
     },
     "settingsLazyloadDescription": {
         "message": "Greatly reduce memory usage by not loading tabs until selected"
+    },
+    "aboutTranslationsLabel": {
+        "message": "Translations"
     }
 }
