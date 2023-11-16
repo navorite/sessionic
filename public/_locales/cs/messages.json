@@ -374,5 +374,8 @@
     "shortcutDisplayCurrent": {
         "message": "Zobrazit aktuální relaci",
         "description": "The label for displaying current session keyboard shortcut"
+    },
+    "tagPlaceholder": {
+        "message": "například Osobní"
     }
 }
