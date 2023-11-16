@@ -374,23 +374,5 @@
     "shortcutSelectPrevious": {
         "message": "Sélectionner la session précédente",
         "description": "The label for selecting previous session shortcut"
-    },
-    "settingsLazyloadDescription": {
-        "message": ""
-    },
-    "aboutLicenseLabel": {
-        "message": ""
-    },
-    "tagPlaceholder": {
-        "message": ""
-    },
-    "aboutChangelogLabel": {
-        "message": ""
-    },
-    "aboutTranslationsLabel": {
-        "message": ""
-    },
-    "aboutSourceCodeLabel": {
-        "message": ""
     }
 }
