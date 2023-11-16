@@ -386,5 +386,8 @@
     },
     "aboutChangelogLabel": {
         "message": "Changelog"
+    },
+    "aboutSourceCodeLabel": {
+        "message": "Source code"
     }
 }
