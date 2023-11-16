@@ -52,6 +52,6 @@ body:
       label: Severity
       description: Select the severity of this bug
       options:
-        - annoyance (3)
-        - severe (2)
-        - blocking all usage of Sessionic (1)
+        - Annoyance (3)
+        - Severe (2)
+        - Blocking all usage of Sessionic (1)
