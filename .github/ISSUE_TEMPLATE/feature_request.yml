@@ -31,8 +31,8 @@ body:
       label: Importance
       description: How important is this feature to you?
       options:
-        - nice to have (3)
-        - would make my life easier (2)
-        - i cannot use sessionic without it (1)
+        - Nice to have (3)
+        - Would make my life easier (2)
+        - I cannot use sessionic without it (1)
     validations:
       required: true

@@ -15,7 +15,7 @@
   value={$settings.sortMethod}
   on:change={(ev) => changeSortMethod(ev.currentTarget.value)}
 >
-  <optgroup label={i18n.getMessage('popupSortDate')}>
+  <optgroup label={i18n.getMessage('labelSortDate')}>
     <option value="newest">{i18n.getMessage('labelSortNewest')}</option>
     <option value="oldest">{i18n.getMessage('labelSortOldest')}</option>
   </optgroup>
