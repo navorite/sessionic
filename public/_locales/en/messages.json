@@ -389,5 +389,8 @@
     },
     "aboutSourceCodeLabel": {
         "message": "Source code"
+    },
+    "aboutLicenseLabel": {
+        "message": "License AGPL v3"
     }
 }
