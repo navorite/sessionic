@@ -377,5 +377,20 @@
     },
     "settingsLazyloadDescription": {
         "message": ""
+    },
+    "aboutLicenseLabel": {
+        "message": ""
+    },
+    "tagPlaceholder": {
+        "message": ""
+    },
+    "aboutChangelogLabel": {
+        "message": ""
+    },
+    "aboutTranslationsLabel": {
+        "message": ""
+    },
+    "aboutSourceCodeLabel": {
+        "message": ""
     }
 }
