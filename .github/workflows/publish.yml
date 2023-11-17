@@ -5,7 +5,7 @@ on:
     types: [created]
 
 env:
-  FILE_PATH: ./dist/file.zip xxxxxxxxxxxxxxxxxxxxxxxxx
+  FILE_PATH: ./dist/sessionic.zip
 
   CHROME_EXTENSION_ID: ${{ secrets.CHROME_EXTENSION_ID }}
   CHROME_CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
