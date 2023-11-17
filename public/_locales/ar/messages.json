@@ -374,5 +374,23 @@
     "shortcutDeleteSelected": {
         "message": "حذف الجلسة المختارة",
         "description": "The label for deleting selected session keyboard shortcut"
+    },
+    "tagPlaceholder": {
+        "message": "مثال: خاص"
+    },
+    "settingsLazyloadDescription": {
+        "message": "تقليل إستهلاك الذاكرة بصورة كبيرة عن طريق عدم تحميل التبويبات حتى يتم إختيارها"
+    },
+    "aboutLicenseLabel": {
+        "message": "رخصة AGPL v3"
+    },
+    "aboutChangelogLabel": {
+        "message": "سجل التغيير"
+    },
+    "aboutTranslationsLabel": {
+        "message": "الترجمات"
+    },
+    "aboutSourceCodeLabel": {
+        "message": "شفرة المصدر"
     }
 }

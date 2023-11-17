@@ -31,7 +31,6 @@
 <Section title={i18n.getMessage('settingsAutosaveHeading')}>
   <Switch
     title={i18n.getMessage('settingsAutosave')}
-    description="Greatly reduce memory usage by not loading tab until selected"
     checked={$settings.autoSave}
     on:change={() => {
       settings.changeSetting('autoSave', !$settings.autoSave);
@@ -102,7 +101,7 @@
 
   <Switch
     title={i18n.getMessage('settingsLazyload')}
-    description="Greatly reduce memory usage by not loading tab until selected"
+    description={i18n.getMessage('settingsLazyloadDescription')}
     checked={$settings.discarded}
     on:change={() => settings.changeSetting('discarded', !$settings.discarded)}
   />
