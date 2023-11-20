@@ -360,7 +360,7 @@
         "description": "The label for the containing unallowed characters error in input modal"
     },
     "settingsExcludePinnedTabs": {
-        "message": "Vyloučit připnuté karty z relace",
+        "message": "Vyřadit připnuté karty z relace",
         "description": "The label for the excluding pinned tabs in settings"
     },
     "notifyExtUpdate": {
