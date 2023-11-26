@@ -124,6 +124,13 @@
 </Section>
 
 <Section title={i18n.getMessage('settingsExtensionActionsHeading')}>
+  <Switch
+    title={i18n.getMessage('settingsLazyload')}
+    description={i18n.getMessage('settingsLazyloadDescription')}
+    checked={$settings.discarded}
+    on:change={() => settings.changeSetting('discarded', !$settings.discarded)}
+  />
+
   <label class="flex flex-col gap-2 font-medium">
     {i18n.getMessage('settingsURLFilterList')}
     <textarea
@@ -137,13 +144,6 @@
       on:change={(ev) => handleFilterListChange(ev, urlList)}
     />
   </label>
-
-  <Switch
-    title={i18n.getMessage('settingsLazyload')}
-    description={i18n.getMessage('settingsLazyloadDescription')}
-    checked={$settings.discarded}
-    on:change={() => settings.changeSetting('discarded', !$settings.discarded)}
-  />
 
   <button
     type="button"
