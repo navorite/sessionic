@@ -11,10 +11,12 @@
 
   let selectVal = 'createANewTag';
 
-  let tag = { name: 'Preview', bgColor: 'royalblue', textColor: 'white' };
+  const defualtNewTag = { name: '', bgColor: 'royalblue', textColor: 'white' };
+
+  let tag = defualtNewTag;
 
   $: selectVal === 'createANewTag'
-    ? { name: 'Preview', bgColor: 'royalblue', textColor: 'white' }
+    ? defualtNewTag
     : (tag = {
         name: selectVal,
         bgColor: $settings.tags[selectVal]?.bgColor ?? 'royalblue',
@@ -26,7 +28,7 @@
       tags = value;
     });
   } else {
-    tag = { name: 'Preview', bgColor: 'royalblue', textColor: 'white' };
+    tag = defualtNewTag
   }
 
   const dispatch = createEventDispatcher<{ tagSubmit: string }>();
@@ -88,7 +90,7 @@
               type="text"
               minlength="1"
               maxlength="15"
-              placeholder="e.g. Personal"
+              placeholder={i18n.getMessage('tagPlaceholder')}
               class="rounded-md border-2 border-neutral-4 bg-transparent px-2 py-1 outline-none"
               value={tag.name}
               on:input={(event) => {

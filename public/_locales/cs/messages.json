@@ -104,7 +104,7 @@
         "description": "The label for year (abbreviated if possible)"
     },
     "renameModalTitle": {
-        "message": "Přejmenuj relaci",
+        "message": "Přejmenovat relaci",
         "description": "The label for the rename session modal title"
     },
     "keyboardShortcutsPage": {
@@ -124,7 +124,7 @@
         "description": "The label for Open"
     },
     "extDesc": {
-        "message": "Webové rozšíření k ukládání, spravování a obnova relací a tabs.",
+        "message": "Webové rozšíření k ukládání, spravování a obnově relací, oken a karet.",
         "description": "Description of the extension"
     },
     "settingsDoNotAskForSessionName": {
@@ -140,7 +140,7 @@
         "description": "The label for the delete session modal title"
     },
     "tagsModalSelectTag": {
-        "message": "Vyber štítek",
+        "message": "Vybrat štítek",
         "description": "The label for selecting a tag in the create tag modal"
     },
     "labelRemoveTag": {
@@ -176,7 +176,7 @@
         "description": "The label for opening command palette keyboard shortcut"
     },
     "saveModalTitle": {
-        "message": "Ulož relaci",
+        "message": "Uložit relaci",
         "description": "The label for the save session modal title"
     },
     "labelSortNewest": {
@@ -228,7 +228,7 @@
         "description": "The label for Rename"
     },
     "labelDonate": {
-        "message": "Přispěj",
+        "message": "Darovat",
         "description": "The label for Donate"
     },
     "labelDay": {
@@ -296,7 +296,7 @@
         "description": "The label for the lazy load tabs option in settings"
     },
     "inputModalPlaceholder": {
-        "message": "Zadejte název relace…",
+        "message": "Zadejte jméno relace…",
         "description": "The label for the session modal input"
     },
     "shortcutFocusSearch": {
@@ -368,11 +368,14 @@
         "description": "The label for the extension was updated notification - $1 is placeholder for version injection"
     },
     "inputModalErrorLength": {
-        "message": "Název relace musí být mezi $1 a $2 znaky.",
+        "message": "Jméno relace musí být mezi $1 a $2 znaky.",
         "description": "The label for the containing unallowed characters error in input modal"
     },
     "shortcutDisplayCurrent": {
         "message": "Zobrazit aktuální relaci",
         "description": "The label for displaying current session keyboard shortcut"
+    },
+    "tagPlaceholder": {
+        "message": "například Osobní"
     }
 }

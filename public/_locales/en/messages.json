@@ -196,7 +196,7 @@
         "description": "The label for the delete session modal title"
     },
     "deleteModalContent": {
-        "message": "Are you sure you wanna delete this session?",
+        "message": "Are you sure you want to delete this session?",
         "description": "The label for the delete session modal content"
     },
     "notifyLoadFail": {
@@ -374,5 +374,23 @@
     "shortcutDeleteSelected": {
         "message": "Delete selected session",
         "description": "The label for deleting selected session keyboard shortcut"
+    },
+    "tagPlaceholder": {
+        "message": "e.g. Personal"
+    },
+    "settingsLazyloadDescription": {
+        "message": "Greatly reduce memory usage by not loading tabs until selected"
+    },
+    "aboutTranslationsLabel": {
+        "message": "Translations"
+    },
+    "aboutChangelogLabel": {
+        "message": "Changelog"
+    },
+    "aboutSourceCodeLabel": {
+        "message": "Source code"
+    },
+    "aboutLicenseLabel": {
+        "message": "License AGPL v3"
     }
 }

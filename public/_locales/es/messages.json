@@ -152,7 +152,7 @@
         "description": "The label for Open"
     },
     "extDesc": {
-        "message": "Una extensión web para guardar, gestionar, restaurar sesiones y pestañas.",
+        "message": "Una extensión web para guardar, gestionar y restaurar sesiones, ventanas y pestañas.",
         "description": "Description of the extension"
     },
     "settingsAutosaveMax": {
@@ -192,7 +192,7 @@
         "description": "The paragrah used in the donate modal and the about page"
     },
     "deleteModalContent": {
-        "message": "¿Seguro que quieres borrar esta sesión?",
+        "message": "¿Estás seguro de que quieres borrar esta sesión?",
         "description": "The label for the delete session modal content"
     },
     "labelMonth": {
@@ -374,5 +374,23 @@
     "shortcutSelectPrevious": {
         "message": "Seleccionar la sesión anterior",
         "description": "The label for selecting previous session shortcut"
+    },
+    "aboutLicenseLabel": {
+        "message": "Licencia AGPL v3"
+    },
+    "tagPlaceholder": {
+        "message": "Por ejemplo, Personal"
+    },
+    "settingsLazyloadDescription": {
+        "message": "Gran reducción del uso de la memoria al no cargar las pestañas hasta que se seleccionan"
+    },
+    "aboutChangelogLabel": {
+        "message": "Registro de cambios"
+    },
+    "aboutTranslationsLabel": {
+        "message": "Traducciones"
+    },
+    "aboutSourceCodeLabel": {
+        "message": "Código fuente"
     }
 }
