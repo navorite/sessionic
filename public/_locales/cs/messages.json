@@ -20,7 +20,7 @@
         "description": "The placeholder for the Searchbar"
     },
     "notifyDeleteAllSuccess": {
-        "message": "Všechny relace smazány!",
+        "message": "Všechny relace byly smazány!",
         "description": "The label for the success of deleting all sessions notification"
     },
     "settingsTagsPreview": {
@@ -28,7 +28,7 @@
         "description": "The label for the tags table preview column in settings"
     },
     "notifySaveSuccess": {
-        "message": "Relace uložena!",
+        "message": "Relace byla uložena!",
         "description": "The label for the success of saving session notification"
     },
     "labelSortOldest": {
@@ -52,7 +52,7 @@
         "description": "The label for Tabs"
     },
     "notifyUpdateSuccess": {
-        "message": "Relace aktualizována!",
+        "message": "Relace byla aktualizována!",
         "description": "The label for the success of updating session notification"
     },
     "labelSearch": {
@@ -80,7 +80,7 @@
         "description": "The label for the About page in settings"
     },
     "settingsAutosaveInterval": {
-        "message": "Ukládací interval v minutách (minimálně 1 minuta)",
+        "message": "Ukládací interval v minutách (min. 1 minuta)",
         "description": "The label for the auto save interval option in settings"
     },
     "settingsTagsTag": {
@@ -268,7 +268,7 @@
         "description": "The label for showing all tags for saved sessions"
     },
     "notifyDeleteSuccess": {
-        "message": "Relace smazána!",
+        "message": "Relace byla smazána!",
         "description": "The label for the success of deleting session notification"
     },
     "labelUnnamedSession": {
@@ -292,7 +292,7 @@
         "description": "The label for Expand"
     },
     "settingsLazyload": {
-        "message": "Líné načítání karet",
+        "message": "Načtení karet až po jejich otevření",
         "description": "The label for the lazy load tabs option in settings"
     },
     "inputModalPlaceholder": {
@@ -360,7 +360,7 @@
         "description": "The label for the containing unallowed characters error in input modal"
     },
     "settingsExcludePinnedTabs": {
-        "message": "Vyloučit připnuté karty z relace",
+        "message": "Vyřadit připnuté karty z relace",
         "description": "The label for the excluding pinned tabs in settings"
     },
     "notifyExtUpdate": {
@@ -374,8 +374,5 @@
     "shortcutDisplayCurrent": {
         "message": "Zobrazit aktuální relaci",
         "description": "The label for displaying current session keyboard shortcut"
-    },
-    "tagPlaceholder": {
-        "message": "například Osobní"
     }
 }
