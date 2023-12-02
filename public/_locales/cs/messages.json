@@ -374,5 +374,23 @@
     "shortcutDisplayCurrent": {
         "message": "Zobrazit aktuální relaci",
         "description": "The label for displaying current session keyboard shortcut"
+    },
+    "aboutLicenseLabel": {
+        "message": "Licence AGPL v3"
+    },
+    "tagPlaceholder": {
+        "message": "například Osobní"
+    },
+    "settingsLazyloadDescription": {
+        "message": "Výrazně se sníží paměťová náročnost tím, že se nebudou načítat karty, dokud nejsou vybrány"
+    },
+    "aboutChangelogLabel": {
+        "message": "Souhrn změn u daných verzí"
+    },
+    "aboutTranslationsLabel": {
+        "message": "Překlady"
+    },
+    "aboutSourceCodeLabel": {
+        "message": "Zdrojový kód"
     }
 }
