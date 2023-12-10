@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.6.2](https://github.com/navorite/sessionic/compare/v1.6.1...v1.6.2) (2023-12-10)
+
+
+### :rocket: Enhancements
+
+* Add links to Translations and License on About page ([f3007b7](https://github.com/navorite/sessionic/commit/f3007b75b4e0344976ab849e6be60d96fb695507))
+* Add missing localization in Settings ([72e0ce5](https://github.com/navorite/sessionic/commit/72e0ce59f6785a5c7f4e47fc98d55434252b3190))
+* Change add tag options to have neutral background and text ([#126](https://github.com/navorite/sessionic/issues/126)) ([e1d880c](https://github.com/navorite/sessionic/commit/e1d880c1396a589d95981515c0927cc87fe2b3b3))
+* Close popup if openning Settings/FullView ([#110](https://github.com/navorite/sessionic/issues/110)) ([0ad8da9](https://github.com/navorite/sessionic/commit/0ad8da9eb6863a59754176b33cd4905dd6a7bd9e))
+* Improve About page UI ([cd4e2c3](https://github.com/navorite/sessionic/commit/cd4e2c3f3ff36eacd3eb983da8b177df6b887f77))
+* Improve empty tag preview height ([#124](https://github.com/navorite/sessionic/issues/124)) ([a829026](https://github.com/navorite/sessionic/commit/a829026e3816d285fd341d0e1c217df9363b0b2b))
+* Improve localization on About page ([4ae6668](https://github.com/navorite/sessionic/commit/4ae666865999586bc862eb53437f7433d2ec5a7a))
+
+
+### :bug: Bug Fixes
+
+* Check for tag name leading and trailing spaces ([#125](https://github.com/navorite/sessionic/issues/125)) ([e41d2a3](https://github.com/navorite/sessionic/commit/e41d2a351ed84da73f26e24f485711ac190c2b98))
+* Show Sorting Date group name  ([eac49f0](https://github.com/navorite/sessionic/commit/eac49f06fc17897bee6d7e961519853ce903861f))
+
 ## [1.6.1](https://github.com/navorite/sessionic/compare/v1.6.0...v1.6.1) (2023-11-14)
 
 
