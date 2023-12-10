@@ -75,10 +75,8 @@
           >
           {#if tags}
             {#each Object.keys(tags) as tag}
-              <option
-                style:background-color={tags[tag]?.bgColor}
-                style:color={tags[tag]?.textColor}
-                value={tag}>{tag}</option
+              <option class="bg-neutral-6 text-neutral-content" value={tag}
+                >{tag}</option
               >
             {/each}
           {/if}
