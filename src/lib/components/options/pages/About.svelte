@@ -11,10 +11,10 @@
       {EXT_VER}
     </p>
     <a href="https://github.com/navorite/sessionic/releases" target="_blank"
-      >Changelog</a
+      >{i18n.getMessage('aboutChangelogLabel')}</a
     >
     <a href="https://github.com/navorite/sessionic" target="_blank"
-      >Source code (AGPL v3)</a
+      >{i18n.getMessage('aboutSourceCodeLabel')}</a
     >
     <a href="https://hosted.weblate.org/projects/sessionic" target="_blank"
       >{i18n.getMessage('aboutTranslationsLabel')}</a
