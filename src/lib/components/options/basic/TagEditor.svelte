@@ -125,7 +125,7 @@
       </td>
       <td>
         <Tag
-          name={addedTag.name || '' }
+          name={addedTag.name || 'Preview'}
           bgColor={addedTag.bgColor}
           textColor={addedTag.textColor}
         />

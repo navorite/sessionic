@@ -9,11 +9,14 @@
   export { className as class };
 </script>
 
-<span
+<div
   style:background-color={bgColor}
   style:color={textColor}
-  class="inline-block h-full w-full max-w-[7rem] cursor-default overflow-hidden overflow-ellipsis whitespace-nowrap rounded-md bg-primary px-1 py-0.5 text-center text-xs font-semibold text-white {className}"
+  class="flex min-h-full max-w-[7rem] flex-1 cursor-default items-center justify-center rounded-md bg-primary {className}"
   use:tooltip={{ title: name }}
 >
-  {name}
-</span>
+  <span
+    class="overflow-hidden text-ellipsis whitespace-nowrap px-1 py-0.5 text-center text-xs font-semibold text-white"
+    >{name}</span
+  >
+</div>
