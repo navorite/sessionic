@@ -5,7 +5,7 @@
 </script>
 
 <Section title={i18n.getMessage('aboutPage')}>
-  <div class="flex flex-col items-baseline gap-2 text-sm font-medium">
+  <div class="flex items-baseline gap-4 text-sm font-medium">
     <p class="text-sm">
       {EXT_NAME}
       {EXT_VER}
