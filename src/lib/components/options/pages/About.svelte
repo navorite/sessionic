@@ -16,6 +16,13 @@
     <a href="https://github.com/navorite/sessionic" target="_blank"
       >Source code (AGPL v3)</a
     >
+    <a href="https://hosted.weblate.org/projects/sessionic" target="_blank"
+      >{i18n.getMessage('aboutTranslationsLabel')}</a
+    >
+    <a
+      href="https://github.com/navorite/sessionic/blob/main/LICENSE"
+      target="_blank">{i18n.getMessage('aboutLicenseLabel')}</a
+    >
   </div>
 
   <h2 class="text-lg font-bold">{i18n.getMessage('aboutDonateHeading')}</h2>
