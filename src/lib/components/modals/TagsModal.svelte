@@ -15,20 +15,21 @@
 
   let tag = defualtNewTag;
 
-  $: selectVal === 'createANewTag'
-    ? defualtNewTag
-    : (tag = {
-        name: selectVal,
-        bgColor: $settings.tags[selectVal]?.bgColor ?? 'royalblue',
-        textColor: $settings.tags[selectVal]?.textColor ?? 'white'
-      });
+  $: tag =
+    selectVal === 'createANewTag'
+      ? defualtNewTag
+      : {
+          name: selectVal,
+          bgColor: $settings.tags[selectVal]?.bgColor ?? 'royalblue',
+          textColor: $settings.tags[selectVal]?.textColor ?? 'white'
+        };
 
   $: if (open) {
     getStorageItem('tags', {}).then((value) => {
       tags = value;
     });
   } else {
-    tag = defualtNewTag
+    tag = defualtNewTag;
   }
 
   const dispatch = createEventDispatcher<{ tagSubmit: string }>();
@@ -43,15 +44,17 @@
       class="flex h-full w-full flex-col justify-around gap-2"
       on:submit|preventDefault={() => {
         if (selectVal === 'createANewTag') {
-          const tags = $settings.tags;
-          tags[tag.name] = {
-            bgColor: tag.bgColor,
-            textColor: tag.textColor
-          };
+          if (tag.name.trim()) {
+            const tags = $settings.tags;
+            tags[tag.name] = {
+              bgColor: tag.bgColor,
+              textColor: tag.textColor
+            };
 
-          settings.changeSetting('tags', tags);
+            settings.changeSetting('tags', tags);
 
-          dispatch('tagSubmit', tag.name);
+            dispatch('tagSubmit', tag.name);
+          }
         } else dispatch('tagSubmit', selectVal);
 
         open = false;
@@ -123,7 +126,7 @@
 
       <button
         class="rounded-md bg-primary px-2 py-1 hover:bg-primary-focus disabled:bg-neutral-3/50 disabled:text-neutral-content/50"
-        disabled={!tag.name.length}>{i18n.getMessage('labelAddTag')}</button
+        disabled={!tag.name.trim()}>{i18n.getMessage('labelAddTag')}</button
       >
     </form>
   </svelte:fragment>
