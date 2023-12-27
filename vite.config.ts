@@ -2,6 +2,7 @@ import { extension, isDEV } from './scripts/constants';
 import { defineConfig, type UserConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { fileURLToPath } from 'url';
+import UnoCSS from 'unocss/vite';
 
 export function _dir(path: string) {
   return fileURLToPath(new URL(path, import.meta.url));
@@ -35,7 +36,7 @@ export const sharedConfig: UserConfig = {
 export default defineConfig({
   ...sharedConfig,
 
-  plugins: [svelte()],
+  plugins: [UnoCSS(), svelte()],
 
   build: {
     emptyOutDir: false,

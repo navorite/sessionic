@@ -32,6 +32,6 @@
 
 <style lang="postcss">
   a {
-    @apply font-medium text-link hover:text-link-focus;
+    --uno: 'font-medium text-link hover:text-link-focus';
   }
 </style>

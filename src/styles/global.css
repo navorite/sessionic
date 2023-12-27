@@ -1,9 +1,5 @@
 @import './fonts';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer utilities {
   @media (prefers-reduced-motion: no-preference) {
     .fade {

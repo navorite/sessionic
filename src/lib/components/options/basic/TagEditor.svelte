@@ -151,8 +151,8 @@
   </tbody>
 </table>
 
-<style>
+<style lang="postcss">
   td {
-    padding: theme('padding.2');
+    --uno: p-2;
   }
 </style>
