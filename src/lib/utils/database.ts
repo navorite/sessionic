@@ -4,7 +4,7 @@ import {
   type IDBPDatabase,
   type IDBPTransaction,
   type StoreNames
-} from 'idb/with-async-ittr';
+} from 'idb';
 import type { UUID } from 'crypto';
 import type { ESession, EWindow } from '@/lib/types';
 import { log } from '@/lib/utils/log';
