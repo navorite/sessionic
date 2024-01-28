@@ -12,6 +12,7 @@ export const extension = {
     'storage',
     'unlimitedStorage',
     'alarms',
+    'contextMenus',
     ...(isFirefox ? ['cookies'] : ['system.display', 'favicon'])
   ],
   firefoxId: 'sessonic@navorite'

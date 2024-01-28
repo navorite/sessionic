@@ -1,5 +1,6 @@
-import '@styles/global.css';
+import '@styles';
 import '@styles/popup.css';
+
 
 import Popup from './popup.svelte';
 

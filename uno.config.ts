@@ -1,11 +1,9 @@
 import { generateScale } from './scripts/utils';
+import {defineConfig, presetUno, transformerDirectives, transformerVariantGroup} from 'unocss';
 
-/** @type {import('tailwindcss').Config} */
-export default {
-  darkMode: 'class',
-  content: ['./src/**/*.{html,js,ts,svelte}'],
+export default defineConfig({
+  content: {filesystem: ['./src/**/*.{html,js,ts,svelte}']},
   theme: {
-    extend: {
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
@@ -36,12 +34,12 @@ export default {
       },
 
       fontFamily: {
-        sans: [
-          'Inter',
-          "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
-        ]
+        sans: 
+          "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
+        
       }
-    }
-  },
-  plugins: []
-};
+    },
+  presets: [presetUno({})],
+  transformers: [transformerDirectives(), transformerVariantGroup()]
+  
+})
