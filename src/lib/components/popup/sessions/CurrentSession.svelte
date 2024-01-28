@@ -119,9 +119,9 @@
     <div
       class="session-card"
       use:tooltip={{
-        title: `${$session?.windows?.length} ${
-          i18n.getMessage($session?.windows?.length > 1 ? 'labelWindows' : 'labelWindow')
-        }`
+        title: `${$session?.windows?.length} ${i18n.getMessage(
+          $session?.windows?.length > 1 ? 'labelWindows' : 'labelWindow'
+        )}`
       }}
     >
       <IconButton icon="window" class="text-base" role="img" />
@@ -131,9 +131,9 @@
     <div
       class="session-card"
       use:tooltip={{
-        title: `${$session?.tabsNumber} ${
-          i18n.getMessage($session?.tabsNumber > 1 ? 'labelTabs' : 'labelTab')
-        }`
+        title: `${$session?.tabsNumber} ${i18n.getMessage(
+          $session?.tabsNumber > 1 ? 'labelTabs' : 'labelTab'
+        )}`
       }}
     >
       <IconButton icon="tab" class="text-base" role="img" />
