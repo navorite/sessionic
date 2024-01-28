@@ -1,222 +1,200 @@
 # Changelog
 
-## [1.6.2](https://github.com/navorite/sessionic/compare/v1.6.1...v1.6.2) (2023-12-10)
+## [1.7.0](https://github.com/navorite/sessionic/compare/v1.6.2...v1.7.0) (2024-1-28)
 
+### :fire: New Features
+
+- Add a menu to save session / window without opening popup ([5ada3fe](https://github.com/navorite/sessionic/commit/5ada3fe08490993a41d422e2e86307abbde95967))
+
+## [1.6.2](https://github.com/navorite/sessionic/compare/v1.6.1...v1.6.2) (2023-12-10)
 
 ### :rocket: Enhancements
 
-* Close popup if openning Settings/FullView ([#110](https://github.com/navorite/sessionic/issues/110)) ([0ad8da9](https://github.com/navorite/sessionic/commit/0ad8da9eb6863a59754176b33cd4905dd6a7bd9e))
-* Add links to Translations and License on About page ([f3007b7](https://github.com/navorite/sessionic/commit/f3007b75b4e0344976ab849e6be60d96fb695507))
-* Add missing localization in Settings ([72e0ce5](https://github.com/navorite/sessionic/commit/72e0ce59f6785a5c7f4e47fc98d55434252b3190))
-* Change "Add tag" options to have neutral background and text ([#126](https://github.com/navorite/sessionic/issues/126)) ([e1d880c](https://github.com/navorite/sessionic/commit/e1d880c1396a589d95981515c0927cc87fe2b3b3))
-* Improve empty tag preview height ([#124](https://github.com/navorite/sessionic/issues/124)) ([a829026](https://github.com/navorite/sessionic/commit/a829026e3816d285fd341d0e1c217df9363b0b2b))
-* Improve About page UI ([cd4e2c3](https://github.com/navorite/sessionic/commit/cd4e2c3f3ff36eacd3eb983da8b177df6b887f77))
-
-
+- Close popup if openning Settings/FullView ([#110](https://github.com/navorite/sessionic/issues/110)) ([0ad8da9](https://github.com/navorite/sessionic/commit/0ad8da9eb6863a59754176b33cd4905dd6a7bd9e))
+- Add links to Translations and License on About page ([f3007b7](https://github.com/navorite/sessionic/commit/f3007b75b4e0344976ab849e6be60d96fb695507))
+- Add missing localization in Settings ([72e0ce5](https://github.com/navorite/sessionic/commit/72e0ce59f6785a5c7f4e47fc98d55434252b3190))
+- Change "Add tag" options to have neutral background and text ([#126](https://github.com/navorite/sessionic/issues/126)) ([e1d880c](https://github.com/navorite/sessionic/commit/e1d880c1396a589d95981515c0927cc87fe2b3b3))
+- Improve empty tag preview height ([#124](https://github.com/navorite/sessionic/issues/124)) ([a829026](https://github.com/navorite/sessionic/commit/a829026e3816d285fd341d0e1c217df9363b0b2b))
+- Improve About page UI ([cd4e2c3](https://github.com/navorite/sessionic/commit/cd4e2c3f3ff36eacd3eb983da8b177df6b887f77))
 
 ### :bug: Bug Fixes
 
-* Check for tag name leading and trailing spaces when adding a tag ([#125](https://github.com/navorite/sessionic/issues/125)) ([e41d2a3](https://github.com/navorite/sessionic/commit/e41d2a351ed84da73f26e24f485711ac190c2b98))
-* Show Sorting Date group name ([eac49f0](https://github.com/navorite/sessionic/commit/eac49f06fc17897bee6d7e961519853ce903861f))
+- Check for tag name leading and trailing spaces when adding a tag ([#125](https://github.com/navorite/sessionic/issues/125)) ([e41d2a3](https://github.com/navorite/sessionic/commit/e41d2a351ed84da73f26e24f485711ac190c2b98))
+- Show Sorting Date group name ([eac49f0](https://github.com/navorite/sessionic/commit/eac49f06fc17897bee6d7e961519853ce903861f))
 
 ## [1.6.1](https://github.com/navorite/sessionic/compare/v1.6.0...v1.6.1) (2023-11-14)
 
-
 ### :rocket: Enhancements
-* Add Arabic, Czech, French, Norwegian, Spanish translations ([#81](https://github.com/navorite/sessionic/pull/81))
-* Open Full View after active tab ([#101](https://github.com/navorite/sessionic/issues/101)) ([2ec9a05](https://github.com/navorite/sessionic/commit/2ec9a059a1f069fb949b5cac91f1f7797f64b4fd))
-* Remove theme switch icon in popup (Use settings to switch them) ([#56](https://github.com/navorite/sessionic/issues/56)) ([ce79ef0](https://github.com/navorite/sessionic/commit/ce79ef0141ea92a2e56db935fea0f54aad0e49f4))
 
+- Add Arabic, Czech, French, Norwegian, Spanish translations ([#81](https://github.com/navorite/sessionic/pull/81))
+- Open Full View after active tab ([#101](https://github.com/navorite/sessionic/issues/101)) ([2ec9a05](https://github.com/navorite/sessionic/commit/2ec9a059a1f069fb949b5cac91f1f7797f64b4fd))
+- Remove theme switch icon in popup (Use settings to switch them) ([#56](https://github.com/navorite/sessionic/issues/56)) ([ce79ef0](https://github.com/navorite/sessionic/commit/ce79ef0141ea92a2e56db935fea0f54aad0e49f4))
 
 ### :bug: Bug Fixes
 
-* Autosaved sessions did not show up real-time ([564ee1f](https://github.com/navorite/sessionic/commit/564ee1f7c6dc0dd163654586004b8bceab623cba))
-* Show error when deleting empty session list ([e30abaf](https://github.com/navorite/sessionic/commit/e30abaf9545b2acbcf9c145c7c770b4c4f8a7acf))
+- Autosaved sessions did not show up real-time ([564ee1f](https://github.com/navorite/sessionic/commit/564ee1f7c6dc0dd163654586004b8bceab623cba))
+- Show error when deleting empty session list ([e30abaf](https://github.com/navorite/sessionic/commit/e30abaf9545b2acbcf9c145c7c770b4c4f8a7acf))
 
 ## [1.6.0](https://github.com/navorite/sessionic/compare/v1.5.0...v1.6.0) (2023-11-07)
 
-
 ### :fire: New Features
 
-* Add Filter by Tags option ([#50](https://github.com/navorite/sessionic/issues/50)) ([1eef72d](https://github.com/navorite/sessionic/commit/1eef72d834d4d82b0c567085398b87d08ec00288))
-
+- Add Filter by Tags option ([#50](https://github.com/navorite/sessionic/issues/50)) ([1eef72d](https://github.com/navorite/sessionic/commit/1eef72d834d4d82b0c567085398b87d08ec00288))
 
 ### :rocket: Enhancements
 
-* **UI:** Move notifications to bottom right ([7bc9dae](https://github.com/navorite/sessionic/commit/7bc9dae4ded313ddb77d521b92ab911e6ce3a9f6))
+- **UI:** Move notifications to bottom right ([7bc9dae](https://github.com/navorite/sessionic/commit/7bc9dae4ded313ddb77d521b92ab911e6ce3a9f6))
 
-* Optimize sorting performance ([#50](https://github.com/navorite/sessionic/issues/50)) ([1eef72d](https://github.com/navorite/sessionic/commit/1eef72d834d4d82b0c567085398b87d08ec00288))
+- Optimize sorting performance ([#50](https://github.com/navorite/sessionic/issues/50)) ([1eef72d](https://github.com/navorite/sessionic/commit/1eef72d834d4d82b0c567085398b87d08ec00288))
 
 ## [1.5.0](https://github.com/navorite/sessionic/compare/v1.4.1...v1.5.0) (2023-11-05)
 
-
 ### :fire: New Features
 
-* Add sorting option to sessions ([#49](https://github.com/navorite/sessionic/issues/49)) ([ebc296a](https://github.com/navorite/sessionic/commit/ebc296aaf6f5dcb247ae4b8244699d4e79be6a44))
+- Add sorting option to sessions ([#49](https://github.com/navorite/sessionic/issues/49)) ([ebc296a](https://github.com/navorite/sessionic/commit/ebc296aaf6f5dcb247ae4b8244699d4e79be6a44))
 
 ### :rocket: Enhancements
 
-* Enhance performance by streaming sessions ([#49](https://github.com/navorite/sessionic/issues/49)) ([ebc296a](https://github.com/navorite/sessionic/commit/ebc296aaf6f5dcb247ae4b8244699d4e79be6a44))
-
+- Enhance performance by streaming sessions ([#49](https://github.com/navorite/sessionic/issues/49)) ([ebc296a](https://github.com/navorite/sessionic/commit/ebc296aaf6f5dcb247ae4b8244699d4e79be6a44))
 
 ### :bug: Bug Fixes
 
-* Saving a session using Enter key no longer bypasses error checks ([e615998](https://github.com/navorite/sessionic/commit/e61599857660d771235375e9cef17bb35c1a4c8d))
-* Fix typo in "Exclude pinned tabs" ([c4d9bc8](https://github.com/navorite/sessionic/commit/c4d9bc894ef5227070c7aba95e5bd4cd7b848681))
+- Saving a session using Enter key no longer bypasses error checks ([e615998](https://github.com/navorite/sessionic/commit/e61599857660d771235375e9cef17bb35c1a4c8d))
+- Fix typo in "Exclude pinned tabs" ([c4d9bc8](https://github.com/navorite/sessionic/commit/c4d9bc894ef5227070c7aba95e5bd4cd7b848681))
 
 ## [1.4.1](https://github.com/navorite/sessionic/compare/v1.4.0...v1.4.1) (2023-10-16)
 
-
 ### :bug: Bug Fixes
 
-* Including pinned tab shows only pinned tabs ([4ab4682](https://github.com/navorite/sessionic/commit/4ab4682b095348188e8c982322ded25624bbe2a9))
+- Including pinned tab shows only pinned tabs ([4ab4682](https://github.com/navorite/sessionic/commit/4ab4682b095348188e8c982322ded25624bbe2a9))
 
 ## [1.4.0](https://github.com/navorite/sessionic/compare/v1.3.5...v1.4.0) (2023-10-16)
 
-
 ### :fire: New Features
 
-* Add an option to exclude pinned tabs ([09bfe30](https://github.com/navorite/sessionic/commit/09bfe3072146b0c884d43926297e0adca16eefb5))
-* Support importing OneTab lists to a separate session ([c2405be](https://github.com/navorite/sessionic/commit/c2405be4e614b0d4d26032c8cbb5939572e8121c))
-
+- Add an option to exclude pinned tabs ([09bfe30](https://github.com/navorite/sessionic/commit/09bfe3072146b0c884d43926297e0adca16eefb5))
+- Support importing OneTab lists to a separate session ([c2405be](https://github.com/navorite/sessionic/commit/c2405be4e614b0d4d26032c8cbb5939572e8121c))
 
 ### :rocket: Enhancements
 
-* Enhance tab icons ([10749e8](https://github.com/navorite/sessionic/commit/10749e84e1eb5f4d11158d979cb50d028fd75895))
+- Enhance tab icons ([10749e8](https://github.com/navorite/sessionic/commit/10749e84e1eb5f4d11158d979cb50d028fd75895))
 
 ## [1.3.5](https://github.com/navorite/sessionic/compare/v1.3.4...v1.3.5) (2023-10-15)
 
-
 ### :bug: Bug Fixes
 
-* Check for selected object before accessing id ([7ba2b6f](https://github.com/navorite/sessionic/commit/7ba2b6fbe4ad1fce8fc651ff6550589a157b879e))
-* Selected session is not highlighted in search ([2b13ee5](https://github.com/navorite/sessionic/commit/2b13ee5051af4603990cc17072c6cd16fc4fa8aa))
+- Check for selected object before accessing id ([7ba2b6f](https://github.com/navorite/sessionic/commit/7ba2b6fbe4ad1fce8fc651ff6550589a157b879e))
+- Selected session is not highlighted in search ([2b13ee5](https://github.com/navorite/sessionic/commit/2b13ee5051af4603990cc17072c6cd16fc4fa8aa))
 
 ## [1.3.4](https://github.com/navorite/sessionic/compare/v1.3.3...v1.3.4) (2023-10-14)
 
-
 ### :bug: Bug Fixes
 
-* Session selection doesn't work inside search ([425fb14](https://github.com/navorite/sessionic/commit/425fb1477fae256f09d19812689f27bb6b5a17d1))
+- Session selection doesn't work inside search ([425fb14](https://github.com/navorite/sessionic/commit/425fb1477fae256f09d19812689f27bb6b5a17d1))
 
 ## [1.3.3](https://github.com/navorite/sessionic/compare/v1.3.2...v1.3.3) (2023-10-12)
 
-
 ### :bug: Bug Fixes
 
-* Fix document being used in background service ([702a9af](https://github.com/navorite/sessionic/commit/702a9af2ffdafb38b2679d5d966255d7a04c9dc4))
+- Fix document being used in background service ([702a9af](https://github.com/navorite/sessionic/commit/702a9af2ffdafb38b2679d5d966255d7a04c9dc4))
 
 ## [1.3.2](https://github.com/navorite/sessionic/compare/v1.3.1...v1.3.2) (2023-10-12)
 
-
 ### :rocket: Enhancements
 
-* Reset modal inputs when closed ([574b24f](https://github.com/navorite/sessionic/commit/574b24f73bb9e0f60a15c722c6ade069ce8986ac))
-
+- Reset modal inputs when closed ([574b24f](https://github.com/navorite/sessionic/commit/574b24f73bb9e0f60a15c722c6ade069ce8986ac))
 
 ### :bug: Bug Fixes
 
-* Add remove tag tooltip ([eacba56](https://github.com/navorite/sessionic/commit/eacba56c28cc88c9c639ba3433c098345ec65075))
+- Add remove tag tooltip ([eacba56](https://github.com/navorite/sessionic/commit/eacba56c28cc88c9c639ba3433c098345ec65075))
 
 ## [1.3.1](https://github.com/navorite/sessionic/compare/v1.3.0...v1.3.1) (2023-10-12)
 
-
 ### :rocket: Enhancements
 
-* Add more keyboard shortcuts ([e80a2e4](https://github.com/navorite/sessionic/commit/e80a2e4560a19c9b2e9384c0c63567ddcb1c9ac1))
-* Minor UI tweaks ([f3cdbf8](https://github.com/navorite/sessionic/commit/f3cdbf8e0ea49de359bd14a8cdf25e3e243afc07), [0e76c25](https://github.com/navorite/sessionic/commit/0e76c25d8a8207f4a30438f03ab2b9d36318a163), [707bdba](https://github.com/navorite/sessionic/commit/707bdba23bbe76450cbb3ec60043d46122304632))
+- Add more keyboard shortcuts ([e80a2e4](https://github.com/navorite/sessionic/commit/e80a2e4560a19c9b2e9384c0c63567ddcb1c9ac1))
+- Minor UI tweaks ([f3cdbf8](https://github.com/navorite/sessionic/commit/f3cdbf8e0ea49de359bd14a8cdf25e3e243afc07), [0e76c25](https://github.com/navorite/sessionic/commit/0e76c25d8a8207f4a30438f03ab2b9d36318a163), [707bdba](https://github.com/navorite/sessionic/commit/707bdba23bbe76450cbb3ec60043d46122304632))
 
 ## [1.3.0](https://github.com/navorite/sessionic/compare/v1.2.2...v1.3.0) (2023-10-11)
 
-
 ### :fire: New Features
 
-* Add search support for tab names ([0bff259](https://github.com/navorite/sessionic/commit/0bff259425ded96d73ea35fbe4bd101eba74b597))
-
+- Add search support for tab names ([0bff259](https://github.com/navorite/sessionic/commit/0bff259425ded96d73ea35fbe4bd101eba74b597))
 
 ### :bug: Bug Fixes
 
-* Fixed Search Bar not opening ([3f8355e](https://github.com/navorite/sessionic/commit/3f8355e20352613189b7a5bf4eef2690427348e1))
-* Tags are now displayed more consistently ([c7b98a5](https://github.com/navorite/sessionic/commit/c7b98a5c62c08a9f3b021b10f72d50e147d3d232))
+- Fixed Search Bar not opening ([3f8355e](https://github.com/navorite/sessionic/commit/3f8355e20352613189b7a5bf4eef2690427348e1))
+- Tags are now displayed more consistently ([c7b98a5](https://github.com/navorite/sessionic/commit/c7b98a5c62c08a9f3b021b10f72d50e147d3d232))
 
 ## [1.2.2](https://github.com/navorite/sessionic/compare/v1.2.1...v1.2.2) (2023-10-09)
 
-
 ### :rocket: Enhancements
-* Do not show saved sessions number if empty ([83d6b64](https://github.com/navorite/sessionic/commit/83d6b64f47a7b06a2eae00b490d9d44d6f3bbb6a))
-* Code clean up and accessibility improvements to various components ([ac773c5](https://github.com/navorite/sessionic/commit/ac773c5043f7f8e32fb02496d2601a65f3f1dbed), [4007d7a](https://github.com/navorite/sessionic/commit/4007d7a0de6a5ca63e9f8f46fceee1a8785a0fa5))
-* Increased tag characters limit to 15 characters ([10c52df](https://github.com/navorite/sessionic/commit/10c52df64664b82cf794debd9f2a3232be17fe4b))
+
+- Do not show saved sessions number if empty ([83d6b64](https://github.com/navorite/sessionic/commit/83d6b64f47a7b06a2eae00b490d9d44d6f3bbb6a))
+- Code clean up and accessibility improvements to various components ([ac773c5](https://github.com/navorite/sessionic/commit/ac773c5043f7f8e32fb02496d2601a65f3f1dbed), [4007d7a](https://github.com/navorite/sessionic/commit/4007d7a0de6a5ca63e9f8f46fceee1a8785a0fa5))
+- Increased tag characters limit to 15 characters ([10c52df](https://github.com/navorite/sessionic/commit/10c52df64664b82cf794debd9f2a3232be17fe4b))
 
 ## [1.2.1](https://github.com/navorite/sessionic/compare/v1.2.0...v1.2.1) (2023-10-07)
 
-
 ### :rocket: Enhancements
 
-* Add icon to save date and change its position ([7902b92](https://github.com/navorite/sessionic/commit/7902b928d39dc9eb00eb4533f1ce4202a772c658))
-* Change untagging to be a separate icon ([dd3db43](https://github.com/navorite/sessionic/commit/dd3db436f2280223a3ba6ce8aff2f55c379fec85))
-* Improve relative date format ([bf12623](https://github.com/navorite/sessionic/commit/bf12623ca6d848805e57f7f0a5c61c4a2483bcdd))
-* Reduce windows and tabs icon sizes ([c2b48fb](https://github.com/navorite/sessionic/commit/c2b48fb58d83906f08519eae3174ff8050b313df))
-* Show date when hovering over session save relative time ([c063e3d](https://github.com/navorite/sessionic/commit/c063e3db43638132c108898e36a6c852cd353f01))
-
+- Add icon to save date and change its position ([7902b92](https://github.com/navorite/sessionic/commit/7902b928d39dc9eb00eb4533f1ce4202a772c658))
+- Change untagging to be a separate icon ([dd3db43](https://github.com/navorite/sessionic/commit/dd3db436f2280223a3ba6ce8aff2f55c379fec85))
+- Improve relative date format ([bf12623](https://github.com/navorite/sessionic/commit/bf12623ca6d848805e57f7f0a5c61c4a2483bcdd))
+- Reduce windows and tabs icon sizes ([c2b48fb](https://github.com/navorite/sessionic/commit/c2b48fb58d83906f08519eae3174ff8050b313df))
+- Show date when hovering over session save relative time ([c063e3d](https://github.com/navorite/sessionic/commit/c063e3db43638132c108898e36a6c852cd353f01))
 
 ### :bug: Bug Fixes
 
-* Add default tag background when not specified ([f0f230e](https://github.com/navorite/sessionic/commit/f0f230e613a6a5dceb9b312416ec9b7a9b0e8725))
-* Session updates clears windows if the session was not selected ([e8699ce](https://github.com/navorite/sessionic/commit/e8699cea77fbfcfce756a95b1fe2c4d9a6509a67))
+- Add default tag background when not specified ([f0f230e](https://github.com/navorite/sessionic/commit/f0f230e613a6a5dceb9b312416ec9b7a9b0e8725))
+- Session updates clears windows if the session was not selected ([e8699ce](https://github.com/navorite/sessionic/commit/e8699cea77fbfcfce756a95b1fe2c4d9a6509a67))
 
 ## [1.2.0](https://github.com/navorite/sessionic/compare/v1.1.0...v1.2.0) (2023-10-06)
 
-
 ### :fire: New Features
 
-* Allow saving session without asking for name ([9a87c9e](https://github.com/navorite/sessionic/commit/9a87c9e2700f906946068dc214359bb803ca0734))
-
+- Allow saving session without asking for name ([9a87c9e](https://github.com/navorite/sessionic/commit/9a87c9e2700f906946068dc214359bb803ca0734))
 
 ### :rocket: Enhancements
 
-* Adjust location of adding tag icon ([a21f225](https://github.com/navorite/sessionic/commit/a21f225fa9c1830ed9dd79734fce50fcc6b15c93))
-* Improve Tag UI ([ecd2110](https://github.com/navorite/sessionic/commit/ecd2110a988d23f846bd45b7d1ab53f7f155877c))
-* Updated the logo ([e29b459](https://github.com/navorite/sessionic/commit/e29b459ae7e57e5fb5e634a71ae77808e978739e))
-* Use relative time for sessions instead ([71cd43d](https://github.com/navorite/sessionic/commit/71cd43dec76f8b198687470ee07ce847cea8f109))
-
+- Adjust location of adding tag icon ([a21f225](https://github.com/navorite/sessionic/commit/a21f225fa9c1830ed9dd79734fce50fcc6b15c93))
+- Improve Tag UI ([ecd2110](https://github.com/navorite/sessionic/commit/ecd2110a988d23f846bd45b7d1ab53f7f155877c))
+- Updated the logo ([e29b459](https://github.com/navorite/sessionic/commit/e29b459ae7e57e5fb5e634a71ae77808e978739e))
+- Use relative time for sessions instead ([71cd43d](https://github.com/navorite/sessionic/commit/71cd43dec76f8b198687470ee07ce847cea8f109))
 
 ### :bug: Bug Fixes
 
-* Allow clearing tag name when creating tags ([b90f572](https://github.com/navorite/sessionic/commit/b90f572e4cf694f56af864f381eafa5ec929d707))
-* Do not show date saved if undefined ([4276f7f](https://github.com/navorite/sessionic/commit/4276f7f549ab37efee93bdcff30ec33d75ea7108))
+- Allow clearing tag name when creating tags ([b90f572](https://github.com/navorite/sessionic/commit/b90f572e4cf694f56af864f381eafa5ec929d707))
+- Do not show date saved if undefined ([4276f7f](https://github.com/navorite/sessionic/commit/4276f7f549ab37efee93bdcff30ec33d75ea7108))
 
 ## [1.1.0](https://github.com/navorite/sessionic/compare/v1.0.1...v1.1.0) (2023-09-17)
 
-
 ### :fire: New Features
 
-* Add tags to sessions ([#43](https://github.com/navorite/sessionic/issues/43)) ([ee4ec74](https://github.com/navorite/sessionic/commit/ee4ec74f1db97b40649a16f1d7bc17735445a44f))
-
+- Add tags to sessions ([#43](https://github.com/navorite/sessionic/issues/43)) ([ee4ec74](https://github.com/navorite/sessionic/commit/ee4ec74f1db97b40649a16f1d7bc17735445a44f))
 
 ### :rocket: Enhancements
 
-* **UI:** Improve Session Card ([ca5fbf0](https://github.com/navorite/sessionic/commit/ca5fbf058ef3f0b787e3eb0aefb65098f2adb9e3))
-* **UI:** Do not hide options page overflow ([a9a03bb](https://github.com/navorite/sessionic/commit/a9a03bb1ce021311db291ca68c547c9ea04eace3))
+- **UI:** Improve Session Card ([ca5fbf0](https://github.com/navorite/sessionic/commit/ca5fbf058ef3f0b787e3eb0aefb65098f2adb9e3))
+- **UI:** Do not hide options page overflow ([a9a03bb](https://github.com/navorite/sessionic/commit/a9a03bb1ce021311db291ca68c547c9ea04eace3))
 
 ## [1.0.1](https://github.com/navorite/sessionic/compare/v1.0.0...v1.0.1) (2023-09-12)
 
-
 ### :rocket: Enhancements
 
-* Notify when extension gets updated ([5248bc6](https://github.com/navorite/sessionic/commit/5248bc67eece0e13372321ee5f5867be7d04368b))
-* Select Current Session if selected session was not found ([976e2a2](https://github.com/navorite/sessionic/commit/976e2a2f101394fd232ffaecf5dabe97daf61990))
-* Sync autosaved sessions with all views in real-time ([68a17ee](https://github.com/navorite/sessionic/commit/68a17ee6d993d2c9a5a10816d3e44c1e1705f0eb))
-* **UI:** Indicate focused tab in window ([7d11c5b](https://github.com/navorite/sessionic/commit/7d11c5bdb1f05564b54a8a84d46bac2f67552d6d))
-* **UI:** Indicate focused window in sessions ([fe0c934](https://github.com/navorite/sessionic/commit/fe0c934902736fdf2e8ab032aa1d48239843bb30))
-* Update focused window when it changes ([5716688](https://github.com/navorite/sessionic/commit/5716688df4ad1a0329c43e3209be977f65e829fe))
-* Update selected session for all views when it changes in real-time  ([e117289](https://github.com/navorite/sessionic/commit/e1172891eef8c5189a07d702112d0a3b55da9d0c))
-
+- Notify when extension gets updated ([5248bc6](https://github.com/navorite/sessionic/commit/5248bc67eece0e13372321ee5f5867be7d04368b))
+- Select Current Session if selected session was not found ([976e2a2](https://github.com/navorite/sessionic/commit/976e2a2f101394fd232ffaecf5dabe97daf61990))
+- Sync autosaved sessions with all views in real-time ([68a17ee](https://github.com/navorite/sessionic/commit/68a17ee6d993d2c9a5a10816d3e44c1e1705f0eb))
+- **UI:** Indicate focused tab in window ([7d11c5b](https://github.com/navorite/sessionic/commit/7d11c5bdb1f05564b54a8a84d46bac2f67552d6d))
+- **UI:** Indicate focused window in sessions ([fe0c934](https://github.com/navorite/sessionic/commit/fe0c934902736fdf2e8ab032aa1d48239843bb30))
+- Update focused window when it changes ([5716688](https://github.com/navorite/sessionic/commit/5716688df4ad1a0329c43e3209be977f65e829fe))
+- Update selected session for all views when it changes in real-time ([e117289](https://github.com/navorite/sessionic/commit/e1172891eef8c5189a07d702112d0a3b55da9d0c))
 
 ### :bug: Bug Fixes
 
-* Clear windows object to avoid memory leak in certain cases ([59335c8](https://github.com/navorite/sessionic/commit/59335c8083f724f252349e91021a17f82f6e055a))
-* Do not scroll if Current Session is selected ([e62271b](https://github.com/navorite/sessionic/commit/e62271bbedae265943f43e956ee33427091da0af))
-* Fix saving a session scrolls to the end of the list ([cc37353](https://github.com/navorite/sessionic/commit/cc37353287d2597d6cc7afb06dc102d7836376b4))
+- Clear windows object to avoid memory leak in certain cases ([59335c8](https://github.com/navorite/sessionic/commit/59335c8083f724f252349e91021a17f82f6e055a))
+- Do not scroll if Current Session is selected ([e62271b](https://github.com/navorite/sessionic/commit/e62271bbedae265943f43e956ee33427091da0af))
+- Fix saving a session scrolls to the end of the list ([cc37353](https://github.com/navorite/sessionic/commit/cc37353287d2597d6cc7afb06dc102d7836376b4))
 
 ## [1.0.0](https://github.com/navorite/sessionic/compare/v0.3.1...v1.0.0) (2023-09-09)
 
@@ -224,115 +202,103 @@
 
 ### :rocket: Enhancements
 
-* Adjust naming of autosave section ([7a2d470](https://github.com/navorite/sessionic/commit/7a2d470c85bb0e1dbe9565c249586334a588f346))
-* Adjust naming of save interval input ([1014310](https://github.com/navorite/sessionic/commit/10143103b2ce0e6d941720c1456f6674a5c205fb))
-* Scroll to selected session on start ([39c3cdd](https://github.com/navorite/sessionic/commit/39c3cdd586a12e4a20bd671c2443c01488be58bb))
-
+- Adjust naming of autosave section ([7a2d470](https://github.com/navorite/sessionic/commit/7a2d470c85bb0e1dbe9565c249586334a588f346))
+- Adjust naming of save interval input ([1014310](https://github.com/navorite/sessionic/commit/10143103b2ce0e6d941720c1456f6674a5c205fb))
+- Scroll to selected session on start ([39c3cdd](https://github.com/navorite/sessionic/commit/39c3cdd586a12e4a20bd671c2443c01488be58bb))
 
 ### :bug: Bug Fixes
 
-* Fix importing sessions from other extensions ([a91631c](https://github.com/navorite/sessionic/commit/a91631c0dacee1df2eb5141f075a1c3a385c7166))
+- Fix importing sessions from other extensions ([a91631c](https://github.com/navorite/sessionic/commit/a91631c0dacee1df2eb5141f075a1c3a385c7166))
 
 ## [0.3.1](https://github.com/navorite/sessionic/compare/v0.3.0...v0.3.1) (2023-09-08)
 
 ### :bug: Bug Fixes
 
-* Fix Autosave does not remove oldest session after exceeding max session number ([e5aba20](https://github.com/navorite/sessionic/commit/728d37ccd111bbb167043651764c31b9736e5264))
+- Fix Autosave does not remove oldest session after exceeding max session number ([e5aba20](https://github.com/navorite/sessionic/commit/728d37ccd111bbb167043651764c31b9736e5264))
 
 ## [0.3.0](https://github.com/navorite/sessionic/compare/v0.2.5...v0.3.0) (2023-09-07)
 
-
 ### :fire: New Features
 
-* Add Autosave for sessions ([#42](https://github.com/navorite/sessionic/issues/42)) ([a55c7e3](https://github.com/navorite/sessionic/commit/a55c7e341c462a65f240709009a78b2ddb425569))
-
+- Add Autosave for sessions ([#42](https://github.com/navorite/sessionic/issues/42)) ([a55c7e3](https://github.com/navorite/sessionic/commit/a55c7e341c462a65f240709009a78b2ddb425569))
 
 ### :rocket: Enhancements
 
-* Improve modal buttons font ([f9f1796](https://github.com/navorite/sessionic/commit/f9f17962fc9ac8612036e0cce25f42b7ce1816d7))
-
+- Improve modal buttons font ([f9f1796](https://github.com/navorite/sessionic/commit/f9f17962fc9ac8612036e0cce25f42b7ce1816d7))
 
 ### :bug: Bug Fixes
 
-* Closing a tab doesn't update session properly ([5788608](https://github.com/navorite/sessionic/commit/57886084de8fc7fd15dcb94e77888069e34bb2ef))
+- Closing a tab doesn't update session properly ([5788608](https://github.com/navorite/sessionic/commit/57886084de8fc7fd15dcb94e77888069e34bb2ef))
 
 ## [0.2.5](https://github.com/navorite/sessionic/compare/v0.1.2...v0.3.0) (2023-08-17)
 
-
 ### :rocket: Enhancements
 
-* Change color of delete icons to red ([ae1af62](https://github.com/navorite/sessionic/commit/ae1af623d4c1b9285a4bb891ccecbe110d403a0d))
-* Remove unneeded events to reduce memory usage ([131c0b2](https://github.com/navorite/sessionic/commit/131c0b2e5f7024561c6a4b2a0c0541f30c11431f))
-* Enhance color contrast of input modal ([ed90b65](https://github.com/navorite/sessionic/commit/ed90b652675a187bae9680873bf2ad0043be0d42))
-* Enhance Switch UI ([5047cf7](https://github.com/navorite/sessionic/commit/5047cf74835da73d98024dcf6db502480d0f40e9))
-* Greatly reduce memory usage by loading only the session currently viewed ([#34](https://github.com/navorite/sessionic/issues/34)) ([034d9a3](https://github.com/navorite/sessionic/commit/034d9a3bec7e980b882a70c3976e17ec3bad2a16))
+- Change color of delete icons to red ([ae1af62](https://github.com/navorite/sessionic/commit/ae1af623d4c1b9285a4bb891ccecbe110d403a0d))
+- Remove unneeded events to reduce memory usage ([131c0b2](https://github.com/navorite/sessionic/commit/131c0b2e5f7024561c6a4b2a0c0541f30c11431f))
+- Enhance color contrast of input modal ([ed90b65](https://github.com/navorite/sessionic/commit/ed90b652675a187bae9680873bf2ad0043be0d42))
+- Enhance Switch UI ([5047cf7](https://github.com/navorite/sessionic/commit/5047cf74835da73d98024dcf6db502480d0f40e9))
+- Greatly reduce memory usage by loading only the session currently viewed ([#34](https://github.com/navorite/sessionic/issues/34)) ([034d9a3](https://github.com/navorite/sessionic/commit/034d9a3bec7e980b882a70c3976e17ec3bad2a16))
 
 ## [0.2.4](https://github.com/navorite/sessionic/compare/v0.2.3...v0.2.4) (2023-08-16)
 
-
 ### :bug: Bug Fixes
 
-* Selected session is not in sync sometimes ([c4fcfce](https://github.com/navorite/sessionic/commit/c4fcfce4e40dcaccbfb9f4f10e9afd215065787a))
+- Selected session is not in sync sometimes ([c4fcfce](https://github.com/navorite/sessionic/commit/c4fcfce4e40dcaccbfb9f4f10e9afd215065787a))
 
 ## [0.2.3](https://github.com/navorite/sessionic/compare/v0.2.2...v0.2.3) (2023-08-15)
 
-
 ### :bug: Bug Fixes
 
-* Fix tabs do not open correctly when active ([0f5710a](https://github.com/navorite/sessionic/commit/0f5710a3c1e1105e94180268213344c86f7f1be1))
+- Fix tabs do not open correctly when active ([0f5710a](https://github.com/navorite/sessionic/commit/0f5710a3c1e1105e94180268213344c86f7f1be1))
 
 ## [0.2.2](https://github.com/navorite/sessionic/compare/v0.2.1...v0.2.0) (2023-08-15)
 
-
 ### :rocket: Performance Improvements
 
-* Unload events when not visible ([29fbe0e](https://github.com/navorite/sessionic/commit/29fbe0e31b79893a7597ad1707d23b43f5db4216))
-
+- Unload events when not visible ([29fbe0e](https://github.com/navorite/sessionic/commit/29fbe0e31b79893a7597ad1707d23b43f5db4216))
 
 ### :bug: Bug Fixes
 
-* Do not load settings at every init call ([3ff2298](https://github.com/navorite/sessionic/commit/3ff22987f50f90f57bc216fbeb291407cd7211a7))
-* Fix Chromium window bound size error ([f654d36](https://github.com/navorite/sessionic/commit/f654d36935fdc879e1e22b1b2372fc6d8ff70b40))
-* Update tabs when necessary events happen ([728c1da](https://github.com/navorite/sessionic/commit/728c1dacbfab2b80a197ed5ceaacc1e902f5d83b))
+- Do not load settings at every init call ([3ff2298](https://github.com/navorite/sessionic/commit/3ff22987f50f90f57bc216fbeb291407cd7211a7))
+- Fix Chromium window bound size error ([f654d36](https://github.com/navorite/sessionic/commit/f654d36935fdc879e1e22b1b2372fc6d8ff70b40))
+- Update tabs when necessary events happen ([728c1da](https://github.com/navorite/sessionic/commit/728c1dacbfab2b80a197ed5ceaacc1e902f5d83b))
 
 ## [0.2.1](https://github.com/navorite/sessionic/compare/v0.2.0...v0.2.1) (2023-08-11)
 
-
 ### Bug Fixes
 
-* Tabs don't open when tab lazy loading is off ([b374699](https://github.com/navorite/sessionic/commit/b374699441d7f987fbdc5879404c566074d39b7b))
+- Tabs don't open when tab lazy loading is off ([b374699](https://github.com/navorite/sessionic/commit/b374699441d7f987fbdc5879404c566074d39b7b))
 
 ## [0.2.0](https://github.com/navorite/sessionic/compare/v0.1.2...v0.2.0) (2023-08-11)
 
-
 ### Features
 
-* Support tab lazy loading in Chrome ([4dfe9bc](https://github.com/navorite/sessionic/commit/4dfe9bc05a62a99155dc944dc7fd68b26f926984))
-* Add ability to import sessions from other popular extensions ([f5a99ea](https://github.com/navorite/sessionic/commit/f5a99ea6c5c0b4ae53b440cf4ab78f45b2ec443c))
-* Reduce size of backups by roughly 90% ([d0053e9](https://github.com/navorite/sessionic/commit/d0053e9ba5c4c9cbf2a61e8f8cd6853c32b8b845))
-* Add option to filter URL list ([9cda02c](https://github.com/navorite/sessionic/commit/9cda02c0beb31974752c100986b5766543efa74b))
-* Add option to lazy load tabs ([5c9bd97](https://github.com/navorite/sessionic/commit/5c9bd976004e80f681af61f03919d2571c09ee10))
-* Improve extension tabs behaviour ([bd1e8a9](https://github.com/navorite/sessionic/commit/bd1e8a9d3c1a5ded81c355e1168810c18bc154a6))
-* **UI:** Improve colors ([47516b0](https://github.com/navorite/sessionic/commit/47516b0755088a6cdc422afc4f7bd97c9e6ac414))
-* **UI:** Improve section spacing ([4e85ac9](https://github.com/navorite/sessionic/commit/4e85ac9fb9173c2fed0c575f1a1102199fb6b56b))
-* **UI:** Improve sessions selected color ([8afbfcd](https://github.com/navorite/sessionic/commit/8afbfcdc3a8b0a6df48242fc5d741eeb6085f9e5))
-* **UI:** Improve switch UI ([227f6ab](https://github.com/navorite/sessionic/commit/227f6ab08fb2b2c6fd62d3f200993f211d29a8b5))
-
+- Support tab lazy loading in Chrome ([4dfe9bc](https://github.com/navorite/sessionic/commit/4dfe9bc05a62a99155dc944dc7fd68b26f926984))
+- Add ability to import sessions from other popular extensions ([f5a99ea](https://github.com/navorite/sessionic/commit/f5a99ea6c5c0b4ae53b440cf4ab78f45b2ec443c))
+- Reduce size of backups by roughly 90% ([d0053e9](https://github.com/navorite/sessionic/commit/d0053e9ba5c4c9cbf2a61e8f8cd6853c32b8b845))
+- Add option to filter URL list ([9cda02c](https://github.com/navorite/sessionic/commit/9cda02c0beb31974752c100986b5766543efa74b))
+- Add option to lazy load tabs ([5c9bd97](https://github.com/navorite/sessionic/commit/5c9bd976004e80f681af61f03919d2571c09ee10))
+- Improve extension tabs behaviour ([bd1e8a9](https://github.com/navorite/sessionic/commit/bd1e8a9d3c1a5ded81c355e1168810c18bc154a6))
+- **UI:** Improve colors ([47516b0](https://github.com/navorite/sessionic/commit/47516b0755088a6cdc422afc4f7bd97c9e6ac414))
+- **UI:** Improve section spacing ([4e85ac9](https://github.com/navorite/sessionic/commit/4e85ac9fb9173c2fed0c575f1a1102199fb6b56b))
+- **UI:** Improve sessions selected color ([8afbfcd](https://github.com/navorite/sessionic/commit/8afbfcdc3a8b0a6df48242fc5d741eeb6085f9e5))
+- **UI:** Improve switch UI ([227f6ab](https://github.com/navorite/sessionic/commit/227f6ab08fb2b2c6fd62d3f200993f211d29a8b5))
 
 ### Bug Fixes
 
-* Avoid scenarios where memory leak may occur ([2450613](https://github.com/navorite/sessionic/commit/245061307adf5043ef9f822a34b2f884df9c7879))
-* Check for discarded tabs before displaying it ([f78610a](https://github.com/navorite/sessionic/commit/f78610aa31ef5053aa1340c61c6e0c8165138021))
-* Detect more tab change events ([2d87e89](https://github.com/navorite/sessionic/commit/2d87e89423b908c31553826871ad0d9995f443e1))
-* Do not remove certain tab properties ([36b765c](https://github.com/navorite/sessionic/commit/36b765c745678602b4a34111db968490d79339db))
-* Lazy loaded tab has no icon in some cases ([9dfd82d](https://github.com/navorite/sessionic/commit/9dfd82da8f8518c8ca90db28f88fe01e52af037f))
-* Provide better defaults to tab filters ([59bbccf](https://github.com/navorite/sessionic/commit/59bbccf6345c964f9917a9feb7e1bb8d3c68ff30))
-* Update Current Session tab removals properly ([da68872](https://github.com/navorite/sessionic/commit/da6887237f961017a878206b485f7df40bde2b50))
-* Update tab and window deletion properly ([709268f](https://github.com/navorite/sessionic/commit/709268f5516547440bfe9a57f428303c59efe584))
-* Use tab title for discarded tabs in Firefox ([30f6474](https://github.com/navorite/sessionic/commit/30f6474bfb315d3a1da36f997536100f252f4c0d))
-* **UI:** Fix tab icon not fully rendered ([92b528d](https://github.com/navorite/sessionic/commit/92b528dfa1cff74b0978518e2b747aa82ffadd7c))
-* **UI:** Show default icon for other extensions ([fed2a04](https://github.com/navorite/sessionic/commit/fed2a04fcbf50b2a45a171c8c070dbbff20b0faa))
-* **UI:** Use intended tab color ([eca3e8d](https://github.com/navorite/sessionic/commit/eca3e8d4f4c836049298c91ee8473b3cf2404843))
+- Avoid scenarios where memory leak may occur ([2450613](https://github.com/navorite/sessionic/commit/245061307adf5043ef9f822a34b2f884df9c7879))
+- Check for discarded tabs before displaying it ([f78610a](https://github.com/navorite/sessionic/commit/f78610aa31ef5053aa1340c61c6e0c8165138021))
+- Detect more tab change events ([2d87e89](https://github.com/navorite/sessionic/commit/2d87e89423b908c31553826871ad0d9995f443e1))
+- Do not remove certain tab properties ([36b765c](https://github.com/navorite/sessionic/commit/36b765c745678602b4a34111db968490d79339db))
+- Lazy loaded tab has no icon in some cases ([9dfd82d](https://github.com/navorite/sessionic/commit/9dfd82da8f8518c8ca90db28f88fe01e52af037f))
+- Provide better defaults to tab filters ([59bbccf](https://github.com/navorite/sessionic/commit/59bbccf6345c964f9917a9feb7e1bb8d3c68ff30))
+- Update Current Session tab removals properly ([da68872](https://github.com/navorite/sessionic/commit/da6887237f961017a878206b485f7df40bde2b50))
+- Update tab and window deletion properly ([709268f](https://github.com/navorite/sessionic/commit/709268f5516547440bfe9a57f428303c59efe584))
+- Use tab title for discarded tabs in Firefox ([30f6474](https://github.com/navorite/sessionic/commit/30f6474bfb315d3a1da36f997536100f252f4c0d))
+- **UI:** Fix tab icon not fully rendered ([92b528d](https://github.com/navorite/sessionic/commit/92b528dfa1cff74b0978518e2b747aa82ffadd7c))
+- **UI:** Show default icon for other extensions ([fed2a04](https://github.com/navorite/sessionic/commit/fed2a04fcbf50b2a45a171c8c070dbbff20b0faa))
+- **UI:** Use intended tab color ([eca3e8d](https://github.com/navorite/sessionic/commit/eca3e8d4f4c836049298c91ee8473b3cf2404843))
 
 ## [0.1.2](https://github.com/navorite/sessionic/compare/v0.1.1...v0.1.2) (2023-07-20)
 
