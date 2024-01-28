@@ -1,11 +1,11 @@
 import browser from 'webextension-polyfill';
 import { createTab, openInNewWindow, openSession } from './utils/browser';
-import { getSession } from '@/lib/utils/getSession';
+import { getSession, getWindowTabs } from '@/lib/utils/getSession';
 import { sessionsDB } from '@/lib/utils/database';
 import { generateSession } from '@/lib/utils/generateSession';
 import { getStorage, setStorage } from '@/lib/utils/storage';
 import { autoSaveDefaults } from '@/lib/constants/shared';
-import type { ESettings } from '@/lib/types';
+import type { ESession, ESettings } from '@/lib/types';
 import { sendMessage } from '@/lib/utils/messages';
 
 async function createTimer() {
@@ -57,6 +57,75 @@ browser.alarms.onAlarm.addListener(async (alarm) => {
 
 browser.runtime.onInstalled.addListener((details) => {
   if (details.reason === 'update') setStorage({ updated: true });
+
+  const contexts: browser.Menus.ContextType[] = ['page', 'action'];
+
+  browser.contextMenus.create({ id: 'save', title: 'Save session', contexts });
+  browser.contextMenus.create({
+    id: 'save-window',
+    title: 'Save window',
+    contexts
+  });
+
+  //TODO
+  // browser.contextMenus.create({
+  //   id: 'save-left',
+  //   title: 'Save all tabs to the left',
+  //   contexts
+  // });
+  // browser.contextMenus.create({
+  //   id: 'save-right',
+  //   title: 'Save all tabs to the right',
+  //   contexts
+  // });
+});
+
+browser.contextMenus.onClicked.addListener(async ({ menuItemId }) => {
+  const { excludePinned, urlFilterList: url } = await getStorage({
+    excludePinned: true,
+    urlFilterList: undefined
+  } as ESettings);
+
+  const pinned = excludePinned ? false : undefined;
+  const title = browser.i18n.getMessage('labelUnnamedSession');
+
+  switch (menuItemId) {
+    case 'save':
+      {
+        const session = await getSession({
+          pinned,
+          url
+        });
+
+        if (!session.tabsNumber) return;
+
+        session.title = title;
+
+        sessionsDB.saveSession(generateSession(session));
+      }
+      break;
+    case 'save-window':
+      {
+        const window = await browser.windows.getCurrent({ populate: false });
+        window.tabs = await getWindowTabs({ pinned, url });
+
+        if (!window.tabs?.length) return;
+
+        const session = {
+          title,
+          windows: [window],
+          tabsNumber: window.tabs.length
+        } as ESession;
+
+        sessionsDB.saveSession(generateSession(session));
+      }
+      break;
+    // TODO
+    // case 'save-left':
+    //   break;
+    // case 'save-right':
+    //   break;
+  }
 });
 
 browser.runtime.onMessage.addListener((request) => {

@@ -16,18 +16,14 @@
     {title}
   </h3>
 
-  <div class="flex w-full items-center gap-4">
-    <img
-      class="h-20 w-20 rounded-md bg-white p-2"
-      {src}
-      alt="Donate using {title}"
-    />
+  <div class="grid grid-cols-[auto_1fr] w-full gap-4 max-w-58">
+    <img class="rounded-md bg-white p-2" {src} alt="Donate using {title}" />
 
-    <div class="overflow-hidden text-xs">
-      <h4 class="font-normal">Address</h4>
+    <div>
+      <h4 class="font-normal text-sm">Address</h4>
+
       <div class="mt-1 flex items-center gap-2">
-        <p class="break-all text-sm">{address}</p>
-
+        <p class="break-all text-xs">{address}</p>
         <Clipboard value={address} />
       </div>
     </div>

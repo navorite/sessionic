@@ -3,8 +3,8 @@
   import { i18n } from 'webextension-polyfill';
 </script>
 
-<div class="container">
-  <p class="mb-4 text-center">
+<div>
+  <p class="mb-4">
     {i18n.getMessage('aboutDonateText')}
   </p>
 
@@ -29,16 +29,6 @@
           src="../../images/donate_patreon.png"
           alt="Donate using Patreon.com"
         />BECOME A PATRON</a
-      >
-      <a
-        href="https://paypal.me/navorite"
-        target="_blank"
-        class="h-full rounded-md bg-slate-200 px-8 py-2 hover:contrast-75"
-        ><img
-          class="h-full"
-          src="../../images/donate_paypal.webp"
-          alt="Donate using PayPal.com"
-        /></a
       >
     </div>
 
