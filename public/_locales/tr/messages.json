@@ -1,1 +1,377 @@
-{}
+{
+    "labelYear": {
+        "message": "yıl",
+        "description": "The label for year (abbreviated if possible)"
+    },
+    "labelClear": {
+        "message": "Temizle",
+        "description": "The label for Clear"
+    },
+    "aboutTranslationsLabel": {
+        "message": "Çeviriler"
+    },
+    "labelJustNow": {
+        "message": "şimdi",
+        "description": "The label for just now"
+    },
+    "aboutLicenseLabel": {
+        "message": "AGPL v3 lisansı"
+    },
+    "aboutPage": {
+        "message": "Hakkında",
+        "description": "The label for the About page in settings"
+    },
+    "labelPrivateWindow": {
+        "message": "Özel Pencere",
+        "description": "The label for Private Window"
+    },
+    "labelTab": {
+        "message": "Sekme",
+        "description": "The label for Tab"
+    },
+    "labelCurrentSession": {
+        "message": "Şimdiki Oturum",
+        "description": "The label for Current Session"
+    },
+    "labelMonth": {
+        "message": "ay",
+        "description": "The label for month (abbreviated if possible)"
+    },
+    "labelDay": {
+        "message": "gün",
+        "description": "The label for day"
+    },
+    "labelUnnamedSession": {
+        "message": "Adsız Oturum",
+        "description": "The label for Unnamed Session when saving without naming a session"
+    },
+    "labelSortDate": {
+        "message": "Tarih",
+        "description": "The label for sorting by date category"
+    },
+    "labelSortNewest": {
+        "message": "En Yeni",
+        "description": "The label for sorting by newest saved session"
+    },
+    "labelMinute": {
+        "message": "dk.",
+        "description": "The label for minute (abbreviated if possible)"
+    },
+    "labelSettings": {
+        "message": "Ayarlar",
+        "description": "The label for Settings"
+    },
+    "labelSearch": {
+        "message": "Ara",
+        "description": "The label for Search"
+    },
+    "labelSave": {
+        "message": "Kaydet",
+        "description": "The label for Save"
+    },
+    "labelExpand": {
+        "message": "Genişlet",
+        "description": "The label for Expand"
+    },
+    "labelCollapse": {
+        "message": "Çökert",
+        "description": "The label for Collapse"
+    },
+    "notifySaveFailEmpty": {
+        "message": "Boş oturum kaydedilemedi",
+        "description": "The label for the failure of saving empty session notification"
+    },
+    "notifyUpdateSuccess": {
+        "message": "Oturum güncellendi!",
+        "description": "The label for the success of updating session notification"
+    },
+    "notifyDeleteAllFail": {
+        "message": "Oturumlar silinemedi",
+        "description": "The label for the failure of deleting all session notification"
+    },
+    "notifyDeleteAllFailUndefined": {
+        "message": "Oturumlar var olmadıkları için silinemedi",
+        "description": "The label for the failure of deleting non-existing sessions notification"
+    },
+    "settingsDarkMode": {
+        "message": "Karanlık mod",
+        "description": "The label for the Dark theme option in settings"
+    },
+    "settingsAutosaveMax": {
+        "message": "Kaydedilmiş oturumların en yüksek sayısı (en çok 15)",
+        "description": "The label for the Autosave max number of saved sessions option in settings"
+    },
+    "settingsAutosaveInterval": {
+        "message": "Dakika olarak kayıt aralığı (en az 1 dakika)",
+        "description": "The label for the auto save interval option in settings"
+    },
+    "settingsExtensionActionsHeading": {
+        "message": "Uzantı Eylemleri",
+        "description": "The label for the extension actions section heading in settings"
+    },
+    "settingsURLFilterList": {
+        "message": "URL Filtre Listesi",
+        "description": "The label for the URL Filter List text option in settings"
+    },
+    "settingsDoNotAskForSessionName": {
+        "message": "Kaydederken oturum adı sorma",
+        "description": "The label for the do not ask for session name when saving option in settings"
+    },
+    "settingsExcludePinnedTabs": {
+        "message": "Sabitlenmiş sekmeleri oturumun dışında bırak",
+        "description": "The label for the excluding pinned tabs in settings"
+    },
+    "settingsSessionActionsHeading": {
+        "message": "Oturum Eylemleri",
+        "description": "The label for the session actions section heading in settings"
+    },
+    "settingsTagsTag": {
+        "message": "Etiket",
+        "description": "The label for the tags table tag column in settings"
+    },
+    "shortcutSaveCurrent": {
+        "message": "Şu anki oturumu kaydet",
+        "description": "The label for saving current session keyboard shortcut"
+    },
+    "shortcutRenameSelected": {
+        "message": "Seçili oturumu yeniden adlandır",
+        "description": "The label for opening command palette keyboard shortcut"
+    },
+    "shortcutFocusSearch": {
+        "message": "Arama kutusunu odakla",
+        "description": "The label for focusing search box keyboard shortcut"
+    },
+    "shortcutDisplayCurrent": {
+        "message": "Şu anki oturumu göster",
+        "description": "The label for displaying current session keyboard shortcut"
+    },
+    "labelSearchPlaceholder": {
+        "message": "Oturum veya sekme adı ara…",
+        "description": "The placeholder for the Searchbar"
+    },
+    "inputModalPlaceholder": {
+        "message": "Oturum adı ekle…",
+        "description": "The label for the session modal input"
+    },
+    "settingsLazyloadDescription": {
+        "message": "Seçilene kadar sekmeleri yüklemeyerek bellek kullanımını büyük ölçüde azalt"
+    },
+    "labelHour": {
+        "message": "sa",
+        "description": "The label for hour (abbreviated if possible)"
+    },
+    "settingsAutosave": {
+        "message": "Oturumları otomatik kaydet",
+        "description": "The label for the Autosave option in settings"
+    },
+    "extDesc": {
+        "message": "Oturumları, pencereleri ve sekmeleri kaydetmek, yönetmek ve geri yüklemek için bir uzantı.",
+        "description": "Description of the extension"
+    },
+    "labelTagsAll": {
+        "message": "Tüm",
+        "description": "The label for showing all tags for saved sessions"
+    },
+    "labelSortAZ": {
+        "message": "A-Z",
+        "description": "The label for sorting by A to Z for saved sessions"
+    },
+    "labelDonate": {
+        "message": "Bağış yap",
+        "description": "The label for Donate"
+    },
+    "notifyDeleteSuccess": {
+        "message": "Oturum silindi!",
+        "description": "The label for the success of deleting session notification"
+    },
+    "notifyExtUpdate": {
+        "message": "Sessionic v$1'e güncellendi!",
+        "description": "The label for the extension was updated notification - $1 is placeholder for version injection"
+    },
+    "settingsUserInterfaceHeading": {
+        "message": "Kullanıcı Arayüzü",
+        "description": "The label for the user interface section heading in settings"
+    },
+    "settingsPopupView": {
+        "message": "Açılır Pencere Görünümü",
+        "description": "The label for the Popup View option in settings"
+    },
+    "settingsResetAll": {
+        "message": "Tüm Ayarları Sıfırla",
+        "description": "The label for the reset all settings button in settings"
+    },
+    "shortcutSelectNext": {
+        "message": "Sonraki oturumu seç",
+        "description": "The label for selecting next session keyboard shortcut"
+    },
+    "labelAddTag": {
+        "message": "Etiket ekle",
+        "description": "The label for Add tag"
+    },
+    "labelDelete": {
+        "message": "Sil",
+        "description": "The label for Delete"
+    },
+    "labelRename": {
+        "message": "Yeniden adlandır",
+        "description": "The label for Rename"
+    },
+    "labelRemoveTag": {
+        "message": "Etiket kaldır",
+        "description": "The label for Remove tag icon"
+    },
+    "labelOpen": {
+        "message": "Aç",
+        "description": "The label for Open"
+    },
+    "tagsModalSelectTag": {
+        "message": "Etiket seç",
+        "description": "The label for selecting a tag in the create tag modal"
+    },
+    "renameModalTitle": {
+        "message": "Oturumu yeniden adlandır",
+        "description": "The label for the rename session modal title"
+    },
+    "saveModalTitle": {
+        "message": "Oturumu kaydet",
+        "description": "The label for the save session modal title"
+    },
+    "inputModalErrorLength": {
+        "message": "Oturum adı karakter sayısı $1 ve $2 arasında olmalıdır.",
+        "description": "The label for the containing unallowed characters error in input modal"
+    },
+    "inputModalErrorChar": {
+        "message": "Oturum adı '<' ve '>' karakterlerini bulundurmamalıdır.",
+        "description": "The label for the containing unallowed characters error in input modal"
+    },
+    "notifyUpdateFail": {
+        "message": "Oturum güncellenemedi",
+        "description": "The label for the failure  of updating session notification"
+    },
+    "notifyDeleteFail": {
+        "message": "Oturum silinemedi",
+        "description": "The label for the failure of deleting session notification"
+    },
+    "notifyDeleteAllSuccess": {
+        "message": "Tüm oturumlar silindi!",
+        "description": "The label for the success of deleting all sessions notification"
+    },
+    "deleteModalContent": {
+        "message": "Bu oturumu silmek istediğinizden emin misiniz?",
+        "description": "The label for the delete session modal content"
+    },
+    "notifyLoadFail": {
+        "message": "Oturumlar yüklenemedi",
+        "description": "The label for the failure of loading sessions notification"
+    },
+    "notifySaveSuccess": {
+        "message": "Oturum kaydedildi!",
+        "description": "The label for the success of saving session notification"
+    },
+    "notifySaveFail": {
+        "message": "Oturum kaydedilemedi",
+        "description": "The label for the failure of saving session notification"
+    },
+    "notifyDeleteFailUndefined": {
+        "message": "Oturum var olmaması nedeniyle silinemedi",
+        "description": "The label for the failure of deleting non-existing session notification"
+    },
+    "settingsAutosaveHeading": {
+        "message": "Otomatik Kayıt",
+        "description": "The label for the automatic saving section heading in settings"
+    },
+    "labelTabs": {
+        "message": "Sekmeler",
+        "description": "The label for Tabs"
+    },
+    "aboutDonateHeading": {
+        "message": "Projeyi destekle",
+        "description": "The heading used in the donate modal"
+    },
+    "generalPage": {
+        "message": "Genel",
+        "description": "The label for the General page in settings"
+    },
+    "keyboardShortcutsPage": {
+        "message": "Klayve Kısayolları",
+        "description": "The label for the Keyboard Shortcuts page in settings"
+    },
+    "labelWindow": {
+        "message": "Pencere",
+        "description": "The label for Window"
+    },
+    "labelSortOldest": {
+        "message": "En Eski",
+        "description": "The label for sorting by oldest saved session"
+    },
+    "labelSortName": {
+        "message": "Ad",
+        "description": "The label for sorting by name category for saved sessions"
+    },
+    "labelSortZA": {
+        "message": "Z-A",
+        "description": "The label for sorting by Z to A for saved sessions"
+    },
+    "labelFullView": {
+        "message": "Tam Görüntü",
+        "description": "The label for Full View"
+    },
+    "settingsURLFilterListPlaceholder": {
+        "message": "ör. sadece aşağıdaki URL biçimlerini takip edin:\n*://*/*\nfile:///*/*\nftp://*/*\nchrome://*/*\nhttps://*.google.com/\nhttps://www.youtube.com/*\n",
+        "description": "The label for the URL Filter List placeholder in settings"
+    },
+    "settingsTagsBackground": {
+        "message": "Arka Plan",
+        "description": "The label for the tags table background column in settings"
+    },
+    "settingsTagsText": {
+        "message": "Metin",
+        "description": "The label for the tags table text color column in settings"
+    },
+    "settingsTagsPreview": {
+        "message": "Önizleme",
+        "description": "The label for the tags table preview column in settings"
+    },
+    "settingsTagsAction": {
+        "message": "Eylem",
+        "description": "The label for the tags table action column in settings"
+    },
+    "settingsImportSessions": {
+        "message": "Oturumları İçe Aktar",
+        "description": "The label for importing sessions button in settings"
+    },
+    "shortcutCommandPalette": {
+        "message": "Komuta Paletini Aç",
+        "description": "The label for opening command palette keyboard shortcut"
+    },
+    "shortcutSelectPrevious": {
+        "message": "Önceki oturumu seç",
+        "description": "The label for selecting previous session shortcut"
+    },
+    "shortcutDeleteSelected": {
+        "message": "Seçili oturumu sil",
+        "description": "The label for deleting selected session keyboard shortcut"
+    },
+    "tagPlaceholder": {
+        "message": "ör. Kişisel"
+    },
+    "aboutSourceCodeLabel": {
+        "message": "Kaynak kodu"
+    },
+    "deleteModalTitle": {
+        "message": "Oturumu sil",
+        "description": "The label for the delete session modal title"
+    },
+    "labelClose": {
+        "message": "Kapat",
+        "description": "The label for Close"
+    },
+    "keyboardShortcutsHeading": {
+        "message": "Klavye Kısayolları",
+        "description": "The label for keyboard shortcuts section in keyboard shortcuts page"
+    },
+    "settingsExportSessions": {
+        "message": "Oturumları Dışa Aktar",
+        "description": "The label for exporting sessions button in settings"
+    }
+}
