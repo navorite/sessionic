@@ -1,12 +1,8 @@
 import { extension, isDEV } from './scripts/constants';
 import { defineConfig, type UserConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
-import { fileURLToPath } from 'url';
+import { resolve } from 'path';
 import UnoCSS from 'unocss/vite';
-
-export function _dir(path: string) {
-  return fileURLToPath(new URL(path, import.meta.url));
-}
 
 export const sharedConfig: UserConfig = {
   define: {
@@ -16,18 +12,18 @@ export const sharedConfig: UserConfig = {
       parseInt(extension.version) < 1
         ? JSON.stringify('ALPHA')
         : isDEV
-        ? JSON.stringify('DEV')
-        : null
+          ? JSON.stringify('DEV')
+          : null
   },
 
   resolve: {
     alias: {
-      '@': _dir('src'),
-      '@constants': _dir('src/lib/constants'),
-      '@components': _dir('src/lib/components'),
-      '@stores': _dir('src/lib/stores'),
-      '@utils': _dir('src/lib/utils'),
-      '@styles': _dir('src/styles')
+      '@': resolve('src'),
+      '@constants': resolve('src/lib/constants'),
+      '@components': resolve('src/lib/components'),
+      '@stores': resolve('src/lib/stores'),
+      '@utils': resolve('src/lib/utils'),
+      '@styles': resolve('src/styles')
     }
   }
 };

@@ -2,15 +2,15 @@ import { clog, colors, ensureDir, writeJSON } from './utils';
 import { dir, isDEV, isFirefox } from './constants';
 import { manifest } from '@/manifest';
 import { readFileSync, writeFileSync } from 'fs';
-import { _dir } from 'vite.config';
 import chokidar from 'chokidar';
+import { resolve } from 'path';
 
 function injectHMR() {
   const views = ['options', 'popup', 'discarded'];
 
   for (const view of views) {
-    ensureDir(_dir(`dist/src/${view}`));
-    let data = readFileSync(_dir(`src/${view}/index.html`), {
+    ensureDir(resolve(`dist/src/${view}`));
+    let data = readFileSync(resolve(`src/${view}/index.html`), {
       encoding: 'utf-8'
     });
     data = data
@@ -20,7 +20,7 @@ function injectHMR() {
         '<div id="app">Vite server did not start</div>'
       );
 
-    writeFileSync(_dir(`dist/src/${view}/index.html`), data, {
+    writeFileSync(resolve(`dist/src/${view}/index.html`), data, {
       encoding: 'utf-8'
     });
   }
@@ -42,7 +42,7 @@ if (isDEV) {
       "script-src 'self' http://localhost:5173/ 'unsafe-eval'; object-src 'self'";
   }
 
-  chokidar.watch(_dir('src/**/*.html')).on('change', injectHMR);
+  chokidar.watch(resolve('src/**/*.html')).on('change', injectHMR);
 }
 
 writeJSON(dir, 'manifest.json', manifest);

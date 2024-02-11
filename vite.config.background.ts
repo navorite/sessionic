@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import { isDEV } from './scripts/constants';
-import { _dir, sharedConfig } from './vite.config';
+import { sharedConfig } from './vite.config';
+import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,7 +17,7 @@ export default defineConfig({
 
     rollupOptions: {
       input: {
-        background: _dir('src/background/background.ts')
+        background: resolve('src/background/background.ts')
       },
       output: {
         format: 'iife',
