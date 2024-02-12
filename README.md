@@ -14,7 +14,6 @@ A web extension to save, manage and restore sessions, windows and tabs.
 [![Support me using GitHub](https://img.shields.io/badge/Sponsor-GitHub-%23333?logo=githubsponsors)](https://github.com/sponsors/navorite)
 [![Support me using Ko-fi](https://img.shields.io/badge/Sponsor-Ko--fi-FF5E5B?logo=kofi&logoColor=FF5E5B)](https://ko-fi.com/navorite)
 [![Support me using Patreon](https://img.shields.io/badge/Sponsor-Patreon-FF424D?logo=patreon)](https://www.patreon.com/navorite)
-[![Support me using PayPal](https://img.shields.io/badge/Sponsor-Paypal-00457C?logo=paypal)](https://www.paypal.me/navorite)
 
 **Popup View**
 | Light | Dark |
