@@ -11,10 +11,6 @@ A web extension to save, manage and restore sessions, windows and tabs.
 [![Microsoft Edge Add-on Version](https://img.shields.io/badge/dynamic/json?label=Edge&logo=microsoftedge&logoColor=%230078d7&prefix=v&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fopniekmiofodaifalpdfoecpcloliico)](https://microsoftedge.microsoft.com/addons/detail/sessionic/opniekmiofodaifalpdfoecpcloliico)
 [![License](https://img.shields.io/badge/License-AGPL--3.0-blue?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMzIgMzIiPjxwYXRoIGZpbGw9IiNmZmZmZmYiIGQ9Ik0xMCA2aDEydjJIMTB6bTAgNGgxMnYySDEwem0wIDE0aDZ2MmgtNnptMC0xMGg2djJoLTZ6Ii8%2BPHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTI0IDMwSDhhMi4wMDIgMi4wMDIgMCAwIDEtMi0yVjRhMi4wMDIgMi4wMDIgMCAwIDEgMi0yaDE2YTIuMDAyIDIuMDAyIDAgMCAxIDIgMnYyNGEyLjAwMiAyLjAwMiAwIDAgMS0yIDJaTTggNHYyNGgxNlY0WiIvPjwvc3ZnPg%3D%3D)](./LICENSE)
 
-[![Support me using GitHub](https://img.shields.io/badge/Sponsor-GitHub-%23333?logo=githubsponsors)](https://github.com/sponsors/navorite)
-[![Support me using Ko-fi](https://img.shields.io/badge/Sponsor-Ko--fi-FF5E5B?logo=kofi&logoColor=FF5E5B)](https://ko-fi.com/navorite)
-[![Support me using Patreon](https://img.shields.io/badge/Sponsor-Patreon-FF424D?logo=patreon)](https://www.patreon.com/navorite)
-
 **Popup View**
 | Light | Dark |
 | :------------------------------------------------------: | :-------------------------------------------------------------: |
