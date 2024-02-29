@@ -72,6 +72,7 @@ export interface ESettings {
   >;
   doNotAskForTitle: boolean;
   excludePinned: boolean;
+  exportCompressed: boolean;
   sortMethod: SortMethod;
   tagsFilter: '__all__' | (string & NonNullable<unknown>);
 }

@@ -31,6 +31,7 @@ export const settings = (() => {
     autoSaveTimer: autoSaveDefaults.autoSaveTimer,
     tags: {},
     doNotAskForTitle: true,
+    exportCompressed: true,
     excludePinned: true,
     sortMethod: 'newest',
     tagsFilter: '__all__'
