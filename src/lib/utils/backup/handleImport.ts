@@ -19,8 +19,6 @@ export async function handleImport(event: Event) {
     if (ext) {
       const data = new Uint8Array(result as ArrayBufferLike);
 
-      sessions = JSON.parse(decompressFromUint8Array(data)) as ESession[];
-
       if (data) {
         sessions = JSON.parse(
           ext === '.ssf'
