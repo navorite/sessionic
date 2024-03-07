@@ -12,7 +12,7 @@ export async function handleExport(exportCompressed: boolean = false) {
   const fileName = `[${EXT_NAME}:${sessions.length}]${date.toLocaleString([], {
     dateStyle: 'medium',
     timeStyle: 'short'
-  })}.${exportCompressed ? 'ssf' : 'json'}`;
+  })}.${exportCompressed ? 'ssf' : 'ssf.json'}`;
 
   const sessionsJson = JSON.stringify(sessions);
   const blob = new Blob([
