@@ -125,6 +125,14 @@
   />
 
   <Switch
+    title={i18n.getMessage('settingsExportSessionCompressed')}
+    checked={$settings.exportCompressed}
+    on:change={() => {
+      settings.changeSetting('exportCompressed', !$settings.exportCompressed);
+    }}
+  />
+
+  <Switch
     title={i18n.getMessage('settingsExcludePinnedTabs')}
     checked={$settings.excludePinned}
     on:change={() =>
@@ -148,7 +156,7 @@
 
     <button
       class="max-w-max rounded-md bg-neutral-4 p-2 hover:bg-neutral-5"
-      on:click={handleExport}
+      on:click={() => handleExport($settings.exportCompressed)}
       >{i18n.getMessage('settingsExportSessions')}</button
     >
   </div>

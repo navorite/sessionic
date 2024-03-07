@@ -2,7 +2,7 @@ import { EXT_NAME } from '@/lib/constants';
 import { sessionsDB } from '@/lib/utils';
 import { compressToUint8Array } from 'lz-string';
 
-export async function handleExport() {
+export async function handleExport(exportCompressed: boolean = false) {
   const date = new Date();
 
   const sessions = await sessionsDB.loadSessions();
@@ -12,11 +12,12 @@ export async function handleExport() {
   const fileName = `[${EXT_NAME}:${sessions.length}]${date.toLocaleString([], {
     dateStyle: 'medium',
     timeStyle: 'short'
-  })}.ssf`;
+  })}.${exportCompressed ? 'ssf' : 'ssf.json'}`;
 
-  const compressed = compressToUint8Array(JSON.stringify(sessions));
-
-  const blob = new Blob([compressed]);
+  const sessionsJson = JSON.stringify(sessions);
+  const blob = new Blob([
+    exportCompressed ? compressToUint8Array(sessionsJson) : sessionsJson
+  ]);
 
   const url = URL.createObjectURL(blob);
 

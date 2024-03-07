@@ -303,6 +303,10 @@
         "message": "Do not ask for session name when saving",
         "description": "The label for the do not ask for session name when saving option in settings"
     },
+    "settingsExportSessionCompressed": {
+        "message": "Compress session data when saving",
+        "description": "The label for compress session data when saving option in settings"
+    },
     "settingsExcludePinnedTabs": {
         "message": "Exclude pinned tabs from session",
         "description": "The label for the excluding pinned tabs in settings"

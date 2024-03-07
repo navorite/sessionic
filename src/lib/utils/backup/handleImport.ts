@@ -7,19 +7,27 @@ export async function handleImport(event: Event) {
 
   const fileReader = new FileReader();
 
-  const isSSF = file.name.endsWith('ssf');
+  const ext = file.name.match(/.ssf(.json)?/)?.[0];
 
-  isSSF ? fileReader.readAsArrayBuffer(file) : fileReader.readAsText(file);
+  ext ? fileReader.readAsArrayBuffer(file) : fileReader.readAsText(file);
 
   fileReader.onloadend = async (ev) => {
     let sessions: ESession[] | undefined = [];
 
     let result = ev.target?.result;
 
-    if (isSSF) {
-      const bytes = new Uint8Array(result as ArrayBufferLike);
+     if (ext) {
+      const data = new Uint8Array(result as ArrayBufferLike);
 
       sessions = JSON.parse(decompressFromUint8Array(bytes)) as ESession[];
+      
+      if (data) {
+        sessions = JSON.parse(
+          ext === '.ssf'
+            ? decompressFromUint8Array(data)
+            : new TextDecoder().decode(data)
+        ) as ESession[];
+      }
     } else {
       if ((result as string).charCodeAt(0) === 0xfeff)
         result = result?.slice(1);
