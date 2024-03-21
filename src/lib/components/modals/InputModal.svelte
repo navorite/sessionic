@@ -7,8 +7,8 @@
 
   export let value = '';
 
-  export let minlength = 3;
-  export let maxlength = 40;
+  export let minlength = 1;
+  export let maxlength = 120;
 
   let disabled = true;
   let errMsg = '';
