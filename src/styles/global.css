@@ -62,7 +62,7 @@ body {
 }
 
 body {
-  @apply container mx-auto min-h-[500px] min-w-[800px] scroll-smooth bg-neutral-1 px-4 py-2 font-sans text-neutral-content;
+  @apply container mx-auto h-[500px] w-[800px] scroll-smooth bg-neutral-1 px-4 py-2 font-sans text-neutral-content;
 }
 
 #root {
