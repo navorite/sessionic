@@ -112,7 +112,7 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<div class="mt-2 flex h-full max-h-[90vh] w-full gap-2 overflow-hidden">
+<div class="mt-2 flex h-[90vh] gap-2 overflow-hidden">
   <div class="flex h-full max-w-xs flex-1 flex-col">
     <CurrentSession on:save={saveAction} />
 
