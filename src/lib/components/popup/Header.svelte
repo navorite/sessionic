@@ -16,7 +16,7 @@
   let showDonateModal = false;
 </script>
 
-<div class="flex h-full max-h-8 w-full items-center gap-2">
+<div class="flex max-h-8 items-center gap-2">
   <h1 class="relative">
     {EXT_NAME}
     {#if EXT_MODE}
