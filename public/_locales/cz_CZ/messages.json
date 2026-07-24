@@ -1,1 +1,302 @@
-{}
+{
+    "aboutDonateHeading": {
+        "message": "Podpořte projekt"
+    },
+    "extDesc": {
+        "message": "Webové rozšíření pro ukládání, správu a obnovu relací, oken a karet."
+    },
+    "generalPage": {
+        "message": "Obecné"
+    },
+    "keyboardShortcutsPage": {
+        "message": "Klávesové zkratky"
+    },
+    "aboutPage": {
+        "message": "O aplikaci"
+    },
+    "labelWindow": {
+        "message": "Okno"
+    },
+    "labelWindows": {
+        "message": "Okna"
+    },
+    "labelPrivateWindow": {
+        "message": "Soukromé okno"
+    },
+    "labelTab": {
+        "message": "Záložka"
+    },
+    "labelTabs": {
+        "message": "Záložky"
+    },
+    "labelCurrentSession": {
+        "message": "Aktuální relace"
+    },
+    "labelUnnamedSession": {
+        "message": "Nepojmenovaná relace"
+    },
+    "labelSortDate": {
+        "message": "Datum"
+    },
+    "labelSortNewest": {
+        "message": "Nejnovější"
+    },
+    "labelSortOldest": {
+        "message": "Nejstarší"
+    },
+    "labelSortName": {
+        "message": "Název"
+    },
+    "labelSortAZ": {
+        "message": "A-Z"
+    },
+    "labelSortZA": {
+        "message": "Z-A"
+    },
+    "labelTagsAll": {
+        "message": "Vše"
+    },
+    "labelYear": {
+        "message": "yr"
+    },
+    "labelMonth": {
+        "message": "Měsíc"
+    },
+    "labelDay": {
+        "message": "Den"
+    },
+    "labelHour": {
+        "message": "Hodina"
+    },
+    "labelMinute": {
+        "message": "Minuta"
+    },
+    "labelJustNow": {
+        "message": "Aktuální"
+    },
+    "labelSavedAt": {
+        "message": "Uloženo"
+    },
+    "labelSettings": {
+        "message": "Nastavení"
+    },
+    "labelDonate": {
+        "message": "Podpořit projekt"
+    },
+    "labelFullView": {
+        "message": "Celá obrazovka"
+    },
+    "labelSearch": {
+        "message": "Hledat"
+    },
+    "labelSearchPlaceholder": {
+        "message": "Vyhledat relaci, nebo název záložky…"
+    },
+    "labelClear": {
+        "message": "Vymazat"
+    },
+    "labelSave": {
+        "message": "Uložit"
+    },
+    "labelCollapse": {
+        "message": "Sbalit"
+    },
+    "labelExpand": {
+        "message": "Rozbalit"
+    },
+    "labelRename": {
+        "message": "Přejmenovat"
+    },
+    "labelClose": {
+        "message": "Zavřít"
+    },
+    "labelDelete": {
+        "message": "Smazat"
+    },
+    "labelAddTag": {
+        "message": "Přidat tag"
+    },
+    "labelRemoveTag": {
+        "message": "Odstranit tag"
+    },
+    "labelOpen": {
+        "message": "Otevřít"
+    },
+    "tagsModalSelectTag": {
+        "message": "Vybrat tag"
+    },
+    "renameModalTitle": {
+        "message": "Přejmenovat relaci"
+    },
+    "saveModalTitle": {
+        "message": "Uložit relaci"
+    },
+    "inputModalPlaceholder": {
+        "message": "Zadat název relace…"
+    },
+    "inputModalErrorLength": {
+        "message": "Název relace musí být mezi $1 a $2 znaky."
+    },
+    "inputModalErrorChar": {
+        "message": "Název relace nesmí obsahovat znak < nebo >."
+    },
+    "deleteModalTitle": {
+        "message": "Vymazat relaci"
+    },
+    "deleteModalContent": {
+        "message": "Skutečně chcete smazat tuto relaci?"
+    },
+    "notifyLoadFail": {
+        "message": "Chyba při načítání relace"
+    },
+    "notifySaveSuccess": {
+        "message": "Relace byla uložena!"
+    },
+    "notifySaveFail": {
+        "message": "Chyba při ukládání relace"
+    },
+    "notifySaveFailEmpty": {
+        "message": "Nelze uložit prázdnou relaci"
+    },
+    "notifyUpdateSuccess": {
+        "message": "Relace byla aktualizována!"
+    },
+    "notifyUpdateFail": {
+        "message": "Chyba aktualizace relace"
+    },
+    "notifyDeleteSuccess": {
+        "message": "Relace byla odstraněna!"
+    },
+    "notifyDeleteFail": {
+        "message": "Chyba při odstraňování relace"
+    },
+    "notifyDeleteFailUndefined": {
+        "message": "Chyba při odstraňování: Neexistující relace"
+    },
+    "notifyDeleteAllSuccess": {
+        "message": "Všechny relace odstraněny!"
+    },
+    "notifyDeleteAllFail": {
+        "message": "Chyba při odstraňování relací"
+    },
+    "notifyDeleteAllFailUndefined": {
+        "message": "Chyba při odstraňování: Více neexistujích relací"
+    },
+    "notifyExtUpdate": {
+        "message": "Sessionic byl aktualizován na v$1!"
+    },
+    "settingsUserInterfaceHeading": {
+        "message": "Uživatelé rozhraní"
+    },
+    "settingsPopupView": {
+        "message": "Vyskakovací okno"
+    },
+    "settingsDarkMode": {
+        "message": "Tmavé téma"
+    },
+    "settingsAutosaveHeading": {
+        "message": "Automatické uložení"
+    },
+    "settingsAutosave": {
+        "message": "Automaticky ukládat relace"
+    },
+    "settingsAutosaveMax": {
+        "message": "Maximální počet uložených relací (max. 15 relací)"
+    },
+    "settingsAutosaveInterval": {
+        "message": "Interval automatického ukládání"
+    },
+    "settingsExtensionActionsHeading": {
+        "message": "Rozšíření"
+    },
+    "settingsURLFilterList": {
+        "message": "URL filtr"
+    },
+    "settingsURLFilterListPlaceholder": {
+        "message": "např. sledovat pouze následující shody URL:\n*://*/*\nfile:///*/*\nftp://*/*\nchrome://*/*\nhttps://*.google.com/\nhttps://www.youtube.com/*\n"
+    },
+    "settingsLazyload": {
+        "message": "Pohodlné načítání záložek"
+    },
+    "settingsResetAll": {
+        "message": "Obnovit všechna nastavení"
+    },
+    "settingsDoNotAskForSessionName": {
+        "message": "Není možný dotaz na název relace během ukládání"
+    },
+    "settingsExportSessionCompressed": {
+        "message": "Komprimovat data relace při ukládání"
+    },
+    "settingsExcludePinnedTabs": {
+        "message": "Vyloučit připnuté karty z relace"
+    },
+    "settingsSessionActionsHeading": {
+        "message": "Možnosti relace"
+    },
+    "settingsTagsTag": {
+        "message": "Tag"
+    },
+    "settingsTagsBackground": {
+        "message": "Pozadí"
+    },
+    "settingsTagsText": {
+        "message": "Text"
+    },
+    "settingsTagsPreview": {
+        "message": "Náhled"
+    },
+    "settingsTagsAction": {
+        "message": "Akce"
+    },
+    "settingsImportSessions": {
+        "message": "Import nastavení"
+    },
+    "settingsExportSessions": {
+        "message": "Export nastavení"
+    },
+    "keyboardShortcutsHeading": {
+        "message": "Klávesové zkratky"
+    },
+    "shortcutCommandPalette": {
+        "message": "Otevřít paletu příkazů"
+    },
+    "shortcutSaveCurrent": {
+        "message": "Uložit aktuální relaci"
+    },
+    "shortcutRenameSelected": {
+        "message": "Přejmenovat vybranou relaci"
+    },
+    "shortcutFocusSearch": {
+        "message": "Zaměřit vyhledávací pole"
+    },
+    "shortcutDisplayCurrent": {
+        "message": "Zobrazit aktuální relaci"
+    },
+    "shortcutSelectPrevious": {
+        "message": "Vybrat předchozí relaci"
+    },
+    "shortcutSelectNext": {
+        "message": "Vybrat následující relaci"
+    },
+    "shortcutDeleteSelected": {
+        "message": "Odstranit vybrané relace"
+    },
+    "tagPlaceholder": {
+        "message": "např. osobní"
+    },
+    "settingsLazyloadDescription": {
+        "message": "Výrazně snížit využití paměti tím, že se karty nenačítají, dokud nejsou vybrány"
+    },
+    "aboutTranslationsLabel": {
+        "message": "Překlady"
+    },
+    "aboutChangelogLabel": {
+        "message": "Seznam změn"
+    },
+    "aboutSourceCodeLabel": {
+        "message": "Zdrojový kód"
+    },
+    "aboutLicenseLabel": {
+        "message": "Licence AGPL v3"
+    }
+}

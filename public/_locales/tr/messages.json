@@ -98,7 +98,7 @@
         "description": "The label for the Dark theme option in settings"
     },
     "settingsAutosaveMax": {
-        "message": "Kaydedilmiş oturumların en yüksek sayısı (en çok 15)",
+        "message": "En fazla kaydedilen oturum sayısı (en çok 15)",
         "description": "The label for the Autosave max number of saved sessions option in settings"
     },
     "settingsAutosaveInterval": {
@@ -118,7 +118,7 @@
         "description": "The label for the do not ask for session name when saving option in settings"
     },
     "settingsExcludePinnedTabs": {
-        "message": "Sabitlenmiş sekmeleri oturumun dışında bırak",
+        "message": "Sabitlenen sekmeleri oturumun dışında bırak",
         "description": "The label for the excluding pinned tabs in settings"
     },
     "settingsSessionActionsHeading": {
@@ -373,5 +373,20 @@
     "settingsExportSessions": {
         "message": "Oturumları Dışa Aktar",
         "description": "The label for exporting sessions button in settings"
+    },
+    "labelWindows": {
+        "message": "Pencereler"
+    },
+    "labelSavedAt": {
+        "message": "Kaydedilme tarihi"
+    },
+    "settingsLazyload": {
+        "message": "Sekmeleri geç yükle"
+    },
+    "settingsExportSessionCompressed": {
+        "message": "Kaydedilirken oturum verilerini sıkıştır"
+    },
+    "aboutChangelogLabel": {
+        "message": "Değişiklik günlüğü"
     }
 }

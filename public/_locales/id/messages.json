@@ -1,1 +1,302 @@
-{}
+{
+    "extDesc": {
+        "message": "Ekstensi web untuk menyimpan, mengelola, dan memulihkan sesi, jendela, dan tab."
+    },
+    "generalPage": {
+        "message": "Umum"
+    },
+    "keyboardShortcutsPage": {
+        "message": "Pintasan Keyboard"
+    },
+    "aboutPage": {
+        "message": "Tentang"
+    },
+    "aboutDonateHeading": {
+        "message": "Dukung proyek ini"
+    },
+    "labelWindow": {
+        "message": "Jendela"
+    },
+    "labelWindows": {
+        "message": "Jendela"
+    },
+    "labelPrivateWindow": {
+        "message": "Jendela Pribadi"
+    },
+    "labelTab": {
+        "message": "Tab"
+    },
+    "labelTabs": {
+        "message": "Tab"
+    },
+    "labelCurrentSession": {
+        "message": "Sesi Saat Ini"
+    },
+    "labelUnnamedSession": {
+        "message": "Sesi Tanpa Nama"
+    },
+    "labelSortDate": {
+        "message": "Tanggal"
+    },
+    "labelSortNewest": {
+        "message": "Terbaru"
+    },
+    "labelSortOldest": {
+        "message": "Terlama"
+    },
+    "labelSortName": {
+        "message": "Nama"
+    },
+    "labelSortAZ": {
+        "message": "A-Z"
+    },
+    "labelSortZA": {
+        "message": "Z-A"
+    },
+    "labelTagsAll": {
+        "message": "Semua"
+    },
+    "labelYear": {
+        "message": "thn"
+    },
+    "labelMonth": {
+        "message": "bln"
+    },
+    "labelDay": {
+        "message": "hari"
+    },
+    "labelHour": {
+        "message": "jam"
+    },
+    "labelMinute": {
+        "message": "mnt"
+    },
+    "labelJustNow": {
+        "message": "baru saja"
+    },
+    "labelSavedAt": {
+        "message": "Disimpan pada"
+    },
+    "labelSettings": {
+        "message": "Pengaturan"
+    },
+    "labelDonate": {
+        "message": "Donasi"
+    },
+    "labelFullView": {
+        "message": "Tampilan Penuh"
+    },
+    "labelSearch": {
+        "message": "Cari"
+    },
+    "labelSearchPlaceholder": {
+        "message": "Cari nama sesi atau tab…"
+    },
+    "labelClear": {
+        "message": "Hapus"
+    },
+    "labelSave": {
+        "message": "Simpan"
+    },
+    "labelCollapse": {
+        "message": "Ciutkan"
+    },
+    "labelExpand": {
+        "message": "Perluas"
+    },
+    "labelRename": {
+        "message": "Ganti nama"
+    },
+    "labelClose": {
+        "message": "Tutup"
+    },
+    "labelDelete": {
+        "message": "Hapus"
+    },
+    "labelAddTag": {
+        "message": "Tambah tag"
+    },
+    "labelRemoveTag": {
+        "message": "Hapus tag"
+    },
+    "labelOpen": {
+        "message": "Buka"
+    },
+    "tagsModalSelectTag": {
+        "message": "Pilih tag"
+    },
+    "renameModalTitle": {
+        "message": "Ganti nama sesi"
+    },
+    "saveModalTitle": {
+        "message": "Simpan sesi"
+    },
+    "inputModalPlaceholder": {
+        "message": "Masukkan nama sesi…"
+    },
+    "inputModalErrorLength": {
+        "message": "Nama sesi harus antara $1 dan $2 karakter."
+    },
+    "inputModalErrorChar": {
+        "message": "Nama sesi tidak boleh mengandung karakter '<' atau '>'."
+    },
+    "deleteModalTitle": {
+        "message": "Hapus sesi"
+    },
+    "deleteModalContent": {
+        "message": "Apakah Anda yakin ingin menghapus sesi ini?"
+    },
+    "notifyLoadFail": {
+        "message": "Gagal memuat sesi"
+    },
+    "notifySaveSuccess": {
+        "message": "Sesi berhasil disimpan!"
+    },
+    "notifySaveFail": {
+        "message": "Gagal menyimpan sesi"
+    },
+    "notifySaveFailEmpty": {
+        "message": "Gagal menyimpan sesi kosong"
+    },
+    "notifyUpdateSuccess": {
+        "message": "Sesi berhasil diperbarui!"
+    },
+    "notifyUpdateFail": {
+        "message": "Gagal memperbarui sesi"
+    },
+    "notifyDeleteSuccess": {
+        "message": "Sesi berhasil dihapus!"
+    },
+    "notifyDeleteFail": {
+        "message": "Gagal menghapus sesi"
+    },
+    "notifyDeleteFailUndefined": {
+        "message": "Gagal menghapus: Sesi tidak ditemukan"
+    },
+    "notifyDeleteAllSuccess": {
+        "message": "Semua sesi berhasil dihapus!"
+    },
+    "notifyDeleteAllFail": {
+        "message": "Gagal menghapus sesi-sesi"
+    },
+    "notifyDeleteAllFailUndefined": {
+        "message": "Gagal menghapus: Sesi-sesi tidak ditemukan"
+    },
+    "notifyExtUpdate": {
+        "message": "Sessionic telah diperbarui ke v$1!"
+    },
+    "settingsUserInterfaceHeading": {
+        "message": "Antarmuka Pengguna"
+    },
+    "settingsPopupView": {
+        "message": "Tampilan Popup"
+    },
+    "settingsDarkMode": {
+        "message": "Tema gelap"
+    },
+    "settingsAutosaveHeading": {
+        "message": "Penyimpanan Otomatis"
+    },
+    "settingsAutosave": {
+        "message": "Simpan sesi secara otomatis"
+    },
+    "settingsAutosaveMax": {
+        "message": "Jumlah maksimum sesi tersimpan (maks. 15 sesi)"
+    },
+    "settingsAutosaveInterval": {
+        "message": "Interval penyimpanan dalam menit (min. 1 menit)"
+    },
+    "settingsExtensionActionsHeading": {
+        "message": "Tindakan Ekstensi"
+    },
+    "settingsURLFilterList": {
+        "message": "Daftar Filter URL"
+    },
+    "settingsURLFilterListPlaceholder": {
+        "message": "mis. lacak hanya pola kecocokan URL berikut:\n*://*/*\nfile:///*/*\nftp://*/*\nchrome://*/*\nhttps://*.google.com/\nhttps://www.youtube.com/*\n"
+    },
+    "settingsLazyload": {
+        "message": "Muat tab secara malas"
+    },
+    "settingsResetAll": {
+        "message": "Atur Ulang Semua Pengaturan"
+    },
+    "settingsDoNotAskForSessionName": {
+        "message": "Jangan minta nama sesi saat menyimpan"
+    },
+    "settingsExportSessionCompressed": {
+        "message": "Kompres data sesi saat menyimpan"
+    },
+    "settingsExcludePinnedTabs": {
+        "message": "Kecualikan tab yang disematkan dari sesi"
+    },
+    "settingsSessionActionsHeading": {
+        "message": "Tindakan Sesi"
+    },
+    "settingsTagsTag": {
+        "message": "Tag"
+    },
+    "settingsTagsBackground": {
+        "message": "Latar Belakang"
+    },
+    "settingsTagsText": {
+        "message": "Teks"
+    },
+    "settingsTagsPreview": {
+        "message": "Pratinjau"
+    },
+    "settingsTagsAction": {
+        "message": "Tindakan"
+    },
+    "settingsImportSessions": {
+        "message": "Impor Sesi"
+    },
+    "settingsExportSessions": {
+        "message": "Ekspor Sesi"
+    },
+    "keyboardShortcutsHeading": {
+        "message": "Pintasan Keyboard"
+    },
+    "shortcutCommandPalette": {
+        "message": "Buka Palet Perintah"
+    },
+    "shortcutSaveCurrent": {
+        "message": "Simpan sesi saat ini"
+    },
+    "shortcutRenameSelected": {
+        "message": "Ganti nama sesi yang dipilih"
+    },
+    "shortcutFocusSearch": {
+        "message": "Fokus ke kotak pencarian"
+    },
+    "shortcutDisplayCurrent": {
+        "message": "Tampilkan sesi saat ini"
+    },
+    "shortcutSelectPrevious": {
+        "message": "Pilih sesi sebelumnya"
+    },
+    "shortcutSelectNext": {
+        "message": "Pilih sesi berikutnya"
+    },
+    "shortcutDeleteSelected": {
+        "message": "Hapus sesi yang dipilih"
+    },
+    "tagPlaceholder": {
+        "message": "mis. Pribadi"
+    },
+    "settingsLazyloadDescription": {
+        "message": "Kurangi penggunaan memori secara signifikan dengan tidak memuat tab hingga dipilih"
+    },
+    "aboutTranslationsLabel": {
+        "message": "Terjemahan"
+    },
+    "aboutChangelogLabel": {
+        "message": "Catatan Perubahan"
+    },
+    "aboutSourceCodeLabel": {
+        "message": "Kode sumber"
+    },
+    "aboutLicenseLabel": {
+        "message": "Lisensi AGPL v3"
+    }
+}
